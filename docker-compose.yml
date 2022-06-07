@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: php:8.1-apache
+    container_name: at-detector-platform
+    working_dir: ${DOCKER_WORK_DIR}
+    volumes:
+      - ./:${DOCKER_WORK_DIR}
+      - ./docker-compose/apache2/platform-domain.conf:/etc/apache2/sites-available/000-default.conf
+    ports:
+      - ${DOCKER_API_PORT}:80
+    networks:
+      - at-platform-network
+
+  mongodb:
+    image: mongo
+    container_name: ${MONGODB_HOST}
+    ports:
+      - ${DOCKER_MONGODB_PORT}:27017
+    volumes:
+      - ./docker-compose/mongo:/data
+    networks:
+    - at-platform-network
+
+  mongo-express:
+    image: mongo-express
+    container_name: mexpress
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://at-mongodb:27017/?authSource=admin
+    links:
+      - mongodb
+    ports:
+      - "8081:8081"
+    networks:
+      - at-platform-network
+
+networks:
+  at-platform-network:
+    driver: bridge
