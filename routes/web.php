@@ -31,12 +31,8 @@ Route::controller(Web\AnalysisController::class)->group(function () {
     });
 });
 
-
-Route::middleware(['auth'])->group(function () {
-
-    Route::view('/user-manual', 'pages/user-manual/index');
-
-    Route::controller(Web\AdminController::class)->group(function () {
+Route::controller(Web\AdminController::class)->group(function () {
+    Route::middleware(['check.role:admin'])->group(function () {
         Route::prefix('admins')->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'create');
@@ -44,6 +40,12 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/{id}', 'delete');
         });
     });
+    
+});
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::view('/user-manual', 'pages/user-manual/index');
 
     Route::controller(Web\ArticleController::class)->group(function () {
         Route::prefix('articles')->group(function () {

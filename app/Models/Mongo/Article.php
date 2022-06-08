@@ -33,6 +33,19 @@ class Article extends Model
     const STATUS_REVIEW_PENDING = 'PENDING';
     const STATUS_REVIEW_DONE = 'DONE';
 
+    const AGREE_VIOLATION = 'AGREE';
+    const DISAGREE_VIOLATION = 'DISAGREE';
+
+    const ACTION_CHECK_STATUS = 'CHECK_STATUS';
+    const ACTION_CHECK_CODE = 'CHECK_CODE';
+
+    const DEFAULT_REVIEW_STATES = [
+        'violation_code' => [],
+        'violation_types' => [],
+        'status' => self::STATUS_REVIEW_PENDING,
+        'review_date' => null
+    ];
+
     protected $fillable = [
         'company',
         'country',
@@ -55,19 +68,14 @@ class Article extends Model
             'violation_types' => [],
             'crawl_date' => null
         ],
-        'operator_review' => [
-            'violation_code' => [],
-            'violation_types' => [],
-            'status' => self::STATUS_REVIEW_PENDING,
-            'review_date' => null
-        ],
-        'supervisor_review' => [
-            'violation_code' => [],
-            'violation_types' => [],
-            'status' => self::STATUS_REVIEW_PENDING,
-            'review_date' => null
-        ],
+        'supervisor_review' => self::DEFAULT_REVIEW_STATES,
+        'operator_review' => self::DEFAULT_REVIEW_STATES,
     ];
+
+    public function documents()
+    {
+        return $this->embedsMany(ArticleLegalDocument::class, 'article_id');
+    }
 
     public function getList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
         // DB::connection( 'mongodb' )->enableQueryLog();

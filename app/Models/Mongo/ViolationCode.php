@@ -15,4 +15,9 @@ class ViolationCode extends Model
         'name',
         'type_id'
     ];
+
+    public function violationType()
+    {
+        return $this->embedsOne(ViolationType::class, 'type_id');
+    }
 }

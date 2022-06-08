@@ -5,15 +5,23 @@ use App\Models\Mongo\Admin;
 
 class UserRoleService
 {
+    public static function getRole() {
+        return auth()->user()->role ?? null;
+    }
+
+    public static function isRole($role) {
+        return (auth()->user() && auth()->user()->role === $role);
+    }
+
     public static function isAdmin() {
-        return (auth()->user() && auth()->user()->role === Admin::ROLE_ADMIN);
+        return static::isRole(Admin::ROLE_ADMIN);
     }
 
     public static function isSupervisor() {
-        return (auth()->user() && auth()->user()->role === Admin::ROLE_SUPERVISOR);
+        return static::isRole(Admin::ROLE_SUPERVISOR);
     }
 
     public static function isOperator() {
-        return (auth()->user() && auth()->user()->role === Admin::ROLE_OPERATOR);
+        return static::isRole(Admin::ROLE_OPERATOR);
     }
 }

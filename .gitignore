@@ -25,3 +25,7 @@ Homestead.json
 
 docker-compose/mongo/db
 docker-compose/mongo/configdb
+
+# Ignore Mac DS_Store files
+.DS_Store
+**/.DS_Store
