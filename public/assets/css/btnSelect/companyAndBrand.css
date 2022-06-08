@@ -1,0 +1,71 @@
+/* select company/brand  */
+.select--company-or-brand{
+    position: absolute;
+    top: 50px;
+    left: -40%;
+    width: 353px;
+    background: #FFFFFF;
+    border: 1px solid #C7C7C7;
+    box-sizing: border-box;
+    display: none;
+}
+
+.search--input {
+    padding: 14px 0;
+    display: flex;
+    align-items: center;
+    border: 1px solid #C7C7C7;
+    margin: 23px 23px 10px 23px;
+}
+
+.search--input input{
+    border: none;
+    width: 100%;
+}
+
+.select__one{
+    display: flex;
+    justify-content:flex-end;
+    padding: 14px 23px;
+    position: relative;
+}
+
+.select__one:first-child > p{
+    color: #6F6F6F;
+}
+
+
+.select__one:hover {
+    background: #F4F4F4;
+    transition: 0.3s linear;
+}
+
+.select__one p {
+    width: 100%;
+    text-align: center;
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.select__one img{
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.select__one:first-child > img{
+    display: block;
+}
+
+.contain--selection{
+    max-height: 627px;
+    overflow: auto;
+}
+
+.background-gray{
+    background-color: #F4F4F4;
+}

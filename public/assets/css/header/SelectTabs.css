@@ -1,0 +1,103 @@
+.list--search--select{
+    margin: 0 60px;
+}
+
+.list--country,
+#daterange,
+.list--search{
+    width: 140px;
+    display: flex;
+    border: 1px solid #C7C7C7;
+    align-items: center;
+    justify-content: center;
+}
+
+.list--country img,
+.list--violation--type img,
+.list--company--brand img,
+#daterange img,
+.list--search img {
+    margin: 0 10px;
+}
+
+#daterange input,
+.list--search input{
+    border: none;
+    margin: 14px 5px 14px 0px;
+    width: 100%;
+}
+
+.list--showing select,
+#daterange input,
+.search:focus-visible{
+    outline: none;
+}
+
+.list--company--brand{
+    width: 203px;
+    display: flex;
+    border: 1px solid #C7C7C7;
+    padding: 14px 0 ;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.list--country{
+    position: relative;
+    justify-content: space-between;
+}
+
+.list--violation--type{
+    width: 184px;
+    display: flex;
+    border: 1px solid #C7C7C7;
+    padding: 14px 0 ;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.list--select--option{
+    display: flex;
+    align-items: center;
+}
+
+.list--select__left{
+    display: flex;
+    width: 75%;
+}
+
+.list--title p {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 50px;
+    margin: 24px 0 15px 0;
+}
+
+.list--select__left > div {
+    margin-right: 10px;
+}
+
+.list--select__right{
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content:flex-end;
+}
+
+.list--select__right > p{
+    padding-right: 12px;
+}
+
+.list--select__right p{
+    font-family: 'Avenir Next';
+}
+
+.list--select__right select{
+    font-family: 'Avenir Next';
+    width: 92px;
+    padding: 14px 0 14px 12px;
+}

@@ -1,0 +1,87 @@
+.Base_violation--brand{
+    border: 1px solid #C7C7C7;
+    margin: 16px 199px;
+    padding: 26px 64px;
+}
+
+.title__base--violation{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: #072136;
+    padding: 0 !important;
+}
+
+.Base_violation--brand .list--select--option .list--select__left .list--violation--type{
+    margin: 0!important;
+}
+
+.Base_violation--brand table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 26px;
+  }
+
+.Base_violation--brand table tr td,
+.Base_violation--brand table tr th{
+    text-align: center;
+    padding: 10px 0;
+}
+
+.Base_violation--brand table tr th{
+    background-color: #F4F4F4;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 136.5%;
+    color: #0C3C60;
+    position: relative;
+}
+
+.Base_violation--brand table tr th{
+    width: 14.16%;
+    text-align:left;
+    padding-left: 20px;
+}
+
+.Base_violation--brand table tr th:nth-child(1){
+    width: 8.5%;
+}
+.Base_violation--brand table tr th:nth-child(2){
+    width: 39%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.Base_violation--brand table tr th img{
+    position: absolute;
+    margin-left: 8.5px;
+}
+
+.Base_violation--brand table tr td{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 136.5%;
+    color: #000000;
+    text-align:left;
+    padding-left: 20px;
+}
+
+.demo__pagination{
+    text-align:right;
+}
+.demo__pagination span{
+    margin: 0 15px;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 136.5%;
+    color: #6F6F6F;
+}

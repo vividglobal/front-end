@@ -1,0 +1,140 @@
+.nav-menu{
+    display:flex;
+    justify-content: flex-end;
+}
+
+.nav-menu{
+    padding: 10px 60px;
+    box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
+}
+
+.nav-menu > ul{
+    display:flex;
+    margin: 0;
+}
+
+.nav--btn__before--login{
+    margin-right: 3em;
+}
+
+.nav--btn__after--login{
+    margin-right: 2.1em;
+}
+
+.after-login{
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-right: 3.85% ;
+}
+
+.after-login img:first-child{
+    margin-right: 16px;
+}
+
+.nav-menu > ul li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 420;
+    font-size: 20px;
+    line-height: 29px;
+}
+
+.nav-menu > ul li:nth-child(3){
+    position: relative;
+}
+
+.nav--dropdown{
+    position: absolute;
+    box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
+    top: 130%;
+    left: -20%;
+    width: 195px;
+    background-color:#FFFFFF;
+    display: none;
+    z-index: 2;
+}
+
+.nav--dropdown li {
+    padding: 14px 0 14px 19px;
+    color: #000000;
+}
+
+.nav--dropdown li:hover{
+    background-color: #F4F4F4;
+    transition: 0.3s linear;
+}
+
+.nav-menu ul li:hover .nav--btnBorder__bottom{
+    border-bottom: 1px solid #0C3C60;
+    transition: 0.3s linear;
+}
+
+.nav--btnBorder__bottom{
+    border-bottom: 1px solid #ffffff;
+    width: 30px;
+    z-index: 2;
+    transition: 0.3s linear;
+}
+
+li{
+    font-family: "Brandon Grotesque";
+    list-style: none;
+    display:flex;
+    align-items: center;
+    color: #0C3C60;
+}
+
+li:nth-child(3) img{
+    margin-left:9px
+}
+
+
+.nav__btn--login > p {
+    padding: 13px 65px;
+    border: 1px solid #0C3C60;
+    color: #0C3C60;
+    margin: 0px;
+}
+
+.btn--export--excel{
+    margin-left: 10px;
+    padding: 15px 13px;
+    background-color: #0C3C60;
+}
+
+.btn--export--excel p {
+    color: #FFFFFF;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.dropdown-login{
+    position: absolute;
+    top: 135%;
+    width: 195px;
+    right: -100%;
+    background-color: #FFFFFF;
+    display:none;
+    box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
+}
+
+.dropdown-login p{
+    padding: 14px 0 14px 19px;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.dropdown-login p:hover {
+    background-color: #F4F4F4;
+    transition: 0.3s linear;
+}
