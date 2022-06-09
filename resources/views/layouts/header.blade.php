@@ -1,3 +1,6 @@
+<script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
+<script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
+
 <div class="nav_container ">
     <div class="nav-menu" >
         <ul>
