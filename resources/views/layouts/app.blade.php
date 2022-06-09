@@ -34,11 +34,8 @@
     <script src="{{ asset('assets/js/btn_select/selectBrandAndCompany.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectCountry.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectViolationType.js') }}"></script>
-    <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
-    <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedTextOrImage.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
-
 </head>
 <body>
     <div id="app">
