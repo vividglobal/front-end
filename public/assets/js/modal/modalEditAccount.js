@@ -1,15 +1,15 @@
 $("document").ready(function(){
     function resetModal(){
-        $(".modal").removeClass("modal__open")
+        $("#modal-account").removeClass("modal__open")
         $(".btn__change--password").show();
         $(".edit-password").hide();
         $(".edit-password-confirm").hide();
     }
 
       //  Btn open modal
-        
+
     $("#edit__profile").on("click",function(){
-        $(".modal").addClass("modal__open")
+        $("#modal-account").addClass("modal__open")
     })
 
     $(".modal__close").on("click",function(){
@@ -30,7 +30,7 @@ $("document").ready(function(){
             $(".form-number").removeAttr('disabled');
             $(".form-number").focus();
     })
-   
+
     $(".btn__change--password").on("click",function(){
         $(".edit-password").show();
         $(".edit-password-confirm").show();
@@ -68,7 +68,4 @@ $("document").ready(function(){
     $(".btn__save-button").on("click",function(){
         resetModal()
     })
-
-    
-
 })

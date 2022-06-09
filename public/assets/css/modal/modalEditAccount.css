@@ -9,7 +9,6 @@
     justify-content: center;
     transition: all .4s;
     width: 100%;
-    top: 30%;
   }
 
   .overlay{
@@ -27,12 +26,12 @@
     transition: background 0.15s linear;
     height: 100%;
   }
-  
+
   .modal__open {
     visibility: visible;
     opacity: 1;
   }
-  
+
   .modal__content {
     border-radius: 4px;
     position: relative;
@@ -42,7 +41,7 @@
     padding: 22px;
     z-index: 1;
   }
-  
+
   .modal__close {
     color: #585858;
     text-decoration: none;
@@ -144,13 +143,13 @@
     line-height: 22px;
     color: #6F6F6F;
   }
-  
+
   .container__checkbox input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
   }
-  
+
   .checkmark {
     position: absolute;
     top: 0;
@@ -160,25 +159,25 @@
     background-color: #fff;
     border: 1px solid #0C3C60;
   }
-  
+
   .container__checkbox:hover input ~ .checkmark {
     background-color: #fff;
   }
-  
+
   .container__checkbox input:checked ~ .checkmark {
     background-color: #fff;
   }
-  
+
   .checkmark:after {
     content: "";
     position: absolute;
     display: none;
   }
-  
+
   .container__checkbox input:checked ~ .checkmark:after {
     display: block;
   }
-  
+
   .container__checkbox .checkmark:after {
     left: 5px;
     top: -2px;

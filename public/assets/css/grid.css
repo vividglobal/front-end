@@ -1,6 +1,6 @@
 /* grid : chiếm hết chiều ngang  */
 /* wide: chiếm chiều ngang tối đa  */
-/* row : chứa các columns, tự xuống hàng cho columns , loại bỏ khoảng thừa 2 phía */
+/* rows : chứa các columns, tự xuống hàng cho columns , loại bỏ khoảng thừa 2 phía */
 /* gutter : rãnh ở giữa 2 cột */
 /* no-gutters : xóa rãnh ở 2 bên cột */
 /* col : chứa các thành phần  */
@@ -16,14 +16,14 @@
     margin: 0 auto;
 }
 
-.row {
+.rows {
     display: flex;
     flex-wrap: wrap;
     margin-left: -4px;
     margin-right: -4px;
 }
 
-.row.no-gutters {
+.rows.no-gutters {
     margin-left: 0;
     margin-right: 0;
 }
@@ -33,7 +33,7 @@
     padding-right: 4px;
 }
 
-.row.no-gutters .col {
+.rows.no-gutters .col {
     padding-left: 0;
     padding-right: 0;
 }
@@ -148,7 +148,7 @@
 
 /* >= Tablet */
 @media (min-width: 740px) {
-    .row {
+    .rows {
         margin-left: -8px;
         margin-right: -8px;
     }
@@ -284,12 +284,12 @@
 
 /* PC medium resolution > */
 @media (min-width: 1113px) {
-    .row {
+    .rows {
         margin-left: -12px;
         margin-right: -12px;
     }
 
-    .row.sm-gutter {
+    .rows.sm-gutter {
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -299,7 +299,7 @@
         padding-right: 12px;
     }
 
-    .row.sm-gutter .col {
+    .rows.sm-gutter .col {
         padding-left: 5px;
         padding-right: 5px;
     }
@@ -447,12 +447,12 @@
         width: 984px;
     }
 
-    .wide .row {
+    .wide .rows {
         margin-left: -12px;
         margin-right: -12px;
     }
 
-    .wide .row.sm-gutter {
+    .wide .rows.sm-gutter {
         margin-left: -5px;
         margin-right: -5px;
     }
@@ -462,7 +462,7 @@
         padding-right: 12px;
     }
 
-    .wide .row.sm-gutter .col {
+    .wide .rows.sm-gutter .col {
         padding-left: 5px;
         padding-right: 5px;
     }
