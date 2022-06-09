@@ -142,7 +142,7 @@
                             <tbody class="tbdata">
                                 @foreach ($articles as $key => $article)
                                     <tr class="tr-boder">
-                                        <td>{{$key}}</td>
+                                        <td>{{$key + 1}}</td>
                                         <td><a href="#">{{ __($article->company) }}
                                         <td><a href="#">{{ __($article->country) }}</a></td>
                                         <td><a href="#">{{ __($article->brand) }}</a></td>
@@ -261,8 +261,10 @@
                         </table>
                     </div>
                 </div>
+                <div class="row-pagination">
+                    {{ $articles->links('layouts.my-paginate') }}
+                </div>
 
-                
                 <div class="modal-title">
                     <div class="modal-content">
                         <div class="div-close">
