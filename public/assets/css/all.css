@@ -6,9 +6,10 @@
 @import url("./btnSelect/selectViolationType.css");
 @import url("./modal/modalEditAccount.css");
 @import url("./suspected/suspectedImageOrText.css");
+@import url("./analysis/index_violation_nonviolation.css");
+@import url("./analysis/violationBaseOnBrand.css");
 @import url("./autodetect/content.css");
 @import url("./autodetect/table.css");
-
 
 
 

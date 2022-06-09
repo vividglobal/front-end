@@ -1,11 +1,12 @@
-.nav-menu{
-    display:flex;
-    justify-content: flex-end;
+.nav_container{
+    width: 100%;
+    padding: 10px 60px;
+    box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
 }
 
 .nav-menu{
-    padding: 10px 60px;
-    box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
+    display:flex;
+    justify-content: flex-end;
 }
 
 .nav-menu > ul{
@@ -138,3 +139,5 @@ li:nth-child(3) img{
     background-color: #F4F4F4;
     transition: 0.3s linear;
 }
+
+

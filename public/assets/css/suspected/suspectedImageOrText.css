@@ -19,7 +19,7 @@
   .suspected__text__area{
     max-width: 761px;
     width: 100%;
-    height: 183px;
+    height: 203px;
     padding: 10px;
     border: 1px solid #C7C7C7;
     margin: 0 10px 15px 0;
@@ -49,13 +49,13 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .file-input > [type='file'] {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     opacity: 0;
     z-index: 10;
     cursor: pointer;
@@ -64,9 +64,9 @@
   .file-input > .button {
     cursor: pointer;
   }
-  
+
   .file-input > .label {
-  
+
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
