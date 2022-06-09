@@ -8,6 +8,8 @@
 @import url("./suspected/suspectedImageOrText.css");
 @import url("./analysis/index_violation_nonviolation.css");
 @import url("./analysis/violationBaseOnBrand.css");
+@import url("./autodetect/content.css");
+@import url("./autodetect/table.css");
 
 
 
