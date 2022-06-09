@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="list--search--select" >
         <div class="list--title">
             <p>Label violations</p>
@@ -65,15 +64,7 @@
                 </div>
             </div>
         </div>
-         <!-- Captcha -->
-         <form>
-            <div class="captcha">
-                <div class="col-md-6"> {!! htmlFormSnippet() !!} </div>
-            </div>
-            <div class="btn__check">
-                <button id='submit_captcha'>Check</button>
-            </div>
-        </form>
+        @include('pages/manual-detection/captcha')
         <div class="title__result">
             <p>Result:</p>
         </div>

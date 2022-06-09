@@ -109,9 +109,8 @@
         </div>
     </div>
 
-<!-- <div class="row">
+<div class="row">
     <div class="col-12">
-        <legend>List Articles</legend>
         <table class="table">
             <thead>
                 <tr>
@@ -149,6 +148,6 @@
             </tbody>
         </table>
     </div>
-</div> -->
+</div>
 
 @endsection
