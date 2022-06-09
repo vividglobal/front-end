@@ -237,3 +237,56 @@
 .select--violation--type {
     z-index: 1000 !important;
 }
+
+
+
+.row-pagination{
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+}
+.pagination li{
+    color: black;
+    float: left;
+    padding: 8px 16px !important;
+    text-decoration: none;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 136.5%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #6F6F6F;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+.pagination li a{
+    float: left;
+    /* padding: 8px 16px !important; */
+    text-decoration: none;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 136.5%;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    color: #6F6F6F;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+/* .pagination li span{
+
+} */
+.active{
+    background-color: #6F6F6F;
+    border-radius: 3px;
+    color: #ffffff !important;
+}
