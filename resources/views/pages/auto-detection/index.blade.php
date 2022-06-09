@@ -146,7 +146,7 @@
                                         <td><a href="#">{{ __($article->company) }}
                                         <td><a href="#">{{ __($article->country) }}</a></td>
                                         <td><a href="#">{{ __($article->brand) }}</a></td>
-                                        <td class="contenttb btn"><a href="#">{{ __('How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...') }}</a></td>
+                                        <td class="contenttb btn-caption"><a>{{ __('How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...') }}</a></td>
                                         <td>
                                             <div class="wr-img">
                                                 <img class="td-img clickimg" src="../assets/image/img1.png" alt="">
@@ -158,8 +158,8 @@
                         </table>
                     </div>
 
-                    <div class="col-right">
-                        <table class="tbdata col-right-form container-scroll">
+                    <div class="col-right col-right-form ">
+                        <table class="tbdata  container-scroll">
                             <thead class="col-thead">
                                 <tr>
                                     <th rowspan="2" class="style-title">
@@ -263,7 +263,7 @@
                 </div>
 
                 
-                <div class="modal">
+                <div class="modal-title">
                     <div class="modal-content">
                         <div class="div-close">
                             <span class="close">&times;</span>
@@ -276,6 +276,7 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="modalimg">
                     <div class="modal-content">
                         <div class="div-close">
@@ -284,7 +285,9 @@
                         <div class="head-modal">
                             <h1 >Nature One Dairy Australia</h1>
                         </div>
-                        <img class="modal-img" src="img/img1.png" alt="">
+                        <div>
+                            <img class="modal-img" src="../assets/image/img1.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>

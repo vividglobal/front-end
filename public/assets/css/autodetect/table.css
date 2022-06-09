@@ -16,7 +16,7 @@
     /* height:100vh; */
 }
 .container_row{
-    width: 97%;
+    /* width: 97%; */
     display: flex;
     margin-left: 60px;
 }
@@ -26,15 +26,17 @@
 }
 .col-right{
     width: 45%;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
-.col-right-form{
+/* .col-right-form{
     width: 100%;
     overflow-y: hidden;
     overflow-x: scroll;
     display: block;
     align-items: normal;
-}
+} */
 .col-right-form::-webkit-scrollbar{
     display: none;
 }
@@ -95,7 +97,7 @@
 .tbdata tr td{
     height: 150px;
     max-height: 115px;
-    padding: 20px 10px;
+    padding: 0px 10px;
 }
 .tbdata tr td.contenttb{
     text-align: left;
@@ -142,7 +144,7 @@
 }
 
 /* Modal Box */
-.modal {
+.modal-title {
     display: none;
     position: fixed;
     z-index: 1000;
@@ -226,3 +228,12 @@
       margin-bottom: 20px;
   }
 
+.select--country {
+    z-index: 1000 !important;
+}
+.select--company-or-brand {
+    z-index: 1000 !important;
+}
+.select--violation--type {
+    z-index: 1000 !important;
+}

@@ -1,4 +1,4 @@
-const slider = document.querySelector('.col-right-form');
+const slider = document.querySelector('.col-right');
 let mouseDown = false;
 let startX, scrollLeft;
 

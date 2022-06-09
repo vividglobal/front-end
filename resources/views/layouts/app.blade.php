@@ -32,7 +32,6 @@
     <script src="{{ asset('assets/js/header/modalEditAccount.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedTextOrImage.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
-    <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 
 </head>
 <body>
@@ -43,4 +42,6 @@
         </main>
     </div>
 </body>
+<script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
+<script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 </html>
