@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
     var modal = $('.modal-title');
     var modalimg = $('.modalimg')
     var btn = $('.btn-caption');
@@ -27,4 +27,4 @@
             modalimg.hide();
         }
     });
-// });
+});
