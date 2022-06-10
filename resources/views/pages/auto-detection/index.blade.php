@@ -111,8 +111,8 @@
 
 
     </div>
-         <!-- Table -->
-         <div class="container-table">
+        <!-- Table -->
+        <div class="container-table">
                 <div class="container_row">
                     <div class="col-left ">
                         <table class="tbdata col-table">
@@ -159,114 +159,117 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="col-right col-right-form ">
-                        <table class="tbdata  container-scroll">
-                            <thead class="col-thead">
-                                <tr>
-                                    <th rowspan="2" class="style-title">
-                                        <div class="th-title-right">
+                        <table class="wrap">
+                            <div class="headers">
+                                <div class="scroller syncscroll" name="myElements">
+                                    <div class="track">
+                                        <div class=" heading th-title-right">
                                             <p>{{ __('Published date') }}</p>
                                             <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
                                         </div>
-                                    </th>
-                                    <th rowspan="2" class="style-title">
-                                        <div class="th-title-right">
+                                    </div>
+                                    <div class="track">
+                                        <div class=" heading th-title-right">
                                             <p>{{ __('Crawl date') }}</p>
                                             <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
                                         </div>
-                                    </th>
-                                    <th  rowspan="2"class="style-title">{{ __('Link') }}</th>
-                                    <th  colspan="3" class="style-title">{{ __('VIVID') }}</th>
-                                    <th  colspan="3"class="style-title">{{ __('Supervisor') }}</th>
-                                    <th  colspan="3"class="style-title">{{ __('Operator') }}</th>
-                                </tr>
-                                <tr>
-                                    <th class="style-title">
-                                        <div class="th-title-right">
-                                            <p>{{ __('Status') }}</p>
-                                            <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    </div>
+                                    <div class="track">
+                                        <div class="heading">{{ __('Link') }}</div>
+                                    </div>
+                                    <div class="track track-three">
+                                        <div class="heading-three">{{ __('VIVID') }}</div>
+                                        <div class="heading-three-title">
+                                            <div class="th-title-right">
+                                                <p>{{ __('Status') }}</p>
+                                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                            </div>
+                                            <div class="th-title-right">
+                                                <p>{{ __('Code article') }}</p>
+                                            </div>
+                                            <div class="th-title-right heading-three-violation">
+                                                <p>{{ __('Violation type') }}</p>
+                                            </div>
                                         </div>
-                                    </th>
-                                    <th class="style-title">{{ __('Code article') }}</th>
-                                    <th white-space: nowrap class="style-title">{{ __('Violation type') }}</th>
-
-                                    <th class="style-title">
-                                        <div class="th-title-right">
-                                            <p>{{ __('Status') }}</p>
-                                            <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    </div>
+                                    <div class="track track-three">
+                                        <div class="heading-three">{{ __('Supervisor') }}</div>
+                                        <div class="heading-three-title">
+                                            <div class="th-title-right">
+                                                <p>{{ __('Status') }}</p>
+                                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                            </div>
+                                            <div class="th-title-right">
+                                                <p>{{ __('Code article') }}</p>
+                                            </div>
+                                            <div class="th-title-right heading-three-violation">
+                                                <p>{{ __('Violation type') }}</p>
+                                            </div>
                                         </div>
-                                    </th>
-                                    <th class="style-title">{{ __('Code article') }}</th>
-                                    <th white-space: nowrap class="style-title">{{ __('Violation type') }}</th>
-
-                                    <th class="style-title">
-                                        <div class="th-title-right">
-                                            <p>{{ __('Status') }}</p>
-                                            <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    </div>
+                                    <div class="track track-three">
+                                        <div class="heading-three">{{ __('Operator') }}</div>
+                                        <div class="heading-three-title">
+                                            <div class="th-title-right">
+                                                <p>{{ __('Status') }}</p>
+                                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                            </div>
+                                            <div class="th-title-right">
+                                                <p>{{ __('Code article') }}</p>
+                                            </div>
+                                            <div class="th-title-right heading-three-violation">
+                                                <p>{{ __('Violation type') }}</p>
+                                            </div>
                                         </div>
-                                    </th>
-                                    <th class="style-title">{{ __('Code article') }}</th>
-                                    <th white-space: nowrap class="style-title">{{ __('Violation type') }}</th>
-                                </tr>
-                            </thead>
-
-
-                            <tbody class="tbdata">
-                                <tr class="tr-boder">
-                                    <td>05/04/2022</td>
-                                    <td>05/04/2022</td>
-                                    <td><img class="td-link" src="../assets/image/link.png" alt="#"></td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>Reviewing</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                </tr>
-
-
-                                <tr class="tr-boder">
-                                    <td>05/04/2022</td>
-                                    <td>05/04/2022</td>
-                                    <td><img class="td-link" src="../assets/image/link.png" alt="#"></td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>Reviewing</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td>{{ __('Reviewing') }}</td>
-                                    <td white-space: nowrap>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                        <p>{{ __('Information for Health Workers') }}</p>
-                                    </td>
-                                </tr>
-                            </tbody>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tracks syncscroll container-scroll" name="myElements">
+                                <div class="track">
+                                    <div class="entry">
+                                        <h3>05/04/2022</h3>
+                                    </div>
+                                </div>
+                                <div class="track">
+                                    <div class="entry">
+                                        <h3>05/04/2022</h3>
+                                    </div>
+                                </div>
+                                <div class="track">
+                                    <div class="entry">
+                                        <img class="td-link" src="../assets/image/link.png" alt="#">
+                                    </div>
+                                </div>
+                                <div class="track track-three">
+                                    <div class="entry-three">
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title-threee"><p>{{ __('Information for Health Workers') }}</p></div>
+                                    </div>
+                                </div>
+                                <div class="track track-three">
+                                    <div class="entry-three">
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title-threee"><p>{{ __('Information for Health Workers') }}</p></div>
+                                    </div>
+                                </div>
+                                <div class="track track-three">
+                                    <div class="entry-three">
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title">Reviewing</div>
+                                        <div class="entry-title-threee"><p>{{ __('Information for Health Workers') }}</p></div>
+                                    </div>
+                                </div>
+                            </div>
                         </table>
                     </div>
                 </div>
+                
                 <div class="row-pagination">
                     {{ $articles->links('layouts.my-paginate') }}
                 </div>
-
 
 
                 <div class="modal-title">
@@ -301,4 +304,5 @@
 </div>
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
+<script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 @endsection

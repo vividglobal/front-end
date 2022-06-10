@@ -26,8 +26,8 @@
 }
 .col-right{
     width: 45%;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    /* overflow-x: scroll;
+    overflow-y: hidden; */
 }
 
 /* .col-right-form{
@@ -138,9 +138,11 @@
     z-index: 100;
 }
 .th-title-right{
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-right: 1px solid #EEEEEE;
 }
 
 /* Modal Box */
@@ -288,3 +290,142 @@
     border-radius: 3px;
     color: #ffffff !important;
 }
+
+
+  .wrap {
+    position: relative;
+    overscroll-behavior: contain;
+  }
+  
+  .headers {
+    top: 0;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1;
+  }
+  
+  .tracks,
+  .scroller {
+    display: flex;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scroller {
+    overflow-x: hidden;
+    height: 110px;
+    background: #F4F4F4;
+  }
+  
+  .tracks {
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .scenes::-webkit-scrollbar,
+  .syncscroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .track {
+    flex: 1 0 calc(20%);
+    scroll-snap-align: start;
+  }
+  
+  .track + .track {
+    margin-left: -1px;
+  }
+  .track-three{
+    flex: 1 0 calc(50%);
+  }
+  
+  .heading {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    border: 1px solid #EEEEEE;
+    z-index: 1;
+    /* background: #efefef; */
+    font-weight: 700;
+  }
+  .heading-three{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    border: 1px solid #EEEEEE;
+    z-index: 1;
+    font-weight: 700;
+}
+.heading-three-violation{
+    width: 50%;
+}
+.heading-three-title{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    /* justify-content: space-around;
+    align-items: center; */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    border: 1px solid #EEEEEE;
+    z-index: 1;
+    font-weight: 700;
+}
+  .entry {
+    border: 1px solid #ebebeb;
+    border-top: 0;
+    background: #fff;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  @media (max-width: 767px) {
+    .track {
+      flex: 1 0 calc(50% + 7px);
+    }
+  }
+
+  .col-right{
+    width: 45%;
+}
+.title-right{
+    display: flex;
+}
+.entry-three{
+    border: 1px solid #ebebeb;
+    border-top: 0;
+    background: #fff;
+    height: 150px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+.entry-title{
+    height: 100%;
+    width: 30%;
+    border-right: 1px solid #EEEEEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.entry-title-threee{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+>>>>>>> public/assets/css/autodetect/table.css

@@ -54,7 +54,7 @@ class Article extends Model
         'image',
         'published_date',
         'link',
-        'bot_detecting',
+        'detection_result',
         'supervisor_review',
         'operator_review',
         'status',
@@ -63,10 +63,10 @@ class Article extends Model
     ];
 
     protected $attributes = [
-        'bot_detecting' => [
+        'detection_result' => [
             'violation_code' => [],
             'violation_types' => [],
-            'crawl_date' => null
+            'date' => null
         ],
         'supervisor_review' => self::DEFAULT_REVIEW_STATES,
         'operator_review' => self::DEFAULT_REVIEW_STATES,
@@ -130,7 +130,100 @@ class Article extends Model
             $sortValue = $params['sort_value'];
         }
         $list = $articles->orderBy($sortField, strtolower($sortValue))->paginate($perpage);
-        // dd(DB::connection('mongodb')->getQueryLog());
         return $list;
+    }
+
+    public function agregateList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
+        // DB::connection( 'mongodb' )->enableQueryLog();
+        $articles = $this->newQuery();
+
+        if(isset($params['keyword'])) {
+            $keyword = $params['keyword'];
+            // TODO
+        }
+
+        if(isset($params['status'])) {
+            $articles->where('status', $params['status']);
+        }
+
+        if(isset($params['detection_type'])) {
+            $articles->where('detection_type', $params['detection_type']);
+        }
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date']);
+            $endDate = strtotime($params['end_date']);
+            $articles->whereRaw([
+                'bot_detecting.crawl_date' => ['$gte' => $startDate, '$lte' => $endDate],
+            ]);
+        }
+
+        if(isset($params['country'])) {
+            $articles->where('country', $params['country']);
+        }
+
+        if(isset($params['company_brand'])) {
+            $GLOBALS['company_brand'] = $params['company_brand'];
+            $articles->orWhere(function ($query) {
+                return $query
+                    ->where('company', '=', $GLOBALS['company_brand'])
+                    ->where('brand', '=', $GLOBALS['company_brand']);
+            });
+        }
+
+        if(isset($params['violation_type'])) {
+            $articles->whereIn('bot_detecting.violation_types', [$params['violation_type']]);
+        }
+
+        if(isset($params['perpage'])) {
+            $perpage = $params['perpage'];
+        }
+
+        if(isset($params['sort_by'])) {
+            $sortField = $params['sort_by'];
+        }
+        if(isset($params['sort_value'])) {
+            $sortValue = $params['sort_value'];
+        }
+
+        // Custom query
+        $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
+        $total = self::count();
+        $query = [
+            [
+                '$lookup' => [
+                    'as' => 'KecDetails',
+                    'from' => 'src_kecamatan',
+                    'foreignField' => 'id',
+                    'localField' => 'idKecamatan'
+                ]
+            ],
+            [
+                '$lookup' => [
+                    'as' => 'KotDetails',
+                    'from' => 'src_kota_kabupaten',
+                    'foreignField' => 'code',
+                    'localField' => 'idKota'
+                ]
+            ],
+            [
+                '$lookup' => [
+                    'as' => 'ProvDetails',
+                    'from' => 'src_provinsi',
+                    'foreignField' => 'idProv',
+                    'localField' => 'idProvinsi'
+                ]
+            ],
+            ['$skip' => ($page - 1) * $perPage],
+            ['$limit' => $perPage],
+        ];
+
+        $collection = self::raw(function ($collection) use ($page, $perpage, $query) {
+            return $collection->aggregate($query);
+        });
+
+        return new \Illuminate\Pagination\LengthAwarePaginator($collection, $total, $perpage, $page, [
+            'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
+        ]);
     }
 }
