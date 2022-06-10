@@ -11,7 +11,6 @@ use App\Models\Mongo\Country;
 use App\Models\Mongo\ViolationCode;
 use App\Models\Mongo\ViolationType;
 use App\Models\Mongo\ArticleLegalDocument;
-
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ApiResponse;
 
@@ -239,6 +238,7 @@ class ArticleController extends Controller
         if ($validator->fails()) {
             throw new \Illuminate\Validation\ValidationException($validator);
         }
+
         $inputs = $validator->validated();
         $article = Article::find($id);
         if($article && $article->status === Article::STATUS_PENDING) {
@@ -326,7 +326,7 @@ class ArticleController extends Controller
     public function resetArticleToOriginState(Request $request, $id) {
         $article = Article::find($id);
         if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
-            
+
             $article->status = Article::STATUS_PENDING;
             $article->progress_status = Article::STATUS_PENDING;
             $article->operator_review = Article::DEFAULT_REVIEW_STATES;

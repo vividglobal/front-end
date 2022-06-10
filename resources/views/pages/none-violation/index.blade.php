@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="list--search--select" >
+        <div class="list--title">
+            <p>Violation list</p>
+        </div>
+        <!-- list Btn  -->
+        @include('pages/components/query')
 
+</div>
 <div class="row">
     <div class="col-12">
         <legend>List Articles</legend>

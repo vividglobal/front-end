@@ -40,7 +40,7 @@ Route::controller(Web\AdminController::class)->group(function () {
             Route::delete('/{id}', 'delete');
         });
     });
-    
+
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/{id}', 'delete');
             });
         });
-        
+
         Route::controller(Web\ViolationTypeController::class)->group(function () {
             Route::prefix('violation-types')->group(function () {
                 Route::get('/', 'index');
@@ -83,7 +83,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/{id}', 'delete');
             });
         });
-        
+
         Route::controller(Web\ViolationCodeController::class)->group(function () {
             Route::prefix('violation-code')->group(function () {
                 Route::get('/', 'index');
@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::delete('/{id}', 'delete');
             });
         });
-        
+
         Route::controller(Web\CompanyBrandController::class)->group(function () {
             Route::prefix('company-brands')->group(function () {
                 Route::get('/', 'index');

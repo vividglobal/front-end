@@ -174,7 +174,7 @@
     background-color: rgba(0, 0, 0, .4);
     text-align: center;
 }
-  
+
   .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -199,7 +199,7 @@
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: #000;
@@ -239,8 +239,6 @@
 .select--violation--type {
     z-index: 1000 !important;
 }
-
-
 
 .row-pagination{
     width: 95%;
@@ -430,3 +428,4 @@
     justify-content: center;
     align-items: center;
 }
+>>>>>>> public/assets/css/autodetect/table.css
