@@ -41,7 +41,11 @@ class ArticleController extends Controller
             $params = $request->all();
             $params['status'] = Article::STATUS_VIOLATION;
             $articles = $articleModel->getList($params);
+            if(isset($params['export']) && $params['export'] == true) {
+                return  $this->exportViolationArticles('violation_article', $articles);
+            }
             return view('pages/violation/index', compact('articles'));
+
     }
 
     public function getNoneViolationList(Request $request) {
