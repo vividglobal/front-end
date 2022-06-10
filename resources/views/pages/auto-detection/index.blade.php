@@ -159,8 +159,303 @@
                         </table>
                     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="col-right col-right-form ">
-                        <table class="tbdata  container-scroll">
+                    <div class="wrap">
+                        <div class="headers">
+                            <div class="scroller syncscroll" name="myElements">
+                            <div class="track">
+                                <div class="heading">Heading 1</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 2</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 3</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 4</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 5</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 6</div>
+                            </div>
+                            <div class="track">
+                                <div class="heading">Heading 7</div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="tracks syncscroll" name="myElements">
+                            <div class="track">
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                            <div class="track">
+
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem, ipsum dolor.</h3>
+                            </div>
+                            <div class="entry">
+                                <h3>Lorem ipsum dolor sit.</h3>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- <table class="tbdata  container-scroll">
                             <thead class="col-thead">
                                 <tr>
                                     <th rowspan="2" class="style-title">
@@ -259,15 +554,35 @@
                                     </td>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table> -->
                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 <div class="row-pagination">
                     {{ $articles->links('layouts.my-paginate') }}
                 </div>
-
-
-
                 <div class="modal-title">
                     <div class="modal-content">
                         <div class="div-close">
@@ -300,4 +615,5 @@
 </div>
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
+<script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 @endsection
