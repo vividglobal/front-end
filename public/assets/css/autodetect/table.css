@@ -238,9 +238,6 @@
     z-index: 1000 !important;
 }
 
-<<<<<<< HEAD
-
-
 .row-pagination{
     width: 95%;
     display: flex;
@@ -291,52 +288,3 @@
     border-radius: 3px;
     color: #ffffff !important;
 }
-=======
-.dropdown-btn{
-    width: 125px;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Avenir Next';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    color: #C7C7C7;
-    padding: 0px 10px;
-    background: #FFFFFF;
-    border: 1px solid #C7C7C7;
-    cursor: pointer;
-    position: relative;
-    z-index: 998;
-}
-.img-dropdown{
-    width: 20px;
-    height: 20px;
-}
-.dropdown-content{
-    width: 170%;
-    position: relative;
-    top: 10%;
-    left: -47%;
-    background-color: #fff;
-    border: 1px solid #eeeeee;
-    z-index: 1000;
-}
-.dropdown-items{
-    height: 100%;
-    padding: 10px;
-    font-family: 'Avenir Next';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 17px;
-    line-height: 23px;
-    display: flex;
-    align-items: center;
-    color: #000000;
-    cursor: pointer;
-}
-.dropdown-items:hover{
-    background-color: #CCCCCC;
-}
->>>>>>> 5969947 (UI)
