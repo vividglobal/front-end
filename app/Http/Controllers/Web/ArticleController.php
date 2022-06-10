@@ -16,16 +16,25 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ApiResponse;
 
 use App\Http\Services\UserRoleService;
+use App\Http\Services\ExportService;
 
 class ArticleController extends Controller
 {
     use ApiResponse;
+
+     // ============================================= //
+     // ================== VIEW ==================== //
+    // ============================================ //
 
     public function getAutoDetectionList(Request $request) {
         $articleModel = new Article();
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $articles = $articleModel->getList($params);
+
+        if(isset($params['export']) && $params['export'] == true) {
+            return  $this->exportPendingArticle('auto_detection_violation', $articles);
+        }
         return view('pages/auto-detection/index', compact('articles'));
     }
 
@@ -34,6 +43,10 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $articles = $articleModel->getList($params);
+
+        if(isset($params['export']) && $params['export'] === true) {
+            return  $this->exportPendingArticle('label-detection-violation',$articles);
+        }
         return view('pages/manual-detection/index', compact('articles'));
     }
 
@@ -42,6 +55,9 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
         $articles = $articleModel->getList($params);
+        if(isset($params['export']) && $params['export'] == true) {
+            return  $this->exportViolationArticles('violation_article', $articles);
+        }
         return view('pages/violation/index', compact('articles'));
     }
 
@@ -50,8 +66,147 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['status'] = Article::STATUS_NONE_VIOLATION;
         $articles = $articleModel->getList($params);
+        if(isset($params['export']) && $params['export'] == true) {
+            return  $this->exportNoneViolationArticles('non_violation_article', $articles);
+        }
         return view('pages/none-violation/index', compact('articles'));
     }
+
+      // ============================================ //
+     // =============== EXPORT EXCEL =============== //
+    // ============================================ //
+
+    public function exportPendingArticles($fileName, $articles) {
+        $titles = [
+            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date', 'Link',
+            'VIVID - Status', 'VIVID - Code Article', 'VIVID - Violation Type',
+        ];
+        $isSupervisor = UserRoleService::isSupervisor();
+        $isOperator = UserRoleService::isOperator();
+
+        if($isSupervisor || $isOperator) {
+            $titles = array_merge(['SUPERVISOR - Status', 'SUPERVISOR - Code Article', 'SUPERVISOR - Violation Type'], $titles);
+        }
+        if($isOperator) {
+            $titles = array_merge(['OPERATOR - Status', 'OPERATOR - Code Article', 'OPERATOR - Violation Type'], $titles);
+        }
+
+        $exportData = [];
+        foreach ($articles as $key => $article) {
+            $botStatus = $article->detection_result['status'] ?? count($article->detection_result['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION ;
+
+            $row = [
+                $key+1,
+                $article->company,
+                $article->country,
+                $article->brand,
+                $article->caption,
+                $article->image,
+                date('Y-m-d', $article->published_date),
+                date('Y-m-d', $article->detection_result['crawl_date']),
+                $article->link,
+                $botStatus,
+                convertArrayToString($article->detection_result['violation_code'], 'name'),
+                convertArrayToString($article->detection_result['violation_types'], 'name')
+            ];
+
+            if($isSupervisor || $isOperator) {
+                $violationStatus = $article->supervisor_review['status'];
+                $violationCodeNames = '';
+                $violationTypeNames = '';
+                if($violationStatus === Article::STATUS_VIOLATION) {
+                    $violationCodeNames = convertArrayToString($article->supervisor_review['violation_code'], 'name');
+                    $violationTypeNames = convertArrayToString($article->supervisor_review['violation_types'], 'name');
+                }
+                $row[] = $violationStatus;
+                $row[] = $violationCodeNames;
+                $row[] = $violationTypeNames;
+            }
+            if($isOperator) {
+                $violationStatus = $article->operator_review['status'];
+                $violationCodeNames = '';
+                $violationTypeNames = '';
+                if($violationStatus === Article::STATUS_VIOLATION) {
+                    $violationCodeNames = convertArrayToString($article->operator_review['violation_code'], 'name');
+                    $violationTypeNames = convertArrayToString($article->operator_review['violation_types'], 'name');
+                }
+                $row[] = $violationStatus;
+                $row[] = $violationCodeNames;
+                $row[] = $violationTypeNames;
+            }
+
+            $exportData[] = $row;
+        }
+
+        $sheets = [
+            ['name' => $fileName, 'data' => $exportData ]
+        ];
+        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+    }
+
+    public function exportViolationArticles($fileName, $articles) {
+        $titles = [
+            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date',
+            'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type'
+        ];
+        $exportData = [];
+        foreach ($articles as $key => $article) {
+            $penaltyIssued = 'TODO'; // Last upload documents
+            $legalDocuments = 'TODO'; // From documents collection _id = article_id
+            $row = [
+                $key+1,
+                $article->company,
+                $article->country,
+                $article->brand,
+                $article->caption,
+                $article->image,
+                date('Y-m-d', $article->published_date),
+                date('Y-m-d', $article->detection_result['date']),
+                $penaltyIssued,
+                $article->link,
+                $legalDocuments,
+                convertArrayToString($article->operator_review['violation_code'], 'name'),
+                convertArrayToString($article->operator_review['violation_types'], 'name')
+            ];
+
+            $exportData[] = $row;
+        }
+        $sheets = [
+            ['name' => $fileName, 'data' => $exportData ]
+        ];
+        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+    }
+
+    public function exportNoneViolationArticles($fileName, $articles) {
+        $titles = [
+            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date', 'Link'
+        ];
+        $exportData = [];
+        foreach ($articles as $key => $article) {
+
+            $row = [
+                $key+1,
+                $article->company,
+                $article->country,
+                $article->brand,
+                $article->caption,
+                $article->image,
+                date('Y-m-d', $article->published_date),
+                date('Y-m-d', $article->detection_result['crawl_date']), //Checking Date
+                $article->link,
+            ];
+
+            $exportData[] = $row;
+        }
+        $sheets = [
+            ['name' => $fileName, 'data' => $exportData ]
+        ];
+        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+    }
+
+      // ============================================ //
+     // ================== AJAX ==================== //
+    // =========================================== //
 
     public function switchArticleProgressStatus(Request $request, $id) {
         $validator = Validator::make($request->all(), [
@@ -90,7 +245,7 @@ class ArticleController extends Controller
             $requestStatus = $inputs['status'];
             $requestAction = $inputs['action'];
             $isAgreedWithBot = (int)$inputs['is_agreed'];
-            $botViolationStatus = count($article->bot_detecting['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION;
+            $botViolationStatus = count($article->detection_result['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION;
 
             // Check action is being performed by other supervisor / operator
             if($requestAction === Article::ACTION_CHECK_STATUS) {
@@ -137,7 +292,7 @@ class ArticleController extends Controller
                     return $this->responseFail([], "Please approve or reject VIVID violation status first");
                 }
                 if($isAgreedWithBot) {
-                    $reviewViolationCode = $article->operator_review['bot_detecting'];
+                    $reviewViolationCode = $article->operator_review['detection_result'];
                 }else {
                     // supervisor / operator needs to submit new violation code
                     if(!isset($inputs['violation_code']) || count($inputs['violation_code']) === 0) {

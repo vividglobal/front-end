@@ -29,13 +29,25 @@ class DummyController extends Controller
     public function articleCreate(CreateRequest $request)
     {
         $inputs = $request->all();
-        $inputs['bot_detecting'] = [
-            'violation_code' => ['5.1', '5.2', '5.3', '5.4', '5.5'],
-            'violation_types' => ['629efb92a3e57bd29403b340'],
-            'crawl_date' => time(),
+        $inputs['detection_result'] = [
+            'violation_code' => [
+                [
+                    'id' => '629efb92a3e57bd29403b346',
+                    'name' => '5.1'
+                ],
+                [
+                    'id' => '629efb92a3e57bd29403b347',
+                    'name' => '5.2'
+                ]
+            ],
+            'violation_types' => [
+                'id' => '629efb92a3e57bd29403b340',
+                'name' => 'Promotion to the public'
+            ],
+            'date' => time(),
         ];
         if($inputs['status'] === Article::STATUS_VIOLATION) {
-            $inputs['operator_review'] = $inputs['bot_detecting'];
+            $inputs['operator_review'] = $inputs['detection_result'];
             $inputs['operator_review']['status'] = Article::STATUS_REVIEW_DONE;
             $inputs['supervisor_review'] = $inputs['operator_review'];
         }else if($inputs['status'] === Article::STATUS_NONE_VIOLATION) {
