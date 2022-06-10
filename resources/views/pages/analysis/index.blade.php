@@ -9,17 +9,19 @@
         <!-- list Btn  -->
         <div class="list--select--option">
             <div class="list--select__left">
-                    <div id="daterange">
+                    <div id="daterange" style="width:203px">
                         <i class="ico-date"></i>
                         <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                         <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
                     </div>
             </div>
             <div class="list--select__right">
-                <div class="btn--export--excel" style="width: 179px;display: flex;justify-content:center">
-                    <p>Export Excel</p>
-                    <img src="{{ asset('assets/image/Under-than-white.svg') }}" alt="" style="margin-left: 12px;">
-                </div>
+                <?php if(Auth::user()){ ?>
+                    <div class="btn--export--excel" style="width: 179px;display: flex;justify-content:center">
+                        <p>Export Excel</p>
+                        <img src="{{ asset('assets/image/Under-than-white.svg') }}" alt="" style="margin-left: 12px;">
+                    </div>
+                <?php } ?>
             </div>
         </div>
 </div>

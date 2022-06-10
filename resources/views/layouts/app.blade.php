@@ -41,7 +41,6 @@
     <div id="app">
         @include('layouts/header')
         @include('modal/editAccount')
-
         <main class="py-4">
             @yield('content')
         </main>

@@ -6,107 +6,8 @@
         <div class="list--title">
             <p>Violation list</p>
         </div>
+        @include('pages/components/query')
         <!-- list Btn  -->
-        <div class="list--select--option">
-            <div class="list--select__left">
-                <div class="list--search">
-                    <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                    <input type="text" placeholder="Search" class="search">
-                </div>
-                    <div id="daterange">
-                        <i class="ico-date"></i>
-                        <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
-                        <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
-                    </div>
-                <div class="list--company--brand">
-                    <img src="{{ asset('assets/image/brand-tag.svg') }}" alt="">
-                    <p>Brand/Company</p>
-                    <img src="{{ asset('assets/image/under-than.svg') }}" alt="">
-
-                    <div class="select--company-or-brand" id="toggle">
-                            <div class="search--input">
-                                <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                <input type="text" placeholder="Search for Brand" class="search--brand">
-                            </div>
-                            <div class="contain--selection">
-                                <div class="select__one">
-                                    <p>- Select Brand -</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one">
-                                    <p>Nestle</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one">
-                                    <p>Dutch Lady</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                            </div>
-                    </div>
-                </div>
-
-                <div class="list--country" id="btn-language">
-                    <img src="{{ asset('assets/image/Country.svg') }}" alt="">
-                    <p>Country</p>
-                    <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-
-                    <div class="select--country" id="language">
-                        <div class="search--input--country" id="div-search">
-                            <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                            <input type="text" placeholder="Search for country" class="search--country" id="language-search">
-                        </div>
-                        <div class="contain--selection">
-                            <div class="select__one--country select-language">
-                                <p>- Select country -</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country select-language">
-                                <p>Endland</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country select-language">
-                                <p>Albania</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="list--violation--type">
-                    <img src="{{ asset('assets/image/type.svg') }}" alt="">
-                    <p>Violation type</p>
-                    <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-
-                    <div class="select--violation--type" id="toggle">
-                            <div class="select__one--violation--type">
-                                <p>- Select Brand -</p>
-                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--violation--type">
-                                <p>Nestle</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--violation--type">
-                                <p>Dutch Lady</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                    </div>
-                </div>
-            </div>
-            <div class="list--select__right">
-                <p>Showing</p>
-                <div class="list--showing">
-                    <select name="" id="">
-                        <option value="">10</option>
-                        <option value="">25</option>
-                        <option value="">50</option>
-                        <option value="">100</option>
-                    </select>
-                </div>
-                <div class="btn--export--excel">
-                    <p>Export Excel</p>
-                </div>
-            </div>
-        </div>
     </div>
 
 <div class="container-table">
@@ -139,13 +40,14 @@
                     </tr>
                 </thead>
                 <tbody class="tbdata">
+                    <?php if(count($articles) > 0){ ?>
                     @foreach ($articles as $key => $article)
                         <tr class="tr-boder">
                             <td>{{$key}}</td>
                             <td><a href="#">{{ __($article->company) }}
                             <td><a href="#">{{ __($article->country) }}</a></td>
                             <td><a href="#">{{ __($article->brand) }}</a></td>
-                            <td class="contenttb btn-caption"><a>{{ __('How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...') }}</a></td>
+                            <td class="contenttb btn-caption"><a>{{ __($article->caption) }}</a></td>
                             <td>
                                 <div class="wr-img">
                                     <img class="td-img clickimg" src="../assets/image/img1.png" alt="">
@@ -153,6 +55,7 @@
                             </td>
                         </tr>
                     @endforeach
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -183,24 +86,45 @@
                             <th  rowspan="2"class="style-title">Legal document</th>
                             <th  rowspan="2"class="style-title">Code article</th>
                             <th  white-space: nowrap rowspan="2"class="style-title">Violation type</th>
+                            <th  rowspan="2"class="style-title">Status progress</th>
+                            <th  rowspan="2"class="style-title">Switch status</th>
                         </tr>
                     </thead>
                     <tbody class="tbdata">
                         <tr class="tr-boder">
-                            <td>05/04/2022</td>
-                            <td>05/04/2022</td>
+                            <td>{{ __($article->modified->toDateTime()->format('Y/m/d')) }}</td>
+                            <td>{{ __($article->created_at->toDateTime()->format('Y/m/d')) }}</td>
                             <td></td>
-                            <td><img class="td-link" src="../assets/image/link.png" alt="#"></td>
+                            <td><a href={{ __($article->link) }} ><img class="td-link" src="../assets/image/link.png" alt="#"></a></td>
                             <td><img class="td-link" src="../assets/image/folder-gray.svg" alt="#"></td>
                             <td>
-                                <a href="#">6.1-SCT</a>
+                                <!-- <a href="#">6.1-SCT</a>
                                 <a href="#">4.3.a</a>
-                                <a href="#">4.3.c</a>
+                                <a href="#">4.3.c</a> -->
                             </td>
                             <td white-space: nowrap>
-                                <p>Labeling, packaging and messaging</p>
-                                <p>Imformation for Health Workers</p>
+                                <!-- <p>Labeling, packaging and messaging</p>
+                                <p>Imformation for Health Workers</p> -->
                             </td>
+                            <td>
+                                <div class="dropdown">
+                                    <div class="dropdown-btn">Select
+                                        <img class='img-dropdown' src="../assets/image/Under-than.svg" alt="img-dropdown">
+                                    </div>
+                                    <div class="dropdown-content">
+                                        <div class="dropdown-items">
+                                            Not started
+                                        </div>
+                                        <div class="dropdown-items">
+                                            Processing
+                                        </div>
+                                        <div class="dropdown-items">
+                                            Completed
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><img class="td-link" src="../assets/image/switch.svg" alt="#"></td>
                         </tr>
                     </tbody>
         </table>

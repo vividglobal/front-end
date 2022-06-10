@@ -11,7 +11,13 @@ $("document").ready(function(){
             format: 'DD/MM/YYYY',
         },
     })
+
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD/MM') + ' - ' + picker.endDate.format('DD/MM'));
+        searchDay(picker.startDate.format('DD/MM/YYYY'),picker.endDate.format('DD/MM/YYYY'))
     });
+
+    function searchDay (startDay , endDay){
+
+    }
 })
