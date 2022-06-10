@@ -1,4 +1,4 @@
-const slider = document.querySelector('.col-right');
+const slider = document.querySelector('.container-scroll');
 let mouseDown = false;
 let startX, scrollLeft;
 
