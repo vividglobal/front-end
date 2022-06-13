@@ -40,14 +40,13 @@
                     </tr>
                 </thead>
                 <tbody class="tbdata">
-                    <?php if(count($articles) > 0){ ?>
                     @foreach ($articles as $key => $article)
                         <tr class="tr-boder">
-                            <td>{{$key}}</td>
+                            <td>{{$key + 1}}</td>
                             <td><a href="#">{{ __($article->company) }}
                             <td><a href="#">{{ __($article->country) }}</a></td>
                             <td><a href="#">{{ __($article->brand) }}</a></td>
-                            <td class="contenttb btn-caption"><a>{{ __($article->caption) }}</a></td>
+                            <td class="contenttb btn-caption"><a>{{ __('How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...') }}</a></td>
                             <td>
                                 <div class="wr-img">
                                     <img class="td-img clickimg" src="../assets/image/img1.png" alt="">
@@ -55,81 +54,134 @@
                             </td>
                         </tr>
                     @endforeach
-                    <?php } ?>
                 </tbody>
             </table>
         </div>
+        <div class="col-right col-right-form ">
 
-    <div class="col-right col-right-form ">
-        <table class="tbdata col-right-form container-scroll">
-                    <thead class="col-thead">
-                        <tr>
-                            <th rowspan="2" class="style-title">
-                                <div class="th-title-right">
-                                    <p>Published date</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="ico">
-                                </div>
-                            </th>
-                            <th rowspan="2" class="style-title">
-                                <div class="th-title-right">
-                                    <p>Crawl date</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="ico">
-                                </div>
-                            </th>
-                            <th rowspan="2" class="style-title">
-                                <div class="th-title-right">
-                                    <p>Penalty issued</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="ico">
-                                </div>
-                            </th>
-                            <th  rowspan="2"class="style-title">Link</th>
-                            <th  rowspan="2"class="style-title">Legal document</th>
-                            <th  rowspan="2"class="style-title">Code article</th>
-                            <th  white-space: nowrap rowspan="2"class="style-title">Violation type</th>
-                            <th  rowspan="2"class="style-title">Status progress</th>
-                            <th  rowspan="2"class="style-title">Switch status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbdata">
-                        <tr class="tr-boder">
-                            <td>{{ __($article->modified->toDateTime()->format('Y/m/d')) }}</td>
-                            <td>{{ __($article->created_at->toDateTime()->format('Y/m/d')) }}</td>
-                            <td></td>
-                            <td><a href={{ __($article->link) }} ><img class="td-link" src="../assets/image/link.png" alt="#"></a></td>
-                            <td><img class="td-link" src="../assets/image/folder-gray.svg" alt="#"></td>
-                            <td>
-                                <!-- <a href="#">6.1-SCT</a>
-                                <a href="#">4.3.a</a>
-                                <a href="#">4.3.c</a> -->
-                            </td>
-                            <td white-space: nowrap>
-                                <!-- <p>Labeling, packaging and messaging</p>
-                                <p>Imformation for Health Workers</p> -->
-                            </td>
-                            <td>
-                                <div class="dropdown">
-                                    <div class="dropdown-btn">Select
-                                        <img class='img-dropdown' src="../assets/image/Under-than.svg" alt="img-dropdown">
+            <table class="wrap">
+                <div class="headers">
+                    <div class="scroller syncscroll" name="myElements">
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Published date') }}</p>
+                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Crawl date') }}</p>
+                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Penalty issued') }}</p>
+                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class="heading">{{ __('Link') }}</div>
+                        </div>
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Legal documents') }}</p>
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Code article') }}</p>
+                            </div>
+                        </div>
+                        <div class="track track-one">
+                            <div class="heading-three-viola">{{ __('VIVID') }}</div>
+                        </div>
+                        <div class="track">
+                            <div class=" heading th-title-right">
+                                <p>{{ __('Status progress') }}</p>
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class="heading">{{ __('Switch status') }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracks syncscroll container-scroll" name="myElements">
+                    <div class="track">
+                        <div class="entry">
+                            <h3>05/04/2022</h3>
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <h3>05/04/2022</h3>
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <h3></h3>
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <img class="td-link" src="../assets/image/link.png" alt="#">
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <img class="td-link" src="../assets/image/lega1.png" alt="#">
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <a href="#">6.1-SCT</a> <br>
+                            <a href="#">4.3.a</a> <br>
+                            <a href="#">4.3.c</a> <br>
+                        </div>
+                    </div>
+                    <div class="track track-one">
+                        <div class="entry-three">
+                            <div class="entry-title-threee"><p>{{ __('Information for Health Workers') }}</p></div>
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <div class="list--select-right" id="btn-language">
+                                    <p>Select</p>
+                                    <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+                                    <div class="select--country" id="language">
+                                        <div class="search--input--country" id="div-search">
+                                            <img src="{{ asset('assets/image/search.svg') }}" alt="">
+                                            <input type="text" placeholder="Search for country" class="search--country" id="language-search">
+                                        </div>
+                                        <div class="contain--selection">
+                                            <div class="select__one--country select-language">
+                                                <p>Processing</p>
+                                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
+                                            </div>
+                                            <div class="select__one--country select-language">
+                                                <p>Completed</p>
+                                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="dropdown-content">
-                                        <div class="dropdown-items">
-                                            Not started
-                                        </div>
-                                        <div class="dropdown-items">
-                                            Processing
-                                        </div>
-                                        <div class="dropdown-items">
-                                            Completed
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td><img class="td-link" src="../assets/image/switch.svg" alt="#"></td>
-                        </tr>
-                    </tbody>
-        </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <img class="td-link" src="../assets/image/switch.png" alt="#">
+                        </div>
+                    </div>
+                </div>
+            </table>
+        </div>
     </div>
+    <div class="row-pagination">
+        {{ $articles->links('layouts.my-paginate') }}
     </div>
+
     <div class="modal-title">
         <div class="modal-content">
             <div class="div-close">
@@ -159,4 +211,6 @@
 </div>
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
+<script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
+<script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
 @endsection
