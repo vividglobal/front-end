@@ -1,0 +1,167 @@
+.py-4 {
+    padding-top: 0.1rem!important;
+}
+.vituar_validation{
+    width: 100%;
+    background: url(../../image/home/img-1.svg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.content__vituar{
+    max-width: 1096px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 189px;
+    padding-bottom: 258px;
+}
+
+.content__vituar p{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 170%;
+    color: #FFFFFF;
+    max-width: 576px;
+    width: 100%;
+}
+.content__vituar p:first-child{
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 71px;
+
+    color: #FFFFFF;
+}
+
+.content__vituar p:nth-child(2){
+    text-align: justify;
+    padding-right: 153px;
+}
+
+.content__vituar button{
+    padding:12px 57px;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: #FFFFFF;
+    background: #0C3C60;
+    border: none;
+    margin-top: 19px;
+}
+
+.background__content{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.background__content p{
+    max-width: 363px;
+    width: 100%;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+    color: #000000;
+}
+
+.background__content p:first-child{
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 71px;
+    color: #082136;
+}
+
+.background__image{
+}
+
+.background__vituar-2{
+    max-width: 1096px;
+    width: 100%;
+    margin: 83px auto;
+}
+
+.background__vituar-3 .background__content{
+    background: #082136;
+}
+
+.background__vituar-3 .background__content p {
+    color: #FFFFFF;
+    max-width: 426px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.background__vituar-4 p{
+    max-width: 874px;
+    width: 100%;
+    margin: 57px auto;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #000000;
+}
+
+.background__vituar-5{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.background__vituar-5 .background__image{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    border: 1px solid #C7C7C7;
+    padding: 73px 0;
+}
+
+.background__vituar-6 p {
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 71px;
+    color: #082136;
+    text-align: center;
+    padding: 98px 0 63px 0;
+}
+
+.background__vituar-7{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.background__vituar-7 .background__image{
+    background: #F4F4F4;
+    border: 1px solid #C7C7C7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 141px;
+    padding-bottom: 45px;
+}
+
+.background__vituar-7 .background__image p{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 152.5%;
+    color: #000000;
+    padding-top: 45px;
+    padding-bottom: 141px;
+}

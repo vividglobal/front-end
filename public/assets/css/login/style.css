@@ -1,0 +1,182 @@
+.form__login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg__login{
+    height: 100vh;
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    background: url("../../image/login/image-1.svg") no-repeat center center ;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login__header{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 136.5%;
+    color: #082136;
+    margin-bottom: 21px;
+}
+
+.block__login{
+    max-width: 426px;
+    width: 100%;
+}
+
+.title__login{
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #6F6F6F;
+    margin-bottom: 5px;
+}
+
+.email--login{
+    display: flex;
+    padding: 14px;
+    border: 1px solid #C7C7C7;
+}
+
+.email--login img{
+    margin-right: 10px;
+}
+
+.email--login input:focus-visible{
+    outline: none;
+}
+
+.email--login input{
+    border: none;
+    width: 100%;
+}
+
+.bottom__login{
+    display: flex;
+    justify-content:space-between;
+}
+
+.btn_forgot--pasword{
+    margin-top: 25px;
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #0C3C60;
+    text-decoration: none;
+}
+
+.btn_submit{
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: #FFFFFF;
+    background-color: #0C3C60;
+    margin-top:10px;
+}
+
+.btn_back--login{
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: #6F6F6F;
+    background-color: #ffffff;
+    margin-top:10px;
+    border: 1px solid #C7C7C7;
+}
+
+.text_recover--pass{
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22px;
+    color: #000000;
+    margin: 22px 0;
+}
+
+/* check box */
+.container__remember--me {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-top: 22px;
+  }
+
+  .container__remember--me input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmarks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    border: solid #6F6F6F;
+  }
+
+  .container__remember--me:hover input ~ .checkmarks {
+    border: 1px solid #6F6F6F;
+    background-color: #fff;
+  }
+
+  .container__remember--me input:checked ~ .checkmarks {
+    background-color: #fff;
+    border: 1px solid #6F6F6F;
+  }
+
+  .checkmarks:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container__remember--me input:checked ~ .checkmarks:after {
+    display: block;
+  }
+
+  .container__remember--me .checkmarks:after {
+    left: 6px;
+    top: 0px;
+    width: 10px;
+    height: 15px;
+    border: solid #6F6F6F;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }

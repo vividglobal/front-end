@@ -1,17 +1,18 @@
 .nav_container{
-    width: 100%;
-    padding: 10px 60px;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
+    width: 100%;
+    padding: 21px 0;
 }
 
-.nav-menu{
-    display:flex;
-    justify-content: flex-end;
+.nav_container > div{
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
 }
 
-.nav-menu > ul{
-    display:flex;
-    margin: 0;
+.btn__header{
+    justify-content:flex-end;
 }
 
 .nav--btn__before--login{
@@ -22,11 +23,21 @@
     margin-right: 2.1em;
 }
 
+.nav--btn__after--login > div,
+.nav-link{
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 420;
+    font-size: 20px;
+    line-height: 29px;
+    color: #0C3C60;
+}
+
 .after-login{
     display: flex;
     align-items: center;
-    position: relative;
-    margin-right: 3.85% ;
+    /* position: relative; */
+    justify-content: flex-end;
 }
 
 .after-login img:first-child{
@@ -37,12 +48,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
     font-family: 'Brandon Grotesque';
+    flex-direction: column;
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
     line-height: 29px;
+
+    list-style: none;
+    color: #0C3C60;
 }
 
 .nav-menu > ul li:nth-child(3){
@@ -52,10 +66,9 @@
 .nav--dropdown{
     position: absolute;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
-    top: 130%;
-    left: -20%;
+    top: 80px;
     width: 195px;
-    background-color:#FFFFFF;
+    background-color: #FFFFFF;
     display: none;
     z-index: 2;
 }
@@ -82,24 +95,19 @@
     transition: 0.3s linear;
 }
 
-li{
-    font-family: "Brandon Grotesque";
-    list-style: none;
-    display:flex;
-    align-items: center;
-    color: #0C3C60;
-}
-
 li:nth-child(3) img{
     margin-left:9px
 }
 
 
-.nav__btn--login > p {
-    padding: 13px 65px;
+.nav__btn--login > a {
+    padding: 13px;
     border: 1px solid #0C3C60;
     color: #0C3C60;
+    max-width: 179px;
+    width: 100%;
     margin: 0px;
+    text-align: center;
 }
 
 .btn--export--excel{
@@ -118,11 +126,11 @@ li:nth-child(3) img{
 
 .dropdown-login{
     position: absolute;
-    top: 135%;
+    top: 80px;
     width: 195px;
-    right: -100%;
+    right: 0px;
     background-color: #FFFFFF;
-    display:none;
+    display: none;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
 }
 
