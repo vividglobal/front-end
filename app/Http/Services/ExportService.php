@@ -16,10 +16,9 @@ class ExportService
     const CSV_EXT = '.csv';
     const TEMP_DIR = '/excelTemp';
 
-    // [rowTitles(['title 1', 'title 2', ...])]
-    // [sheets(['name' => 'name', 'data' => [[1,2,3,4,5,6], [1,2,3,4,5,6], [...]] ])]
+    // [sheets(['row_titles' => ['title 1', 'title 2', ...], 'name' => 'name', 'data' => [[1,2,3,4,5,6], [1,2,3,4,5,6], [...]] ])]
     // [fileName('name')]
-    public static function exportExcelFile($rowTitles, $sheets, $fileName, $extension = self::EXCEL_EXT) {
+    public static function exportExcelFile($sheets, $fileName, $extension = self::EXCEL_EXT) {
         $writer = WriterEntityFactory::createXLSXWriter();
         $customTempFolderPath = __DIR__ . self::TEMP_DIR;
         if (!file_exists( $customTempFolderPath)) {
@@ -53,20 +52,24 @@ class ExportService
                 ->setCellAlignment(CellAlignment::CENTER)
                 ->build();
         
-        $cellsTitle = [];
-        foreach ($rowTitles as $key => $title) {
-            $cellsTitle[] = WriterEntityFactory::createCell($title, $rowTitleStyle);
-        }
-    
-        $rowTitle = WriterEntityFactory::createRow($cellsTitle);
+        
         // Write data
         foreach ($sheets as $key => $sheet) {
-            if ($key > 0) {
+            if($key > 0) {
                 $writer->addNewSheetAndMakeItCurrent();
             }
             $thisSheet = $writer->getCurrentSheet();
             $thisSheet->setName($sheet['name']);
+
+            // Row titles
+            $cellsTitle = [];
+            foreach ($sheet['row_titles'] as $key => $title) {
+                $cellsTitle[] = WriterEntityFactory::createCell($title, $rowTitleStyle);
+            }
+            $rowTitle = WriterEntityFactory::createRow($cellsTitle);
             $writer->addRow($rowTitle);
+
+            // Row data
             $multipleRows = [];
             foreach ($sheet['data'] as $subkey => $data) {
                 $cellData = [];

@@ -28,4 +28,10 @@ if (! function_exists('isValidTimeStamp')) {
     }
 }
 
-
+if (! function_exists('getExportUrl')) {
+    function getExportUrl() {
+        $queryString = $_SERVER['QUERY_STRING'];
+        $currentUrl = url()->current();
+        return $currentUrl.'?1=1&'.$queryString.'&export=true';
+    }
+}

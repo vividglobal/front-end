@@ -28,7 +28,7 @@ class ArticleController extends Controller
         $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] == true) {
-            return  $this->exportPendingArticle('auto_detection_violation', $articles);
+            return  $this->exportPendingArticles('auto_detection_violation', $articles);
         }
         return view('pages/auto-detection/index', compact('articles'));
     }
@@ -41,7 +41,7 @@ class ArticleController extends Controller
         $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] === true) {
-            return  $this->exportPendingArticle('label-detection-violation',$articles);
+            return  $this->exportPendingArticles('label-detection-violation',$articles);
         }
         return view('pages/manual-detection/index', compact('articles'));
     }
@@ -135,9 +135,9 @@ class ArticleController extends Controller
         }
 
         $sheets = [
-            ['name' => $fileName, 'data' => $exportData ]
+            [ 'row_titles' => $titles, 'name' => $fileName, 'data' => $exportData ]
         ];
-        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+        return ExportService::exportExcelFile($sheets, $fileName);
     }
 
     public function exportViolationArticles($fileName, $articles) {
@@ -168,9 +168,9 @@ class ArticleController extends Controller
             $exportData[] = $row;
         }
         $sheets = [
-            ['name' => $fileName, 'data' => $exportData ]
+            ['row_titles' => $titles, 'name' => $fileName, 'data' => $exportData ]
         ];
-        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+        return ExportService::exportExcelFile($sheets, $fileName);
     }
 
     public function exportNoneViolationArticles($fileName, $articles) {
@@ -195,9 +195,9 @@ class ArticleController extends Controller
             $exportData[] = $row;
         }
         $sheets = [
-            ['name' => $fileName, 'data' => $exportData ]
+            ['row_titles' => $titles, 'name' => $fileName, 'data' => $exportData ]
         ];
-        return ExportService::exportExcelFile($titles, $sheets, $fileName);
+        return ExportService::exportExcelFile($sheets, $fileName);
     }
 
       // ============================================ //
