@@ -1,14 +1,22 @@
 $("document").ready(function(){
     function resetModal(){
-        $("#modal-account").removeClass("modal__open")
+        $(".modal").removeClass("modal__open")
         $(".btn__change--password").show();
         $(".edit-password").hide();
         $(".edit-password-confirm").hide();
+        $(".form-pwd").val("");
+        $(".form-re-pwd").val("");
+        $(".form-re-pwd").attr("type","password")
+        $(".img-re-seen-pwd").attr("src","../assets/image/unseen.svg")
+        $(".form-pwd").attr("type","password")
+        $(".img-seen-pwd").attr("src","../assets/image/unseen.svg")
     }
-
       //  Btn open modal
-
     $("#edit__profile").on("click",function(){
+        $("#modal-account").addClass("modal__open")
+    })
+
+    $(".edit__profile").on("click",function(){
         $("#modal-account").addClass("modal__open")
     })
 
@@ -44,20 +52,21 @@ $("document").ready(function(){
     $(".img-seen-pwd").on("click",function(){
         if($(".form-pwd").attr("type") === "text"){
             $(".form-pwd").attr("type","password")
-            $(".img-seen-pwd").attr("src","./image/unseen.svg")
+            $(".img-seen-pwd").attr("src","../assets/image/unseen.svg")
         }else{
+            $(".img-seen-pwd").attr("src","../assets/image/seen.svg")
             $(".form-pwd").attr("type","text")
-            $(".img-seen-pwd").attr("src","./image/seen.svg")
         }
+
     })
       //re-pwd
     $(".img-re-seen-pwd").on("click",function(){
         if($(".form-re-pwd").attr("type") === "text"){
             $(".form-re-pwd").attr("type","password")
-            $(".img-re-seen-pwd").attr("src","./image/unseen.svg")
+            $(".img-re-seen-pwd").attr("src","../assets/image/unseen.svg")
         }else{
             $(".form-re-pwd").attr("type","text")
-            $(".img-re-seen-pwd").attr("src","./image/seen.svg")
+            $(".img-re-seen-pwd").attr("src","../assets/image/seen.svg")
         }
     })
 
@@ -66,6 +75,15 @@ $("document").ready(function(){
     })
 
     $(".btn__save-button").on("click",function(){
+        resetModal()
+    })
+
+    // Modal delete account----------------------------------------------------------------
+    $(".delete__profile").on("click",function(){
+        $("#modal__delete-account").addClass("modal__open")
+    })
+
+    $(".btn__delete--user").on("click",function(){
         resetModal()
     })
 })

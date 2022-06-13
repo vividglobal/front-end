@@ -5,6 +5,10 @@
 /* no-gutters : xóa rãnh ở 2 bên cột */
 /* col : chứa các thành phần  */
 
+.no-padding{
+    padding: 0 !important;
+}
+
 .grid {
     width: 100%;
     display: block;
