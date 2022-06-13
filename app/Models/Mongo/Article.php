@@ -13,7 +13,7 @@ class Article extends Model
     protected $collection = 'articles';
 
     const PER_PAGE = 10;
-    const SORT_BY_FIELD = 'bot_detecting.crawl_date';
+    const SORT_BY_FIELD = 'detection_result.date';
     const SORT_VALUE = 'DESC';
 
     const CREATE_AT = 'created';
@@ -21,7 +21,7 @@ class Article extends Model
 
     const STATUS_PENDING = 'PENDING';
     const STATUS_VIOLATION = 'VIOLATION';
-    const STATUS_NONE_VIOLATION = 'NONE_VIOLATION';
+    const STATUS_NONE_VIOLATION = 'NON_VIOLATION';
 
     const PROGRESS_NOT_STARTED = 'NOT_STARTED';
     const PROGRESS_PROCESSING = 'PROCESSING';
@@ -63,6 +63,9 @@ class Article extends Model
     ];
 
     protected $attributes = [
+        'company' => [],
+        'country' => [],
+        'brand'   => [],
         'detection_result' => [
             'violation_code' => [],
             'violation_types' => [],
@@ -74,49 +77,56 @@ class Article extends Model
 
     public function documents()
     {
-        return $this->embedsMany(ArticleLegalDocument::class, 'article_id');
+        return $this->embedsMany(ArticleLegalDocument::class, '_id', 'article_id');
+    }
+
+    private function generalQuery($params) {
+        $query = $this->newQuery();
+
+        if(isset($params['status'])) {
+            $query->where('status', $params['status']);
+        }
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date']);
+            $endDate = strtotime($params['end_date']);
+            $query->whereRaw([
+                'detection_result.date' => ['$gte' => $startDate, '$lte' => $endDate],
+            ]);
+        }
+
+        if(isset($params['country'])) {
+            $query->where('country', $params['country']);
+        }
+
+        if(isset($params['company_brand_id'])) {
+            $GLOBALS['company_brand_id'] = $params['company_brand_id'];
+            $query->orWhere(function ($query) {
+                return $query
+                    ->where('company', '=', $GLOBALS['company_brand_id'])
+                    ->where('brand', '=', $GLOBALS['company_brand_id']);
+            });
+        }
+
+        if(isset($params['violation_type_id'])) {
+            $query->whereRaw([
+                'detection_result.violation_types.id' => [ '$eq' => $params['violation_type_id'] ]
+            ]);
+        }
+        return $query;
     }
 
     public function getList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
         // DB::connection( 'mongodb' )->enableQueryLog();
-        $articles = $this->newQuery();
+        $articles = $this->generalQuery($params);
 
         if(isset($params['keyword'])) {
             $keyword = $params['keyword'];
             // TODO
         }
 
-        if(isset($params['status'])) {
-            $articles->where('status', $params['status']);
-        }
-
         if(isset($params['detection_type'])) {
             $articles->where('detection_type', $params['detection_type']);
-        }
-
-        if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date']);
-            $endDate = strtotime($params['end_date']);
-            $articles->whereRaw([
-                'bot_detecting.crawl_date' => ['$gte' => $startDate, '$lte' => $endDate],
-            ]);
-        }
-
-        if(isset($params['country'])) {
-            $articles->where('country', $params['country']);
-        }
-
-        if(isset($params['company_brand'])) {
-            $GLOBALS['company_brand'] = $params['company_brand'];
-            $articles->orWhere(function ($query) {
-                return $query
-                    ->where('company', '=', $GLOBALS['company_brand'])
-                    ->where('brand', '=', $GLOBALS['company_brand']);
-            });
-        }
-
-        if(isset($params['violation_type'])) {
-            $articles->whereIn('bot_detecting.violation_types', [$params['violation_type']]);
         }
 
         if(isset($params['perpage'])) {
@@ -133,97 +143,9 @@ class Article extends Model
         return $list;
     }
 
-    public function agregateList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
-        // DB::connection( 'mongodb' )->enableQueryLog();
-        $articles = $this->newQuery();
-
-        if(isset($params['keyword'])) {
-            $keyword = $params['keyword'];
-            // TODO
-        }
-
-        if(isset($params['status'])) {
-            $articles->where('status', $params['status']);
-        }
-
-        if(isset($params['detection_type'])) {
-            $articles->where('detection_type', $params['detection_type']);
-        }
-
-        if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date']);
-            $endDate = strtotime($params['end_date']);
-            $articles->whereRaw([
-                'bot_detecting.crawl_date' => ['$gte' => $startDate, '$lte' => $endDate],
-            ]);
-        }
-
-        if(isset($params['country'])) {
-            $articles->where('country', $params['country']);
-        }
-
-        if(isset($params['company_brand'])) {
-            $GLOBALS['company_brand'] = $params['company_brand'];
-            $articles->orWhere(function ($query) {
-                return $query
-                    ->where('company', '=', $GLOBALS['company_brand'])
-                    ->where('brand', '=', $GLOBALS['company_brand']);
-            });
-        }
-
-        if(isset($params['violation_type'])) {
-            $articles->whereIn('bot_detecting.violation_types', [$params['violation_type']]);
-        }
-
-        if(isset($params['perpage'])) {
-            $perpage = $params['perpage'];
-        }
-
-        if(isset($params['sort_by'])) {
-            $sortField = $params['sort_by'];
-        }
-        if(isset($params['sort_value'])) {
-            $sortValue = $params['sort_value'];
-        }
-
-        // Custom query
-        $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
-        $total = self::count();
-        $query = [
-            [
-                '$lookup' => [
-                    'as' => 'KecDetails',
-                    'from' => 'src_kecamatan',
-                    'foreignField' => 'id',
-                    'localField' => 'idKecamatan'
-                ]
-            ],
-            [
-                '$lookup' => [
-                    'as' => 'KotDetails',
-                    'from' => 'src_kota_kabupaten',
-                    'foreignField' => 'code',
-                    'localField' => 'idKota'
-                ]
-            ],
-            [
-                '$lookup' => [
-                    'as' => 'ProvDetails',
-                    'from' => 'src_provinsi',
-                    'foreignField' => 'idProv',
-                    'localField' => 'idProvinsi'
-                ]
-            ],
-            ['$skip' => ($page - 1) * $perPage],
-            ['$limit' => $perPage],
-        ];
-
-        $collection = self::raw(function ($collection) use ($page, $perpage, $query) {
-            return $collection->aggregate($query);
-        });
-
-        return new \Illuminate\Pagination\LengthAwarePaginator($collection, $total, $perpage, $page, [
-            'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
-        ]);
+    public function getListCount($params) {
+        $articles = $this->generalQuery($params);
+        $count = $articles->count();
+        return $count;
     }
 }

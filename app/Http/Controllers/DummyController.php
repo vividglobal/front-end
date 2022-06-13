@@ -58,7 +58,7 @@ class DummyController extends Controller
                 'review_date' => time(),
             ];
         }
-        Article::create($inputs);
+        // Article::create($inputs);
         return redirect('/dummy/articles')->with('success', 'Create article successfully');
     }
 

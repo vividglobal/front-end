@@ -15,4 +15,9 @@ class ArticleLegalDocument extends Model
         'article_id',
         'url'
     ];
+
+    public function article()
+    {
+        return $this->belongsTo(ArticleLegalDocument::class);
+    }
 }

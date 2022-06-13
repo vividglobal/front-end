@@ -26,8 +26,10 @@ Route::controller(Web\ArticleController::class)->group(function () {
 
 Route::controller(Web\AnalysisController::class)->group(function () {
     Route::prefix('analysis')->group(function () {
-        Route::view('/', 'pages/analysis/index');
-        Route::get('/get-data', 'getData');
+        Route::get('/', 'index');
+        // Route::get('/get-data', 'getGeneralData');
+        // Route::get('/get-violation-by-brand', 'getViolationBasedOnBrands');
+        // Route::get('/get-violation-by-code', 'getViolationBasedOnCode');
     });
 });
 
