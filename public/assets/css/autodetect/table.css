@@ -296,49 +296,49 @@
     position: relative;
     overscroll-behavior: contain;
   }
-  
+
   .headers {
     top: 0;
     position: -webkit-sticky;
     position: sticky;
     z-index: 1;
   }
-  
+
   .tracks,
   .scroller {
     display: flex;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .scroller {
     overflow-x: hidden;
     height: 110px;
     background: #F4F4F4;
   }
-  
+
   .tracks {
     overflow: auto;
     scroll-snap-type: x mandatory;
   }
-  
+
   .scenes::-webkit-scrollbar,
   .syncscroll::-webkit-scrollbar {
     display: none;
   }
-  
+
   .track {
     flex: 1 0 calc(20%);
     scroll-snap-align: start;
   }
-  
+
   .track + .track {
     margin-left: -1px;
   }
   .track-three{
     flex: 1 0 calc(50%);
   }
-  
+
   .heading {
     width: 100%;
     height: 100%;
@@ -391,8 +391,8 @@
     justify-content: center;
     align-items: center;
   }
-  
-  
+
+
   @media (max-width: 767px) {
     .track {
       flex: 1 0 calc(50% + 7px);
@@ -428,4 +428,4 @@
     justify-content: center;
     align-items: center;
 }
->>>>>>> public/assets/css/autodetect/table.css
+/* >>>>>>> public/assets/css/autodetect/table.css */

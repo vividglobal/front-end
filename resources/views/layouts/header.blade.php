@@ -2,21 +2,22 @@
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 
 <div class="nav_container ">
-    <div class="nav-menu" >
-        <ul>
-            <li <?php if(Auth::user()!== null){  ?> class="nav--btn__after--login" <?php }else{?>class="nav--btn__before--login"<?php } ?> >
+    <div class="rows" <?php if(Auth::user()!== null){ ?> style="max-width:1224px" <?php } ?>>
+        <div <?php if(Auth::user()!== null){ ?> class="col l-11 no-padding" <?php }else{ ?>class="col l-10" <?php } ?>>
+        <ul class="rows no-gutters l-o-2 btn__header">
+            <li class="nav--btn__after--login " >
                 <a class="nav-link" href="/">{{ __('Home') }}</a>
                 <div class="nav--btnBorder__bottom" <?php if($_SERVER['REQUEST_URI'] === "/")
                 { ?>style="border-bottom: 1px solid #0C3C60;"  <?php } ?> >
                 </div>
             </li>
-            <li <?php if(Auth::user()!== null){  ?> class="nav--btn__after--login" <?php }else{?>class="nav--btn__before--login"<?php } ?>>
+            <li class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/auto-detection">{{ __('Auto-detect violations') }}</a>
                 <div class="nav--btnBorder__bottom" <?php if($_SERVER['REQUEST_URI'] === "/articles/auto-detection")
                 { ?>style="border-bottom: 1px solid #0C3C60;"  <?php } ?> >
                 </div>
             </li>
-            <li <?php if(Auth::user()!== null){  ?> class="nav--btn__after--login btn-dropdown" <?php }else{?>class="nav--btn__before--login btn-dropdown"<?php } ?>>
+            <li class="nav--btn__after--login">
                 <div>
                     {{ __('Trace Violations') }}
                     <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
@@ -39,14 +40,14 @@
                     </li>
                 </ul>
             </li>
-            <li <?php if(Auth::user()!== null){  ?> class="nav--btn__after--login" <?php }else{?>class="nav--btn__before--login"<?php } ?>>
+            <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
                 <div class="nav--btnBorder__bottom"></div>
                 <div class="nav--btnBorder__bottom" <?php if($_SERVER['REQUEST_URI'] === "/articles/manual-detection")
                 { ?>style="border-bottom: 1px solid #0C3C60;"  <?php } ?> >
                 </div>
             </li>
-            <li <?php if(Auth::user()!== null){  ?> class="nav--btn__after--login" <?php }else{?>class="nav--btn__before--login"<?php } ?>>
+            <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/analysis">{{ __('Analysis') }}</a>
                 <div class="nav--btnBorder__bottom" <?php if($_SERVER['REQUEST_URI'] === "/analysis")
                 { ?>style="border-bottom: 1px solid #0C3C60;"  <?php } ?> >
@@ -69,16 +70,18 @@
                 </li>
             @endauth
         </ul>
+        </div>
         @guest
             @if (Route::has('login'))
-                <div class="nav__btn--login" style="margin: 0 60px 0 20px">
-                    <p>
+                <div class="nav__btn--login no-padding col l-2" style="
+                display: flex;
+                justify-content: end;
+                align-items: center;">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </p>
                 </div>
             @endif
         @else
-            <div class="nav__btn--login after-login">
+            <div class="nav__btn--login  after-login no-padding col l-1">
                 <img src="{{ asset('assets/image/user.svg') }}" alt="">
                 <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                 <div class="dropdown-login">

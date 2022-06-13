@@ -118,6 +118,6 @@
         @endforeach
     </ul>
     </div><br />
-@endif -->
+@endif
 
 @endsection
