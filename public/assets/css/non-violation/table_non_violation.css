@@ -1,0 +1,13 @@
+.col-left-non-vio{
+    width: 100%;
+}
+.container-row-non-vio{
+    width: 94%;
+    margin: auto;
+}
+.th-title-right{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

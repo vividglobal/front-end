@@ -390,6 +390,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
 
 
@@ -416,7 +417,7 @@
 }
 .entry-title{
     height: 100%;
-    width: 30%;
+    width: 60%;
     border-right: 1px solid #EEEEEE;
     display: flex;
     justify-content: center;
@@ -428,4 +429,3 @@
     justify-content: center;
     align-items: center;
 }
-/* >>>>>>> public/assets/css/autodetect/table.css */
