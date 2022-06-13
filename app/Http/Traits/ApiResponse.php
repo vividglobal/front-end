@@ -13,7 +13,11 @@ trait ApiResponse {
         if ($statusCode >= 300) {
             $success = false;
         }
-        $responseData = new ApiResponse($success, $data, $message);
+        $responseData = [
+            'success' => $success,
+            'data'    => $data,
+            'message' => $message,
+        ];
         return \response()->json($responseData, $statusCode);
     }
 

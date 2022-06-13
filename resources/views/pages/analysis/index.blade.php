@@ -27,21 +27,21 @@
     <div class="index__violation">
         <div >
             <p class="title-violation">Non-violation</p>
-            <p class="number-violation">17671</p>
-            <p class="percent-violation">71,23%</p>
+            <p class="number-violation">{{ $generalData['non_violation'] }}</p>
+            <p class="percent-violation">{{ $generalData['percentile_non_violation'] }}%</p>
         </div>
     </div>
     <div class="index__violation">
         <div>
             <p class="title-violation">violation</p>
-            <p class="number-violation">17671</p>
-            <p class="percent-violation">71,23%</p>
+            <p class="number-violation">{{ $generalData['violation'] }}</p>
+            <p class="percent-violation">{{ $generalData['percentile_violation'] }}%</p>
         </div>
     </div>
     <div class="index__violation">
         <div>
             <p class="title-violation">Total articles</p>
-            <p class="number-violation">17671</p>
+            <p class="number-violation">{{ $generalData['total'] }}</p>
         </div>
     </div>
 </div>
@@ -128,29 +128,24 @@
             </div>
             <table>
                 <tr>
-                  <th>No</th>
-                  <th>Brand</th>
-                  <th>Article <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
-                  <th>Violation <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
-                  <th>Percentage</th>
+                    <th>No</th>
+                    <th>Brand</th>
+                    <th>Article <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
+                    <th>Violation <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
+                    <th>Percentage</th>
                 </tr>
+                @foreach($brandData as $key => $brand)
                 <tr>
-                  <td>1</td>
-                  <td>Royal Ausnz</td>
-                  <td>223</td>
-                  <td>187</td>
-                  <td>12%</td>
+                    <td>{{ $key + 1 }}</td>
+                    <td>{{ $brand->name }}</td>
+                    <td>{{ $brand->total_article }}</td>
+                    <td>{{ $brand->total_violation_article }}</td>
+                    <td>{{ $brand->percent_violation_per_article }}%</td>
                 </tr>
+                @endforeach
             </table>
             <div class="demo__pagination">
-                <span>&#60;</span>
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
-                <span>...</span>
-                <span>9</span>
-                <span>10</span>
-                <span>&#62;</span>
+                {{ $brandData->links('layouts.my-paginate') }}
             </div>
     </div>
     <div class="Base_violation--brand">
@@ -162,27 +157,22 @@
         </div>
         <table>
             <tr>
-              <th>No</th>
-              <th style="width: 19.2%;">Code article</th>
-              <th style="width: 53.5%;">Violation type</th>
-              <th style="width: 14.8%;">Article<img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
+                <th>No</th>
+                <th style="width: 19.2%;">Code article</th>
+                <th style="width: 53.5%;">Violation type</th>
+                <th style="width: 14.8%;">Article<img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
             </tr>
+            @foreach($codeData as $key => $code)
             <tr>
-              <td>1</td>
-              <td>10.1</td>
-              <td>2016 Guidance (Foods for Infants and Young Children)</td>
-              <td>123</td>
+                <td>{{ $key + 1 }}</td>
+                <td>{{ $code->name }}</td>
+                <td>{{ $code->type_name }}</td>
+                <td>{{ $code->total_article }}</td>
             </tr>
+            @endforeach
         </table>
         <div class="demo__pagination">
-            <span>&#60;</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>...</span>
-            <span>9</span>
-            <span>10</span>
-            <span>&#62;</span>
+            {{ $codeData->links('layouts.my-paginate') }}
         </div>
     </div>
 

@@ -6,11 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Article\CreateRequest;
 use App\Models\Mongo\Article;
-use App\Models\Mongo\CompanyBrand;
-use App\Models\Mongo\Country;
-use App\Models\Mongo\ViolationCode;
-use App\Models\Mongo\ViolationType;
-use App\Models\Mongo\ArticleLegalDocument;
 
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ApiResponse;
@@ -30,6 +25,7 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
+        $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] == true) {
@@ -42,6 +38,7 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
+        $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] === true) {
@@ -97,9 +94,9 @@ class ArticleController extends Controller
 
             $row = [
                 $key+1,
-                $article->company,
-                $article->country,
-                $article->brand,
+                $article->company['name'] ?? '',
+                $article->country['name'],
+                $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
                 date('Y-m-d', $article->published_date),
@@ -155,9 +152,9 @@ class ArticleController extends Controller
             $legalDocuments = 'TODO'; // From documents collection _id = article_id
             $row = [
                 $key+1,
-                $article->company,
-                $article->country,
-                $article->brand,
+                $article->company['name'] ?? '',
+                $article->country['name'],
+                $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
                 date('Y-m-d', $article->published_date),
@@ -186,9 +183,9 @@ class ArticleController extends Controller
 
             $row = [
                 $key+1,
-                $article->company,
-                $article->country,
-                $article->brand,
+                $article->company['name'] ?? '',
+                $article->country['name'],
+                $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
                 date('Y-m-d', $article->published_date),
