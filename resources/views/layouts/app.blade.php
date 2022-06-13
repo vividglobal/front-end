@@ -30,6 +30,8 @@
     <link href="{{ asset('assets/css/grid.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/all.css') }}" rel="stylesheet">
 
+    <script src="{{ asset('assets/js/btn_select/HTMLSelect.js') }}"></script>
+    <script src="{{ asset('assets/js/btn_select/searchSelect.js') }}"></script>
     <script src="{{ asset('assets/js/datepicker/dateRanger.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectBrandAndCompany.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectCountry.js') }}"></script>
@@ -47,3 +49,4 @@
     </div>
 </body>
 </html>
+

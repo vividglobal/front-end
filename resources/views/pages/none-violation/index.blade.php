@@ -9,7 +9,7 @@
         @include('pages/components/query')
 
 </div>
-    <div class="container-table"">
+    <div class="container-table">
         <div class="container-row-non-vio">
             <div class="col-left-non-vio">
                 <table class="tbdata col-table">

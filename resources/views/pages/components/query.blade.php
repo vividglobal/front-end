@@ -20,18 +20,7 @@
                                 <input type="text" placeholder="Search for Brand" class="search--brand">
                             </div>
                             <div class="contain--selection">
-                                <div class="select__one">
-                                    <p>- Select Brand -</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one">
-                                    <p>Nestle</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one">
-                                    <p>Dutch Lady</p>
-                                      <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
+                                <!-- HTML -->
                             </div>
                     </div>
                 </div>
@@ -47,18 +36,7 @@
                             <input type="text" placeholder="Search for country" class="search--country" id="language-search">
                         </div>
                         <div class="contain--selection">
-                            <div class="select__one--country select-language">
-                                <p>- Select country -</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country select-language">
-                                <p>Endland</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country select-language">
-                                <p>Albania</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
+                                <!-- HTML -->
                         </div>
                     </div>
                 </div>
@@ -68,35 +46,22 @@
                     <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
 
                     <div class="select--violation--type" id="toggle">
-                            <div class="select__one--violation--type">
-                                <p>- Select Brand -</p>
-                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--violation--type">
-                                <p>Nestle</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--violation--type">
-                                <p>Dutch Lady</p>
-                                  <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
+                                <!-- HTML -->
                     </div>
                 </div>
+                    <button class="btn__apply">Apply</button>
             </div>
             <div class="list--select__right">
                 <p>Showing</p>
                 <div class="list--showing">
                     <select name="" id="">
-                        <option value="">10</option>
-                        <option value="">25</option>
-                        <option value="">50</option>
-                        <option value="">100</option>
+                                <!-- HTML -->
                     </select>
                 </div>
-                <?php if(Auth::user()){ ?>
+                @auth
                 <div class="btn--export--excel">
                     <p>Export Excel</p>
                 </div>
-                <?php } ?>
+                @endauth
             </div>
 </div>

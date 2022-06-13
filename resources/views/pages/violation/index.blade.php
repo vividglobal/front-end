@@ -153,7 +153,7 @@
                                     <div class="select--country" id="language">
                                         <div class="search--input--country" id="div-search">
                                             <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                            <input type="text" placeholder="Search for country" class="search--country" id="language-search">
+                                            <input type="text" placeholder="Search for country" class="search--country" >
                                         </div>
                                         <div class="contain--selection">
                                             <div class="select__one--country select-language">
