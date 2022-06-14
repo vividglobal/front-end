@@ -18,7 +18,13 @@ a.check-false {
 a.check-true {
     background: url(../../image/check_true.svg) no-repeat center center;
 }
-a.check-true, a.check-false {
+a.check-true-disabled{
+    background: url(../../image/check_true_disabled.svg) no-repeat center center;
+}
+a.check-false-disabled{
+    background: url(../../image/check_false_disabled.svg) no-repeat center center;
+}
+a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     margin-left: 5px;
     margin-right: 5px;
     width: 40px;
@@ -43,4 +49,23 @@ a.check-true, a.check-false {
 .unviolation-color{
     color: #5DA364;
     background: #E2F2E3;
+}
+.entry-title-br{
+    display: flex;
+    flex-direction: column;
+}
+.entry-title-tyle{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px;
+}
+.reviewing-color{
+    background: #DAEFFF;
+    border-radius: 5px;
+}
+.reviewing-title{
+    display: flex;
+    align-items: center;
 }
