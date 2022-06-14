@@ -10,7 +10,7 @@ class UserRoleService
     }
 
     public static function isRole($role) {
-        return (auth()->user() && auth()->user()->role === $role);
+        return (auth()->user() && isset(auth()->user()->role) && auth()->user()->role === $role);
     }
 
     public static function isAdmin() {
