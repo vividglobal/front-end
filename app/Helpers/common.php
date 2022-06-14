@@ -1,4 +1,6 @@
 <?php
+use App\Models\Mongo\Article;
+use App\Http\Services\UserRoleService;
 
 if (! function_exists('dump_data')) {
     function dump_data() {
@@ -33,5 +35,44 @@ if (! function_exists('getExportUrl')) {
         $queryString = $_SERVER['QUERY_STRING'];
         $currentUrl = url()->current();
         return $currentUrl.'?1=1&'.$queryString.'&export=true';
+    }
+}
+
+if (! function_exists('isPendingStatus')) {
+    function isPendingStatus($status) {
+        return ($status === Article::STATUS_PENDING);
+    }
+}
+
+if (! function_exists('isViolationStatus')) {
+    function isViolationStatus($status) {
+        return ($status === Article::STATUS_VIOLATION);
+    }
+}
+
+if (! function_exists('isNoneViolationStatus')) {
+    function isNoneViolationStatus($status) {
+        return ($status === Article::STATUS_NONE_VIOLATION);
+    }
+}
+
+if (! function_exists('isRole')) {
+    function isRole($role) {
+        return UserRoleService::isRole($role);
+    }
+}
+
+if (! function_exists('getStatusText')) {
+    function getStatusText($status) {
+        switch($status) {
+            case Article::STATUS_PENDING:
+                return 'Reviewing';
+            case Article::STATUS_VIOLATION:
+                return 'Violation';
+            case Article::STATUS_NONE_VIOLATION:
+                return 'Non-violation';
+            default:
+                return $status;
+        }
     }
 }
