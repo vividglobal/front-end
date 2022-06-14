@@ -43,9 +43,9 @@
                     @foreach ($articles as $key => $article)
                         <tr class="tr-boder">
                             <td>{{$key + 1}}</td>
-                            <td><a href="#">{{ __($article->company) }}
-                            <td><a href="#">{{ __($article->country) }}</a></td>
-                            <td><a href="#">{{ __($article->brand) }}</a></td>
+                            <td><a href="#">{{ __($article->company['name'] ?? '') }}
+                            <td><a href="#">{{ __($article->country['name'] ?? '') }}</a></td>
+                            <td><a href="#">{{ __($article->brand['name'] ?? '') }}</a></td>
                             <td class="contenttb btn-caption"><a>{{ __('How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...') }}</a></td>
                             <td>
                                 <div class="wr-img">

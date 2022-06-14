@@ -53,38 +53,24 @@
                         </tr>
                     </thead>
                     <tbody class="tbdata">
+                    @foreach ($articles as $key => $article)
                         <tr class="tr-boder">
-                            <td>1</td>
-                            <td><a href="#">Nature One Dairy</a></td>
-                            <td><a href="#">Australia</a></td>
-                            <td><a href="#">Nature One Dairy Australia</a></td>
-                            <td class="contenttb btn-caption"><a href="#">How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...</a></td>
+                            <td>{{$key + 1}}</td>
+                            <td><a href="#">{{ __($article->company['name'] ?? '' )}}</a></td>
+                            <td><a href="#">{{ __($article->country['name'] ?? '' )}}</a></td>
+                            <td><a href="#">{{ __($article->brand['name'] ?? '' )}}</a></td>
+                            <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                             <td>
                                 <div class="wr-img">
-                                    <img class="td-img clickimg" src="../assets/image/img1.png" alt="">
+                                    <img class="td-img clickimg" src={{ __($article->image ?? '' ) }} alt="">
                                 </div>
                             </td>
-                            <td>05/04/2022</td>
-                            <td>05/04/2022</td>
-                            <td><img class="td-link" src="../assets/image/link.png" alt="#"></td>
+                            <td>{{date("d-m-Y",$article->published_date)}}</td>
+                            <td>{{date("d-m-Y",$article->published_date)}}</td>
+                            <td><a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a></td>
                             <td><img class="td-link" src="../assets/image/switch.png" alt="#"></td>
                         </tr>
-                        <tr class="tr-boder">
-                            <td>1</td>
-                            <td><a href="#">Nature One Dairy</a></td>
-                            <td><a href="#">Australia</a></td>
-                            <td><a href="#">Nature One Dairy Australia</a></td>
-                            <td class="contenttb btn-caption"><a href="#">How to communicate positively with your toddler, with communicate positively with your toddler, with communicate positively with your toddler, with Amanda Abel ...</a></td>
-                            <td>
-                                <div class="wr-img">
-                                    <img class="td-img clickimg" src="../assets/image/img1.png" alt="#">
-                                </div>
-                            </td>
-                            <td>05/04/2022</td>
-                            <td>05/04/2022</td>
-                            <td><img class="td-link" src="../assets/image/link.png" alt="#"></td>
-                            <td><img class="td-link" src="../assets/image/switch.png" alt="#"></td>
-                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

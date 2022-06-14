@@ -146,15 +146,77 @@
                             </div>
 
                             <div class="track track-three">
-                                    <div class="entry-three">
-                                        <div class="entry-title">
-                                            @if(isPendingStatus($article->supervisor_review['status']) && isRole("SUPERVISOR"))
+                                <div class="entry-three">
+                                    <div class="entry-title">
+                                        @if(isPendingStatus($article->supervisor_review['status']) && isRole("SUPERVISOR"))
+                                            <div class="btn-status">
+                                                <a attr-status="true" class="check-true check-status" href="javascript:void(0)"></a>
+                                                <a attr-status="false" class="check-false check-status" href="javascript:void(0)"></a>
+                                            </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->supervisor_review['status']) }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="entry-title">
+                                        @if(isPendingStatus($article->supervisor_review['status']) && isRole("SUPERVISOR"))
+                                            <div class="btn-status">
+                                                <a attr-status="true" class="check-true-disabled check-status" href="javascript:void(0)"></a>
+                                                <a attr-status="false" class="check-false-disabled check-status" href="javascript:void(0)"></a>
+                                            </div>
+                                            @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->supervisor_review['status']) }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    @if(isPendingStatus($article->supervisor_review['status']) && isRole("SUPERVISOR"))
+                                        <div class="entry-title-threee entry-title-tyle">
+                                            @foreach ($article->supervisor_review['violation_types'] as $supervisortype)
+                                                <p>{{$supervisortype['name'] ?? ''}}</p>
+                                            @endforeach
+                                        </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->supervisor_review['status']) }}</p>
+                                            </div>
+                                        @endif
+                                </div>
+                            </div>
+
+                            <div class="track track-three">
+                                <div class="entry-three">
+                                    <div class="entry-title">
+                                            @if(isPendingStatus($article->operator_review['status']) && isRole("OPERATOR"))
                                                 <div class="btn-status">
                                                     <a attr-status="true" class="check-true check-status" href="javascript:void(0)"></a>
                                                     <a attr-status="false" class="check-false check-status" href="javascript:void(0)"></a>
                                                 </div>
                                             @else
-                                                <div>
+                                                <div class="entry-title-threee entry-title-tyle reviewing-title">
                                                     <p
                                                         @class([
                                                             'status-title',
@@ -166,78 +228,26 @@
                                                 </div>
                                             @endif
                                         </div>
-                                        <div class="entry-title">
-                                            @if($article->supervisor_review['status'] === 'PENDING' && Auth::user()->role === "SUPERVISOR")
-                                                <div class="btn-status">
-                                                    <a attr-status="true" class="check-true-disabled check-status" href="javascript:void(0)"></a>
-                                                    <a attr-status="false" class="check-false-disabled check-status" href="javascript:void(0)"></a>
-                                                </div>
-                                            @elseif($article->supervisor_review['status'] === 'NON_VIOLATION')
-                                                <div>
-                                                    <p class="status-title unviolation-color">{{__('Non-violation')}}</p>
-                                                </div>
-                                            @elseif($article->supervisor_review['status'] === 'VIOLATION')
-                                                <div>
-                                                    <p class="status-title violation-color">{{__('Violation')}}</p>
-                                                </div>
-                                            @else
-                                                <div>
-                                                    <p class="status-title reviewing-color">{{__('Reviewing')}}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        @if($article->supervisor_review['status']==='PENDING' && Auth::user()->role === "SUPERVISOR")
-                                            <div class="entry-title-threee entry-title-tyle">
-                                                @foreach ($article->supervisor_review['violation_types'] as $supervisortype)
-                                                    <p>{{$supervisortype['name'] ?? ''}}</p>
-                                                @endforeach
-                                            </div>
-                                        @else
-                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                                <p class="status-title reviewing-color">{{__('Reviewing')}}</p>
-                                            </div>
-                                        @endif
-                                </div>
-                            </div>
-
-                            <div class="track track-three">
-                                <div class="entry-three">
                                     <div class="entry-title">
-                                        @if(Auth::user()->role !== "ADMIN")
-                                            @if($article->operator_review['status'] === 'PENDING' )
-                                                <div class="btn-status">
-                                                    <a attr-status="true" class="check-true check-status" href="javascript:void(0)"></a>
-                                                    <a attr-status="false" class="check-false check-status" href="javascript:void(0)"></a>
-                                                </div>
-                                            @elseif($article->operator_review['status'] === 'NON_VIOLATION')
-                                                <div>
-                                                    <p class="status-title unviolation-color">{{__('Non-violation')}}</p>
-                                                </div>
-                                            @else
-                                                <div>
-                                                    <p class="status-title violation-color">{{__('Violation')}}</p>
-                                                </div>
-                                            @endif
-                                        @else
-                                            <div>
-                                                <p class="status-title reviewing-color">{{__('Reviewing')}}</p>
-                                            </div>
-                                        @endif 
-                                    </div>
-                                    <div class="entry-title">
-                                        @if($article->operator_review['status']==='PENDING' && Auth::user()->role !== "ADMIN")
+                                        @if(isPendingStatus($article->operator_review['status']) && isRole("OPERATOR"))
                                             <div class="btn-status">
                                                 <a attr-status="true" class="check-true-disabled check-status" href="javascript:void(0)"></a>
                                                 <a attr-status="false" class="check-false-disabled check-status" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div>
-                                                <p class="status-title reviewing-color">{{__('Reviewing')}}</p>
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->supervisor_review['status']) }}</p>
                                             </div>
                                         @endif
                                     </div>
-                                    @if($article->operator_review['status']==='PENDING' && Auth::user()->role !== "ADMIN")
+                                    @if(isPendingStatus($article->operator_review['status']) && isRole("OPERATOR"))
                                         <div class="entry-title-threee entry-title-tyle">
                                             @foreach ($article->operator_review['violation_types'] as $operatortype)
                                                 <p>{{$operatortype['name'] ?? ''}}</p>
@@ -245,7 +255,14 @@
                                         </div>
                                     @else
                                         <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                            <p class="status-title reviewing-color">{{__('Reviewing')}}</p>
+                                            <p
+                                                @class([
+                                                    'status-title',
+                                                    'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                    'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                    'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                ])
+                                            >{{ getStatusText($article->supervisor_review['status']) }}</p>
                                         </div>
                                     @endif
                                 </div>
