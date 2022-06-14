@@ -25,6 +25,9 @@ class UserRoleBladeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::if('is_role', function ($role) {            
+            return UserRoleService::isRole($role);
+        });
         Blade::if('is_admin', function () {            
             return UserRoleService::isAdmin();
         });
