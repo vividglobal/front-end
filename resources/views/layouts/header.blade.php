@@ -1,6 +1,5 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
-
 <div class="nav_container ">
     <div class="rows" <?php if(Auth::user()!== null){ ?> style="max-width:1224px" <?php } ?>>
         <div <?php if(Auth::user()!== null){ ?> class="col l-11 no-padding" <?php }else{ ?>class="col l-10" <?php } ?>>
@@ -85,7 +84,13 @@
                 <img src="{{ asset('assets/image/user.svg') }}" alt="">
                 <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                 <div class="dropdown-login">
-                    <p id="edit__profile">Profile</p>
+                    <div id="edit__profile">
+                        <p>Profile</p>
+                        <input type="hidden" data-name ={{ @Auth::user()->full_name }}
+                        data-phone ={{ @Auth::user()->phone_number }} data-auth ={{ @Auth::user()->role }}
+                        data-id ={{ @Auth::user()->_id }} data-email ={{ @Auth::user()->email }}>
+                    </div>
+                    <input type="hidden" data=>
                     <p>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

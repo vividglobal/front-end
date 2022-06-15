@@ -3,7 +3,6 @@ $("document").ready(function(){
        var select = $(".select--company-or-brand").find(".contain--selection")
        let Brand = ["- select Brand -","nestle","company"];
 
-
        Brand.map(item=>{
            var html = `<div class="select__one">
                            <p>${jsUcfirst(item)}</p>
@@ -42,12 +41,12 @@ $("document").ready(function(){
                  return index.charAt(0).toUpperCase() + index.slice(1);
             }
          }
-
-        let btmShowing = $(".list--showing").find("select")
+         //btn showing
+        let btnShowing = $(".list--showing").find("select")
         var showing = [10,25,50,100]
         showing.map(item=>{
             var html = `<option value="${item}">${item}</option>`
-            btmShowing.append(html)
+            btnShowing.append(html)
         })
 
 })

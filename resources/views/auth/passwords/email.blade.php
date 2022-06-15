@@ -2,15 +2,15 @@
 @extends('layoutLogins.app')
 
 @section('content')
-    <div class="container-login">
-        <div class="form__login">
+    <div class="container-login rows no-gutters">
+        <div class="form__login col l-6">
                     <div class="block__login">
                             <div class="login__header">{{ __('Recover Password') }}</div>
                                 <form method="POST" action="{{ route('password.email') }}">
                                     @csrf
-                                        <p class="title__login">{{ __('E-mail') }}</p>
                                         <p class="text_recover--pass">Please re-enter the email address associated with your account to recover your password
                                             .We will send a recovery link to your email.</p>
+                                        <p class="title__login">{{ __('E-mail') }}</p>
                                             <div class="email--login">
                                                 <img src="../assets/image/email.svg" alt="" >
                                                 <input id="email" type="email" class=" @error('email') is-invalid @enderror"
@@ -33,7 +33,7 @@
 
                     </div>
         </div>
-        <div class="bg__login">
+        <div class="bg__login col l-6">
             <div class="background"></div>
         </div>
     </div>

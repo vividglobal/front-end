@@ -13,11 +13,6 @@
                                                 <input id="email" type="email" class=" @error('email') is-invalid @enderror"
                                                 name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
                                             </div>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
                                         <p class="title__login" style="margin-top:21px">{{ __('Password') }}</p>
                                             <div class="input__pwd--login">
                                                 <div class="email--login">
@@ -25,8 +20,8 @@
                                                     <input id="password" type="password" class="@error('password') is-invalid @enderror"
                                                     name="password" required autocomplete="current-password" placeholder="Enter your pasword">
                                                 </div>
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
+                                                @error('email')
+                                                    <span class="text-dangers" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
@@ -46,9 +41,8 @@
                                             <button type="submit" class="btn_submit">
                                                 {{ __('Login') }}
                                             </button>
-
                                 </form>
-                    </div>
+                            </div>
         </div>
         <div class="bg__login col l-6">
             <div class="background"></div>
