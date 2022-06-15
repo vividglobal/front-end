@@ -1,6 +1,4 @@
 @extends('layouts.app')
-<script src="{{ asset('assets/js/userManual/userManual.js') }}"></script>
-
 @section('content')
 <link rel="stylesheet" href="../assets/css/userManual/style.css">
     <div class="list--search--select" >
