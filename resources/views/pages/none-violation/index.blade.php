@@ -66,8 +66,8 @@
                                     <img class="td-img clickimg" src={{ __($article->image ?? '' ) }} alt="">
                                 </div>
                             </td>
-                            <td>{{date("d-m-Y",$article->published_date)}}</td>
-                            <td>{{date("d-m-Y",$article->published_date)}}</td>
+                            <td>{{date("d/m/Y",$article->published_date)}}</td>
+                            <td>{{date("d/m/Y",$article->published_date)}}</td>
                             <td><a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a></td>
                             <td><img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} ></td>
                         </tr>

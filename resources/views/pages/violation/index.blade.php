@@ -110,12 +110,12 @@
                         <div class="scroll-table" >
                         <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -149,10 +149,12 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <div class="list--select-right" id="btn-language">
-                                        <p>Select</p>
-                                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-                                    </div>
+
+                                    <select class="list--select-right" id="cars">
+                                        <option value="Select">Not started</option>
+                                        <option value="Processing">Processing</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="track">

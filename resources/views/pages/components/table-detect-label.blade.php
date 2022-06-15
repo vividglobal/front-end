@@ -32,7 +32,7 @@
                     @foreach ($articles as $key => $article)
                         <tr class="tr-boder" data-id="{{ $article->_id }}">
                             <td>{{$key + 1}}</td>
-                            <td><a href="#">{{ __($article->company['name'] ?? '' )}}</a></td>
+                            <td><a  href="#">{{ __($article->company['name'] ?? '' )}}</a></td>
                             <td><a href="#">{{ __($article->country['name'] ?? '' )}}</a></td>
                             <td><a class="brand-name" href="#">{{ __($article->brand['name'] ?? '' )}}</a></td>
                             <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
@@ -117,12 +117,12 @@
                         <div data-id="{{ $article->_id }}" class="scroll-table" >
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -314,7 +314,7 @@
     </div>
 
     <div class="modal-title open-modal" id="confirmActionModal">
-        <div class="modal-content">
+        <div class="modal-confirm-content">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
@@ -324,8 +324,9 @@
             <p class="title-modal" style="text-align: center;display: block;">
                 {{ __("Do you want to mark this article as Non-Violation") }}
             </p>
-            <div>
-                <button class="btn btn-confirm-non-violation">{{ __('Confirm') }}</button>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-confirm-non-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
             </div>
         </div>
     </div>
@@ -338,20 +339,22 @@
             <div class="head-modal">
                 <h1>{{ __('Select violation code') }}</h1>
             </div>
-            <div>
+            <div class="row">
                 @foreach($violationCode as $key => $code)
-                <div>
-                    <input type="checkbox" id="code_{{$key}}" name="violation_code[]" value={{ $code->id }}>
-                    <label for="code_{{$key}}">{{ $code->name }}</label>
+                <div class="col-md-3">
+                    <div class="checkbox-code">
+                        <input class="click-on" type="checkbox" id="code_{{$key}}" name="violation_code[]" value={{ $code->id }}>
+                        <label class="click-on" for="code_{{$key}}">{{ $code->name }}</label>
+                    </div>
                 </div>
                 @endforeach
             </div>
-            <div>
-                <button class="btn btn-select-code">{{ __('Confirm') }}</button>
+            <div class="btn-confirm">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-select-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>

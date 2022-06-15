@@ -8,7 +8,7 @@ $(document).ready(function(){
     let actionStep;
 
     $(document).on('click', '.check-status', function() {
-        currentRow = $(this).parents('.container-scroll');
+        currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
         let botStatus = currentRow.find('.bot-status').attr('data-status');
