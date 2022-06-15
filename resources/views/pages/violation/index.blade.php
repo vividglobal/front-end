@@ -105,85 +105,64 @@
                         </div>
                     </div>
                 </div>
-                @foreach ($articles as $key => $article)
-                    <div class="tracks syncscroll container-scroll" name="myElements">
+                <div class="tracks syncscroll container-scroll" name="myElements">
+                    @foreach ($articles as $key => $article)
+                        <div class="scroll-table" >
                         <div class="track">
-                            <div class="entry">
-                                <h3>{{date("d-m-Y",$article->published_date)??""}}</h3>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <h3>{{date("d-m-Y",$article->published_date)??""}}</h3>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <h3></h3>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <img class="td-link" src="../assets/image/lega1.png" alt="#">
-                            </div>
-                        </div>
-                        <div class="track track-three">
-                            <div class="entry-three">
-                                <div class="entry-title entry-title-br">
-                                    @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                        <p>{{$detectioncode['name'] ?? ''}}</p>
-                                    @endforeach
-                                </div>
-                                <div class="entry-title-threee entry-title-tyle">
-                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                        <p>{{$detectiontype['name'] ?? ''}}</p>
-                                    @endforeach
+                                <div class="entry">
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <div class="list--select-right" id="btn-language">
-                                    <p>Select</p>
-                                    <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-                                    <div class="select--country" id="language">
-                                        <div class="search--input--country" id="div-search">
-                                            <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                            <input type="text" placeholder="Search for country" class="search--country" >
-                                        </div>
-                                        <div class="contain--selection">
-                                            <div class="select__one--country select-language">
-                                                <p>Processing</p>
-                                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                            </div>
-                                            <div class="contain--selection">
-                                                <div class="select__one--country select-language">
-                                                    <p>Processing</p>
-                                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                                </div>
-                                                <div class="select__one--country select-language">
-                                                    <p>Completed</p>
-                                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                </div>
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <h3></h3>
+                                </div>
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <img class="td-link" src="../assets/image/lega1.png" alt="#">
+                                </div>
+                            </div>
+                            <div class="track track-three track-viola">
+                                <div class="entry-three">
+                                    <div class="entry-title entry-title-br">
+                                        @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                            <p>{{$detectioncode['name'] ?? ''}}</p>
+                                        @endforeach
+                                    </div>
+                                    <div class="entry-title-threee entry-title-tyle">
+                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                            <p>{{$detectiontype['name'] ?? ''}}</p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <div class="list--select-right" id="btn-language">
+                                        <p>Select</p>
+                                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
                         </div>
-                        <div class="track">
-                            <div class="entry">
-                                <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-
+                    @endforeach
+                </div>
             </table>
         </div>
     </div>
