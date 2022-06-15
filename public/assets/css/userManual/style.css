@@ -127,10 +127,20 @@ video[poster] {
     font-weight: 600;
   }
   .panel p {
-    padding-left: 20px;
     font-size: 15px;
     margin-bottom: 0px !important;
   }
+
+  .panel ul{
+      padding-left: 20px;
+  }
+
+  .panel ul li {
+      list-style:circle;
+  }
+
+
+
   .add a {
     text-decoration: none;
   }
@@ -148,4 +158,6 @@ video[poster] {
     display: none;
   }
 
-
+  .wrap-accordion a{
+      text-decoration: none;
+  }

@@ -20,12 +20,26 @@
     margin: 0 10px;
 }
 
+.list--company--brand p ,
+.list--violation--type p,
+.list--country p {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    box-sizing: border-box;
+    text-align: center;
+}
+
 #daterange input,
 .list--search input{
     border: none;
     margin: 14px 5px 14px 0px;
     width: 100%;
 }
+
 
 .list--showing select,
 #daterange input,

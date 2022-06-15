@@ -7,12 +7,13 @@ $("document").ready(function(){
 
     selectOneViolation.on("click", function(){
         var value = $(this).find("p").html()
+        var id = $(this).find("p").attr("data-id");
         if(value.indexOf("-") === -1){
             btnViolation.find("> p").html(value)
         }else{
             btnViolation.find("> p").html("Violation type")
         }
-
+        btnViolation.find("> p").attr("data-id",id)
         selectOneViolation.removeClass("background-gray")
         selectOneViolation.find("img").hide()
         $(this).addClass("background-gray")

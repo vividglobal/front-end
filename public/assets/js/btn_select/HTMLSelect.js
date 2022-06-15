@@ -1,36 +1,37 @@
 $("document").ready(function(){
        // brand&company
-       var select = $(".select--company-or-brand").find(".contain--selection")
-       let Brand = ["- select Brand -","nestle","company"];
+    //    var select = $(".select--company-or-brand").find(".contain--selection")
+    //    let Brand = ["- select Brand -","nestle","company"];
 
-       Brand.map(item=>{
-           var html = `<div class="select__one">
-                           <p>${jsUcfirst(item)}</p>
-                           <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
-                       </div>`
-           select.append(html)
-       })
+    //    Brand.map(item=>{
+    //        var html = `<div class="select__one">
+    //                        <p>${jsUcfirst(item)}</p>
+    //                        <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
+    //                    </div>`
+    //        select.append(html)
+    //    })
        // violation type
-       var select = $(".select--violation--type")
-       let violation = ["- select Brand -","nestle","Dutch Lady"];
-       violation.map(item=>{
-           var html = `<div class="select__one--violation--type">
-                           <p>${jsUcfirst(item)}</p>
-                           <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
-                       </div>`
-           select.append(html)
-       })
+
+    //    var select = $(".select--violation--type")
+    //    let violation = ["- select Brand -","nestle","Dutch Lady"];
+    //    violation.map(item=>{
+    //        var html = `<div class="select__one--violation--type">
+    //                        <p>${jsUcfirst(item)}</p>
+    //                        <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
+    //                    </div>`
+    //        select.append(html)
+    //    })
 
        //country
-       var select = $(".select--country").find(".contain--selection")
-       let country = ["- select country -","england","albania"];
-       country.map(item=>{
-           var html = `<div class="select__one--country">
-                           <p>${jsUcfirst(item)}</p>
-                           <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
-                       </div>`
-           select.append(html)
-       })
+    //    var select = $(".select--country").find(".contain--selection")
+    //    let country = ["- select country -","england","albania"];
+    //    country.map(item=>{
+    //        var html = `<div class="select__one--country">
+    //                        <p>${jsUcfirst(item)}</p>
+    //                        <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
+    //                    </div>`
+    //        select.append(html)
+    //    })
 
        function jsUcfirst(string)
          {

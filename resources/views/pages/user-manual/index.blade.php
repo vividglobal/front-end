@@ -175,7 +175,7 @@
             <a href="#sl4"><button class="accordion"><?= __("Hướng dẫn chuyển đổi trạng thái") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
             <div class="panel" id="sl4">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
                 <p><span><?= __("Bước 2")?>:</span> <?=__("Nhấp vào nút ở cột “Chuyển đổi trạng thái”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
                 <p><span><?= __("Bước 3")?>: </span> <?=__("Quay trở về trang “Cảnh báo vi phạm” hoặc “Kiểm tra vi phạm” để kiểm duyệt vi phạm bài viết lại từ đầu")?>.</p>
@@ -184,7 +184,7 @@
             <a href="#sl5"><button class="accordion"><?= __("Hướng dẫn thay đổi tiến độ xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
             <div class="panel" id="sl5">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Thay đổi “Tiến độ trạng thái” phù hợp")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-20.png') }}" loading="lazy">
                 <ul>
@@ -203,39 +203,46 @@
             <a href="#sl6"><button class="accordion"><?= __("Hướng dẫn cách tải các văn bản xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
             <div class="panel" id="sl6">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập “Theo dõi vi phạm” và chọn “Danh sách vi phạm” trên thanh menu")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Tại “Văn bản xử lý”, bấm vào nút có hình thư mục như bên dưới")?>.</p>
                 <ul>
                     <li><?= __("Nếu màu nút là xám, không có văn bản nào được tải lên gần đây")?>.</li>
                     <li><?= __("Nếu màu nút là đỏ, có ít nhất một văn bản được tải lên gần đây")?>.</li>
                 </ul>
-                <img src="{{ asset('assets/image/usermanual/img-21.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-21.png') }}" loading="lazy" style="width:100%">
                 <p><span><?= __("Bước 3")?>: </span> <?= __("Thêm văn bản khác bằng cách nhấp vào biểu tượng dấu cộng và chọn văn bản bạn muốn tải lên")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy" style="width:100%">
                 <p><span></span> <?= __("Sau khi tải lên thành công, một thông báo sẽ xuất hiện ở cuối màn hình bên phải")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-23.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-23.png') }}" loading="lazy" style="width:100%">
                 <p><span></span> <?= __("Quản trị viên có thể kiểm tra lại tài liệu bằng cách nhấp vào tài liệu")?>.</p>
                 <p><span><?= __("Bước 4")?>: </span> <?= __("Khi quản trị viên hoàn tất quá trình tải tài liệu lên, nút thư mục sẽ chuyển sang màu đỏ và cập nhật ngày tải tài liệu mới nhất")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy" style="width:100%">
             </div>
 
-            <a href="#sl7"><button class="accordion"><?= __("Hướng dẫn xem nội dung chi tiết của bài viết") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
+            <a href="#sl7">
+                <button class="accordion"><?= __("Hướng dẫn xem nội dung chi tiết của bài viết") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
             <div class="panel" id="sl7">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn bài viết cần xem")?>.</p>
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấp vào “Hình ảnh” của bài viết")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-25.png') }}" loading="lazy">
                 <p><span><?= __("Bước 3")?>:</span> <?= __("Nhấp vào icon mũi tên để xem lần lượt các hình ảnh của bài viết (nếu bài viết có nhiều ảnh)")?>.</p>
-                <button class="child-accordion"><u><?= __("Hướng dẫn xem đầy đủ nội dung bài viết") ?></u></button>
-                <div class="add">
+                <a href="#cl9">
+                    <button class="child-accordion"><?= __("Hướng dẫn xem đầy đủ nội dung bài viết") ?>
+                    <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                    </button>
+                </a>
+                <div class="add" id="cl9">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn bài viết cần xem")?>.</p>
                     <p><span><?= __("Bước 2")?>:</span> <?=__("Nhấp vào “Nội dung” của bài viết để xem nội dung đầy đủ của bài viết")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-26.png') }}" loading="lazy">
                     <img src="{{ asset('assets/image/usermanual/img-27.png') }}" loading="lazy">
                 </div>
-                <button class="child-accordion"><?= __("Hướng dẫn cách lấy đường dẫn từ bài viết mà Vivid đã quét") ?>
-                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
-                </button>
-                <div class="add">
+                <a href="#cl10">
+                    <button class="child-accordion"><?= __("Hướng dẫn cách lấy đường dẫn từ bài viết mà Vivid đã quét") ?>
+                    <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                    </button>
+                </a>
+                <div class="add" id="cl10">
                     <p><span></span> <?=__("Nhấp vào icon ở cột đường link để truy cập vào đường dẫn hoặc nhấp chuột phải để sao chép đường dẫn")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-28.png') }}" loading="lazy">
                 </div>
@@ -281,15 +288,14 @@
                 <img src="{{ asset('assets/image/usermanual/img-34.png') }}" loading="lazy">
             </div>
 
-
             <a href="#sl10"><button class="accordion"><?= __("Hướng dẫn xuất dữ liệu") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
             <div class="panel" id="sl10">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập vào trang cần xuất dữ liệu (Cảnh báo vi phạm, Danh sách vi phạm, Danh sách không vi phạm, Kiểm tra vi phạm)")?>.</p>
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấp vào nút “Xuất excel” và đợi hệ thống tải danh sách excel về máy")?>.</p>
                 <p><span><?= __("Lưu ý")?>:</span> <?= __("Nếu không chọn bất kỳ cách sắp xếp nào đặc biệt như nội dung từ khóa, thời gian thì hệ thống sẽ tải xuống đúng số lượng bài viết đang hiển thị trực tiếp trên trang Vivid (Như hình ở trên đang hiển thị 10 bài thì khi tải về excel sẽ có 10 bài)")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-35.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-35.png') }}" loading="lazy" >
                 <p><span></span> <?= __("Excel tải về sẽ có format như sau")?>: </p>
-                <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy" style="width:100%">
             </div>
 
             <a href="#sl11"><button class="accordion"><?= __("Hướng dẫn thêm quản trị viên mới") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -298,7 +304,7 @@
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Nhấp vào trang “Quản lý admin”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-38.png') }}" loading="lazy">
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấp vào nút “Thêm admin”")?>.</p>
-                <img src="{{ asset('assets/image/usermanual/img-37.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-37.png') }}" loading="lazy" style="width:100%">
                 <p><span><?= __("Bước 3")?>:</span> <?= __("Điền các trường thông tin bắt buộc bao gồm")?>:</p>
                 <ul>
                     <li><?= __("Họ và tên")?></li>
@@ -320,9 +326,6 @@
                     if(img.indexOf("plus")!== -1){
                         $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
                     }
-
-                    $(".panel").hide()
-                    $(".add").hide()
                     $(target).slideToggle(0,"linear");
                 })
 
@@ -333,7 +336,6 @@
                     if(img.indexOf("plus")!== -1){
                         $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
                     }
-                    $(".add").hide()
                     $(target).slideToggle(0,"linear");
                 })
             })

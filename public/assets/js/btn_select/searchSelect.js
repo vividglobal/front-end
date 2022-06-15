@@ -18,15 +18,4 @@ $("document").ready(function(){
         window.location.replace(`${window.location.pathname}?export=${true}`)
     })
 
-    $(".list--showing").find("select").on("change",function(){
-        let value = parseInt($("option:selected" ).text());
-        window.location.replace(`${window.location.pathname}?perpage=${value}`)
-    })
-
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const perpage = urlParams.get('perpage')
-    if(perpage !== null){
-        $(".list--showing").find("select").val(parseInt(perpage))
-    }
 })

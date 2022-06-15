@@ -52,46 +52,7 @@
     <div class="Base_violation--brand">
             <div class="list--select--option" style="flex-direction: row-reverse;">
                 <div class="list--select__left" style="justify-content: flex-end">
-                    <div class="list--company--brand" style="z-index: 1;">
-                        <img src="{{ asset('assets/image/brand-tag.svg') }}" alt="">
-                        <p>Brand/Company</p>
-                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-
-                        <div class="select--company-or-brand" id="toggle">
-                                <div class="search--input">
-                                    <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                    <input type="text" placeholder="Search for Brand" class="search--brand">
-                                </div>
-                                <div class="contain--selection">
-                                    <!-- //HTML -->
-                                </div>
-                        </div>
-                    </div>
-
-                    <div class="list--country" id="btn-language" style="z-index: 1;">
-                        <img src="{{ asset('assets/image/Country.svg') }}" alt="">
-                        <p>Country</p>
-                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-
-                        <div class="select--country" id="language">
-                            <div class="search--input--country" id="div-search">
-                                <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                <input type="text" placeholder="Search for country" class="search--country" id="language-search">
-                            </div>
-                            <div class="contain--selection">
-                                <!-- //HTML -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list--violation--type" style="z-index: 1;">
-                        <img src="{{ asset('assets/image/type.svg') }}" alt="">
-                        <p>Violation type</p>
-                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-
-                        <div class="select--violation--type" id="toggle">
-                                <!-- //HTML -->
-                        </div>
-                    </div>
+                    @include('pages/components/query')
                 </div>
                 <div class="list--select__right" style="justify-content: flex-start">
                     <p class="title__base--violation">Violation based on brands</p>
