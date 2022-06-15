@@ -13,10 +13,5 @@
 @import url("./autodetect/table.css");
 @import url("./non-violation/table_non_violation.css");
 @import url("./login/style.css");
-
-
-
-
-
-
-
+@import url("./common/loading.css");
+@import url("./common/toaster.css");

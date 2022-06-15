@@ -103,6 +103,7 @@
                     </form>
                 </div>
             </div>
+            @include('modal/editAccount')
         @endguest
     </div>
 </div>
