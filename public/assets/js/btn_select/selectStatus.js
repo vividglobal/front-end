@@ -1,25 +1,25 @@
-// $("document").ready(function(){
-//     var selectCountry = $("#language");
-//     var selectOneCountry = $(".select-language");
-//     var btnCountry = $("#btn-language");
-//     var searchCountry = $("#language-search");
+$("document").ready(function(){
+    var selectCountry = $("#dropdown-language");
+    var btn = $(".list--select-right");
+    var dropdown = $(".dropdown-content");
+    var selectOneCountry = $(".dropdown-items");
+    var btnCountry = $("btn-select");
+    // $(".dropdown-items:first-child").addClass("background-gray")
+    $(btn).click(function(e){
+        // dropdown.hide();
+        $(this).find(dropdown).slideToggle(300,'linear');
+    });
 
-//     $(".select__one--country:first-child").addClass("background-gray")
-//     selectOneCountry.on("click", function(){
-//         var value = $(this).find("p").html()
-//         console.log(value);
-//     })
-//     $(document).mouseup(function(e){
-//         //select country
-//         var inputCountry = $("#div-search")
-//         if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0) {
-//                 selectCountry.hide()
-//             }else{
-//                 if (!inputCountry.is(e.target) && inputCountry.has(e.target).length === 0)
-//                 {
-//                         selectCountry.slideToggle(300,'linear');
-//                         searchCountry.val("")
-//                 }
-//         }
-//     });
-// })
+    selectOneCountry.on("click", function(){
+        var value = $(this).find("p").html()
+        var value = $(this).find("p").html()
+        if(value.indexOf("-") === -1){
+            btnCountry.find("p").html(value)
+        }else{
+            btnCountry.find("p").html("Country")
+        }
+    })
+    // $(document).mouseup(function(e){
+    //     dropdown.hide();
+    // });
+})

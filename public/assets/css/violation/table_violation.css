@@ -446,6 +446,7 @@
   padding: 10px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .head-confirm{
@@ -492,7 +493,7 @@
   font-family: 'Avenir Next';
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 18px !important;
   line-height: 136.5%;
   color: #6F6F6F;
 }
@@ -528,4 +529,31 @@ background: #0C3C60;
 
 .track-viola{
   flex: 1 0 calc(39.9%)!important;
+}
+
+.dropdown-content{
+  width: 102%;
+  position: absolute;
+  top: -88%;
+  left: -105%;
+  background-color: #fff;
+  border: 1px solid #eeeeee;
+  z-index: 1000;
+  display: none;
+}
+.dropdown-items{
+  height: 100%;
+  padding: 10px;
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  cursor: pointer;
+}
+.dropdown-items:hover{
+  background-color: #CCCCCC;
 }

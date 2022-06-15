@@ -419,7 +419,7 @@
 }
 .entry-title{
     height: 100%;
-    width: 60%;
+    width: 56%;
     border-right: 1px solid #EEEEEE;
     display: flex;
     justify-content: center;
@@ -433,4 +433,30 @@
 }
 .scroll-table{
   display: flex;
+}
+
+
+ .checkbox-code{
+    font-size: 17px;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 10px 0px;
+    /* cursor: pointer; */
+}
+.btn-confirm{
+  display: flex;
+  justify-content: flex-end;
+}
+.checkmark{
+  cursor: pointer;
+}
+.btn-confirm-style{
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 136.5%;
+  color: #FFFFFF;
+  background: #0C3C60;
 }
