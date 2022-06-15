@@ -7,12 +7,13 @@ $("document").ready(function(){
 
     selectOneBrand.on("click", function(){
         var value = $(this).find("p").html()
+        var id = $(this).find("p").attr("data-id");
         if(value.indexOf("-") === -1){
             btnBrand.find("> p").html(value)
         }else{
             btnBrand.find("> p").html("Brand/Company")
         }
-
+        btnBrand.find("> p").attr("data-id",id)
         selectOneBrand.removeClass("background-gray")
         selectOneBrand.find("img").hide()
         $(this).addClass("background-gray")

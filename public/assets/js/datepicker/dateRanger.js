@@ -11,32 +11,64 @@ $("document").ready(function(){
             format: 'DD/MM/YYYY',
         },
     })
-    let startDate = "";
-    let endDate = "";
+    let startDate;
+    let endDate;
     $('input[name="daterange"]').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD/MM') + ' - ' + picker.endDate.format('DD/MM'));
-        startDate = picker.startDate.format('DD/MM/YYYY');
-        endDate = picker.endDate.format('DD/MM/YYYY');
+        startDate = picker.startDate.format('DD-MM-YYYY');
+        endDate = picker.endDate.format('DD-MM-YYYY');
     });
 
     $(".btn__apply").on("click",function(){
-        let search = $(".search").val() ? $(".search").val() : "";
-        let brandCompany = $(".list--company--brand").find("> p").text();
-        let country = $(".list--country").find("> p").text();
-        let violationType = $(".list--violation--type").find("> p").text();
-        let data = new keywordSearch(brandCompany,country,violationType)
-        let perpage = $(".list--showing").find("select").val() ? $(".list--showing").find("select").val() : 10
-        if(search !== "" || data.brandCompany !== "" || data.country !== "" || data.violationType !== "" || startDate !== "" || endDate !== ""){
-var url = `${window.location.pathname}?keyword=${search}
-&start_date=${startDate}&end_date=${endDate}&company_brand_id=${data.brandCompany}
-&country=${data.country}&violation_type_id=${data.violationType}&perpage=${perpage}`;
-            window.location.replace(url)
+        data = getValue()
+        let url= "";
+        Object.keys(data).map(item=>{
+            if(data[item] !== ""){
+                url += `${data[item]}`
+            }
+        })
+
+        if(data.search !== "" || data.brandCompany !== "" || data.country !== "" || data.violationType !== "" || data.startDate !== "" || data.endDate!== ""){
+            window.location.replace(`${window.location.pathname}${url.replace('&','?')}`)
         }
     })
 
-    function keywordSearch(brandCompany,country,violationType){
-          this.brandCompany = brandCompany !== "Brand/Company" ? brandCompany : "";
-          this.country = country !== "Country" ? country : "";
-          this.violationType = violationType !== "Violation type" ? violationType : "";
+    //List showing
+    $(".list--showing").find("select").on("change",function(){
+        data = getValue()
+        let url= "";
+        Object.keys(data).map(item=>{
+            if(data[item] !== ""){
+                url += `${data[item]}`
+            }
+        })
+        window.location.replace(`${window.location.pathname}${url.replace('&','?')}`)
+    })
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const perpage = urlParams.get('perpage')
+    if(perpage !== null){
+        $(".list--showing").find("select").val(parseInt(perpage))
+    }
+
+    function getValue (){
+        let search = $(".search").val() ? $(".search").val() : "";
+        let brandCompany = $(".list--company--brand").find("> p").attr("data-id");
+        let country = $(".list--country").find("> p").attr("data-id");
+        let violationType = $(".list--violation--type").find("> p").attr("data-id");
+        let perpage = $(".list--showing").find("select").val() ? $(".list--showing").find("select").val() : 10
+        return new keywordSearch(search,brandCompany,country,violationType,startDate,endDate,perpage)
+    }
+
+    // ----------------------------
+    function keywordSearch(search,brandCompany,country,violationType,startDate,endDate,perpage){
+        this.search = search !== "" ? `&keyword=${search}` : ""
+        this.brandCompany = brandCompany && brandCompany != 0 ? `&company_brand_id=${brandCompany}` : "";
+        this.country = country && country != 0 ? `&country=${country}` : "";
+        this.violationType = violationType && violationType != 0 ? `&violation_type_id=${violationType}` : "";
+        this.startDate = startDate ? `&start_date=${startDate}` : "";
+        this.endDate = endDate ? `&end_date=${endDate}` : "";
+        this.perpage = `&perpage=${perpage}`;
     }
 })

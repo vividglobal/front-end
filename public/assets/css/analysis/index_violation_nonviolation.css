@@ -30,6 +30,11 @@
     color: #5DA364;
 }
 
+.btn_analysis{
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
 .percent-violation{
     color: #5DA364;
     padding: 3px 5px;

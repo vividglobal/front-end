@@ -9,11 +9,13 @@ $("document").ready(function(){
 
     selectOneCountry.on("click", function(){
         var value = $(this).find("p").html()
+        var id = $(this).find("p").attr("data-id");
         if(value.indexOf("-") === -1){
             btnCountry.find("> p").html(value)
         }else{
             btnCountry.find("> p").html("Country")
         }
+        btnCountry.find("> p").attr("data-id",id)
         selectOneCountry.removeClass("background-gray")
         selectOneCountry.find("img").hide()
         $(this).addClass("background-gray")
