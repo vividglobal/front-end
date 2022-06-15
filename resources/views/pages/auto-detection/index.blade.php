@@ -11,7 +11,7 @@
         @include('pages/components/query')
     </div>
         <!-- Table -->
-        @include('pages/components/table-detect-label')
+        @include('pages/components/table-detect-label', compact('violationCode'))
     </div>
 </div>
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>

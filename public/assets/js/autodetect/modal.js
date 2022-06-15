@@ -1,30 +1,38 @@
 $(document).ready(function () {
-    var modal = $('.modal-title');
-    var modalimg = $('.modalimg')
+    var captionModal = $('#captionModal');
+    var imageModal = $('#imageModal')
     var btn = $('.btn-caption');
     var clickimg = $('.clickimg');
     var span = $('.close');
     
     clickimg.click(function () {
-        modalimg.show();
+        let imgSrc = $(this).attr('src')
+        let brandName = $(this).parents('tr').find('.brand-name').text();
+        captionModal.find('.head-modal h1').text(brandName)
+        captionModal.find('img').attr('src', imgSrc)
+        imageModal.show();
     });
     btn.click(function () {
-        modal.show();
+        let caption = $(this).find('a').text();
+        let brandName = $(this).parents('tr').find('.brand-name').text();
+        captionModal.find('.head-modal h1').text(brandName)
+        captionModal.find('.title-modal').text(caption)
+        captionModal.show();
     });
 
     span.click(function () {
-        modal.hide();
+        captionModal.hide();
     });
     span.click(function () {
-        modalimg.hide();
+        imageModal.hide();
     });
 
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-title')) {
-            modal.hide();
+            captionModal.hide();
         }
         if ($(e.target).is('.modalimg')) {
-            modalimg.hide();
+            imageModal.hide();
         }
     });
 });
