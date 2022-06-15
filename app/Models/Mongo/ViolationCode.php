@@ -38,6 +38,22 @@ class ViolationCode extends Model
         $total = self::count();
         $aggregateQuery = [];
 
+        $matchConditions = [
+            [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ],
+            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+        ];
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date']);
+            $endDate = strtotime($params['end_date']);
+            $matchConditions[] = [ '$and'=> [
+                [
+                    [ '$gte'=> [ '$operator_review.date',  $startDate ] ],
+                    [ '$lte'=> [ '$operator_review.date',  $endDate ] ],
+                ]
+            ] ];
+        }
+
         $aggregateQuery[] = [
             '$lookup' => [
                 'as' => 'articles_by_code',
@@ -53,10 +69,7 @@ class ViolationCode extends Model
                     [ '$match'=>
                         [
                             '$expr' => [
-                                '$and' => [
-                                    [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ],
-                                    [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
-                                ]
+                                '$and' => $matchConditions
                             ]
                         ]
                     ],
@@ -95,7 +108,7 @@ class ViolationCode extends Model
         ];
 
         if(isset($params['perpage'])) {
-            $this->perPage = $params['perpage'];
+            $this->perPage = intval($params['perpage']);
         }
 
         if($shouldPaginate) {
@@ -114,7 +127,7 @@ class ViolationCode extends Model
             $this->sortField = $params['sort_by'];
         }
         if(isset($params['sort_value'])) {
-            $this->sortValue = $params['sort_value'];
+            $this->sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
         }
 
         $aggregateQuery[] = [

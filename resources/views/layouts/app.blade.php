@@ -38,11 +38,13 @@
     <script src="{{ asset('assets/js/btn_select/selectViolationType.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedTextOrImage.js') }}"></script>
     <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
+    <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
+    <script src="{{ asset('assets/js/common/loading.js') }}"></script>
+
 </head>
 <body>
     <div id="app">
         @include('layouts/header')
-        @include('modal/editAccount')
         <main class="py-4">
             @yield('content')
         </main>

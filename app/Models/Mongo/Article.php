@@ -139,7 +139,7 @@ class Article extends Model
         if(isset($params['sort_value'])) {
             $sortValue = $params['sort_value'];
         }
-        $list = $articles->orderBy($sortField, strtolower($sortValue))->paginate($perpage);
+        $list = $articles->orderBy($sortField, strtolower($sortValue))->paginate(intval($perpage));
         return $list;
     }
 

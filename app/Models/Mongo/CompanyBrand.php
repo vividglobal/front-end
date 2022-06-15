@@ -43,6 +43,25 @@ class CompanyBrand extends Model
         if(isset($params['brand_id'])) {
             $aggregateQuery[] = ['$match' => ['_id' => ['$toObjectId' => $params['brand_id'] ]] ];
         }
+
+        $matchConditions = [
+            [ '$or' => [
+                [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
+                [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
+            ]]
+        ];
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date']);
+            $endDate = strtotime($params['end_date']);
+            $matchConditions[] = [ '$and'=> [
+                [
+                    [ '$gte'=> [ '$operator_review.date',  $startDate ] ],
+                    [ '$lte'=> [ '$operator_review.date',  $endDate ] ],
+                ]
+            ] ];
+        }
+
         $aggregateQuery[] = [
             '$lookup' => [
                 'as' => 'articles_by_brand',
@@ -52,14 +71,7 @@ class CompanyBrand extends Model
                     [ '$match'=>
                         [
                             '$expr'=>
-                            [ '$and'=>
-                                [
-                                    [ '$or' => [
-                                        [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
-                                        [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
-                                    ]]
-                                ]
-                            ]
+                            [ '$and'=> $matchConditions ]
                         ]
                     ],
                     ['$project' => ['_id' => 1]]
@@ -68,13 +80,9 @@ class CompanyBrand extends Model
         ];
 
         // Lookup : total violation articles
-        $violationArticleMatch = [
-            [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ],
-            [ '$or' => [
-                [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
-                [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
-            ]]
-        ];
+        $violationArticleMatch = $matchConditions;
+        $violationArticleMatch[] = [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ];
+
         if(isset($params['country_id'])) {
             $violationArticleMatch[] = [ '$eq'=> [ '$company.id', $params['country_id'] ] ];
         }
@@ -103,7 +111,7 @@ class CompanyBrand extends Model
         ];
 
         if(isset($params['perpage'])) {
-            $this->perPage = $params['perpage'];
+            $this->perPage = intval($params['perpage']);
         }
 
         if($shouldPaginate) {
@@ -134,7 +142,7 @@ class CompanyBrand extends Model
             $this->sortField = $params['sort_by'];
         }
         if(isset($params['sort_value'])) {
-            $this->sortValue = $params['sort_value'];
+            $this->sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
         }
 
         $aggregateQuery[] = [

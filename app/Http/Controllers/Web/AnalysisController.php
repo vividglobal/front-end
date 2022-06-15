@@ -35,8 +35,8 @@ class AnalysisController extends Controller
         $params['status'] = Article::STATUS_VIOLATION;
         $violation = $articleModel->getListCount($params);
         $nonViolation = $total - $violation;
-        $percentileViolation = round((($violation / $total ) * 100), 2);
-        $percentileNonViolation = 100 - $percentileViolation;
+        $percentileViolation = $total > 0 ? round((($violation / $total ) * 100), 2) : 0;
+        $percentileNonViolation = $percentileViolation > 0 ? 100 - $percentileViolation : 0;
         return [
             'non_violation' => $nonViolation,
             'violation'     => $violation,
