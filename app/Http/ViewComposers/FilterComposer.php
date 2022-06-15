@@ -35,5 +35,8 @@ class FilterComposer
     public function compose(View $view)
     {
         $view->with('brands', $this->brands);
+        $view->with('countries', $this->countries);
+        $view->with('violationCode', $this->violationCode);
+        $view->with('violationTypes', $this->violationTypes);
     }
 }
