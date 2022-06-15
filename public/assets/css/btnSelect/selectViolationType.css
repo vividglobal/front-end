@@ -47,3 +47,15 @@
 .select__one--violation--type:first-child > img{
     display: block;
 }
+
+.btn__apply{
+    margin-left: 10px;
+    background-color: #0C3C60;
+    color: #FFFFFF;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    max-width: 120px;
+    width: 100%;
+}

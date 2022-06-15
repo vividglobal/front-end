@@ -146,15 +146,21 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="track">
-                            <div class="entry">
-                                <div class="list--select-right" id="btn-language">
-                                        <p>Select</p>
-                                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
-                                        <div class="select--country" id="language">
-                                            <div class="search--input--country" id="div-search">
-                                                <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                                <input type="text" placeholder="Search for country" class="search--country" id="language-search">
+                    </div>
+                    <div class="track">
+                        <div class="entry">
+                            <div class="list--select-right" id="btn-language">
+                                    <p>Select</p>
+                                    <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+                                    <div class="select--country" id="language">
+                                        <div class="search--input--country" id="div-search">
+                                            <img src="{{ asset('assets/image/search.svg') }}" alt="">
+                                            <input type="text" placeholder="Search for country" class="search--country" >
+                                        </div>
+                                        <div class="contain--selection">
+                                            <div class="select__one--country select-language">
+                                                <p>Processing</p>
+                                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
                                             </div>
                                             <div class="contain--selection">
                                                 <div class="select__one--country select-language">
