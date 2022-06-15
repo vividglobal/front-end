@@ -1,6 +1,18 @@
 <?php
 use App\Models\Mongo\Article;
+use App\Models\Mongo\Admin;
 use App\Http\Services\UserRoleService;
+
+define('STATUS_VIOLATION', Article::STATUS_VIOLATION);
+define('STATUS_NONE_VIOLATION', Article::STATUS_NONE_VIOLATION);
+define('AGREE', Article::AGREE_VIOLATION);
+define('DISAGREE', Article::DISAGREE_VIOLATION);
+define('ACTION_CHECK_STATUS', Article::ACTION_CHECK_STATUS);
+define('ACTION_CHECK_CODE', Article::ACTION_CHECK_CODE);
+
+define('ROLE_ADMIN', Admin::ROLE_ADMIN);
+define('ROLE_SUPERVISOR', Admin::ROLE_SUPERVISOR);
+define('ROLE_OPERATOR', Admin::ROLE_OPERATOR);
 
 if (! function_exists('dump_data')) {
     function dump_data() {
@@ -56,12 +68,6 @@ if (! function_exists('isNoneViolationStatus')) {
     }
 }
 
-if (! function_exists('isRole')) {
-    function isRole($role) {
-        return UserRoleService::isRole($role);
-    }
-}
-
 if (! function_exists('getStatusText')) {
     function getStatusText($status) {
         switch($status) {
@@ -74,5 +80,17 @@ if (! function_exists('getStatusText')) {
             default:
                 return $status;
         }
+    }
+}
+
+if (! function_exists('isRole')) {
+    function isRole($role) {
+        return UserRoleService::isRole($role);
+    }
+}
+
+if (! function_exists('getRole')) {
+    function getRole() {
+        return UserRoleService::getRole();
     }
 }

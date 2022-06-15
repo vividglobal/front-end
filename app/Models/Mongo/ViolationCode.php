@@ -23,7 +23,7 @@ class ViolationCode extends Model
 
     public function violationType()
     {
-        return $this->embedsOne(ViolationType::class, 'type_id');
+        return $this->belongsTo(ViolationType::class, 'type_id', '_id');
     }
 
     function __construct() {

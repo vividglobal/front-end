@@ -72,7 +72,7 @@
         @include('pages/components/query')
 </div>
 <div class="row-a">
-    @include('pages/components/table-detect-label')
+    @include('pages/components/table-detect-label', compact('violationCode'))
 </div>
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>

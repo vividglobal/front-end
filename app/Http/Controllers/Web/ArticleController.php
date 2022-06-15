@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Article\CreateRequest;
 use App\Models\Mongo\Article;
+use App\Models\Mongo\ViolationCode;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Traits\ApiResponse;
 
@@ -30,7 +31,8 @@ class ArticleController extends Controller
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportPendingArticles('auto_detection_violation', $articles);
         }
-        return view('pages/auto-detection/index', compact('articles'));
+        $violationCode = ViolationCode::all();
+        return view('pages/auto-detection/index', compact('articles', 'violationCode'));
     }
 
     public function getManualDetectionList(Request $request) {
@@ -43,7 +45,8 @@ class ArticleController extends Controller
         if(isset($params['export']) && $params['export'] === true) {
             return  $this->exportPendingArticles('label-detection-violation',$articles);
         }
-        return view('pages/manual-detection/index', compact('articles'));
+        $violationCode = ViolationCode::all();
+        return view('pages/manual-detection/index', compact('articles', 'violationCode'));
     }
 
     public function getViolationList(Request $request) {
@@ -226,22 +229,21 @@ class ArticleController extends Controller
     }
 
     public function moderateArticle(Request $request, $id) {
+        $inputs =$request->all();
         $validator = Validator::make($request->all(), [
-            'is_agreed' => 'required|in:1,0',
-            'status' => 'required|in:'.Article::ACTION_CHECK_STATUS.','.Article::ACTION_CHECK_CODE,
-            'action' => 'required|in:'.Article::AGREE_VIOLATION.','.Article::DISAGREE_VIOLATION,
+            'is_agreed' => 'required|in:'.Article::AGREE_VIOLATION.','.Article::DISAGREE_VIOLATION,
+            'action' => 'required|in:'.Article::ACTION_CHECK_STATUS.','.Article::ACTION_CHECK_CODE,
+            'status' => 'required|in:'.Article::STATUS_NONE_VIOLATION.','.Article::STATUS_VIOLATION,
         ]);
 
         if ($validator->fails()) {
             throw new \Illuminate\Validation\ValidationException($validator);
         }
-
-        $inputs = $validator->validated();
         $article = Article::find($id);
         if($article && $article->status === Article::STATUS_PENDING) {
             $requestStatus = $inputs['status'];
             $requestAction = $inputs['action'];
-            $isAgreedWithBot = (int)$inputs['is_agreed'];
+            $isAgreedWithBot = $inputs['is_agreed'] === Article::AGREE_VIOLATION;
             $botViolationStatus = count($article->detection_result['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION;
 
             // Check action is being performed by other supervisor / operator
@@ -253,10 +255,12 @@ class ArticleController extends Controller
             }else {
                 $validationCode = UserRoleService::isSupervisor() ? $article->supervisor_review['violation_code'] : $article->operator_review['violation_code'];
                 if(count($validationCode) > 0) {
-                    return $this->responseFail([], "This article is being reviewed by other ".auth()->user()->role);
+                    return $this->responseFail($validationCode, "This article is being reviewed by other ".auth()->user()->role);
                 }
             }
             $isDoneReview = false;
+            $reviewViolationCode = [];
+            $reviewViolationTypes = [];
             if($requestAction === Article::ACTION_CHECK_STATUS) {
                 if($botViolationStatus === Article::STATUS_NONE_VIOLATION) {
                     if($isAgreedWithBot) {
@@ -264,11 +268,16 @@ class ArticleController extends Controller
                         $reviewStatus = $botViolationStatus;
                     }else {
                         // supervisor / operator needs to submit new violation code
-                        if(!isset($inputs['violation_code']) || count($inputs['violation_code']) === 0) {
+                        if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
                             return $this->responseFail([], "Please add violation code for this article");
                         }
-                        $reviewViolationCode = $inputs['violation_code'];
-                        $reviewStatus = self::STATUS_VIOLATION;
+                        $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
+                        if(count($data) === 0) {
+                            return $this->responseFail([], "Invalid violation code");
+                        }
+                        $reviewViolationCode = $data['violation_code'];
+                        $reviewViolationTypes = $data['violation_types'];
+                        $reviewStatus = Article::STATUS_VIOLATION;
                     }
                     $isDoneReview = true;
                 }else {
@@ -289,21 +298,33 @@ class ArticleController extends Controller
                     return $this->responseFail([], "Please approve or reject VIVID violation status first");
                 }
                 if($isAgreedWithBot) {
-                    $reviewViolationCode = $article->operator_review['detection_result'];
+                    $reviewViolationCode = $article->detection_result['violation_code'];
+                    $reviewViolationTypes = $article->detection_result['violation_types'];
+                    $reviewStatus = Article::STATUS_VIOLATION;
                 }else {
                     // supervisor / operator needs to submit new violation code
-                    if(!isset($inputs['violation_code']) || count($inputs['violation_code']) === 0) {
+                    if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
                         return $this->responseFail([], "Please add violation code for this article");
                     }
-                    $reviewViolationCode = $inputs['violation_code'];
+                    $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
+                    if(count($data) === 0) {
+                        return $this->responseFail([], "Invalid violation code");
+                    }
+                    $reviewViolationCode = $data['violation_code'];
+                    $reviewViolationTypes = $data['violation_types'];
+                    $reviewStatus = Article::STATUS_VIOLATION;
+                }
+
+                if(UserRoleService::isOperator()) {
+                    $isDoneReview = true;
                 }
             }
 
             $reviewData = [
-                'violation_code' => $reviewViolationCode,
-                'violation_types' => [],
-                'status' => $reviewStatus,
-                'review_date' => time()
+                'violation_code'  => $reviewViolationCode,
+                'violation_types' => $reviewViolationTypes,
+                'status'          => $reviewStatus,
+                'review_date'     => time()
             ];
 
             if(UserRoleService::isSupervisor()) {
@@ -315,9 +336,40 @@ class ArticleController extends Controller
                 }
             }
             $article->update();
-            return $this->responseSuccess([], "Action successfully");
+            return $this->responseSuccess($reviewData, "Action successfully");
         }
         return $this->responseFail([], "Article not found or not valid");
+    }
+
+    private function getViolationCodeAndTypeData($violationCodeArr) {
+        $codex = ViolationCode::whereIn('_id', json_decode($violationCodeArr))->get();
+        if($codex) {
+            $listCode = [];
+            $listTypes = [];
+            foreach ($codex as $key => $code) {
+                $listCode[] = [
+                    'id' => $code->_id,
+                    'name' => $code->name,
+                ];
+                $type = $code->violationType()->first();
+                $listTypes[] = [
+                    'id'    => $type->_id,
+                    'name'  => $type->name,
+                    'color' => $type->color
+                ];
+            }
+            $unique_type_array = [];
+            foreach($listTypes as $element) {
+                $hash = $element['id'];
+                $unique_type_array[$hash] = $element;
+            }
+            $violationTypes = array_values($unique_type_array);
+            return [
+                'violation_code'  => $listCode,
+                'violation_types' => $violationTypes
+            ];
+        }
+        return [];
     }
 
     public function resetArticleToOriginState(Request $request, $id) {
