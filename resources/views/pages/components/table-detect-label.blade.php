@@ -112,172 +112,173 @@
                         </div>
                     </div>
                 </div>
-                
-                @foreach ($articles as $key => $article)
-                    <div data-id="{{ $article->_id }}" class="tracks syncscroll container-scroll" name="myElements">
-                        <div class="track">
-                            <div class="entry">
-                                <h3>{{date("d-m-Y",$article->published_date)}}</h3>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <h3>{{date("d-m-Y",$article->published_date)}}</h3>
-                            </div>
-                        </div>
-                        <div class="track">
-                            <div class="entry">
-                                <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
-                            </div>
-                        </div>
-                        <div class="track track-three">
-                            <div class="entry-three">
-                                <div class="entry-title">
-                                    <?php
-                                        $botStatus = count($article->detection_result['violation_code']) > 0
-                                                    ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
-                                    ?>
-                                    <p
-                                        @class([
-                                            'bot-status',
-                                            'status-title',
-                                            'violation-color'   => isViolationStatus($botStatus),
-                                            'unviolation-color' => isNoneViolationStatus($botStatus)
-                                        ])
-                                        data-status="{{$botStatus}}"
-                                    >{{ getStatusText($botStatus) }}</p>
-                                </div>
-                                <div class="entry-title entry-title-br bot-violation-code">
-                                    @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                        <p>{{$detectioncode['name'] ?? ''}}</p>
-                                    @endforeach
-                                </div>
-                                <div class="entry-title-threee entry-title-tyle bot-violation-code">
-                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                        <p>{{$detectiontype['name'] ?? ''}}</p>
-                                    @endforeach
+                <div class="tracks syncscroll container-scroll" name="myElements">
+                    @foreach ($articles as $key => $article)
+                        <div data-id="{{ $article->_id }}" class="scroll-table" >
+                            <div class="track">
+                                <div class="entry">
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
-                        </div>
-                        {{-- ==================================================== --}}
-                        {{-- ================= SUPERVISOR COLUMN ================ --}}
-                        {{-- ==================================================== --}}
-                        <div class="track track-three">
-                            <div class="entry-three">
-                                {{-- ==================================================== --}}
-                                {{-- ============== VIOLATION STATUS COLUMN ============= --}}
-                                {{-- ==================================================== --}}
-                                <div class="entry-title supervisor-violation-action">
-                                    @if(isPendingStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR))
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true check-status" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false check-status" href="javascript:void(0)"></a>
-                                        </div>
-                                    @else
-                                        <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                            <p
-                                                @class([
-                                                    'status-title',
-                                                    'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
-                                                    'violation-color'   => isViolationStatus($article->supervisor_review['status']),
-                                                    'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
-                                                ])
-                                            >{{ getStatusText($article->supervisor_review['status']) }}</p>
-                                        </div>
-                                    @endif
+                            <div class="track">
+                                <div class="entry">
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
-                                {{-- ==================================================== --}}
-                                {{-- ============== VIOLATION CODE COLUMN =============== --}}
-                                {{-- ==================================================== --}}
-                                <div class="entry-title supervisor-violation-code">
-                                    @if(isPendingStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR))
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true-disabled check-violation-code" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
-                                        </div>
-                                    @elseif(isViolationStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR)
-                                            && count($article->supervisor_review['violation_code']) === 0)
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
-                                        </div>
-                                    @else
-                                        <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                            @foreach ($article->supervisor_review['violation_code'] as $detectiontype)
-                                                <p>{{ $detectiontype['name'] ?? '' }}</p>
-                                            @endforeach
-                                        </div>
-                                    @endif
+                            </div>
+                            <div class="track">
+                                <div class="entry">
+                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
                                 </div>
+                            </div>
+                            <div class="track track-three">
+                                <div class="entry-three">
+                                    <div class="entry-title">
+                                        <?php
+                                            $botStatus = count($article->detection_result['violation_code']) > 0
+                                                        ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
+                                        ?>
+                                        <p
+                                            @class([
+                                                'bot-status',
+                                                'status-title',
+                                                'violation-color'   => isViolationStatus($botStatus),
+                                                'unviolation-color' => isNoneViolationStatus($botStatus)
+                                            ])
+                                            data-status="{{$botStatus}}"
+                                        >{{ getStatusText($botStatus) }}</p>
+                                    </div>
+                                    <div class="entry-title entry-title-br bot-violation-code">
+                                        @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                            <p>{{$detectioncode['name'] ?? ''}}</p>
+                                        @endforeach
+                                    </div>
+                                    <div class="entry-title-threee entry-title-tyle bot-violation-code">
+                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                            <p>{{$detectiontype['name'] ?? ''}}</p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- ==================================================== --}}
+                            {{-- ================= SUPERVISOR COLUMN ================ --}}
+                            {{-- ==================================================== --}}
+                            <div class="track track-three">
+                                <div class="entry-three">
+                                    {{-- ==================================================== --}}
+                                    {{-- ============== VIOLATION STATUS COLUMN ============= --}}
+                                    {{-- ==================================================== --}}
+                                    <div class="entry-title supervisor-violation-action">
+                                        @if(isPendingStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR))
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true check-status" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false check-status" href="javascript:void(0)"></a>
+                                            </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->supervisor_review['status']) }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    {{-- ==================================================== --}}
+                                    {{-- ============== VIOLATION CODE COLUMN =============== --}}
+                                    {{-- ==================================================== --}}
+                                    <div class="entry-title supervisor-violation-code">
+                                        @if(isPendingStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR))
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true-disabled check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
+                                            </div>
+                                        @elseif(isViolationStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR)
+                                                && count($article->supervisor_review['violation_code']) === 0)
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
+                                            </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                @foreach ($article->supervisor_review['violation_code'] as $detectiontype)
+                                                    <p>{{ $detectiontype['name'] ?? '' }}</p>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
 
-                                <div class="entry-title-threee entry-title-tyle supervisor-violation-type">
-                                    @foreach ($article->supervisor_review['violation_types'] as $supervisortype)
-                                        <p>{{ $supervisortype['name'] ?? '' }}</p>
-                                    @endforeach
+                                    <div class="entry-title-threee entry-title-tyle supervisor-violation-type">
+                                        @foreach ($article->supervisor_review['violation_types'] as $supervisortype)
+                                            <p>{{ $supervisortype['name'] ?? '' }}</p>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- ==================================================== --}}
+                            {{-- ================= OPERATOR COLUMN ================== --}}
+                            {{-- ==================================================== --}}
+                            <div class="track track-three">
+                                <div class="entry-three">
+                                    {{-- ==================================================== --}}
+                                    {{-- ============== VIOLATION STATUS COLUMN ============= --}}
+                                    {{-- ==================================================== --}}
+                                    <div class="entry-title operator-violation-action">
+                                        @if(isPendingStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR))
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true check-status" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false check-status" href="javascript:void(0)"></a>
+                                            </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                <p
+                                                    @class([
+                                                        'status-title',
+                                                        'reviewing-color'   => isPendingStatus($article->operator_review['status']),
+                                                        'violation-color'   => isViolationStatus($article->operator_review['status']),
+                                                        'unviolation-color' => isNoneViolationStatus($article->operator_review['status'])
+                                                    ])
+                                                >{{ getStatusText($article->operator_review['status']) }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    {{-- ==================================================== --}}
+                                    {{-- ============== VIOLATION CODE COLUMN =============== --}}
+                                    {{-- ==================================================== --}}
+                                    <div class="entry-title operator-violation-code">
+                                        @if(isPendingStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR))
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true-disabled check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
+                                            </div>
+                                        @elseif(isViolationStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR)
+                                            && count($article->operator_review['violation_code']) === 0)
+                                            <div class="btn-status">
+                                                <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
+                                            </div>
+                                        @else
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                                @foreach ($article->operator_review['violation_code'] as $detectiontype)
+                                                    <p>{{ $detectiontype['name'] ?? '' }}</p>
+                                                @endforeach
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="entry-title-threee entry-title-tyle operator-violation-type">
+                                        @foreach ($article->operator_review['violation_types'] as $supervisortype)
+                                            <p>{{ $supervisortype['name'] ?? '' }}</p>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-                        {{-- ==================================================== --}}
-                        {{-- ================= OPERATOR COLUMN ================== --}}
-                        {{-- ==================================================== --}}
-                        <div class="track track-three">
-                            <div class="entry-three">
-                                {{-- ==================================================== --}}
-                                {{-- ============== VIOLATION STATUS COLUMN ============= --}}
-                                {{-- ==================================================== --}}
-                                <div class="entry-title operator-violation-action">
-                                    @if(isPendingStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR))
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true check-status" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false check-status" href="javascript:void(0)"></a>
-                                        </div>
-                                    @else
-                                        <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                            <p
-                                                @class([
-                                                    'status-title',
-                                                    'reviewing-color'   => isPendingStatus($article->operator_review['status']),
-                                                    'violation-color'   => isViolationStatus($article->operator_review['status']),
-                                                    'unviolation-color' => isNoneViolationStatus($article->operator_review['status'])
-                                                ])
-                                            >{{ getStatusText($article->operator_review['status']) }}</p>
-                                        </div>
-                                    @endif
-                                </div>
-                                {{-- ==================================================== --}}
-                                {{-- ============== VIOLATION CODE COLUMN =============== --}}
-                                {{-- ==================================================== --}}
-                                <div class="entry-title operator-violation-code">
-                                    @if(isPendingStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR))
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true-disabled check-violation-code" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
-                                        </div>
-                                    @elseif(isViolationStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR)
-                                        && count($article->operator_review['violation_code']) === 0)
-                                        <div class="btn-status">
-                                            <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
-                                            <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
-                                        </div>
-                                    @else
-                                        <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                            @foreach ($article->operator_review['violation_code'] as $detectiontype)
-                                                <p>{{ $detectiontype['name'] ?? '' }}</p>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </div>
-
-                                <div class="entry-title-threee entry-title-tyle operator-violation-type">
-                                    @foreach ($article->operator_review['violation_types'] as $supervisortype)
-                                        <p>{{ $supervisortype['name'] ?? '' }}</p>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </table>
         </div>
     </div>

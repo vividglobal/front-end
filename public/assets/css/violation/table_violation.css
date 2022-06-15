@@ -138,7 +138,7 @@
   z-index: 100;
 }
 .th-title-right-three{
-  width: 35%;
+  width: 93%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -524,4 +524,8 @@ background: #0C3C60;
   padding: 20px;
   border: 1px solid #888;
   width: 25%;
+}
+
+.track-viola{
+  flex: 1 0 calc(39.9%)!important;
 }

@@ -1,4 +1,3 @@
-
 @auth
 <div id="modal-account" class="modal">
         <div class="modal__content">

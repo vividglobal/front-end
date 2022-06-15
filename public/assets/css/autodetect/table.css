@@ -74,6 +74,8 @@
 .container-scroll{
     cursor: grab;
     overflow: auto;
+    display: flex !important;
+    flex-direction: column;
 }
 .tr-boder td{
     border: 1px solid #EEEEEE;
@@ -336,7 +338,7 @@
     margin-left: -1px;
   }
   .track-three{
-    flex: 1 0 calc(50%);
+    flex: 1 0 calc(70%);
   }
 
   .heading {
@@ -424,8 +426,11 @@
     align-items: center;
 }
 .entry-title-threee{
-    width: 60%;
+    width: 58%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.scroll-table{
+  display: flex;
 }
