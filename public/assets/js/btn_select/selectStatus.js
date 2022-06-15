@@ -15,7 +15,7 @@ $("document").ready(function(){
         if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0) {
                 selectCountry.hide()
             }else{
-                if (!inputCountry.is(e.target) && inputCountry.has(e.target).length === 0) 
+                if (!inputCountry.is(e.target) && inputCountry.has(e.target).length === 0)
                 {
                         selectCountry.slideToggle(300,'linear');
                         searchCountry.val("")

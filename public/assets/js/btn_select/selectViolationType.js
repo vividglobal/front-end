@@ -9,13 +9,16 @@ $("document").ready(function(){
         var value = $(this).find("p").html()
         if(value.indexOf("-") === -1){
             btnViolation.find("> p").html(value)
+        }else{
+            btnViolation.find("> p").html("Violation type")
         }
+
         selectOneViolation.removeClass("background-gray")
         selectOneViolation.find("img").hide()
         $(this).addClass("background-gray")
         $(this).find("img").show()
     })
-    
+
     $(document).mouseup(function(e){
         if (!btnViolation.is(e.target) && btnViolation.has(e.target).length === 0) {
             selectViolation.hide()

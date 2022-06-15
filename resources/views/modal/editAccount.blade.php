@@ -1,3 +1,6 @@
+
+
+
 <div id="modal-account" class="modal">
         <div class="modal__content">
             <div class="close__modal">
@@ -9,14 +12,14 @@
             <div class="modal--input">
                 <p>Full name</p>
                 <div class="input--modal">
-                    <input type="text" placeholder="Enter your Name" disabled class="form-name edit_name">
+                    <input type="text" placeholder="Enter your Name" disabled class="form-name edit_name" value=<?php echo Auth::user()->full_name ?>>
                     <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                 </div>
             </div>
             <div class="modal--input">
                 <p>Phone number</p>
                 <div class="input--modal">
-                    <input type="text" placeholder="Enter your Number" disabled class="form-number edit_number">
+                    <input type="text" placeholder="Enter your Number" disabled class="form-number edit_number" value=<?php echo Auth::user()->phone_number ?>>
                     <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__number">
                 </div>
             </div>
@@ -24,15 +27,15 @@
                 <p>Authority</p>
                 <div style="display: flex; justify-content:space-around">
                         <label class="container__checkbox authorization edit_authority">Admin
-                            <input type="radio" name="radio" id="Admin">
+                            <input type="radio" name="radio" id="Admin" <?php if(Auth::user()->role === "ADMIN"){ ?> checked <?php }?>>
                             <span class="checkmark"></span>
                         </label>
                         <label class="container__checkbox authorization edit_authority">Operator
-                            <input type="radio" name="radio" id="Operator">
+                            <input type="radio" name="radio" id="Operator" <?php if(Auth::user()->role === "OPERATOR"){ ?> checked <?php }?>>
                             <span class="checkmark"></span>
                         </label>
                         <label class="container__checkbox authorization edit_authority">Supervisor
-                            <input type="radio" name="radio" id="Supervisor">
+                            <input type="radio" name="radio" id="Supervisor"  <?php if(Auth::user()->role === "SUPERVISOR"){ ?> checked <?php }?>>
                             <span class="checkmark"></span>
                         </label>
                 </div>
