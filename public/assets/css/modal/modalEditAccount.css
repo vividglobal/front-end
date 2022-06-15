@@ -206,3 +206,8 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  .text-dangers{
+    color: red;
+    margin-top: 5px !important;
+}

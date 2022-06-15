@@ -1,6 +1,5 @@
 
 @extends('layouts.app')
-
 @section('content')
 <link rel="stylesheet" href="../assets/css/adminManagement/style.css">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
@@ -17,20 +16,17 @@
                     <img src="{{ asset('assets/image/search.svg') }}" alt="" class="btn-search">
                     <input type="text" placeholder="Search" class="search">
                 </div>
+                <button class="btn__apply">Apply</button>
             </div>
             <div class="list--select__right">
                 <p>Showing</p>
                 <div class="list--showing">
                     <select name="" id="">
-                        <option value="">10</option>
-                        <option value="">25</option>
-                        <option value="">50</option>
-                        <option value="">100</option>
+                        <!-- HTML -->
                     </select>
                 </div>
-                <div class="btn--export--excel create__profile" style="width: 153px;display: flex;justify-content:center">
+                <div class="create__profile" style="width: 153px;display: flex;justify-content:center">
                     <p>Add admin</p>
-                    <img src="{{ asset('assets/image/Under-than-white.svg') }}" alt="" style="margin-left: 12px;">
                 </div>
             </div>
         </div>
@@ -47,15 +43,6 @@
                   <th>Edit</th>
                   <th>Delete</th>
                 </tr>
-                <!-- <tr>
-                  <td>1</td>
-                  <td>giám sát 1</td>
-                  <td>giamsat1@gmail.com</td>
-                  <td>0123456789</td>
-                  <td>Operator</td>
-                  <td><img class="edit__profile" src="../assets/image/edit.svg" alt=""></td>
-                  <td><img class="delete__profile" src="../assets/image/remove.svg" alt=""></td>
-                </tr> -->
                 @foreach ($admins as $admin)
                 <tr>
                     <td scope="row">1</td>
@@ -63,7 +50,11 @@
                     <td>{{ $admin->email }}</td>
                     <td>{{ $admin->phone_number }}</td>
                     <td>{{ $admin->role }}</td>
-                    <td><img class="edit__profile" src="../assets/image/edit.svg" alt=""></td>
+                    <td class="edit__profile">
+                        <img src="../assets/image/edit.svg" alt="">
+                        <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
+                        data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
+                    </td>
                     <td><img class="delete__profile" src="../assets/image/remove.svg" alt=""></td>
                 </tr>
                 @endforeach
@@ -80,7 +71,6 @@
             </div>
     </div>
 </div>
-
 <!-- ---------------MODAL-DELETE------------------ -->
 <div id="modal__delete-account" class="modal">
         <div class="modal__content" style="max-width: 426px;padding:23px 21px 46px 21px;">
@@ -106,9 +96,6 @@
         </div>
         <div class="overlay"></div>
 </div>
-@if(session()->get('success'))
-    {{ session()->get('success') }}
-@endif
 
 @if ($errors->any())
     <div class="alert alert-danger">

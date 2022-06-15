@@ -34,13 +34,14 @@ Route::controller(Web\AnalysisController::class)->group(function () {
 });
 
 Route::controller(Web\AdminController::class)->group(function () {
-    Route::middleware(['check.role:admin'])->group(function () {
-        Route::prefix('admins')->group(function () {
+    Route::prefix('admins')->group(function () {
+        Route::middleware(['check.role:admin'])->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'create');
-            Route::put('/{id}', 'update');
             Route::delete('/{id}', 'delete');
         });
+            Route::put('/{id}', 'update');
+
     });
 
 });

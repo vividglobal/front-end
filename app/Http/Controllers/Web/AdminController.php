@@ -25,25 +25,28 @@ class AdminController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         Admin::create($input);
-        return redirect('/admins')->with('success', 'Create admin successfully');
+        return $this->responseSuccess([], "Update admin successfully");
     }
 
-    public function update(UpdateRequest $request, Admin $admin)
+    public function update(UpdateRequest $request, Admin $admin ,$id)
     {
-        // $admin = Admin::find($id);
-        // if($admin) {
-        //     $admin->update($request->all());
-        //     return redirect('/admins')->with('success', 'Update admin successfully');
-        // }
-        // return redirect('/admins')->with('error', 'Admin not found');
-        $admin->update($request->all());
-        return redirect('/admins')->with('success', 'Update admin successfully');
+        $admin = Admin::find($id);
+        $input = $request->all();
+        if(isset($input['password'])){
+            $input['password'] = Hash::make($input['password']);
+        }
+
+        if($admin) {
+            $admin->update($input);
+            return $this->responseSuccess([], "Update admin successfully");
+        }
+        return $this->responseFail([], "Update admin Failed");
     }
 
     public function delete($id)
     {
         $admin = Admin::findOrFail($id);
         $admin->delete($id);
-        return $this->responseSuccess([], "Delete admin successfully");
+        return redirect('/admins')->with('success', 'Delete admin successfully');
     }
 }

@@ -14,6 +14,7 @@
                         <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                         <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
                     </div>
+                    <button class="btn__apply">Apply</button>
             </div>
             <div class="list--select__right">
                 @auth
@@ -62,18 +63,7 @@
                                     <input type="text" placeholder="Search for Brand" class="search--brand">
                                 </div>
                                 <div class="contain--selection">
-                                    <div class="select__one">
-                                        <p>- Select Brand -</p>
-                                        <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                    </div>
-                                    <div class="select__one">
-                                        <p>Nestle</p>
-                                        <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                    </div>
-                                    <div class="select__one">
-                                        <p>Dutch Lady</p>
-                                        <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                    </div>
+                                    <!-- //HTML -->
                                 </div>
                         </div>
                     </div>
@@ -89,18 +79,7 @@
                                 <input type="text" placeholder="Search for country" class="search--country" id="language-search">
                             </div>
                             <div class="contain--selection">
-                                <div class="select__one--country select-language">
-                                    <p>- Select country -</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one--country select-language">
-                                    <p>Endland</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one--country select-language">
-                                    <p>Albania</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
+                                <!-- //HTML -->
                             </div>
                         </div>
                     </div>
@@ -110,18 +89,7 @@
                         <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
 
                         <div class="select--violation--type" id="toggle">
-                                <div class="select__one--violation--type">
-                                    <p>- Select Brand -</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one--violation--type">
-                                    <p>Nestle</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
-                                <div class="select__one--violation--type">
-                                    <p>Dutch Lady</p>
-                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                                </div>
+                                <!-- //HTML -->
                         </div>
                     </div>
                 </div>
