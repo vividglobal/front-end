@@ -1,4 +1,5 @@
 <script>
+
     var getToken;
     function onSubmit(token) {
         getToken = token;
@@ -6,6 +7,7 @@
     function validate(event) {
         event.preventDefault();
     }
+
     function onload() {
         var element = document.getElementById('submit_captcha');
         element.onclick = validate;

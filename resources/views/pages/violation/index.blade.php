@@ -58,7 +58,6 @@
             </table>
         </div>
         <div class="col-right col-right-form ">
-
             <table class="wrap">
                 <div class="headers">
                     <div class="scroller syncscroll" name="myElements">
@@ -106,43 +105,46 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="tracks syncscroll container-scroll" name="myElements">
-                    <div class="track">
-                        <div class="entry">
-                            <h3>05/04/2022</h3>
+                @foreach ($articles as $key => $article)
+                    <div class="tracks syncscroll container-scroll" name="myElements">
+                        <div class="track">
+                            <div class="entry">
+                                <h3>{{date("d-m-Y",$article->published_date)??""}}</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <h3>05/04/2022</h3>
+                        <div class="track">
+                            <div class="entry">
+                                <h3>{{date("d-m-Y",$article->published_date)??""}}</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <h3></h3>
+                        <div class="track">
+                            <div class="entry">
+                                <h3></h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <img class="td-link" src="../assets/image/link.png" alt="#">
+                        <div class="track">
+                            <div class="entry">
+                                <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <img class="td-link" src="../assets/image/lega1.png" alt="#">
+                        <div class="track">
+                            <div class="entry">
+                                <img class="td-link" src="../assets/image/lega1.png" alt="#">
+                            </div>
                         </div>
-                    </div>
-                    <div class="track">
-                        <div class="entry">
-                            <a href="#">6.1-SCT</a> <br>
-                            <a href="#">4.3.a</a> <br>
-                            <a href="#">4.3.c</a> <br>
-                        </div>
-                    </div>
-                    <div class="track track-one">
-                        <div class="entry-three">
-                            <div class="entry-title-threee"><p>{{ __('Information for Health Workers') }}</p></div>
+                        <div class="track track-three">
+                            <div class="entry-three">
+                                <div class="entry-title entry-title-br">
+                                    @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                        <p>{{$detectioncode['name'] ?? ''}}</p>
+                                    @endforeach
+                                </div>
+                                <div class="entry-title-threee entry-title-tyle">
+                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                        <p>{{$detectiontype['name'] ?? ''}}</p>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="track">
@@ -153,28 +155,35 @@
                                     <div class="select--country" id="language">
                                         <div class="search--input--country" id="div-search">
                                             <img src="{{ asset('assets/image/search.svg') }}" alt="">
-                                            <input type="text" placeholder="Search for country" class="search--country" id="language-search">
+                                            <input type="text" placeholder="Search for country" class="search--country" >
                                         </div>
                                         <div class="contain--selection">
                                             <div class="select__one--country select-language">
                                                 <p>Processing</p>
                                                 <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
                                             </div>
-                                            <div class="select__one--country select-language">
-                                                <p>Completed</p>
-                                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
+                                            <div class="contain--selection">
+                                                <div class="select__one--country select-language">
+                                                    <p>Processing</p>
+                                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
+                                                </div>
+                                                <div class="select__one--country select-language">
+                                                    <p>Completed</p>
+                                                    <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="track">
+                            <div class="entry">
+                                <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                             </div>
                         </div>
                     </div>
-                    <div class="track">
-                        <div class="entry">
-                            <img class="td-link" src="../assets/image/switch.png" alt="#">
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </table>
         </div>
     </div>
@@ -195,6 +204,20 @@
             </p>
         </div>
     </div>
+
+    <div class="modal-confirm-title">
+        <div class="modal-confirm-content">
+            <div class="head-confirm">
+                <h1>Remove user</h1>
+                <p>Are you sure to remove this user?</p>
+            </div>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+            </div>
+        </div>
+    </div>
+
     <div class="modalimg">
         <div class="modal-content">
             <div class="div-close">
@@ -209,8 +232,10 @@
         </div>
     </div>
 </div>
+
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
+<script src="{{ asset('assets/js/modal/modalConfirm.js') }}"></script>
 @endsection

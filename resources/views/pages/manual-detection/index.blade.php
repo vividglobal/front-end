@@ -47,18 +47,7 @@
                             <input type="text" placeholder="Search for country" class="search--country" id="validate-search-country">
                         </div>
                         <div class="contain--selection">
-                            <div class="select__one--country validate-option-country">
-                                <p>- Select country -</p>
-                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country validate-option-country">
-                                <p>Endland</p>
-                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
-                            <div class="select__one--country validate-option-country">
-                                <p>Albania</p>
-                                <img src="{{ asset('assets/image/tickV.svg') }}" alt="">
-                            </div>
+                            <!-- //HTML -->
                         </div>
                     </div>
                 </div>

@@ -50,6 +50,7 @@ class ArticleController extends Controller
     }
 
     public function getViolationList(Request $request) {
+
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
