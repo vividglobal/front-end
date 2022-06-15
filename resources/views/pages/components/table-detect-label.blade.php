@@ -1,3 +1,4 @@
+
 <div class="container-table">
         <div class="container_row">
             <div class="col-left ">
@@ -111,7 +112,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     @foreach ($articles as $key => $article)
                         <div class="tracks syncscroll container-scroll" name="myElements">
                             <div class="track">
@@ -132,9 +133,10 @@
                             <div class="track track-three">
                                 <div class="entry-three">
                                     <div class="entry-title">Reviewing</div>
-                                    <div class="entry-title entry-title-br">
-                                        @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                            <p>{{$detectioncode['name'] ?? ''}}</p>
+                                    <?php if($article->detection_result !== ""){ ?>
+                                    <div class="entry-title">
+                                        @foreach ($article->detection_result['violation_code'] as $detection)
+                                        <p>{{$detection['name'] ?? ''}}</p>
                                         @endforeach
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle">
@@ -142,6 +144,7 @@
                                             <p>{{$detectiontype['name'] ?? ''}}</p>
                                         @endforeach
                                     </div>
+                                    <?php }?>
                                 </div>
                             </div>
 
@@ -172,7 +175,7 @@
                                                 <a attr-status="true" class="check-true-disabled check-status" href="javascript:void(0)"></a>
                                                 <a attr-status="false" class="check-false-disabled check-status" href="javascript:void(0)"></a>
                                             </div>
-                                            @else
+                                        @else
                                             <div class="entry-title-threee entry-title-tyle reviewing-title">
                                                 <p
                                                     @class([

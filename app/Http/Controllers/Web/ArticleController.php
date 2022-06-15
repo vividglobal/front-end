@@ -26,6 +26,9 @@ class ArticleController extends Controller
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
+        // echo "<pre>";
+        // print_r ($articles);
+        // echo "</pre>";
 
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportPendingArticles('auto_detection_violation', $articles);
@@ -61,8 +64,15 @@ class ArticleController extends Controller
     public function getNoneViolationList(Request $request) {
         $articleModel = new Article();
         $params = $request->all();
-        $params['status'] = Article::STATUS_NONE_VIOLATION;
-        $articles = $articleModel->getList($params);
+
+        if(isset($params["search"])){
+            $search = $params["search"];
+            $articles = $articleModel->getList($search);
+        }else{
+            $params['status'] = Article::STATUS_NONE_VIOLATION;
+            $articles = $articleModel->getList($params);
+        }
+
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportNoneViolationArticles('non_violation_article', $articles);
         }
@@ -95,7 +105,7 @@ class ArticleController extends Controller
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
-                $article->country['name'],
+                $article->country['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
@@ -153,7 +163,7 @@ class ArticleController extends Controller
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
-                $article->country['name'],
+                $article->country['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
@@ -180,11 +190,10 @@ class ArticleController extends Controller
         ];
         $exportData = [];
         foreach ($articles as $key => $article) {
-
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
-                $article->country['name'],
+                $article->country['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,

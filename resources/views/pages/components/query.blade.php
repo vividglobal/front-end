@@ -59,9 +59,10 @@
                     </select>
                 </div>
                 @auth
-                <div class="btn--export--excel">
-                    <p>Export Excel</p>
-                </div>
+                    <a href="{{ getExportUrl() }}" target="_blank"
+                    class="btn--export--excel">
+                            <p>Export Excel</p>
+                    </a>
                 @endauth
             </div>
 </div>

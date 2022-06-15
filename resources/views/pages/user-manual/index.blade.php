@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<script src="{{ asset('assets/js/userManual/userManual.js') }}"></script>
 
 @section('content')
 <link rel="stylesheet" href="../assets/css/userManual/style.css">
@@ -22,13 +23,14 @@
 </div>
 <div class="container__usermanual" >
     <div class="wrap-accordion">
-            <button class="accordion "> {{ __('Hướng dẫn cách kiểm tra vi phạm') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
+            <a href="#sl1"><button class="accordion"> {{ __('Hướng dẫn cách kiểm tra vi phạm') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl1">
 
-            <div class="panel">
-                <button class="child-accordion"><?= __("Hướng dẫn cách kiểm tra vi phạm bằng Hình ảnh hoặc Văn bản") ?>
+                <a href="#cl1"><button class="child-accordion"><?= __("Hướng dẫn cách kiểm tra vi phạm bằng Hình ảnh hoặc Văn bản") ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
-                <div class="add">
+                </a>
+                <div class="add" id="cl1">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập trang 'Kiểm tra vi phạm' trên thanh menu")?>.</p>
                     <p><span><?= __("Bước 2")?>:</span> <?= __("Nhập nội dung của bạn bằng văn bản hoặc tải ảnh lên máy tính của bạn")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
@@ -37,10 +39,12 @@
                     <p><span></span> <?= __("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
                 </div>
-                <button class="child-accordion"><?= __("Hướng dẫn kiểm tra vi phạm bằng đường dẫn") ?>
+
+                <a href="#cl2"><button class="child-accordion"><?= __("Hướng dẫn kiểm tra vi phạm bằng đường dẫn") ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
-                <div class="add">
+                </a>
+                <div class="add" id="cl2">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập trang 'Kiểm tra vi phạm' trên thanh menu")?>.</p>
                     <p><span><?= __("Bước 2")?>:</span> <?= __("Nhập nội dung của bạn bằng cách dán đường dẫn của website hoặc hình ảnh, bài viết trên Fanpage thuộc") ?><a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view"> <?= __("danh sách ")?> </a><?= __("này")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-4.png') }}" loading="lazy">
@@ -49,22 +53,26 @@
                     <p><span></span> <?= __("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
                 </div>
-            </div>
-            <button class="accordion"><?= __("Hướng dẫn lấy đường dẫn hợp lệ để kiểm tra vi phạm theo yêu cầu") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
 
-            <div class="panel">
-                <button class="child-accordion"><?= __("Đường dẫn trang website hợp lệ") ?>
+            </div>
+
+            <a href="#sl2"><button class="accordion"><?= __("Hướng dẫn lấy đường dẫn hợp lệ để kiểm tra vi phạm theo yêu cầu") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl2">
+                <a href="#cl3"><button class="child-accordion"><?= __("Đường dẫn trang website hợp lệ") ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
-                <div class="add">
+                </a>
+                <div class="add" id="cl3">
                     <p><span></span><?= __("Bất kỳ liên kết nào có cùng tên miền trong trang web")?>  <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view"> <?= __("danh sách ")?> </a> <?= __("này")?>, <?= __("ví dụ")?>:</p>
                     <p><span></span><a href="https://www.nestlemomandme.vn/">www.nestlemomandme.vn</a> <?= __("hoặc")?> <a href=" https://www.nestlemomandme.vn/cerelac"> www.nestlemomandme.vn/cerelac</a>.</p>
                 </div>
 
+                <a href="#cl4">
                 <button class="child-accordion"><?= __("Cách lấy đường dẫn hợp lệ trên Fanpage") ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
-                <div class="add">
+                </a>
+                <div class="add" id="cl4">
                     <p><span></span> <strong><?= __("Cách lấy đường dẫn hợp lệ của một bài đăng trên Fanpage")?>.</strong></p>
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập Fanpage có sẵn trên danh sách Fanpage đã được cung cấp")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-5.png') }}" loading="lazy">
@@ -95,18 +103,19 @@
                 </div>
             </div>
 
-            <button class="accordion "><?= __("Hướng dẫn kiểm duyệt vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl3"><button class="accordion "><?= __("Hướng dẫn kiểm duyệt vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl3">
                 <p><?= __("Trang website Vivid cho phép kiểm duyệt vi phạm ở 2 trang")?>:</p>
                 <ul>
                     <li><?= __("Cảnh báo vi phạm (máy tự quét và trả về tình trạng nghi vấn nghi phạm)")?></li>
                     <li><?= __("Kiểm tra vi phạm (người dùng tự quét và máy kiểm tra tình trạng nghi vấn nghi phạm)")?></li>
                 </ul>
+                <a href="#cl5">
                 <button class="child-accordion"><?= __("Kiểm duyệt bài viết mà Vivid dự đoán là 'Không vi phạm'") ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
-                <div class="add">
+                </a>
+                <div class="add" id=cl5>
                     <img src="{{ asset('assets/image/usermanual/img-9.png') }}" loading="lazy">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Xác nhận trạng thái của bài viết")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-12.png') }}" loading="lazy">
@@ -128,10 +137,12 @@
                     <img src="{{ asset('assets/image/usermanual/img-40.png') }}" loading="lazy">
                 </div>
 
-                <button class="child-accordion">
-                    <?= __("Kiểm duyệt bài viết mà Vivid dự đoán là “Vi phạm“") ?> <img src="{{ asset('assets/image/plus.svg') }}" alt="">
-                </button>
-                <div class="add">
+                <a href="#cl6">
+                    <button class="child-accordion">
+                        <?= __("Kiểm duyệt bài viết mà Vivid dự đoán là “Vi phạm“") ?> <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                    </button>
+                </a>
+                <div class="add" id="cl6">
                     <img src="{{ asset('assets/image/usermanual/img-42.png') }}" loading="lazy">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Xác nhận trạng thái của bài viết")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-15.png') }}" loading="lazy">
@@ -162,18 +173,18 @@
                     <img src="{{ asset('assets/image/usermanual/img-13.png') }}" loading="lazy">
                 </div>
             </div>
-            <button class="accordion"><?= __("Hướng dẫn chuyển đổi trạng thái") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
 
-            <div class="panel">
+            <a href="#sl4"><button class="accordion"><?= __("Hướng dẫn chuyển đổi trạng thái") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl4">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
                 <p><span><?= __("Bước 2")?>:</span> <?=__("Nhấp vào nút ở cột “Chuyển đổi trạng thái”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
                 <p><span><?= __("Bước 3")?>: </span> <?=__("Quay trở về trang “Cảnh báo vi phạm” hoặc “Kiểm tra vi phạm” để kiểm duyệt vi phạm bài viết lại từ đầu")?>.</p>
             </div>
-            <button class="accordion"><?= __("Hướng dẫn thay đổi tiến độ xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
 
-            <div class="panel">
+            <a href="#sl5"><button class="accordion"><?= __("Hướng dẫn thay đổi tiến độ xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl5">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Thay đổi “Tiến độ trạng thái” phù hợp")?>.</p>
@@ -191,9 +202,8 @@
                 </ul>
             </div>
 
-            <button class="accordion"><?= __("Hướng dẫn cách tải các văn bản xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl6"><button class="accordion"><?= __("Hướng dẫn cách tải các văn bản xử lý vi phạm") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl6">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập “Theo dõi vi phạm” và chọn “Danh sách vi phạm” trên thanh menu")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Tại “Văn bản xử lý”, bấm vào nút có hình thư mục như bên dưới")?>.</p>
@@ -211,9 +221,8 @@
                 <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy">
             </div>
 
-            <button class="accordion"><?= __("Hướng dẫn xem nội dung chi tiết của bài viết") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl7"><button class="accordion"><?= __("Hướng dẫn xem nội dung chi tiết của bài viết") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
+            <div class="panel" id="sl7">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Chọn bài viết cần xem")?>.</p>
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấp vào “Hình ảnh” của bài viết")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-25.png') }}" loading="lazy">
@@ -234,22 +243,25 @@
                 </div>
             </div>
 
-            <button class="accordion"><?= __("Hướng dẫn tìm kiếm bài viết theo từ khóa và ngày kiểm tra") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
-                <button class="child-accordion"><?= __("Tìm kiếm bài viết theo nội dung") ?>
-                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
-                </button>
-                <div class="add">
+            <a href="#sl8"><button class="accordion"><?= __("Hướng dẫn tìm kiếm bài viết theo từ khóa và ngày kiểm tra") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl8">
+                <a href="#cl7">
+                    <button class="child-accordion"><?= __("Tìm kiếm bài viết theo nội dung") ?>
+                    <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                    </button>
+                </a>
+                <div class="add" id="cl7">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Nhập thông tin tìm kiếm ví dụ “Blackmores”")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-30.png') }}" loading="lazy">
                     <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấn nút Enter và các bài viết liên quan có từ khóa Blackmores hoặc của Fanpage Blackmores sẽ hiển thị ở bên dưới")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-29.png') }}" loading="lazy">
                 </div>
-                <button class="child-accordion"><?= __("Tìm kiếm bài viết theo ngày máy kiểm tra vi phạm") ?>
-                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
-                </button>
-                <div class="add">
+                <a href="#cl8">
+                    <button class="child-accordion"><?= __("Tìm kiếm bài viết theo ngày máy kiểm tra vi phạm") ?>
+                    <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                    </button>
+                </a>
+                <div class="add" id="cl8">
                     <p><span><?= __("Bước 1")?>:</span> <?= __("Nhấp vào khung “Bạn vui lòng chọn ngày”")?>.</p>
                     <img src="{{ asset('assets/image/usermanual/img-31.png') }}" loading="lazy">
                     <p><span><?= __("Bước 2")?>:</span> <?= __("Chọn khoảng thời gian mong muốn")?>.</p>
@@ -259,9 +271,8 @@
                 </div>
             </div>
 
-            <button class="accordion"><?= __("Hướng dẫn sắp xếp các bài viết theo từng chế độ") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl9"><button class="accordion"><?= __("Hướng dẫn sắp xếp các bài viết theo từng chế độ") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl9">
                 <p><span></span> <?= __("Quản trị viên có thể sắp xếp các bài viết theo chế độ")?>:</p>
                 <ul>
                     <li><?= __("Ngày (ngày đăng, ngày kiểm tra, ngày xử lý, ngày quét): Theo thứ tự ngày mới nhất và cũ nhất")?>.</li>
@@ -273,9 +284,8 @@
             </div>
 
 
-            <button class="accordion"><?= __("Hướng dẫn xuất dữ liệu") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl10"><button class="accordion"><?= __("Hướng dẫn xuất dữ liệu") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl10">
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Truy cập vào trang cần xuất dữ liệu (Cảnh báo vi phạm, Danh sách vi phạm, Danh sách không vi phạm, Kiểm tra vi phạm)")?>.</p>
                 <p><span><?= __("Bước 2")?>:</span> <?= __("Nhấp vào nút “Xuất excel” và đợi hệ thống tải danh sách excel về máy")?>.</p>
                 <p><span><?= __("Lưu ý")?>:</span> <?= __("Nếu không chọn bất kỳ cách sắp xếp nào đặc biệt như nội dung từ khóa, thời gian thì hệ thống sẽ tải xuống đúng số lượng bài viết đang hiển thị trực tiếp trên trang Vivid (Như hình ở trên đang hiển thị 10 bài thì khi tải về excel sẽ có 10 bài)")?>.</p>
@@ -284,9 +294,8 @@
                 <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy">
             </div>
 
-            <button class="accordion"><?= __("Hướng dẫn thêm quản trị viên mới") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
-
-            <div class="panel">
+            <a href="#sl11"><button class="accordion"><?= __("Hướng dẫn thêm quản trị viên mới") ?><img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+            <div class="panel" id="sl11">
                 <p><span><?= __("Lưu ý")?>: </span> <?= __("Trên trang website của Vivid chỉ có 3 đối tượng người dùng gồm Nhà điều hành, Nhà giám sát và Quản trị viên. Chỉ có Quản trị viên mới có quyền thêm quản trị viên mới")?>.</p>
                 <p><span><?= __("Bước 1")?>:</span> <?= __("Nhấp vào trang “Quản lý admin”")?>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-38.png') }}" loading="lazy">
@@ -305,39 +314,30 @@
         </div>
 </div>
 <script>
-            var acc = document.getElementsByClassName("accordion");
-            var axx = document.getElementsByClassName("child-accordion")
-            var y;
-            var i;
-            //lặp qua các button để gán sự kiện
-            for (i = 0; i < acc.length; i++) {
-                acc[i].onclick = function() {
-                    /* Thêm/xóa class active để đánh dấu các button đã được click */
-                    this.classList.toggle("ac");
-                    /* Hiển thị hoặc ẩn nội dung khi button được click */
-                    var panel = this.nextElementSibling;
-                    if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                    } else {
-                        panel.style.display = "block";
-                    }
-                }
-            }
-            for (y = 0; y < axx.length; y++) {
-                axx[y].onclick = function() {
-                    this.classList.toggle("at");
-                    var panel = this.nextElementSibling;
-                    if (this.classList.contains("at") == true) {
-                        panel.style.display = "block";
-                        panel.style.transition = "all 10s"
-                    } else {
-                        panel.style.display = "none"
+            $(document).ready(function(){
+                $(".accordion").click(function(e){
+                    let target = $(this).closest('a').attr("href");
+                    var img = $(this).find("img").attr("src")
+                    $(this).find("img").attr("src","{{ asset('assets/image/plus.svg') }}")
+                    if(img.indexOf("plus")!== -1){
+                        $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
                     }
 
-                    // if (this.classList.contains("at") === true) {
-                    //     panel.style.visibility = "none";
-                    // }
-                }
-            }
+                    $(".panel").hide()
+                    $(".add").hide()
+                    $(target).slideToggle(0,"linear");
+                })
+
+                $(".child-accordion").click(function(e){
+                    let target = $(this).closest('a').attr("href");
+                    var img = $(this).find("img").attr("src")
+                    $(this).find("img").attr("src","{{ asset('assets/image/plus.svg') }}")
+                    if(img.indexOf("plus")!== -1){
+                        $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
+                    }
+                    $(".add").hide()
+                    $(target).slideToggle(0,"linear");
+                })
+            })
         </script>
 @endsection

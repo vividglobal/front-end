@@ -20,21 +20,23 @@ $("document").ready(function(){
     });
 
     $(".btn__apply").on("click",function(){
-        let search = $(".search").val()
+        let search = $(".search").val() ? $(".search").val() : "";
         let brandCompany = $(".list--company--brand").find("> p").text();
         let country = $(".list--country").find("> p").text();
         let violationType = $(".list--violation--type").find("> p").text();
-        let data = new keywordSearch(search,startDate,endDate,brandCompany,country,violationType)
-        let date = data.date.startDate !== "" ? `${data.date.startDate+"-"+data.date.endDate}` : ""
-        window.location.replace(`${window.location.pathname}?search=${data.search}&daterange=${date}&brandCompany=${data.brandCompany}&country=${data.country}&violationtype=${data.violationType}`)
-
+        let data = new keywordSearch(brandCompany,country,violationType)
+        let perpage = $(".list--showing").find("select").val() ? $(".list--showing").find("select").val() : 10
+        if(search !== "" || data.brandCompany !== "" || data.country !== "" || data.violationType !== "" || startDate !== "" || endDate !== ""){
+var url = `${window.location.pathname}?keyword=${search}
+&start_date=${startDate}&end_date=${endDate}&company_brand_id=${data.brandCompany}
+&country=${data.country}&violation_type_id=${data.violationType}&perpage=${perpage}`;
+            window.location.replace(url)
+        }
     })
 
-    function keywordSearch(search,startDate,endDate,brandCompany,country,violationType){
-          this.search = search;
-          this.date = {startDate: startDate, endDate: endDate};
-          this.brandCompany = brandCompany !== "Brand/Company" && brandCompany || "";
-          this.country = country !== "Country" && country || "";
-          this.violationType = violationType !== "Violation type" && violationType || "";
+    function keywordSearch(brandCompany,country,violationType){
+          this.brandCompany = brandCompany !== "Brand/Company" ? brandCompany : "";
+          this.country = country !== "Country" ? country : "";
+          this.violationType = violationType !== "Violation type" ? violationType : "";
     }
 })

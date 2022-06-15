@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="list--search--select" >
         <div class="list--title">
             <p>Non-violation list</p>
