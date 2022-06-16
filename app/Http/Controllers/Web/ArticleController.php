@@ -49,7 +49,6 @@ class ArticleController extends Controller
     }
 
     public function getViolationList(Request $request) {
-
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
@@ -64,13 +63,8 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
 
-        if(isset($params["search"])){
-            $search = $params["search"];
-            $articles = $articleModel->getList($search);
-        }else{
-            $params['status'] = Article::STATUS_NONE_VIOLATION;
-            $articles = $articleModel->getList($params);
-        }
+        $params['status'] = Article::STATUS_NONE_VIOLATION;
+        $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportNoneViolationArticles('non_violation_article', $articles);
@@ -140,7 +134,6 @@ class ArticleController extends Controller
                 $row[] = $violationCodeNames;
                 $row[] = $violationTypeNames;
             }
-
             $exportData[] = $row;
         }
 

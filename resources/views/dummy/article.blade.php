@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="grid">
     <div class="row">
         <!-- ========================================================== -->
         <!-- ========================== ARTICLES ====================== -->
@@ -113,6 +111,4 @@
             </table>
         </div>
     </div> <!-- End of row -->
-    
-</div>
 @endsection
