@@ -13,6 +13,8 @@ class ArticleLegalDocument extends Model
 
     protected $fillable = [
         'article_id',
+        'name',
+        'path',
         'url'
     ];
 
