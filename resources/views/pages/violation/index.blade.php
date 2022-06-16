@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+@include('layouts/header',['check_url'=>["violation"]])
 <div class="list--search--select" >
-        <div class="list--title">
-            <p>Violation list</p>
-        </div>
-        @include('pages/components/query')
-        <!-- list Btn  -->
+    <div class="list--title">
+        <p>{{ __('Violation list') }}</p>
     </div>
-
+    @include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
+    <!-- list Btn  -->
+</div>
 <div class="container-table">
     <div class="container_row">
         <div class="col-left ">
@@ -110,12 +109,12 @@
                         <div class="scroll-table" >
                         <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -149,12 +148,10 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-
-                                    <select class="list--select-right" id="cars">
-                                        <option value="Select">Not started</option>
-                                        <option value="Processing">Processing</option>
-                                        <option value="Completed">Completed</option>
-                                    </select>
+                                    <div class="list--select-right" id="btn-language">
+                                        <p>{{ __('Select') }}</p>
+                                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+                                    </div>
                                 </div>
                             </div>
                             <div class="track">
@@ -171,7 +168,6 @@
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
-
     <div class="modal-title">
         <div class="modal-content">
             <div class="div-close">
@@ -185,12 +181,11 @@
             </p>
         </div>
     </div>
-
     <div class="modal-confirm-title">
         <div class="modal-confirm-content">
             <div class="head-confirm">
-                <h1>Remove user</h1>
-                <p>Are you sure to remove this user?</p>
+                <h1>{{ __('Remove user') }}</h1>
+                <p>{{ __('Are you sure to remove this user?') }}</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -198,14 +193,13 @@
             </div>
         </div>
     </div>
-
     <div class="modalimg">
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1 >Nature One Dairy Australia</h1>
+                <h1 >{{ __('Nature One Dairy Australiar') }}</h1>
             </div>
             <div>
                 <img class="modal-img" src="../assets/image/img1.png" alt="">
@@ -213,7 +207,6 @@
         </div>
     </div>
 </div>
-
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>

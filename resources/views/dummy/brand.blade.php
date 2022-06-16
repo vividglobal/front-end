@@ -2,7 +2,6 @@
 
 @section('content')
 
-<div class="grid">
     <div class="row">
         <!-- ========================================================== -->
         <!-- ======================= COMPANY BRAND ==================== -->
@@ -67,6 +66,5 @@
             </table>
         </div>
     </div> <!-- End of row -->
-    
-</div>
+
 @endsection

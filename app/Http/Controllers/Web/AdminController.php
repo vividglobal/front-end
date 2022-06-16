@@ -16,7 +16,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $admins = Admin::all();
+        $admins = Admin::paginate(10);
         return view('pages/admin-management/index', compact('admins'));
     }
 

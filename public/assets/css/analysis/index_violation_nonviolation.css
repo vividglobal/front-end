@@ -30,9 +30,8 @@
     color: #5DA364;
 }
 
-.btn_analysis{
-    justify-content: flex-end;
-    padding-right: 40px;
+.padding_btn_analysis .create__profile{
+    padding: 17px 0 ;
 }
 
 .percent-violation{

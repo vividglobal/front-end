@@ -60,6 +60,7 @@
 .list--country{
     position: relative;
     justify-content: space-between;
+    padding: 14px 0;
 }
 
 .list--violation--type{

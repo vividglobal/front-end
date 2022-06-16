@@ -5,8 +5,6 @@ $(document).ready(function(){
   var btnVCountry = $("#validate-country");
   var searchCountry = $("#validate-search-country");
 
-$(".select__one--country:first-child").addClass("background-gray")
-
 selectOneVCountry.on("click", function(){
   var value = $(this).find("p").html()
   if(value.indexOf("-") === -1){
@@ -26,7 +24,7 @@ var inputCountry = $("#div-validate-search-country")
 if (!btnVCountry.is(e.target) && btnVCountry.has(e.target).length === 0) {
       selectVCountry.hide()
   }else{
-      if (!inputCountry.is(e.target) && inputCountry.has(e.target).length === 0) 
+      if (!inputCountry.is(e.target) && inputCountry.has(e.target).length === 0)
       {
           selectVCountry.slideToggle(300,'linear');
           selectVCountry.val("")

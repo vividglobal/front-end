@@ -26,7 +26,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['pages.components.query'],
+            ['pages.components.query', 'pages.manual-detection.index'],
             FilterComposer::class
         );
     }
