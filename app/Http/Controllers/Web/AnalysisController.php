@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Traits\ApiResponse;
 use App\Models\Mongo\Article;
 use App\Models\Mongo\ViolationCode;
 use App\Models\Mongo\CompanyBrand;
@@ -13,7 +12,6 @@ use App\Http\Services\ExportService;
 
 class AnalysisController extends Controller
 {
-    use ApiResponse;
 
     public function index(Request $request) {
         $params = $request->all();
