@@ -71,6 +71,7 @@
     font-size: 16px;
     line-height: 170%;
     color: #000000;
+    text-align: justify;
 }
 
 .background__content p:first-child{
@@ -86,9 +87,12 @@
 }
 
 .background__vituar-2{
-    max-width: 1096px;
-    width: 100%;
     margin: 83px auto;
+}
+
+.background__vituar-2 .background__content{
+    align-items: center;
+    display: flex;
 }
 
 .background__vituar-3 .background__content{
@@ -97,8 +101,6 @@
 
 .background__vituar-3 .background__content p {
     color: #FFFFFF;
-    max-width: 426px;
-    width: 100%;
     margin: 0 auto;
 }
 
@@ -115,9 +117,7 @@
 }
 
 .background__vituar-5{
-    max-width: 1320px;
-    width: 100%;
-    margin: 0 auto;
+    margin: 0 60px;
 }
 
 .background__vituar-5 .background__image{
@@ -140,9 +140,7 @@
 }
 
 .background__vituar-7{
-    max-width: 1320px;
-    width: 100%;
-    margin: 0 auto;
+    margin: 0 60px;
 }
 
 .background__vituar-7 .background__image{

@@ -3,8 +3,13 @@ $("document").ready(function(){
     var selectOneViolation = $(".select__one--violation--type");
     var btnViolation = $(".list--violation--type");
 
-    $(".select__one--violation--type:first-child").addClass("background-gray")
-
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramViolation = urlParams.get('violation_type_id')
+    if(paramViolation === null){
+        $(".select__one--violation--type:first-child").addClass("background-gray")
+        $(".select__one--violation--type:first-child").find("img").show()
+    }
     selectOneViolation.on("click", function(){
         var value = $(this).find("p").html()
         var id = $(this).find("p").attr("data-id");

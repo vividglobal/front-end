@@ -3,7 +3,13 @@ $("document").ready(function(){
     var selectOneBrand = $(".select__one");
     var btnBrand = $(".list--company--brand");
 
-    $(".select__one:first-child").addClass("background-gray")
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const parambrands = urlParams.get('company_brand_id')
+    if(parambrands === null){
+        $(".select__one:first-child").addClass("background-gray")
+        $(".select__one:first-child").find("img").show()
+    }
 
     selectOneBrand.on("click", function(){
         var value = $(this).find("p").html()
