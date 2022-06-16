@@ -69,7 +69,8 @@ class Article extends Model
         'detection_result' => [
             'violation_code' => [],
             'violation_types' => [],
-            'date' => null
+            'status' => self::STATUS_NONE_VIOLATION,
+            'crawl_date' => null
         ],
         'supervisor_review' => self::DEFAULT_REVIEW_STATES,
         'operator_review' => self::DEFAULT_REVIEW_STATES,

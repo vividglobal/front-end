@@ -70,7 +70,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::controller(DummyController::class)->group(function () {
             Route::prefix('articles')->group(function () {
-                Route::get('/', 'articleIndex');
+                Route::get('/', 'dummyArticles');
+                // Route::get('/', 'articleIndex');
                 Route::post('/', 'articleCreate');
                 Route::delete('/{id}', 'articelDelete');
             });
