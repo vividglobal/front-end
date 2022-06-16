@@ -1,17 +1,17 @@
 $("document").ready(function(){
 
-    var selectCountry = $(".slc_general");
-    var selectOneCountry = $(".option_general");
-    var btnCountry = $(".ctr_general");
-    var searchCountry = $(".search_general");
+    var selectCountry = $(".slc_suspected");
+    var selectOneCountry = $(".option_suspected");
+    var btnCountry = $(".ctr_suspected");
+    var searchCountry = $(".search_suspected");
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const paramCountry = urlParams.get('country')
 
     if(paramCountry === null){
-        $(".option_general:first-child").addClass("background-gray")
-        $(".option_general:first-child").find("img").show()
+        $(".option_suspected:first-child").addClass("background-gray")
+        $(".option_suspected:first-child").find("img").show()
     }
 
     selectOneCountry.on("click", function(){
@@ -31,6 +31,7 @@ $("document").ready(function(){
 
     $(document).mouseup(function(e){
         //select country
+        var inputCountry = $("#div-search")
         if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0) {
                 selectCountry.hide()
             }else{

@@ -69,7 +69,8 @@ class Article extends Model
         'detection_result' => [
             'violation_code' => [],
             'violation_types' => [],
-            'date' => null
+            'status' => self::STATUS_NONE_VIOLATION,
+            'crawl_date' => null
         ],
         'supervisor_review' => self::DEFAULT_REVIEW_STATES,
         'operator_review' => self::DEFAULT_REVIEW_STATES,
@@ -96,16 +97,12 @@ class Article extends Model
         }
 
         if(isset($params['country'])) {
-            $query->where('country', $params['country']);
+            $query->where('country.id', $params['country']);
         }
 
         if(isset($params['company_brand_id'])) {
-            $GLOBALS['company_brand_id'] = $params['company_brand_id'];
-            $query->orWhere(function ($query) {
-                return $query
-                    ->where('company', '=', $GLOBALS['company_brand_id'])
-                    ->where('brand', '=', $GLOBALS['company_brand_id']);
-            });
+            $brandId = $params['company_brand_id'];
+            $query->where('brand.id', $brandId);
         }
 
         if(isset($params['violation_type_id'])) {

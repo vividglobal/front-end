@@ -33,6 +33,7 @@
     <script src="{{ asset('assets/js/btn_select/HTMLSelect.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/searchSelect.js') }}"></script>
     <script src="{{ asset('assets/js/datepicker/dateRanger.js') }}"></script>
+    <script src="{{ asset('assets/js/btn_select/countrySuspected.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectBrandAndCompany.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectCountry.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectViolationType.js') }}"></script>
@@ -40,12 +41,10 @@
     <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
     <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
     <script src="{{ asset('assets/js/common/loading.js') }}"></script>
-
 </head>
 <body>
     <div id="app">
-        @include('layouts/header')
-        <main class="py-4">
+        <main class="py-1">
             @yield('content')
         </main>
     </div>

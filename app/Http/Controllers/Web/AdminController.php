@@ -8,15 +8,13 @@ use App\Models\Mongo\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\CreateRequest;
 use App\Http\Requests\Admin\UpdateRequest;
-use App\Http\Traits\ApiResponse;
 
 class AdminController extends Controller
 {
-    use ApiResponse;
 
     public function index()
     {
-        $admins = Admin::all();
+        $admins = Admin::paginate(10);
         return view('pages/admin-management/index', compact('admins'));
     }
 

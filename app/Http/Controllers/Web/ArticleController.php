@@ -6,16 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Article\CreateRequest;
 use App\Models\Mongo\Article;
+use App\Models\Mongo\ArticleLegalDocument;
 use App\Models\Mongo\ViolationCode;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Traits\ApiResponse;
 
 use App\Http\Services\UserRoleService;
 use App\Http\Services\ExportService;
 
 class ArticleController extends Controller
 {
-    use ApiResponse;
 
      // ============================================= //
      // ================== VIEW ==================== //
@@ -27,9 +26,6 @@ class ArticleController extends Controller
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
-        // echo "<pre>";
-        // print_r ($articles);
-        // echo "</pre>";
 
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportPendingArticles('auto_detection_violation', $articles);
@@ -53,7 +49,6 @@ class ArticleController extends Controller
     }
 
     public function getViolationList(Request $request) {
-
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
@@ -68,13 +63,8 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
 
-        if(isset($params["search"])){
-            $search = $params["search"];
-            $articles = $articleModel->getList($search);
-        }else{
-            $params['status'] = Article::STATUS_NONE_VIOLATION;
-            $articles = $articleModel->getList($params);
-        }
+        $params['status'] = Article::STATUS_NONE_VIOLATION;
+        $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] == true) {
             return  $this->exportNoneViolationArticles('non_violation_article', $articles);
@@ -144,7 +134,6 @@ class ArticleController extends Controller
                 $row[] = $violationCodeNames;
                 $row[] = $violationTypeNames;
             }
-
             $exportData[] = $row;
         }
 
@@ -396,5 +385,22 @@ class ArticleController extends Controller
             return $this->responseSuccess([], "Switch progression status successfully");
         }
         return $this->responseFail([], "Article not found, reset article failed");
+    }
+
+    public function documents(Request $request, $id) {
+        $article = Article::find($id);
+        if($article) {
+            $documents = ArticleLegalDocument::where('article_id', $id)->get();
+            $articleDocs = [];
+            foreach ($documents as $document) {
+                $articleDocs[] = [
+                    'id' => $document->_id,
+                    'name' => $document->name,
+                    'url' => $document->url,
+                ];
+            }
+            return $this->responseSuccess($articleDocs, "Get list documents successfully");
+        }
+        return $this->responseFail([], "Article not found");
     }
 }

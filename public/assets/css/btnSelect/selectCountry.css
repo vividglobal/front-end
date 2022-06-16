@@ -10,6 +10,14 @@
     display: none;
 }
 
+.slc_suspected{
+    left: -1% ;
+}
+
+.ctr_suspected{
+    margin-bottom: 20px;
+}
+
 .search--input--country {
     padding: 14px 0;
     display: flex;
@@ -56,7 +64,3 @@
     transform: translateY(-50%);
 }
 
-.select__one--country:first-child > img{
-    display: block;
-
-}

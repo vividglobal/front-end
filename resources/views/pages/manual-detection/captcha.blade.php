@@ -1,5 +1,4 @@
 <script>
-
     var getToken;
     function onSubmit(token) {
         getToken = token;
@@ -19,7 +18,7 @@
             data-callback="onSubmit"
             data-size="visible"></div>
         <div class="btn__check">
-            <button id='submit_captcha'>Check</button>
+            <button id='submit_captcha'>{{ __('Check') }}</button>
         </div>
     </form>
 <script>onload();</script>

@@ -310,7 +310,7 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>Confirmation</h1>
+                <h1>{{ __('Confirmation') }}</h1>
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
                 {{ __("Do you want to mark this article as Non-Violation") }}

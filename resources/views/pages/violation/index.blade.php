@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-
+@include('layouts/header',['check_url'=>["violation"]])
 <div class="list--search--select" >
-        <div class="list--title">
-            <p>Violation list</p>
-        </div>
-        @include('pages/components/query')
-        <!-- list Btn  -->
+    <div class="list--title">
+        <p>{{ __('Violation list') }}</p>
     </div>
-
+    @include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
+    <!-- list Btn  -->
+</div>
 <div class="container-table">
     <div class="container_row">
         <div class="col-left ">
@@ -112,12 +111,12 @@
                         <div class="scroll-table" >
                         <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -254,14 +253,13 @@
             </div>
         </div>
     </div>
-
     <div class="modalimg">
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1 >Nature One Dairy Australia</h1>
+                <h1 >{{ __('Nature One Dairy Australiar') }}</h1>
             </div>
             <div>
             <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -285,7 +283,6 @@
         </div>
     </div>
 </div>
-
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>

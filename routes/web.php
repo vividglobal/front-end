@@ -40,8 +40,7 @@ Route::controller(Web\AdminController::class)->group(function () {
             Route::post('/', 'create');
             Route::delete('/{id}', 'delete');
         });
-            Route::put('/{id}', 'update');
-
+        Route::put('/{id}', 'update')->middleware('auth');
     });
 
 });
@@ -55,6 +54,14 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/{id}/switch-progress-status', 'switchArticleProgressStatus');
             Route::put('/{id}/action-moderate', 'moderateArticle');
             Route::put('/{id}/action-reset', 'resetArticleToOriginState');
+            Route::get('/{id}/documents', 'documents');
+        });
+    });
+
+    Route::controller(Web\ArticleLegalDocumentController::class)->group(function () {
+        Route::prefix('articles-document')->group(function () {
+            Route::post('/upload', 'upload');
+            Route::delete('{id}', 'delete');
         });
     });
 
@@ -63,7 +70,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::controller(DummyController::class)->group(function () {
             Route::prefix('articles')->group(function () {
-                Route::get('/', 'articleIndex');
+                Route::get('/', 'dummyArticles');
+                // Route::get('/', 'articleIndex');
                 Route::post('/', 'articleCreate');
                 Route::delete('/{id}', 'articelDelete');
             });
