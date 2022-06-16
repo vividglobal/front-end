@@ -151,6 +151,4 @@ $(document).ready(function(){
             }
         });
     }
-
-
 })
