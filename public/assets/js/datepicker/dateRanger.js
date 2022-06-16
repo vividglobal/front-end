@@ -31,6 +31,10 @@ $("document").ready(function(){
         $(".list--showing").find("select").val(parseInt(perpage))
     }
 
+    if(paramSearch !== null){
+        $(".search").val(paramSearch)
+    }
+
     if(paramStart_date !== null && paramEnd_date !== null){
        let startDay = paramStart_date.replace(/-/g,"/")
        let endDay = paramEnd_date.replace(/-/g,"/")
@@ -72,12 +76,11 @@ $("document").ready(function(){
                 url += `${data[item]}`
             }
         })
-        if(data.search !== "" || data.brandCompany !== "" || data.country !== "" || data.violationType !== "" || data.startDate !== "" || data.endDate!== ""){
-            //if searchCurrent !== search new => apply
+        // if(data.search !== "" || data.brandCompany !== "" || data.country !== "" || data.violationType !== "" || data.startDate !== "" || data.endDate!== ""){
             if(queryString !== url.replace('&','?')){
                 window.location.replace(`${window.location.pathname}${url.replace('&','?')}`)
             }
-        }
+        // }
     })
 
     //List showing
