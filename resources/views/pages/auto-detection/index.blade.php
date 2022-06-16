@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts/header',['check_url'=>["auto-detection"]])
 <div class="row-a">
     <div class="list--search--select" >
         <div class="list--title">

@@ -2,7 +2,6 @@
 @section('title',  config('app.name', 'Laravel'))
 @section('description', config('app.name', 'Laravel'))
 @section('content')
-@include('layouts/header',['check_url'=>["home"]])
 <link href="{{ asset('assets/css/home/style.css') }}" rel="stylesheet">
 
 <div class="vituar_validation ">

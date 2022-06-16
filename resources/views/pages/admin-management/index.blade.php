@@ -1,7 +1,6 @@
 
 @extends('layouts.app')
 @section('content')
-@include('layouts/header',['check_url'=>["admin"]])
 <link rel="stylesheet" href="../assets/css/adminManagement/style.css">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
 @include("modal/createAccount");

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts/header',['check_url'=>["user-manual"]])
 <link rel="stylesheet" href="../assets/css/userManual/style.css">
     <div class="list--search--select" >
         <div class="list--title">
