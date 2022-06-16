@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts/header',['check_url'=>["analysis"]])
 <div class="list--search--select" style="margin:0 199px">
     <div class="list--title">
         <p>{{ __('Analysis') }}</p>

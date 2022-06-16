@@ -1,13 +1,17 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 <div class="nav_container ">
-    <div class="rows" >
+    <?php
+    $arr = explode('?',$_SERVER['REQUEST_URI'],2);
+    ?>
+
+    <div class="rows nav-menu" >
         <div <?php if(Auth::user()!== null){ ?> class="col l-11 no-padding" <?php }else{ ?>class="col l-10" <?php } ?>>
         <ul class="rows no-gutters l-o-2 btn__header">
             <li class="nav--btn__after--login " >
                 <a class="nav-link" href="/">{{ __('Home') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(in_array('home', $check_url))
+                @if($arr[0] == "/")
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif >
                 </div>
@@ -15,7 +19,7 @@
             <li class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/auto-detection">{{ __('Auto-detect violations') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(in_array('auto-detection', $check_url))
+                @if($arr[0] == "/articles/auto-detection" )
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif >
                 </div>
@@ -26,22 +30,20 @@
                     <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                 </div>
                 <div class="nav--btnBorder__bottom"
-                @if(in_array('violation', $check_url))
-                    style="border-bottom: 1px solid #0C3C60;"
-                @elseif(in_array('non-violation', $check_url))
+                @if($arr[0] == "/articles/violation" || $arr[0] == "/articles/none-violation")
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif
                  >
                 </div>
                 <ul class="nav--dropdown">
-                    <li @if(in_array('violation', $check_url))
+                    <li @if($arr[0] == "/articles/violation")
                             style="background-color: #F4F4F4;"
                         @endif >
                         <a class="dropdown-item"href="/articles/violation">
                             {{ __('Violation list') }}
                         </a>
                     </li>
-                    <li @if(in_array('non-violation', $check_url))
+                    <li @if($arr[0] == "/articles/none-violation")
                             style="background-color: #F4F4F4;"
                         @endif>
                         <a class="dropdown-item" href="/articles/none-violation">
@@ -54,7 +56,7 @@
                 <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
                 <div class="nav--btnBorder__bottom"></div>
                 <div class="nav--btnBorder__bottom"
-                @if(in_array('manual-detection', $check_url))
+                @if($arr[0] == "/articles/manual-detection")
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif>
                 </div>
@@ -62,7 +64,7 @@
             <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/analysis">{{ __('Analysis') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(in_array('analysis', $check_url))
+                @if($arr[0] == "/analysis")
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif>
                 </div>
@@ -71,7 +73,7 @@
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/admins">{{ __('Admin Management') }}</a>
                     <div class="nav--btnBorder__bottom"
-                    @if(in_array('admin', $check_url))
+                    @if($arr[0] == "/admins")
                         style="border-bottom: 1px solid #0C3C60;"
                     @endif>
                     </div>
@@ -81,7 +83,7 @@
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/user-manual">{{ __('User manual') }}</a>
                     <div class="nav--btnBorder__bottom"
-                    @if(in_array('user-manual', $check_url))
+                    @if($arr[0] == "/user-manual")
                         style="border-bottom: 1px solid #0C3C60;"
                     @endif >
                     </div>

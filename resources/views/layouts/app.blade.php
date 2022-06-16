@@ -44,7 +44,8 @@
 </head>
 <body>
     <div id="app">
-        <main class="py-1">
+        @include('layouts/header')
+        <main class="py-4">
             @yield('content')
         </main>
     </div>

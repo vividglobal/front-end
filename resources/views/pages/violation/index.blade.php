@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@include('layouts/header',['check_url'=>["violation"]])
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>

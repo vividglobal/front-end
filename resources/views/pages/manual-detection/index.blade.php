@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@include('layouts/header',['check_url'=>["manual-detection"]])
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Label violations') }}</p>

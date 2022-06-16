@@ -16,10 +16,12 @@
 
 .nav--btn__before--login{
     margin-right: 3em;
+    cursor: pointer;
 }
 
 .nav--btn__after--login{
     margin-right: 2.1em;
+    cursor: pointer;
 }
 
 .nav--btn__after--login > div,
@@ -53,7 +55,6 @@
     font-weight: 420;
     font-size: 20px;
     line-height: 29px;
-
     list-style: none;
     color: #0C3C60;
 }
@@ -65,7 +66,7 @@
 .nav--dropdown{
     position: absolute;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
-    top: 85px;
+    top: 80px;
     width: 195px;
     background-color: #FFFFFF;
     display: none;
@@ -130,7 +131,7 @@ li:nth-child(3) img{
 
 .dropdown-login{
     position: absolute;
-    top: 85px;
+    top: 80px;
     width: 195px;
     right: 0px;
     background-color: #FFFFFF;
