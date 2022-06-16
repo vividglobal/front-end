@@ -1,4 +1,3 @@
-
 <div class="container-table">
     <div class="container_row">
         <div class="col-left">
@@ -9,19 +8,19 @@
                         <th style="width:12%" class="style-title">
                             <div class="th-title-right">
                                 <p>{{ __('Company') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table" data-date="company" src="../assets/image/ico-sort.png.png" alt="">
                             </div>
                         </th>
                         <th style="width:12%" class="style-title">
                             <div class="th-title-right">
                                 <p>{{ __('Country') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table" data-date="country" src="../assets/image/ico-sort.png.png" alt="">
                             </div>
                         </th>
                         <th style="width:12%" class="style-title">
                             <div class="th-title-right">
                                 <p>{{ __('Brand') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table" data-date="brandName" src="../assets/image/ico-sort.png.png" alt="">
                             </div>
                         </th>
                         <th style="width:15%" class="style-title">{{ __('Caption') }}</th>
@@ -53,13 +52,13 @@
                         <div class="track">
                             <div class=" heading th-title-right">
                                 <p>{{ __('Published date') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table" data-date="datePost" src="../assets/image/ico-sort.png.png" alt="">
                             </div>
                         </div>
                         <div class="track">
                             <div class=" heading th-title-right">
                                 <p>{{ __('Crawl date') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table" data-date="supervisory3Date" src="../assets/image/ico-sort.png.png" alt="">
                             </div>
                         </div>
                         <div class="track">
@@ -70,7 +69,7 @@
                             <div class="heading-three-title">
                                 <div class="th-title-right-three">
                                     <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    <img class="ico-sort theard-table" data-date="statusVivid" src="../assets/image/ico-sort.png.png" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
@@ -80,12 +79,13 @@
                                 </div>
                             </div>
                         </div>
+                        @if(Auth::user())
                         <div class="track track-three">
                             <div class="heading-three">{{ __('Supervisor') }}</div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three">
                                     <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    <img class="ico-sort theard-table" data-date="statusSuper" src="../assets/image/ico-sort.png.png" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
@@ -100,7 +100,7 @@
                             <div class="heading-three-title">
                                 <div class="th-title-right-three">
                                     <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                    <img class="ico-sort theard-table" data-date="statusOper" data-date="" src="../assets/image/ico-sort.png.png" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
@@ -110,6 +110,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
@@ -159,6 +160,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @if(Auth::user())
                             {{-- ==================================================== --}}
                             {{-- ================= SUPERVISOR COLUMN ================ --}}
                             {{-- ==================================================== --}}
@@ -276,6 +278,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -299,19 +302,7 @@
         </div>
     </div>
 
-    <div class="modalimg open-modal" id="imageModal">
-        <div class="modal-content">
-            <div class="div-close">
-                <span class="close">&times;</span>
-            </div>
-            <div class="head-modal">
-                <h1></h1>
-            </div>
-            <div>
-                <img class="modal-img">
-            </div>
-        </div>
-    </div>
+    
 
     <div class="modal-title open-modal" id="confirmActionModal">
         <div class="modal-confirm-content">

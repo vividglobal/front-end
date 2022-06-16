@@ -93,8 +93,9 @@
                             </div>
                         </div>
                         <div class="track track-one">
-                            <div class="heading-three-viola">{{ __('VIVID') }}</div>
+                            <div class="heading-three-viola">{{ __('Violation type') }}</div>
                         </div>
+                        @auth
                         <div class="track">
                             <div class=" heading th-title-right">
                                 <p>{{ __('Status progress') }}</p>
@@ -103,6 +104,7 @@
                         <div class="track">
                             <div class="heading">{{ __('Switch status') }}</div>
                         </div>
+                        @endauth
                     </div>
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
@@ -130,7 +132,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <img class="td-link" src="../assets/image/lega1.png" alt="#">
+                                    <img class="td-link" id="upload-file" src="../assets/image/lega1.png" data-id={{$article->_id }} alt="#">
                                 </div>
                             </div>
                             <div class="track track-three track-viola">
@@ -147,9 +149,9 @@
                                     </div>
                                 </div>
                             </div>
+                            @auth
                             <div class="track">
                                 <div class="entry">
-
                                     <select class="list--select-right" id="cars">
                                         <option value="Select">Not started</option>
                                         <option value="Processing">Processing</option>
@@ -162,6 +164,7 @@
                                     <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
+                            @endauth
                         </div>
                     @endforeach
                 </div>
@@ -171,30 +174,83 @@
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
+    {{$articles}}
 
-    <div class="modal-title">
+    <div class="modal-title open-modal" id="captionModal">
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1 >Nature One Dairy Australia</h1>
+                <h1></h1>
             </div>
-            <p class="title-modal">
-                ⭐ [KẾT QUẢ MINIGAME] HÀNH TRANG SỨC KHỎE CHO BÉ - QUÀ XỊN TRAO TAY MẸ ⭐<br><br>Chúc mừng 10 bố mẹ đã có câu trả lời đúng và đẩy đủ trong minigame và nhận được phần quà là 01 sản phẩm NAN Optipro 4 - 900G (trị giá 375,000 VND)<br><br>Nestle Mom&amp;Me xin bật mí “hành trang sức khỏe” ẩn giấu trong ô chữ lần này chính là NAN. <br><br>Bật mí với bố mẹ: Hai ly NAN Optipro 4 mỗi ngày, với bộ đôi HMO và đạm độc quyền Optipro, sẽ giúp bé hấp thụ các dưỡng chất và tiêu hóa tốt hơn, đồng thời tăng cường sức đề kháng để bé dễ dàng chống lại được các tác nhân gây bệnh trong môi trường, giảm ốm vặt. Từ đó, bé yêu được chuẩn bị một nền tảng sức khỏe vững chắc để luôn sẵn sàng trở lại trường bất kỳ lúc nào!
-            </p>
+            <p class="title-modal"></p>
         </div>
     </div>
 
-    <div class="modal-confirm-title">
-        <div class="modal-confirm-content">
-            <div class="head-confirm">
-                <h1>Remove user</h1>
-                <p>Are you sure to remove this user?</p>
+    <div class="modalimg open-modal" id="imageModal">
+        <div class="modal-content">
+            <div class="div-close">
+                <span class="close">&times;</span>
+            </div>
+            <div class="head-modal">
+                <h1></h1>
+            </div>
+            <div>
+                <img class="modal-img">
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="modal-upload-file" id="uploadModal">
+        <div class="modal-content">
+            <div class="div-close">
+                <span class="close">&times;</span>
+            </div>
+            <div class="head-modal">
+                <h1 >Legal documents</h1>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="box_list_file">
+
+                    <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file">
+                        <div class="content_file p-2">
+                            <div class=" d-flex justify-content-between align-items-center">
+                                <div class="item-one-file">
+                                    <div class="div-file">
+                                        <img src="../assets/image/icon-pdf.png" alt="">
+                                        <p>05.10.pdf</p>
+                                    </div>
+                                    <div class="div-delete">
+                                        <span class="delete-file">&times;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file">
+                        <div class="content_file p-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="suspected__file__area">
+                                    <div class='file-input'>
+                                        <input type='file' accept="application/pdf">
+                                        <span class='button'><img class="img-upfile" type="file" src="../assets/image/input-file.png"  alt=""></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="head-confirm-btn">
-                <button class="confirm-btn btn-cancel close">Cancel</button>
-                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+                <button class="confirm-btn-footer btn-cancel close">Cancel</button>
+                <button class="confirm-btn-footer btn-yes" id="upload-save-file">Save change</button>
             </div>
         </div>
     </div>
@@ -208,7 +264,23 @@
                 <h1 >Nature One Dairy Australia</h1>
             </div>
             <div>
-                <img class="modal-img" src="../assets/image/img1.png" alt="">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                Select image to upload:
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Upload Image" name="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-confirm-title">
+        <div class="modal-confirm-content">
+            <div class="head-confirm">
+                <h1>Remove user</h1>
+                <p>Are you sure to remove this user?</p>
+            </div>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
             </div>
         </div>
     </div>

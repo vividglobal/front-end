@@ -50,7 +50,9 @@
                                 </div>
                             </th>
                             <th  rowspan="2"class="style-title">Link</th>
+                            @auth
                             <th  rowspan="2"class="style-title">Switch status</th>
+                            @endauth
                         </tr>
                     </thead>
                     <tbody class="tbdata">
@@ -69,7 +71,9 @@
                             <td>{{date("d/m/Y",$article->published_date)}}</td>
                             <td>{{date("d/m/Y",$article->published_date)}}</td>
                             <td><a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a></td>
+                            @auth
                             <td><img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} ></td>
+                            @endauth
                         </tr>
                     @endforeach
                     </tbody>
@@ -81,19 +85,17 @@
             {{ $articles->links('layouts.my-paginate') }}
         </div>
 
-            <div class="modal-title">
-                <div class="modal-content">
-                    <div class="div-close">
-                        <span class="close">&times;</span>
-                    </div>
-                    <div class="head-modal">
-                        <h1 >Nature One Dairy Australia</h1>
-                    </div>
-                    <p class="title-modal">
-                        ⭐ [KẾT QUẢ MINIGAME] HÀNH TRANG SỨC KHỎE CHO BÉ - QUÀ XỊN TRAO TAY MẸ ⭐<br><br>Chúc mừng 10 bố mẹ đã có câu trả lời đúng và đẩy đủ trong minigame và nhận được phần quà là 01 sản phẩm NAN Optipro 4 - 900G (trị giá 375,000 VND)<br><br>Nestle Mom&amp;Me xin bật mí “hành trang sức khỏe” ẩn giấu trong ô chữ lần này chính là NAN. <br><br>Bật mí với bố mẹ: Hai ly NAN Optipro 4 mỗi ngày, với bộ đôi HMO và đạm độc quyền Optipro, sẽ giúp bé hấp thụ các dưỡng chất và tiêu hóa tốt hơn, đồng thời tăng cường sức đề kháng để bé dễ dàng chống lại được các tác nhân gây bệnh trong môi trường, giảm ốm vặt. Từ đó, bé yêu được chuẩn bị một nền tảng sức khỏe vững chắc để luôn sẵn sàng trở lại trường bất kỳ lúc nào!
-                    </p>
+        <div class="modal-title open-modal" id="captionModal">
+            <div class="modal-content">
+                <div class="div-close">
+                    <span class="close">&times;</span>
                 </div>
+                <div class="head-modal">
+                    <h1></h1>
+                </div>
+                <p class="title-modal"></p>
             </div>
+        </div>
 
             <div class="modal-confirm-title">
                 <div class="modal-confirm-content">
@@ -108,16 +110,16 @@
                 </div>
             </div>
 
-            <div class="modalimg">
+            <div class="modalimg open-modal" id="imageModal">
                 <div class="modal-content">
                     <div class="div-close">
                         <span class="close">&times;</span>
                     </div>
                     <div class="head-modal">
-                        <h1 >Nature One Dairy Australia</h1>
+                        <h1></h1>
                     </div>
                     <div>
-                        <img class="modal-img" src="../assets/image/img1.png" alt="">
+                        <img class="modal-img">
                     </div>
                 </div>
             </div>
