@@ -116,6 +116,11 @@ class Article extends Model
                 'detection_result.violation_types.id' => [ '$eq' => $params['violation_type_id'] ]
             ]);
         }
+
+        if(isset($params['sort_by']) && isset($params['sort_value'])) {
+            $query->orderBy($params['sort_value'],$params['sort_by'])->get();
+        }
+
         return $query;
     }
 

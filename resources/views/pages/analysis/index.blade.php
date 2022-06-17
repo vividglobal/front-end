@@ -56,7 +56,7 @@
             <p class="title__base--violation">{{ __('Violation based on brands') }}</p>
         </div>
     </div>
-    <table>
+    <table class="table_analysis">
         <tr>
             <th>{{ __('No') }}</th>
             <th>{{ __('Brand/Company') }}</th>
@@ -84,7 +84,7 @@
                 <p class="title__base--violation">Violation based on code</p>
             </div>
         </div>
-        <table>
+        <table class="table_analysis">
             <tr>
                 <th>No</th>
                 <th style="width: 19.2%;">Code article</th>

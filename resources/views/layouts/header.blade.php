@@ -4,7 +4,6 @@
     <?php
     $arr = explode('?',$_SERVER['REQUEST_URI'],2);
     ?>
-
     <div class="rows nav-menu" >
         <div <?php if(Auth::user()!== null){ ?> class="col l-11 no-padding" <?php }else{ ?>class="col l-10" <?php } ?>>
         <ul class="rows no-gutters l-o-2 btn__header">
@@ -35,7 +34,11 @@
                 @endif
                  >
                 </div>
-                <ul class="nav--dropdown">
+                <ul class="nav--dropdown"
+                    @if(@Auth::user() == "")
+                        style="top: 100px"
+                       @endif
+                >
                     <li @if($arr[0] == "/articles/violation")
                             style="background-color: #F4F4F4;"
                         @endif >
@@ -43,11 +46,11 @@
                             {{ __('Violation list') }}
                         </a>
                     </li>
-                    <li @if($arr[0] == "/articles/none-violation")
+                    <li @if($arr[0] == "/articles/non-violation")
                             style="background-color: #F4F4F4;"
                         @endif>
-                        <a class="dropdown-item" href="/articles/none-violation">
-                            {{ __('None-violation list') }}
+                        <a class="dropdown-item" href="/articles/non-violation">
+                            {{ __('Non-violation list') }}
                         </a>
                     </li>
                 </ul>

@@ -16,7 +16,7 @@ $("document").ready(function(){
         startDate = picker.startDate.format('DD-MM-YYYY');
         endDate = picker.endDate.format('DD-MM-YYYY');
     });
-
+    // VALUE PARAMS
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const perpage = urlParams.get('perpage')
@@ -29,10 +29,6 @@ $("document").ready(function(){
 
     if(perpage !== null){
         $(".list--showing").find("select").val(parseInt(perpage))
-    }
-
-    if(paramSearch !== null){
-        $(".search").val(paramSearch)
     }
 
     if(paramStart_date !== null && paramEnd_date !== null){
@@ -67,7 +63,8 @@ $("document").ready(function(){
          $(".select--violation--type").find(`#${paramViolation}`).find("img").show()
          $(".select--violation--type").find(`#${paramViolation}`).addClass("background-gray")
      }
-
+    //  ----------------------------
+    //  APPLY BUTTON
     $(".btn__apply").on("click",function(){
         data = getParams()
         let url= "";
@@ -83,7 +80,7 @@ $("document").ready(function(){
         // }
     })
 
-    //List showing
+    //LIST SHOWING
     $(".list--showing").find("select").on("change",function(){
         data = getParams()
         let url= "";
@@ -95,6 +92,7 @@ $("document").ready(function(){
         window.location.replace(`${window.location.pathname}${url.replace('&','?')}`)
     })
 
+    //GET VALUE
     function getParams (){
         let search = $(".search").val() ? $(".search").val() : "";
         let brandCompany = $(".list--company--brand").find("> p").attr("data-id");
@@ -111,7 +109,8 @@ $("document").ready(function(){
         }
         return new keywordSearch(search,brandCompany,country,violationType,start__Date,end__Date,perpage)
     }
-    // ----------------------------
+
+    // --------------GET PARAMETERS--------------
     function keywordSearch(search,brandCompany,country,violationType,startDate,endDate,perpage){
         this.search = search !== "" && search !== null ? `&keyword=${search}` : ""
         this.brandCompany = brandCompany && brandCompany != 0 ? `&company_brand_id=${brandCompany}` : "";

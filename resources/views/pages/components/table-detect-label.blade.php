@@ -1,3 +1,6 @@
+<?php
+    $arr = explode('?',$_SERVER['REQUEST_URI'],2);
+?>
 <div class="container-table">
     <div class="container_row">
         <div class="col-left">
@@ -123,7 +126,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -285,7 +288,7 @@
             </table>
         </div>
     </div>
-
+    @include('noSearchResult.index')
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
@@ -302,7 +305,7 @@
         </div>
     </div>
 
-    
+
 
     <div class="modal-title open-modal" id="confirmActionModal">
         <div class="modal-confirm-content">
