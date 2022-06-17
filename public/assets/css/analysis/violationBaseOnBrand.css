@@ -51,15 +51,11 @@
 .Base_violation--brand table tr th:nth-child(1){
     width: 8.5%;
 }
+
 .Base_violation--brand table tr th:nth-child(2){
     width: 39%;
     text-align: left;
     padding-left: 20px;
-}
-
-.Base_violation--brand table tr th img{
-    position: absolute;
-    margin-left: 8.5px;
 }
 
 .Base_violation--brand table tr td{
@@ -84,4 +80,8 @@
     font-size: 13px;
     line-height: 136.5%;
     color: #6F6F6F;
+}
+
+.flex-space_beetween{
+    justify-content:space-between !important;
 }

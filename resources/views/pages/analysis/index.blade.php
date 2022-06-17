@@ -60,8 +60,20 @@
         <tr>
             <th>{{ __('No') }}</th>
             <th>{{ __('Brand/Company') }}</th>
-            <th>{{ __('Articles') }} <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
-            <th>{{ __('Violations') }} <img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
+            <th>
+                <div class="th-title-right flex-space_beetween">
+                    <p>{{ __('Articles') }}</p>
+                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                </div>
+                </th>
+            <th>
+                <div class="th-title-right flex-space_beetween">
+                    <p>{{ __('Violations') }}</p>
+                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                </div>
+            </th>
             <th>{{ __('Percentage') }}</th>
         </tr>
         @foreach($brandData as $key => $brand)
@@ -87,9 +99,19 @@
         <table class="table_analysis">
             <tr>
                 <th>No</th>
-                <th style="width: 19.2%;">Code article</th>
-                <th style="width: 53.5%;">Violation type</th>
-                <th style="width: 14.8%;">Articles<img src="{{ asset('assets/image/sort.svg') }}" alt=""></th>
+                <th style="width: 19.2%;">
+                {{ __('Code article') }}
+                </th>
+                <th style="width: 53.5%;">
+                {{ __('Violation type') }}
+                </th>
+                <th style="width: 14.8%;">
+                <div class="th-title-right flex-space_beetween">
+                    <p>{{ __('Articles') }}</p>
+                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                </div>
+                </th>
             </tr>
             @foreach($codeData as $key => $code)
             <tr>

@@ -14,7 +14,7 @@ class Article extends Model
 
     const PER_PAGE = 10;
     const SORT_BY_FIELD = 'detection_result.date';
-    const SORT_VALUE = -1;
+    const SORT_VALUE = 'DESC';
 
     const CREATE_AT = 'created';
     const UPDATED_AT = 'modified';
@@ -76,8 +76,13 @@ class Article extends Model
         'operator_review' => self::DEFAULT_REVIEW_STATES,
     ];
 
-    public function aggregateQuery($params) {
-        $matchConditions = [];
+    public function documents()
+    {
+        return $this->embedsMany(ArticleLegalDocument::class, '_id', 'article_id');
+    }
+
+    private function generalQuery($params) {
+        $query = $this->newQuery();
 
         if(isset($params['keyword'])) {
             $query->where('country.name', 'LIKE' ,'%' .$params['keyword']. '%')
@@ -86,153 +91,65 @@ class Article extends Model
         }
 
         if(isset($params['status'])) {
-            $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
+            $query->where('status', $params['status']);
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date']);
             $endDate = strtotime($params['end_date']);
-            $matchConditions[] = [ '$gte' => [ '$detection_result.crawl_date',  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$detection_result.crawl_date',  $endDate ] ];
+            $query->whereRaw([
+                'detection_result.date' => ['$gte' => $startDate, '$lte' => $endDate],
+            ]);
         }
 
         if(isset($params['country'])) {
-            $matchConditions[] = [ '$eq' => [ '$country.id',  $params['country'] ] ];
+            $query->where('country.id', $params['country']);
         }
 
         if(isset($params['company_brand_id'])) {
             $brandId = $params['company_brand_id'];
-            $matchConditions[] = [ '$or' => [
-                [ '$eq'=> [ '$brand.id',  $brandId ] ],
-                [ '$eq'=> [ '$company.id', $brandId ] ]
-            ]];
+            $query->where('brand.id', $brandId);
         }
-
-        $aggregateQuery = [
-            [ '$match'=>
-                [
-                    '$expr'=> [ '$and'=> $matchConditions ]
-                ]
-            ]
-        ];
-
-        $aggregateQuery[] = [
-            '$lookup' => [
-                'as' => 'documents',
-                'from' => 'article_legal_documents',
-                'let' => [ 'article_id'=> ['$toString'=> '$_id'] ],
-                'pipeline' => [
-                    [ '$match' =>
-                        [
-                            '$expr'=> [ '$and'=> [ '$eq' => [ '$article_id', '$$article_id' ] ] ]
-                        ]
-                    ],
-                    ['$project' => ['_id' => 1, 'name' => 1, 'url' => 1]]
-                ]
-            ]
-        ];
-
-        $aggregateQuery[] = [
-            '$addFields' => [
-                'company_name'      => '$company.name',
-                'brand_name'        => '$brand.name',
-                'country_name'      => '$country.name',
-                'crawl_date'        => '$detection_result.date',
-                'bot_status'        => '$detection_result.status',
-                'supervisor_status' => '$supervisor_review.status',
-                'operator_status'   => '$operator_review.status',
-                'has_document'      => [
-                    '$cond' => [
-                        'if' =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
-                        'then' => true,
-                        'else' => false
-                    ]
-                ]
-            ]
-        ];
 
         if(isset($params['violation_type_id'])) {
-            // $matchConditions[] = [ '$eq' => [ '$detection_result.violation_types.id',  $params['violation_type_id'] ] ];
-            $aggregateQuery[] = [
-                '$match' =>
-                [
-                    'detection_result.violation_types' => [
-                        '$elemMatch' => [
-                            'id' => $params['violation_type_id']
-                        ]
-                    ]
-                ]
-            ];
+            $query->whereRaw([
+                'detection_result.violation_types.id' => [ '$eq' => $params['violation_type_id'] ]
+            ]);
         }
 
-        if(isset($params['keyword'])) {
-            $pattern = preg_quote($params['keyword'], "/");
-            $keywordRegex = [ '$regex' => $pattern ];
-            $aggregateQuery[] = [
-                '$match' =>
-                [
-                    '$or'=> [
-                        [ 'company_name' => $keywordRegex ],
-                        [ 'brand_name' => $keywordRegex ],
-                        [ 'country_name' => $keywordRegex ],
-                        [ 'caption' => $keywordRegex ],
-                        [ 'violation_types.id' => $keywordRegex ],
-                    ]
-                ]
-            ];
-        }
-
-        return $aggregateQuery;
-    }
-
-    public function aggregateCount($params) {
-        $aggregateQuery = $this->aggregateQuery($params);
-        $aggregateQuery[] = [
-            '$project' => ['_id' => 1] 
-        ];
-        $collection = self::raw(function ($collection) use ($aggregateQuery) {
-            return $collection->aggregate($aggregateQuery);
-        });
-        return count($collection);
+        return $query;
     }
 
     public function getList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
-        // Custom query
-        $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
-        $total = $this->aggregateCount($params);
+        // DB::connection( 'mongodb' )->enableQueryLog();
+        $articles = $this->generalQuery($params);
 
-        $aggregateQuery = $this->aggregateQuery($params);
-
-        if(isset($params['perpage'])) {
-            $perpage = intval($params['perpage']);
+        if(isset($params['keyword'])) {
+            $keyword = $params['keyword'];
+            // TODO
         }
 
-        $aggregateQuery[] = ['$skip' => ($page - 1) * $perpage];
-        $aggregateQuery[] = ['$limit' => $perpage];
+        if(isset($params['detection_type'])) {
+            $articles->where('detection_type', $params['detection_type']);
+        }
+
+        if(isset($params['perpage'])) {
+            $perpage = $params['perpage'];
+        }
 
         if(isset($params['sort_by'])) {
             $sortField = $params['sort_by'];
         }
-
         if(isset($params['sort_value'])) {
-            $sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
+            $sortValue = $params['sort_value'];
         }
-
-        $aggregateQuery[] = [
-            '$sort' => [$sortField => $sortValue] 
-        ];
-
-        $collection = self::raw(function ($collection) use ($aggregateQuery) {
-            return $collection->aggregate($aggregateQuery);
-        });
-
-        return new \Illuminate\Pagination\LengthAwarePaginator($collection, $total, $perpage, $page, [
-            'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
-        ]);
+        $list = $articles->orderBy($sortField, strtolower($sortValue))->paginate(intval($perpage));
+        return $list;
     }
 
     public function getListCount($params) {
-        $count = $this->aggregateCount($params);
+        $articles = $this->generalQuery($params);
+        $count = $articles->count();
         return $count;
     }
 }
