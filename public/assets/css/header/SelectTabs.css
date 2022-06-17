@@ -42,6 +42,15 @@
     cursor: pointer;
 }
 
+.btn__change--password,
+.input--modal img,
+#edit__profile p,
+.delete__profile,
+.edit__profile img,
+.create__profile,
+.list--showing select{
+    cursor: pointer;
+}
 
 .list--showing select,
 #daterange input,
@@ -74,11 +83,17 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    cursor: pointer;
 }
 
 .list--select--option{
     display: flex;
     align-items: center;
+}
+
+.padding_btn_analysis{
+    justify-content:flex-end;
+    padding-right: 50px;
 }
 
 .list--select__left{

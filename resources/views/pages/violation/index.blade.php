@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -172,7 +173,6 @@
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
-    {{$articles}}
 
     <div class="modal-title open-modal" id="captionModal">
         <div class="modal-content">

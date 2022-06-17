@@ -161,7 +161,7 @@
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, .4);
   }
-  
+
   /* Modal img */
 .modalimg{
     display: none;
@@ -307,7 +307,6 @@
     z-index: 1;
   }
 
-  .tracks,
   .scroller {
     display: flex;
     overflow-y: hidden;
@@ -323,6 +322,7 @@
   .tracks {
     overflow: auto;
     scroll-snap-type: x mandatory;
+    overflow-y: hidden;
   }
 
   .scenes::-webkit-scrollbar,
@@ -460,4 +460,12 @@
   line-height: 136.5%;
   color: #FFFFFF;
   background: #0C3C60;
+}
+
+.search__result__table p{
+    text-align: center;
+    font-size: 70px;
+    padding: 50px;
+    font-family: 'Brandon Grotesque';
+    color: #C7C7C7;
 }
