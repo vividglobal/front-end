@@ -581,6 +581,8 @@ background: #0C3C60;
 .div-file{
   width: 90%;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 .div-file img{
   width: 34px;
@@ -616,4 +618,24 @@ background: #0C3C60;
   border-radius: 5px;
   border: 1px solid transparent;
   color: white;
+}
+.loading-icon{
+  width: 100%;
+  text-align: center;
+}
+
+.item-one-file .div-file a{
+  font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #000000;
+  text-decoration: none;
+  text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.btn-uploadfile{
+  display: none;
 }

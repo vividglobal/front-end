@@ -123,7 +123,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
