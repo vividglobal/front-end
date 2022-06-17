@@ -1,20 +1,9 @@
-<!-- <div class="row-pagination pagination">
-        <a href="#"><img src="img/first.png" alt="#"></a>
-        <a class="selected" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><img src="img/last.png" alt="#"></a>
-    </div> -->
-
-
 @if ($paginator->hasPages())
     <nav>
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
+        
                 <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
                     <span aria-hidden="true">&lt;</span>
                 </li>

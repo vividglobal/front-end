@@ -9,6 +9,7 @@
     @include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
     <!-- list Btn  -->
 </div>
+
 <div class="container-table">
     <div class="container_row">
         <div class="col-left ">
@@ -117,12 +118,12 @@
                         <div class="scroll-table" >
                         <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d-m-Y",$article->published_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -137,7 +138,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <img class="td-link" id="upload-file" src="../assets/image/lega1.png" data-id={{$article->_id }} alt="#">
+                                    <img class="td-link upload-file" src="../assets/image/lega1.png" data-id={{$article->_id }} alt="#">
                                 </div>
                             </div>
                             <div class="track track-three track-viola">
@@ -179,6 +180,7 @@
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
+    
 
     <div class="modal-title open-modal" id="captionModal">
         <div class="modal-content">
@@ -206,12 +208,6 @@
         </div>
     </div>
 
-
-
-
-
-
-
     <div class="modal-upload-file" id="uploadModal">
         <div class="modal-content">
             <div class="div-close">
@@ -221,29 +217,15 @@
                 <h1 >Legal documents</h1>
             </div>
             <div class="modal-body">
-                <div class="row" id="box_list_file">
-
-                    <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file">
-                        <div class="content_file p-2">
-                            <div class=" d-flex justify-content-between align-items-center">
-                                <div class="item-one-file">
-                                    <div class="div-file">
-                                        <img src="../assets/image/icon-pdf.png" alt="">
-                                        <p>05.10.pdf</p>
-                                    </div>
-                                    <div class="div-delete">
-                                        <span class="delete-file">&times;</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file">
+            <div class="loading-icon"><img class="td-img clickimg" src="../assets/image/loading.gif" alt=""></div>
+                <div class="row " id="box_list_file">
+                
+                <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="suspected__file__area">
                                     <div class='file-input'>
-                                        <input type='file' accept="application/pdf">
+                                        <input type='file' id="upload" accept="application/pdf">
                                         <span class='button'><img class="img-upfile" type="file" src="../assets/image/input-file.png"  alt=""></span>
                                     </div>
                                 </div>
@@ -258,6 +240,8 @@
             </div>
         </div>
     </div>
+
+    
     <div class="modalimg">
         <div class="modal-content">
             <div class="div-close">
