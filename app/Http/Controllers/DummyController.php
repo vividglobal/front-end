@@ -85,11 +85,12 @@ class DummyController extends Controller
                 'caption' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                 'image'   => $imgAndLink['img'],
                 'link'    => $imgAndLink['link'],
+                'published_date'   => mt_rand(strtotime('01-05-2022'), time()),
                 'detection_result' => [
                     'violation_code'  => $violation_code_arr,
                     'violation_types' => $violation_types_arr,
                     'status'          => $botStatus,
-                    'crawl_date'      => mt_rand(strtotime('01-05-2022'), time())
+                    'date'            => mt_rand(strtotime('01-05-2022'), time())
                 ],
                 'supervisor_review' => [
                     'violation_code'  => [],
