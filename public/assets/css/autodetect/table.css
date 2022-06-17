@@ -41,11 +41,8 @@
     display: none;
 }
 .ico-sort{
-    width: 16px;
-    height: 14px;
-    margin-left: 5px;
     cursor: pointer;
-
+    margin:0 5px;
 }
 .col-table{
     width: 100%;
@@ -145,6 +142,10 @@
     align-items: center;
     justify-content: center;
     border-right: 1px solid #EEEEEE;
+}
+
+.th-title-right p {
+    margin-right: 5px;
 }
 
 /* Modal Box */

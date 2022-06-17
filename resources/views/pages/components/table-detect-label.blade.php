@@ -9,21 +9,24 @@
                     <tr>
                         <th style="width:2%" class="style-title">{{ __('No') }}</th>
                         <th style="width:12%" class="style-title">
-                            <div class="th-title-right">
+                            <div class="th-title-right sort_company">
                                 <p>{{ __('Company') }}</p>
-                                <img class="ico-sort theard-table" data-date="company" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
                         <th style="width:12%" class="style-title">
-                            <div class="th-title-right">
+                            <div class="th-title-right sort_country">
                                 <p>{{ __('Country') }}</p>
-                                <img class="ico-sort theard-table" data-date="country" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
-                        <th style="width:12%" class="style-title">
+                        <th style="width:12%" class="style-title sort_brand">
                             <div class="th-title-right">
                                 <p>{{ __('Brand') }}</p>
-                                <img class="ico-sort theard-table" data-date="brandName" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
                         <th style="width:15%" class="style-title">{{ __('Caption') }}</th>
@@ -53,15 +56,17 @@
                 <div class="headers">
                     <div class="scroller syncscroll" name="myElements">
                         <div class="track">
-                            <div class=" heading th-title-right">
+                            <div class=" heading th-title-right sort_public_date">
                                 <p>{{ __('Published date') }}</p>
-                                <img class="ico-sort theard-table" data-date="datePost" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </div>
                         <div class="track">
-                            <div class=" heading th-title-right">
+                            <div class=" heading th-title-right sort_crawl_date">
                                 <p>{{ __('Crawl date') }}</p>
-                                <img class="ico-sort theard-table" data-date="supervisory3Date" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </div>
                         <div class="track">
@@ -70,9 +75,10 @@
                         <div class="track track-three">
                             <div class="heading-three">{{ __('VIVID') }}</div>
                             <div class="heading-three-title">
-                                <div class="th-title-right-three">
-                                    <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort theard-table" data-date="statusVivid" src="../assets/image/ico-sort.png.png" alt="">
+                                <div class="th-title-right-three sort_bot_status">
+                                    <p data-sort="bot_status" >{{ __('Status') }}</p>
+                                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
@@ -86,9 +92,10 @@
                         <div class="track track-three">
                             <div class="heading-three">{{ __('Supervisor') }}</div>
                             <div class="heading-three-title">
-                                <div class="th-title-right-three">
-                                    <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort theard-table" data-date="statusSuper" src="../assets/image/ico-sort.png.png" alt="">
+                                <div class="th-title-right-three sort_supervisor">
+                                    <p data-sort="supervisor_status">{{ __('Status') }}</p>
+                                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
@@ -101,9 +108,10 @@
                         <div class="track track-three">
                             <div class="heading-three">{{ __('Operator') }}</div>
                             <div class="heading-three-title">
-                                <div class="th-title-right-three">
-                                    <p>{{ __('Status') }}</p>
-                                    <img class="ico-sort theard-table" data-date="statusOper" data-date="" src="../assets/image/ico-sort.png.png" alt="">
+                                <div class="th-title-right-three sort_operator">
+                                    <p data-sort="operator_status">{{ __('Status') }}</p>
+                                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                                 </div>
                                 <div class="th-title-right-three">
                                     <p>{{ __('Code article') }}</p>
