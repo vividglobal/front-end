@@ -145,10 +145,6 @@ class CompanyBrand extends Model
             $this->sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
         }
 
-        $aggregateQuery[] = [
-            '$sort' => [$this->sortField => $this->sortValue] 
-        ];
-
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);
         });

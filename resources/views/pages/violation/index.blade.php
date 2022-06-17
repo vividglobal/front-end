@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -17,21 +18,24 @@
                     <tr>
                         <th style="width:2%" class="style-title">{{ __('No') }}</th>
                         <th style="width:12%" class="style-title">
-                            <div class="th-title-right">
+                            <div class="th-title-right sort_company">
                                 <p>{{ __('Company') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
                         <th style="width:12%" class="style-title">
-                            <div class="th-title-right">
+                            <div class="th-title-right sort_country">
                                 <p>{{ __('Country') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
                         <th style="width:12%" class="style-title">
-                            <div class="th-title-right">
+                            <div class="th-title-right sort_brand">
                                 <p>{{ __('Brand') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </th>
                         <th style="width:15%" class="style-title">{{ __('Caption') }}</th>
@@ -61,21 +65,24 @@
                 <div class="headers">
                     <div class="scroller syncscroll" name="myElements">
                         <div class="track">
-                            <div class=" heading th-title-right">
+                            <div class=" heading th-title-right sort_public_date">
                                 <p>{{ __('Published date') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </div>
                         <div class="track">
-                            <div class=" heading th-title-right">
+                            <div class=" heading th-title-right sort_crawl_date">
                                 <p>{{ __('Crawl date') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </div>
                         <div class="track">
-                            <div class=" heading th-title-right">
+                            <div class=" heading th-title-right sort_penalty_issued">
                                 <p>{{ __('Penalty issued') }}</p>
-                                <img class="ico-sort" src="../assets/image/ico-sort.png.png" alt="">
+                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
+                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
                             </div>
                         </div>
                         <div class="track">

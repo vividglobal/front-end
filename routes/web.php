@@ -20,7 +20,7 @@ Route::controller(Web\ArticleController::class)->group(function () {
         Route::get('/auto-detection', 'getAutoDetectionList');
         Route::get('/manual-detection', 'getManualDetectionList');
         Route::get('/violation', 'getViolationList');
-        Route::get('/none-violation', 'getNoneViolationList');
+        Route::get('/non-violation', 'getNoneViolationList');
     });
 });
 

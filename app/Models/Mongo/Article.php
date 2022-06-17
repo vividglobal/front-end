@@ -84,6 +84,12 @@ class Article extends Model
     private function generalQuery($params) {
         $query = $this->newQuery();
 
+        if(isset($params['keyword'])) {
+            $query->where('country.name', 'LIKE' ,'%' .$params['keyword']. '%')
+            ->orwhere('brand.name', 'LIKE' ,'%' .$params['keyword']. '%')
+            ->orwhere('caption', 'LIKE' ,'%' .$params['keyword']. '%');
+        }
+
         if(isset($params['status'])) {
             $query->where('status', $params['status']);
         }
@@ -110,6 +116,7 @@ class Article extends Model
                 'detection_result.violation_types.id' => [ '$eq' => $params['violation_type_id'] ]
             ]);
         }
+
         return $query;
     }
 

@@ -40,13 +40,6 @@
 .col-right-form::-webkit-scrollbar{
   display: none;
 }
-.ico-sort{
-  width: 16px;
-  height: 14px;
-  margin-left: 5px;
-  cursor: pointer;
-
-}
 .col-table{
   width: 100%;
   flex-direction: column;
