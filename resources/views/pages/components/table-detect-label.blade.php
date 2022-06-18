@@ -38,17 +38,17 @@
                         <tr class="tr-boder" data-id="{{ $article->_id }}">
                             <td>{{$key + 1}}</td>
                             <td>
-                                <a  <?php if(count($article->company) > 0){?> href={{__($arr[0]. "?company_brand_id=" .$article->company['id']) }} <?php } ?>>
+                                <a  <?php if(count($article->company) > 0){?> href={{__(getUrlName(). "?company_brand_id=" .$article->company['id']) }} <?php } ?>>
                                     {{ __($article->company['name'] ?? '' )}}
                                 </a>
                             </td>
                             <td>
-                                <a  <?php if(count($article->country) > 0){?> href={{$arr[0]. "?country=" .$article->country['id'] }} <?php } ?>>
+                                <a  <?php if(count($article->country) > 0){?> href={{getUrlName(). "?country=" .$article->country['id'] }} <?php } ?>>
                                 {{ __($article->country['name'] ?? '' )}}
                                 </a>
                             </td>
                             <td>
-                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{$arr[0]. "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
+                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
                                     {{ __($article->brand['name'] ?? '' )}}
                                 </a>
                             </td>
