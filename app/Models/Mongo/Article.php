@@ -208,7 +208,7 @@ class Article extends Model
         }
 
         if(isset($params['sort_value'])) {
-            $sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
+            $sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
 
         $aggregateQuery[] = [
