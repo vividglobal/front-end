@@ -182,11 +182,23 @@ $("document").ready(function(){
 
     // BUTTOM PAGINATE
     $(".pagination").find("li").click(function(){
-        replaceURL(paramSortBy,paramSortValue)
+        var value = parseInt($(this).find("a").text())
+        if(isNaN(value)){
+            const page = parseInt(urlParams.get('page'))
+            let btn = $(this).find("a").attr("id")
+            if(btn == "prev_page" && page !== 1){
+                replaceURL(paramSortBy,paramSortValue,page - 1)
+            }
+            if(btn == "next_page" ){
+                replaceURL(paramSortBy,paramSortValue,page + 1)
+            }
+        }else{
+            replaceURL(paramSortBy,paramSortValue,value)
+        }
     })
 
     //GET VALUE
-    function getParams (sortBy,sortValue){
+    function getParams (sortBy,sortValue,page){
         let search = $(".search").val() ? $(".search").val() : "";
         let brandCompany = $(".list--company--brand").find("> p").attr("data-id");
         let country = $(".list--country").find("> p").attr("data-id");
@@ -200,11 +212,11 @@ $("document").ready(function(){
             end__Date = arr[1].trim().replace(/[/]/g,"-")
             start__Date = arr[0].trim().replace(/[/]/g,"-")
         }
-        return new keywordSearch(search,brandCompany,country,violationType,start__Date,end__Date,perpage,sortBy,sortValue)
+        return new keywordSearch(search,brandCompany,country,violationType,start__Date,end__Date,perpage,sortBy,sortValue,page)
     }
 
     // --------------CHANGE PARAMETERS--------------
-    function keywordSearch(search,brandCompany,country,violationType,startDate,endDate,perpage,sortBy,sortValue){
+    function keywordSearch(search,brandCompany,country,violationType,startDate,endDate,perpage,sortBy,sortValue,page){
         this.search = search !== "" && search !== null ? `&keyword=${search}` : ""
         this.brandCompany = brandCompany && brandCompany != 0 ? `&company_brand_id=${brandCompany}` : "";
         this.country = country && country != 0 ? `&country=${country}` : "";
@@ -214,10 +226,11 @@ $("document").ready(function(){
         this.perpage = `&perpage=${perpage}`;
         this.sortBy = sortBy ? `&sort_by=${sortBy}` : "";
         this.sortValue = sortValue ? `&sort_value=${sortValue}` : "";
+        this.page = page ? `&page=${page}` : "";
     }
 
-    function replaceURL(sortBy,sortValue){
-        data = getParams(sortBy,sortValue)
+    function replaceURL(sortBy,sortValue,page){
+        data = getParams(sortBy,sortValue,page)
         let url= "";
         Object.keys(data).map(item=>{
             if(data[item] !== ""){

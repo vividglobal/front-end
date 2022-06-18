@@ -181,7 +181,7 @@ class Article extends Model
     public function aggregateCount($params) {
         $aggregateQuery = $this->aggregateQuery($params);
         $aggregateQuery[] = [
-            '$project' => ['_id' => 1] 
+            '$project' => ['_id' => 1]
         ];
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);
@@ -212,7 +212,7 @@ class Article extends Model
         }
 
         $aggregateQuery[] = [
-            '$sort' => [$sortField => $sortValue] 
+            '$sort' => [$sortField => $sortValue]
         ];
 
         $collection = self::raw(function ($collection) use ($aggregateQuery) {

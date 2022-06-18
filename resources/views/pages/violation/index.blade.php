@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
+<?php
+    $arr = explode('?',$_SERVER['REQUEST_URI'],2);
+?>
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -47,17 +49,17 @@
                         <tr class="tr-boder">
                             <td>{{$key + 1}}</td>
                             <td>
-                                <a  <?php if(count($article->company) > 0){?> href={{$arr[0]. "?company_brand_id=" .$article->company['id'] }} <?php } ?>>
+                                <a  <?php if(count($article->company) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->company['id'] }} <?php } ?>>
                                     {{ __($article->company['name'] ?? '' )}}
                                 </a>
                             </td>
                             <td>
-                                <a  <?php if(count($article->country) > 0){?> href={{$arr[0]. "?country=" .$article->country['id'] }} <?php } ?>>
+                                <a  <?php if(count($article->country) > 0){?> href={{getUrlName(). "?country=" .$article->country['id'] }} <?php } ?>>
                                 {{ __($article->country['name'] ?? '' )}}
                                 </a>
                             </td>
                             <td>
-                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{$arr[0]. "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
+                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
                                     {{ __($article->brand['name'] ?? '' )}}
                                 </a>
                             </td>
@@ -186,7 +188,7 @@
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
-    
+
 
     <div class="modal-title open-modal" id="captionModal">
         <div class="modal-content">
@@ -225,7 +227,7 @@
             <div class="modal-body">
             <div class="loading-icon"><img class="td-img clickimg" src="../assets/image/loading.gif" alt=""></div>
                 <div class="row " id="box_list_file">
-                
+
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
                             <div class="d-flex justify-content-between align-items-center">
@@ -247,7 +249,7 @@
         </div>
     </div>
 
-    
+
     <div class="modalimg">
         <div class="modal-content">
             <div class="div-close">

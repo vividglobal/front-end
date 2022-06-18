@@ -2,7 +2,7 @@
 <?php
     $arr = explode('?',$_SERVER['REQUEST_URI'],2);
 ?>
-<div class="list--select--option <?php if($arr[0] == "/analysis"){ ?>padding_btn_analysis <?php } ?> " >
+<div class="list--select--option <?php if(getUrlName() == "/analysis"){ ?>padding_btn_analysis <?php } ?> " >
     <div class="list--select__left" >
         @if(in_array('search', $list_filter) || $show_all_filter)
             <div class="list--search">
