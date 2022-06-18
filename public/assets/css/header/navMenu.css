@@ -153,4 +153,10 @@ li:nth-child(3) img{
     transition: 0.3s linear;
 }
 
+.activeHeader{
+    border-bottom: 1px solid #0C3C60;
+}
 
+.activeBackground{
+    background-color: #F4F4F4;
+}
