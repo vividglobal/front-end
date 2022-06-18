@@ -51,10 +51,8 @@ if (! function_exists('getExportUrl')) {
 }
 
 if (! function_exists('getUrlName')) {
-    function getUrlName() {
-        $currentUrl = $_SERVER['REQUEST_URI'];
-        $array = explode('?', $currentUrl);
-        return $array[0];
+    function getUrlName($key,$value) {
+        return url()->current() . "?$key=$value";
     }
 }
 

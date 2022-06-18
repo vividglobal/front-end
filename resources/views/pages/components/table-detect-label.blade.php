@@ -35,20 +35,26 @@
                         <tr class="tr-boder" data-id="{{ $article->_id }}">
                             <td>{{$key + 1}}</td>
                             <td>
-                                <a  <?php if(count($article->company) > 0){?> href={{__(getUrlName(). "?company_brand_id=" .$article->company['id']) }} <?php } ?>>
+                            @isset($article->company['name'])
+                                <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
                                     {{ __($article->company['name'] ?? '' )}}
                                 </a>
+                            @endisset
                             </td>
                             <td>
-                                <a  <?php if(count($article->country) > 0){?> href={{getUrlName(). "?country=" .$article->country['id'] }} <?php } ?>>
+                            @isset($article->country['name'])
+                                <a  href={{ getUrlName( "country" , $article->country['id']) }}>
                                 {{ __($article->country['name'] ?? '' )}}
                                 </a>
+                            @endisset
                             </td>
+                            @isset($article->brand['name'])
                             <td>
-                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
+                                <a class="brand-name"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
                                     {{ __($article->brand['name'] ?? '' )}}
                                 </a>
                             </td>
+                            @endisset
                             <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                             <td>
                                 <div class="wr-img">

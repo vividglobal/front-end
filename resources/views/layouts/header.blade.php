@@ -7,7 +7,7 @@
             <li class="nav--btn__after--login " >
                 <a class="nav-link" href="/">{{ __('Home') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/")
+                @if(request () -> is ('/'))
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif >
                 </div>
@@ -15,7 +15,7 @@
             <li class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/auto-detection">{{ __('Auto-detect violations') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/auto-detection" )
+                @if(request () -> is ("articles/auto-detection") )
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif >
                 </div>
@@ -26,7 +26,7 @@
                     <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                 </div>
                 <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/violation" || getUrlName() == "/articles/none-violation")
+                @if(request () -> is ("articles/violation") || request () -> is ("articles/non-violation"))
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif
                  >
@@ -36,14 +36,14 @@
                         style="top: 100px"
                        @endif
                 >
-                    <li @if(getUrlName() == "/articles/violation")
+                    <li @if(request () -> is ("articles/violation"))
                             style="background-color: #F4F4F4;"
                         @endif >
                         <a class="dropdown-item"href="/articles/violation">
                             {{ __('Violation list') }}
                         </a>
                     </li>
-                    <li @if(getUrlName() == "/articles/non-violation")
+                    <li @if(request () -> is ("articles/non-violation"))
                             style="background-color: #F4F4F4;"
                         @endif>
                         <a class="dropdown-item" href="/articles/non-violation">
@@ -56,7 +56,7 @@
                 <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
                 <div class="nav--btnBorder__bottom"></div>
                 <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/manual-detection")
+                @if(request () -> is ("articles/manual-detection"))
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif>
                 </div>
@@ -64,7 +64,7 @@
             <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/analysis">{{ __('Analysis') }}</a>
                 <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/analysis")
+                @if(request () -> is ("analysis"))
                     style="border-bottom: 1px solid #0C3C60;"
                 @endif>
                 </div>
@@ -73,7 +73,7 @@
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/admins">{{ __('Admin Management') }}</a>
                     <div class="nav--btnBorder__bottom"
-                    @if(getUrlName() == "/admins")
+                    @if(request () -> is ("admins"))
                         style="border-bottom: 1px solid #0C3C60;"
                     @endif>
                     </div>
@@ -83,7 +83,7 @@
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/user-manual">{{ __('User manual') }}</a>
                     <div class="nav--btnBorder__bottom"
-                    @if(getUrlName() == "/user-manual")
+                    @if(request () -> is ("user-manual"))
                         style="border-bottom: 1px solid #0C3C60;"
                     @endif >
                     </div>
