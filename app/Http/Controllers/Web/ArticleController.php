@@ -392,7 +392,6 @@ class ArticleController extends Controller
         $article = Article::find($id);
         if($article) {
             $documents = ArticleLegalDocument::where('article_id', $id)->get();
-          
             $articleDocs = [];
             foreach ($documents as $document) {
                 $articleDocs[] = [
