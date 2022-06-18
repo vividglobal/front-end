@@ -1,6 +1,3 @@
-<?php
-    $arr = explode('?',$_SERVER['REQUEST_URI'],2);
-?>
 <div class="container-table">
     <div class="container_row">
         <div class="col-left">
@@ -308,7 +305,6 @@
             </table>
         </div>
     </div>
-    @include('noSearchResult.index')
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
