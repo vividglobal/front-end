@@ -127,7 +127,7 @@ class ViolationCode extends Model
             $this->sortField = $params['sort_by'];
         }
         if(isset($params['sort_value'])) {
-            $this->sortValue = $params['sort_value'] === 'DESC' ? -1 : 1;
+            $this->sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
 
         $aggregateQuery[] = [
