@@ -59,9 +59,21 @@
                     @foreach ($articles as $key => $article)
                         <tr class="tr-boder">
                             <td>{{$key + 1}}</td>
-                            <td><a href="#">{{ __($article->company['name'] ?? '' )}}</a></td>
-                            <td><a href="#">{{ __($article->country['name'] ?? '' )}}</a></td>
-                            <td><a href="#">{{ __($article->brand['name'] ?? '' )}}</a></td>
+                            <td>
+                                <a  <?php if(count($article->company) > 0){?> href={{$arr[0]. "?company_brand_id=" .$article->company['id'] }} <?php } ?>>
+                                    {{ __($article->company['name'] ?? '' )}}
+                                </a>
+                            </td>
+                            <td>
+                                <a  <?php if(count($article->country) > 0){?> href={{$arr[0]. "?country=" .$article->country['id'] }} <?php } ?>>
+                                {{ __($article->country['name'] ?? '' )}}
+                                </a>
+                            </td>
+                            <td>
+                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{$arr[0]. "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
+                                    {{ __($article->brand['name'] ?? '' )}}
+                                </a>
+                            </td>
                             <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                             <td>
                                 <div class="wr-img">

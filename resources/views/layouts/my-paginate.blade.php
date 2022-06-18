@@ -1,15 +1,3 @@
-<!-- <div class="row-pagination pagination">
-        <a href="#"><img src="img/first.png" alt="#"></a>
-        <a class="selected" href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#"><img src="img/last.png" alt="#"></a>
-    </div> -->
-
-
 @if ($paginator->hasPages())
     <nav>
         <ul class="pagination">
@@ -37,8 +25,9 @@
                         @if ($page == $paginator->currentPage())
                             <li class="active" aria-current="page"><span>{{ $page }}</span></li>
                         @else
-                            <li><a href="{{ $url }}">{{ $page }}</a></li>
+                            <li><a href="{{ $url }}" >{{ $page }}</a></li>
                         @endif
+
                     @endforeach
                 @endif
             @endforeach
