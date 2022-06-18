@@ -6,5 +6,4 @@ $("document").ready(function(){
             var html = `<option value="${item}">${item}</option>`
             btnShowing.append(html)
         })
-
 })
