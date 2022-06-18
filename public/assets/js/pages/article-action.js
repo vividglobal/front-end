@@ -6,6 +6,7 @@ $(document).ready(function(){
     let violationCodeModal = $('#selectCodeModal');
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
     let actionStep;
+    let isLoading = false;
 
     $(document).on('click', '.check-status', function() {
         currentRow = $(this).parents('.scroll-table');
@@ -28,7 +29,8 @@ $(document).ready(function(){
     })
 
     $(document).on('click', '.check-violation-code', async function() {
-        currentRow = $(this).parents('.container-scroll');
+        if($(this).hasClass('check-true-disabled') || $(this).hasClass('check-false-disabled')) {return}
+        currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
 
@@ -37,8 +39,12 @@ $(document).ready(function(){
             violationCodeModal.show();
         }else {
             let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
+            isLoading = false;
             if(response.success) {
+                show_success(response.message);
                 updateDetectionColumnAfterSelectViolationCode(response.data);
+            }else {
+                show_error(response.message);
             }
         }
     });
@@ -50,7 +56,9 @@ $(document).ready(function(){
 
     $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
+        isLoading = false;
         if(response.success) {
+            show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
                 currentRow.find(`.${lowercaseRole}-violation-type`).html('')
                 currentRow.find(`.${lowercaseRole}-violation-code`).html(
@@ -63,11 +71,10 @@ $(document).ready(function(){
                 );
                 confirmModal.hide();
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
-                // remove row
-                $(`[data-id="${articleId}"]`).remove();
-                violationCodeModal.hide();
-                confirmModal.hide();
+                removeCurrentRow();
             }
+        }else {
+            show_error(response.message);
         }
     });
 
@@ -79,9 +86,13 @@ $(document).ready(function(){
             return false;
         }
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode);
+        isLoading = false;
         if(response.success) {
             updateDetectionColumnAfterSelectViolationCode(response.data);
             violationCodeModal.hide();
+            show_success(response.message);
+        }else {
+            show_error(response.message);
         }
     });
 
@@ -112,16 +123,22 @@ $(document).ready(function(){
                 </div>`
             );
         }else if(CURRENT_ROLE === OPERATOR_ROLE) {
-            // remove row
-            $(`[data-id="${articleId}"]`).remove();
-            violationCodeModal.hide();
-            confirmModal.hide();
+            removeCurrentRow();
         }
+    }
+
+    function removeCurrentRow() {
+        $(`tr[data-id="${articleId}"]`).fadeOut('slow');
+        $(`div[data-id="${articleId}"]`).fadeOut('slow');
+        violationCodeModal.hide();
+        confirmModal.hide();
     }
 
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
+        isLoading = false;
         if(response.success) {
+            show_success(response.message);
             // Update status label
             currentRow.find(`.${lowercaseRole}-violation-action`).html(
                 `<div class="entry-title-threee entry-title-tyle reviewing-title">
@@ -135,10 +152,14 @@ $(document).ready(function(){
                     <a attr-status="${DISAGREE}" class="check-false check-violation-code" href="javascript:void(0)"></a>
                 </div>`
             );
+        }else {
+            show_error(response.message);
         }
     }
 
     async function action_moderate_article(action, status, violationCode = []) {
+        if(isLoading) {return}
+        isLoading = true;
         return await $.ajax({
             url : `/articles/${articleId}/action-moderate?_method=PUT`,
             method : 'PUT',
