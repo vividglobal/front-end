@@ -6,18 +6,12 @@
         <ul class="rows no-gutters l-o-2 btn__header">
             <li class="nav--btn__after--login " >
                 <a class="nav-link" href="/">{{ __('Home') }}</a>
-                <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/")
-                    style="border-bottom: 1px solid #0C3C60;"
-                @endif >
+                <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
                 </div>
             </li>
             <li class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/auto-detection">{{ __('Auto-detect violations') }}</a>
-                <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/auto-detection" )
-                    style="border-bottom: 1px solid #0C3C60;"
-                @endif >
+                <div class="nav--btnBorder__bottom {{(request () -> is ('articles/auto-detection')) ? 'activeHeader': ''}}">
                 </div>
             </li>
             <li class="nav--btn__after--login">
@@ -25,10 +19,8 @@
                     {{ __('Trace Violations') }}
                     <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                 </div>
-                <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/violation" || getUrlName() == "/articles/none-violation")
-                    style="border-bottom: 1px solid #0C3C60;"
-                @endif
+                <div class="nav--btnBorder__bottom
+                {{(request () -> is ('articles/violation')) || request () -> is ("articles/non-violation") ? 'activeHeader': ''}}"
                  >
                 </div>
                 <ul class="nav--dropdown"
@@ -36,16 +28,12 @@
                         style="top: 100px"
                        @endif
                 >
-                    <li @if(getUrlName() == "/articles/violation")
-                            style="background-color: #F4F4F4;"
-                        @endif >
+                    <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                         <a class="dropdown-item"href="/articles/violation">
                             {{ __('Violation list') }}
                         </a>
                     </li>
-                    <li @if(getUrlName() == "/articles/non-violation")
-                            style="background-color: #F4F4F4;"
-                        @endif>
+                    <li class="{{(request () -> is ('articles/non-violation')) ? 'activeBackground': ''}}">
                         <a class="dropdown-item" href="/articles/non-violation">
                             {{ __('Non-violation list') }}
                         </a>
@@ -55,37 +43,33 @@
             <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
                 <div class="nav--btnBorder__bottom"></div>
-                <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/articles/manual-detection")
-                    style="border-bottom: 1px solid #0C3C60;"
-                @endif>
+                <div class="nav--btnBorder__bottom
+                {{(request () -> is ('articles/manual-detection')) ? 'activeHeader': ''}}"
+                >
                 </div>
             </li>
             <li  class="nav--btn__after--login">
                 <a class="nav-link" href="/analysis">{{ __('Analysis') }}</a>
-                <div class="nav--btnBorder__bottom"
-                @if(getUrlName() == "/analysis")
-                    style="border-bottom: 1px solid #0C3C60;"
-                @endif>
+                <div class="nav--btnBorder__bottom
+                {{(request ()-> is ('analysis')) ? 'activeHeader': ''}}"
+                >
                 </div>
             </li>
             @is_admin
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/admins">{{ __('Admin Management') }}</a>
-                    <div class="nav--btnBorder__bottom"
-                    @if(getUrlName() == "/admins")
-                        style="border-bottom: 1px solid #0C3C60;"
-                    @endif>
+                    <div class="nav--btnBorder__bottom
+                    {{(request ()-> is ('admins')) ? 'activeHeader': ''}}"
+                    >
                     </div>
                 </li>
             @endis_admin
             @auth
                 <li class="nav--btn__after--login">
                     <a class="nav-link" href="/user-manual">{{ __('User manual') }}</a>
-                    <div class="nav--btnBorder__bottom"
-                    @if(getUrlName() == "/user-manual")
-                        style="border-bottom: 1px solid #0C3C60;"
-                    @endif >
+                    <div class="nav--btnBorder__bottom
+                    {{(request ()-> is ('user-manual')) ? 'activeHeader': ''}}"
+                    >
                     </div>
                 </li>
             @endauth

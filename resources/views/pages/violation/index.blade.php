@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<?php
-    $arr = explode('?',$_SERVER['REQUEST_URI'],2);
-?>
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -49,19 +46,25 @@
                         <tr class="tr-boder">
                             <td>{{$key + 1}}</td>
                             <td>
-                                <a  <?php if(count($article->company) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->company['id'] }} <?php } ?>>
+                            @isset($article->company['name'])
+                                <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
                                     {{ __($article->company['name'] ?? '' )}}
                                 </a>
+                            @endisset
                             </td>
                             <td>
-                                <a  <?php if(count($article->country) > 0){?> href={{getUrlName(). "?country=" .$article->country['id'] }} <?php } ?>>
+                            @isset($article->country['name'])
+                                <a  href={{ getUrlName( "country" , $article->country['id']) }}>
                                 {{ __($article->country['name'] ?? '' )}}
                                 </a>
+                            @endisset
                             </td>
                             <td>
-                                <a class="brand-name" <?php if(count($article->brand) > 0){?> href={{getUrlName(). "?company_brand_id=" .$article->brand['id'] }} <?php } ?>>
+                            @isset($article->brand['name'])
+                                <a class="brand-name"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
                                     {{ __($article->brand['name'] ?? '' )}}
                                 </a>
+                            @endisset
                             </td>
                         </tr>
                     @endforeach
