@@ -123,7 +123,7 @@
     object-fit:contain;
 }
 .tbdata tr th, .tbdata tr td {
-    /* padding: 0.35rem; */
+    padding: 0.35rem;
     vertical-align: middle;
     text-align: center;
     position: relative;
@@ -340,7 +340,7 @@
     margin-left: -1px;
   }
   .track-three{
-    flex: 1 0 calc(70%);
+    flex: 1 0 calc(100%);
   }
 
   .heading {
@@ -421,7 +421,7 @@
 }
 .entry-title{
     height: 100%;
-    width: 56%;
+    width: 30%;
     border-right: 1px solid #EEEEEE;
     display: flex;
     justify-content: center;
@@ -445,6 +445,10 @@
     user-select: none;
     padding: 10px 0px;
     /* cursor: pointer; */
+    display: flex;
+}
+.checkbox-style{
+  margin-right: 10px;
 }
 .btn-confirm{
   display: flex;

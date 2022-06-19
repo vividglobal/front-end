@@ -176,12 +176,12 @@
                                     </div>
                                     <div class="entry-title entry-title-br bot-violation-code">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                            <p>{{$detectioncode['name'] ?? ''}}</p>
+                                            <p >{{$detectioncode['name'] ?? ''}}</p>
                                         @endforeach
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code">
                                         @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                            <p>{{$detectiontype['name'] ?? ''}}</p>
+                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
                                         @endforeach
                                     </div>
                                 </div>
@@ -296,10 +296,9 @@
                                             </div>
                                         @endif
                                     </div>
-
                                     <div class="entry-title-threee entry-title-tyle operator-violation-type">
                                         @foreach ($article->operator_review['violation_types'] as $supervisortype)
-                                            <p>{{ $supervisortype['name'] ?? '' }}</p>
+                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{ $supervisortype['name'] ?? '' }}</p>
                                         @endforeach
                                     </div>
                                 </div>
@@ -357,10 +356,14 @@
             </div>
             <div class="row">
                 @foreach($violationCode as $key => $code)
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="checkbox-code">
-                        <input class="click-on" type="checkbox" id="code_{{$key}}" name="violation_code[]" value={{ $code->id }}>
-                        <label class="click-on" for="code_{{$key}}">{{ $code->name }}</label>
+                        <div class="checkbox-style">
+                            <input class="click-on" type="checkbox" id="code_{{$key}}" name="violation_code[]" value={{ $code->id }}>
+                        </div>
+                        <div>
+                            <label class="click-on" for="code_{{$key}}">{{ $code->name }}</label>
+                        </div>
                     </div>
                 </div>
                 @endforeach

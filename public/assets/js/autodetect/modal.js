@@ -50,6 +50,7 @@ $(document).ready(function () {
 
     uploadfile.click(function(e) {
         uploadModal.show();
+        // btnuploadfile.show()
         var rowId = $(this).attr("data-id")
         let csrf = $('meta[name="csrf-token"]').attr('content')
         $.ajax({
@@ -98,8 +99,8 @@ $(document).ready(function () {
         submitUpload.click(function(e) {
             var form = new FormData();
             var files = $('#upload')[0].files;
-            form.append("article_id", rowId);
             form.append("document", files[0]);
+            form.append("article_id", rowId);
             if(files.length > 0){
                 var settings = {
                     "url": "/articles-document/upload",
@@ -114,6 +115,7 @@ $(document).ready(function () {
                     "contentType": false,
                     "data": form
                 };
+                console.log(settings);
                 $.ajax(settings).done(function (response) {
                     console.log(response);
                     window.location.href = window.location.href
@@ -121,6 +123,4 @@ $(document).ready(function () {
             }
         })
     })
-
-
 });

@@ -66,6 +66,14 @@
                                 </a>
                             @endisset
                             </td>
+                            <td class="contenttb btn-caption">
+                                <a>{{ __($article->caption ?? '' ) }}</a>
+                            </td>
+                            <td>
+                                <div class="wr-img">
+                                    <img class="td-img clickimg" src={{ __($article->image ?? '' ) }} alt="">
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -139,7 +147,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3></h3>
+                                    <h3> </h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -161,7 +169,7 @@
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle">
                                         @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                            <p>{{$detectiontype['name'] ?? ''}}</p>
+                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
                                         @endforeach
                                     </div>
                                 </div>
