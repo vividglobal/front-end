@@ -4,7 +4,7 @@
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
 
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
+                <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.previous')">
                     <span aria-hidden="true">&lt;</span>
                 </li>
             @else
@@ -26,7 +26,7 @@
                         @if ($page == $paginator->currentPage())
                             <li class="active" aria-current="page"><span>{{ $page }}</span></li>
                         @else
-                            <li><a >{{ $page }}</a></li>
+                            <li class="cursor"><a >{{ $page }}</a></li>
                         @endif
 
                     @endforeach
@@ -35,11 +35,11 @@
 
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
-                <li>
-                    <a id="next_page" rel="next" aria-label="@lang('pagination.next')">&gt;</a>
+                <li class="cursor">
+                    <a id="next_page " rel="next" aria-label="@lang('pagination.next')">&gt;</a>
                 </li>
             @else
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
+                <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.next')">
                     <span aria-hidden="true">&rsaquo;</span>
                 </li>
             @endif
