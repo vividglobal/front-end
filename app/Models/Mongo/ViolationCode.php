@@ -111,15 +111,12 @@ class ViolationCode extends Model
             $this->perPage = intval($params['perpage']);
         }
 
-        if($shouldPaginate) {
-            $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perPage];
-            $aggregateQuery[] = ['$limit' => $this->perPage];
-        }
-
         $aggregateQuery[] = [
             '$project' => [
-                '_id' => 1, 'name' => 1,
-                'total_article' => 1, 'type_name' => '$violation_type.name'
+                '_id' => 1,
+                'name' => 1,
+                'total_article' => 1,
+                'type_name' => '$violation_type.name'
             ]
         ];
 
@@ -131,8 +128,13 @@ class ViolationCode extends Model
         }
 
         $aggregateQuery[] = [
-            '$sort' => [$this->sortField => $this->sortValue] 
+            '$sort' => [ $this->sortField => $this->sortValue ]
         ];
+
+        if($shouldPaginate) {
+            $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perPage];
+            $aggregateQuery[] = ['$limit' => $this->perPage];
+        }
 
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);

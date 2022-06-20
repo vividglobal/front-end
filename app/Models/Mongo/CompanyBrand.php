@@ -35,13 +35,16 @@ class CompanyBrand extends Model
         $this->sortValue = self::SORT_VALUE;
     }
 
-    public function analize($params, $shouldPaginate = true) {
-        // Custom query
-        $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
-        $total = self::count();
+    public function generalQuery($params) {
         $aggregateQuery = [];
         if(isset($params['brand_id'])) {
-            $aggregateQuery[] = ['$match' => ['_id' => ['$toObjectId' => $params['brand_id'] ]] ];
+            $aggregateQuery[] = [
+                '$match' => [
+                    '$expr'=> [ '$and'=> [
+                        [ '$eq'=> [ '$_id',  ['$toObjectId' => $params['brand_id'] ] ] ],
+                    ] ]
+                ]
+            ];
         }
 
         $matchConditions = [
@@ -84,45 +87,72 @@ class CompanyBrand extends Model
         $violationArticleMatch[] = [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ];
 
         if(isset($params['country_id'])) {
-            $violationArticleMatch[] = [ '$eq'=> [ '$company.id', $params['country_id'] ] ];
+            $violationArticleMatch[] = [ '$eq'=> [ '$country.id', $params['country_id'] ] ];
         }
+        
+        $violationArticlePipeLine = [
+            [ '$match'=>
+                [
+                    '$expr'=> [ '$and'=> $violationArticleMatch ]
+                ]
+            ]
+        ];
+
         if(isset($params['violation_type_id'])) {
-            $violationArticleMatch[] = [ '$eq'=> [ '$operator_review.violation_types.id', $params['violation_type_id'] ] ];
+            $violationArticlePipeLine[] = [
+                '$match' =>
+                [
+                    'operator_review.violation_types' => [
+                        '$elemMatch' => [
+                            'id' => $params['violation_type_id']
+                        ]
+                    ]
+                ]
+            ];
         }
         $aggregateQuery[] = [
             '$lookup' => [
                 'as' => 'violation_articles_by_brand',
                 'from' => 'articles',
                 'let' => [ 'company_brand_id'=> ['$toString'=> '$_id'] ],
-                'pipeline' => [
-                    [ '$match'=>
-                        [
-                            '$expr'=> [ '$and'=> $violationArticleMatch ]
-                        ]
-                    ]
-                ]
+                'pipeline' => $violationArticlePipeLine
             ]
         ];
+
+        return $aggregateQuery;
+    }
+
+    public function aggregateCount($params) {
+        $aggregateQuery = $this->generalQuery($params);
+        $aggregateQuery[] = [
+            '$project' => ['_id' => 1]
+        ];
+        $collection = self::raw(function ($collection) use ($aggregateQuery) {
+            return $collection->aggregate($aggregateQuery);
+        });
+        return count($collection);
+    }
+
+    public function analize($params, $shouldPaginate = true) {
+        // Custom query
+        $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
+        $total = $this->aggregateCount($params);
+        $aggregateQuery = $this->generalQuery($params);
+
         $aggregateQuery[] = [
             '$addFields' => [
                 'total_article' => ['$size' => '$articles_by_brand'],
-                'total_violation_article' => ['$size' => '$violation_articles_by_brand']
+                'total_violation_article' => ['$size' => '$violation_articles_by_brand'],
             ]
         ];
 
-        if(isset($params['perpage'])) {
-            $this->perPage = intval($params['perpage']);
-        }
-
-        if($shouldPaginate) {
-            $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perPage];
-            $aggregateQuery[] = ['$limit' => $this->perPage];
-        }
-
         $aggregateQuery[] = [
             '$project' => [
-                '_id' => 1, 'name' => 1,
-                'total_article' => 1, 'total_violation_article' => 1,
+                '_id' => 1,
+                'name' => 1,
+                'queryId' => 1,
+                'total_article' => 1,
+                'total_violation_article' => 1,
                 'percent_violation_per_article' => [
                     '$cond' => [
                         'if' =>  [ '$gt' => [ '$total_violation_article', 0 ] ],
@@ -138,11 +168,23 @@ class CompanyBrand extends Model
             ]
         ];
 
+        if(isset($params['perpage'])) {
+            $this->perPage = intval($params['perpage']);
+        }
+
         if(isset($params['sort_by'])) {
             $this->sortField = $params['sort_by'];
         }
         if(isset($params['sort_value'])) {
             $this->sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
+        }
+        $aggregateQuery[] = [
+            '$sort' => [$this->sortField => $this->sortValue]
+        ];
+
+        if($shouldPaginate) {
+            $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perPage];
+            $aggregateQuery[] = ['$limit' => $this->perPage];
         }
 
         $collection = self::raw(function ($collection) use ($aggregateQuery) {

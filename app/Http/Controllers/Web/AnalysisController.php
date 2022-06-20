@@ -18,14 +18,10 @@ class AnalysisController extends Controller
         if(isset($params['export']) && $params['export'] == true) {
             return $this->exportAnalysis($params);
         }
-
-        $generalData = $this->getGeneralData($params);
-        $brandData = $this->getViolationBasedOnBrands($params);
-        $codeData = $this->getViolationBasedOnCode($params);
-        return view('pages/analysis/index', compact('generalData', 'brandData', 'codeData'));
+        return view('pages/analysis/index');
     }
 
-    public function getGeneralData($params)
+    private function _getGeneralData($params)
     {
         $articleModel = new Article();
         $total = $articleModel->getListCount($params);
@@ -46,14 +42,14 @@ class AnalysisController extends Controller
         ];
     }
 
-    public function getViolationBasedOnBrands($params, $shouldPaginate = true)
+    private function _getViolationBasedOnBrands($params, $shouldPaginate = true)
     {
         $companyBrandModel = new CompanyBrand();
         $list = $companyBrandModel->analize($params, $shouldPaginate);
         return $list;
     }
 
-    public function getViolationBasedOnCode($params, $shouldPaginate = true)
+    private function _getViolationBasedOnCode($params, $shouldPaginate = true)
     {
         $violationCodeModel = new ViolationCode();
         $list = $violationCodeModel->analize($params, $shouldPaginate);
@@ -61,9 +57,9 @@ class AnalysisController extends Controller
     }
 
     public function exportAnalysis($params) {
-        $generalData = $this->getGeneralData($params);
-        $brandData = $this->getViolationBasedOnBrands($params, $shouldPaginate = false);
-        $codeData = $this->getViolationBasedOnCode($params, $shouldPaginate = false);
+        $generalData = $this->_getGeneralData($params);
+        $brandData = $this->_getViolationBasedOnBrands($params, $shouldPaginate = false);
+        $codeData = $this->_getViolationBasedOnCode($params, $shouldPaginate = false);
 
         // Sheet General data
         $titles = [
@@ -111,5 +107,26 @@ class AnalysisController extends Controller
         }
         $sheets[] = ['row_titles' => $titles, 'name' => 'violation_based_code', 'data' => $exportData ];
         return ExportService::exportExcelFile($sheets, $fileName = 'analysis-export');
+    }
+
+      // ============================================ //
+     // ================== AJAX ==================== //
+    // =========================================== //
+    public function getGeneralData(Request $request)
+    {
+        $generalData = $this->_getGeneralData($request->all());
+        return view('pages/analysis/general', compact('generalData'));
+    }
+
+    public function getViolationBasedOnBrands(Request $request)
+    {
+        $brandData = $this->_getViolationBasedOnBrands($request->all());
+        return view('pages/analysis/vio_based_brand_table', compact('brandData'));
+    }
+
+    public function getViolationBasedOnCode(Request $request)
+    {
+        $codeData = $this->_getViolationBasedOnCode($request->all());
+        return view('pages/analysis/vio_based_code_table', compact('codeData'));
     }
 }
