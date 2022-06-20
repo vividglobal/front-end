@@ -3,14 +3,14 @@
         <th>{{ __('No') }}</th>
         <th>{{ __('Brand/Company') }}</th>
         <th>
-            <div class="th-title-right flex-space_beetween">
+            <div class="th-title-right_analysis flex-space_beetween">
                 <p>{{ __('Articles') }}</p>
                 <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
                 <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
             </div>
             </th>
         <th>
-            <div class="th-title-right flex-space_beetween">
+            <div class="th-title-right_analysis flex-space_beetween">
                 <p>{{ __('Violations') }}</p>
                 <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
                 <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">

@@ -136,7 +136,7 @@
     top: -2px;
     z-index: 100;
 }
-.th-title-right{
+.th-title-right_analysis{
     width: 25%;
     display: flex;
     align-items: center;
@@ -144,7 +144,7 @@
     border-right: 1px solid #EEEEEE;
 }
 
-.th-title-right p {
+.th-title-right_analysis p {
     margin-right: 5px;
 }
 
@@ -325,7 +325,7 @@
     overflow: auto;
     scroll-snap-type: x mandatory;
     overflow-y: hidden;
-    
+
   }
 
   .headers p{
