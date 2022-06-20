@@ -25,29 +25,11 @@
         </div>
     </div>
 </div>
+
 <div class="index_violation-nonViolation">
-    <div class="index__violation">
-        <div >
-            <p class="title-violation">{{ __('Non-violation') }}</p>
-            <p class="number-violation">{{ $generalData['non_violation'] }}</p>
-            <p class="percent-violation">{{ $generalData['percentile_non_violation'] }}%</p>
-        </div>
-    </div>
-    <div class="index__violation">
-        <div>
-            <p class="title-violation">{{ __('Violation') }}</p>
-            <p class="number-violation">{{ $generalData['violation'] }}</p>
-            <p class="percent-violation">{{ $generalData['percentile_violation'] }}%</p>
-        </div>
-    </div>
-    <div class="index__violation">
-        <div>
-            <p class="title-violation">{{ __('Total articles') }}</p>
-            <p class="number-violation">{{ $generalData['total'] }}</p>
-        </div>
-    </div>
+    @include('pages/analysis/general')
 </div>
-<div class="Base_violation--brand">
+<div class="Base_violation--brand" id="vio-based-brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["brand","country","violation"], 'show_all_filter' => false])
@@ -56,75 +38,16 @@
             <p class="title__base--violation">{{ __('Violation based on brands') }}</p>
         </div>
     </div>
-    <table class="table_analysis">
-        <tr>
-            <th>{{ __('No') }}</th>
-            <th>{{ __('Brand/Company') }}</th>
-            <th>
-                <div class="th-title-right flex-space_beetween">
-                    <p>{{ __('Articles') }}</p>
-                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                </div>
-                </th>
-            <th>
-                <div class="th-title-right flex-space_beetween">
-                    <p>{{ __('Violations') }}</p>
-                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                </div>
-            </th>
-            <th>{{ __('Percentage') }}</th>
-        </tr>
-        @foreach($brandData as $key => $brand)
-        <tr>
-            <td>{{ $key + 1 }}</td>
-            <td>{{ $brand->name }}</td>
-            <td>{{ $brand->total_article }}</td>
-            <td>{{ $brand->total_violation_article }}</td>
-            <td>{{ $brand->percent_violation_per_article }}%</td>
-        </tr>
-        @endforeach
-    </table>
-    <div class="row-pagination">
-        {{ $brandData->links('layouts.my-paginate') }}
-    </div>
-    </div>
-    <div class="Base_violation--brand">
-        <div class="list--select--option" >
-            <div class="list--select__right" style="justify-content: flex-start">
-                <p class="title__base--violation">Violation based on code</p>
-            </div>
-        </div>
-        <table class="table_analysis">
-            <tr>
-                <th>No</th>
-                <th style="width: 19.2%;">
-                {{ __('Code article') }}
-                </th>
-                <th style="width: 53.5%;">
-                {{ __('Violation type') }}
-                </th>
-                <th style="width: 14.8%;">
-                <div class="th-title-right flex-space_beetween">
-                    <p>{{ __('Articles') }}</p>
-                    <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                    <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                </div>
-                </th>
-            </tr>
-            @foreach($codeData as $key => $code)
-            <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $code->name }}</td>
-                <td>{{ $code->type_name }}</td>
-                <td>{{ $code->total_article }}</td>
-            </tr>
-            @endforeach
-        </table>
-        <div class="row-pagination">
-            {{ $codeData->links('layouts.my-paginate') }}
+    @include('pages/analysis/vio_based_brand_table')
+</div>
+
+<div class="Base_violation--brand" id="vio-based-code">
+    <div class="list--select--option" >
+        <div class="list--select__right" style="justify-content: flex-start">
+            <p class="title__base--violation">Violation based on code</p>
         </div>
     </div>
+    @include('pages/analysis/vio_based_code_table')
+</div>
 
 @endsection

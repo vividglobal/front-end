@@ -17,6 +17,6 @@ function render_toaster(cssClass, message) {
     console.log('Toaster')
 
     setTimeout(() => {
-        // document.getElementById('toaster').remove();
+        document.getElementById('toaster').remove();
     }, 3000); // Show toaster in 3 sec then remove it
 }
