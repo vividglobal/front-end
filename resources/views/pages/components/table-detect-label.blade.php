@@ -326,6 +326,19 @@
         </div>
     </div>
 
+    <div class="modalimg open-modal" id="imageModal">
+        <div class="modal-content">
+            <div class="div-close">
+                <span class="close">&times;</span>
+            </div>
+            <div class="head-modal">
+                <h1></h1>
+            </div>
+            <div>
+                <img class="modal-img">
+            </div>
+        </div>
+    </div>
 
 
     <div class="modal-title open-modal" id="confirmActionModal">

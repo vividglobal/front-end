@@ -474,3 +474,10 @@
     font-family: 'Brandon Grotesque';
     color: #C7C7C7;
 }
+.bot-violation-code{
+  overflow: scroll;
+  padding: 10px;
+}
+.bot-violation-code::-webkit-scrollbar{
+  display: none;
+}

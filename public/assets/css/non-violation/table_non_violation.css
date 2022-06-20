@@ -54,6 +54,9 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     display: flex;
     flex-direction: column;
 }
+.entry-title-one{
+    width: 59%;
+}
 .entry-title-tyle{
     display: flex;
     flex-direction: column;

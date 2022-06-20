@@ -13,8 +13,8 @@ $(document).ready(function () {
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
         let brandName = $(this).parents('tr').find('.brand-name').text();
-        captionModal.find('.head-modal h1').text(brandName)
-        captionModal.find('img').attr('src', imgSrc)
+        imageModal.find('.head-modal h1').text(brandName)
+        imageModal.find('img').attr('src', imgSrc)
         imageModal.show();
     });
     btn.click(function () {
