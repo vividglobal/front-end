@@ -9,7 +9,6 @@ btnSwitch.click(function () {
     let csrf = $('meta[name="csrf-token"]').attr('content')
 
     $("#confirm-yes").click(function(){
-        console.log("asdsad");
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
@@ -21,6 +20,10 @@ btnSwitch.click(function () {
             window.location.href = window.location.href
         });
         modalconfim.hide();
+        $('input[type=checkbox]').each(function() 
+        { 
+                this.checked = false; 
+        }); 
     });
 });
 span.click(function () {
