@@ -211,14 +211,17 @@
                                                 <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                                @foreach ($article->supervisor_review['violation_code'] as $detectiontype)
-                                                    <p>{{ $detectiontype['name'] ?? '' }}</p>
+                                            <div class="style__code--article" style="width:100%">
+                                                @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                                    <div>
+                                                        <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                            {{$detectioncode['name'] ?? ''}}
+                                                        </a>
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         @endif
                                     </div>
-
                                     <div class="entry-title-threee entry-title-tyle supervisor-violation-type">
                                         @foreach ($article->supervisor_review['violation_types'] as $supervisortype)
                                             <p>{{ $supervisortype['name'] ?? '' }}</p>
@@ -270,9 +273,13 @@
                                                 <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
-                                                @foreach ($article->operator_review['violation_code'] as $detectiontype)
-                                                    <p>{{ $detectiontype['name'] ?? '' }}</p>
+                                            <div class="style__code--article" style="width:100%">
+                                                @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                                    <div>
+                                                        <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                            {{$detectioncode['name'] ?? ''}}
+                                                        </a>
+                                                    </div>
                                                 @endforeach
                                             </div>
                                         @endif
