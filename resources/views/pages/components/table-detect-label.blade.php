@@ -176,7 +176,7 @@
                                     </div>
                                     <div class="entry-title entry-title-br bot-violation-code">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                            <p >{{$detectioncode['name'] ?? ''}}</p>
+                                            <a >{{$detectioncode['name'] ?? ''}}</a>
                                         @endforeach
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code">

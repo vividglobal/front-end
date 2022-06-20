@@ -111,6 +111,7 @@
     -webkit-line-clamp: 6;
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    cursor: pointer;
 }
 .wr-img{
     width: 100%;
