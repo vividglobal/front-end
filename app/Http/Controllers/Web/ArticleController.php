@@ -375,15 +375,17 @@ class ArticleController extends Controller
     public function resetArticleToOriginState(Request $request, $id) {
         $article = Article::find($id);
         if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
-
+            $status = $article->status;
             $article->status = Article::STATUS_PENDING;
             $article->progress_status = Article::STATUS_PENDING;
             $article->operator_review = Article::DEFAULT_REVIEW_STATES;
             $article->supervisor_review = Article::DEFAULT_REVIEW_STATES;
             $article->update();
 
-            $article->documents()->destroy(); //Remove all related documents
-            return $this->responseSuccess([], "Switch progression status successfully");
+            if($status === Article::STATUS_VIOLATION) {
+                ArticleLegalDocument::where('article_id', $id)->delete(); //Remove all related documents
+            }
+            return $this->responseSuccess([], "Reset article successfully");
         }
         return $this->responseFail([], "Article not found, reset article failed");
     }

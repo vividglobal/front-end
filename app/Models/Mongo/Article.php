@@ -78,9 +78,13 @@ class Article extends Model
 
     public function aggregateQuery($params) {
         $matchConditions = [];
-
+        $violationReviewField = 'detection_result';
         if(isset($params['status'])) {
+            $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
+            if($status === self::STATUS_VIOLATION) {
+                $violationReviewField = 'operator_review';
+            }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
@@ -149,9 +153,22 @@ class Article extends Model
             $aggregateQuery[] = [
                 '$match' =>
                 [
-                    'detection_result.violation_types' => [
+                    $violationReviewField.'.violation_types' => [
                         '$elemMatch' => [
                             'id' => $params['violation_type_id']
+                        ]
+                    ]
+                ]
+            ];
+        }
+
+        if(isset($params['violation_code_id'])) {
+            $aggregateQuery[] = [
+                '$match' =>
+                [
+                    $violationReviewField.'.violation_code' => [
+                        '$elemMatch' => [
+                            'id' => $params['violation_code_id']
                         ]
                     ]
                 ]
