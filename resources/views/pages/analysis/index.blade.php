@@ -9,7 +9,7 @@
         <div class="list--select__left">
             <div id="daterange" style="width:203px">
                 <i class="ico-date"></i>
-                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                <img src="../assets/image/calendar.svg" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
             <button class="btn__apply">{{ __('Apply') }}</button>
@@ -19,7 +19,7 @@
                 <a href="{{ getExportUrl() }}" target="_blank"
                     class="btn--export--excel" style="width: 179px;display: flex;justify-content:center;text-decoration: unset">
                     <p>{{ __('Export Excel') }}</p>
-                    <img src="{{ asset('assets/image/Under-than-white.svg') }}" alt="" style="margin-left: 12px;">
+                    <img src="../assets/image/Under-than-white.svg" alt="" style="margin-left: 12px;">
                 </a>
             @endauth
         </div>

@@ -325,7 +325,7 @@
     overflow: auto;
     scroll-snap-type: x mandatory;
     overflow-y: hidden;
-    
+
   }
 
   .headers p{

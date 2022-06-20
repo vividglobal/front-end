@@ -3,14 +3,14 @@
     <div class="list--select__left" >
         @if(in_array('search', $list_filter) || $show_all_filter)
             <div class="list--search">
-                <img src="{{ asset('assets/image/search.svg') }}" alt="" class="btn-search">
+                <img src="../assets/image/search.svg" alt="" class="btn-search">
                 <input type="text" placeholder="Search" class="search">
             </div>
         @endif
         @if(in_array('date', $list_filter) || $show_all_filter)
             <div id="daterange">
                 <i class="ico-date"></i>
-                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                <img src="../assets/image/calendar.svg" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
         @endif

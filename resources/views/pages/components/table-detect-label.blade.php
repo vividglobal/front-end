@@ -136,7 +136,7 @@
                             </div>
                             <div class="track track-three">
                                 <div class="entry-three">
-                                    <div class="entry-title">
+                                    <div class="entry-title css_status">
                                         <?php
                                             $botStatus = count($article->detection_result['violation_code']) > 0
                                                         ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
@@ -172,7 +172,7 @@
                             {{-- ================= SUPERVISOR COLUMN ================ --}}
                             {{-- ==================================================== --}}
                             <div class="track track-three">
-                                <div class="entry-three">
+                                <div class="entry-three ">
                                     {{-- ==================================================== --}}
                                     {{-- ============== VIOLATION STATUS COLUMN ============= --}}
                                     {{-- ==================================================== --}}
@@ -183,7 +183,7 @@
                                                 <a attr-status={{DISAGREE}} class="check-false check-status" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="entry-title-threee entry-title-tyle reviewing-title">
+                                            <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
                                                 <p
                                                     @class([
                                                         'status-title',

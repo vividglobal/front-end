@@ -15,8 +15,7 @@ video[poster] {
 
 .wrapper{
     width: 100%;
-    min-width: 70vw;
-    height: 617px;
+    height: 43vw;
     max-height: 100%;
     overflow: hidden;
 }

@@ -25,30 +25,30 @@
             <div class="suspected__file__area">
                 <div class='file-input'>
                     <input type='file'>
-                    <span class='button'><img src="{{ asset('assets/image/upfile.svg') }}" alt=""></span>
+                    <span class='button'><img src="../assets/image/upfile.svg" alt=""></span>
                     <span class='label' data-js-label>{{ __('Or drop the image here') }}</label>
                 </div>
             </div>
         </div>
     </div>
     <div class="list--country ctr_suspected " id="btn-language">
-        <img src="{{ asset('assets/image/Country.svg') }}" alt="">
+        <img src="../assets/image/Country.svg" alt="">
         <p>{{ __('Country') }}</p>
-        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+        <img src="../assets/image/Under-than.svg" alt="">
         <div class="select--country slc_suspected" id="language">
             <div class="search--input--country search_suspected" id="div-search">
-                <img src="{{ asset('assets/image/search.svg') }}" alt="">
+                <img src="../assets/image/search.svg" alt="">
                 <input type="text" placeholder="Search for country" class="search--country">
             </div>
             <div class="contain--selection">
                 <div class="select__one--country option_suspected  " id=0>
                     <p data-id=0 >{{ __('-Select country-') }}</p>
-                    <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
+                    <img src="../assets/image/tickV.svg" alt="">
                 </div>
                 @foreach ($countries as $country)
                     <div class="select__one--country option_suspected  " id="{{$country->_id}}">
                         <p  data-id={{$country->_id}}>{{$country->name}}</p>
-                        <img src="http://localhost:8099/assets/image/tickV.svg" alt="">
+                        <img src="../assets/image/tickV.svg" alt="">
                     </div>
                 @endforeach
             </div>

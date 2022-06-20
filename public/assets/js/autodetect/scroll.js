@@ -11,15 +11,17 @@ let stopDragging = function (event) {
   mouseDown = false;
 };
 
-slider.addEventListener('mousemove', (e) => {
-  e.preventDefault();
-  if(!mouseDown) { return; }
-  const x = e.pageX - slider.offsetLeft;
-  const scroll = x - startX;
-  slider.scrollLeft = scrollLeft - scroll;
-});
+if(slider){
+    slider.addEventListener('mousemove', (e) => {
+        e.preventDefault();
+        if(!mouseDown) { return; }
+        const x = e.pageX - slider.offsetLeft;
+        const scroll = x - startX;
+        slider.scrollLeft = scrollLeft - scroll;
+    });
 
-// Add the event listeners
-slider.addEventListener('mousedown', startDragging, false);
-slider.addEventListener('mouseup', stopDragging, false);
-slider.addEventListener('mouseleave', stopDragging, false);
+      // Add the event listeners
+      slider.addEventListener('mousedown', startDragging, false);
+      slider.addEventListener('mouseup', stopDragging, false);
+      slider.addEventListener('mouseleave', stopDragging, false);
+}

@@ -11,10 +11,10 @@
             {{ __('VIVID is an automated solution that uses artificial intelligence
             and supervised machine learning to detect commercial violations on digital platforms.') }}
         </p>
-        <button id="btn_explore">{{ __('Explore') }}</button>
+        <button id="btn_explore" >{{ __('Explore') }}<a href="#bg-2"></a></button>
     </div>
 </div>
-<div class="background__vituar-2 rows ">
+<div class="background__vituar-2 rows " >
         <div class="background__content col l-6">
             <p>{{ __('BACKGROUND AND NEEDS') }}</p>
             <p>
