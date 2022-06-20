@@ -157,12 +157,16 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
+                                    @if($article->has_document)
+                                    <img class="td-link upload-file" src="../assets/image/dislega2.png" data-id={{$article->_id }} alt="#">
+                                    @else
                                     <img class="td-link upload-file" src="../assets/image/lega1.png" data-id={{$article->_id }} alt="#">
+                                    @endif
                                 </div>
                             </div>
                             <div class="track track-three track-viola">
                                 <div class="entry-three">
-                                    <div class="entry-title entry-title-br">
+                                    <div class="entry-title entry-title-br entry-title-one">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <p>{{$detectioncode['name'] ?? ''}}</p>
                                         @endforeach
@@ -278,6 +282,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal-confirm-title">
         <div class="modal-confirm-content">
             <div class="head-confirm">
