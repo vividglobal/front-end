@@ -26,28 +26,33 @@
     </div>
 </div>
 
-<div class="index_violation-nonViolation">
-    @include('pages/analysis/general')
-</div>
-<div class="Base_violation--brand" id="vio-based-brand">
+<div class="index_violation-nonViolation" id="general"></div>
+
+<div class="Base_violation--brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left" style="justify-content: flex-end">
-            @include('pages/components/query', ['list_filter' => ["brand","country","violation"], 'show_all_filter' => false])
+            @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply"], 'show_all_filter' => false])
         </div>
         <div class="list--select__right" style="justify-content: flex-start">
             <p class="title__base--violation">{{ __('Violation based on brands') }}</p>
         </div>
     </div>
-    @include('pages/analysis/vio_based_brand_table')
+    <div class="table-wrapper" id="vio-based-brand"></div>
 </div>
 
-<div class="Base_violation--brand" id="vio-based-code">
+<div class="Base_violation--brand">
     <div class="list--select--option" >
         <div class="list--select__right" style="justify-content: flex-start">
             <p class="title__base--violation">Violation based on code</p>
         </div>
     </div>
-    @include('pages/analysis/vio_based_code_table')
+    <div class="table-wrapper" id="vio-based-code"></div>
 </div>
+
+
+<script>
+    let csrf = "{{ csrf_token() }}";
+</script>
+<script src="{{ asset('assets/js/pages/analysis.js') }}"></script>
 
 @endsection

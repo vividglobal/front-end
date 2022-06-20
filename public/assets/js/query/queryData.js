@@ -151,7 +151,7 @@ $("document").ready(function(){
     //  ----------------------------
     //  APPLY BUTTON
     $(".btn__apply").on("click",function(){
-        replaceURL(paramSortBy,paramSortValue)
+        // replaceURL(paramSortBy,paramSortValue)
     })
 
     //LIST SHOWING

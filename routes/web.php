@@ -21,15 +21,16 @@ Route::controller(Web\ArticleController::class)->group(function () {
         Route::get('/manual-detection', 'getManualDetectionList');
         Route::get('/violation', 'getViolationList');
         Route::get('/non-violation', 'getNoneViolationList');
+        Route::get('/{id}/documents', 'documents');
     });
 });
 
 Route::controller(Web\AnalysisController::class)->group(function () {
     Route::prefix('analysis')->group(function () {
         Route::get('/', 'index');
-        // Route::get('/get-data', 'getGeneralData');
-        // Route::get('/get-violation-by-brand', 'getViolationBasedOnBrands');
-        // Route::get('/get-violation-by-code', 'getViolationBasedOnCode');
+        Route::get('/general', 'getGeneralData');
+        Route::get('/violation-by-brand', 'getViolationBasedOnBrands');
+        Route::get('/violation-by-code', 'getViolationBasedOnCode');
     });
 });
 
@@ -54,7 +55,6 @@ Route::middleware(['auth'])->group(function () {
             Route::put('/{id}/switch-progress-status', 'switchArticleProgressStatus');
             Route::put('/{id}/action-moderate', 'moderateArticle');
             Route::put('/{id}/action-reset', 'resetArticleToOriginState');
-            Route::get('/{id}/documents', 'documents');
         });
     });
 
@@ -71,7 +71,6 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(DummyController::class)->group(function () {
             Route::prefix('articles')->group(function () {
                 Route::get('/', 'dummyArticles');
-                // Route::get('/', 'articleIndex');
                 Route::post('/', 'articleCreate');
                 Route::delete('/{id}', 'articelDelete');
             });
