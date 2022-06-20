@@ -492,3 +492,13 @@
 .cursor{
   cursor: pointer;
 }
+.no-padding{
+  display: flex !important;
+  justify-content: center !important;
+  padding-left: 8% !important;
+}
+.center-header{
+  display: flex;
+  justify-content: center;
+  padding-left: 15% !important;
+}

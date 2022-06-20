@@ -51,6 +51,10 @@ $(document).ready(function(){
 
     $('.open-modal').on('click', '.close', function() {
         violationCodeModal.hide();
+        $('input[type=checkbox]').each(function() 
+        { 
+                this.checked = false; 
+        }); 
         confirmModal.hide();
     });
 
@@ -131,6 +135,7 @@ $(document).ready(function(){
         $(`tr[data-id="${articleId}"]`).fadeOut('slow');
         $(`div[data-id="${articleId}"]`).fadeOut('slow');
         violationCodeModal.hide();
+        
         confirmModal.hide();
     }
 

@@ -3,7 +3,7 @@
 <div class="nav_container ">
     <div class="rows nav-menu" >
         <div <?php if(Auth::user()!== null){ ?> class="col l-11 no-padding" <?php }else{ ?>class="col l-10" <?php } ?>>
-        <ul class="rows no-gutters l-o-2 btn__header">
+        <ul class="rows no-gutters l-o-2 btn__header center-header">
             <li class="nav--btn__after--login " >
                 <a class="nav-link" href="/">{{ __('Home') }}</a>
                 <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
