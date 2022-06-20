@@ -136,7 +136,7 @@
     top: -2px;
     z-index: 100;
 }
-.th-title-right_analysis{
+.th-title-right{
     width: 25%;
     display: flex;
     align-items: center;
@@ -144,7 +144,7 @@
     border-right: 1px solid #EEEEEE;
 }
 
-.th-title-right_analysis p {
+.th-title-right p {
     margin-right: 5px;
 }
 
