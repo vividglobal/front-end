@@ -21,12 +21,12 @@
                 </div>
                 <div class="nav--btnBorder__bottom
                 {{(request () -> is ('articles/violation')) || request () -> is ("articles/non-violation") ? 'activeHeader': ''}}"
-                 >
+                >
                 </div>
                 <ul class="nav--dropdown"
                     @if(@Auth::user() == "")
                         style="top: 100px"
-                       @endif
+                    @endif
                 >
                     <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                         <a class="dropdown-item"href="/articles/violation">

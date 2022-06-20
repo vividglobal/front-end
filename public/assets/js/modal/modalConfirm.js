@@ -9,6 +9,7 @@ btnSwitch.click(function () {
     let csrf = $('meta[name="csrf-token"]').attr('content')
 
     $("#confirm-yes").click(function(){
+        console.log("asdsad");
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
