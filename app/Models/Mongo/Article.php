@@ -79,19 +79,21 @@ class Article extends Model
     public function aggregateQuery($params) {
         $matchConditions = [];
         $violationReviewField = 'detection_result';
+        $dateField = 'crawl_date';
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
-            if($status === self::STATUS_VIOLATION) {
+            if($status === self::STATUS_VIOLATION || $status === self::STATUS_NONE_VIOLATION) {
                 $violationReviewField = 'operator_review';
+                $dateField = 'date';
             }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date']);
             $endDate = strtotime($params['end_date']);
-            $matchConditions[] = [ '$gte' => [ '$detection_result.crawl_date',  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$detection_result.crawl_date',  $endDate ] ];
+            $matchConditions[] = [ '$gte' => [ '$'.$violationReviewField.'.'.$dateField,  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$'.$violationReviewField.'.'.$dateField,  $endDate ] ];
         }
 
         if(isset($params['country'])) {
@@ -217,9 +219,6 @@ class Article extends Model
             $perpage = intval($params['perpage']);
         }
 
-        $aggregateQuery[] = ['$skip' => ($page - 1) * $perpage];
-        $aggregateQuery[] = ['$limit' => $perpage];
-
         if(isset($params['sort_by'])) {
             $sortField = $params['sort_by'];
         }
@@ -231,6 +230,9 @@ class Article extends Model
         $aggregateQuery[] = [
             '$sort' => [$sortField => $sortValue]
         ];
+
+        $aggregateQuery[] = ['$skip' => ($page - 1) * $perpage];
+        $aggregateQuery[] = ['$limit' => $perpage];
 
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);

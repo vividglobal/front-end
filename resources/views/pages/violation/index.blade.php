@@ -12,72 +12,7 @@
 <div class="container-table">
     <div class="container_row">
         <div class="col-left ">
-            <table class="tbdata col-table">
-                <thead class="col-thead">
-                    <tr>
-                        <th style="width:2%" class="style-title">{{ __('No') }}</th>
-                        <th style="width:12%" class="style-title">
-                            <div class="th-title-right sort_company">
-                                <p>{{ __('Company') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                            </div>
-                        </th>
-                        <th style="width:12%" class="style-title">
-                            <div class="th-title-right sort_country">
-                                <p>{{ __('Country') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                            </div>
-                        </th>
-                        <th style="width:12%" class="style-title">
-                            <div class="th-title-right sort_brand">
-                                <p>{{ __('Brand') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
-                            </div>
-                        </th>
-                        <th style="width:15%" class="style-title">{{ __('Caption') }}</th>
-                        <th style="width:12%" class="style-title">{{ __('Image') }}</th>
-                    </tr>
-                </thead>
-                <tbody class="tbdata">
-                    @foreach ($articles as $key => $article)
-                        <tr class="tr-boder">
-                            <td>{{$key + 1}}</td>
-                            <td>
-                            @isset($article->company['name'])
-                                <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
-                                    {{ __($article->company['name'] ?? '' )}}
-                                </a>
-                            @endisset
-                            </td>
-                            <td>
-                            @isset($article->country['name'])
-                                <a  href={{ getUrlName( "country" , $article->country['id']) }}>
-                                {{ __($article->country['name'] ?? '' )}}
-                                </a>
-                            @endisset
-                            </td>
-                            <td>
-                            @isset($article->brand['name'])
-                                <a class="brand-name"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
-                                    {{ __($article->brand['name'] ?? '' )}}
-                                </a>
-                            @endisset
-                            </td>
-                            <td class="contenttb btn-caption">
-                                <a>{{ __($article->caption ?? '' ) }}</a>
-                            </td>
-                            <td>
-                                <div class="wr-img">
-                                    <img class="td-img clickimg" src={{ __($article->image ?? '' ) }} alt="">
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            @include('pages.components.table-left')
         </div>
         <div class="col-right col-right-form ">
             <table class="wrap">
@@ -86,22 +21,46 @@
                         <div class="track">
                             <div class=" heading th-title-right sort_public_date">
                                 <p>{{ __('Published date') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_up',
+                                        'disabled' => checkSort(request()->all(), 'published_date', ASC)
+                                    ])></span>
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_down',
+                                        'disabled' => checkSort(request()->all(), 'published_date', DESC)
+                                    ])></span>
                             </div>
                         </div>
                         <div class="track">
                             <div class=" heading th-title-right sort_crawl_date">
                                 <p>{{ __('Crawl date') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_up',
+                                        'disabled' => checkSort(request()->all(), 'crawl_date', ASC)
+                                    ])></span>
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_down',
+                                        'disabled' => checkSort(request()->all(), 'crawl_date', DESC)
+                                    ])></span>
                             </div>
                         </div>
                         <div class="track">
                             <div class=" heading th-title-right sort_penalty_issued">
                                 <p>{{ __('Penalty issued') }}</p>
-                                <img class="ico-sort theard-table sort_up" data-date="datePost" src="../assets/image/Archive/up_enable.svg" alt="">
-                                <img class="ico-sort theard-table sort_down" data-date="datePost" src="../assets/image/Archive/down_enable.svg" alt="">
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_up',
+                                        'disabled' => checkSort(request()->all(), 'penalty_issued', ASC)
+                                    ])></span>
+                                <span
+                                    @class([
+                                        'ico-sort theard-table sort_down',
+                                        'disabled' => checkSort(request()->all(), 'penalty_issued', DESC)
+                                    ])></span>
                             </div>
                         </div>
                         <div class="track">
@@ -206,33 +165,6 @@
     </div>
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
-    </div>
-
-
-    <div class="modal-title open-modal" id="captionModal">
-        <div class="modal-content">
-            <div class="div-close">
-                <span class="close">&times;</span>
-            </div>
-            <div class="head-modal">
-                <h1></h1>
-            </div>
-            <p class="title-modal"></p>
-        </div>
-    </div>
-
-    <div class="modalimg open-modal" id="imageModal">
-        <div class="modal-content">
-            <div class="div-close">
-                <span class="close">&times;</span>
-            </div>
-            <div class="head-modal">
-                <h1></h1>
-            </div>
-            <div>
-                <img class="modal-img">
-            </div>
-        </div>
     </div>
 
     <div class="modal-upload-file" id="uploadModal">

@@ -14,6 +14,9 @@ define('ROLE_ADMIN', Admin::ROLE_ADMIN);
 define('ROLE_SUPERVISOR', Admin::ROLE_SUPERVISOR);
 define('ROLE_OPERATOR', Admin::ROLE_OPERATOR);
 
+define('ASC', 'ASC');
+define('DESC', 'DESC');
+
 if (! function_exists('dump_data')) {
     function dump_data() {
         $args = func_get_args();
@@ -98,5 +101,11 @@ if (! function_exists('isRole')) {
 if (! function_exists('getRole')) {
     function getRole() {
         return UserRoleService::getRole();
+    }
+}
+
+if (! function_exists('checkSort')) {
+    function checkSort($params, $field, $sort) {
+        return isset($params['sort_by']) && $params['sort_by'] === $field && isset($params['sort_value']) && strtoupper($params['sort_value']) === $sort;
     }
 }

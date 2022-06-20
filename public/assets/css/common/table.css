@@ -1,0 +1,17 @@
+.ico-sort {
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+}
+.sort_up {
+    background-image: url(http://localhost:8099/assets/image/Archive/up_enable.svg);
+}
+.sort_down {
+    background-image: url(http://localhost:8099/assets/image/Archive/down_enable.svg);
+}
+.sort_up.disabled {
+    background-image: url(http://localhost:8099/assets/image/Archive/up_disable.svg);
+}
+.sort_down.disabled {
+    background-image: url(http://localhost:8099/assets/image/Archive/down_disable.svg);
+}
