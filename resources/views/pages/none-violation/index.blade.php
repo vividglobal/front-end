@@ -144,19 +144,6 @@
             </div>
         </div>
 
-            <div class="modal-confirm-title">
-                <div class="modal-confirm-content">
-                    <div class="head-confirm">
-                        <h1>Remove user</h1>
-                        <p>Are you sure to remove this user?</p>
-                    </div>
-                    <div class="head-confirm-btn">
-                        <button class="confirm-btn btn-cancel close">Cancel</button>
-                        <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
-                    </div>
-                </div>
-            </div>
-
             <div class="modalimg open-modal" id="imageModal">
                 <div class="modal-content">
                     <div class="div-close">
@@ -172,18 +159,21 @@
             </div>
     </div>
 </div>
+
 <div class="modal-confirm-title">
-    <div class="modal-confirm-content">
-        <div class="head-confirm">
-            <h1>{{ __('Remove user') }}</h1>
-            <p>{{ __('Are you sure to remove this user?') }}</p>
-        </div>
-        <div class="head-confirm-btn">
-            <button class="confirm-btn btn-cancel close">{{ __('Cancel') }}</button>
-            <button class="confirm-btn btn-yes" id="confirm-yes">{{ __('Yesr') }}</button>
+        <div class="modal-confirm-content">
+            <div class="head-confirm">
+                <h1>Remove user</h1>
+                <p>Are you sure to remove this user?</p>
+            </div>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+            </div>
         </div>
     </div>
-</div>
+
+
 <div class="modalimg">
     <div class="modal-content">
         <div class="div-close">
