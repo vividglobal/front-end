@@ -325,8 +325,16 @@
     overflow: auto;
     scroll-snap-type: x mandatory;
     overflow-y: hidden;
+    
   }
 
+  .headers p{
+    color: #0C3C60;
+  }
+  .heading,.heading-three{
+    color: #0C3C60;
+
+  }
   .scenes::-webkit-scrollbar,
   .syncscroll::-webkit-scrollbar {
     display: none;
@@ -481,4 +489,17 @@
 }
 .bot-violation-code::-webkit-scrollbar{
   display: none;
+}
+.cursor{
+  cursor: pointer;
+}
+.no-padding{
+  display: flex !important;
+  justify-content: center !important;
+  padding-left: 8% !important;
+}
+.center-header{
+  display: flex;
+  justify-content: center;
+  padding-left: 15% !important;
 }

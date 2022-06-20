@@ -20,6 +20,10 @@ btnSwitch.click(function () {
             window.location.href = window.location.href
         });
         modalconfim.hide();
+        $('input[type=checkbox]').each(function() 
+        { 
+                this.checked = false; 
+        }); 
     });
 });
 span.click(function () {
