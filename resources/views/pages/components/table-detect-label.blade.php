@@ -174,9 +174,13 @@
                                             data-status="{{$botStatus}}"
                                         >{{ getStatusText($botStatus) }}</p>
                                     </div>
-                                    <div class="entry-title entry-title-br bot-violation-code">
+                                    <div class="style__code--article">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                            <p >{{$detectioncode['name'] ?? ''}}</p>
+                                            <div>
+                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                    {{$detectioncode['name'] ?? ''}}
+                                                </a>
+                                            </div>
                                         @endforeach
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code">

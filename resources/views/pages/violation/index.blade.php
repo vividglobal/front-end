@@ -166,9 +166,13 @@
                             </div>
                             <div class="track track-three track-viola">
                                 <div class="entry-three">
-                                    <div class="entry-title entry-title-br entry-title-one">
+                                    <div class="style__code--article" style="width:55%">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
-                                            <p>{{$detectioncode['name'] ?? ''}}</p>
+                                            <div>
+                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }} >
+                                                    {{$detectioncode['name'] ?? ''}}
+                                                </a>
+                                            </div>
                                         @endforeach
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle">

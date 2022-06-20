@@ -9,7 +9,7 @@ $(document).ready(function () {
     var loading = $(".loading-icon")
     var btnuploadfile = $(".btn-uploadfile")
     var span = $('.close');
-    
+
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -17,6 +17,7 @@ $(document).ready(function () {
         imageModal.find('img').attr('src', imgSrc)
         imageModal.show();
     });
+
     btn.click(function () {
         let caption = $(this).find('a').text();
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -57,7 +58,7 @@ $(document).ready(function () {
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
             dataType:'JSON',
-            success: function(res){ 
+            success: function(res){
                 if(res){
                     loading.hide()
                     btnuploadfile.show()
