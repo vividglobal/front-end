@@ -129,6 +129,7 @@ li:nth-child(3) img{
     line-height: 22px;
 }
 
+
 .dropdown-login{
     position: absolute;
     top: 80px;
@@ -159,4 +160,32 @@ li:nth-child(3) img{
 
 .activeBackground{
     background-color: #F4F4F4;
+}
+
+.style__code--article{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    border: 1px solid #E5E5E5;
+    width: 30%;
+    padding: 10px;
+}
+
+.style__code--article div{
+    padding-bottom: 5px;
+    text-align: center;
+}
+.style__code--article a {
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.style__code--article a:hover{
+    text-decoration: underline;
+    transition: 0.3s linear;
 }

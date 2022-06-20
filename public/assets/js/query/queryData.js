@@ -28,6 +28,7 @@ $("document").ready(function(){
     const paramViolation = urlParams.get('violation_type_id')
     const paramSortBy = urlParams.get('sort_by')
     const paramSortValue = urlParams.get('sort_value')
+    const violation_code_id = urlParams.get('violation_code_id')
 
     if(perpage !== null){
         $(".list--showing").find("select").val(parseInt(perpage))
@@ -62,6 +63,11 @@ $("document").ready(function(){
         let option =  ".select__one--violation--type"
         returnTextButtonQuery(name,list,select,option,paramViolation)
      }
+
+     if(violation_code_id !== null){
+         $(".style__code--article").find("div").find(`#${violation_code_id}`).css({"text-decoration": "underline"})
+     }
+
      ///ENABLE---- DISABLE SORT IMAGE
      if(paramSortBy !== null && paramSortValue !== null){
          if(paramSortValue === "asc"){
