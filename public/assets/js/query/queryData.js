@@ -209,7 +209,7 @@ $("document").ready(function(){
         let brandCompany = $(".list--company--brand").find("> p").attr("data-id");
         let country = $(".list--country").find("> p").attr("data-id");
         let violationType = $(".list--violation--type").find("> p").attr("data-id");
-        let perpage = $(".list--showing").find("select").val() ? $(".list--showing").find("select").val() : 10
+        let perpage = $(".list--showing").find("select").val()
         let date = $('input[name="daterange"]').val()
         let end__Date = "";
         let start__Date = "";
@@ -229,7 +229,7 @@ $("document").ready(function(){
         this.violationType = violationType && violationType != 0 ? `&violation_type_id=${violationType}` : "";
         this.startDate = startDate ? `&start_date=${startDate}` : "";
         this.endDate = endDate ? `&end_date=${endDate}` : "";
-        this.perpage = `&perpage=${perpage}`;
+        this.perpage =perpage ? `&perpage=${perpage}` : "";
         this.sortBy = sortBy ? `&sort_by=${sortBy}` : "";
         this.sortValue = sortValue ? `&sort_value=${sortValue}` : "";
         this.page = page ? `&page=${page}` : "";

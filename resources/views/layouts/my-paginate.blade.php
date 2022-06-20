@@ -26,7 +26,7 @@
                         @if ($page == $paginator->currentPage())
                             <li class="active" aria-current="page"><span>{{ $page }}</span></li>
                         @else
-                            <li class="cursor"><a >{{ $page }}</a></li>
+                            <li class="cursor" ><a >{{ $page }}</a></li>
                         @endif
 
                     @endforeach
