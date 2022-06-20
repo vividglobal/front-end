@@ -36,7 +36,7 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="cursor">
-                    <a id="next_page " rel="next" aria-label="@lang('pagination.next')">&gt;</a>
+                    <a id="next_page" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&gt;</a>
                 </li>
             @else
                 <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.next')">
@@ -46,3 +46,5 @@
         </ul>
     </nav>
 @endif
+
+
