@@ -99,4 +99,6 @@
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalConfirm.js') }}"></script>
+<script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+
 @endsection

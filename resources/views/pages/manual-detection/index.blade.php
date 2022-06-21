@@ -67,5 +67,7 @@
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
+<script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+
 @endsection
 

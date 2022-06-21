@@ -32,7 +32,6 @@
 
     <script src="{{ asset('assets/js/btn_select/HTMLSelect.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/searchSelect.js') }}"></script>
-    <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/countrySuspected.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectBrandAndCompany.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectCountry.js') }}"></script>

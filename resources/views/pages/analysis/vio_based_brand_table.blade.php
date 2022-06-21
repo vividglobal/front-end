@@ -31,7 +31,7 @@
                         data-sort-field="total_violation_article" data-sort-value="{{ ASC }}"></span>
                     <span
                         @class([
-                            'ico-sort theard-table sort_up',
+                            'ico-sort theard-table sort_down',
                             'disabled' => checkSort(request()->all(), 'total_violation_article', DESC)
                         ])
                         data-sort-field="total_violation_article" data-sort-value="{{ DESC }}"></span>

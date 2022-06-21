@@ -16,3 +16,6 @@
 @import url("./common/loading.css");
 @import url("./common/toaster.css");
 @import url("./common/table.css");
+@import url("./root.css");
+@import url("./responsive/login.css");
+@import url("./responsive/home.css");

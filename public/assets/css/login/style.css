@@ -1,7 +1,5 @@
 .form__login{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: auto ;
 }
 
 .bg__login{
@@ -31,6 +29,7 @@
 .block__login{
     max-width: 426px;
     width: 100%;
+    margin: auto;
 }
 
 .title__login{
@@ -39,14 +38,14 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    color: #6F6F6F;
+    color: var(--gray-6F);
     margin-bottom: 5px;
 }
 
 .email--login{
     display: flex;
     padding: 14px;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
 }
 
 .email--login img{
@@ -74,7 +73,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 18px;
-    color: #0C3C60;
+    color: var(--primary);
     text-decoration: none;
 }
 
@@ -87,8 +86,8 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
-    color: #FFFFFF;
-    background-color: #0C3C60;
+    color: var(--white);
+    background-color: var(--primary);
     margin-top:10px;
 }
 
@@ -96,25 +95,26 @@
     width: 100%;
     padding: 12px 0;
     border: none;
-    font-family: 'Avenir Next';
+    font-family: "Avenir Next";
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
-    color: #6F6F6F;
-    background-color: #ffffff;
+    color: var(--gray-6F);
+    background-color: var(--white);
     margin-top:10px;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
 }
 
 .text_recover--pass{
-    font-family: 'Avenir';
+    font-family: "Avenir";
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
     line-height: 22px;
-    color: #000000;
+    color: var(--black);
     margin: 22px 0;
+    text-align:justify;
 }
 
 /* check box */
@@ -130,6 +130,12 @@
     -ms-user-select: none;
     user-select: none;
     margin-top: 22px;
+    color: #6F6F6F;
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
   }
 
   .container__remember--me input {
@@ -146,17 +152,18 @@
     left: 0;
     height: 24px;
     width: 24px;
-    border: solid #6F6F6F;
+    border: 1px solid var(--gray-6F);
+    background-color: var(--white);
   }
 
   .container__remember--me:hover input ~ .checkmarks {
-    border: 1px solid #6F6F6F;
-    background-color: #fff;
+    border: 1px solid var(--gray-6F);
+    background-color: var(--white);
   }
 
   .container__remember--me input:checked ~ .checkmarks {
-    background-color: #fff;
-    border: 1px solid #6F6F6F;
+    background-color: var(--white);
+    border: 1px solid var(--gray-6F);
   }
 
   .checkmarks:after {
@@ -174,7 +181,7 @@
     top: 0px;
     width: 10px;
     height: 15px;
-    border: solid #6F6F6F;
+    border: 1px solid var(--gray-6F);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);

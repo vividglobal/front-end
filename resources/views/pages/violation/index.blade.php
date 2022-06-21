@@ -128,6 +128,7 @@
                             <div class="track track-three track-viola">
                                 <div class="entry-three">
                                     <div class="style__code--article" style="width:55%">
+                                    @if(isset($article->detection_result))
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }} >
@@ -135,11 +136,14 @@
                                                 </a>
                                             </div>
                                         @endforeach
+                                    @endif
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle">
+                                    @if(isset($article->detection_result))
                                         @foreach ($article->detection_result['violation_types'] as $detectiontype)
                                             <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
                                         @endforeach
+                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -240,4 +244,6 @@
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalConfirm.js') }}"></script>
+<script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+
 @endsection

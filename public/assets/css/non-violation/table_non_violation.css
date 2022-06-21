@@ -35,7 +35,7 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
 
 .status-title{
     border-radius: 5px;
-    font-family: 'Avenir Next';
+    font-family: "Avenir Next";;
     font-style: normal;
     font-weight: 600;
     font-size: 11px;
@@ -43,11 +43,11 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     padding: 10px;
 }
 .violation-color{
-    background: #FFD2DA;
-    color: #D80027;
+    background: var(--pink);
+    color: var(--danger);
 }
 .unviolation-color{
-    color: #5DA364;
+    color: var(--success);
     background: #E2F2E3;
 }
 .entry-title-br{
