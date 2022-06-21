@@ -4,14 +4,14 @@
     background-repeat: no-repeat;
 }
 .sort_up {
-    background-image: url(http://localhost:8099/assets/image/Archive/up_enable.svg);
+    background-image: url('./../../image/Archive/up_enable.svg');
 }
 .sort_down {
-    background-image: url(http://localhost:8099/assets/image/Archive/down_enable.svg);
+    background-image: url('./../../image/Archive/down_enable.svg');
 }
 .sort_up.disabled {
-    background-image: url(http://localhost:8099/assets/image/Archive/up_disable.svg);
+    background-image: url('./../../image/Archive/up_disable.svg');
 }
 .sort_down.disabled {
-    background-image: url(http://localhost:8099/assets/image/Archive/down_disable.svg);
+    background-image: url('./../../image/Archive/down_disable.svg');
 }
