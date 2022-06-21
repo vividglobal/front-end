@@ -106,7 +106,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->penalty_issued)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->penalty_issued/1000)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -180,7 +180,7 @@
                 <h1 >Legal documents</h1>
             </div>
             <div class="modal-body">
-            <div class="loading-icon"><img class="td-img clickimg" src="../assets/image/loading.gif" alt=""></div>
+            <div class="loader loading-icon"></div>
                 <div class="row " id="box_list_file">
 
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
@@ -199,7 +199,6 @@
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn-footer btn-cancel close">Cancel</button>
-                <button class="confirm-btn-footer btn-yes" id="upload-save-file">Save change</button>
             </div>
         </div>
     </div>
