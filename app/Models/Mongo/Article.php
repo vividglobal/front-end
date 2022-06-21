@@ -80,6 +80,7 @@ class Article extends Model
         $matchConditions = [];
         $violationReviewField = 'detection_result';
         $dateField = 'crawl_date';
+
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
@@ -127,7 +128,9 @@ class Article extends Model
                             '$expr'=> [ '$and'=> [ '$eq' => [ '$article_id', '$$article_id' ] ] ]
                         ]
                     ],
-                    ['$project' => ['_id' => 1, 'name' => 1, 'url' => 1]]
+                    ['$addFields' => ['upload_date' => ['$toLong' => '$created_at']] ],
+                    ['$sort' => ['created_at' => -1]],
+                    ['$project' => ['_id' => 1, 'name' => 1, 'url' => 1, 'upload_date' => 1 ]]
                 ]
             ]
         ];
@@ -150,6 +153,27 @@ class Article extends Model
                 ]
             ]
         ];
+
+        if(isset($params['status']) && $params['status'] === self::STATUS_VIOLATION ) {
+            $aggregateQuery[] = [
+                '$addFields' => [
+                    'has_document' => [
+                        '$cond' => [
+                            'if'   =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
+                            'then' => true,
+                            'else' => false
+                        ]
+                    ],
+                    'penalty_issued' => [
+                        '$cond' => [
+                            'if' =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
+                            'then' => ['$first' => '$documents.upload_date'],
+                            'else' => null
+                        ]
+                    ]
+                ]
+            ];
+        }
 
         if(isset($params['violation_type_id'])) {
             $aggregateQuery[] = [
