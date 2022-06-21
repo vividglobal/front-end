@@ -14,7 +14,7 @@
         <p>{{ __('Add admin') }}</p>
     </div>
 </div>
-<div class="table__admin--management" style="margin: 28px 60px">
+<div class="table__admin--management" style="margin: 28px 0px">
     <div class=" admin__management">
         <table>
             <tr>
