@@ -106,21 +106,23 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3> </h3>
+                                    <h3>{{date("d/m/Y",$article->penalty_issued)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
+                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="{{ asset('assets/image/link.png')}}" alt="link-icon"></a>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    @if($article->has_document)
-                                    <img class="td-link upload-file" src="../assets/image/dislega2.png" data-id={{$article->_id }} alt="#">
-                                    @else
-                                    <img class="td-link upload-file" src="../assets/image/lega1.png" data-id={{$article->_id }} alt="#">
-                                    @endif
+                                    <img class="td-link upload-file"
+                                        @if($article->has_document)
+                                            src="{{ asset('assets/image/dislega2.png') }}"
+                                        @else
+                                            src="{{ asset('assets/image/lega1.png') }}"
+                                        @endif
+                                        data-id={{$article->_id }} alt="upload-icon">
                                 </div>
                             </div>
                             <div class="track track-three track-viola">
@@ -147,7 +149,9 @@
                                     <select class="list--select-right" id="cars">
                                         <option value="Select">Not started</option>
                                         <option value="Processing">Processing</option>
+                                        @if($article->has_document)
                                         <option value="Completed">Completed</option>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
