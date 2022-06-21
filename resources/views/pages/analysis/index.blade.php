@@ -12,7 +12,7 @@
                 <img src="../assets/image/calendar.svg" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
-            <button class="btn__apply">{{ __('Apply') }}</button>
+            <button class="btn__apply" id="apply_query">{{ __('Apply') }}</button>
         </div>
         <div class="list--select__right">
             @auth

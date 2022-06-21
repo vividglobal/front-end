@@ -29,10 +29,10 @@
 </div>
 <div class=" background__vituar-3 ">
         <div class="rows no-gutters">
-            <div class="background__image col l-6" >
+            <div class="background__image col l-6 m-6 c-12" >
                 <img src="../assets/image/home/img-3.jpg" alt="" style="width:100%">
             </div>
-            <div class="background__content col l-6">
+            <div class="background__content col l-6 m-6 c-12">
                 <p>{{ __('PURPOSE') }}</p>
                 <p>
                     {{ __('VIVID aims to become an effective virtual assistant for inspectors at the Ministry of Health and the Ministry of Information and

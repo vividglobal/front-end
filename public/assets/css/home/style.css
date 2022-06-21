@@ -87,7 +87,7 @@
     margin: 83px auto;
 }
 
-.background__vituar-2 > div {
+.background__vituar-2 > .background__image {
     max-width: 512px;
     width: 100%;
 }
@@ -109,10 +109,15 @@
     margin: 0 auto;
 }
 
+.background__vituar-4{
+    display: flex;
+    justify-content:center;
+}
+
 .background__vituar-4 p{
     max-width: 874px;
     width: 100%;
-    margin: 57px auto;
+    margin: 57px 0;
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
