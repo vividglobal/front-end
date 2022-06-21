@@ -33,8 +33,8 @@ class ArticleLegalDocumentController extends Controller
                 'path'       => $uploadResponse['path'],
                 'url'        => $request->getSchemeAndHttpHost() . $uploadResponse['path']
             ];
-            ArticleLegalDocument::create($newDocument);
-            return $this->responseSuccess($newDocument, "Action successfully");
+            $created = ArticleLegalDocument::create($newDocument);
+            return $this->responseSuccess($created, "Action successfully");
         }
 
         return $this->responseFail([], "Invalid article");

@@ -9,6 +9,7 @@ $(document).ready(function () {
     var loading = $(".loading-icon")
     var btnuploadfile = $(".btn-uploadfile")
     var span = $('.close');
+    let csrf = $('meta[name="csrf-token"]').attr('content');
 
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
@@ -30,9 +31,9 @@ $(document).ready(function () {
         captionModal.hide();
         imageModal.hide();
         uploadModal.hide();
+        btnuploadfile.hide();
         $('.div-item').remove();
         loading.show()
-        btnuploadfile.hide()
     });
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-title')) {
@@ -40,20 +41,69 @@ $(document).ready(function () {
         }
         if ($(e.target).is('.modal-upload-file')) {
             uploadModal.hide();
+            btnuploadfile.hide();
             $('.div-item').remove();
             loading.show()
-            btnuploadfile.hide()
         }
         if ($(e.target).is('.modalimg')) {
             imageModal.hide();
         }
     });
-
+    
+    let rowId =""
     uploadfile.click(function(e) {
+        $(this).addClass("check")
         uploadModal.show();
-        // btnuploadfile.show()
-        var rowId = $(this).attr("data-id")
-        let csrf = $('meta[name="csrf-token"]').attr('content')
+        rowId = $(this).attr("data-id")
+        renderFileItem(rowId)
+    })
+    $(document).on('change', '.file-input', async function(){
+        let form = new FormData();
+        let files = $('#upload')[0].files;
+        form.append("document", files[0]);
+        form.append("article_id", rowId);
+        if(files.length === 1){
+            var settings = {
+                "url": "/articles-document/upload",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Accept": "application/json",
+                    'X-CSRF-TOKEN': csrf,
+                },
+                "processData": false,
+                "mimeType": "multipart/form-data",
+                "contentType": false,
+                "data": form
+            };
+            await $.ajax(settings).done(function (data) {
+                if(data){
+                    fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
+                    <div class="content_file p-2">
+                    <div class=" d-flex justify-content-between align-items-center">
+                                <div class="item-one-file">
+                                    <div class="div-file">
+                                        <img src="../assets/image/icon-pdf.png" alt="">
+                                        <a href=${JSON.parse(data).data.url} class="doc-file" target="_blank"> ${JSON.parse(data).data.name} </a>
+                                    </div>
+                                    <div class="div-delete">
+                                        <span id-delete=${JSON.parse(data).data._id} class="delete-file">&times;</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> `
+                    $('#box_list_file').prepend(fileHtmlItems);
+                }
+                if(JSON.parse(data).data.article_id === rowId){
+                    $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
+                }
+            });
+            $('#upload').val('');
+        }
+    })
+
+    function renderFileItem(rowId) {
         $.ajax({
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
@@ -81,47 +131,27 @@ $(document).ready(function () {
                         $('#box_list_file').prepend(fileHtmlItems);
                     }
                 }
-                $('.delete-file').on("click", function (){
-                    var rowId = $(this).attr("id-delete")
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-TOKEN': csrf,
-                        },
-                        method: "DELETE",
-                        url:"/articles-document/"+rowId+"",
-                    })
-                    .done(function( msg ) {
-                        window.location.href = window.location.href
-                    });
-                    uploadModal.show();
-                })
             }
         });
-        submitUpload.click(function(e) {
-            var form = new FormData();
-            var files = $('#upload')[0].files;
-            form.append("document", files[0]);
-            form.append("article_id", rowId);
-            if(files.length > 0){
-                var settings = {
-                    "url": "/articles-document/upload",
-                    "method": "POST",
-                    "timeout": 0,
-                    "headers": {
-                        "Accept": "application/json",
-                        'X-CSRF-TOKEN': csrf,
-                    },
-                    "processData": false,
-                    "mimeType": "multipart/form-data",
-                    "contentType": false,
-                    "data": form
-                };
-                console.log(settings);
-                $.ajax(settings).done(function (response) {
-                    console.log(response);
-                    window.location.href = window.location.href
-                });
-            }
-        })
+    }
+    
+    $(document).on("click", '.delete-file', async function (){
+        let rowId = $(this).attr("id-delete");
+        let parentItem = $(this).parents('.items_file')
+        let repsonse = await $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': csrf,
+            },
+            method: "DELETE",
+            url:"/articles-document/"+rowId+"",
+        });
+        if(repsonse.success) {
+            parentItem.remove();
+        }else {
+        }
+        let check  = $(".div-item");
+        if(check.length===0){
+            
+        }
     })
 });
