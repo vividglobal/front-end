@@ -14,13 +14,13 @@
                 <span
                     @class([
                         'ico-sort theard-table sort_up',
-                        'disabled' => checkSort($params, 'total_article', ASC)
+                        'disabled' => checkSort(request()->all(), 'total_article', ASC)
                     ])
                     data-sort-field="total_article" data-sort-value="{{ ASC }}"></span>
                 <span
                     @class([
                         'ico-sort theard-table sort_down',
-                        'disabled' => checkSort($params, 'total_article', DESC)
+                        'disabled' => checkSort(request()->all(), 'total_article', DESC)
                     ])
                     data-sort-field="total_article" data-sort-value="{{ DESC }}"></span>
             </div>
