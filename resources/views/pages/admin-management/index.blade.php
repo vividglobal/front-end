@@ -3,6 +3,8 @@
 @section('content')
 <link rel="stylesheet" href="../assets/css/adminManagement/style.css">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
+<script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+
 @include("modal/createAccount");
 <div class="list--search--select" >
     <div class="list--title">
