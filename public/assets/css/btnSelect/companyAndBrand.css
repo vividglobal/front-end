@@ -5,7 +5,7 @@
     left: -40%;
     width: 353px;
     background: #FFFFFF;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     box-sizing: border-box;
     display: none;
 }
@@ -14,7 +14,7 @@
     padding: 14px 0;
     display: flex;
     align-items: center;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     margin: 23px 23px 10px 23px;
 }
 
@@ -31,19 +31,19 @@
 }
 
 .select__one:first-child > p{
-    color: #6F6F6F;
+    color: var(--gray-6F);
 }
 
 
 .select__one:hover {
-    background: #F4F4F4;
+    background: var(--gray-F4);
     transition: 0.3s linear;
 }
 
 .select__one p {
     width: 100%;
     text-align: left;
-    font-family: 'Avenir';
+    font-family: "Avenir ";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -63,5 +63,5 @@
 }
 
 .background-gray{
-    background-color: #F4F4F4;
+    background-color: var(--gray-F4);
 }

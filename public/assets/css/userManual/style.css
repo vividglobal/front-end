@@ -40,16 +40,16 @@ video[poster] {
   }
 
   .accordion {
-    background: #fff;
+    background: var(--white);
     cursor: pointer;
     padding: 18px 29px;
     width: 70vw;
-    font-family: Avenir;
+    font-family: "Avenir";
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
     line-height: 27px;
-    color: #0C3C60;
+    color: var(--primary);
     border: 0;
     outline: none;
     text-align: left;
@@ -63,7 +63,7 @@ video[poster] {
 
   .panel {
     text-align: justify;
-    background-color: white;
+    background-color: var(--white);
     display: none;
     outline: none;
     opacity: 1;
@@ -75,17 +75,17 @@ video[poster] {
   }
 
   .child-accordion {
-    background: #fff;
+    background:  var(--white);
     padding-top: 18px;
     padding-bottom: 18px;
     width: 100%;
-    font-family: 'Avenir';
+    font-family: "Avenir";
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
     line-height: 27px;
     text-decoration-line: underline;
-    color: #0C3C60;
+    color:  var(--primary);
     text-align: left;
     outline: none;
     transition: 0.4s;
@@ -104,7 +104,7 @@ video[poster] {
     display: none;
     padding: 0 18px;
     font-style: normal;
-    font: Quicksand;
+    font-family: "Avenir next";
     color: #262626;
   }
   .panel .at {
@@ -116,12 +116,12 @@ video[poster] {
   }
 
   .add span {
-    font-family: Quicksand;
+    font-family: "Avenir next";
     font-style: normal;
     font-weight: 600;
   }
   .panel span {
-    font-family: Quicksand;
+    font-family: avenir;
     font-style: normal;
     font-weight: 600;
   }

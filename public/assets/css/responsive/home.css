@@ -1,0 +1,36 @@
+@media (min-width: 1113px) {
+    .vituar_validation{
+        background: url(../../image/home/img-1.svg) no-repeat center center;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 1112px) {
+    .vituar_validation{
+        background: url(../../image/home/img-1.svg) no-repeat center center;
+    }
+    .content__vituar{
+        padding: 0 16px;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .vituar_validation{
+        background: url(../../image/home/bg_vituar_mb.svg) no-repeat center center;
+    }
+    .content__vituar{
+        padding: 0 16px;
+    }
+    .content__vituar p:first-child {
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 39px;
+        line-height: 60px;
+    }
+    .content__vituar p:nth-child(2) {
+        text-align: justify !important;
+        padding-right: 0 !important;
+    }
+}
+
