@@ -136,6 +136,11 @@
     align-items:center;
     border: 1px solid var(--gray-C7);
     padding: 73px 0;
+
+}
+
+.background__vituar-5 .background__image img {
+    width: inherit;
 }
 
 .background__vituar-6 p {
@@ -172,4 +177,5 @@
     color: var(--black);
     padding-top: 45px;
     padding-bottom: 141px;
+    text-align:center;
 }

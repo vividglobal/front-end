@@ -32,6 +32,14 @@
         padding:20px 57px;
         margin: 0;
     }
+
+    .background__vituar-5 {
+        margin:0 15px !important;
+    }
+
+    .background__vituar-5 > .background__image{
+        padding: 55px 0 !important;
+    }
 }
 
 @media (min-width: 426px){
@@ -88,7 +96,47 @@
     }
 
     .background__vituar-4{
-        margin: 155px 16px 155px 16px;
+        margin-top: 65px;
+    }
+
+    .background__vituar-4 p{
+        margin-bottom: 0 !important;
+    }
+
+    .background__vituar-5 {
+        margin:0 15px !important;
+    }
+
+    .background__vituar-5 > .background__image{
+        padding: 15px 0 !important;
+    }
+
+    .background__vituar-6 p {
+        padding: 70px 0 35px 0 !important;
+    }
+
+    .background__vituar-7{
+        margin: 0 15px !important;
+    }
+
+    .background__vituar-7 .background__image{
+        padding: 17px !important;
+        flex-direction: row !important;
+        margin-bottom: 13px !important;
+        border: none !important;
+    }
+    .background__vituar-7 .background__image p{
+        padding: 0 !important;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px !important;
+        line-height: 170%;
+    }
+    .background__vituar-7 .background__image img{
+        width: 30px;
+        height: 30px;
+        margin-right: 14px;
     }
 }
 
