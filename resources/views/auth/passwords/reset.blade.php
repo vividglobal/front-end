@@ -1,65 +1,66 @@
-@extends('layouts.app')
+@extends('layouts.login')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
-
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+    <div class="container-login rows no-gutters">
+        <div class="form__login col l-6 m-12 c-12">
+            <div class="block__login">
+                <div class="login__header">{{ __('Reset Password') }}</div>
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
                         </div>
+                    @endif
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                    {{-- EMAIL INPUT --}}
+                    <p class="title__login">{{ __('E-mail') }}</p>
+                    <div class="email--login">
+                        <img src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
+                        <input id="email" type="email" class=" @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}"
+                            required autocomplete="email" placeholder="Enter your email" autofocus>
+                    </div>
+                    @error('email')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                    {{-- PASSWORD INPUT --}}
+                    <p class="title__login">{{ __('Password') }}</p>
+                    <div class="email--login">
+                        <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
+                        <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
+                            required autocomplete="new-password" placeholder="Enter your password">
+                    </div>
+                    @error('password')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                    {{-- CONFIRM PASSWORD INPUT --}}
+                    <p class="title__login">{{ __('Confirm Password') }}</p>
+                    <div class="email--login">
+                        <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
+                        <input id="password-confirm" type="password" name="password_confirmation"
+                            required autocomplete="new-password" placeholder="Enter confirm password">
+                    </div>
 
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    <button type="submit" class="btn_submit">
+                        {{ __('Reset password') }}
+                    </button>
+                </form>
+                <a href="{{ route('login') }}">
+                    <button type="submit" class="btn_back--login">
+                            {{ __('Back to login') }}
+                    </button>
+                </a>
             </div>
         </div>
+        <div class="bg__login col l-6 m-0 c-0">
+            <div class="background"></div>
+        </div>
     </div>
-</div>
 @endsection
