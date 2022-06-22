@@ -40,6 +40,7 @@ $(document).ready(function(){
         }else {
             let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
             isLoading = false;
+            hide_overlay();
             if(response.success) {
                 show_success(response.message);
                 updateDetectionColumnAfterSelectViolationCode(response.data);
@@ -61,6 +62,7 @@ $(document).ready(function(){
     $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         isLoading = false;
+        hide_overlay();
         if(response.success) {
             show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
@@ -91,6 +93,7 @@ $(document).ready(function(){
         }
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode);
         isLoading = false;
+        hide_overlay();
         if(response.success) {
             updateDetectionColumnAfterSelectViolationCode(response.data);
             violationCodeModal.hide();
@@ -142,6 +145,7 @@ $(document).ready(function(){
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         isLoading = false;
+        hide_overlay();
         if(response.success) {
             show_success(response.message);
             // Update status label
@@ -164,6 +168,7 @@ $(document).ready(function(){
 
     async function action_moderate_article(action, status, violationCode = []) {
         if(isLoading) {return}
+        show_overlay();
         isLoading = true;
         return await $.ajax({
             url : `/articles/${articleId}/action-moderate?_method=PUT`,
