@@ -1,15 +1,16 @@
 $(document).ready(function () {
-    var captionModal = $('#captionModal');
-    var imageModal = $('#imageModal')
-    var uploadModal = $("#uploadModal");
-    var btn = $('.btn-caption');
-    var clickimg = $('.clickimg');
-    var uploadfile = $('.upload-file');
-    var loading = $(".div-loading")
-    var btnuploadfile = $(".btn-uploadfile")
-    var span = $('.close');
+    let captionModal = $('#captionModal');
+    let imageModal = $('#imageModal')
+    let uploadModal = $("#uploadModal");
+    let btn = $('.btn-caption');
+    let clickimg = $('.clickimg');
+    let uploadfile = $('.upload-file');
+    let loading = $(".div-loading")
+    let btnuploadfile = $(".btn-uploadfile")
+    let span = $('.close');
+    let checklogin = ""
     let csrf = $('meta[name="csrf-token"]').attr('content');
-
+    console.log(checklogin);
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -53,6 +54,7 @@ $(document).ready(function () {
         uploadModal.show();
         show_overlay()
         rowId = $(this).attr("data-id")
+        checklogin = $('.check-login').attr('t-login');
         renderFileItem(rowId)
     })
     $(document).on('change', '.file-input', async function(){
@@ -62,7 +64,7 @@ $(document).ready(function () {
         form.append("article_id", rowId);
         show_overlay()
         if(files.length === 1){
-            var settings = {
+            let settings = {
                 "url": "/articles-document/upload",
                 "method": "POST",
                 "timeout": 0,
@@ -106,7 +108,6 @@ $(document).ready(function () {
     })
     
     function renderFileItem(rowId) {
-        
         $.ajax({
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
@@ -124,7 +125,7 @@ $(document).ready(function () {
                                             <img src="../assets/image/icon-pdf.png" alt="">
                                             <a href=${res.data[i].url} class="doc-file" target="_blank"> ${res.data[i].name} </a>
                                         </div>
-                                        <div class="div-delete">
+                                        <div class= ${!checklogin ? "hide-div" : "div-delete"}>
                                             <span id-delete=${res.data[i].id} class="delete-file">&times;</span>
                                         </div>
                                     </div>

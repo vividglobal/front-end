@@ -139,7 +139,6 @@
                                                 </a>
                                             </div>
                                         @endforeach
-                                    @endif
                                     </div>
                                 </div>
                             </div>
@@ -178,9 +177,11 @@
     </div>
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
-    </div>
-
-    <div class="modal-upload-file" id="uploadModal">
+    </div>                                 
+    <div class="modal-upload-file"id="uploadModal">
+    @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
+    <div class="check-login" t-login="true"></div>
+    @endif
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
@@ -190,8 +191,8 @@
             </div>
             <div class="modal-body">
                 <div class="row " id="box_list_file">
-                @auth
-                @if(@Auth::user()->role === "OPERATOR")
+                
+                @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
                             <div class="d-flex justify-content-between align-items-center">
@@ -206,8 +207,6 @@
                     </div>
                 </div>
                 @endif
-                @endauth
-
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn-footer btn-cancel close">Cancel</button>
