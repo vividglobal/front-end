@@ -185,6 +185,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
+    position: relative;
   }
   .head-modal{
       width: 100%;
@@ -505,4 +506,21 @@
 }
 .page-link{
   border: none !important;
+}
+.track-one-title{
+  flex: 1 0 calc(40%) !important;
+}
+.entry-one-item{
+  display: flex !important;
+  justify-content: center !important;
+}
+.style__code_vio{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: auto;
+    width: 100%;
+    padding: 10px;
+    border-left: none;
+    border-right: none;
 }

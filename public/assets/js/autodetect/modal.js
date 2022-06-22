@@ -5,8 +5,7 @@ $(document).ready(function () {
     var btn = $('.btn-caption');
     var clickimg = $('.clickimg');
     var uploadfile = $('.upload-file');
-    var submitUpload = $("#upload-save-file")
-    var loading = $(".loading-icon")
+    var loading = $(".div-loading")
     var btnuploadfile = $(".btn-uploadfile")
     var span = $('.close');
     let csrf = $('meta[name="csrf-token"]').attr('content');
@@ -33,7 +32,6 @@ $(document).ready(function () {
         uploadModal.hide();
         btnuploadfile.hide();
         $('.div-item').remove();
-        loading.show()
     });
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-title')) {
@@ -43,7 +41,6 @@ $(document).ready(function () {
             uploadModal.hide();
             btnuploadfile.hide();
             $('.div-item').remove();
-            loading.show()
         }
         if ($(e.target).is('.modalimg')) {
             imageModal.hide();
@@ -54,6 +51,7 @@ $(document).ready(function () {
     uploadfile.click(function(e) {
         $(this).addClass("check")
         uploadModal.show();
+        show_overlay()
         rowId = $(this).attr("data-id")
         renderFileItem(rowId)
     })
@@ -62,6 +60,7 @@ $(document).ready(function () {
         let files = $('#upload')[0].files;
         form.append("document", files[0]);
         form.append("article_id", rowId);
+        show_overlay()
         if(files.length === 1){
             var settings = {
                 "url": "/articles-document/upload",
@@ -76,34 +75,38 @@ $(document).ready(function () {
                 "contentType": false,
                 "data": form
             };
-            await $.ajax(settings).done(function (data) {
-                if(data){
+            let repsonse = await $.ajax(settings)
+                if(JSON.parse(repsonse).success) {
+                    let date = JSON.parse(repsonse).data.modified
+                    let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
                     fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
                     <div class="content_file p-2">
                     <div class=" d-flex justify-content-between align-items-center">
                                 <div class="item-one-file">
                                     <div class="div-file">
                                         <img src="../assets/image/icon-pdf.png" alt="">
-                                        <a href=${JSON.parse(data).data.url} class="doc-file" target="_blank"> ${JSON.parse(data).data.name} </a>
+                                        <a href=${JSON.parse(repsonse).data.url} class="doc-file" target="_blank"> ${JSON.parse(repsonse).data.name} </a>
                                     </div>
                                     <div class="div-delete">
-                                        <span id-delete=${JSON.parse(data).data._id} class="delete-file">&times;</span>
+                                        <span id-delete=${JSON.parse(repsonse).data._id} class="delete-file">&times;</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div> `
                     $('#box_list_file').prepend(fileHtmlItems);
+                    if(JSON.parse(repsonse).data.article_id === rowId){
+                        $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
+                        $(".date-penalty").find(`#${rowId}`).text(now)
+                    }
                 }
-                if(JSON.parse(data).data.article_id === rowId){
-                    $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
-                }
-            });
+                hide_overlay()
             $('#upload').val('');
         }
     })
-
+    
     function renderFileItem(rowId) {
+        
         $.ajax({
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
@@ -131,27 +134,31 @@ $(document).ready(function () {
                         $('#box_list_file').prepend(fileHtmlItems);
                     }
                 }
+                hide_overlay()
             }
         });
     }
     
     $(document).on("click", '.delete-file', async function (){
-        let rowId = $(this).attr("id-delete");
+        let rowIdelemnet = $(this).attr("id-delete");
         let parentItem = $(this).parents('.items_file')
+        show_overlay()
         let repsonse = await $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
             method: "DELETE",
-            url:"/articles-document/"+rowId+"",
+            url:"/articles-document/"+rowIdelemnet+"",
         });
+        hide_overlay()
         if(repsonse.success) {
             parentItem.remove();
+            let item = $('.div-item')
+            if(item.length === 0){
+                $(".entry").find(`#${rowId}`).attr("src","http://localhost:8099/assets/image/lega1.png")
+                $(".date-penalty").find(`#${rowId}`).text("")
+            }
         }else {
-        }
-        let check  = $(".div-item");
-        if(check.length===0){
-            
         }
     })
 });

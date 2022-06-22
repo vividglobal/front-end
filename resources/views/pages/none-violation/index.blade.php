@@ -60,7 +60,7 @@
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
                     @foreach ($articles as $key => $article)
-                        <div class="scroll-table" >
+                        <div class="scroll-table" data-id="{{ $article->_id }}">
                         <div class="track">
                                 <div class="entry">
                                     <h3>{{date("d/m/Y",$article->published_date)}}</h3>
@@ -93,6 +93,21 @@
         {{ $articles->links('layouts.my-paginate') }}
     </div>
 </div>
+
+<div class="modal-confirm-title">
+        <div class="modal-confirm-content">
+            <div class="head-confirm">
+                <h1>Remove user</h1>
+                <p>Are you sure to remove this user?</p>
+            </div>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+            </div>
+        </div>
+    </div>
+
+
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>

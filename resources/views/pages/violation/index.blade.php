@@ -8,7 +8,6 @@
     @include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
     <!-- list Btn  -->
 </div>
-
 <div class="container-table">
     <div class="container_row">
         <div class="col-left ">
@@ -93,8 +92,8 @@
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
                     @foreach ($articles as $key => $article)
-                        <div class="scroll-table" >
-                        <div class="track">
+                        <div data-id="{{ $article->_id }}" class="scroll-table" >
+                            <div class="track"">
                                 <div class="entry">
                                     <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
@@ -105,8 +104,12 @@
                                 </div>
                             </div>
                             <div class="track">
-                                <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->penalty_issued/1000)}}</h3>
+                                <div class="entry date-penalty">
+                                    @if($article->has_document)
+                                    <h3  id={{$article->_id}}>{{date("d/m/Y",$article->penalty_issued/1000)}}</h3>
+                                    @else
+                                    <h3 id={{$article->_id}}></h3>
+                                    @endif
                                 </div>
                             </div>
                             <div class="track">
@@ -116,7 +119,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <img class="td-link upload-file"
+                                    <img class="td-link upload-file" id={{$article->_id}}
                                         @if($article->has_document)
                                             src="{{ asset('assets/image/dislega2.png') }}"
                                         @else
@@ -125,9 +128,10 @@
                                         data-id={{$article->_id }} alt="upload-icon">
                                 </div>
                             </div>
-                            <div class="track track-three track-viola">
-                                <div class="entry-three">
-                                    <div class="style__code--article" style="width:55%">
+
+                            <div class="track ">
+                                <div class="entry-three ">
+                                    <div class="style__code--article style__code_vio">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }} >
@@ -136,13 +140,17 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle">
-                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
-                                        @endforeach
-                                    </div>
                                 </div>
                             </div>
+
+                            <div class="track track-one-title">
+                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
+                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                        <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
+                                    @endforeach
+                                </div>
+                            </div>
+
                             @auth
                             <div class="track">
                                 <div class="entry">
@@ -180,9 +188,9 @@
                 <h1 >Legal documents</h1>
             </div>
             <div class="modal-body">
-            <div class="loader loading-icon"></div>
                 <div class="row " id="box_list_file">
-
+                @auth
+                @if(@Auth::user()->role === "OPERATOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
                             <div class="d-flex justify-content-between align-items-center">
@@ -196,6 +204,9 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @endauth
+
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn-footer btn-cancel close">Cancel</button>
