@@ -69,13 +69,13 @@
                     </a>
                 @endisset
                 </td>
-                @isset($article->brand['name'])
                 <td>
+                @isset($article->brand['name'])
                     <a class="brand-name"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
                         {{ __($article->brand['name'] ?? '' )}}
                     </a>
-                </td>
                 @endisset
+                </td>
                 <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                 <td>
                     <div class="wr-img">

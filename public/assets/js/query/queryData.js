@@ -150,8 +150,8 @@ $("document").ready(function(){
 
     //  ----------------------------
     //  APPLY BUTTON
-    $(".btn__apply").on("click",function(){
-        // replaceURL(paramSortBy,paramSortValue)
+    $("#apply_query").on("click",function(){
+        replaceURL(paramSortBy,paramSortValue)
     })
 
     //LIST SHOWING
@@ -210,7 +210,7 @@ $("document").ready(function(){
         let country = $(".list--country").find("> p").attr("data-id");
         let violationType = $(".list--violation--type").find("> p").attr("data-id");
         let perpage = $(".list--showing").find("select").val()
-        let date = $('input[name="daterange"]').val()
+        let date = $('input[name="daterange"]').val() || "";
         let end__Date = "";
         let start__Date = "";
         if(date !== ""){

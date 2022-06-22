@@ -1,6 +1,6 @@
 .index_violation-nonViolation{
     height: 312px;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     margin: 16px 199px;
     display: flex;
 }
@@ -18,7 +18,7 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 136.5%;
-    color: #6F6F6F;
+    color: var(--gray-6F);
 }
 
 .number-violation{
@@ -27,7 +27,7 @@
     font-weight: 600;
     font-size: 50px;
     line-height: 136.5%;
-    color: #5DA364;
+    color: var(--success);
 }
 
 .padding_btn_analysis .create__profile{
@@ -36,9 +36,9 @@
 }
 
 .percent-violation{
-    color: #5DA364;
+    color: var(--success);
     padding: 3px 5px;
-    background-color: #E2F2E3;
+    background-color: var(--percent_success);
     display: inline-block;
     border-radius: 5px;
 }
@@ -48,16 +48,16 @@
 }
 
 .index__violation:nth-child(2) .percent-violation{
-    background-color: #FFD2DA;
+    background-color: var(--pink);
 }
 
 .index__violation:nth-child(2) .percent-violation,
 .index__violation:nth-child(2) .number-violation{
-    color: #D80027;
+    color: var(--danger);
 }
 
 .index__violation:nth-child(3) .number-violation{
-    color: #0C3C60;
+    color: var(--primary);
 }
 
 .table_analysis tbody tr th img{

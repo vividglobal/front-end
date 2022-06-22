@@ -1,0 +1,94 @@
+@media (min-width: 1113px) {
+    .vituar_validation{
+        background: url(../../image/home/img-1.svg) no-repeat center center;
+    }
+}
+
+@media (max-width: 739px) {
+    .background__vituar-2 > .background__image {
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .background__vituar-2 .background__content{
+        margin-bottom: 33px;
+    }
+
+    .background__vituar-2 .background__content p:first-child{
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 31px;
+        line-height: 44px;
+        text-align: left;
+    }
+    .background__vituar-3 .rows{
+        flex-direction: column-reverse;
+    }
+    .background__vituar-3 .rows .background__content {
+        padding: 85px 0 145px 0;
+    }
+    .background__vituar-4 p{
+        padding:20px 57px;
+        margin: 0;
+    }
+}
+
+@media (min-width: 426px){
+    .vituar_validation{
+        background: url(../../image/home/img-1.svg) no-repeat center center;
+    }
+    .content__vituar{
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 425px) {
+    .vituar_validation{
+        background: url(../../image/home/bg_vituar_mb.svg) no-repeat center center;
+    }
+
+    .content__vituar{
+        padding: 0 16px;
+    }
+
+    .content__vituar p:first-child {
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 39px;
+        line-height: 60px;
+    }
+
+    .content__vituar p:nth-child(2) {
+        text-align: justify !important;
+        padding-right: 0 !important;
+    }
+
+    .background__vituar-2 .background__content p{
+        max-width:100%;
+    }
+
+    .background__vituar-2{
+        padding: 0 16px;
+    }
+
+    .background__vituar-3{
+        position: relative;
+    }
+
+    .background__vituar-3 .rows .background__content p{
+        margin: auto;
+    }
+
+    .background__vituar-3 .rows .background__image{
+        position: absolute;
+        top: 75%;
+        margin: 0 16px;
+    }
+
+    .background__vituar-4{
+        margin: 155px 16px 155px 16px;
+    }
+}
+

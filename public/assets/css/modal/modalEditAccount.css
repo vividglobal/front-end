@@ -37,7 +37,7 @@
     position: relative;
     max-width: 650px;
     width: 100%;
-    background: #fff;
+    background: var(--white);
     padding: 22px;
     z-index: 1;
   }
@@ -69,12 +69,12 @@
   }
 
   .content-modal p{
-    font-family: 'Avenir Next';
+    font-family: avenir;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: #000000;
+    color: var(--black);
 
   }
 
@@ -94,7 +94,7 @@
 
   .input--modal{
    display: flex;
-   border: 1px solid #C7C7C7;
+   border: 1px solid var(--gray-C7);
    padding: 15px;
   }
 
@@ -102,7 +102,7 @@
     border: none;
     width: 100%;
     padding-right: 5px;
-    background-color: #FFFFFF;
+    background-color: var(--white);
   }
 
   .btn__change--password{
@@ -114,7 +114,7 @@
     display: flex;
     align-items: center;
     text-decoration-line: underline;
-    color: #0C3C60;
+    color: var(--primary);
     margin-top: 10px;
   }
   .btn-modal{
@@ -124,21 +124,21 @@
   .btn-modal button{
     margin-top: 13px;
     padding: 12px 0;
-    font-family: 'Avenir Next';
+    font-family: 'Brandon Grotesque';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
     text-align: center;
-    color: #6F6F6F;
-    background-color: #FFFFFF;
+    color: var(--gray-6F);
+    background-color: var(--white);
     border: 1px solid #C7C7C7;
     width: 48%;
   }
 
   .btn-modal button:last-child{
-    color: #FFFFFF;
-    background-color: #0C3C60;
+    color: var(--white);
+    background-color: var(--primary);
   }
 
   /* modal checkbox  */
@@ -153,12 +153,12 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: 'Avenir Next';
+    font-family: avenir;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: #6F6F6F;
+    color: var(--gray-6F);
   }
 
   .container__checkbox input {
@@ -173,16 +173,16 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #fff;
-    border: 1px solid #0C3C60;
+    background-color: var(--white);
+    border: 1px solid var(--primary);
   }
 
   .container__checkbox:hover input ~ .checkmark {
-    background-color: #fff;
+    background-color: var(--white);
   }
 
   .container__checkbox input:checked ~ .checkmark {
-    background-color: #fff;
+    background-color: var(--white);
   }
 
   .checkmark:after {
@@ -200,7 +200,7 @@
     top: -2px;
     width: 13px;
     height: 20px;
-    border: solid #6F6F6F;
+    border: solid var(--gray-6F);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -208,6 +208,6 @@
   }
 
   .text-dangers{
-    color: red;
+    color: var(--danger);
     margin-top: 5px !important;
 }

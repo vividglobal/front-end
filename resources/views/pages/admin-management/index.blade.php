@@ -3,6 +3,8 @@
 @section('content')
 <link rel="stylesheet" href="../assets/css/adminManagement/style.css">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
+<script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+
 @include("modal/createAccount");
 <div class="list--search--select" >
     <div class="list--title">
@@ -14,7 +16,7 @@
         <p>{{ __('Add admin') }}</p>
     </div>
 </div>
-<div class="table__admin--management" style="margin: 28px 60px">
+<div class="table__admin--management" style="margin: 28px 0px">
     <div class=" admin__management">
         <table>
             <tr>

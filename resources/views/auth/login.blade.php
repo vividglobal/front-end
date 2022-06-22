@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-login rows no-gutters">
-        <div class="form__login col l-6">
+        <div class="form__login col l-6 m-12 c-12">
                     <div class="block__login">
                             <div class="login__header">{{ __('Login') }}</div>
                                 <form method="POST" action="{{ route('login') }}">
@@ -44,7 +44,7 @@
                                 </form>
                             </div>
         </div>
-        <div class="bg__login col l-6">
+        <div class="bg__login col l-6 m-0 c-0">
             <div class="background"></div>
         </div>
     </div>

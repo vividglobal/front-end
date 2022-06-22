@@ -3,7 +3,6 @@
 }
 .vituar_validation{
     width: 100%;
-    background: url(../../image/home/img-1.svg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -24,7 +23,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 170%;
-    color: #FFFFFF;
+    color: var(--white);
     max-width: 576px;
     width: 100%;
 }
@@ -35,7 +34,7 @@
     font-size: 50px;
     line-height: 71px;
 
-    color: #FFFFFF;
+    color: var(--white);
 }
 
 .content__vituar p:nth-child(2){
@@ -50,7 +49,7 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
-    color: #FFFFFF;
+    color: var(--white);
     background: #0C3C60;
     border: none;
     margin-top: 19px;
@@ -70,7 +69,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 170%;
-    color: #000000;
+    color: var(--black);
     text-align: justify;
 }
 
@@ -83,11 +82,17 @@
     color: #082136;
 }
 
-.background__image{
-}
 
 .background__vituar-2{
     margin: 83px auto;
+}
+
+.background__vituar-2 > .background__image {
+    max-width: 512px;
+    width: 100%;
+}
+.background__vituar-2 > div img{
+    width: 100%;
 }
 
 .background__vituar-2 .background__content{
@@ -100,20 +105,25 @@
 }
 
 .background__vituar-3 .background__content p {
-    color: #FFFFFF;
+    color: var(--white);
     margin: 0 auto;
+}
+
+.background__vituar-4{
+    display: flex;
+    justify-content:center;
 }
 
 .background__vituar-4 p{
     max-width: 874px;
     width: 100%;
-    margin: 57px auto;
+    margin: 57px 0;
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    color: #000000;
+    color: var(--black);
 }
 
 .background__vituar-5{
@@ -124,7 +134,7 @@
     display: flex;
     justify-content:center;
     align-items:center;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     padding: 73px 0;
 }
 
@@ -134,7 +144,7 @@
     font-weight: 400;
     font-size: 50px;
     line-height: 71px;
-    color: #082136;
+    color: var(--primary);
     text-align: center;
     padding: 98px 0 63px 0;
 }
@@ -144,8 +154,8 @@
 }
 
 .background__vituar-7 .background__image{
-    background: #F4F4F4;
-    border: 1px solid #C7C7C7;
+    background: var(--gray-F4);
+    border: 1px solid var(--gray-C7);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,7 +169,7 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 152.5%;
-    color: #000000;
+    color: var(--black);
     padding-top: 45px;
     padding-bottom: 141px;
 }

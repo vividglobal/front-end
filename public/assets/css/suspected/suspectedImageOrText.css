@@ -4,7 +4,7 @@
     top: -2px;
     width: 12px;
     height: 18px;
-    border: solid #fff;
+    border: solid var(--white);
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
@@ -12,7 +12,7 @@
   }
   .checkbox__suspected:hover input ~ .checkmark,
   .checkbox__suspected input:checked ~ .checkmark {
-    background: #0C3C60;
+    background: var(--primary);
   }
   /* text area  */
 
@@ -21,7 +21,7 @@
     width: 100%;
     height: 203px;
     padding: 10px;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     margin: 0 10px 15px 0;
   }
 
@@ -32,7 +32,7 @@
   }
   /* text area files */
   textarea:disabled{
-    background: #ffffff;
+    background: var(--white);
   }
 
   .file-input {
@@ -42,10 +42,10 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background: var(--white);
     position: relative;
     border-radius: 3px;
-    border: 1px solid #C7C7C7;
+    border: 1px solid var(--gray-C7);
     justify-content: center;
     align-items: center;
   }
@@ -67,14 +67,14 @@
 
   .file-input > .label {
 
-    font-family: 'Avenir Next';
+    font-family: "Avenir Next";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     padding: 13px 34px 0 34px;
     text-align: center;
-    color: #6F6F6F;
+    color: var(--gray-6F);
 
   }
   .file-input.-chosen > .label {
@@ -92,17 +92,17 @@
     width: 100%;
     padding: 12px 0;
     border: none;
-    color: #fff;
-    font-family: 'Avenir Next';
+    color: var(--white);
+    font-family: "Avenir Next";
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
-    background: #C7C7C7;
+    background: var(--gray-C7);
   }
 
   .title__result{
-    font-family: 'Avenir Next';
+    font-family: "Avenir Next";
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

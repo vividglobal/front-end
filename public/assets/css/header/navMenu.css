@@ -26,12 +26,12 @@
 
 .nav--btn__after--login > div,
 .nav-link{
-    font-family: 'Brandon Grotesque';
+    font-family: "Brandon Grotesque";
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
     line-height: 29px;
-    color: #0C3C60;
+    color: var(--primary);
 }
 
 .after-login{
@@ -49,14 +49,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: 'Brandon Grotesque';
+    font-family: "Brandon Grotesque";
     flex-direction: column;
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
     line-height: 29px;
     list-style: none;
-    color: #0C3C60;
+    color: var(--primary);
 }
 
 .nav-menu > ul li:nth-child(3){
@@ -68,13 +68,13 @@
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
     top: 80px;
     width: 195px;
-    background-color: #FFFFFF;
+    background-color: var(--white);
     display: none;
     z-index: 2;
 }
 
 .nav--dropdown li {
-    color: #000000;
+    color: var(--black);
 }
 
 .nav--dropdown li > a{
@@ -82,7 +82,7 @@
 }
 
 .nav--dropdown li:hover{
-    background-color: #F4F4F4;
+    background-color: var(--gray-F4);
     transition: 0.3s linear;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .nav--btnBorder__bottom{
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid var(--white);
     width: 30px;
     z-index: 2;
     transition: 0.3s linear;
@@ -116,14 +116,14 @@ li:nth-child(3) img{
 .btn--export--excel{
     margin-left: 10px;
     padding: 14px 13px;
-    background-color: #0C3C60;
+    background-color: var(--primary);
     text-decoration: none;
 }
 
 
 .btn--export--excel p {
-    color: #FFFFFF;
-    font-family: 'Avenir Next';
+    color: var(--white);
+    font-family: "Avenir Font";
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
@@ -135,7 +135,7 @@ li:nth-child(3) img{
     top: 80px;
     width: 195px;
     right: 0px;
-    background-color: #FFFFFF;
+    background-color:var(--white);
     display: none;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
 }
@@ -150,7 +150,7 @@ li:nth-child(3) img{
 }
 
 .dropdown-login p:hover {
-    background-color: #F4F4F4;
+    background-color: var(--gray-F4);
     transition: 0.3s linear;
 }
 
@@ -159,7 +159,7 @@ li:nth-child(3) img{
 }
 
 .activeBackground{
-    background-color: #F4F4F4;
+    background-color: var(--gray-F4);
 }
 
 .style__code--article{
@@ -182,7 +182,7 @@ li:nth-child(3) img{
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    color: #000000;
+    color: var(--black);
     text-decoration: none;
 }
 

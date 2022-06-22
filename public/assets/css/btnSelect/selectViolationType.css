@@ -3,8 +3,8 @@
     top: 50px;
     left: -80%;
     width: 480px;
-    background: #FFFFFF;
-    border: 1px solid #C7C7C7;
+    background: var(--white);
+    border: 1px solid  var(--gray-C7);
     box-sizing: border-box;
     max-height: 365px;
     overflow: auto;
@@ -19,18 +19,18 @@
 }
 
 .select__one--violation--type:first-child > p{
-    color: #6F6F6F;
+    color: var(--gray-6F);
 }
 
 .select__one--violation--type:hover {
-    background-color: #F4F4F4;
+    background-color: var(--gray-F4);
     transition: 0.3s linear;
 }
 
 .select__one--violation--type p {
     width: 100%;
     text-align: left;
-    font-family: 'Avenir';
+    font-family: "Avenir";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -46,8 +46,8 @@
 
 .btn__apply{
     margin-left: 10px;
-    background-color: #0C3C60;
-    color: #FFFFFF;
+    background-color: var(--primary);
+    color: var(--white);
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
@@ -60,9 +60,9 @@
 .create__profile{
     margin-left: 10px;
     padding: 14px 13px;
-    background-color: #0C3C60;
+    background-color: var(--primary);
 }
 
 .create__profile p{
-   color: #FFFFFF;
+   color: var(--white);
 }
