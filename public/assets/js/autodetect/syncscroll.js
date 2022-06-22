@@ -91,8 +91,8 @@
                                         otherEl[scroll+Left] -
                                         (scrollX = otherEl.eX =
                                          Math_round(xRate *
-                                             (otherEl[scroll+Width] -
-                                              otherEl[client+Width]))
+                                            (otherEl[scroll+Width] -
+                                            otherEl[client+Width]))
                                         )
                                     )
                                 ) {
@@ -104,8 +104,8 @@
                                         otherEl[scroll+Top] -
                                         (scrollY = otherEl.eY =
                                          Math_round(yRate *
-                                             (otherEl[scroll+Height] -
-                                              otherEl[client+Height]))
+                                            (otherEl[scroll+Height] -
+                                            otherEl[client+Height]))
                                         )
                                     )
                                 ) {
