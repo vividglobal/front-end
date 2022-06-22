@@ -188,12 +188,6 @@
   .div-close{
       margin-bottom: 20px;
   }
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
 
   .close:hover,
   .close:focus {
@@ -452,7 +446,7 @@
 }
 .btn-confirm{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .checkmark{
   cursor: pointer;
@@ -517,4 +511,10 @@
 }
 .hide-div{
   display: none;
+}
+.col-form-nonvio{
+  width: 42% !important;
+}
+input[type=checkbox] {
+  transform: scale(1.5);
 }

@@ -119,7 +119,6 @@
         }
     }
     
-       
     if (document.readyState == "complete") {
         reset();
     } else {

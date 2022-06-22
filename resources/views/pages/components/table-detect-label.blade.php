@@ -326,7 +326,7 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Select violation code') }}</h1>
+                <h1>{{ __('Choose violation code') }}</h1>
             </div>
             <div class="row">
                 @foreach($violationCode as $key => $code)
@@ -344,7 +344,7 @@
             </div>
             <div class="btn-confirm">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
-                <button class="confirm-btn btn-select-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
+                <button class="confirm-btn btn-select-code btn-confirm-style" id="confirm-yes">{{ __('Save change') }}</button>
             </div>
         </div>
     </div>
