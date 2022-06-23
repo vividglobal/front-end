@@ -9,7 +9,7 @@
         <div class="list--select__left">
             <div id="daterange" style="width:203px">
                 <i class="ico-date"></i>
-                <img src="../assets/image/calendar.svg" alt="">
+                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
             <button class="btn__apply">{{ __('Apply') }}</button>

@@ -1,4 +1,36 @@
 $(document).ready(function(){
+    // OPEN DATE RANGER
+    $('input[name="daterange"]').daterangepicker({
+        autoUpdateInput: false,
+        autoApply: true,
+        maxDate: new Date(),
+        drops: "up",
+        opens: "right",
+        drops: "down",
+        locale: {
+            firstDay: 1,
+            format: "DD/MM/YYYY",
+        },
+    });
+    $('input[name="daterange"]').on(
+        "apply.daterangepicker",
+        function (ev, picker) {
+            $(this).val(
+                picker.startDate.format("DD/MM/YYYY") +
+                    " - " +
+                    picker.endDate.format("DD/MM/YYYY")
+            );
+            startDate = picker.startDate.format("DD-MM-YYYY");
+            endDate = picker.endDate.format("DD-MM-YYYY");
+        }
+    );
+
+    if (paramStart_date !== null && paramEnd_date !== null) {
+        let startDay = paramStart_date.replace(/-/g, "/");
+        let endDay = paramEnd_date.replace(/-/g, "/");
+        $('input[name="daterange"]').val(startDay + " - " + endDay);
+    }
+    // -------------------------
     let generalStrParams = '?1=1';
     let brandStrParams = '?1=1';
     let codeStrParams = '?1=1';
