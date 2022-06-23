@@ -29,8 +29,10 @@
 <body>
     <div id="app">
         <main >
+            @include('layouts/header')
             @yield('content')
         </main>
     </div>
 </body>
 </html>
+

@@ -4,7 +4,7 @@
             <th>{{ __('No') }}</th>
             <th>{{ __('Brand/Company') }}</th>
             <th>
-                <div class="th-title-right flex-space_beetween">
+                <div class="th-title-rights ">
                     <p>{{ __('Articles') }}</p>
                     <span
                         @class([
@@ -21,7 +21,7 @@
                 </div>
                 </th>
             <th>
-                <div class="th-title-right flex-space_beetween">
+                <div class="th-title-rights ">
                     <p>{{ __('Violations') }}</p>
                     <span
                         @class([

@@ -104,7 +104,6 @@ video[poster] {
     display: none;
     padding: 0 18px;
     font-style: normal;
-    font-family: "Avenir next";
     color: #262626;
   }
   .panel .at {
@@ -116,7 +115,6 @@ video[poster] {
   }
 
   .add span {
-    font-family: "Avenir next";
     font-style: normal;
     font-weight: 600;
   }
