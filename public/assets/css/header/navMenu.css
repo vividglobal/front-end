@@ -1,7 +1,7 @@
 .nav_container{
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
     width: 100%;
-    padding: 21px 108px;
+    padding: 8px 108px;
 }
 
 .nav_container > div{
@@ -45,7 +45,11 @@
     margin-right: 16px;
 }
 
-.nav-menu > ul li{
+.nav-menu div:first-child{
+    align-items: center;
+}
+
+nav-menu > ul li{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,11 +70,15 @@
 .nav--dropdown{
     position: absolute;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
-    top: 80px;
+    top: 55px;
     width: 195px;
     background-color: var(--white);
     display: none;
     z-index: 2;
+}
+
+.style_dropdown{
+    top: 75px;
 }
 
 .nav--dropdown li {
@@ -87,9 +95,10 @@
 }
 
 .btn__header li:hover .nav--btnBorder__bottom{
-    border-bottom: 1px solid #0C3C60;
+    border-bottom: 1px solid var(--primary);
     transition: 0.3s linear;
 }
+
 
 .nav--btnBorder__bottom{
     border-bottom: 1px solid var(--white);
@@ -113,6 +122,10 @@ li:nth-child(3) img{
     text-align: center;
 }
 
+.dropdown_mbl-display{
+    display: none;
+}
+
 .btn--export--excel{
     margin-left: 10px;
     padding: 14px 13px;
@@ -132,7 +145,7 @@ li:nth-child(3) img{
 
 .dropdown-login{
     position: absolute;
-    top: 80px;
+    top: 55px;
     width: 195px;
     right: 0px;
     background-color:var(--white);
@@ -142,7 +155,6 @@ li:nth-child(3) img{
 
 .dropdown-login p{
     padding: 14px 0 14px 19px;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -178,7 +190,6 @@ li:nth-child(3) img{
     text-align: center;
 }
 .style__code--article a {
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -189,4 +200,10 @@ li:nth-child(3) img{
 .style__code--article a:hover{
     text-decoration: underline;
     transition: 0.3s linear;
+}
+
+.btn_no-login{
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }

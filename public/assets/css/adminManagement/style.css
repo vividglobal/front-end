@@ -54,7 +54,6 @@
 
 .admin__management table tr th{
     background-color: var(--white);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -70,7 +69,6 @@
 }
 
 .admin__management table tr td{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -84,7 +82,6 @@
 .btn__delete--user{
     margin-top: 13px;
     padding: 12px 0;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

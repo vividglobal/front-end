@@ -3,6 +3,7 @@
 }
 .vituar_validation{
     width: 100%;
+    background: url(../../image/home/img-1.svg) no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -18,7 +19,6 @@
 }
 
 .content__vituar p{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
@@ -44,7 +44,6 @@
 
 .content__vituar button{
     padding:12px 57px;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -64,13 +63,13 @@
 .background__content p{
     max-width: 363px;
     width: 100%;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 170%;
     color: var(--black);
     text-align: justify;
+
 }
 
 .background__content p:first-child{
@@ -118,12 +117,12 @@
     max-width: 874px;
     width: 100%;
     margin: 57px 0;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
     color: var(--black);
+    text-align: justify;
 }
 
 .background__vituar-5{
@@ -169,7 +168,6 @@
 }
 
 .background__vituar-7 .background__image p{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

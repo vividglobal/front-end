@@ -5,7 +5,6 @@
 }
 
 .title__base--violation{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -33,7 +32,6 @@
 
 .Base_violation--brand table tr th{
     background-color: var(--gray-F4);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -59,7 +57,6 @@
 }
 
 .Base_violation--brand table tr td{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -74,7 +71,6 @@
 }
 .demo__pagination span{
     margin: 0 15px;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
