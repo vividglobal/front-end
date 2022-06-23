@@ -6,7 +6,7 @@
  {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}
   ">
     <div id="myNav" class="overlay_header">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="../assets/image/menu.svg" alt=""></a>
+        <a href="javascript:void(0)" class="closebtn" ><img src="../assets/image/menu.svg" alt=""></a>
         <div class="overlay-content">
             <div class="rows nav-menu" >
                 <div class="no-padding {{Auth::user()!== null ? "col l-11 m-11 had_login"  : "col l-10 m-10 no_login"}}" >
@@ -125,33 +125,8 @@
 
         </div>
     </div>
-    <div class="overlay" style="width:0%;display:none"></div>
-    <span class="open_Nav" style="cursor:pointer" onclick="openNav()"><img src="../assets/image/menu.svg" alt=""></span>
+    <div class="overlay overlay_nav" ></div>
+    <span class="open_Nav" style="cursor:pointer" ><img src="../assets/image/menu.svg" alt=""></span>
 </div>
 
-<script>
-    let documentElement = document.querySelector('.overlay');
-    function openNav() {
-        $("#myNav").addClass("open_menu")
-        $(".overlay").css({"width":"100%","display":"block"})
-        $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
-        $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";;
-    }
-
-    function closeNav() {
-        $("#myNav").removeClass("open_menu")
-        $(".overlay").css({"width":"0%","display":"none"})
-        $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
-        $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
-    }
-
-    $(".overlay").click(function(){
-        closeNav()
-    })
-
-</script>
 

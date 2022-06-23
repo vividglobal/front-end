@@ -25,8 +25,10 @@
     .open_Nav{
         display: none;
     }
-    .overlay{
+    .overlay_nav{
         background: none;
+        width:0%;
+        display:none;
     }
 
     .open_Nav,
