@@ -1,4 +1,4 @@
-<div class="container-table">
+<div class="container-table" id="div-pc">
     <div class="container_row">
         <div class="col-left">
             @include('pages.components.table-left')
@@ -308,14 +308,32 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Confirmation') }}</h1>
+                <h1>{{ __('Are you sure?') }}</h1>
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
-                {{ __("Do you want to mark this article as Non-Violation") }}
+                {{ __("When you move this post to non-violation list, you can not change the status in the future.") }}
             </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-non-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-title open-modal" id="confirmActionModal-violation">
+        <div class="modal-confirm-content">
+            <div class="div-close">
+                <span class="close">&times;</span>
+            </div>
+            <div class="head-modal">
+                <h1>{{ __('Are you sure?') }}</h1>
+            </div>
+            <p class="title-modal" style="text-align: center;display: block;">
+                {{ __("When you move this post to violation list, you can not change the status in the future.") }}
+            </p>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-confirm-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
             </div>
         </div>
     </div>
@@ -348,6 +366,10 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container-table" id="div-moblie">
+    <h1>Moblie</h1>
 </div>
 
 <script>

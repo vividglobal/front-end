@@ -3,6 +3,7 @@ $(document).ready(function(){
     let currentRow;
     let agreeStatus;
     let confirmModal = $('#confirmActionModal');
+    let confirmModalVio = $('#confirmActionModal-violation');
     let violationCodeModal = $('#selectCodeModal');
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
     let actionStep;
@@ -13,7 +14,6 @@ $(document).ready(function(){
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
         let botStatus = currentRow.find('.bot-status').attr('data-status');
-
         if(agreeStatus === DISAGREE) {
             if(botStatus === STATUS_VIOLATION) {
                 confirmModal.show();
@@ -24,7 +24,7 @@ $(document).ready(function(){
         }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
             confirmModal.show();
         }else if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
-            updateStatusViolationColumnAndEnableReviewViolationCodeButton();
+            confirmModalVio.show()
         }
     })
 
@@ -52,9 +52,10 @@ $(document).ready(function(){
 
     $('.open-modal').on('click', '.close', function() {
         violationCodeModal.hide();
+        confirmModalVio.hide()
         $('input[type=checkbox]').each(function() 
         { 
-                this.checked = false; 
+            this.checked = false; 
         }); 
         confirmModal.hide();
     });
@@ -82,6 +83,11 @@ $(document).ready(function(){
         }else {
             show_error(response.message);
         }
+    });
+
+    $('.btn-confirm-violation').click(async function() {
+        updateStatusViolationColumnAndEnableReviewViolationCodeButton();
+        confirmModalVio.hide()
     });
 
     $('.btn-select-code').click(async function() {

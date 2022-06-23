@@ -48,7 +48,7 @@
                 </div>
             </th>
             <th style="width:15%" class="style-title">{{ __('Caption') }}</th>
-            <th style="width:12%" class="style-title">{{ __('Image') }}</th>
+            <th style="width:15%" class="style-title">{{ __('Image') }}</th>
         </tr>
     </thead>
     <tbody class="tbdata">

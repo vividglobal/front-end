@@ -208,9 +208,9 @@
                 </div>
                 @endif
             </div>
-            <div class="head-confirm-btn">
+            <!-- <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
-            </div>
+            </div> -->
         </div>
     </div>
 
