@@ -93,12 +93,15 @@
 
 .padding_btn_analysis{
     justify-content:flex-end;
-    padding-right: 50px;
 }
 
 .list--select__left{
     display: flex;
-    width: 75%;
+    width: 100%;
+}
+
+.list--select__left div{
+    margin-right: 10px;
 }
 
 .list--title p {
@@ -108,10 +111,6 @@
     font-size: 35px;
     line-height: 50px;
     margin: 24px 0 15px 0;
-}
-
-.list--select__left > div {
-    margin-right: 10px;
 }
 
 .list--select__right{

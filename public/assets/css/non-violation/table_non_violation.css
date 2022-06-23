@@ -73,5 +73,5 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     align-items: center;
 }
 .flex-space_beetween{
-    width: 50% !important;
+    width: 100% !important;
 }

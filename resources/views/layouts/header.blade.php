@@ -1,7 +1,10 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 
-<div class="nav_container ">
+<div class="nav_container
+ {{(request () -> is ('login')) || request () -> is ('password/reset') ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
+ {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}
+  ">
     <div id="myNav" class="overlay_header">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><img src="../assets/image/menu.svg" alt=""></a>
         <div class="overlay-content">
@@ -125,6 +128,7 @@
     <div class="overlay" style="width:0%;display:none"></div>
     <span class="open_Nav" style="cursor:pointer" onclick="openNav()"><img src="../assets/image/menu.svg" alt=""></span>
 </div>
+
 <script>
     let documentElement = document.querySelector('.overlay');
     function openNav() {

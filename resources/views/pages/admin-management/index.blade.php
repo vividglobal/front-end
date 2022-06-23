@@ -11,12 +11,25 @@
         <p>{{ __('Admin Management') }}</p>
     </div>
     <!-- list Btn  -->
-    @include('pages/components/query', ['list_filter' => ["search","apply","showing"], 'show_all_filter' => false])
-    <div class="create__profile" style="width: 153px;display: flex;justify-content:center">
-        <p>{{ __('Add admin') }}</p>
+    <div class="list_query">
+        <div class="query_left">
+            @include('pages/components/query', ['list_filter' => ["search","apply"], 'show_all_filter' => false])
+        </div>
+        <div class="list_query-right">
+            <div class="list--select__right style_showing" >
+                <p>{{ __('Showing') }}</p>
+                <div class="list--showing">
+                    <select name="" id=""></select>
+                </div>
+            </div>
+            <div class="create__profile" >
+                <p>{{ __('Add admin') }}</p>
+            </div>
+        </div>
+
     </div>
 </div>
-<div class="table__admin--management" style="margin: 28px 0px">
+<div class="table__admin--management" >
     <div class=" admin__management">
         <table>
             <tr>

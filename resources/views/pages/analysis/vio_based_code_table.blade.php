@@ -9,7 +9,7 @@
             {{ __('Violation type') }}
             </th>
             <th style="width: 14.8%;">
-            <div class="th-title-right flex-space_beetween">
+            <div class="th-title-rights">
                 <p>{{ __('Articles') }}</p>
                 <span
                     @class([

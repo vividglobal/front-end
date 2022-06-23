@@ -1,3 +1,7 @@
+.table__admin--management{
+    margin: 28px 60px;
+}
+
 .admin__management{
     margin: 0 !important;
     border: none ;
@@ -60,6 +64,7 @@
     line-height: 136.5%;
     color: var(--primary);
     position: relative;
+    background: #F4F4F4;
 }
 
 
@@ -91,4 +96,26 @@
     background-color: var(--white);
     border: 1px solid var(--gray-C7);
     width: 48%;
+}
+
+.list_query{
+    justify-content: space-between;
+    display: flex;
+}
+
+.list_query-right{
+    display: flex;
+    justify-content: end;
+}
+
+.style_showing{
+    justify-content: inherit;
+}
+
+.style_showing .list--showing select{
+    padding: 14px 0 14px 12px;
+}
+
+.query_left{
+    width: 50%;
 }

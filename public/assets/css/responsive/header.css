@@ -1,7 +1,4 @@
 @media (max-width: 1440px) {
-    .nav_container {
-        padding: 8px 60px;
-    }
 
     .nav--btn__after--login {
         margin-right: 1.3em;
@@ -14,10 +11,16 @@
     .nav--btn__after--login > div{
         font-size: 18px;
     }
+    .padding_has_login{
+        padding: 20px 60px;
+    }
 }
 
 
 @media (min-width: 1114px){
+    .active_header_login{
+        display: none;
+    }
 
     .open_Nav{
         display: none;
@@ -37,6 +40,14 @@
 
 @media (max-width: 1113px){
 
+    .active_bg_header{
+        background: rgb(218 218 218);
+    }
+
+    .active_header_login{
+        display: block;
+    }
+
     .nav_container {
         z-index: 101 !important;
         position: absolute;
@@ -51,7 +62,7 @@
     }
 
     .closebtn img{
-        padding: 21px 16px;
+        padding: 8px 16px;
     }
 
     .nav_container{
@@ -231,16 +242,19 @@
 }
 
 @media (min-width: 740px) and (max-width: 1113px){
-    .nav_container {
+    .padding_has_login,
+    .padding_no_login{
         padding: 8px 16px;
     }
+
     .open_menu{
         width: 40% !important;
     }
 }
 
 @media (min-width: 426px) and (max-width: 739px){
-    .nav_container {
+    .padding_has_login,
+    .padding_no_login{
         padding: 8px 16px;
     }
     .open_menu{
@@ -249,7 +263,8 @@
 }
 
 @media (max-width: 425px) {
-    .nav_container {
+    .padding_has_login,
+    .padding_no_login{
         padding: 8px 16px;
     }
     .open_menu{

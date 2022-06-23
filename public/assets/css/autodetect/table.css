@@ -124,15 +124,15 @@
     top: -2px;
     z-index: 100;
 }
-.th-title-right{
-    width: 25%;
+.th-title-rights{
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-right: 1px solid var(--gray-EE);
 }
 
-.th-title-right p {
+.th-title-rights p {
     margin-right: 5px;
     font-style: normal;
     font-weight: 600;
