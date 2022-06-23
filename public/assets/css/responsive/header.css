@@ -119,6 +119,8 @@
         font-size: 20px;
         line-height: 29px;
         color: var(--white);
+        display: flex;
+        justify-content: space-between;
       }
 
       .nav--dropdown li > a {
@@ -140,7 +142,7 @@
         }
 
       .overlay_header a:hover, .overlay_header a:focus {
-        color: var(--primary);
+        color: var(--gray-C7);
       }
 
       .overlay .closebtn {
