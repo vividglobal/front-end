@@ -64,7 +64,6 @@
 }
 .tr-boder td{
     border: 1px solid var(--gray-EE);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -101,7 +100,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
-    font-family: 'Avenir Next';
 }
 .wr-img{
     width: 100%;
@@ -126,16 +124,19 @@
     top: -2px;
     z-index: 100;
 }
-.th-title-right{
-    width: 25%;
+.th-title-rights{
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-right: 1px solid var(--gray-EE);
 }
 
-.th-title-right p {
+.th-title-rights p {
     margin-right: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 /* Modal Box */
@@ -196,7 +197,6 @@
     cursor: pointer;
   }
   .modal-content p{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -206,7 +206,6 @@
     color: var(--black);
   }
   .head-modal h1{
-    font-family:'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -241,7 +240,6 @@
     float: left;
     padding: 8px 16px !important;
     text-decoration: none;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -258,7 +256,6 @@
     float: left;
     /* padding: 8px 16px !important; */
     text-decoration: none;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -479,15 +476,15 @@
 .cursor{
   cursor: pointer;
 }
+
 .no-padding{
   display: flex !important;
   justify-content: center !important;
-  padding-left: 8% !important;
 }
+
 .center-header{
   display: flex;
   justify-content: center;
-  padding-left: 15% !important;
 }
 .page-link{
   border: none !important;

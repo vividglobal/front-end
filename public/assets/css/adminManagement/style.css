@@ -1,3 +1,7 @@
+.table__admin--management{
+    margin: 28px 60px;
+}
+
 .admin__management{
     margin: 0 !important;
     border: none ;
@@ -54,13 +58,13 @@
 
 .admin__management table tr th{
     background-color: var(--white);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 136.5%;
     color: var(--primary);
     position: relative;
+    background: #F4F4F4;
 }
 
 
@@ -70,7 +74,6 @@
 }
 
 .admin__management table tr td{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -84,7 +87,6 @@
 .btn__delete--user{
     margin-top: 13px;
     padding: 12px 0;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -94,4 +96,26 @@
     background-color: var(--white);
     border: 1px solid var(--gray-C7);
     width: 48%;
+}
+
+.list_query{
+    justify-content: space-between;
+    display: flex;
+}
+
+.list_query-right{
+    display: flex;
+    justify-content: end;
+}
+
+.style_showing{
+    justify-content: inherit;
+}
+
+.style_showing .list--showing select{
+    padding: 14px 0 14px 12px;
+}
+
+.query_left{
+    width: 50%;
 }
