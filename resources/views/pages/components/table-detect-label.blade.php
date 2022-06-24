@@ -38,10 +38,10 @@
                             </div>
                         </div>
                         <div class="track">
-                            <div class="heading">{{ __('Link') }}</div>
+                            <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
                         <div class="track track-three">
-                            <div class="heading-three">{{ __('VIVID') }}</div>
+                            <div class="heading-three"><p>{{ __('VIVID') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_bot_status">
                                     <p data-sort="bot_status" >{{ __('Status') }}</p>
@@ -66,7 +66,7 @@
                         </div>
                         @if(Auth::user())
                         <div class="track track-three">
-                            <div class="heading-three">{{ __('Supervisor') }}</div>
+                            <div class="heading-three"><p>{{ __('Supervisor') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_supervisor">
                                     <p data-sort="supervisor_status">{{ __('Status') }}</p>
@@ -89,8 +89,9 @@
                                 </div>
                             </div>
                         </div>
+                        @if(@Auth::user()->role === "OPERATOR")
                         <div class="track track-three">
-                            <div class="heading-three">{{ __('Operator') }}</div>
+                            <div class="heading-three"><p>{{ __('Operator') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_operator">
                                     <p data-sort="operator_status">{{ __('Status') }}</p>
@@ -114,6 +115,7 @@
                             </div>
                         </div>
                         @endif
+                        @endif
                     </div>
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
@@ -131,7 +133,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="../assets/image/link.png" alt=""></a>
+                                    <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="../assets/image/link.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="track track-three">
@@ -224,7 +226,7 @@
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle supervisor-violation-type">
                                         @foreach ($article->supervisor_review['violation_types'] as $supervisorType)
-                                            <p>{{ $supervisorType['name'] ?? '' }}</p>
+                                            <p style="color:{{ $supervisorType['color'] ?? ''}}">{{ $supervisorType['name'] ?? '' }}</p>
                                         @endforeach
                                     </div>
                                 </div>
@@ -233,6 +235,7 @@
                             {{-- ==================================================== --}}
                             {{-- ================= OPERATOR COLUMN ================== --}}
                             {{-- ==================================================== --}}
+                            @if(@Auth::user()->role === "OPERATOR")
                             <div class="track track-three">
                                 <div class="entry-three">
                                     {{-- ==================================================== --}}
@@ -291,6 +294,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                             @endif
                         </div>
                     @endforeach

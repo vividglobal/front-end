@@ -9,7 +9,7 @@
                 </li>
             @else
                 <li>
-                    <a id="prev_page" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                    <a id="prev_page" rel="prev" aria-label="@lang('pagination.previous')">&lt;</a>
                 </li>
             @endif
 
@@ -40,7 +40,7 @@
                 </li>
             @else
                 <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span aria-hidden="true">&rsaquo;</span>
+                    <span aria-hidden="true">&gt;</span>
                 </li>
             @endif
         </ul>

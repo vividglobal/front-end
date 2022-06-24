@@ -49,11 +49,11 @@
                             </div>
                         </div>
                         <div class="track">
-                            <div class="heading">{{ __('Link') }}</div>
+                            <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
                         @auth
                         <div class="track">
-                            <div class="heading">{{ __('Switch status') }}</div>
+                            <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
                         @endauth
                     </div>

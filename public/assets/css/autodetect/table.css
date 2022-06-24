@@ -74,6 +74,13 @@
     height: 20px;
     cursor: pointer;
 }
+.a-link:hover {
+  content: url('../../image/ico_link_enable.svg');
+}
+.btn-switch:hover{
+  content: url('../../image/ico_switch_enable.svg');
+
+}
 .tbdata tr td{
     height: 150px;
     max-height: 115px;
@@ -94,6 +101,9 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
+}
+.tbdata tr td.contenttb a:hover{
+  text-decoration-line: underline;
 }
 .wr-img{
     width: 100%;
@@ -306,6 +316,17 @@
 
   .headers p{
     color:  var(--primary);
+    font-family: 'Avenir Next';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 136.5%;
+  /* identical to box height, or 22px */
+
+  display: flex;
+  align-items: center;
+
+  color: #0C3C60;
   }
   .heading,.heading-three{
     color:  var(--primary);
@@ -416,6 +437,11 @@
     justify-content: center;
     align-items: center;
 }
+.entry-title-threee p{
+  line-height:22px;
+  font-family: 'Avenir Next';
+  font-weight: 500;
+}
 .scroll-table{
   display: flex;
 }
@@ -488,6 +514,10 @@
   display: flex !important;
   justify-content: center !important;
 }
+.entry-one-item p{
+  line-height: 22px;
+  font-weight: 500;
+}
 .style__code_vio{
     display: flex;
     flex-direction: column;
@@ -511,11 +541,19 @@ input[type=checkbox] {
 
 
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (min-width: 740px) and (max-width: 1113px) {
     #div-pc{
       display: none;
     }
     #div-moblie{
       display: block;
     }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 739px) {
+ 
+}
+
+@media only screen and (max-width: 425px) {
+ 
 }
