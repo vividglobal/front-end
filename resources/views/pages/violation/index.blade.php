@@ -34,7 +34,7 @@
                         </div>
                         <div class="track">
                             <div class=" heading th-title-right sort_crawl_date">
-                                <p>{{ __('Crawl date') }}</p>
+                                <p>{{ __('Checking date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="track">
-                            <div class="heading">{{ __('Link') }}</div>
+                            <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
                         <div class="track">
                             <div class=" heading th-title-right">
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                         <div class="track track-one">
-                            <div class="heading-three-viola">{{ __('Violation type') }}</div>
+                            <div class="heading-three-viola"><p>{{ __('Violation type') }}</p></div>
                         </div>
                         @auth
                         <div class="track">
@@ -84,9 +84,12 @@
                                 <p>{{ __('Status progress') }}</p>
                             </div>
                         </div>
+                        @if(@Auth::user()->role === "OPERATOR")
                         <div class="track">
-                            <div class="heading">{{ __('Switch status') }}</div>
+                            <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
+                        @endif                        
+
                         @endauth
                     </div>
                 </div>
@@ -114,7 +117,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}}><img class="td-link" src="{{ asset('assets/image/link.png')}}" alt="link-icon"></a>
+                                    <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="{{ asset('assets/image/link.png')}}" alt="link-icon"></a>
                                 </div>
                             </div>
                             <div class="track">
@@ -154,6 +157,7 @@
                             @auth
                             <div class="track">
                                 <div class="entry">
+                                @if(@Auth::user()->role === "OPERATOR")
                                     <select class="list--select-right" id="cars">
                                         <option value="Select">Not started</option>
                                         <option value="Processing">Processing</option>
@@ -161,13 +165,24 @@
                                         <option value="Completed">Completed</option>
                                         @endif
                                     </select>
+                                @else
+                                    <select class="list--select-right disabled-select" id="cars" disabled> 
+                                        <option value="Select">Not started</option>
+                                        <option value="Processing">Processing</option>
+                                        @if($article->has_document)
+                                        <option value="Completed">Completed</option>
+                                        @endif
+                                    </select>
+                                @endif
                                 </div>
                             </div>
+                            @if(@Auth::user()->role === "OPERATOR")
                             <div class="track">
                                 <div class="entry">
                                     <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
+                            @endif
                             @endauth
                         </div>
                     @endforeach
@@ -240,7 +255,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Remove user</h1>
-                <p>Are you sure to remove this user?</p>
+                <p>ARE YOU SURE MOVING THIS POST TO AUTO-DETECT VIOLATIONS LIST?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>

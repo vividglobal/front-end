@@ -23,7 +23,7 @@ class AdminController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         Admin::create($input);
-        return $this->responseSuccess([], "Update admin successfully");
+        return $this->responseSuccess([], "Create admin successfully");
     }
 
     public function update(UpdateRequest $request, Admin $admin ,$id)

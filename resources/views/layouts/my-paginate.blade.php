@@ -40,7 +40,7 @@
                 </li>
             @else
                 <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span aria-hidden="true">&rsaquo;</span>
+                    <span aria-hidden="true">&gt;</span>
                 </li>
             @endif
         </ul>

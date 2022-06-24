@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Http\Services\UserRoleService;
 use App\Http\Services\ExportService;
+use App\Http\Services\DocumentService;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -26,8 +28,7 @@ class ArticleController extends Controller
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
-
-        if(isset($params['export']) && $params['export'] == true) {
+        if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             return  $this->exportPendingArticles('auto_detection_violation', $articles);
         }
         $violationCode = ViolationCode::all();
@@ -41,7 +42,7 @@ class ArticleController extends Controller
         $params['status'] = Article::STATUS_PENDING;
         $articles = $articleModel->getList($params);
 
-        if(isset($params['export']) && $params['export'] === true) {
+        if(isset($params['export']) && $params['export'] === true && Auth::check()) {
             return  $this->exportPendingArticles('label-detection-violation',$articles);
         }
 
@@ -54,7 +55,7 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
         $articles = $articleModel->getList($params);
-        if(isset($params['export']) && $params['export'] == true) {
+        if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             return  $this->exportViolationArticles('violation_article', $articles);
         }
         return view('pages/violation/index', compact('articles'));
@@ -67,7 +68,7 @@ class ArticleController extends Controller
         $params['status'] = Article::STATUS_NONE_VIOLATION;
         $articles = $articleModel->getList($params);
 
-        if(isset($params['export']) && $params['export'] == true) {
+        if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             return  $this->exportNoneViolationArticles('non_violation_article', $articles);
         }
         return view('pages/none-violation/index', compact('articles'));
@@ -86,16 +87,17 @@ class ArticleController extends Controller
         $isOperator = UserRoleService::isOperator();
 
         if($isSupervisor || $isOperator) {
-            $titles = array_merge(['SUPERVISOR - Status', 'SUPERVISOR - Code Article', 'SUPERVISOR - Violation Type'], $titles);
+            $titles = array_merge($titles, ['SUPERVISOR - Status', 'SUPERVISOR - Code Article', 'SUPERVISOR - Violation Type']);
         }
         if($isOperator) {
-            $titles = array_merge(['OPERATOR - Status', 'OPERATOR - Code Article', 'OPERATOR - Violation Type'], $titles);
+            $titles = array_merge($titles, ['OPERATOR - Status', 'OPERATOR - Code Article', 'OPERATOR - Violation Type']);
         }
 
         $exportData = [];
         foreach ($articles as $key => $article) {
             $botStatus = $article->detection_result['status'] ?? count($article->detection_result['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION ;
-
+            $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
+            $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
@@ -103,8 +105,8 @@ class ArticleController extends Controller
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
-                date('Y-m-d', $article->published_date),
-                date('Y-m-d', $article->detection_result['crawl_date']),
+                $publishedDate,
+                $crawlDate,
                 $article->link,
                 $botStatus,
                 convertArrayToString($article->detection_result['violation_code'], 'name'),
@@ -147,12 +149,22 @@ class ArticleController extends Controller
     public function exportViolationArticles($fileName, $articles) {
         $titles = [
             '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date',
-            'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type'
+            'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type', 'Status Progress'
         ];
         $exportData = [];
         foreach ($articles as $key => $article) {
-            $penaltyIssued = 'TODO'; // Last upload documents
-            $legalDocuments = 'TODO'; // From documents collection _id = article_id
+            $penaltyIssued = ''; // Last upload documents
+            $legalDocuments = ''; // From documents collection _id = article_id
+            if($article->has_document) {
+                $legalDocuments = [];
+                $penaltyIssued = $article->penalty_issued;
+                foreach ($article->documents as $document) {
+                    $legalDocuments[] = $document->url;
+                }
+                $legalDocuments = implode('', $legalDocuments);
+            }
+            $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
+            $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
@@ -160,13 +172,14 @@ class ArticleController extends Controller
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
-                date('Y-m-d', $article->published_date),
-                date('Y-m-d', $article->detection_result['date']),
+                $publishedDate,
+                $crawlDate,
                 $penaltyIssued,
                 $article->link,
                 $legalDocuments,
                 convertArrayToString($article->operator_review['violation_code'], 'name'),
-                convertArrayToString($article->operator_review['violation_types'], 'name')
+                convertArrayToString($article->operator_review['violation_types'], 'name'),
+                $article->progress_status ??  Article::PROGRESS_NOT_STARTED,
             ];
 
             $exportData[] = $row;
@@ -183,6 +196,8 @@ class ArticleController extends Controller
         ];
         $exportData = [];
         foreach ($articles as $key => $article) {
+            $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
+            $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
@@ -190,8 +205,8 @@ class ArticleController extends Controller
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
-                date('Y-m-d', $article->published_date),
-                date('Y-m-d', $article->detection_result['crawl_date']), //Checking Date
+                $publishedDate,
+                $crawlDate,
                 $article->link,
             ];
 
@@ -383,7 +398,11 @@ class ArticleController extends Controller
             $article->update();
 
             if($status === Article::STATUS_VIOLATION) {
-                ArticleLegalDocument::where('article_id', $id)->delete(); //Remove all related documents
+                $documents = ArticleLegalDocument::where('article_id', $id)->get();
+                $documentService = new DocumentService();
+                foreach ($documents as $key => $document) {
+                    $documentService->delete($document);
+                }
             }
             return $this->responseSuccess([], "Reset article successfully");
         }
@@ -397,9 +416,9 @@ class ArticleController extends Controller
             $articleDocs = [];
             foreach ($documents as $document) {
                 $articleDocs[] = [
-                    'id' => $document->_id,
+                    'id'   => $document->_id,
                     'name' => $document->name,
-                    'url' => $document->url,
+                    'url'  => $document->url,
                 ];
             }
             return $this->responseSuccess($articleDocs, "Get list documents successfully");

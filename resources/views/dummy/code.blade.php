@@ -1,16 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.dummy')
 
 @section('content')
 
-<div class="grid">
+<div class="container">
     <div class="row">
         <!-- ========================================================== -->
         <!-- ======================= VIOLATION CODE =================== -->
         <!-- ========================================================== -->
         <div class="col-12">
-            <legend>Violation Code</legend>
-            <button class="btn btn-primary" type="button">Add</button>
-            <table class="table">
+            <h1>Violation Code</h4>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <button class="btn btn-primary" type="button">Add</button>
+                </li>
+            </ul>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col">Name</th>
@@ -21,7 +25,7 @@
                 </thead>
                 <tbody>
                     @foreach ($violationCode as $key => $code)
-                    <tr>
+                    <tr data-id="{{ $code->_id }}">
                         <td>
                             <textarea class="form-control">{{ $code->name }}</textarea>
                         </td>
@@ -39,11 +43,7 @@
                             <button class="btn btn-success" type="button">Save</button>
                         </td>
                         <td>
-                            <form action="violation-types/{{ $type->_id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
+                            <button class="btn btn-danger" type="submit">Delete</button>
                         </td>
                     </tr>
                     @endforeach

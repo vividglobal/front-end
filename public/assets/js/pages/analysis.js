@@ -25,11 +25,6 @@ $(document).ready(function(){
         }
     );
 
-    if (paramStart_date !== null && paramEnd_date !== null) {
-        let startDay = paramStart_date.replace(/-/g, "/");
-        let endDay = paramEnd_date.replace(/-/g, "/");
-        $('input[name="daterange"]').val(startDay + " - " + endDay);
-    }
     // -------------------------
     let generalStrParams = '?1=1';
     let brandStrParams = '?1=1';
