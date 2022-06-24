@@ -1,15 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.dummy')
 
 @section('content')
 
-    <div class="row">
+    <div class="container">
         <!-- ========================================================== -->
         <!-- ======================= COMPANY BRAND ==================== -->
         <!-- ========================================================== -->
         <div class="col-12">
-            <legend>Company / Brand</legend>
-            <button class="btn btn-primary" type="button">Add</button>
-            <table class="table">
+            <h1>Violation Code</h4>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <button class="btn btn-primary" type="button">Add</button>
+                </li>
+            </ul>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                     <th scope="col">Name</th>
@@ -21,7 +25,7 @@
                 </thead>
                 <tbody>
                     @foreach ($companyBrands as $key => $brand)
-                    <tr data-id="">
+                    <tr data-id="{{ $brand->_id }}">
                         <td>
                             <textarea class="form-control">{{ $brand->name }}</textarea>
                         </td>
@@ -54,11 +58,7 @@
                             <button class="btn btn-success" type="button">Save</button>
                         </td>
                         <td>
-                            <form action="brands/{{ $brand->_id }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
+                            <button class="btn btn-danger" type="submit">Delete</button>
                         </td>
                     </tr>
                     @endforeach

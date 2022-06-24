@@ -71,44 +71,31 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(DummyController::class)->group(function () {
             Route::prefix('articles')->group(function () {
                 Route::get('/', 'dummyArticles');
-                Route::post('/', 'articleCreate');
                 Route::delete('/{id}', 'articelDelete');
             });
-        });
-
-        Route::controller(Web\CountryController::class)->group(function () {
-            Route::prefix('countries')->group(function () {
-                Route::get('/', 'index');
-                Route::post('/', 'create');
-                Route::put('/{id}', 'update');
-                Route::delete('/{id}', 'delete');
-            });
-        });
-
-        Route::controller(Web\ViolationTypeController::class)->group(function () {
-            Route::prefix('violation-types')->group(function () {
-                Route::get('/', 'index');
-                Route::post('/', 'create');
-                Route::put('/{id}', 'update');
-                Route::delete('/{id}', 'delete');
-            });
-        });
-
-        Route::controller(Web\ViolationCodeController::class)->group(function () {
             Route::prefix('violation-code')->group(function () {
-                Route::get('/', 'index');
-                Route::post('/', 'create');
-                Route::put('/{id}', 'update');
-                Route::delete('/{id}', 'delete');
+                Route::get('/', 'violationCode');
+                Route::post('/', 'createViolationCode');
+                Route::put('/{id}', 'updateViolationCode');
+                Route::delete('/{id}', 'deleteViolationCode');
             });
-        });
-
-        Route::controller(Web\CompanyBrandController::class)->group(function () {
+            Route::prefix('countries')->group(function () {
+                Route::get('/', 'countries');
+                Route::post('/', 'createCountries');
+                Route::put('/{id}', 'updateCountries');
+                Route::delete('/{id}', 'deleteCountries');
+            });
+            Route::prefix('violation-types')->group(function () {
+                Route::get('/', 'violationTypes');
+                Route::post('/', 'createViolationTypes');
+                Route::put('/{id}', 'updateViolationTypes');
+                Route::delete('/{id}', 'deleteViolationTypes');
+            });
             Route::prefix('company-brands')->group(function () {
-                Route::get('/', 'index');
-                Route::post('/', 'create');
-                Route::put('/{id}', 'update');
-                Route::delete('/{id}', 'delete');
+                Route::get('/', 'companyBrands');
+                Route::post('/', 'createCompanyBrands');
+                Route::put('/{id}', 'updateCompanyBrands');
+                Route::delete('/{id}', 'deleteCompanyBrands');
             });
         });
     });
