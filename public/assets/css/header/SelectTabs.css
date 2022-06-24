@@ -55,6 +55,11 @@
     cursor: pointer;
 }
 
+.list--showing{
+    padding: 12px;
+    border: 1px solid var(--gray-C7);;
+}
+
 .list--showing select,
 #daterange input,
 .search:focus-visible{
@@ -136,7 +141,6 @@
 }
 
 .list--select__right select{
-    width: 92px;
-    padding: 12px 0 12px 12px;
-    border: 1px solid var(--gray-C7);
+    width: 66px;
+    border: none;
 }

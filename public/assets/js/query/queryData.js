@@ -29,6 +29,7 @@ $("document").ready(function () {
     const urlParams = new URLSearchParams(queryString);
     const perpage = urlParams.get("perpage");
     const paramStart_date = urlParams.get("start_date");
+    const paramKeyword = urlParams.get("keyword");
     const paramEnd_date = urlParams.get("end_date");
     const parambrands = urlParams.get("company_brand_id");
     const paramCountry = urlParams.get("country");
@@ -36,6 +37,10 @@ $("document").ready(function () {
     const paramSortBy = urlParams.get("sort_by");
     const paramSortValue = urlParams.get("sort_value");
     const violation_code_id = urlParams.get("violation_code_id");
+
+    if (paramKeyword !== null) {
+        $(".search").val(paramKeyword);
+    }
 
     if (perpage !== null) {
         $(".list--showing").find("select").val(parseInt(perpage));
@@ -53,6 +58,8 @@ $("document").ready(function () {
         let select = $(".select--company-or-brand");
         let option = ".select__one";
         returnTextButtonQuery(name, list, select, option, parambrands);
+    }else{
+        $(".list--company--brand").find("> p").text("Brand/Company")
     }
 
     if (paramCountry !== null) {
@@ -61,6 +68,8 @@ $("document").ready(function () {
         let select = $(".select--country");
         let option = ".option_general";
         returnTextButtonQuery(name, list, select, option, paramCountry);
+    }else{
+        $(".list--country").find("> p").text("Country")
     }
 
     if (paramViolation !== null) {
@@ -69,6 +78,8 @@ $("document").ready(function () {
         let select = $(".select--violation--type");
         let option = ".select__one--violation--type";
         returnTextButtonQuery(name, list, select, option, paramViolation);
+    }else{
+        $(".list--violation--type").find("> p").text("Violation type")
     }
 
     if (violation_code_id !== null) {
