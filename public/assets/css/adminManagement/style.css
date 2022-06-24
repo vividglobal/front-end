@@ -112,10 +112,6 @@
     justify-content: inherit;
 }
 
-.style_showing .list--showing select{
-    padding: 14px 0 14px 12px;
-}
-
 .query_left{
     width: 50%;
 }

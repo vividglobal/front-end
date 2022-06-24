@@ -89,6 +89,9 @@
             </table>
         </div>
     </div>
+    @if(count($articles) == 0)
+        @include('noSearchResult/index')
+    @endif
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
