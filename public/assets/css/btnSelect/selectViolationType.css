@@ -45,10 +45,8 @@
 }
 
 .btn__apply{
-    margin-left: 10px;
     background-color: var(--primary);
     color: var(--white);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
@@ -61,6 +59,10 @@
     margin-left: 10px;
     padding: 14px 13px;
     background-color: var(--primary);
+    width: 153px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .create__profile p{

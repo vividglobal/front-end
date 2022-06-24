@@ -134,7 +134,7 @@
                                     <div class="style__code--article style__code_vio">
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <div>
-                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }} >
+                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
                                                     {{$detectioncode['name'] ?? ''}}
                                                 </a>
                                             </div>
@@ -208,9 +208,9 @@
                 </div>
                 @endif
             </div>
-            <div class="head-confirm-btn">
-                <button class="confirm-btn-footer btn-cancel close">Cancel</button>
-            </div>
+            <!-- <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+            </div> -->
         </div>
     </div>
 

@@ -20,9 +20,11 @@ a.check-true {
 }
 a.check-true-disabled{
     background: url(../../image/check_true_disabled.svg) no-repeat center center;
+    cursor: not-allowed;
 }
 a.check-false-disabled{
     background: url(../../image/check_false_disabled.svg) no-repeat center center;
+    cursor: not-allowed;
 }
 a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     margin-left: 5px;
@@ -31,12 +33,11 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     height: 40px;
     display: inline-block;
     background-size: contain !important;
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
 }
 
 .status-title{
     border-radius: 5px;
-    font-family: "Avenir Next";;
     font-style: normal;
     font-weight: 600;
     font-size: 11px;
@@ -74,5 +75,5 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     align-items: center;
 }
 .flex-space_beetween{
-    width: 50% !important;
+    width: 100% !important;
 }

@@ -22,19 +22,6 @@
   width: 100%;
   /* height:100vh; */
 }
-.container_row{
-  /* width: 97%; */
-  display: flex;
-  margin-left: 60px;
-}
-.col-left{
-  width: 55%;
-  display: flex;
-}
-.col-right{
-  width: 45%;
-}
-
 .col-right-form::-webkit-scrollbar{
   display: none;
 }
@@ -67,17 +54,11 @@
 }
 .tr-boder td{
   border: 1px solid var(--gray-EE);
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 136.5%;
   color: var(--black);
-}
-.td-img{
-  width: 100px;
-  height: 100px;
-  cursor: pointer;
 }
 .td-link{
   width: 20px;
@@ -200,7 +181,7 @@
   color: #aaaaaa;
   float: right;
   font-size: 28px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .close:hover,
@@ -210,7 +191,6 @@
   cursor: pointer;
 }
 .modal-content p{
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -220,7 +200,6 @@
   color: var(--black);
 }
 .head-modal h1{
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
@@ -255,7 +234,6 @@
   float: left;
   padding: 8px 16px !important;
   text-decoration: none;
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -272,7 +250,6 @@
   float: left;
   /* padding: 8px 16px !important; */
   text-decoration: none;
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 600;
   font-size: 13px;
@@ -406,9 +383,6 @@
   }
 }
 
-.col-right{
-  width: 45%;
-}
 .title-right{
   display: flex;
 }
@@ -462,7 +436,6 @@
   color: #082136;
 }
 .head-confirm p{
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -471,22 +444,21 @@
 }
 .head-confirm-btn{
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   flex-direction: row;
   align-items: center;
 }
 .confirm-btn{
-  width:177px;
+  width:50%;
   height: 50px;
   font-size: 25px;
   margin-top: 20px;
   margin-left: 20px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   border: 1px solid transparent;
   color: var(--white);
 }
 .btn-cancel{
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 600;
   font-size: 18px !important;
@@ -494,7 +466,6 @@
   color: #6F6F6F;
 }
 .btn-yes{
-font-family: "Avenir Next";
 font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -520,7 +491,7 @@ background: var(--primary);
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 25%;
+  width: 40%;
 }
 
 .track-viola{
@@ -538,10 +509,9 @@ background: var(--primary);
   display: none;
 }
 
-.dropdown-items{
+.drop_nav_violation{
   height: 100%;
   padding: 10px;
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -551,6 +521,7 @@ background: var(--primary);
   color: #000000;
   cursor: pointer;
 }
+
 .dropdown-items:hover{
   background-color: #CCCCCC;
 }
@@ -611,7 +582,6 @@ background: var(--primary);
 }
 
 .item-one-file .div-file a{
-  font-family: "Avenir Next";
   font-style: normal;
   font-weight: 500;
   font-size: 16px;

@@ -1,3 +1,6 @@
+#div-moblie{
+  display: none;
+}
 .container-table{
     margin: auto;
     margin-top: 20px;
@@ -10,22 +13,13 @@
     margin-left: 60px;
 }
 .col-left{
-    width: 55%;
+    width: 50%;
     display: flex;
 }
 .col-right{
-    width: 45%;
-    /* overflow-x: scroll;
-    overflow-y: hidden; */
+    width: 50%;
 }
 
-/* .col-right-form{
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: scroll;
-    display: block;
-    align-items: normal;
-} */
 .col-right-form::-webkit-scrollbar{
     display: none;
 }
@@ -64,7 +58,6 @@
 }
 .tr-boder td{
     border: 1px solid var(--gray-EE);
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -72,7 +65,7 @@
     color: var(--black);
 }
 .td-img{
-    width: 100px;
+    width: 95%;
     height: 100px;
     cursor: pointer;
 }
@@ -101,7 +94,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
-    font-family: 'Avenir Next';
 }
 .wr-img{
     width: 100%;
@@ -126,16 +118,19 @@
     top: -2px;
     z-index: 100;
 }
-.th-title-right{
-    width: 25%;
+.th-title-rights{
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border-right: 1px solid var(--gray-EE);
 }
 
-.th-title-right p {
+.th-title-rights p {
     margin-right: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 /* Modal Box */
@@ -188,12 +183,6 @@
   .div-close{
       margin-bottom: 20px;
   }
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
 
   .close:hover,
   .close:focus {
@@ -202,7 +191,6 @@
     cursor: pointer;
   }
   .modal-content p{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -212,7 +200,6 @@
     color: var(--black);
   }
   .head-modal h1{
-    font-family:'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -247,7 +234,6 @@
     float: left;
     padding: 8px 16px !important;
     text-decoration: none;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -264,7 +250,6 @@
     float: left;
     /* padding: 8px 16px !important; */
     text-decoration: none;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
@@ -404,9 +389,7 @@
     }
   }
 
-  .col-right{
-    width: 45%;
-}
+
 .title-right{
     display: flex;
 }
@@ -452,7 +435,7 @@
 }
 .btn-confirm{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .checkmark{
   cursor: pointer;
@@ -485,15 +468,15 @@
 .cursor{
   cursor: pointer;
 }
+
 .no-padding{
   display: flex !important;
   justify-content: center !important;
-  padding-left: 8% !important;
 }
+
 .center-header{
   display: flex;
   justify-content: center;
-  padding-left: 15% !important;
 }
 .page-link{
   border: none !important;
@@ -517,4 +500,22 @@
 }
 .hide-div{
   display: none;
+}
+.col-form-nonvio{
+  width: 47% !important;
+}
+input[type=checkbox] {
+  transform: scale(1.5);
+}
+
+
+
+
+@media only screen and (max-width: 1024px) {
+    #div-pc{
+      display: none;
+    }
+    #div-moblie{
+      display: block;
+    }
 }

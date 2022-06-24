@@ -44,6 +44,7 @@ class ArticleController extends Controller
         if(isset($params['export']) && $params['export'] === true) {
             return  $this->exportPendingArticles('label-detection-violation',$articles);
         }
+
         $violationCode = ViolationCode::all();
         return view('pages/manual-detection/index', compact('articles', 'violationCode'));
     }
@@ -103,7 +104,7 @@ class ArticleController extends Controller
                 $article->caption,
                 $article->image,
                 date('Y-m-d', $article->published_date),
-                date('Y-m-d', $article->crawl_date),
+                date('Y-m-d', $article->detection_result['crawl_date']),
                 $article->link,
                 $botStatus,
                 convertArrayToString($article->detection_result['violation_code'], 'name'),
@@ -190,7 +191,7 @@ class ArticleController extends Controller
                 $article->caption,
                 $article->image,
                 date('Y-m-d', $article->published_date),
-                date('Y-m-d', $article->crawl_date), //Checking Date
+                date('Y-m-d', $article->detection_result['crawl_date']), //Checking Date
                 $article->link,
             ];
 

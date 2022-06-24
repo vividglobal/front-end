@@ -14,7 +14,7 @@
         <div class="col-left ">
             @include('pages.components.table-left')
         </div>
-        <div class="col-right col-right-form ">
+        <div class="col-right col-right-form  col-form-nonvio">
             <table class="wrap">
                 <div class="headers">
                     <div class="scroller syncscroll" name="myElements">
