@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -190,9 +190,12 @@
             </table>
         </div>
     </div>
+    @if(count($articles) == 0)
+        @include('noSearchResult/index')
+    @endif
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
-    </div>                                 
+    </div>
     <div class="modal-upload-file"id="uploadModal">
     @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
     <div class="check-login" t-login="true"></div>
@@ -206,7 +209,7 @@
             </div>
             <div class="modal-body">
                 <div class="row " id="box_list_file">
-                
+
                 @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">

@@ -9,7 +9,7 @@
                 </li>
             @else
                 <li>
-                    <a id="prev_page" rel="prev" aria-label="@lang('pagination.previous')">&lt;</a>
+                    <a id="prev_page" rel="prev" aria-label="@lang('pagination.previous')">&#60;</a>
                 </li>
             @endif
 
