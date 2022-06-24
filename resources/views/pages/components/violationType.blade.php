@@ -1,6 +1,6 @@
 <div class="list--violation--type">
     <img src="../assets/image/type.svg" alt="">
-    <p></p>
+    <p>    </p>
     <img src="../assets/image/Under-than.svg" alt="">
     <div class="select--violation--type" id="toggle">
         <div class="select__one--violation--type"  id=0>
