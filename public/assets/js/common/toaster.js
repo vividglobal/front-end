@@ -14,7 +14,6 @@ function render_toaster(cssClass, message) {
     toaster.classList.add(cssClass) // success or error styles
     toaster.innerText = message // Set toaster message
     document.body.appendChild(toaster)
-    console.log('Toaster')
 
     setTimeout(() => {
         document.getElementById('toaster').remove();

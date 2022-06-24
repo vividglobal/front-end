@@ -11,13 +11,26 @@
             <h1>Violation Types</h4>
             <ul class="nav justify-content-end">
                 <li>
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="addon-wrapping">Name </span>
-                        <input type="text" class="form-control" name="name" placeholder="Enter name" aria-label="Name" aria-describedby="addon-wrapping">
-                    </div>
+                    @if ($message = Session::get('success'))
+                    <p class="text-success">{{ $message }}</p>
+                    @endif
+                    @if ($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </li>
-                <li class="nav-item">
-                    <button class="btn btn-primary" type="button">Add</button>
+                <li>
+                    <form action="/dummy/violation-types" method="POST">
+                        @csrf
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Name </span>
+                            <input required type="text" class="form-control" name="name" placeholder="Enter name" aria-label="Name" aria-describedby="addon-wrapping">
+                            <button class="btn btn-primary btn-create" type="submit">Add</button>
+                        </div>
+                    </form>
                 </li>
             </ul>
             <table class="table table-striped">
@@ -35,7 +48,7 @@
                             <textarea class="form-control">{{ $type->name }}</textarea>
                         </td>
                         <td>
-                            <button class="btn btn-success" type="button">Save</button>
+                            <button class="btn btn-success btn-update" type="button">Save</button>
                         </td>
                         <td>
                             <button class="btn btn-danger" type="submit">Delete</button>
@@ -53,5 +66,23 @@
     let BASE_URL = '/dummy/violation-types';
 </script>
 <script src="{{ asset('assets/js/pages/dummy.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn-update').click(async function() {
+            let dataId = $(this).parents('tr').attr('data-id');
+            let value = $(this).parents('tr').find('textarea').val();
+            if(value.trim() === '') {
+                show_error('Please enter value');
+                return false;
+            }
 
+            await updateData(
+                BASE_URL + '/' + dataId,
+                {
+                    name : value.trim()
+                }
+            )
+        })
+    })
+</script>
 @endsection

@@ -16,6 +16,10 @@ class ViolationCode extends Model
     const SORT_BY_FIELD = 'total_article';
     const SORT_VALUE = -1; // - 1 :DESC , 1 : ASC
 
+    public $perPage = self::PER_PAGE;
+    public $sortField= self::SORT_BY_FIELD;
+    public $sortValue = self::SORT_VALUE;
+
     protected $fillable = [
         'name',
         'type_id'
@@ -24,12 +28,6 @@ class ViolationCode extends Model
     public function violationType()
     {
         return $this->belongsTo(ViolationType::class, 'type_id', '_id');
-    }
-
-    function __construct() {
-        $this->perPage = self::PER_PAGE;
-        $this->sortField = self::SORT_BY_FIELD;
-        $this->sortValue = self::SORT_VALUE;
     }
 
     public function analize($params, $shouldPaginate = true) {

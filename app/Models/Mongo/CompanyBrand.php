@@ -19,9 +19,9 @@ class CompanyBrand extends Model
     const TYPE_COMPANY = 'COMPANY';
     const TYPE_BRAND = 'BRAND';
 
-    public $perPage;
-    public $sortField;
-    public $sortValue;
+    public $perPage = self::PER_PAGE;
+    public $sortField = self::SORT_BY_FIELD;
+    public $sortValue = self::SORT_VALUE;
 
     protected $fillable = [
         'name',
@@ -29,11 +29,9 @@ class CompanyBrand extends Model
         'parent_id'
     ];
 
-    function __construct() {
-        $this->perPage = self::PER_PAGE;
-        $this->sortField = self::SORT_BY_FIELD;
-        $this->sortValue = self::SORT_VALUE;
-    }
+    protected $attributes = [
+        'parent_id' => null
+    ];
 
     public function generalQuery($params) {
         $aggregateQuery = [];
