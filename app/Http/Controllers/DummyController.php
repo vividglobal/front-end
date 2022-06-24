@@ -110,6 +110,7 @@ class DummyController extends Controller
 
             Article::create($article);
         }
+        echo "It's done, now you can swim in a ton of articles!";
 
     }
 
@@ -156,7 +157,7 @@ class DummyController extends Controller
     {
         $input = $request->all();
         ViolationType::create($input);
-        return redirect('/dummy/type')->with('success', 'Delete admin successfully');
+        return redirect('/dummy/violation-types')->with('success', 'Create successfully');
     }
 
     public function updateViolationTypes(Request $request ,$id)
@@ -172,7 +173,7 @@ class DummyController extends Controller
 
     public function deleteViolationTypes($id)
     {
-        $data = ViolationType::findOrFail($id);
+        $data = ViolationType::find($id);
         $data->delete($id);
         
         return $this->responseSuccess([], "Delete successfully");
@@ -192,7 +193,7 @@ class DummyController extends Controller
     {
         $input = $request->all();
         ViolationCode::create($input);
-        return redirect('/dummy/code')->with('success', 'Delete successfully');
+        return redirect('/dummy/violation-code')->with('success', 'Delete successfully');
     }
 
     public function updateViolationCode(Request $request ,$id)
@@ -208,7 +209,7 @@ class DummyController extends Controller
 
     public function deleteViolationCode($id)
     {
-        $data = ViolationCode::findOrFail($id);
+        $data = ViolationCode::find($id);
         $data->delete($id);
         return $this->responseSuccess([], "Delete successfully");
     }
@@ -218,15 +219,18 @@ class DummyController extends Controller
     // ============================================ //
 
     public function companyBrands() {
-        $companies = CompanyBrand::all();
-        return view('dummy/brand', compact('companies'));
+        $companyBrands = CompanyBrand::all();
+        return view('dummy/brand', compact('companyBrands'));
     }
 
     public function createCompanyBrands(Request $request)
     {
         $input = $request->all();
+        if($input['type'] === CompanyBrand::TYPE_COMPANY) {
+            $input['parent_id'] = null;
+        }
         CompanyBrand::create($input);
-        return redirect('/dummy/brand')->with('success', 'Delete successfully');
+        return redirect('/dummy/company-brands')->with('success', 'Create successfully');
     }
 
     public function updateCompanyBrands(Request $request ,$id)
@@ -234,6 +238,9 @@ class DummyController extends Controller
         $input = $request->all();
         $data = CompanyBrand::find($id);
         if($data) {
+            if($input['type'] === CompanyBrand::TYPE_COMPANY) {
+                $input['parent_id'] = null;
+            }
             $data->update($input);
             return $this->responseSuccess([], "Update successfully");
         }
@@ -242,7 +249,7 @@ class DummyController extends Controller
 
     public function deleteCompanyBrands($id)
     {
-        $data = CompanyBrand::findOrFail($id);
+        $data = CompanyBrand::find($id);
         $data->delete($id);
         return $this->responseSuccess([], "Delete successfully");
     }
@@ -259,8 +266,22 @@ class DummyController extends Controller
     public function createCountries(Request $request)
     {
         $input = $request->all();
+        $requestUrl = explode(',', $input['list_url']);
+        if(count($requestUrl) === 0) {
+            return redirect('/dummy/countries')->with('error', 'Please enter list url');
+        }
+        $listUrl = [];
+        foreach ($requestUrl as $key => $url) {
+            if (filter_var($url, FILTER_VALIDATE_URL)) {
+                $listUrl[] = $url;
+            }
+        }
+        if(count($listUrl) === 0) {
+            return redirect('/dummy/countries')->with('error', 'Please enter list url');
+        }
+        $input['list_url'] = $requestUrl;
         Country::create($input);
-        return redirect('/dummy/country')->with('success', 'Delete successfully');
+        return redirect('/dummy/countries')->with('success', 'Create successfully');
     }
 
     public function updateCountries(Request $request ,$id)
@@ -268,6 +289,20 @@ class DummyController extends Controller
         $input = $request->all();
         $data = Country::find($id);
         if($data) {
+            $requestUrl = explode(',', $input['list_url']);
+            if(count($requestUrl) === 0) {
+                return redirect('/dummy/countries')->with('error', 'Please enter list url');
+            }
+            $listUrl = [];
+            foreach ($requestUrl as $key => $url) {
+                if (filter_var($url, FILTER_VALIDATE_URL)) {
+                    $listUrl[] = $url;
+                }
+            }
+            if(count($listUrl) === 0) {
+                return redirect('/dummy/countries')->with('error', 'Please enter list url');
+            }
+            $input['list_url'] = $requestUrl;
             $data->update($input);
             return $this->responseSuccess([], "Update successfully");
         }
@@ -276,7 +311,7 @@ class DummyController extends Controller
 
     public function deleteCountries($id)
     {
-        $data = Country::findOrFail($id);
+        $data = Country::find($id);
         $data->delete($id);
         return $this->responseSuccess([], "Delete successfully");
     }
