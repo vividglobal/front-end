@@ -5,6 +5,8 @@ namespace App\Models\Mongo;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
+use MongoDB\BSON\Regex;
+use App\Http\Services\UserRoleService;
 
 class Article extends Model
 {
@@ -78,23 +80,18 @@ class Article extends Model
 
     public function aggregateQuery($params) {
         $matchConditions = [];
-        $violationReviewField = 'detection_result';
-        $dateField = 'crawl_date';
+        $dateField = 'published_date';
 
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
-            if($status === self::STATUS_VIOLATION || $status === self::STATUS_NONE_VIOLATION) {
-                $violationReviewField = 'operator_review';
-                $dateField = 'date';
-            }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date']);
             $endDate = strtotime($params['end_date']);
-            $matchConditions[] = [ '$gte' => [ '$'.$violationReviewField.'.'.$dateField,  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$'.$violationReviewField.'.'.$dateField,  $endDate ] ];
+            $matchConditions[] = [ '$gte' => [ '$published_date',  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$published_date',  $endDate ] ];
         }
 
         if(isset($params['country'])) {
@@ -104,8 +101,8 @@ class Article extends Model
         if(isset($params['company_brand_id'])) {
             $brandId = $params['company_brand_id'];
             $matchConditions[] = [ '$or' => [
-                [ '$eq'=> [ '$brand.id',  $brandId ] ],
-                [ '$eq'=> [ '$company.id', $brandId ] ]
+                [ '$eq' => [ '$brand.id',  $brandId ] ],
+                [ '$eq' => [ '$company.id', $brandId ] ]
             ]];
         }
 
@@ -119,9 +116,9 @@ class Article extends Model
 
         $aggregateQuery[] = [
             '$lookup' => [
-                'as' => 'documents',
+                'as'   => 'documents',
                 'from' => 'article_legal_documents',
-                'let' => [ 'article_id'=> ['$toString'=> '$_id'] ],
+                'let'  => [ 'article_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
                     [ '$match' =>
                         [
@@ -129,24 +126,30 @@ class Article extends Model
                         ]
                     ],
                     ['$addFields' => ['upload_date' => ['$toLong' => '$created_at']] ],
-                    ['$sort' => ['created_at' => -1]],
-                    ['$project' => ['_id' => 1, 'name' => 1, 'url' => 1, 'upload_date' => 1 ]]
+                    ['$sort'      => ['created_at' => -1]],
+                    ['$project'   => ['_id' => 1, 'name' => 1, 'url' => 1, 'upload_date' => 1 ]]
                 ]
             ]
         ];
 
         $aggregateQuery[] = [
             '$addFields' => [
-                'company_name'      => '$company.name',
-                'brand_name'        => '$brand.name',
-                'country_name'      => '$country.name',
-                'crawl_date'        => '$detection_result.date',
-                'bot_status'        => '$detection_result.status',
-                'supervisor_status' => '$supervisor_review.status',
-                'operator_status'   => '$operator_review.status',
-                'has_document'      => [
+                'bot_type_names'          => '$detection_result.violation_types.name',
+                'bot_code_names'          => '$detection_result.violation_code.name',
+                'supervisor_type_names'   => '$supervisor_review.violation_types.name',
+                'supervisor_code_names'   => '$supervisor_review.violation_code.name',
+                'operator_type_names'     => '$operator_review.violation_types.name',
+                'operator_code_names'     => '$operator_review.violation_code.name',
+                'company_name'            => '$company.name',
+                'brand_name'              => '$brand.name',
+                'country_name'            => '$country.name',
+                'crawl_date'              => '$detection_result.date',
+                'bot_status'              => '$detection_result.status',
+                'supervisor_status'       => '$supervisor_review.status',
+                'operator_status'         => '$operator_review.status',
+                'has_document'            => [
                     '$cond' => [
-                        'if' =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
+                        'if'   =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
                         'then' => true,
                         'else' => false
                     ]
@@ -166,7 +169,7 @@ class Article extends Model
                     ],
                     'penalty_issued' => [
                         '$cond' => [
-                            'if' =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
+                            'if'   =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
                             'then' => ['$first' => '$documents.upload_date'],
                             'else' => null
                         ]
@@ -202,19 +205,36 @@ class Article extends Model
         }
 
         if(isset($params['keyword'])) {
-            $pattern = preg_quote($params['keyword'], "/");
-            $keywordRegex = [ '$regex' => $pattern ];
+            $keyword = $params['keyword'];
+            $regex = new Regex('.*'.$keyword, 'i');
+            $keywordRegex = [ '$regex' => $regex ];
+
+            $searchMatchCondition = [
+                [ 'company_name'   => $keywordRegex ],
+                [ 'brand_name'     => $keywordRegex ],
+                [ 'country_name'   => $keywordRegex ],
+                [ 'caption'        => $keywordRegex ],
+                [ 'bot_type_names' => $keywordRegex ],
+                [ 'bot_code_names' => $keywordRegex ]
+            ];
+
+            $isSupervisor = UserRoleService::isSupervisor();
+            $isOperator = UserRoleService::isOperator();
+
+            if($isSupervisor || $isOperator) {
+                $searchMatchCondition[] = [ 'supervisor_type_names' => $keywordRegex ];
+                $searchMatchCondition[] = [ 'supervisor_code_names' => $keywordRegex ];
+            }
+            if($isOperator) {
+                $searchMatchCondition[] = [ 'operator_type_names' => $keywordRegex ];
+                $searchMatchCondition[] = [ 'operator_code_names' => $keywordRegex ];
+            }
+
             $aggregateQuery[] = [
                 '$match' =>
                 [
-                    '$or'=> [
-                        [ 'company_name' => $keywordRegex ],
-                        [ 'brand_name' => $keywordRegex ],
-                        [ 'country_name' => $keywordRegex ],
-                        [ 'caption' => $keywordRegex ],
-                        [ 'violation_types.name' => $keywordRegex ],
-                    ]
-                ]
+                    '$or'=> $searchMatchCondition
+                ],
             ];
         }
 
