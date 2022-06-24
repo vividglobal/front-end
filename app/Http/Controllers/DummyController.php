@@ -144,46 +144,140 @@ class DummyController extends Controller
         return [];
     }
 
-    public function articleCreate(CreateRequest $request)
-    {
-        $inputs = $request->all();
-        $inputs['detection_result'] = [
-            'violation_code' => [
-                [
-                    'id' => '629efb92a3e57bd29403b346',
-                    'name' => '5.1'
-                ],
-                [
-                    'id' => '629efb92a3e57bd29403b347',
-                    'name' => '5.2'
-                ]
-            ],
-            'violation_types' => [
-                'id' => '629efb92a3e57bd29403b340',
-                'name' => 'Promotion to the public'
-            ],
-            'date' => time(),
-        ];
-        if($inputs['status'] === Article::STATUS_VIOLATION) {
-            $inputs['operator_review'] = $inputs['detection_result'];
-            $inputs['operator_review']['status'] = Article::STATUS_REVIEW_DONE;
-            $inputs['supervisor_review'] = $inputs['operator_review'];
-        }else if($inputs['status'] === Article::STATUS_NONE_VIOLATION) {
-            $inputs['operator_review'] =  $inputs['supervisor_review'] = [
-                'violation_code' => [],
-                'violation_types' => [],
-                'status' => Article::STATUS_REVIEW_DONE,
-                'review_date' => time(),
-            ];
-        }
-        // Article::create($inputs);
-        return redirect('/dummy/articles')->with('success', 'Create article successfully');
+      // ============================================= //
+     // ============== VIOLATION TYPE ============== //
+    // ============================================ //
+    public function violationTypes() {
+        $violationTypes = ViolationType::all();
+        return view('dummy/type', compact('violationTypes'));
     }
 
-    public function articelDelete($id)
+    public function createViolationTypes(Request $request)
     {
-        $article = Article::findOrFail($id);
-        $article->delete($id);
-        return redirect('/dummy/articles')->with('success', 'Delete article successfully');
+        $input = $request->all();
+        ViolationType::create($input);
+        return redirect('/dummy/type')->with('success', 'Delete admin successfully');
+    }
+
+    public function updateViolationTypes(Request $request ,$id)
+    {
+        $input = $request->all();
+        $data = ViolationType::find($id);
+        if($data) {
+            $data->update($input);
+            return $this->responseSuccess([], "Update  successfully");
+        }
+        return $this->responseFail([], "Update Failed");
+    }
+
+    public function deleteViolationTypes($id)
+    {
+        $data = ViolationType::findOrFail($id);
+        $data->delete($id);
+        
+        return $this->responseSuccess([], "Delete successfully");
+    }
+
+      // ============================================= //
+     // ============== VIOLATION TYPE ============== //
+    // ============================================ //
+
+    public function violationCode() {
+        $violationTypes = ViolationType::all();
+        $violationCode = ViolationCode::all();
+        return view('dummy/code', compact('violationTypes', 'violationCode'));
+    }
+
+    public function createViolationCode(Request $request)
+    {
+        $input = $request->all();
+        ViolationCode::create($input);
+        return redirect('/dummy/code')->with('success', 'Delete successfully');
+    }
+
+    public function updateViolationCode(Request $request ,$id)
+    {
+        $input = $request->all();
+        $data = ViolationCode::find($id);
+        if($data) {
+            $data->update($input);
+            return $this->responseSuccess([], "Update successfully");
+        }
+        return $this->responseFail([], "Update Failed");
+    }
+
+    public function deleteViolationCode($id)
+    {
+        $data = ViolationCode::findOrFail($id);
+        $data->delete($id);
+        return $this->responseSuccess([], "Delete successfully");
+    }
+
+      // ============================================= //
+     // ============== BRAND COMPANY ============== //
+    // ============================================ //
+
+    public function companyBrands() {
+        $companies = CompanyBrand::all();
+        return view('dummy/brand', compact('companies'));
+    }
+
+    public function createCompanyBrands(Request $request)
+    {
+        $input = $request->all();
+        CompanyBrand::create($input);
+        return redirect('/dummy/brand')->with('success', 'Delete successfully');
+    }
+
+    public function updateCompanyBrands(Request $request ,$id)
+    {
+        $input = $request->all();
+        $data = CompanyBrand::find($id);
+        if($data) {
+            $data->update($input);
+            return $this->responseSuccess([], "Update successfully");
+        }
+        return $this->responseFail([], "Update Failed");
+    }
+
+    public function deleteCompanyBrands($id)
+    {
+        $data = CompanyBrand::findOrFail($id);
+        $data->delete($id);
+        return $this->responseSuccess([], "Delete successfully");
+    }
+
+      // ============================================= //
+     // ============== BRAND COMPANY ============== //
+    // ============================================ //
+
+    public function countries() {
+        $countries = Country::all();
+        return view('dummy/country', compact('countries'));
+    }
+
+    public function createCountries(Request $request)
+    {
+        $input = $request->all();
+        Country::create($input);
+        return redirect('/dummy/country')->with('success', 'Delete successfully');
+    }
+
+    public function updateCountries(Request $request ,$id)
+    {
+        $input = $request->all();
+        $data = Country::find($id);
+        if($data) {
+            $data->update($input);
+            return $this->responseSuccess([], "Update successfully");
+        }
+        return $this->responseFail([], "Update Failed");
+    }
+
+    public function deleteCountries($id)
+    {
+        $data = Country::findOrFail($id);
+        $data->delete($id);
+        return $this->responseSuccess([], "Delete successfully");
     }
 }
