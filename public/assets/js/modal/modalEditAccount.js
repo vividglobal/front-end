@@ -19,10 +19,14 @@ $("document").ready(function(){
         $(".error_number").text("")
         $(".error_name").text("")
         $(".edit_password").text("")
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
     }
     let checkedAuth;
 
       //  Btn open modal
+    var documentElement = document.querySelector('.overlay');
+
     $("#edit__profile").on("click",function(){
         $("#modal-account").addClass("modal__open")
         var name = $(this).find("input").attr("data-name")
@@ -36,6 +40,8 @@ $("document").ready(function(){
         $('input[name="edit_id_user"]').attr("data-id",id)
         $('input[name="edit_id_user"]').attr("data-email",email)
         $(`#${auth}`).attr('checked', true)
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "no";
     })
 
     $(".edit__profile").on("click",function(){
@@ -52,6 +58,8 @@ $("document").ready(function(){
         $('input[name="edit_id_user"]').attr("data-id",id)
         $('input[name="edit_id_user"]').attr("data-email",email)
         $(`#${auth}`).attr('checked', true)
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "no";
     })
 
     //value modal edit profile

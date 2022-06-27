@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .list--country img,
@@ -56,7 +57,7 @@
 }
 
 .list--showing{
-    padding: 12px;
+    padding: 15px 12px;
     border: 1px solid var(--gray-C7);;
 }
 
@@ -75,6 +76,8 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
+    margin-right: 10px;
+
 }
 
 .list--country{
@@ -105,11 +108,14 @@
 
 .list--select__left{
     display: flex;
+    width: 75%;
+}
+
+.max_width{
     width: 100%;
 }
 
 .list--select__left div{
-    margin-right: 10px;
 }
 
 .list--title p {

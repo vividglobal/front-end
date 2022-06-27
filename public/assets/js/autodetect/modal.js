@@ -10,7 +10,8 @@ $(document).ready(function () {
     let span = $('.close');
     let checklogin = ""
     let csrf = $('meta[name="csrf-token"]').attr('content');
-    console.log(checklogin);
+    var elementExists = document.querySelector(".modal-title");
+
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -47,7 +48,7 @@ $(document).ready(function () {
             imageModal.hide();
         }
     });
-    
+
     let rowId =""
     uploadfile.click(function(e) {
         $(this).addClass("check")
@@ -106,7 +107,7 @@ $(document).ready(function () {
             $('#upload').val('');
         }
     })
-    
+
     function renderFileItem(rowId) {
         $.ajax({
             url: "/articles/"+rowId+"/documents",
@@ -139,7 +140,7 @@ $(document).ready(function () {
             }
         });
     }
-    
+
     $(document).on("click", '.delete-file', async function (){
         let rowIdelemnet = $(this).attr("id-delete");
         let parentItem = $(this).parents('.items_file')

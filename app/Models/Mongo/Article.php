@@ -85,6 +85,9 @@ class Article extends Model
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
+            if($status == self::STATUS_VIOLATION){
+                $dateField = 'operator_review.date';
+            }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
