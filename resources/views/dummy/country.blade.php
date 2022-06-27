@@ -9,11 +9,36 @@
         <!-- ========================================================== -->
         <div class="col-12">
             <h1>Countries</h4>
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <button class="btn btn-primary" type="button">Add</button>
-                </li>
-            </ul>
+            <form action="/dummy/countries" method="POST">
+                @csrf
+                <ul class="nav justify-content-end">
+                    <li>
+                        @if ($message = Session::get('success'))
+                        <p class="text-success">{{ $message }}</p>
+                        @endif
+                        @if ($error = Session::get('error'))
+                        <p class="text-danger">{{ $error }}</p>
+                        @endif
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">Name </span>
+                            <input required type="text" class="form-control" name="name" placeholder="Enter name" aria-label="Name" aria-describedby="addon-wrapping">
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group flex-nowrap">
+                            <span class="input-group-text" id="addon-wrapping">List URL</span>
+                            <textarea required name="list_url" class="form-control"></textarea>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="input-group flex-nowrap">
+                            <button class="btn btn-primary btn-create" type="submit">Add</button>
+                        </div>
+                    </li>
+                </ul>
+            </form>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -27,10 +52,10 @@
                     @foreach ($countries as $key => $country)
                     <tr data-id="{{ $country->_id }}">
                         <td>
-                            <textarea class="form-control">{{ $country->name }}</textarea>
+                            <textarea class="form-control country_name">{{ $country->name }}</textarea>
                         </td>
                         <td>
-                            <textarea rows="10" class="form-control">{{ implode(', ', $country->list_url) }}</textarea>
+                            <textarea rows="10" class="form-control list_urls">{{ implode(', ', $country->list_url) }}</textarea>
                         </td>
                         <td>
                             <button class="btn btn-success" type="button">Save</button>
@@ -47,4 +72,30 @@
     </div> <!-- End of row -->
     
 </div>
+<script>
+    let CSRF = '{{ csrf_token() }}';
+    let BASE_URL = '/dummy/countries';
+</script>
+<script src="{{ asset('assets/js/pages/dummy.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        $('.btn-update').click(async function() {
+            let dataId = $(this).parents('tr').attr('data-id');
+            let value = $(this).parents('tr').find('.country_name').val();
+            let urls = $(this).parents('tr').find('.list_urls').val();
+            if(value.trim() === '') {
+                show_error('Please enter value');
+                return false;
+            }
+
+            await updateData(
+                BASE_URL + '/' + dataId,
+                {
+                    name : value.trim(),
+                    type_id : typeID
+                }
+            )
+        })
+    })
+</script>
 @endsection

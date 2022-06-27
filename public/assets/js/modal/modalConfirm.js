@@ -24,10 +24,10 @@ btnSwitch.click(function () {
             removeCurrentRow()
         });
         modalconfim.hide();
-        $('input[type=checkbox]').each(function() 
-        { 
-                this.checked = false; 
-        }); 
+        $('input[type=checkbox]').each(function()
+        {
+                this.checked = false;
+        });
     });
 });
 function removeCurrentRow() {
@@ -37,6 +37,7 @@ function removeCurrentRow() {
 span.click(function () {
     modalconfim.hide();
 });
+
 $(window).on('click', function (e) {
     if ($(e.target).is('.modal-confirm-title')) {
         modalconfim.hide();

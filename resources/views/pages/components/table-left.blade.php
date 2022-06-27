@@ -86,7 +86,6 @@
         @endforeach
     </tbody>
 </table>
-
 <div class="modal-title open-modal" id="captionModal">
     <div class="modal-content">
         <div class="div-close">

@@ -10,7 +10,10 @@ $(document).ready(function(){
     let actionStep;
     let isLoading = false;
 
+    var documentElement = document.querySelector('.modal-title');
     $(document).on('click', '.check-status', function() {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "no";
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
@@ -32,10 +35,13 @@ $(document).ready(function(){
 
     $(document).on('click', '.check-violation-code', async function() {
         if($(this).hasClass('check-true-disabled') || $(this).hasClass('check-false-disabled')) {return}
+        if($(this).hasClass("dishable_overlay")){
+            document.documentElement.style.overflow = 'hidden';
+            document.body.scroll = "no";
+        }
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
-
         if(agreeStatus === DISAGREE) {
             actionStep = ACTION_CHECK_CODE;
             violationCodeModal.show();
@@ -55,15 +61,19 @@ $(document).ready(function(){
     $('.open-modal').on('click', '.close', function() {
         violationCodeModal.hide();
         confirmModalVio.hide()
-        $('input[type=checkbox]').each(function() 
-        { 
-            this.checked = false; 
-        }); 
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
+        $('input[type=checkbox]').each(function()
+        {
+            this.checked = false;
+        });
         confirmModal.hide();
     });
 
     $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
         isLoading = false;
         hide_overlay();
         if(response.success) {
@@ -90,13 +100,18 @@ $(document).ready(function(){
     
     $('.btn-confirm-violation').click(async function() {
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
         confirmModalVio.hide()
     });
 
     $('.btn-select-code').click(async function() {
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
             return $(this).val();
         }).get();
+
         if(violationCode.length === 0) {
             return false;
         }
@@ -111,6 +126,16 @@ $(document).ready(function(){
             show_error(response.message);
         }
     });
+
+    // SEARCH ARTICLE_CODE MODAL
+    $(".search_code_article").on("keyup",function(e){
+        let value = e.target.value.toLowerCase()
+            $(".col-md-4").filter(function(){
+                $(this).toggle($(this).find('.checkbox-code').find(".check_box_code").text().toLowerCase().indexOf(value) > -1)
+            })
+    })
+
+
     function updateDetectionColumnAfterSelectViolationCode(data) {
         let codeString = '';
         for (let i = 0; i < data.violation_code.length; i++) {
@@ -130,7 +155,7 @@ $(document).ready(function(){
                     <p class="status-title ${colorClass}">${violationLabel}</p>
                 </div>`
             );
-            
+
             currentRow.find(`.${lowercaseRole}-violation-type`).html(typeString)
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
                 `<div class="entry-title-threee entry-title-tyle reviewing-title">
@@ -146,7 +171,7 @@ $(document).ready(function(){
         $(`tr[data-id="${articleId}"]`).fadeOut('slow');
         $(`div[data-id="${articleId}"]`).fadeOut('slow');
         violationCodeModal.hide();
-        
+
         confirmModal.hide();
     }
 
@@ -166,7 +191,7 @@ $(document).ready(function(){
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
                 `<div class="btn-status">
                     <a attr-status="${AGREE}" class="check-true check-violation-code" href="javascript:void(0)"></a>
-                    <a attr-status="${DISAGREE}" class="check-false check-violation-code" href="javascript:void(0)"></a>
+                    <a attr-status="${DISAGREE}" class="check-false check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
         }else {

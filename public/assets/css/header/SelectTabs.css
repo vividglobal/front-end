@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .list--country img,
@@ -55,6 +56,11 @@
     cursor: pointer;
 }
 
+.list--showing{
+    padding: 15px 12px;
+    border: 1px solid var(--gray-C7);;
+}
+
 .list--showing select,
 #daterange input,
 .search:focus-visible{
@@ -70,6 +76,8 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
+    margin-right: 10px;
+
 }
 
 .list--country{
@@ -100,11 +108,14 @@
 
 .list--select__left{
     display: flex;
+    width: 75%;
+}
+
+.max_width{
     width: 100%;
 }
 
 .list--select__left div{
-    margin-right: 10px;
 }
 
 .list--title p {
@@ -136,7 +147,6 @@
 }
 
 .list--select__right select{
-    width: 92px;
-    padding: 12px 0 12px 12px;
-    border: 1px solid var(--gray-C7);
+    width: 66px;
+    border: none;
 }

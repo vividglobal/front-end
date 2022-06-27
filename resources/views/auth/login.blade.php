@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+
     <div class="container-login rows no-gutters">
         <div class="form__login col l-6 m-12 c-12">
             <div class="block__login">
@@ -28,10 +29,12 @@
                     </div>
                     <div class="bottom__login">
                         <label class="container__remember--me">
-                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                <span class="checkmarks"></span>
+                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} >
+                                <span class="checkmarks" ></span>
                                 {{ __('Remember Me') }}
-                            </label>
+                        </label>
+                        <?php
+?>
                         @if (Route::has('password.request'))
                             <a class="btn_forgot--pasword" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}

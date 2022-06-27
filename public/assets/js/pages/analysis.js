@@ -1,3 +1,7 @@
+$(".list--company--brand").find("> p").text("Brand/Company")
+$(".list--country").find("> p").text("Country")
+$(".list--violation--type").find("> p").text("Violation type")
+
 $(document).ready(function(){
     // OPEN DATE RANGER
     $('input[name="daterange"]').daterangepicker({

@@ -98,7 +98,7 @@
                                 ) {
                                     otherEl[scroll+Left] = scrollX;
                                 }
-                                
+
                                 if (updateY &&
                                     Math_round(
                                         otherEl[scroll+Top] -
@@ -118,7 +118,7 @@
             })(el, name);
         }
     }
-    
+
     if (document.readyState == "complete") {
         reset();
     } else {

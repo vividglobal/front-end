@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Violation list') }}</p>
@@ -88,7 +88,7 @@
                         <div class="track">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
-                        @endif                        
+                        @endif
 
                         @endauth
                     </div>
@@ -135,6 +135,7 @@
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio">
+                                        @if(isset($article->detection_result['name']))
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
@@ -142,15 +143,18 @@
                                                 </a>
                                             </div>
                                         @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
 
                             <div class="track track-one-title">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
-                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                        <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
-                                    @endforeach
+                                    @if(isset($article->detection_result['name']))
+                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
 
@@ -166,7 +170,7 @@
                                         @endif
                                     </select>
                                 @else
-                                    <select class="list--select-right disabled-select" id="cars" disabled> 
+                                    <select class="list--select-right disabled-select" id="cars" disabled>
                                         <option value="Select">Not started</option>
                                         <option value="Processing">Processing</option>
                                         @if($article->has_document)
@@ -190,9 +194,12 @@
             </table>
         </div>
     </div>
+    @if(count($articles) == 0)
+        @include('noSearchResult/index')
+    @endif
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
-    </div>                                 
+    </div>
     <div class="modal-upload-file"id="uploadModal">
     @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
     <div class="check-login" t-login="true"></div>
@@ -206,7 +213,7 @@
             </div>
             <div class="modal-body">
                 <div class="row " id="box_list_file">
-                
+
                 @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">

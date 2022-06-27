@@ -6,4 +6,11 @@ $("document").ready(function(){
             var html = `<option value="${item}">${item}</option>`
             btnShowing.append(html)
         })
+
+
+        $("#btn_explore").click(function(){
+            $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+
+        })
+
 })
