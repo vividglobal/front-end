@@ -351,7 +351,7 @@ class ArticleController extends Controller
                 }
             }
             $article->update();
-            return $this->responseSuccess($reviewData, "Action successfully");
+            return $this->responseSuccess($reviewData, "Review completed");
         }
         return $this->responseFail([], "Article not found or not valid");
     }

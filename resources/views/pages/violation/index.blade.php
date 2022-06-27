@@ -62,7 +62,7 @@
                                     ])></span>
                             </div>
                         </div>
-                        <div class="track">
+                        <div class="track track-link">
                             <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
                         <div class="track">
@@ -103,7 +103,7 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
+                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'])}}</h3>
                                 </div>
                             </div>
                             <div class="track">
@@ -115,7 +115,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="track">
+                            <div class="track track-link">
                                 <div class="entry">
                                     <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="{{ asset('assets/image/link.png')}}" alt="link-icon"></a>
                                 </div>
@@ -163,10 +163,10 @@
                                 <div class="entry">
                                 @if(@Auth::user()->role === "OPERATOR")
                                     <select class="list--select-right" id="cars">
-                                        <option value="Select">Not started</option>
-                                        <option value="Processing">Processing</option>
+                                        <option class="list-option" value="Select">Not started</option>
+                                        <option class="list-option" value="Processing">Processing</option>
                                         @if($article->has_document)
-                                        <option value="Completed">Completed</option>
+                                        <option class="list-option" value="Completed">Completed</option>
                                         @endif
                                     </select>
                                 @else
@@ -201,7 +201,7 @@
         {{ $articles->links('layouts.my-paginate') }}
     </div>
     <div class="modal-upload-file"id="uploadModal">
-    @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
+    @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
     <div class="check-login" t-login="true"></div>
     @endif
         <div class="modal-content">
@@ -230,9 +230,6 @@
                 </div>
                 @endif
             </div>
-            <!-- <div class="head-confirm-btn">
-                <button class="confirm-btn btn-cancel close">Cancel</button>
-            </div> -->
         </div>
     </div>
 
