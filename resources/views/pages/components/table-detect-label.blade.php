@@ -139,10 +139,12 @@
                             <div class="track track-three">
                                 <div class="entry-three">
                                     <div class="entry-title css_status">
+                                        @if(isset($article->detection_result['violation_code']))
                                         <?php
                                             $botStatus = count($article->detection_result['violation_code']) > 0
                                                         ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
                                         ?>
+                                        @endif
                                         <p
                                             @class([
                                                 'bot-status',
@@ -154,6 +156,7 @@
                                         >{{ getStatusText($botStatus) }}</p>
                                     </div>
                                     <div class="style__code--article">
+                                        @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
@@ -161,11 +164,14 @@
                                                 </a>
                                             </div>
                                         @endforeach
+                                        @endif
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code">
+                                        @if(isset($article->detection_result['violation_types']))
                                         @foreach ($article->detection_result['violation_types'] as $detectionType)
                                             <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p>
                                         @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -272,8 +278,8 @@
                                         @elseif(isViolationStatus($article->operator_review['status']) && isRole(ROLE_OPERATOR)
                                             && count($article->operator_review['violation_code']) === 0)
                                             <div class="btn-status">
-                                                <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
-                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{AGREE}} class="check-true check-violation-code " href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                                             </div>
                                         @else
                                             <div class="style__code--article" style="width:100%">
@@ -302,6 +308,9 @@
             </table>
         </div>
     </div>
+    @if(count($articles) == 0)
+        @include('noSearchResult/index')
+    @endif
     <div class="row-pagination">
         {{ $articles->links('layouts.my-paginate') }}
     </div>
@@ -348,18 +357,21 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Choose violation code') }}</h1>
+                <h1 class="fix_heade_modal">{{ __('Choose violation code') }}</h1>
+            </div>
+            <div class="search_code_article">
+                <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
+                <input type="text" placeholder="Search for violation code" class="search">
             </div>
             <div class="row">
                 @foreach($violationCode as $key => $code)
-                <div class="col-md-4">
+                <div class="col-md-4 ">
                     <div class="checkbox-code">
-                        <div class="checkbox-style">
-                            <input class="click-on" type="checkbox" id="code_{{$key}}" name="violation_code[]" value={{ $code->id }}>
-                        </div>
-                        <div>
-                            <label class="click-on" for="code_{{$key}}">{{ $code->name }}</label>
-                        </div>
+                        <label class="check_box_code">
+                            <input type="checkbox" name="violation_code[]" value={{ $code->id }}>
+                            <span class="checkmark_code"></span>
+                            {{ $code->name }}
+                        </label>
                     </div>
                 </div>
                 @endforeach
@@ -390,3 +402,4 @@
 
 </script>
 <script src="{{ asset('assets/js/pages/article-action.js') }}"></script>
+<link href="{{ asset('assets/css/modal/modalCode.css') }}" rel="stylesheet">

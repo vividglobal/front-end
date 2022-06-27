@@ -88,7 +88,7 @@
                         <div class="track">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
-                        @endif                        
+                        @endif
 
                         @endauth
                     </div>
@@ -135,6 +135,7 @@
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio">
+                                        @if(isset($article->detection_result['name']))
                                         @foreach ($article->detection_result['violation_code'] as $detectioncode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
@@ -142,15 +143,18 @@
                                                 </a>
                                             </div>
                                         @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </div>
 
                             <div class="track track-one-title">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
-                                    @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                        <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}}</p>
-                                    @endforeach
+                                    @if(isset($article->detection_result['name']))
+                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
+                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
 
@@ -166,7 +170,7 @@
                                         @endif
                                     </select>
                                 @else
-                                    <select class="list--select-right disabled-select" id="cars" disabled> 
+                                    <select class="list--select-right disabled-select" id="cars" disabled>
                                         <option value="Select">Not started</option>
                                         <option value="Processing">Processing</option>
                                         @if($article->has_document)

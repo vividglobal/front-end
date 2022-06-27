@@ -1,5 +1,5 @@
 <div class="list--select--option {{ request ()->is('analysis') ? 'padding_btn_analysis' : '' }}" >
-    <div class="list--select__left" >
+    <div class="list--select__left {{ request ()->is('analysis') ? 'max_width' : '' }}" >
         @if(in_array('search', $list_filter) || $show_all_filter)
             <div class="list--search">
                 <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
