@@ -4,6 +4,7 @@ $(document).ready(function(){
     let agreeStatus;
     let confirmModal = $('#confirmActionModal');
     let confirmModalVio = $('#confirmActionModal-violation');
+    let confirmModalNonVio = $('#confirmActionModal-non-violation');
     let violationCodeModal = $('#selectCodeModal');
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
     let actionStep;
@@ -19,7 +20,8 @@ $(document).ready(function(){
                 confirmModal.show();
             }else {
                 actionStep = ACTION_CHECK_STATUS;
-                violationCodeModal.show();
+                // violationCodeModal.show();
+                confirmModalNonVio.show()
             }
         }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
             confirmModal.show();
@@ -85,6 +87,7 @@ $(document).ready(function(){
         }
     });
 
+    
     $('.btn-confirm-violation').click(async function() {
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         confirmModalVio.hide()
@@ -108,7 +111,6 @@ $(document).ready(function(){
             show_error(response.message);
         }
     });
-
     function updateDetectionColumnAfterSelectViolationCode(data) {
         let codeString = '';
         for (let i = 0; i < data.violation_code.length; i++) {

@@ -177,10 +177,12 @@ li:nth-child(3) img{
     flex-direction: column;
     height: 100%;
     overflow: auto;
-    border-left:1px solid #E5E5E5;
-    border-right:1px solid #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
     width: 30%;
     padding: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .style__code--article div{
@@ -199,7 +201,6 @@ li:nth-child(3) img{
     text-decoration: underline;
     transition: 0.3s linear;
 }
-
 .btn_no-login{
     display: flex;
     justify-content: end;

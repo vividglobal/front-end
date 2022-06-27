@@ -37,7 +37,7 @@
                                     ])></span>
                             </div>
                         </div>
-                        <div class="track">
+                        <div class="track track-link">
                             <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
                         <div class="track track-three">
@@ -131,7 +131,7 @@
                                     <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
-                            <div class="track">
+                            <div class="track track-link">
                                 <div class="entry">
                                     <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="../assets/image/link.png" alt=""></a>
                                 </div>
@@ -200,7 +200,7 @@
                                     {{-- ==================================================== --}}
                                     {{-- ============== VIOLATION CODE COLUMN =============== --}}
                                     {{-- ==================================================== --}}
-                                    <div class="entry-title supervisor-violation-code">
+                                    <div class="entry-title supervisor-violation-code ">
                                         @if(isPendingStatus($article->supervisor_review['status']) && isRole(ROLE_SUPERVISOR))
                                             <div class="btn-status">
                                                 <a attr-status={{AGREE}} class="check-true-disabled check-violation-code" href="javascript:void(0)"></a>
@@ -214,13 +214,23 @@
                                             </div>
                                         @else
                                             <div class="style__code--article" style="width:100%">
-                                                @foreach ($article->supervisor_review['violation_code'] as $detectionCode)
-                                                    <div>
-                                                        <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
-                                                            {{$detectionCode['name'] ?? ''}}
-                                                        </a>
+
+                                                @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR) 
+                                                && count($article->supervisor_review['violation_code']) === 0)
+                                                    <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
+                                                        <p
+                                                            class="status-title reviewing-color"
+                                                        >{{ 'Reviewing' }}</p>
                                                     </div>
-                                                @endforeach
+                                                @else
+                                                    @foreach ($article->supervisor_review['violation_code'] as $detectionCode)
+                                                        <div>
+                                                            <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                                {{$detectionCode['name'] ?? ''}}
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         @endif
                                     </div>

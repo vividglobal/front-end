@@ -33,7 +33,6 @@ btnSwitch.click(function () {
 function removeCurrentRow() {
     $(`tr[data-id="${articleId}"]`).fadeOut('slow');
     $(`div[data-id="${articleId}"]`).fadeOut('slow');
-    console.log("hahaha");
 }
 span.click(function () {
     modalconfim.hide();

@@ -311,7 +311,6 @@
     overflow: auto;
     scroll-snap-type: x mandatory;
     overflow-y: hidden;
-
   }
 
   .headers p{
@@ -348,7 +347,9 @@
   .track-three{
     flex: 1 0 calc(100%);
   }
-
+.track-link{
+  flex: 1 0 calc(10%);
+}
   .heading {
     width: 100%;
     height: 100%;
@@ -537,7 +538,17 @@
 input[type=checkbox] {
   transform: scale(1.5);
 }
-
+.supervisor-violation-code{
+  overflow: auto;
+}
+.list-option{
+  font-family: 'Avenir';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23px;
+  color: #000000; 
+}
 
 
 
