@@ -23,8 +23,8 @@ $(document).ready(function(){
                 confirmModal.show();
             }else {
                 actionStep = ACTION_CHECK_STATUS;
-                // violationCodeModal.show();
-                confirmModalNonVio.show()
+                violationCodeModal.show();
+                // confirmModalNonVio.show()
             }
         }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
             confirmModal.show();
