@@ -134,7 +134,7 @@
   display: none;
   position: fixed;
   z-index: 1000;
-  padding-top: 100px;
+  /* padding-top: 100px; */
   left: 0;
   top: 0;
   width: 100%;
@@ -166,7 +166,7 @@
     border: 1px solid #888;
     width: 50%;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
