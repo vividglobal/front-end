@@ -59,50 +59,57 @@ $(document).ready(function () {
         renderFileItem(rowId)
     })
     $(document).on('change', '.file-input', async function(){
+        let flag = true
         let form = new FormData();
         let files = $('#upload')[0].files;
-        form.append("document", files[0]);
-        form.append("article_id", rowId);
-        show_overlay()
-        if(files.length === 1){
-            let settings = {
-                "url": "/articles-document/upload",
-                "method": "POST",
-                "timeout": 0,
-                "headers": {
-                    "Accept": "application/json",
-                    'X-CSRF-TOKEN': csrf,
-                },
-                "processData": false,
-                "mimeType": "multipart/form-data",
-                "contentType": false,
-                "data": form
-            };
-            let repsonse = await $.ajax(settings)
-                if(JSON.parse(repsonse).success) {
-                    let date = JSON.parse(repsonse).data.modified
-                    let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
-                    fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
-                    <div class="content_file p-2">
-                    <div class=" d-flex justify-content-between align-items-center">
-                                <div class="item-one-file">
-                                    <div class="div-file">
-                                        <img src="../assets/image/icon-pdf.png" alt="">
-                                        <a href=${JSON.parse(repsonse).data.url} class="doc-file" target="_blank"> ${JSON.parse(repsonse).data.name} </a>
-                                    </div>
-                                    <div class="div-delete">
-                                        <span id-delete=${JSON.parse(repsonse).data._id} class="delete-file">&times;</span>
+        if (files.length > 5) {
+            flag = false
+            alert('You are only allowed to upload a maximum of 5 files at a time');
+        }
+        if(files.length !== 0 && flag){
+            show_overlay()
+            for(let i = 0; i < files.length; i++){
+                form.append("document", files[i]);
+            form.append("article_id", rowId);
+                let settings = {
+                    "url": "/articles-document/upload",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Accept": "application/json",
+                        'X-CSRF-TOKEN': csrf,
+                    },
+                    "processData": false,
+                    "mimeType": "multipart/form-data",
+                    "contentType": false,
+                    "data": form
+                };
+                let repsonse = await $.ajax(settings)
+                    if(JSON.parse(repsonse).success) {
+                        let date = JSON.parse(repsonse).data.modified
+                        let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
+                        fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
+                        <div class="content_file p-2">
+                        <div class=" d-flex justify-content-between align-items-center">
+                                    <div class="item-one-file">
+                                        <div class="div-file">
+                                            <img src="../assets/image/icon-pdf.png" alt="">
+                                            <a href=${JSON.parse(repsonse).data.url} class="doc-file" target="_blank"> ${JSON.parse(repsonse).data.name} </a>
+                                        </div>
+                                        <div class="div-delete">
+                                            <span id-delete=${JSON.parse(repsonse).data._id} class="delete-file">&times;</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> `
-                    $('#box_list_file').prepend(fileHtmlItems);
-                    if(JSON.parse(repsonse).data.article_id === rowId){
-                        $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
-                        $(".date-penalty").find(`#${rowId}`).text(now)
+                        </div> `
+                        $('#box_list_file').prepend(fileHtmlItems);
+                        if(JSON.parse(repsonse).data.article_id === rowId){
+                            $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
+                            $(".date-penalty").find(`#${rowId}`).text(now)
+                        }
                     }
-                }
+            }
                 hide_overlay()
             $('#upload').val('');
         }

@@ -79,7 +79,9 @@
 }
 .btn-switch:hover{
   content: url('../../image/ico_switch_enable.svg');
-
+}
+.upload-file:hover{
+  content: url('../../image/dislega2.png');
 }
 .tbdata tr td{
     height: 150px;
@@ -298,6 +300,10 @@
     order: 2;
     flex-grow: 0;
     cursor:pointer;
+}
+.grabbing{
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 /* .pagination li span{
 
