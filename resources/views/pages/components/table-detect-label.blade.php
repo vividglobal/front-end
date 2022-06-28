@@ -1,3 +1,4 @@
+
 <div class="container-table" id="div-pc">
     <div class="container_row">
         <div class="col-left">
@@ -143,7 +144,7 @@
                                     <div class="entry-title css_status">
                                         @if(isset($article->detection_result['violation_code']))
                                         <?php
-                                            $botStatus = count($article->detection_result['violation_code']) > 0
+                                            $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
                                                         ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
                                         ?>
                                         @endif
@@ -155,7 +156,7 @@
                                                 'unviolation-color' => isNoneViolationStatus($botStatus)
                                             ])
                                             data-status="{{$botStatus}}"
-                                        >{{ getStatusText($botStatus) }}</p>
+                                        >{{ getStatusText($botStatus)}}</p>
                                     </div>
                                     <div class="style__code--article">
                                         @if(isset($article->detection_result['violation_code']))
@@ -224,7 +225,7 @@
                                         @else
                                             <div class="style__code--article" style="width:100%">
 
-                                                @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR) 
+                                                @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR)
                                                 && count($article->supervisor_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
                                                         <p

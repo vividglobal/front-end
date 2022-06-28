@@ -370,7 +370,6 @@
 
   .track {
     flex: 1 0 calc(20%);
-    scroll-snap-align: start;
   }
 
   .track + .track {
@@ -442,7 +441,6 @@
       flex: 1 0 calc(50% + 7px);
     }
   }
-
 
 .title-right{
     display: flex;
@@ -579,7 +577,7 @@ input[type=checkbox] {
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
-  color: #000000; 
+  color: #000000;
 }
 
 
