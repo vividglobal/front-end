@@ -281,20 +281,22 @@ class ArticleController extends Controller
                     if($isAgreedWithBot) {
                         $reviewViolationCode = [];
                         $reviewStatus = $botViolationStatus;
+                        $isDoneReview = true;
                     }else {
                         // supervisor / operator needs to submit new violation code
-                        if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
-                            return $this->responseFail([], "Please add violation code for this article");
-                        }
-                        $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
-                        if(count($data) === 0) {
-                            return $this->responseFail([], "Invalid violation code");
-                        }
-                        $reviewViolationCode = $data['violation_code'];
-                        $reviewViolationTypes = $data['violation_types'];
+                        // if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
+                        //     return $this->responseFail([], "Please add violation code for this article");
+                        // }
+                        // $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
+                        // if(count($data) === 0) {
+                        //     return $this->responseFail([], "Invalid violation code");
+                        // }
+                        // $reviewViolationCode = $data['violation_code'];
+                        // $reviewViolationTypes = $data['violation_types'];
+                        $reviewViolationCode = [];
+                        $reviewViolationTypes = [];
                         $reviewStatus = Article::STATUS_VIOLATION;
                     }
-                    $isDoneReview = true;
                 }else {
                     if($isAgreedWithBot) {
                         $reviewStatus = $botViolationStatus;
@@ -341,19 +343,20 @@ class ArticleController extends Controller
                 'status'          => $reviewStatus,
                 'review_date'     => time()
             ];
-
+            $reviewMessage = "Review updated";
             if(UserRoleService::isSupervisor()) {
                 $article->supervisor_review = $reviewData;
             }else if(UserRoleService::isOperator()) {
                 $article->operator_review = $reviewData;
                 if($isDoneReview) {
                     $article->status = $reviewStatus;
+                    $reviewMessage = "Review completed";
                 }
             }
             $article->update();
-            return $this->responseSuccess($reviewData, "Review completed");
+            return $this->responseSuccess($reviewData, $reviewMessage);
         }
-        return $this->responseFail([], "Article not found or not valid");
+        return $this->responseFail([], "Article not found or invalid");
     }
 
     private function getViolationCodeAndTypeData($violationCodeArr) {
