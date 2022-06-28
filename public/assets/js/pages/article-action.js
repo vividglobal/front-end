@@ -73,6 +73,8 @@ $(document).ready(function(){
             this.checked = false;
         });
         confirmModal.hide();
+        confirmArticleAsViolationModal.hide();
+
     });
 
     $('.btn-confirm-non-violation').click(async function() {

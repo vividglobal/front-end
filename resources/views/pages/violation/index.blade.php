@@ -216,7 +216,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="suspected__file__area">
                                     <div class='file-input'>
-                                        <input type='file' id="upload" accept="application/pdf">
+                                        <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
                                         <span class='button'><img class="img-upfile" type="file" src="../assets/image/input-file.png"  alt=""></span>
                                     </div>
                                 </div>
