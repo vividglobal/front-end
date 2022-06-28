@@ -103,8 +103,8 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    @if(isset($article->operator_review['review_date']))
-                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'] )}}</h3>
+                                    @if(isset($article->operator_review['date']))
+                                    <h3>{{date("d/m/Y",$article->operator_review['date'] )}}</h3>
                                     @endif
                                 </div>
                             </div>
