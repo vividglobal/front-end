@@ -135,26 +135,22 @@
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio">
-                                        @if(isset($article->detection_result['name']))
-                                        @foreach ($article->detection_result['violation_code'] as $detectioncode)
+                                        @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
                                                 <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
                                                     {{$detectioncode['name'] ?? ''}}
                                                 </a>
                                             </div>
                                         @endforeach
-                                        @endif
                                     </div>
                                 </div>
                             </div>
 
                             <div class="track track-one-title">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
-                                    @if(isset($article->detection_result['name']))
-                                        @foreach ($article->detection_result['violation_types'] as $detectiontype)
-                                            <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
-                                        @endforeach
-                                    @endif
+                                    @foreach ($article->operator_review['violation_types'] as $detectiontype)
+                                        <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
+                                    @endforeach
                                 </div>
                             </div>
 

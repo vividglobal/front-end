@@ -85,9 +85,6 @@ class Article extends Model
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
-            if($status == self::STATUS_VIOLATION){
-                $dateField = 'operator_review.date';
-            }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
@@ -262,6 +259,12 @@ class Article extends Model
 
         $aggregateQuery = $this->aggregateQuery($params);
 
+        if(isset($params['status'])
+            && ($params['status'] == self::STATUS_VIOLATION || $params['status'] == self::STATUS_NONE_VIOLATION)){
+            $sortField = 'modified';
+            $sortValue = self::SORT_VALUE;
+        }
+
         if(isset($params['perpage'])) {
             $perpage = intval($params['perpage']);
         }
@@ -273,7 +276,6 @@ class Article extends Model
         if(isset($params['sort_value'])) {
             $sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
-
         $aggregateQuery[] = [
             '$sort' => [$sortField => $sortValue]
         ];

@@ -4,27 +4,26 @@ $(document).ready(function(){
     let agreeStatus;
     let confirmModal = $('#confirmActionModal');
     let confirmModalVio = $('#confirmActionModal-violation');
-    let confirmModalNonVio = $('#confirmActionModal-non-violation');
     let violationCodeModal = $('#selectCodeModal');
+    let confirmArticleAsViolationModal = $('#confirmArticleAsViolation');
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
     let actionStep;
     let isLoading = false;
+    let botStatus;
 
-    var documentElement = document.querySelector('.modal-title');
     $(document).on('click', '.check-status', function() {
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = "no";
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
-        let botStatus = currentRow.find('.bot-status').attr('data-status');
+        botStatus = currentRow.find('.bot-status').attr('data-status');
         if(agreeStatus === DISAGREE) {
             if(botStatus === STATUS_VIOLATION) {
                 confirmModal.show();
             }else {
                 actionStep = ACTION_CHECK_STATUS;
-                violationCodeModal.show();
-                // confirmModalNonVio.show()
+                confirmArticleAsViolationModal.show();
             }
         }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
             confirmModal.show();
@@ -42,7 +41,14 @@ $(document).ready(function(){
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
-        if(agreeStatus === DISAGREE) {
+        botStatus = currentRow.find('.bot-status').attr('data-status');
+        let reviewStatus;
+        if(CURRENT_ROLE === SUPERVISOR_ROLE) {
+            reviewStatus = currentRow.find('.supervisor-violation-action .status-title').attr('data-status')
+        }else if(CURRENT_ROLE === OPERATOR_ROLE) {
+            reviewStatus = currentRow.find('.operator-violation-action .status-title').attr('data-status')
+        }
+        if(agreeStatus === DISAGREE || (botStatus === STATUS_NONE_VIOLATION && reviewStatus === STATUS_VIOLATION) ) {
             actionStep = ACTION_CHECK_CODE;
             violationCodeModal.show();
         }else {
@@ -59,10 +65,9 @@ $(document).ready(function(){
     });
 
     $('.open-modal').on('click', '.close', function() {
-        violationCodeModal.hide();
-        confirmModalVio.hide()
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
+        closeCodeModal();
+        confirmModalVio.hide();
+        addOverlayScroll();
         $('input[type=checkbox]').each(function()
         {
             this.checked = false;
@@ -72,8 +77,7 @@ $(document).ready(function(){
 
     $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
+        addOverlayScroll();
         isLoading = false;
         hide_overlay();
         if(response.success) {
@@ -85,7 +89,7 @@ $(document).ready(function(){
                 );
                 currentRow.find(`.${lowercaseRole}-violation-action`).html(
                     `<div class="entry-title-threee entry-title-tyle reviewing-title">
-                        <p class="status-title unviolation-color">Non-violation</p>
+                        <p data-status="${STATUS_NONE_VIOLATION}" class="status-title unviolation-color">Non-violation</p>
                     </div>`
                 );
                 confirmModal.hide();
@@ -97,17 +101,14 @@ $(document).ready(function(){
         }
     });
 
-    
     $('.btn-confirm-violation').click(async function() {
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
-        confirmModalVio.hide()
+        addOverlayScroll();
+        confirmModalVio.hide();
     });
 
     $('.btn-select-code').click(async function() {
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
+        addOverlayScroll();
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
             return $(this).val();
         }).get();
@@ -115,12 +116,13 @@ $(document).ready(function(){
         if(violationCode.length === 0) {
             return false;
         }
+        agreeStatus = DISAGREE;
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode);
         isLoading = false;
         hide_overlay();
         if(response.success) {
             updateDetectionColumnAfterSelectViolationCode(response.data);
-            violationCodeModal.hide();
+            closeCodeModal();
             show_success(response.message);
         }else {
             show_error(response.message);
@@ -135,6 +137,10 @@ $(document).ready(function(){
             })
     })
 
+    $('.btn-confirm-violation-and-choose-code').click(async function() {
+        confirmArticleAsViolationModal.hide();
+        await updateStatusViolationColumnAndEnableReviewViolationCodeButton()
+    });
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
         let codeString = '';
@@ -152,7 +158,7 @@ $(document).ready(function(){
             let violationLabel = data.status === STATUS_VIOLATION ? 'Violation' : 'Non-violation';
             currentRow.find(`.${lowercaseRole}-violation-action`).html(
                 `<div class="entry-title-threee entry-title-tyle reviewing-title">
-                    <p class="status-title ${colorClass}">${violationLabel}</p>
+                    <p data-status="${data.status}" class="status-title ${colorClass}">${violationLabel}</p>
                 </div>`
             );
 
@@ -170,13 +176,25 @@ $(document).ready(function(){
     function removeCurrentRow() {
         $(`tr[data-id="${articleId}"]`).fadeOut('slow');
         $(`div[data-id="${articleId}"]`).fadeOut('slow');
-        violationCodeModal.hide();
-
+        closeCodeModal();
         confirmModal.hide();
     }
 
+    function addOverlayScroll() {
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
+    }
+
+    function closeCodeModal() {
+        violationCodeModal.hide();
+        $('input[type=checkbox]').each(function()
+        {
+            this.checked = false;
+        });
+    }
+
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton() {
-        let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
+        let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
         isLoading = false;
         hide_overlay();
         if(response.success) {
@@ -184,7 +202,7 @@ $(document).ready(function(){
             // Update status label
             currentRow.find(`.${lowercaseRole}-violation-action`).html(
                 `<div class="entry-title-threee entry-title-tyle reviewing-title">
-                    <p class="status-title violation-color">Violation</p>
+                    <p data-status="${STATUS_VIOLATION}" class="status-title violation-color">Violation</p>
                 </div>`
             );
 

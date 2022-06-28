@@ -133,7 +133,9 @@
                             </div>
                             <div class="track track-link">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="../assets/image/link.png" alt=""></a>
+                                    <a href={{ __($article->link ?? '' )}} target="_blank">
+                                        <img class="td-link a-link" src="{{ asset('assets/image/link.png') }}" alt="">
+                                    </a>
                                 </div>
                             </div>
                             <div class="track track-three">
@@ -199,6 +201,7 @@
                                                         'violation-color'   => isViolationStatus($article->supervisor_review['status']),
                                                         'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
                                                     ])
+                                                    data-status="{{$article->supervisor_review['status']}}"
                                                 >{{ getStatusText($article->supervisor_review['status']) }}</p>
                                             </div>
                                         @endif
@@ -272,6 +275,7 @@
                                                         'violation-color'   => isViolationStatus($article->operator_review['status']),
                                                         'unviolation-color' => isNoneViolationStatus($article->operator_review['status'])
                                                     ])
+                                                    data-status="{{$article->operator_review['status']}}"
                                                 >{{ getStatusText($article->operator_review['status']) }}</p>
                                             </div>
                                         @endif
@@ -289,7 +293,13 @@
                                             && count($article->operator_review['violation_code']) === 0)
                                             <div class="btn-status">
                                                 <a attr-status={{AGREE}} class="check-true check-violation-code " href="javascript:void(0)"></a>
-                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code dishable_overlay" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}}
+                                                    class="check-violation-code dishable_overlay
+                                                    {{ isViolationStatus($article->operator_review['status'])
+                                                        && count($article->detection_result['violation_code']) > 0
+                                                        ? 'check-false' : 'check-false-disabled'
+                                                    }}"
+                                                    href="javascript:void(0)"></a>
                                             </div>
                                         @else
                                             <div class="style__code--article" style="width:100%">
@@ -357,6 +367,24 @@
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-title open-modal" id="confirmArticleAsViolation">
+        <div class="modal-confirm-content">
+            <div class="div-close">
+                <span class="close">&times;</span>
+            </div>
+            <div class="head-modal">
+                <h1>{{ __('Are you sure?') }}</h1>
+            </div>
+            <p class="title-modal" style="text-align: center;display: block;">
+                {{ __("Confirm this article as violation, you can not change the status in the future.") }}
+            </p>
+            <div class="head-confirm-btn">
+                <button class="confirm-btn btn-cancel close">Cancel</button>
+                <button class="confirm-btn btn-confirm-violation-and-choose-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
             </div>
         </div>
     </div>
