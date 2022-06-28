@@ -253,8 +253,8 @@
     <div class="modal-confirm-title">
         <div class="modal-confirm-content">
             <div class="head-confirm">
-                <h1>Remove user</h1>
-                <p>ARE YOU SURE MOVING THIS POST TO AUTO-DETECT VIOLATIONS LIST?</p>
+                <h1>Confirmation</h1>
+                <p>Are you sure moving this post to auto-detect violations link?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
