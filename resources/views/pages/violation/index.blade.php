@@ -96,14 +96,16 @@
                 <div class="tracks syncscroll container-scroll" name="myElements">
                     @foreach ($articles as $key => $article)
                         <div data-id="{{ $article->_id }}" class="scroll-table" >
-                            <div class="track"">
+                            <div class="track">
                                 <div class="entry">
                                     <h3>{{date("d/m/Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'])}}</h3>
+                                    @if(isset($article->operator_review['review_date']))
+                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'] )}}</h3>
+                                    @endif
                                 </div>
                             </div>
                             <div class="track">
@@ -137,9 +139,9 @@
                                     <div class="style__code--article style__code_vio">
                                         @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
-                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                {{-- <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
                                                     {{$detectioncode['name'] ?? ''}}
-                                                </a>
+                                                </a> --}}
                                             </div>
                                         @endforeach
                                     </div>
