@@ -333,9 +333,16 @@
     @if(count($articles) == 0)
         @include('noSearchResult/index')
     @endif
-    <div class="row-pagination">
-        {{ $articles->links('layouts.my-paginate') }}
+
+    <div class="paginate_showing">
+        <div style="margin-top:20px">
+            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+        </div>
+        <div class="row-pagination">
+            {{ $articles->links('layouts.my-paginate') }}
+        </div>
     </div>
+
 
     <div class="modal-title open-modal" id="confirmActionModal">
         <div class="modal-confirm-content">

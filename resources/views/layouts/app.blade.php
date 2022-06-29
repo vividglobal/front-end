@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/jquery/jquery.lazy.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/dateRangePicker/moment.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/dateRangePicker/dateRangePicker.js') }}"></script>
      <!-- //captCha_v2  -->

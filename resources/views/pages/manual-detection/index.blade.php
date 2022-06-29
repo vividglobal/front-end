@@ -59,7 +59,7 @@
     <p>{{ __('Result:') }}</p>
 </div>
 <!-- list Btn  -->
-@include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
+@include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
 </div>
 <div class="row-a">
     @include('pages/components/table-detect-label', compact('violationCode'))

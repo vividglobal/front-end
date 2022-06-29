@@ -18,7 +18,7 @@
             @auth
                 <a href="{{ getExportUrl() }}" target="_blank"
                     class="btn--export--excel" style="width: 179px;display: flex;justify-content:center;text-decoration: unset">
-                    <p>{{ __('Export Excel') }}</p>
+                    <p class="btn_excel">{{ __('Export Excel') }}</p>
                     <img src="../assets/image/Under-than-white.svg" alt="" style="margin-left: 12px;">
                 </a>
             @endauth
@@ -33,7 +33,7 @@
         <div class="list--select__left" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply"], 'show_all_filter' => false])
         </div>
-        <div class="list--select__right" style="justify-content: flex-start">
+        <div class="list--select__right" style="justify-content: flex-start;width:25%">
             <p class="title__base--violation">{{ __('Violation based on brands') }}</p>
         </div>
     </div>

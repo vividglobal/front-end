@@ -101,6 +101,7 @@
 .list_query{
     justify-content: space-between;
     display: flex;
+    margin-right: 60px;
 }
 
 .list_query-right{
