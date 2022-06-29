@@ -6,7 +6,6 @@ let startDragging = function (e) {
   mouseDown = true;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
-  console.log(startX);
   $('.container-scroll').addClass('grabbing')
 };
 let stopDragging = function (event) {

@@ -40,5 +40,7 @@ $("document").ready(function(){
                         searchCountry.val("")
                 }
         }
+        $(".select__one--country").css("display", "flex")
+        $(".search--country").val("")
     });
 })
