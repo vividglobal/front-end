@@ -12,6 +12,7 @@ btnSwitch.click(function () {
     articleId = currentRow.attr('data-id');
 
     $("#confirm-yes").click(function(){
+        show_overlay()
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
@@ -22,6 +23,7 @@ btnSwitch.click(function () {
         .done(function( msg ) {
             // window.location.href = window.location.href
             removeCurrentRow()
+            hide_overlay()
         });
         modalconfim.hide();
         $('input[type=checkbox]').each(function()

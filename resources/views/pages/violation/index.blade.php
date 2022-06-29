@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         @if(@Auth::user()->role === "OPERATOR")
-                        <div class="track">
+                        <div class="track track-switch">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
                         @endif
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                             @if(@Auth::user()->role === "OPERATOR")
-                            <div class="track">
+                            <div class="track track-switch">
                                 <div class="entry">
                                     <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                                 </div>

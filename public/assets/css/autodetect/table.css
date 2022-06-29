@@ -353,6 +353,7 @@
   font-size: 16px;
   line-height: 136.5%;
   /* identical to box height, or 22px */
+  text-align: center;
 
   display: flex;
   align-items: center;
@@ -380,6 +381,9 @@
   }
 .track-link{
   flex: 1 0 calc(10%);
+}
+.track-switch{
+  flex: 1 0 calc(7%);
 }
   .heading {
     width: 100%;
