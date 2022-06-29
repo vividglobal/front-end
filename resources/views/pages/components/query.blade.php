@@ -25,21 +25,21 @@
         @if(in_array('apply', $list_filter) || $show_all_filter)
             <button class="btn__apply" id="apply_query">Apply</button>
         @endif
-    </div>
-    <div class="list--select__right">
-        @if(in_array('showing', $list_filter)|| $show_all_filter)
-            <p>{{ __('Showing') }}</p>
-            <div class="list--showing">
-                <select name="" id=""></select>
-            </div>
-        @endif
-        @if(in_array('excel', $list_filter)|| $show_all_filter)
-        @auth
-            <a href="{{ getExportUrl() }}" target="_blank"
-            class="btn--export--excel">
-                <p>{{ __('Export Excel') }}</p>
-            </a>
-        @endauth
-        @endif
+        <div class="list--select__right">
+            @if(in_array('showing', $list_filter)|| $show_all_filter)
+                <p>{{ __('Showing') }}</p>
+                <div class="list--showing">
+                    <select name="" id=""></select>
+                </div>
+            @endif
+            @if(in_array('excel', $list_filter)|| $show_all_filter)
+            @auth
+                <a href="{{ getExportUrl() }}" target="_blank"
+                class="btn--export--excel">
+                    <p class="btn_excel">{{ __('Export Excel') }}</p>
+                </a>
+            @endauth
+            @endif
+        </div>
     </div>
 </div>

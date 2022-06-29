@@ -79,7 +79,7 @@
                 <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                 <td>
                     <div class="wr-img">
-                        <img class="td-img clickimg" src={{ __($article->image ?? '' ) }} alt="">
+                        <img class="td-img clickimg lazy" data-original={{ __($article->image ?? '' ) }} alt="">
                     </div>
                 </td>
             </tr>

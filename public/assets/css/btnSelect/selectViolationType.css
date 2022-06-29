@@ -9,6 +9,7 @@
     max-height: 365px;
     overflow: auto;
     display: none;
+    border-radius: 5px;
 }
 
 .select__one--violation--type{
@@ -47,12 +48,15 @@
 .btn__apply{
     background-color: var(--primary);
     color: var(--white);
+    font-family: 'Avenir';
     font-style: normal;
-    font-weight: 600;
+    font-weight: 450;
+    font-size: 14px;
     line-height: 22px;
     max-width: 120px;
     width: 100%;
     border: none;
+    border-radius: 5px;
 }
 
 .create__profile{
@@ -67,4 +71,13 @@
 
 .create__profile p{
    color: var(--white);
+}
+
+.btn_excel{
+    color: var(--white);
+    font-family: 'Avenir' !important;
+    font-style: normal !important;
+    font-weight: 450 !important;
+    font-size: 14px !important;
+    line-height: 22px !important;
 }

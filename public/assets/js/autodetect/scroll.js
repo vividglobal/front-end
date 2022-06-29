@@ -28,3 +28,7 @@ if(slider){
       slider.addEventListener('mouseup', stopDragging, false);
       slider.addEventListener('mouseleave', stopDragging, false);
 }
+
+$("img.lazy").lazyload({
+    effect : "fadeIn"
+});
