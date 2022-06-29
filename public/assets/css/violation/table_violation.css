@@ -313,9 +313,6 @@
   /* display: none; */
 }
 
-.track {
-  flex: 1 0 calc(20%);
-}
 
 .track + .track {
   margin-left: -1px;
@@ -324,7 +321,7 @@
   flex: 1 0 calc(70%);
 }
 .track-one{
-  flex: 1 0 calc(40%) !important;
+  flex: 1 0 calc(500px) !important;
 }
 
 .heading {

@@ -3,7 +3,7 @@
 
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Violation list') }}</p>
+        <p>{{ __('Code violation list') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
 
-                            <div class="track track-one-title">
+                            <div class="track track-one">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
                                         <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
