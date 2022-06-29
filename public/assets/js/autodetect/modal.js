@@ -105,7 +105,7 @@ $(document).ready(function () {
                         </div> `
                         $('#box_list_file').prepend(fileHtmlItems);
                         if(JSON.parse(repsonse).data.article_id === rowId){
-                            $(".check").attr('src','http://localhost:8099/assets/image/dislega2.png');
+                            $(".check").attr('src','../assets/image/dislega2.png');
                             $(".date-penalty").find(`#${rowId}`).text(now)
                         }
                     }
@@ -164,7 +164,7 @@ $(document).ready(function () {
             parentItem.remove();
             let item = $('.div-item')
             if(item.length === 0){
-                $(".entry").find(`#${rowId}`).attr("src","http://localhost:8099/assets/image/lega1.png")
+                $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                 $(".date-penalty").find(`#${rowId}`).text("")
             }
         }else {
