@@ -32,6 +32,11 @@ $(document).ready(function(){
         }
     })
 
+    function setDefaulSearchModal(){
+        $(".search").val("")
+        $(".check__box").css("display", "block")
+    }
+
     $(document).on('click', '.check-violation-code', async function() {
         if($(this).hasClass('check-true-disabled') || $(this).hasClass('check-false-disabled')) {return}
         if($(this).hasClass("dishable_overlay")){
@@ -65,6 +70,7 @@ $(document).ready(function(){
     });
 
     $('.open-modal').on('click', '.close', function() {
+        setDefaulSearchModal()
         closeCodeModal();
         confirmModalVio.hide();
         addOverlayScroll();
@@ -74,7 +80,6 @@ $(document).ready(function(){
         });
         confirmModal.hide();
         confirmArticleAsViolationModal.hide();
-
     });
 
     $('.btn-confirm-non-violation').click(async function() {
@@ -111,6 +116,7 @@ $(document).ready(function(){
 
     $('.btn-select-code').click(async function() {
         addOverlayScroll();
+        setDefaulSearchModal()
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
             return $(this).val();
         }).get();

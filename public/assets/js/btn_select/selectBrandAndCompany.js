@@ -36,6 +36,8 @@ $("document").ready(function(){
                         selectBrand.slideToggle(300,'linear');
                     }
             }
+            $(".select__one").css("display", "flex")
+            $(".search--brand").val("")
     });
 
 })

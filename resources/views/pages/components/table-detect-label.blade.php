@@ -405,7 +405,7 @@
             </div>
             <div class="row">
                 @foreach($violationCode as $key => $code)
-                <div class="col-md-4 ">
+                <div class="col-md-4 check__box">
                     <div class="checkbox-code">
                         <label class="check_box_code">
                             <input type="checkbox" name="violation_code[]" value={{ $code->id }}>
