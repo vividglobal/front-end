@@ -384,6 +384,7 @@
 
     .daterangepicker .drp-calendar.left .calendar-table {
       padding-right: 8px;
+      height : 100% !important;
     }
 
     .daterangepicker .ranges, .daterangepicker .drp-calendar {

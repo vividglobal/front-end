@@ -41,6 +41,8 @@
     <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
     <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
     <script src="{{ asset('assets/js/common/loading.js') }}"></script>
+    <script src="{{ asset('assets/js/query/filterMobile.js') }}"></script>
+
 </head>
 <body>
     <div id="app">

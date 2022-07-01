@@ -5,14 +5,13 @@
 .list--country,
 #daterange,
 .list--search{
-    width: 200px;
+    width: 220px;
     display: flex;
     border: 1px solid var(--gray-C7);
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-right: 10px;
-    border-radius: 5px;
+    margin-right: 5px;
 }
 
 .list--search{
@@ -20,7 +19,7 @@
 }
 
 .list--country{
-    width: 160px;
+    width: 130px;
 }
 
 .list--country img,
@@ -84,7 +83,6 @@
 
 .list--showing{
     padding: 13px 12px;
-    border-radius: 5px;
     border: 1px solid var(--gray-C7);;
 }
 
@@ -103,8 +101,7 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
-    margin-right: 10px;
-    border-radius: 5px;
+    margin-right: 5px;
 }
 
 .list--country{
@@ -114,7 +111,7 @@
 }
 
 .list--violation--type{
-    width: 160px;
+    width: 150px;
     display: flex;
     border: 1px solid var(--gray-C7);
     padding: 14px 0 ;
@@ -122,7 +119,6 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
-    border-radius: 5px;
 }
 
 .list--select--option{
@@ -141,9 +137,6 @@
 
 .max_width{
     width: 100%;
-}
-
-.list--select__left div{
 }
 
 .list--title p {
@@ -177,4 +170,12 @@
     width: 66px;
     border: none;
     font-size: 14px;
+}
+
+.list_filter{
+    display: flex;
+}
+
+.hide{
+    display: none !important;
 }

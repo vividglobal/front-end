@@ -5,7 +5,7 @@
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
 
-@include("modal/createAccount");
+@include("modal/createAccount")
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Admin Management') }}</p>

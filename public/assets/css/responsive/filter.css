@@ -1,0 +1,106 @@
+@media(max-width: 1113px){
+    .list_filter{
+        display: none;
+    }
+
+    .list--title{
+        margin-left: 60px;
+    }
+
+    .list--search--select{
+        margin-left: 16px;
+    }
+
+    .list--search{
+        width: 270px;
+    }
+
+    .open_Nav_filter{
+        width: 25px;
+        height: 25px;
+        display:block;
+        background: url(../../image/filter.svg) no-repeat center center ;
+        -webkit-background-size: cover !important;
+        background-size: cover !important;
+        position: absolute;
+        right: 30px;
+        top: 7px;
+    }
+
+    .btn_apply_mobi{
+        position:fixed;
+        bottom: 0;
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        background : var(--white);
+    }
+
+    .btn_apply_mobi button{
+        width: 46%;
+        padding: 12px;
+        margin: 5px;
+        margin-bottom: 10px;
+        border: none;
+        background: var(--primary);
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: var(--white);
+        border-radius: 5px;
+        max-width: 100%;
+    }
+
+    .btn_apply_mobi button:nth-child(2){
+        border: 1px solid var(--gray-C7);
+        background: var(--white);
+        color: var(--gray-6F);
+    }
+
+    .daterange_mobi{
+        width: auto !important;
+        margin : 0 20px !important;
+    }
+    .background-gray{
+        background: var(--white) !important;
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1113px){
+
+}
+
+@media (min-width: 426px) and (max-width: 739px){
+    .btn_apply_mobi{
+        width: 60%;
+    }
+}
+
+@media (max-width: 425px) {
+    .list--search{
+        width: 65%;
+    }
+    .open_Nav_filter{
+        right: 20px;
+    }
+    .list--title{
+        margin-left: 30px;
+    }
+    .btn_apply_mobi{
+        width: 100%;
+    }
+}
+
+@media (max-width: 340px) {
+    .list--title p{
+        font-size: 20px ;
+    }
+
+    .search,
+    .btn_excel{
+        font-size: 12px !important ;
+    }
+
+}

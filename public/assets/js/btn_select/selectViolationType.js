@@ -26,10 +26,13 @@ $("document").ready(function(){
     })
 
     $(document).mouseup(function(e){
-        if (!btnViolation.is(e.target) && btnViolation.has(e.target).length === 0) {
-            selectViolation.hide()
-        }else{
-            selectViolation.slideToggle(300,'linear');
-        }
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if(width > 1113){
+                if (!btnViolation.is(e.target) && btnViolation.has(e.target).length === 0) {
+                    selectViolation.hide()
+                }else{
+                    selectViolation.slideToggle(300,'linear');
+                }
+            }
     });
 })

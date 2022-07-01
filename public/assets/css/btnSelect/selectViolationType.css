@@ -6,7 +6,7 @@
     background: var(--white);
     border: 1px solid  var(--gray-C7);
     box-sizing: border-box;
-    max-height: 365px;
+    max-height: 350px;
     overflow: auto;
     display: none;
     border-radius: 5px;
@@ -56,12 +56,12 @@
     max-width: 120px;
     width: 100%;
     border: none;
-    border-radius: 5px;
 }
 
 .create__profile{
-    margin-left: 10px;
+    margin-left: 5px;
     padding: 14px 13px;
+    border-radius: 5px;
     background-color: var(--primary);
     width: 153px;
     display: flex;

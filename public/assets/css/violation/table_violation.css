@@ -284,7 +284,7 @@
 }
 
 .headers {
-  top: 0;
+  top: -2px;
   position: -webkit-sticky;
   position: sticky;
   z-index: 1;
@@ -598,7 +598,6 @@ background: var(--primary);
   width: 100%;
   height: 100%;
   text-align: center;
-  position: ;
 }
 
 .item-one-file .div-file a{

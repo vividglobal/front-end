@@ -41,9 +41,25 @@
 }
 
 @media (max-width: 1113px){
+    .py-4 {
+        padding-top: 0.5rem!important;
+    }
 
-    .active_bg_header{
-        background: rgb(218 218 218);
+    .list_filter_mobile{
+        display: block;
+    }
+
+    .open_Nav{
+        width: 25px;
+        height: 25px;
+        display:block;
+        background: url(../../image/menu-primary.svg) no-repeat center center ;
+        -webkit-background-size: cover !important;
+        background-size: cover !important;
+    }
+
+    .menuWhite{
+        background: url(../../image/menu.svg) no-repeat center center ;
     }
 
     .active_header_login{
@@ -53,6 +69,19 @@
     .nav_container {
         z-index: 101 !important;
         position: absolute;
+        top: 5px;
+    }
+
+    .list--title p{
+        margin: 0;
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px ;
+        line-height: 36px;
+        display: flex;
+        align-items: center;
+        color: #0C3C60;
     }
 
     .nav-link{
@@ -64,7 +93,7 @@
     }
 
     .closebtn img{
-        padding: 8px 16px;
+        padding: 16px;
     }
 
     .nav_container{
@@ -179,11 +208,6 @@
           flex-direction:column;
       }
 
-      /* .btn__header li:hover .nav--btnBorder__bottom{
-        border-bottom: 1px solid  var(--white);
-        transition: 0.3s linear;
-        } */
-
       .nav--btnBorder__bottom{
         border-bottom: 1px solid var(--primary);
       }
@@ -257,6 +281,9 @@
     .dropdown-login p:hover {
         background-color: var(--primary) !important;
     }
+    .style__code--article{
+        overflow: auto;
+    }
 }
 
 @media (min-width: 740px) and (max-width: 1113px){
@@ -267,6 +294,7 @@
 
     .open_menu{
         width: 40% !important;
+        z-index: 102;
     }
     .nav--btn__after--login{
         margin-right: 0 !important;
@@ -279,9 +307,9 @@
         padding: 8px 16px;
     }
     .open_menu{
-        width: 50% !important;
+        width: 60% !important;
+        z-index: 102;
     }
-
 }
 
 @media (max-width: 425px) {
@@ -291,8 +319,10 @@
     }
     .open_menu{
         width: 100% !important;
+        z-index: 102;
     }
     .background__vituar-3 .rows .background__content {
         padding: 85px 0 145px 0;
     }
 }
+
