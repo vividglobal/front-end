@@ -8,6 +8,7 @@
     border: 1px solid var(--gray-C7);
     box-sizing: border-box;
     display: none;
+    border-radius: 5px;
 }
 
 .slc_suspected{

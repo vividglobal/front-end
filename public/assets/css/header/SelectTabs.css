@@ -1,17 +1,26 @@
 .list--search--select{
-    margin: 0 60px;
+    margin-left: 60px;
 }
 
 .list--country,
 #daterange,
 .list--search{
-    width: 140px;
+    width: 200px;
     display: flex;
     border: 1px solid var(--gray-C7);
     align-items: center;
     justify-content: center;
     cursor: pointer;
     margin-right: 10px;
+    border-radius: 5px;
+}
+
+.list--search{
+    width: 140px;
+}
+
+.list--country{
+    width: 160px;
 }
 
 .list--country img,
@@ -19,7 +28,24 @@
 .list--company--brand img,
 #daterange img,
 .list--search img {
-    margin: 0 10px;
+    margin: 0 5px;
+    width: 10px;
+}
+
+.list--country p,
+.list--violation--type p,
+.list--company--brand p,
+#daterange input,
+.list--search p {
+    font-size: 14px;
+}
+
+.list--company--brand img:first-child,
+.list--search img:first-child,
+#daterange img:first-child,
+.list--violation--type img:first-child,
+.list--country img:first-child{
+    width: 15px;
 }
 
 .list--company--brand p ,
@@ -38,7 +64,7 @@
 #daterange input,
 .list--search input{
     border: none;
-    margin: 14px 5px 14px 0px;
+    margin: 10px 5px 10px 0px;
     width: 100%;
 }
 
@@ -57,7 +83,8 @@
 }
 
 .list--showing{
-    padding: 15px 12px;
+    padding: 13px 12px;
+    border-radius: 5px;
     border: 1px solid var(--gray-C7);;
 }
 
@@ -68,7 +95,7 @@
 }
 
 .list--company--brand{
-    width: 203px;
+    width: 170px;
     display: flex;
     border: 1px solid var(--gray-C7);
     padding: 14px 0 ;
@@ -77,7 +104,7 @@
     position: relative;
     cursor: pointer;
     margin-right: 10px;
-
+    border-radius: 5px;
 }
 
 .list--country{
@@ -87,7 +114,7 @@
 }
 
 .list--violation--type{
-    width: 184px;
+    width: 160px;
     display: flex;
     border: 1px solid var(--gray-C7);
     padding: 14px 0 ;
@@ -95,6 +122,7 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .list--select--option{
@@ -108,7 +136,7 @@
 
 .list--select__left{
     display: flex;
-    width: 75%;
+    width: 100%;
 }
 
 .max_width{
@@ -128,7 +156,6 @@
 }
 
 .list--select__right{
-    width: 25%;
     display: flex;
     align-items: center;
     justify-content:flex-end;
@@ -149,4 +176,5 @@
 .list--select__right select{
     width: 66px;
     border: none;
+    font-size: 14px;
 }

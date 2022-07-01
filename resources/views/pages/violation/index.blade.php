@@ -5,7 +5,7 @@
     <div class="list--title">
         <p>{{ __('Code violation list') }}</p>
     </div>
-    @include('pages/components/query', ['list_filter' => [], 'show_all_filter' => true])
+    @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
     <!-- list Btn  -->
 </div>
 <div class="container-table">
@@ -195,10 +195,16 @@
     @if(count($articles) == 0)
         @include('noSearchResult/index')
     @endif
-    <div class="row-pagination">
-        {{ $articles->links('layouts.my-paginate') }}
+
+    <div class="paginate_showing">
+        <div style="margin-top:20px">
+            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+        </div>
+        <div class="row-pagination">
+            {{ $articles->links('layouts.my-paginate') }}
+        </div>
     </div>
-    
+
     <div class="modal-upload-file"id="uploadModal">
         @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
             <div class="check-login" t-login="true"></div>

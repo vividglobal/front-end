@@ -6,7 +6,6 @@ let startDragging = function (e) {
   mouseDown = true;
   startX = e.pageX - slider.offsetLeft;
   scrollLeft = slider.scrollLeft;
-  console.log(startX);
   $('.container-scroll').addClass('grabbing')
 };
 let stopDragging = function (event) {
@@ -29,3 +28,7 @@ if(slider){
       slider.addEventListener('mouseup', stopDragging, false);
       slider.addEventListener('mouseleave', stopDragging, false);
 }
+
+$("img.lazy").lazyload({
+    effect : "fadeIn"
+});

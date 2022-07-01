@@ -1,4 +1,3 @@
-
 <div class="container-table" id="div-pc">
     <div class="container_row">
         <div class="col-left">
@@ -142,21 +141,23 @@
                             <div class="track track-three">
                                 <div class="entry-three">
                                     <div class="entry-title css_status">
-                                        @if(isset($article->detection_result['violation_code']))
-                                        <?php
-                                            $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
-                                                        ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
-                                        ?>
+                                        @if($article->detection_result !== null)
+                                            @if(isset($article->detection_result['violation_code']))
+                                            <?php
+                                                $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
+                                                            ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
+                                            ?>
+                                            @endif
+                                            <p
+                                                @class([
+                                                    'bot-status',
+                                                    'status-title',
+                                                    'violation-color'   => isViolationStatus($botStatus),
+                                                    'unviolation-color' => isNoneViolationStatus($botStatus)
+                                                ])
+                                                data-status="{{$botStatus}}"
+                                            >{{ getStatusText($botStatus)}}</p>
                                         @endif
-                                        <p
-                                            @class([
-                                                'bot-status',
-                                                'status-title',
-                                                'violation-color'   => isViolationStatus($botStatus),
-                                                'unviolation-color' => isNoneViolationStatus($botStatus)
-                                            ])
-                                            data-status="{{$botStatus}}"
-                                        >{{ getStatusText($botStatus)}}</p>
                                     </div>
                                     <div class="style__code--article">
                                         @if(isset($article->detection_result['violation_code']))
@@ -333,6 +334,16 @@
         @include('noSearchResult/index')
     @endif
 
+    <div class="paginate_showing">
+        <div style="margin-top:20px">
+            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+        </div>
+        <div class="row-pagination">
+            {{ $articles->links('layouts.my-paginate') }}
+        </div>
+    </div>
+
+
     <div class="modal-title open-modal" id="confirmActionModal">
         <div class="modal-confirm-content">
             <div class="div-close">
@@ -401,7 +412,7 @@
             </div>
             <div class="row">
                 @foreach($violationCode as $key => $code)
-                <div class="col-md-4 ">
+                <div class="col-md-4 check__box">
                     <div class="checkbox-code">
                         <label class="check_box_code">
                             <input type="checkbox" name="violation_code[]" value={{ $code->id }}>
