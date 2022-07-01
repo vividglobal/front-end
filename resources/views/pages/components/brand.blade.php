@@ -1,6 +1,6 @@
 <div class="list--company--brand">
     <img src="../assets/image/brand-tag.svg" alt="">
-    <p></p>
+    <p>{{ __('Brand/Companys') }}</p>
     <img src="../assets/image/under-than.svg" alt="">
     <div class="select--company-or-brand" id="toggle">
         <div class="search--input">

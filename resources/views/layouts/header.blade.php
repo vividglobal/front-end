@@ -34,7 +34,7 @@
                                 <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item"href="/articles/violation">
-                                            {{ __('Violation list') }}
+                                            {{ __('Code violation list') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/violation')) ? 'activeHeader': ''}}"

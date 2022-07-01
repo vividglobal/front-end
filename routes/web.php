@@ -22,6 +22,7 @@ Route::controller(Web\ArticleController::class)->group(function () {
         Route::get('/violation', 'getViolationList');
         Route::get('/non-violation', 'getNoneViolationList');
         Route::get('/{id}/documents', 'documents');
+        Route::get('/{id}/details', 'getOne');
     });
 });
 
