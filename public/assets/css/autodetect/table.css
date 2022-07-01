@@ -56,6 +56,9 @@
     display: flex !important;
     flex-direction: column;
 }
+.container-scroll-non{
+  flex-direction: column;
+}
 .tr-boder td{
     border: 1px solid var(--gray-EE);
     font-style: normal;
@@ -373,7 +376,7 @@
   }
 
   .track {
-    flex: 1 0 calc(20%);
+    flex: 1 0 calc(158px);
   }
 
   .track:first-child .entry{
@@ -384,10 +387,10 @@
     margin-left: -1px;
   }
   .track-three{
-    flex: 1 0 calc(100%);
+    flex: 1 0 calc(950px);
   }
 .track-link{
-  flex: 1 0 calc(10%);
+  flex: 1 0 calc(60px);
 }
 .track-switch{
   flex: 1 0 calc(7%);

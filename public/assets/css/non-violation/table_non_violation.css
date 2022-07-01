@@ -80,3 +80,6 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
 .flex-space_beetween{
     width: 100% !important;
 }
+.track-non{
+    flex: 1 0 calc(25%);
+}

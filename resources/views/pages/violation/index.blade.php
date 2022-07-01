@@ -3,7 +3,7 @@
 
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Violation list') }}</p>
+        <p>{{ __('Code violation list') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -148,8 +148,8 @@
                                 </div>
                             </div>
 
-                            <div class="track track-one-title">
-                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item style_violation_type">
+                            <div class="track track-one">
+                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
                                         <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
                                     @endforeach
@@ -208,9 +208,9 @@
     </div>
 
     <div class="modal-upload-file"id="uploadModal">
-    @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
-    <div class="check-login" t-login="true"></div>
-    @endif
+        @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
+            <div class="check-login" t-login="true"></div>
+        @endif
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
@@ -220,7 +220,6 @@
             </div>
             <div class="modal-body">
                 <div class="row " id="box_list_file">
-
                 @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
