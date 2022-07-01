@@ -122,11 +122,11 @@
                     @include('modal/editAccount')
                 @endguest
             </div>
-
         </div>
     </div>
     <div class="overlay overlay_nav" ></div>
-    <span class="open_Nav" style="cursor:pointer" ><img src="../assets/image/menu.svg" alt=""></span>
+    <span class="open_Nav {{(request ()-> is ('/')) ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav_filter {{(request ()-> is ('/')) ? 'hide': ''}}" style="cursor:pointer" ></span>
 </div>
 
 

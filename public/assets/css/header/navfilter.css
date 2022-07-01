@@ -1,0 +1,275 @@
+.sideFilter {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 102;
+    top: 0;
+    right: 0;
+    background-color: var(--white);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+
+  .sideFilter a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sideFilter a:hover {
+    color: #f1f1f1;
+  }
+
+  .sideFilter .closebtn {
+    position: sticky;
+    top: 0;
+    font-size: 36px;
+    padding: 0;
+    width: 100%;
+    background: white;
+    padding: 10px 0 0 20px;
+    margin-bottom: 20px;
+    z-index: 1;
+  }
+
+  .closeFilter img{
+      padding: 0 !important;
+      padding-right: 10px !important;
+  }
+
+  .closeFilter{
+    display: flex !important;
+    align-items: center;
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 420;
+    font-size: 25px !important;
+    line-height: 36px;
+    color: #0C3C60 !important;
+  }
+
+  .filter_list-mobi{
+      margin-bottom: 80px;
+  }
+
+  .checkbox_mobi{
+      margin: 15px 20px 15px 20px;
+  }
+
+  .checkbox_mobi > p{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 170%;
+    color: #6F6F6F;
+    text-decoration: none;
+    color: var(--black);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+  }
+
+  .checkbox_title{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 5px;
+  }
+
+  .checkbox_list_sort{
+      display: none;
+  }
+
+  .checkbox_title  div:first-child{
+      display: flex;
+      align-items: center;
+  }
+
+  .checkbox_title  div:first-child img{
+      padding-right: 10px;
+  }
+
+  .checkbox_title  div:first-child span{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    }
+
+  .checkbox_title > img{
+      width: 10px;
+    }
+
+  .border_gray{
+    border: 1px solid var(--gray-C7);
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .checkbox_mobi .select--company-or-brand{
+    position: inherit;
+    width: auto;
+    border: none;
+  }
+
+  .checkbox_mobi .select--company-or-brand .search--input{
+    margin: 20px 0px 15px 0px;
+  }
+
+  .checkbox_mobi .select--company-or-brand .search--input img{
+    padding :0 15px;
+  }
+
+  .checkbox_mobi .select--company-or-brand .contain--selection{
+      max-height: 100%;
+  }
+
+  .checkbox_mobi .select--company-or-brand .contain--selection .select__one{
+    display: block;
+    padding: 0;
+    padding-left: 35px;
+    }
+
+    .checkbox_mobi .select--company-or-brand .contain--selection p{
+        color: #000000;
+    }
+
+    .checkbox_mobi .select--company-or-brand .contain--selection{
+        overflow: hidden !important;
+    }
+
+    .checkbox_mobi .select--country {
+        position: inherit;
+        width: auto;
+        border: none;
+    }
+
+    .checkbox_mobi .select--country .search--input--country{
+        margin: 20px 0px 15px 0px;
+    }
+
+    .checkbox_mobi .select--country .search--input--country img{
+        padding :0 15px;
+    }
+
+    .checkbox_mobi .select--country .contain--selection{
+          max-height: 100%;
+    }
+
+    .checkbox_mobi .select--country .contain--selection .select__one--country{
+        display: block;
+        padding: 0;
+        padding-left: 35px;
+    }
+
+    .checkbox_mobi .select--violation--type p{
+        color: #000000 !important;
+    }
+
+    .checkbox_mobi .select--country .contain--selection p{
+        color: #000000;
+    }
+
+    .checkbox_mobi .select--country .contain--selection{
+        overflow: hidden !important;
+    }
+
+    .checkbox_mobi .select--violation--type{
+        position: inherit;
+        width: auto;
+        border: none;
+        max-height: 100% !important;
+        overflow: hidden;
+    }
+
+    .checkbox_mobi .select--violation--type .select__one--violation--type{
+        padding: 0;
+        padding-left: 35px;
+        margin-top: 5px;
+    }
+
+    .checkbox_mobi .select--violation--type .select__one--violation--type p {
+        text-decoration: none;
+        color: var(--black);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        cursor: pointer;
+    }
+
+  /* CHECKBOX */
+
+  .container_checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    margin-top: 5px;
+  }
+
+  .contain--selection > label{
+      margin-top: 5px;
+  }
+
+  .container_checkbox .input_checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkmark_checkbox {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: 1px solid var(--primary);
+  }
+
+  .container_checkbox .input_checkbox:checked ~ .checkmark_checkbox {
+    background-color: var(--white);
+  }
+
+  .checkmark_checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container_checkbox .input_checkbox:checked ~ .activeRadio:after {
+    display: block;
+  }
+
+  .container_checkbox .checkmark_checkbox:after {
+    top: 4px;
+    left: 4px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--primary);
+  }
+

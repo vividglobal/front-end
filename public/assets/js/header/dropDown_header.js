@@ -20,27 +20,44 @@ $("document").ready(function(){
 
 //    ---------NAV MENU---------
     var documentElement = document.querySelector('.overlay');
-    let btnShowNav = document.querySelector(".open_Nav")
     let btnHideNav = document.querySelector(".closebtn")
     let screenOverlay = document.querySelector(".overlay_nav")
 
-    btnShowNav.onclick = function(){
+    $(".open_Nav").click(function(){
         $("#myNav").addClass("open_menu")
+        $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"100%","display":"block"})
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = "no";
-    }
+    })
 
     function closeNav() {
         $("#myNav").removeClass("open_menu")
+        $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
         document.documentElement.style.overflow = 'scroll';
         document.body.scroll = "yes";
     }
+
+//    ---------NAV FILTER---------
+$(".open_Nav_filter ").click(function(){
+    $("#myFilter").addClass("open_menu")
+    $("#myNav").removeClass("open_menu")
+    $(".overlay").css({"width":"100%","display":"block"})
+    document.documentElement.style.overflow = 'hidden';
+    document.body.scroll = "no";
+})
+
+$(".closeFilter ").click(function(){
+    $("#myFilter").removeClass("open_menu")
+    $(".overlay").css({"width":"0%","display":"none"})
+    document.documentElement.style.overflow = 'scroll';
+    document.body.scroll = "yes";
+})
 
     btnHideNav.onclick = function(){
         closeNav();
@@ -49,6 +66,14 @@ $("document").ready(function(){
     screenOverlay.onclick = function(){
         closeNav();
     }
+
+    $(".nav-link").click(function(){
+        closeNav()
+    })
+
+    $(".dropdown-item").click(function(){
+        closeNav()
+    })
 
     var $window = $(window);
 

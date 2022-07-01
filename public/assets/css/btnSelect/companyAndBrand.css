@@ -59,7 +59,7 @@
 }
 
 .contain--selection{
-    max-height: 627px;
+    max-height: 350px;
     overflow: auto;
 }
 

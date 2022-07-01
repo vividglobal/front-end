@@ -3,6 +3,7 @@ $("document").ready(function(){
     var selectOneBrand = $(".select__one");
     var btnBrand = $(".list--company--brand");
 
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const parambrands = urlParams.get('company_brand_id')
@@ -27,7 +28,9 @@ $("document").ready(function(){
     })
 
     $(document).mouseup(function(e){
-        var input = $(".search--input");
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width > 1113){
+            var input = $(".search--input");
             if (!btnBrand.is(e.target) && btnBrand.has(e.target).length === 0) {
                 selectBrand.hide()
             }else{
@@ -36,6 +39,7 @@ $("document").ready(function(){
                         selectBrand.slideToggle(300,'linear');
                     }
             }
+        }
             $(".select__one").css("display", "flex")
             $(".search--brand").val("")
     });

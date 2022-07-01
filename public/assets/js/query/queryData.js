@@ -1,16 +1,18 @@
 $("document").ready(function () {
-    $('input[name="daterange"]').daterangepicker({
-        autoUpdateInput: false,
-        autoApply: true,
-        maxDate: new Date(),
-        drops: "up",
-        opens: "right",
-        drops: "down",
-        locale: {
-            firstDay: 1,
-            format: "DD/MM/YYYY",
-        },
-    });
+
+  $('input[name="daterange"]').daterangepicker({
+                autoUpdateInput: false,
+                autoApply: true,
+                maxDate: new Date(),
+                drops: "up",
+                opens: "right",
+                drops: "down",
+                locale: {
+                    firstDay: 1,
+                    format: "DD/MM/YYYY",
+                },
+            });
+
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
         function (ev, picker) {
@@ -173,8 +175,20 @@ $("document").ready(function () {
 
     //  ----------------------------
     //  APPLY BUTTON
-    $("#apply_query").on("click", function () {
-        replaceURL(paramSortBy, paramSortValue);
+    function resetFiter(){
+        $("#myFilter").removeClass("open_menu")
+        $(".overlay").css({"width":"0%","display":"none"})
+        $(".checkbox_mobi").find("#toggle").hide()
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
+    }
+
+    $(".close__filter").click(function() {
+        resetFiter()
+    })
+
+    $(".btn__apply").on("click", function () {
+            replaceURL(paramSortBy, paramSortValue);
     });
 
     //LIST SHOWING
@@ -232,35 +246,65 @@ $("document").ready(function () {
 
     //GET VALUE
     function getParams(sortBy, sortValue, page) {
-        let search = $(".search").val() ? $(".search").val() : "";
-        let brandCompany = $(".list--company--brand")
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width > 1113){
+            let date = $('input[name="daterange"]').val() || "";
+            let brandCompany = $(".list--company--brand")
             .find("> p")
             .attr("data-id");
-        let country = $(".list--country").find("> p").attr("data-id");
-        let violationType = $(".list--violation--type")
+            let country = $(".list--country").find("> p").attr("data-id");
+            let violationType = $(".list--violation--type")
             .find("> p")
             .attr("data-id");
-        let perpage = $(".list--showing").find("select").val();
-        let date = $('input[name="daterange"]').val() || "";
-        let end__Date = "";
-        let start__Date = "";
-        if (date !== "") {
-            let arr = date.split("-");
-            end__Date = arr[1].trim().replace(/[/]/g, "-");
-            start__Date = arr[0].trim().replace(/[/]/g, "-");
+            let search = $(".search").val() ? $(".search").val() : "";
+            let perpage = $(".list--showing").find("select").val();
+            let end__Date = "";
+            let start__Date = "";
+            if (date !== "") {
+                let arr = date.split("-");
+                end__Date = arr[1].trim().replace(/[/]/g, "-");
+                start__Date = arr[0].trim().replace(/[/]/g, "-");
+            }
+            return new keywordSearch(
+                search,
+                brandCompany,
+                country,
+                violationType,
+                start__Date,
+                end__Date,
+                perpage,
+                sortBy,
+                sortValue,
+                page
+            );
+        }else{
+            let date = $('.date_mobile').val() || "";
+            let brandCompany = $(".select--company-or-brand").closest(".checkbox_mobi").find("p").attr("data-id") || ""
+            let country = $(".select--country").closest(".checkbox_mobi").find("p").attr("data-id") || ""
+            let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
+            let search = $(".search").val() ? $(".search").val() : "";
+            let perpage = "";
+            let end__Date = "";
+            let start__Date = "";
+            if (date !== "") {
+                let arr = date.split("-");
+                end__Date = arr[1].trim().replace(/[/]/g, "-");
+                start__Date = arr[0].trim().replace(/[/]/g, "-");
+            }
+            return new keywordSearch(
+                search,
+                brandCompany,
+                country,
+                violationType,
+                start__Date,
+                end__Date,
+                perpage,
+                sortBy,
+                sortValue,
+                page
+            );
         }
-        return new keywordSearch(
-            search,
-            brandCompany,
-            country,
-            violationType,
-            start__Date,
-            end__Date,
-            perpage,
-            sortBy,
-            sortValue,
-            page
-        );
+
     }
 
     // --------------CHANGE PARAMETERS--------------
@@ -308,6 +352,8 @@ $("document").ready(function () {
             window.location.replace(
                 `${window.location.pathname}${url.replace("&", "?")}`
             );
+            resetFiter()
         }
     }
+
 });

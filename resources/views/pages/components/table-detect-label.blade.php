@@ -159,7 +159,7 @@
                                             >{{ getStatusText($botStatus)}}</p>
                                         @endif
                                     </div>
-                                    <div class="style__code--article">
+                                    <div class="style__code--article" style="display:block">
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div>
@@ -170,7 +170,7 @@
                                         @endforeach
                                         @endif
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle bot-violation-code">
+                                    <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" >
                                         @if(isset($article->detection_result['violation_types']))
                                         @foreach ($article->detection_result['violation_types'] as $detectionType)
                                             <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p>
@@ -245,7 +245,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle supervisor-violation-type">
+                                    <div class="entry-title-threee entry-title-tyle supervisor-violation-type style_violation_type">
                                         @foreach ($article->supervisor_review['violation_types'] as $supervisorType)
                                             <p style="color:{{ $supervisorType['color'] ?? ''}}">{{ $supervisorType['name'] ?? '' }}</p>
                                         @endforeach
@@ -315,7 +315,7 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle operator-violation-type">
+                                    <div class="entry-title-threee entry-title-tyle operator-violation-type style_violation_type">
                                         @foreach ($article->operator_review['violation_types'] as $operatorType)
                                             <p style="color:{{ $operatorType['color'] ?? ''}}">{{ $operatorType['name'] ?? '' }}</p>
                                         @endforeach
@@ -335,9 +335,11 @@
     @endif
 
     <div class="paginate_showing">
-        <div style="margin-top:20px">
-            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
-        </div>
+        @if(count($articles) > 0)
+            <div style="margin-top:20px">
+                @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+            </div>
+        @endif
         <div class="row-pagination">
             {{ $articles->links('layouts.my-paginate') }}
         </div>

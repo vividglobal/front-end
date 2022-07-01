@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         @if(@Auth::user()->role === "OPERATOR")
-                        <div class="track">
+                        <div class="track track-switch">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
                         @endif
@@ -149,7 +149,7 @@
                             </div>
 
                             <div class="track track-one-title">
-                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
+                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item style_violation_type">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
                                         <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
                                     @endforeach
@@ -179,7 +179,7 @@
                                 </div>
                             </div>
                             @if(@Auth::user()->role === "OPERATOR")
-                            <div class="track">
+                            <div class="track track-switch">
                                 <div class="entry">
                                     <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
                                 </div>
@@ -197,9 +197,11 @@
     @endif
 
     <div class="paginate_showing">
-        <div style="margin-top:20px">
-            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
-        </div>
+        @if(count($articles) > 0)
+            <div style="margin-top:20px">
+                @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+            </div>
+        @endif
         <div class="row-pagination">
             {{ $articles->links('layouts.my-paginate') }}
         </div>
@@ -260,8 +262,8 @@
     <div class="modal-confirm-title">
         <div class="modal-confirm-content">
             <div class="head-confirm">
-                <h1>Remove user</h1>
-                <p>ARE YOU SURE MOVING THIS POST TO AUTO-DETECT VIOLATIONS LIST?</p>
+                <h1>Confirmation</h1>
+                <p>Are you sure moving this post to auto-detect violations link?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>

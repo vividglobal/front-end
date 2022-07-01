@@ -30,16 +30,20 @@ $("document").ready(function(){
     })
 
     $(document).mouseup(function(e){
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         //select country
-        if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0) {
+        if(width >1113){
+            if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0 ) {
                 selectCountry.hide()
             }else{
                 if (!searchCountry.is(e.target) && searchCountry.has(e.target).length === 0)
                 {
-                        selectCountry.slideToggle(300,'linear');
-                        searchCountry.val("")
+                    selectCountry.slideToggle(300,'linear');
+                    searchCountry.val("")
                 }
+            }
         }
+
         $(".select__one--country").css("display", "flex")
         $(".search--country").val("")
     });
