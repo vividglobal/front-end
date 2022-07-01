@@ -428,4 +428,9 @@ class ArticleController extends Controller
         }
         return $this->responseFail([], "Article not found");
     }
+
+    public function getOne($id) {
+        $article = Article::findOrFail($id);
+        return view('pages/components/article-detail', compact('article'));
+    }
 }

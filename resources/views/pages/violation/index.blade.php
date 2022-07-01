@@ -206,9 +206,9 @@
     </div>
 
     <div class="modal-upload-file"id="uploadModal">
-    @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
-    <div class="check-login" t-login="true"></div>
-    @endif
+        @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
+            <div class="check-login" t-login="true"></div>
+        @endif
         <div class="modal-content">
             <div class="div-close">
                 <span class="close">&times;</span>
@@ -218,7 +218,6 @@
             </div>
             <div class="modal-body">
                 <div class="row " id="box_list_file">
-
                 @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
