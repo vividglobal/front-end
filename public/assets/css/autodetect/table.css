@@ -587,21 +587,3 @@ input[type=checkbox] {
   color: #000000;
 }
 
-
-
-@media only screen and (min-width: 740px) and (max-width: 1113px) {
-    #div-pc{
-      display: none;
-    }
-    #div-moblie{
-      display: block;
-    }
-}
-
-@media only screen and (min-width: 426px) and (max-width: 739px) {
-
-}
-
-@media only screen and (max-width: 425px) {
-
-}
