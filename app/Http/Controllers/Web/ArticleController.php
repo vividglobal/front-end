@@ -343,14 +343,14 @@ class ArticleController extends Controller
                 'status'          => $reviewStatus,
                 'review_date'     => time()
             ];
-            $reviewMessage = "Review updated";
+            $reviewMessage = "Review Complete";
             if(UserRoleService::isSupervisor()) {
                 $article->supervisor_review = $reviewData;
             }else if(UserRoleService::isOperator()) {
                 $article->operator_review = $reviewData;
                 if($isDoneReview) {
                     $article->status = $reviewStatus;
-                    $reviewMessage = "Review completed";
+                    $reviewMessage = "Review complete";
                 }
             }
             $article->update();

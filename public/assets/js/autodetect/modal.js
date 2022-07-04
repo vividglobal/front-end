@@ -34,6 +34,8 @@ $(document).ready(function () {
         uploadModal.hide();
         btnuploadfile.hide();
         $('.div-item').remove();
+        $('.no-file-remove').remove();
+
     });
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-title')) {
@@ -43,6 +45,8 @@ $(document).ready(function () {
             uploadModal.hide();
             btnuploadfile.hide();
             $('.div-item').remove();
+            $('.no-file-remove').remove();
+
         }
         if ($(e.target).is('.modalimg')) {
             imageModal.hide();
@@ -59,6 +63,7 @@ $(document).ready(function () {
         renderFileItem(rowId)
     })
     $(document).on('change', '.file-input', async function(){
+        $('.no-file-remove').remove();
         let flag = true
         let form = new FormData();
         let files = $('#upload')[0].files;
@@ -69,7 +74,7 @@ $(document).ready(function () {
         if(files.length !== 0 && flag){
             show_overlay()
             for(let i = 0; i < files.length; i++){
-                form.append("document", files[i]);
+            form.append("document", files[i]);
             form.append("article_id", rowId);
                 let settings = {
                     "url": "/articles-document/upload",
@@ -84,33 +89,35 @@ $(document).ready(function () {
                     "contentType": false,
                     "data": form
                 };
-                let repsonse = await $.ajax(settings)
-                    if(JSON.parse(repsonse).success) {
-                        let date = JSON.parse(repsonse).data.modified
-                        let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
-                        fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
-                        <div class="content_file p-2">
-                        <div class=" d-flex justify-content-between align-items-center">
-                                    <div class="item-one-file">
-                                        <div class="div-file">
-                                            <img src="../assets/image/icon-pdf.png" alt="">
-                                            <a href=${JSON.parse(repsonse).data.url} class="doc-file" target="_blank"> ${JSON.parse(repsonse).data.name} </a>
-                                        </div>
-                                        <div class="div-delete">
-                                            <span id-delete=${JSON.parse(repsonse).data._id} class="delete-file">&times;</span>
-                                        </div>
+                let response = await $.ajax(settings)
+                let message = JSON.parse(response).message
+                if(JSON.parse(response).success) {
+                    let date = JSON.parse(response).data.modified
+                    let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
+                    fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
+                    <div class="content_file p-2">
+                    <div class=" d-flex justify-content-between align-items-center">
+                                <div class="item-one-file">
+                                    <div class="div-file">
+                                        <img src="../assets/image/icon-pdf.png" alt="">
+                                        <a href=${JSON.parse(response).data.url} class="doc-file" target="_blank"> ${JSON.parse(response).data.name} </a>
+                                    </div>
+                                    <div class="div-delete">
+                                        <span id-delete=${JSON.parse(response).data._id} class="delete-file">&times;</span>
                                     </div>
                                 </div>
                             </div>
-                        </div> `
-                        $('#box_list_file').prepend(fileHtmlItems);
-                        if(JSON.parse(repsonse).data.article_id === rowId){
-                            $(".check").attr('src','../assets/image/dislega2.png');
-                            $(".date-penalty").find(`#${rowId}`).text(now)
-                        }
+                        </div>
+                    </div> `
+                    $('#box_list_file').prepend(fileHtmlItems);
+                    if(JSON.parse(response).data.article_id === rowId){
+                        $(".check").attr('src','../assets/image/dislega2.png');
+                        $(".date-penalty").find(`#${rowId}`).text(now)
                     }
+                }
+                show_success(message);
             }
-                hide_overlay()
+            hide_overlay()
             $('#upload').val('');
         }
     })
@@ -124,22 +131,31 @@ $(document).ready(function () {
                 if(res){
                     loading.hide()
                     btnuploadfile.show()
-                    for(let i = 0 ; i<(res.data).length;i++){
-                        fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
-                        <div class="content_file p-2">
-                        <div class=" d-flex justify-content-between align-items-center">
-                                    <div class="item-one-file">
-                                        <div class="div-file">
-                                            <img src="../assets/image/icon-pdf.png" alt="">
-                                            <a href=${res.data[i].url} class="doc-file" target="_blank"> ${res.data[i].name} </a>
-                                        </div>
-                                        <div class= ${!checklogin ? "hide-div" : "div-delete"}>
-                                            <span id-delete=${res.data[i].id} class="delete-file">&times;</span>
+                    if((res.data).length>0){
+                        for(let i = 0 ; i<(res.data).length;i++){
+                            fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
+                            <div class="content_file p-2">
+                            <div class=" d-flex justify-content-between align-items-center">
+                                        <div class="item-one-file">
+                                            <div class="div-file">
+                                                <img src="../assets/image/icon-pdf.png" alt="">
+                                                <a href=${res.data[i].url} class="doc-file" target="_blank"> ${res.data[i].name} </a>
+                                            </div>
+                                            <div class= ${!checklogin ? "hide-div" : "div-delete"}>
+                                                <span id-delete=${res.data[i].id} class="delete-file">&times;</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> `
+                            </div>`
+                            $('#box_list_file').prepend(fileHtmlItems);
+                        }
+                    }else{
+                        fileHtmlItems = `<div class="no-file-remove" style="
+                        display: flex;
+                        justify-content: center;">
+                        <p class="no-file-upload">No files</p>
+                        </div>`
                         $('#box_list_file').prepend(fileHtmlItems);
                     }
                 }
@@ -152,7 +168,7 @@ $(document).ready(function () {
         let rowIdelemnet = $(this).attr("id-delete");
         let parentItem = $(this).parents('.items_file')
         show_overlay()
-        let repsonse = await $.ajax({
+        let response = await $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
@@ -160,13 +176,14 @@ $(document).ready(function () {
             url:"/articles-document/"+rowIdelemnet+"",
         });
         hide_overlay()
-        if(repsonse.success) {
+        if(response.success) {
             parentItem.remove();
             let item = $('.div-item')
             if(item.length === 0){
                 $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                 $(".date-penalty").find(`#${rowId}`).text("")
             }
+            show_success(response.message);
         }else {
         }
     })

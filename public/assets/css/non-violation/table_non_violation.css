@@ -11,7 +11,9 @@
     align-items: center;
     justify-content: center;
 }
-
+.th-title-right p{
+    margin-right: 5px;
+}
 a.check-false {
     background: url(../../image/check_false.svg) no-repeat center center;
 }
@@ -43,7 +45,7 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     border-radius: 5px;
     font-style: normal;
     font-weight: 600;
-    font-size: 11px;
+    font-size: 15px;
     line-height: 15px;
     padding: 10px;
 }

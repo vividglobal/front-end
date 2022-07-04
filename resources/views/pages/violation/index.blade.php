@@ -208,7 +208,7 @@
     </div>
 
     <div class="modal-upload-file"id="uploadModal">
-        @if(isRole(ROLE_OPERATOR) || isRole(ROLE_SUPERVISOR))
+        @if(isRole(ROLE_OPERATOR))
             <div class="check-login" t-login="true"></div>
         @endif
         <div class="modal-content">
@@ -219,8 +219,8 @@
                 <h1 >Legal documents</h1>
             </div>
             <div class="modal-body">
-                <div class="row " id="box_list_file">
-                @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "SUPERVISOR")
+                <div class="row row-upload" id="box_list_file">
+                @if(isRole(ROLE_OPERATOR))
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
                             <div class="d-flex justify-content-between align-items-center">
@@ -262,7 +262,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p>Are you sure moving this post to auto-detect violations link?</p>
+                <p>Are you sure moving this post to auto-detect violations list?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
