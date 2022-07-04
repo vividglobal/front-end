@@ -73,13 +73,13 @@
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}}><img class="td-link a-link" src="../assets/image/link.png" alt=""></a>
+                                    <a href={{ __($article->link ?? '' )}}><img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt=""></a>
                                 </div>
                             </div>
                             @auth
                             <div class="track track-non">
                                 <div class="entry">
-                                    <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
+                                    <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
                             @endauth

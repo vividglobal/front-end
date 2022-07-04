@@ -172,20 +172,20 @@
                                         @else
                                             <p data-id="not_started" >{{ __("Not started") }}</p>
                                         @endif
-                                        <img src="../assets/image/Under-than.svg" alt="">
+                                        <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
                                         <div class="select--status violation_pc" id="toggle">
                                             <div class="select__one--status list-option"  id="not_started">
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
-                                                <img src="../assets/image/tickV.svg " alt="">
+                                                <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                                             </div>
                                             <div class="select__one--status list-option"  id="Processing">
                                                 <p data-id="Processing" >{{ __("Processing") }}</p>
-                                                <img src="../assets/image/tickV.svg" alt="">
+                                                <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                                             </div>
                                             @if($article->has_document)
                                                 <div class="select__one--status list-option"  id="Completed">
                                                     <p data-id="Completed" >{{ __(' Completed ') }}</p>
-                                                    <img src="../assets/image/tickV.svg" alt="">
+                                                    <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                                                 </div>
                                             @endif
                                         </div>
@@ -204,7 +204,7 @@
                             @if(@Auth::user()->role === "OPERATOR")
                             <div class="track track-switch">
                                 <div class="entry">
-                                    <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
+                                    <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
                             @endif
@@ -250,7 +250,7 @@
                                 <div class="suspected__file__area">
                                     <div class='file-input'>
                                         <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
-                                        <span class='button'><img class="img-upfile" type="file" src="../assets/image/input-file.png"  alt=""></span>
+                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/input-file.png')}}"  alt=""></span>
                                     </div>
                                 </div>
                             </div>
