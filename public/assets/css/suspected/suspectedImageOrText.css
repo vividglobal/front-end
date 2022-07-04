@@ -124,3 +124,10 @@
   .country_mobile{
       display: none;
   }
+
+  .list--suspected__text--img{
+    margin-bottom: 10px;
+    }
+    .list--suspected__text--img div{
+        width: 100%;
+    }

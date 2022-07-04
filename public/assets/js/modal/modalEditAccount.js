@@ -129,7 +129,6 @@ $("document").ready(function(){
     })
 
     $(".edit_profile").on("click",function(e){
-
         e.preventDefault()
         $(".edit_re_password").text("")
         $(".error_number").text("")
@@ -147,6 +146,7 @@ $("document").ready(function(){
         if(name !== "" && number !== "" && checkedAuth !== undefined){
             if(pwd === "" && re_pwd === ""){
                 if(number.match(regexPhone)){
+                    show_overlay()
                     $.ajax({
                         method: "PUT",
                         url: url,
@@ -161,7 +161,16 @@ $("document").ready(function(){
                         }
                     })
                     .done(function( msg ) {
-                        window.location.href = window.location.href
+                        if(msg){
+                            hide_overlay()
+                            if(msg){
+                                openSnackBar("Update user successfully",1500)
+                                setTimeout(()=>{
+                                    window.location.href = window.location.href
+                                },1500)
+                                resetModal()
+                            }
+                        }
                     });
                     resetModal()
                 }else{
@@ -172,6 +181,7 @@ $("document").ready(function(){
                     $(".edit_password").text("Password length is more than 6 characters")
                 }
                 if(pwd === re_pwd && pwd.length > 6){
+                    show_overlay()
                     $.ajax({
                         method: "PUT",
                         url: url,
@@ -187,7 +197,16 @@ $("document").ready(function(){
                         }
                     })
                     .done(function( msg ) {
-                        window.location.href = window.location.href
+                        if(msg){
+                            hide_overlay()
+                            if(msg){
+                                openSnackBar("Update user successfully",1500)
+                                setTimeout(()=>{
+                                    window.location.href = window.location.href
+                                },1500)
+                                resetModal()
+                            }
+                        }
                     });
                     resetModal()
                 }else{
@@ -208,9 +227,14 @@ $("document").ready(function(){
     // Modal delete account----------------------------------------------------------------
     $(".delete__profile").on("click",function(){
         $("#modal__delete-account").addClass("modal__open")
+        $(".overlay").css({"width": "100%", "display": "block"})
     })
 
     $(".btn__delete--user").on("click",function(){
+        show_overlay()
         resetModal()
+        setTimeout(()=>{
+            hide_overlay()
+        },1500)
     })
 })

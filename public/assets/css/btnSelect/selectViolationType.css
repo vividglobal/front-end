@@ -53,8 +53,7 @@
     font-weight: 450;
     font-size: 14px;
     line-height: 22px;
-    max-width: 120px;
-    width: 100%;
+    width: 120px;
     border: none;
 }
 
@@ -72,11 +71,11 @@
 .create__profile:after{
     content: "Add admin";
     color: var(--white);
-    font-family: 'Avenir Next';
+    font-family: 'Avenir';
     font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 136.5%;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 22px;
 }
 
 .btn_excel{
