@@ -1,6 +1,7 @@
 .py-4 {
-    padding-top: 0.1rem!important;
+    overflow-x: hidden !important;
 }
+
 .vituar_validation{
     width: 100%;
     background: url(../../image/home/img-1.png) no-repeat center center;

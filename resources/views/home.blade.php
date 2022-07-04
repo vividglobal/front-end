@@ -24,13 +24,13 @@
             </p>
         </div>
         <div class="background__image col l-6 m-6 c-12">
-            <img src="../assets/image/home/img-2.svg" alt="">
+            <img src="{{asset('assets/image/home/img-2.svg')}}" alt="">
         </div>
 </div>
 <div class=" background__vituar-3 ">
         <div class="rows no-gutters">
             <div class="background__image col l-6 m-6 c-12" >
-                <img src="../assets/image/home/img-3.jpg" alt="" style="width:100%">
+                <img src="{{asset('assets/image/home/img-3.jpg')}}" alt="" style="width:100%">
             </div>
             <div class="background__content col l-6 m-6 c-12">
                 <p>{{ __('PURPOSE') }}</p>
@@ -50,10 +50,10 @@
 </div>
 <div class="background__vituar-5 rows">
         <div class="background__image col-6">
-            <img src="../assets/image/home/A&T.png" alt="">
+            <img src="{{asset('assets/image/home/A&T.png')}}" alt="">
         </div>
         <div class="background__image col-6">
-            <img src="../assets/image/home/hekate.png" alt="">
+            <img src="{{asset('assets/image/home/hekate.png')}}" alt="">
         </div>
 </div>
 <div class="background__vituar-6">
@@ -61,15 +61,15 @@
 </div>
 <div class="background__vituar-7 rows">
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="../assets/image/home/face-detection.svg" alt="">
+        <img src="{{asset('assets/image/home/face-detection.svg')}}" alt="">
         <p>{{ __('Auto-detecting Code violations 24/7') }}</p>
     </div>
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="../assets/image/home/edit.svg" alt="">
+        <img src="{{asset('assets/image/home/edit.svg')}}" alt="">
         <p>{{ __('Labelling Code violations upon requests') }}</p>
     </div>
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="../assets/image/home/auction.svg" alt="">
+        <img src="{{asset('assets/image/home/auction.svg')}}" alt="">
         <p>{{ __('Tracing violations from detection to penalty') }}</p>
     </div>
 </div>

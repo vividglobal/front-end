@@ -25,7 +25,7 @@
   }
 
   .suspected__text__area:first-child{
-      margin-right: 20px;
+      margin-right:5px;
   }
 
   .suspected__text__area textarea{
@@ -117,6 +117,10 @@
       display: none;
   }
 
-  .country_pc{
-      margin-top: 10px;
+  .gray_mobi{
+      display: none;
+  }
+
+  .country_mobile{
+      display: none;
   }

@@ -89,7 +89,6 @@
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
                         @endif
-
                         @endauth
                     </div>
                 </div>
@@ -137,13 +136,15 @@
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio">
-                                        @foreach ($article->operator_review['violation_code'] as $detectioncode)
-                                            <div>
-                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
-                                                    {{$detectioncode['name'] ?? ''}}
-                                                </a>
-                                            </div>
-                                        @endforeach
+                                            @foreach ($article->operator_review['violation_code'] as $detectioncode)
+                                                    <div>
+                                                        @isset($article->brand['name'])
+                                                            <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                                {{$detectioncode['name'] ?? ''}}
+                                                            </a>
+                                                        @endisset
+                                                    </div>
+                                            @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -155,18 +156,40 @@
                                     @endforeach
                                 </div>
                             </div>
-
                             @auth
                             <div class="track">
                                 <div class="entry">
                                 @if(@Auth::user()->role === "OPERATOR")
-                                    <select class="list--select-right" id="cars">
-                                        <option class="list-option" value="Select">Not started</option>
-                                        <option class="list-option" value="Processing">Processing</option>
-                                        @if($article->has_document)
-                                        <option class="list-option" value="Completed">Completed</option>
+                                    <div class="list--status" id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}">
+                                        @if(isset($article->progress_status))
+                                            @if($article->progress_status == "NOT_STARTED")
+                                                <p data-id="not_started" >{{ __("Not started") }}</p>
+                                            @elseif($article->progress_status == "PROCESSING")
+                                                <p data-id="Processing" >{{ __("Processing") }}</p>
+                                            @elseif($article->progress_status == "COMPLETED")
+                                                <p data-id="Completed" >{{ __(' Completed ') }}</p>
+                                            @endif
+                                        @else
+                                            <p data-id="not_started" >{{ __("Not started") }}</p>
                                         @endif
-                                    </select>
+                                        <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
+                                        <div class="select--status violation_pc" id="toggle">
+                                            <div class="select__one--status list-option"  id="not_started">
+                                                <p data-id="not_started" >{{ __("Not started") }}</p>
+                                                <img src="{{asset('assets/image/tickV.svg')}}" alt="">
+                                            </div>
+                                            <div class="select__one--status list-option"  id="Processing">
+                                                <p data-id="Processing" >{{ __("Processing") }}</p>
+                                                <img src="{{asset('assets/image/tickV.svg')}}" alt="">
+                                            </div>
+                                            @if($article->has_document)
+                                                <div class="select__one--status list-option"  id="Completed">
+                                                    <p data-id="Completed" >{{ __(' Completed ') }}</p>
+                                                    <img src="{{asset('assets/image/tickV.svg')}}" alt="">
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
                                 @else
                                     <select class="list--select-right disabled-select" id="cars" disabled>
                                         <option value="Select">Not started</option>
@@ -181,7 +204,7 @@
                             @if(@Auth::user()->role === "OPERATOR")
                             <div class="track track-switch">
                                 <div class="entry">
-                                    <img  class="td-link btn-switch" src="../assets/image/switch.png" alt="#" data-id={{$article->_id }} >
+                                    <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
                             @endif
@@ -227,7 +250,7 @@
                                 <div class="suspected__file__area">
                                     <div class='file-input'>
                                         <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
-                                        <span class='button'><img class="img-upfile" type="file" src="../assets/image/input-file.png"  alt=""></span>
+                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/input-file.png')}}"  alt=""></span>
                                     </div>
                                 </div>
                             </div>

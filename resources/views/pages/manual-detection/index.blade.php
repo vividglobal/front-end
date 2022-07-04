@@ -11,44 +11,44 @@
                 <input type="radio" name="radio" id="image">
                 <span class="checkmark"></span>
             </label>
-            <label class="container__checkbox checkbox__suspected col l-8 m-6 c-6">
+            <label class="container__checkbox checkbox__suspected col l-7 m-6 c-6">
                 <input type="radio" name="radio" id="text">
                 <span class="checkmark"></span>
             </label>
         </div>
         <!-- choose file -->
         <div class="rows">
-            <div class="suspected__text__area  l-8 m-12 c-12">
+            <div class="suspected__text__area l-8 m-12 c-12">
                 <textarea name="" id="" cols="30" rows="10">
                 </textarea>
             </div>
-            <div class="suspected__file__area  l-4 m-12 c-12">
+            <div class="suspected__file__area l-3 m-12 c-12">
                 <div class='file-input'>
                     <input type='file'>
-                    <span class='button'><img src="../assets/image/upfile.svg" alt=""></span>
+                    <span class='button'><img src="{{asset('assets/image/upfile.svg')}}" alt=""></span>
                     <span class='label' data-js-label>{{ __('Or drop the image here') }}</label>
                 </div>
             </div>
         </div>
     </div>
     <div class="list--country ctr_suspected select_country_manual country_pc" id="btn-language">
-        <img src="../assets/image/Country.svg" alt="">
+        <img src="{{asset('assets/image/Country.svg')}}" alt="">
         <p>{{ __('Country') }}</p>
-        <img src="../assets/image/Under-than.svg" alt="">
+        <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
         <div class="select--country slc_suspected" id="language">
             <div class="search--input--country search_suspected" id="div-search">
-                <img src="../assets/image/search.svg" alt="">
+                <img src="{{asset('assets/image/search.svg')}}" alt="">
                 <input type="text" placeholder="Search for country" class="search--country">
             </div>
             <div class="contain--selection">
                 <div class="select__one--country option_suspected  " id=0>
                     <p data-id=0 >{{ __('-Select country-') }}</p>
-                    <img src="../assets/image/tickV.svg" alt="">
+                    <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                 </div>
                 @foreach ($countries as $country)
                     <div class="select__one--country option_suspected  " id="{{$country->_id}}">
                         <p  data-id={{$country->_id}}>{{$country->name}}</p>
-                        <img src="../assets/image/tickV.svg" alt="">
+                        <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                     </div>
                 @endforeach
             </div>
@@ -58,15 +58,15 @@
     <div class="checkbox_mobi country_mobile">
         <div class="checkbox_title">
             <div>
-                <img src="../assets/image/Country.svg" alt="">
+                <img src="{{asset('assets/image/Country.svg')}}" alt="">
                 <span>{{ __("Country") }}</span>
             </div>
-            <img src="../assets/image/under_than-black.svg" alt="">
+            <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
         </div>
         <p></p>
         <div class="select--country slc_general country_mobi" id="toggle">
             <div class="search--input--country search_general" id="div-search">
-                <img src="../assets/image/search.svg" alt="">
+                <img src="{{asset('assets/image/search.svg')}}" alt="">
                 <input type="text" placeholder="Search for country" class="search--country" >
             </div>
             <div class="contain--selection contain_country">

@@ -63,10 +63,10 @@
         <div class="checkbox_mobi">
             <div class="checkbox_title">
                 <div>
-                    <img src="../assets/image/sort_black.svg" alt="">
+                    <img src="{{asset('assets/image/sort_black.svg')}}" alt="">
                     <span>{{ __("Sort by") }}</span>
                 </div>
-                <img src="../assets/image/under_than-black.svg" alt="">
+                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
             @include('pages/components/sort')
@@ -75,15 +75,15 @@
         <div class="checkbox_mobi">
             <div class="checkbox_title">
                 <div>
-                    <img src="../assets/image/brand-tag.svg" alt="">
+                    <img src="{{asset('assets/image/brand-tag.svg')}}" alt="">
                     <span>{{ __("Brand/Company") }}</span>
                 </div>
-                <img src="../assets/image/under_than-black.svg" alt="">
+                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
             <div class="select--company-or-brand brand_mobi" id="toggle">
                 <div class="search--input">
-                    <img src="../assets/image/search.svg" alt="">
+                    <img src="{{asset('assets/image/search.svg')}}" alt="">
                     <input type="text" placeholder="Search for Brand" class="search--brand">
                 </div>
                 <div class="contain--selection">
@@ -100,15 +100,15 @@
         <div class="checkbox_mobi">
             <div class="checkbox_title">
                 <div>
-                    <img src="../assets/image/Country.svg" alt="">
+                    <img src="{{asset('assets/image/Country.svg')}}" alt="">
                     <span>{{ __("Country") }}</span>
                 </div>
-                <img src="../assets/image/under_than-black.svg" alt="">
+                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
             <div class="select--country slc_general country_mobi" id="toggle">
                 <div class="search--input--country search_general" id="div-search">
-                    <img src="../assets/image/search.svg" alt="">
+                    <img src="{{asset('assets/image/search.svg')}}" alt="">
                     <input type="text" placeholder="Search for country" class="search--country" >
                 </div>
                 <div class="contain--selection contain_country">
@@ -126,10 +126,10 @@
         <div class="checkbox_mobi ">
             <div class="checkbox_title">
                 <div>
-                    <img src="../assets/image/type.svg" alt="">
+                    <img src="{{asset('assets/image/type.svg')}}" alt="">
                     <span>{{ __("Violation type") }}</span>
                 </div>
-                <img src="../assets/image/under_than-black.svg" alt="">
+                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
             <div class="select--violation--type violation_mobi" id="toggle">

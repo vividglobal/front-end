@@ -34,7 +34,7 @@
                     <p>{{ __('New password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Enter your current password" class="form-pwd create_pwd  " name="password">
-                        <img src="../assets/image/unseen.svg" alt="" class="img-seen-pwd">
+                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                 </div>
                 <p class="text-dangers text_password"></p>
@@ -42,7 +42,7 @@
                     <p>{{ __('Confirm password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Re-enter your password" class="form-re-pwd create_re_pwd  " name="password_confirmation">
-                        <img src="../assets/image/unseen.svg" alt="" class="img-re-seen-pwd">
+                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-re-seen-pwd">
                     </div>
                 </div>
                 <p class="text-dangers text_re-password"></p>
