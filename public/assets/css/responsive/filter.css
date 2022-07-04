@@ -23,7 +23,8 @@
         -webkit-background-size: cover !important;
         background-size: cover !important;
         position: absolute;
-        right: 30px;
+        right: 0;
+        margin-right: 30px;
         top: 7px;
     }
 
@@ -66,6 +67,14 @@
     .background-gray{
         background: var(--white) !important;
     }
+
+    .select_country_manual{
+        display: none
+    }
+
+    #recaptcha div:first-child{
+        margin-top: 25px;
+    }
 }
 
 @media (min-width: 740px) and (max-width: 1113px){
@@ -83,7 +92,7 @@
         width: 65%;
     }
     .open_Nav_filter{
-        right: 20px;
+        margin-right: 10px;
     }
     .list--title{
         margin-left: 30px;
@@ -101,6 +110,9 @@
     .search,
     .btn_excel{
         font-size: 12px !important ;
+    }
+    .open_Nav_filter{
+        margin-right: 5px;
     }
 
 }

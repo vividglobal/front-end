@@ -24,7 +24,6 @@
                         <li class="nav--btn__after--login">
                             <div class="name_trace--violation">
                                 {{ __('Trace Violations') }}
-                                <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
                             </div>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/violation')) || request () -> is ("articles/non-violation") ? 'activeHeader': ''}}"
@@ -98,7 +97,7 @@
                 @else
                     <div class="nav__btn--login  after-login no-padding col l-1 m-1 no-margin">
                         <img src="{{ asset('assets/image/user.svg') }}" alt="">
-                        <img src="{{ asset('assets/image/Under-than.svg') }}" alt="">
+                        <p class="name_login">{{ @Auth::user()->full_name }}</p>
                         <div class="dropdown-login">
                             <div id="edit__profile">
                                 <p>Profile</p>
@@ -119,14 +118,16 @@
                             </form>
                         </div>
                     </div>
-                    @include('modal/editAccount')
                 @endguest
             </div>
         </div>
     </div>
+    <div class="modal_edit_user">
+        @include('modal/editAccount')
+    </div>
     <div class="overlay overlay_nav" ></div>
     <span class="open_Nav {{(request ()-> is ('/')) ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
-    <span class="open_Nav_filter {{(request ()-> is ('/')) ? 'hide': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) ? 'hide': ''}}" style="cursor:pointer" ></span>
 </div>
 
 

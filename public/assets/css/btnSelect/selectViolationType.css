@@ -60,17 +60,23 @@
 
 .create__profile{
     margin-left: 5px;
-    padding: 14px 13px;
-    border-radius: 5px;
+    padding: 12px 13px;
     background-color: var(--primary);
     width: 153px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 10px;
 }
 
-.create__profile p{
-   color: var(--white);
+.create__profile:after{
+    content: "Add admin";
+    color: var(--white);
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
 }
 
 .btn_excel{

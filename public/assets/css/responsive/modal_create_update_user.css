@@ -1,0 +1,66 @@
+@media (max-width: 1113px) {
+    .full_modal {
+        border-radius: 0;
+        height: 100vh;
+        max-width:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .modal_edit_user #modal-account{
+        position: fixed;
+    }
+
+    .authorization .checkmark:after{
+        top: 4px !important;;
+        left: 4px !important;;
+        width: 15px !important;;
+        height: 15px !important;;
+        border-radius: 50%;
+        background: var(--primary);
+        border: none !important;
+    }
+
+    .authorization .checkmark{
+        border-radius: 50%;
+    }
+
+    .title_mobile,
+    .close_modal_mobi{
+        text-align: left;
+    }
+
+    .title_mobile{
+        position: absolute;
+        top: 15px;
+        left: 50px;
+    }
+
+    .title_mobile p {
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px;
+        line-height: 36px;
+        color: #0C3C60;
+    }
+
+    .close_modal_mobi:before{
+        content: url(../../image/ep_back.svg);
+      }
+
+      .btn_cancel_mobi {
+          display: none;
+      }
+
+      .btn__save-button,
+      .btn_edit_mobi {
+          width: 100% !important;
+      }
+
+      .open_delete_user{
+        display: block;
+    }
+
+}

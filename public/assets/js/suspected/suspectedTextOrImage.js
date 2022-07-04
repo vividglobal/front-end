@@ -9,10 +9,12 @@ $("document").ready(function(){
         $(".checkbox__suspected:first-child").find("input").attr("checked",true)
         $(".suspected__text__area textarea").attr("disabled",true).attr("placeholder","Enter the suspected text")
         $(".file-input").show()
+        $(".checkbox__suspected:first-child").addClass("active_checked")
+
 
     $(".checkbox__suspected").on("click", function(){
-            $(".checkbox__suspected").css({"color":"#6F6F6F"})
-            $(this).css({"color":"#0C3C60"})
+            $(".checkbox__suspected").removeClass("active_checked")
+            $(this).addClass("active_checked")
             $(".suspected__text__area textarea").val("")
             if($(this).find("input").attr("id") === "image"){
                 $(".suspected__text__area textarea").attr("disabled",true).attr("placeholder","Enter the suspected text")
@@ -34,4 +36,6 @@ $("document").ready(function(){
             $(".suspected__text__area textarea").val(value)
         }
     }
+
+    // $(".country_mobi").find(".slc_general").css({"display":"none"})
 })

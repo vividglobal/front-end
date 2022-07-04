@@ -1,0 +1,130 @@
+@media (max-width: 1113px) {
+    .list_query-right .list--select--option {
+        display: none;
+    }
+
+    .list_query{
+        display: block !important;
+        margin-right: 20px !important;
+    }
+
+    .query_left .list--select__left {
+        margin-top: 20px;
+    }
+
+    .query_left,
+    .query_left .list--select__left .list--search {
+        width: 100% !important;
+        margin : 0 !important;
+    }
+
+    .create__profile{
+        margin: 0px;
+        padding: 0px;
+        background-color: transparent;
+        width: inherit;
+        display: block;
+    }
+
+    .create__profile:after {
+        content: url(../../image/add_user.svg);
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 17px 20px 0 0 ;
+        z-index: 103;
+    }
+
+    .thead_admin{
+        display: none !important;
+    }
+
+    .tbody_admin{
+        display: block !important;
+        position: relative;
+        padding: 0 20px;
+    }
+
+    .tbody_admin > li:first-child{
+        display: none;
+    }
+
+    .tbody_admin > li{
+        padding: 5px 0 !important;
+        width: 100% !important;
+    }
+
+    .tbody_admin li:nth-child(5){
+        position: absolute;
+        top: 0;
+        border-radius: 5px;
+        text-align: center;
+        width: 95px !important;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 170%;
+        margin-top: 10px;
+    }
+
+    .tbody_admin > li:nth-child(2){
+        padding-top: 50px !important;
+    }
+
+    .style_ADMIN{
+        color: #5DA364 !important;
+        background: #E2F2E3;
+    }
+
+    .style_SUPERVISOR{
+        color: #F37422 !important;
+        background: #FFE4D2;
+    }
+
+    .style_OPERATOR{
+        color: var(--primary) !important;
+        background: #DDEAF3 ;
+    }
+
+    .btn_edit:after{
+        content: url(../../image/edit_user.svg) !important;
+        padding-right: 20px;
+    }
+
+    .img_admin > li:nth-child(2){
+        display: none;
+
+    }
+
+    .img_admin{
+        position: absolute;
+        top: 25%;
+        right: 0;
+        width: max-content !important;
+        display: block !important;
+    }
+
+    .table__admin--management{
+        margin : 10px 0  20px 0!important;
+    }
+
+    .tbody_admin > li:nth-child(3):before{
+        content : "Email: ";
+    }
+
+    .tbody_admin > li:nth-child(4):before{
+        content : "Number: ";
+    }
+
+    .delete__profile_modal{
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 170%;
+        color: #D80027;
+        text-decoration: underline;
+    }
+
+}

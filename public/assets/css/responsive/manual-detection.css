@@ -1,0 +1,76 @@
+
+@media(max-width: 1113px){
+    .checkbox__suspected:first-child:after {
+        content: "Text/image";
+    }
+
+    .checkbox__suspected:nth-child(2):after {
+      content: "URL";
+    }
+    .checkbox__suspected .checkmark{
+        display: none;
+    }
+
+    .suspected__text__area{
+        max-width: 97%;
+        height: 140px;
+    }
+
+    .file-input{
+        max-width: 97%;
+        border-style: dashed;
+        margin: 12px 0;
+    }
+
+    .file-input > .button{
+        padding-top: 20px;
+    }
+
+    .file-input > .label{
+        padding-bottom: 20px;
+    }
+
+    .list--suspected__text--img div > label{
+        padding: 10px 0;
+        text-align: center
+    }
+    .active_checked{
+        background-color: var(--gray-F4) !important;
+        border-radius: 10px;
+    }
+
+    .country_mobile{
+        display: block;
+        margin-top: 30px;
+    }
+
+    .gray_mobi{
+        margin-top: 30px;
+        margin-bottom: 0px;
+        width: 105%;
+        margin-bottom: 15px;
+        margin-left: -15px;
+    }
+
+    .btn__check{
+        max-width: 98%;
+        margin-bottom: 15px;
+    }
+
+    .btn__check #submit_captcha{
+        background-color: var(--primary);
+    }
+
+    .title__result p{
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 20px;
+        line-height: 29px;
+        color: var(--primary);
+    }
+}
+
+@media (max-width: 425px) {
+
+}

@@ -42,14 +42,12 @@
     z-index: 1;
   }
 
-  .modal__close {
-    color: #585858;
-    text-decoration: none;
+  .close__modal{
+    text-align: right;
   }
 
-  .close__modal{
-    justify-content: flex-end;
-    display: flex;
+  .close__modal:before{
+    content: url(../../image/x.svg);
   }
 
   .title-modal{
@@ -141,6 +139,15 @@
     background-color: var(--primary);
   }
 
+  .list--suspected__text--img > div:first-child{
+      margin-top: 20px;
+  }
+
+  .list--suspected__text--img > div:nth-child(2),
+  .list--suspected__text--img > div:first-child{
+    margin-left: 0px;
+  }
+
   /* modal checkbox  */
   .container__checkbox {
     display: block;
@@ -166,6 +173,14 @@
     opacity: 0;
     cursor: pointer;
   }
+
+  .checkbox__suspected:first-child:after {
+      content: "Enter the suspected text/Drop image";
+    }
+
+  .checkbox__suspected:nth-child(2):after {
+    content: "Enter the suspected URL";
+}
 
   .checkmark {
     position: absolute;
@@ -210,4 +225,16 @@
   .text-dangers{
     color: var(--danger);
     margin-top: 5px !important;
+}
+
+.modal_edit_user{
+    width: 100%;
+}
+
+.open_delete_user{
+    display: none;
+}
+
+.delete__profile_modal{
+    display: none ;
 }

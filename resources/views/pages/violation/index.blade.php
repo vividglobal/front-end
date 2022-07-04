@@ -139,9 +139,9 @@
                                     <div class="style__code--article style__code_vio">
                                         @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
-                                                {{-- <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
                                                     {{$detectioncode['name'] ?? ''}}
-                                                </a> --}}
+                                                </a>
                                             </div>
                                         @endforeach
                                     </div>

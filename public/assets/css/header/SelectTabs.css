@@ -82,7 +82,7 @@
 }
 
 .list--showing{
-    padding: 13px 12px;
+    padding: 13px;
     border: 1px solid var(--gray-C7);;
 }
 
@@ -136,7 +136,11 @@
 }
 
 .max_width{
-    width: 100%;
+    width: 100% !important;
+}
+
+.m98_width{
+    width: 98% !important;
 }
 
 .list--title p {
@@ -178,4 +182,37 @@
 
 .hide{
     display: none !important;
+}
+
+.name_trace--violation:after{
+    content: url(../../image/Under-than.svg);
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+}
+
+.name_login{
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 420;
+    font-size: 18px;
+    line-height: 29px;
+    color: #0C3C60;
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    margin-left: 22px;
+}
+
+.after-login:after{
+    content: url(../../image/Under-than.svg);
+    margin-left: 70px;
+}
+
+@media (min-width: 1440px){
+    .name_login{
+        font-size: 20px;
+    }
 }

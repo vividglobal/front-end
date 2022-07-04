@@ -22,7 +22,10 @@
     height: 203px;
     padding: 10px;
     border: 1px solid var(--gray-C7);
-    margin: 0 10px 15px 0;
+  }
+
+  .suspected__text__area:first-child{
+      margin-right: 20px;
   }
 
   .suspected__text__area textarea{
@@ -104,4 +107,16 @@
     font-size: 18px;
     line-height: 136.5%;
     margin-bottom: 10px;
+  }
+
+  .active_checked{
+      color: var(--primary) !important;
+  }
+
+  .country_mobi{
+      display: none;
+  }
+
+  .country_pc{
+      margin-top: 10px;
   }

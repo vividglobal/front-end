@@ -9,7 +9,7 @@
                 </li>
             @else
                 <li>
-                    <a id="prev_page" rel="prev" aria-label="@lang('pagination.previous')">&#60;</a>
+                    <a class="page-link" href="{{ \Request::url() }}" rel="prev" aria-label="@lang('pagination.first')">&#60;</a>
                 </li>
             @endif
 
@@ -36,7 +36,7 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="cursor">
-                    <a id="next_page" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&gt;</a>
+                    <a id="next_page" href="{{ \Request::url().'?page='.$paginator->lastPage() }}" rel="next" aria-label="@lang('pagination.next')">&gt;</a>
                 </li>
             @else
                 <li class="disabled cursor" aria-disabled="true" aria-label="@lang('pagination.next')">
