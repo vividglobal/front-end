@@ -14,6 +14,11 @@
     .suspected__text__area{
         max-width: 97%;
         height: 140px;
+        padding: 0px !important;
+    }
+
+    .suspected__file__area{
+        padding: 0px !important;
     }
 
     .file-input{
@@ -50,6 +55,7 @@
         width: 105%;
         margin-bottom: 15px;
         margin-left: -15px;
+        display: block;
     }
 
     .btn__check{

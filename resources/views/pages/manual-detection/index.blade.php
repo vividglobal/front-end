@@ -11,18 +11,18 @@
                 <input type="radio" name="radio" id="image">
                 <span class="checkmark"></span>
             </label>
-            <label class="container__checkbox checkbox__suspected col l-8 m-6 c-6">
+            <label class="container__checkbox checkbox__suspected col l-7 m-6 c-6">
                 <input type="radio" name="radio" id="text">
                 <span class="checkmark"></span>
             </label>
         </div>
         <!-- choose file -->
         <div class="rows">
-            <div class="suspected__text__area  l-8 m-12 c-12">
+            <div class="suspected__text__area l-8 m-12 c-12">
                 <textarea name="" id="" cols="30" rows="10">
                 </textarea>
             </div>
-            <div class="suspected__file__area  l-4 m-12 c-12">
+            <div class="suspected__file__area l-3 m-12 c-12">
                 <div class='file-input'>
                     <input type='file'>
                     <span class='button'><img src="../assets/image/upfile.svg" alt=""></span>
