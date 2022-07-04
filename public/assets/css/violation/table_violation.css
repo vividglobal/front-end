@@ -170,6 +170,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.modal-content-code{
+  top: 46% !important;
+}
 
 .head-modal{
     width: 100%;
@@ -212,12 +215,6 @@
   line-height: 136.5%;
   color: #082136;
 }
-.modal-img{
-    width: 591px;
-    height: 591px;
-    margin-bottom: 20px;
-}
-
 .select--country {
   z-index: 1000 !important;
 }

@@ -32,3 +32,7 @@ docker-compose/mongo/configdb
 
 #Sevices
 **/excelTemp
+
+resources/views/pages/components/brand.blade.php
+resources/views/pages/components/country.blade.php
+resources/views/pages/components/violationType.blade.php

@@ -26,7 +26,7 @@ class ArticleLegalDocumentController extends Controller
         if($article && $article->status === Article::STATUS_VIOLATION) {
             $documentService = new DocumentService();
             $uploaded = $documentService->upload($articleId, $request);
-            return $this->responseSuccess($uploaded, "Action successfully");
+            return $this->responseSuccess($uploaded, "Document upload successfully");
         }
 
         return $this->responseFail([], "Invalid article");
@@ -38,7 +38,7 @@ class ArticleLegalDocumentController extends Controller
             $documentService = new DocumentService();
             $deleted = $documentService->delete($document);
             if($deleted) {
-                return $this->responseSuccess($deleted, "Delete document successfully");
+                return $this->responseSuccess($deleted, "Delete old file successfully");
             }
         }
         return $this->responseFail([], "Invalid document");
