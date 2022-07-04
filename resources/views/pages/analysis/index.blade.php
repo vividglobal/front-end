@@ -19,7 +19,7 @@
                 <a href="{{ getExportUrl() }}" target="_blank"
                     class="btn--export--excel" style="width: 179px;display: flex;justify-content:center;text-decoration: unset">
                     <p class="btn_excel">{{ __('Export Excel') }}</p>
-                    <img src="../assets/image/Under-than-white.svg" alt="" style="margin-left: 12px;">
+                    <img src="{{asset('assets/image/Under-than-white.svg')}}" alt="" style="margin-left: 12px;">
                 </a>
             @endauth
         </div>

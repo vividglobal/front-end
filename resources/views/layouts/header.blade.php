@@ -6,7 +6,7 @@
  {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}
   ">
     <div id="myNav" class="overlay_header">
-        <a href="javascript:void(0)" class="closebtn" ><img src="../assets/image/menu.svg" alt=""></a>
+        <a href="javascript:void(0)" class="closebtn" ><img src="{{ asset('assets/image/menu.svg') }}" alt=""></a>
         <div class="overlay-content">
             <div class="rows nav-menu" >
                 <div class="no-padding {{Auth::user()!== null ? "col l-11 m-11 had_login"  : "col l-10 m-10 no_login"}}" >
@@ -127,7 +127,7 @@
     </div>
     <div class="overlay overlay_nav" ></div>
     <span class="open_Nav {{(request ()-> is ('/')) ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
-    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) ? 'hide': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) ? 'hide': ''}}" style="cursor:pointer" ></span>
 </div>
 
 

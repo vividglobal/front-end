@@ -43,7 +43,6 @@
 @media (max-width: 1113px){
     .py-4 {
         padding-top: 0.5rem!important;
-        overflow-x: hidden;
     }
 
     .list_filter_mobile{

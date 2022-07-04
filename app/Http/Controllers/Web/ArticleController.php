@@ -27,11 +27,16 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
-        $articles = $articleModel->getList($params);
+        
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
+            $articles = $articleModel->getList($params, $usePagination = false);
+
             return  $this->exportPendingArticles('auto_detection_violation', $articles);
         }
+
+        $articles = $articleModel->getList($params);
         $violationCode = ViolationCode::all();
+
         return view('pages/auto-detection/index', compact('articles', 'violationCode'));
     }
 
@@ -40,13 +45,15 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $params['status'] = Article::STATUS_PENDING;
-        $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] === true && Auth::check()) {
+            $articles = $articleModel->getList($params, $usePagination = false);
+
             return  $this->exportPendingArticles('label-detection-violation',$articles);
         }
-
+        $articles = $articleModel->getList($params);
         $violationCode = ViolationCode::all();
+
         return view('pages/manual-detection/index', compact('articles', 'violationCode'));
     }
 
@@ -54,23 +61,31 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
-        $articles = $articleModel->getList($params);
+
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
+            $articles = $articleModel->getList($params, $usePagination = false);
+
             return  $this->exportViolationArticles('violation_article', $articles);
         }
+
+        $articles = $articleModel->getList($params);
+
         return view('pages/violation/index', compact('articles'));
     }
 
     public function getNoneViolationList(Request $request) {
         $articleModel = new Article();
         $params = $request->all();
-
         $params['status'] = Article::STATUS_NONE_VIOLATION;
-        $articles = $articleModel->getList($params);
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
+            $articles = $articleModel->getList($params, $usePagination = false);
+
             return  $this->exportNoneViolationArticles('non_violation_article', $articles);
         }
+
+        $articles = $articleModel->getList($params);
+
         return view('pages/none-violation/index', compact('articles'));
     }
 
@@ -187,6 +202,7 @@ class ArticleController extends Controller
         $sheets = [
             ['row_titles' => $titles, 'name' => $fileName, 'data' => $exportData ]
         ];
+
         return ExportService::exportExcelFile($sheets, $fileName);
     }
 
@@ -215,6 +231,7 @@ class ArticleController extends Controller
         $sheets = [
             ['row_titles' => $titles, 'name' => $fileName, 'data' => $exportData ]
         ];
+
         return ExportService::exportExcelFile($sheets, $fileName);
     }
 
@@ -230,16 +247,21 @@ class ArticleController extends Controller
         if ($validator->fails()) {
             throw new \Illuminate\Validation\ValidationException($validator);
         }
+
         $inputs = $validator->validated();
         $article = Article::find($id);
         if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
-            if(count($article->documents) === 0) {
-                return $this->responseFail([], "Please upload legal documents for this article");
+            if(isset($$article->documents)){
+                if(count($article->documents) === 0) {
+                    return $this->responseFail([], "Please upload legal documents for this article");
+                }
             }
             $article->progress_status = $inputs['progress_status'];
             $article->update();
+
             return $this->responseSuccess([], "Switch progression status successfully");
         }
+
         return $this->responseFail([], "Switch progression status failed");
     }
 
@@ -354,8 +376,10 @@ class ArticleController extends Controller
                 }
             }
             $article->update();
+
             return $this->responseSuccess($reviewData, $reviewMessage);
         }
+
         return $this->responseFail([], "Article not found or invalid");
     }
 

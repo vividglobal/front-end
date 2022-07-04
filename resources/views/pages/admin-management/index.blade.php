@@ -25,32 +25,6 @@
 </div>
 <div class="table__admin--management" >
     <div class=" admin__management">
-        {{-- <table>
-            <tr>
-                <th>{{ __('No') }}</th>
-                <th>{{ __('Full name') }}</th>
-                <th>{{ __('Email') }}</th>
-                <th>{{ __('Phone number') }}</th>
-                <th>{{ __('Authority') }}</th>
-                <th>{{ __('Edit') }}</th>
-                <th>{{ __('Delete') }}</th>
-            </tr>
-            @foreach ($admins as $key => $admin)
-            <tr>
-                <td scope="row">{{$key + 1}}</td>
-                <td>{{ $admin->full_name }}</td>
-                <td>{{ $admin->email }}</td>
-                <td>{{ $admin->phone_number }}</td>
-                <td>{{ $admin->role }}</td>
-                <td class="edit__profile">
-                    <img src="../assets/image/edit.svg" alt="">
-                    <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
-                    data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
-                </td>
-                <td><img class="delete__profile" src="../assets/image/remove.svg" alt=""></td>
-            </tr>
-            @endforeach
-        </table> --}}
         <ul class="thead_admin">
             <li>{{ __('No') }}</li>
             <li>{{ __('Full name') }}</li>
@@ -73,7 +47,7 @@
                     <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
                     data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
                 </li>
-                <li><img class="delete__profile" src="../assets/image/remove.svg" alt=""></li>
+                <li><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
             </div>
 
         </ul>

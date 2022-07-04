@@ -188,9 +188,12 @@
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
-    position: relative;
+    position: absolute;
     max-width: 874px;
     width: 100%;
+    max-height: 475px;
+    top: 50%;
+    overflow-y: auto;
   }
   .head-modal{
       width: 100%;
@@ -392,7 +395,7 @@
   flex: 1 0 calc(60px);
 }
 .track-switch{
-  flex: 1 0 calc(7%);
+  flex: 1 0 calc(10%);
 }
   .heading {
     width: 100%;
@@ -616,6 +619,98 @@ input[type=checkbox] {
     display: block !important;
     overflow: auto;
     height: 150px !important;
+}
+
+
+
+.select--country{
+    position: absolute;
+    top: 50px;
+    left: -80%;
+    width: 353px;
+    background: var(--white);
+    border: 1px solid var(--gray-C7);
+    box-sizing: border-box;
+    display: none;
+    border-radius: 5px;
+}
+
+.slc_suspected{
+    left: -1% ;
+}
+
+.ctr_suspected{
+    margin-bottom: 20px;
+}
+
+.list--status{
+    position: relative;
+    justify-content: space-between;
+    padding: 14px 0;
+    display: flex;
+    border: 1px solid var(--gray-C7);
+    align-items: center;
+    cursor: pointer;
+    margin-right: 5px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.list--status p{
+    padding-left: 10px;
+}
+
+.list--status img {
+    padding-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.select--status{
+    position: absolute;
+    top: -35px;
+    left: -6px;
+    width: 150px;
+    background: var(--white);
+    border: 1px solid  var(--gray-C7);
+    box-sizing: border-box;
+    max-height: 350px;
+    overflow: auto;
+    display: none;
+    border-radius: 5px;
+}
+
+.select__one--status{
+    display: flex;
+    justify-content:flex-end;
+    padding: 10px 5px;
+    position: relative;
+}
+
+.select__one--status:first-child > p{
+    color: var(--gray-6F);
+}
+
+.select__one--status:hover {
+    background-color: var(--gray-F4);
+    transition: 0.3s linear;
+}
+
+.select__one--status p {
+    width: 100%;
+    text-align: left;
+    font-family: "Avenir";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+    /* SELECT STATUS  */
+.select__one--status img{
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 @media only screen and (min-width: 740px) and (max-width: 1113px) {
