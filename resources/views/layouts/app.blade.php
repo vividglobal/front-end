@@ -42,6 +42,7 @@
     <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
     <script src="{{ asset('assets/js/common/loading.js') }}"></script>
     <script src="{{ asset('assets/js/query/filterMobile.js') }}"></script>
+    <script src="{{ asset('assets/js/modal/snackbar.js') }}"></script>
 
 </head>
 <body>
@@ -49,6 +50,7 @@
         @include('layouts/header')
         <main class="py-4">
             @yield('content')
+            @include('layouts/snackbar')
         </main>
     </div>
 </body>

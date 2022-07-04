@@ -621,3 +621,11 @@ background: var(--primary);
   top: 26%;
   z-index: 1000;
 }
+
+.none_list-status{
+    border: 1px solid var(--gray-C7) !important;
+}
+
+.none_list-status > p{
+    color: var(--gray-C7) !important;
+}
