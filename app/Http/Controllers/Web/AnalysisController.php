@@ -42,24 +42,24 @@ class AnalysisController extends Controller
         ];
     }
 
-    private function _getViolationBasedOnBrands($params, $shouldPaginate = true)
+    private function _getViolationBasedOnBrands($params, $usePagination = true)
     {
         $companyBrandModel = new CompanyBrand();
-        $list = $companyBrandModel->analize($params, $shouldPaginate);
+        $list = $companyBrandModel->analize($params, $usePagination);
         return $list;
     }
 
-    private function _getViolationBasedOnCode($params, $shouldPaginate = true)
+    private function _getViolationBasedOnCode($params, $usePagination = true)
     {
         $violationCodeModel = new ViolationCode();
-        $list = $violationCodeModel->analize($params, $shouldPaginate);
+        $list = $violationCodeModel->analize($params, $usePagination);
         return $list;
     }
 
     public function exportAnalysis($params) {
         $generalData = $this->_getGeneralData($params);
-        $brandData = $this->_getViolationBasedOnBrands($params, $shouldPaginate = false);
-        $codeData = $this->_getViolationBasedOnCode($params, $shouldPaginate = false);
+        $brandData = $this->_getViolationBasedOnBrands($params, $usePagination = false);
+        $codeData = $this->_getViolationBasedOnCode($params, $usePagination = false);
 
         // Sheet General data
         $titles = [
