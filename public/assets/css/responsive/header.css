@@ -43,6 +43,7 @@
 @media (max-width: 1113px){
     .py-4 {
         padding-top: 0.5rem!important;
+        overflow-x: hidden;
     }
 
     .list_filter_mobile{
@@ -70,6 +71,18 @@
         z-index: 101 !important;
         position: absolute;
         top: 5px;
+    }
+
+    .name_trace--violation:after {
+        content: url(../../image/Under-than-white.svg);
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        margin-bottom: 15px;
+    }
+
+    .name_login{
+        display: none;
     }
 
     .list--title p{

@@ -75,18 +75,9 @@ $(".closeFilter ").click(function(){
         closeNav()
     })
 
-    var $window = $(window);
+    $("#edit__profile").click(function(){
+        $("#myNav").removeClass("open_menu")
 
-    function checkWidth() {
-        var windowsize = $window.width();
-        if (windowsize < 1113) {
-            $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
-            $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
-        }else{
-            $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
-            $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
-        }
-    }
-    $(window).resize(checkWidth);
+    })
 
 })

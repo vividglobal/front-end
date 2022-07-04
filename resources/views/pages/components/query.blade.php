@@ -1,7 +1,7 @@
 <div class="list--select--option {{ request ()->is('analysis') ? 'padding_btn_analysis' : '' }}" >
     <div class="list--select__left {{ request ()->is('analysis') ? 'max_width' : '' }}" >
         @if(in_array('search', $list_filter) || $show_all_filter)
-            <div class="list--search">
+            <div class="list--search {{ request ()->is('articles/manual-detection') ? 'm98_width' : '' }}">
                 <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
                 <input type="text" placeholder="Search" class="search">
             </div>
@@ -81,7 +81,7 @@
                 <img src="../assets/image/under_than-black.svg" alt="">
             </div>
             <p></p>
-            <div class="select--company-or-brand" id="toggle">
+            <div class="select--company-or-brand brand_mobi" id="toggle">
                 <div class="search--input">
                     <img src="../assets/image/search.svg" alt="">
                     <input type="text" placeholder="Search for Brand" class="search--brand">
@@ -106,16 +106,16 @@
                 <img src="../assets/image/under_than-black.svg" alt="">
             </div>
             <p></p>
-            <div class="select--country slc_general" id="toggle">
+            <div class="select--country slc_general country_mobi" id="toggle">
                 <div class="search--input--country search_general" id="div-search">
                     <img src="../assets/image/search.svg" alt="">
                     <input type="text" placeholder="Search for country" class="search--country" >
                 </div>
-                <div class="contain--selection">
+                <div class="contain--selection contain_country">
                     @foreach ($countries as $country)
                         <label class="container_checkbox select__one--country option_general" id={{$country->_id}}>
                             <p  data-id={{$country->_id}} >{{$country->name}}</p>
-                            <input type="radio"  name="radio" class="input_checkbox">
+                            <input type="checkbox"  name="radio" class="input_checkbox">
                             <span class="checkmark_checkbox"></span>
                         </label>
                     @endforeach
@@ -132,7 +132,7 @@
                 <img src="../assets/image/under_than-black.svg" alt="">
             </div>
             <p></p>
-            <div class="select--violation--type" id="toggle">
+            <div class="select--violation--type violation_mobi" id="toggle">
                 @foreach ($violationTypes as $violationType)
                     <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
                         <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>

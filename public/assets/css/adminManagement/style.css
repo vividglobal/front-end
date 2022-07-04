@@ -11,52 +11,54 @@
     width: 100%;
 }
 
-.admin__management table tr th{
+.admin__management ul{
+    display: flex;
+}
+
+.admin__management ul li{
     width: 8.4% ;
 }
 
-.admin__management table tr th:first-child{
-    width: 4.2% ;
+.admin__management ul li:first-child{
+    width: 5.2% ;
 }
 
-.admin__management table tr th:nth-child(2){
-    width: 21.2% ;
+.admin__management ul li:nth-child(2){
+    width: 20.2% ;
 }
 
-.admin__management table tr th:nth-child(3){
+.admin__management ul li:nth-child(3){
     width: 25.4% ;
 }
-.admin__management table tr th:nth-child(4){
+.admin__management ul li:nth-child(4){
     width: 15.4% ;
 }
-.admin__management table tr th:nth-child(5){
+.admin__management ul li:nth-child(5){
     width: 17% ;
 }
 
-.admin__management table {
+.admin__management ul {
     border-collapse: collapse;
     width: 100%;
-    margin-bottom: 26px;
-  }
+    border-bottom: 1px solid var(--gray-C7);
+}
 
-.admin__management table tr td,
-.admin__management table tr th{
+.admin__management ul li{
     text-align: left;
     padding: 12px 0;
     padding-left: 20px;
 }
 
-.admin__management table tr td{
+.tbody_admin li{
     padding: 17px 0 30px 0;
 }
 
-.admin__management table tr td:nth-child(7),
-.admin__management table tr td:nth-child(6){
+.tbody_admin li:nth-child(7),
+.tbody_admin li:nth-child(6){
     padding-left: 30px;
-
 }
 
-.admin__management table tr th{
+.thead_admin li{
     background-color: var(--white);
     font-style: normal;
     font-weight: 600;
@@ -67,13 +69,7 @@
     background: #F4F4F4;
 }
 
-
-.admin__management table tr th img{
-    position: absolute;
-    margin-left: 8.5px;
-}
-
-.admin__management table tr td{
+.tbody_admin li{
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -81,7 +77,6 @@
     color: var(--black);
     text-align:left;
     padding-left: 20px;
-    border-bottom: 1px solid var(--gray-C7);
 }
 
 .btn__delete--user{
@@ -116,3 +111,24 @@
 .query_left{
     width: 50%;
 }
+
+.role_mobile{
+    display: none;
+    width: 0px;
+}
+
+.img_admin{
+    width: 12.4%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit__profile{
+    padding-left: 27px !important;
+}
+
+.btn_edit:after{
+    content: url(../../image/edit.svg);
+}
+
+

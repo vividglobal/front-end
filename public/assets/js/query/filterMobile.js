@@ -37,26 +37,6 @@ $(document).ready(function(){
         $(this).closest(".select--violation--type").closest(".checkbox_mobi").find("> p").attr("data-id",id)
     })
 
-    function resetFiter(){
-        $("#myFilter").removeClass("open_menu")
-        $(".overlay").css({"width":"0%","display":"none"})
-        $(".checkbox_mobi").find("#toggle").hide()
-        document.documentElement.style.overflow = 'scroll';
-        document.body.scroll = "yes";
-    }
-
-    $(".close__filter").click(function() {
-        resetFiter()
-    })
-
-    // $(".btn__apply").click(function() {
-    //     let date = $('input[name="daterange"]').val();
-    //     let brand = $(".select--company-or-brand").closest(".checkbox_mobi").find("p").attr("data-id")
-    //     let country = $(".select--country").closest(".checkbox_mobi").find("p").attr("data-id")
-    //     let violation = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id")
-    //     // resetFiter()
-    // })
-
 })
 
 

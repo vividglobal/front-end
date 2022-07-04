@@ -37,12 +37,6 @@
 
 }
 
-@media (max-width: 563px) {
-    .daterangepicker{
-        left: 293.422px !important;
-    }
-}
-
 @media (max-width: 425px) {
     .daterangepicker .drp-calendar.right {
         padding: 0px !important;
@@ -117,7 +111,7 @@
 
     .daterangepicker .daterangepicker.ltr .ranges, .daterangepicker.ltr .drp-calendar {
         float: none !important;
-        height: 50vh !important;
+        height: 60vh !important;
     }
 
     .daterangepicker .drp-calendar.right .daterangepicker_input {

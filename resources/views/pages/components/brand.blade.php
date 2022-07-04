@@ -1,8 +1,8 @@
 <div class="list--company--brand">
     <img src="../assets/image/brand-tag.svg" alt="">
-    <p>{{ __('Brand/Companys') }}</p>
-    <img src="../assets/image/under-than.svg" alt="">
-    <div class="select--company-or-brand" id="toggle">
+    <p></p>
+    <img src="../assets/image/Under-than.svg" alt="">
+    <div class="select--company-or-brand brand_pc" id="toggle">
         <div class="search--input">
             <img src="../assets/image/search.svg" alt="">
             <input type="text" placeholder="Search for Brand" class="search--brand">
@@ -21,5 +21,4 @@
         </div>
     </div>
 </div>
-
 

@@ -19,6 +19,10 @@ $("document").ready(function(){
         $(".error_number").text("")
         $(".error_name").text("")
         $(".edit_password").text("")
+        $("#myFilter").removeClass("open_menu")
+        $(".checkbox_mobi").find("#toggle").hide()
+        $(".delete__profile_modal").removeClass("open_delete_user")
+        $(".overlay").css({"width":"0%","display":"none"})
         document.documentElement.style.overflow = 'scroll';
         document.body.scroll = "yes";
     }
@@ -26,45 +30,48 @@ $("document").ready(function(){
 
       //  Btn open modal
     var documentElement = document.querySelector('.overlay');
-
     $("#edit__profile").on("click",function(){
-        $("#modal-account").addClass("modal__open")
         var name = $(this).find("input").attr("data-name")
         var phone = $(this).find("input").attr("data-phone")
         var auth = $(this).find("input").attr("data-auth")
         var id = $(this).find("input").attr("data-id")
         var email = $(this).find("input").attr("data-email")
+        $(".title-modal").find("p").text("Edit your profile")
         checkedAuth = auth;
-        $('input[name="edit_name"]').val(name)
-        $('input[name="edit_number"]').val(phone)
-        $('input[name="edit_id_user"]').attr("data-id",id)
-        $('input[name="edit_id_user"]').attr("data-email",email)
-        $(`#${auth}`).attr('checked', true)
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";
+        ModalEditProfile(name,phone,auth,email,id)
     })
 
     $(".edit__profile").on("click",function(){
-        $("#modal-account").addClass("modal__open")
         var name = $(this).find("input").attr("data-name")
         var phone = $(this).find("input").attr("data-phone")
         var auth = $(this).find("input").attr("data-auth")
         var email = $(this).find("input").attr("data-email")
         var id = $(this).find("input").attr("data-id")
+        $(".title-modal").find("p").text("Edit account information")
+        let authUser =  $("#edit__profile").find("input").attr("data-auth") ;
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        $(".delete__profile_modal").addClass("open_delete_user")
         checkedAuth = auth;
+
         $(".btn__change--password").hide()
+        ModalEditProfile(name,phone,auth,email,id)
+    })
+
+    function ModalEditProfile(name,phone,auth,email,id){
+        $("#modal-account").addClass("modal__open")
         $('input[name="edit_name"]').val(name)
         $('input[name="edit_number"]').val(phone)
         $('input[name="edit_id_user"]').attr("data-id",id)
         $('input[name="edit_id_user"]').attr("data-email",email)
+        $(".overlay").css({"width":"100%","display":"block"})
         $(`#${auth}`).attr('checked', true)
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = "no";
-    })
+    }
 
     //value modal edit profile
 
-    $(".modal__close").on("click",function(){
+    $(".close__modal").on("click",function(){
         resetModal()
     })
 
@@ -122,6 +129,7 @@ $("document").ready(function(){
     })
 
     $(".edit_profile").on("click",function(e){
+
         e.preventDefault()
         $(".edit_re_password").text("")
         $(".error_number").text("")

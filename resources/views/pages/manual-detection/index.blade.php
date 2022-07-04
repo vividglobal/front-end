@@ -6,23 +6,23 @@
     </div>
     <!-- Checkbox suspected -->
     <div class="list--suspected__text--img">
-        <div style="display: flex; justify-content:space-between;max-width:703px">
-            <label class="container__checkbox checkbox__suspected">{{ __('Enter the suspected text/Drop image') }}
+        <div  class="rows ">
+            <label class="container__checkbox checkbox__suspected col l-4 m-6 c-6 ">
                 <input type="radio" name="radio" id="image">
                 <span class="checkmark"></span>
             </label>
-            <label class="container__checkbox checkbox__suspected">{{ __('Enter the suspected URL') }}
+            <label class="container__checkbox checkbox__suspected col l-8 m-6 c-6">
                 <input type="radio" name="radio" id="text">
                 <span class="checkmark"></span>
             </label>
         </div>
         <!-- choose file -->
-        <div style="display: flex;">
-            <div class="suspected__text__area">
+        <div class="rows">
+            <div class="suspected__text__area  l-8 m-12 c-12">
                 <textarea name="" id="" cols="30" rows="10">
                 </textarea>
             </div>
-            <div class="suspected__file__area">
+            <div class="suspected__file__area  l-4 m-12 c-12">
                 <div class='file-input'>
                     <input type='file'>
                     <span class='button'><img src="../assets/image/upfile.svg" alt=""></span>
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <div class="list--country ctr_suspected " id="btn-language">
+    <div class="list--country ctr_suspected select_country_manual country_pc" id="btn-language">
         <img src="../assets/image/Country.svg" alt="">
         <p>{{ __('Country') }}</p>
         <img src="../assets/image/Under-than.svg" alt="">
@@ -54,6 +54,33 @@
             </div>
         </div>
     </div>
+    <div class="border_gray gray_mobi"></div>
+    <div class="checkbox_mobi country_mobile">
+        <div class="checkbox_title">
+            <div>
+                <img src="../assets/image/Country.svg" alt="">
+                <span>{{ __("Country") }}</span>
+            </div>
+            <img src="../assets/image/under_than-black.svg" alt="">
+        </div>
+        <p></p>
+        <div class="select--country slc_general country_mobi" id="toggle">
+            <div class="search--input--country search_general" id="div-search">
+                <img src="../assets/image/search.svg" alt="">
+                <input type="text" placeholder="Search for country" class="search--country" >
+            </div>
+            <div class="contain--selection contain_country">
+                @foreach ($countries as $country)
+                    <label class="container_checkbox select__one--country option_general" id={{$country->_id}}>
+                        <p  data-id={{$country->_id}} >{{$country->name}}</p>
+                        <input type="checkbox"  name="radio" class="input_checkbox">
+                        <span class="checkmark_checkbox"></span>
+                    </label>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="border_gray gray_mobi"></div>
 @include('pages/manual-detection/captcha')
 <div class="title__result">
     <p>{{ __('Result:') }}</p>

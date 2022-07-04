@@ -43,7 +43,6 @@ $("document").ready(function () {
     if (paramKeyword !== null) {
         $(".search").val(paramKeyword);
     }
-
     if (perpage !== null) {
         $(".list--showing").find("select").val(parseInt(perpage));
     }
@@ -55,31 +54,35 @@ $("document").ready(function () {
     }
 
     if (parambrands !== null) {
-        let name = $(".select--company-or-brand");
+        let name = $(".brand_pc");
+        let nameMb = $(".brand_mobi");
         let list = $(".list--company--brand");
         let select = $(".select--company-or-brand");
         let option = ".select__one";
-        returnTextButtonQuery(name, list, select, option, parambrands);
+        returnTextButtonQuery(name, list, select, option, parambrands,nameMb);
+
     }else{
         $(".list--company--brand").find("> p").text("Brand/Company")
     }
 
     if (paramCountry !== null) {
-        let name = $(".select--country");
+        let name = $(".country_pc");
         let list = $(".list--country");
+        let nameMb = $(".country_mobi");
         let select = $(".select--country");
         let option = ".option_general";
-        returnTextButtonQuery(name, list, select, option, paramCountry);
+        returnTextButtonQuery(name, list, select, option, paramCountry,nameMb);
     }else{
         $(".list--country").find("> p").text("Country")
     }
 
     if (paramViolation !== null) {
-        let name = $(".select--violation--type");
+        let name = $(".violation_pc");
         let list = $(".list--violation--type");
+        let nameMb = $(".violation_mobi");
         let select = $(".select--violation--type");
         let option = ".select__one--violation--type";
-        returnTextButtonQuery(name, list, select, option, paramViolation);
+        returnTextButtonQuery(name, list, select, option, paramViolation,nameMb);
     }else{
         $(".list--violation--type").find("> p").text("Violation type")
     }
@@ -162,7 +165,7 @@ $("document").ready(function () {
         }
     }
 
-    function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param) {
+    function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param,nameMb) {
         let name = $(nameBtn).find(`#${param}`).find("p").text();
         $(textBtn).find("> p").text(name);
         $(textBtn).find("> p").attr("data-id", param);
@@ -171,6 +174,11 @@ $("document").ready(function () {
             .removeClass("background-gray");
         $(selectBtn).find(`#${param}`).find("img").show();
         $(selectBtn).find(`#${param}`).addClass("background-gray");
+
+        $(nameMb).closest(".checkbox_mobi").find("> p").text(name)
+        $(nameMb).closest(".checkbox_mobi").find("> p").attr("data-id",param)
+        $(nameMb).find(`#${param}`).find("> input").prop('checked',true)
+        $(nameMb).find(`#${param}`).find("> span").addClass("activeRadio")
     }
 
     //  ----------------------------
@@ -184,11 +192,35 @@ $("document").ready(function () {
     }
 
     $(".close__filter").click(function() {
+            $(".select__one").find("input").prop('checked',false)
+            $(".select__one").find("span").removeClass("activeRadio")
+            $("select__one--country").find("input").prop('checked',false)
+            $(".select__one--country").find("span").removeClass("activeRadio")
+            $("select__one--violation--type").find("input").prop('checked',false)
+            $(".select__one--violation--type").find("span").removeClass("activeRadio")
+            $(".checkbox_mobi").find("> p").text("")
+        if(parambrands !== null){
+            let name = $(".brand_pc");
+            let nameMb = $(".brand_mobi");
+            returnTextButtonQuery(name, "", "", "", parambrands,nameMb);
+        }
+        if(paramCountry !== null){
+            let name = $(".country_pc");
+            let nameMb = $(".country_mobi");
+            returnTextButtonQuery(name, "", "","", paramCountry,nameMb);
+        }
+        if(paramViolation !== null){
+            let name = $(".violation_pc");
+            let nameMb = $(".violation_mobi");
+            returnTextButtonQuery(name, "", "", "", paramViolation,nameMb);
+        }
+
         resetFiter()
     })
 
     $(".btn__apply").on("click", function () {
             replaceURL(paramSortBy, paramSortValue);
+            resetFiter()
     });
 
     //LIST SHOWING
@@ -352,7 +384,6 @@ $("document").ready(function () {
             window.location.replace(
                 `${window.location.pathname}${url.replace("&", "?")}`
             );
-            resetFiter()
         }
     }
 

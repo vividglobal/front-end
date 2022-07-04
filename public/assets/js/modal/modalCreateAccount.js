@@ -24,6 +24,7 @@ $("document").ready(function(){
 
     //   //  Btn open modal
     $(".create__profile").on("click",function(){
+        $(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
     })
 
