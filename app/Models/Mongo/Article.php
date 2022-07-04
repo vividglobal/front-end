@@ -41,6 +41,10 @@ class Article extends Model
     const ACTION_CHECK_STATUS = 'CHECK_STATUS';
     const ACTION_CHECK_CODE = 'CHECK_CODE';
 
+    public $perpage = self::PER_PAGE;
+    public $sortField = self::SORT_BY_FIELD;
+    public $sortValue = self::SORT_VALUE;
+
     const DEFAULT_REVIEW_STATES = [
         'violation_code' => [],
         'violation_types' => [],
@@ -81,10 +85,14 @@ class Article extends Model
     public function aggregateQuery($params) {
         $matchConditions = [];
         $dateField = 'published_date';
+        $violationReviewField = 'detection_result';
 
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
+            if($status === self::STATUS_NONE_VIOLATION || $status === self::STATUS_VIOLATION) {
+                $violationReviewField = 'operator_review';
+            }
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
@@ -252,7 +260,7 @@ class Article extends Model
         return count($collection);
     }
 
-    public function getList($params, $perpage = self::PER_PAGE, $sortField = self::SORT_BY_FIELD, $sortValue = self::SORT_VALUE) {
+    public function getList($params, $usePagination = true) {
         // Custom query
         $page = \Illuminate\Pagination\Paginator::resolveCurrentPage();
         $total = $this->aggregateCount($params);
@@ -261,33 +269,35 @@ class Article extends Model
 
         if(isset($params['status'])
             && ($params['status'] == self::STATUS_VIOLATION || $params['status'] == self::STATUS_NONE_VIOLATION)){
-            $sortField = 'modified';
-            $sortValue = self::SORT_VALUE;
+            $this->sortField = 'modified';
+            $this->sortValue = self::SORT_VALUE;
         }
 
         if(isset($params['perpage'])) {
-            $perpage = intval($params['perpage']);
+            $this->perpage = intval($params['perpage']);
         }
 
         if(isset($params['sort_by'])) {
-            $sortField = $params['sort_by'];
+            $this->sortField = $params['sort_by'];
         }
 
         if(isset($params['sort_value'])) {
-            $sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
+            $this->sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
         $aggregateQuery[] = [
-            '$sort' => [$sortField => $sortValue]
+            '$sort' => [$this->sortField => $this->sortValue]
         ];
 
-        $aggregateQuery[] = ['$skip' => ($page - 1) * $perpage];
-        $aggregateQuery[] = ['$limit' => $perpage];
+        if($usePagination) {
+            $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perpage];
+            $aggregateQuery[] = ['$limit' => $this->perpage];
+        }
 
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);
         });
 
-        return new \Illuminate\Pagination\LengthAwarePaginator($collection, $total, $perpage, $page, [
+        return new \Illuminate\Pagination\LengthAwarePaginator($collection, $total, $this->perpage, $page, [
             'path' => \Illuminate\Pagination\Paginator::resolveCurrentPath(),
         ]);
     }
