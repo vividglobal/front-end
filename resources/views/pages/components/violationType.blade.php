@@ -1,8 +1,8 @@
 <div class="list--violation--type">
     <img src="../assets/image/type.svg" alt="">
-    <p></p>
+    <p>{{ __('Violation type') }}</p>
     <img src="../assets/image/Under-than.svg" alt="">
-    <div class="select--violation--type violation_pc" id="toggle">
+    <div class="select--violation--type" id="toggle">
         <div class="select__one--violation--type"  id=0>
             <p data-id=0>{{ __('- Select violation type -') }}</p>
             <img src="../assets/image/tickV.svg" alt="">

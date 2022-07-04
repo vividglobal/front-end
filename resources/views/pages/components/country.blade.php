@@ -1,8 +1,8 @@
 <div class="list--country ctr_general " id="btn-language">
     <img src="../assets/image/Country.svg" alt="">
-    <p></p>
+    <p>{{ __('Country') }}</p>
     <img src="../assets/image/Under-than.svg" alt="">
-    <div class="select--country slc_general country_pc" id="language">
+    <div class="select--country slc_general" id="language">
         <div class="search--input--country search_general" id="div-search">
             <img src="../assets/image/search.svg" alt="">
             <input type="text" placeholder="Search for country" class="search--country" id="language-search">
@@ -21,4 +21,3 @@
         </div>
     </div>
 </div>
-
