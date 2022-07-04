@@ -44,7 +44,7 @@
                             <div class="heading-three"><p>{{ __('VIVID') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_bot_status">
-                                    <p data-sort="bot_status" >{{ __('Status') }}</p>
+                                    <p data-sort="bot_status"  class="status-title-p">{{ __('Status') }}</p>
                                     <span
                                         @class([
                                             'ico-sort theard-table sort_up',
@@ -69,7 +69,7 @@
                             <div class="heading-three"><p>{{ __('Supervisor') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_supervisor">
-                                    <p data-sort="supervisor_status">{{ __('Status') }}</p>
+                                    <p data-sort="supervisor_status" class="status-title-p">{{ __('Status') }}</p>
                                     <span
                                         @class([
                                             'ico-sort theard-table sort_up',
@@ -89,12 +89,12 @@
                                 </div>
                             </div>
                         </div>
-                        @if(@Auth::user()->role === "OPERATOR")
+                        @if(@Auth::user())
                         <div class="track track-three">
                             <div class="heading-three"><p>{{ __('Operator') }}</p></div>
                             <div class="heading-three-title">
                                 <div class="th-title-right-three sort_operator">
-                                    <p data-sort="operator_status">{{ __('Status') }}</p>
+                                    <p data-sort="operator_status" class="status-title-p">{{ __('Status') }}</p>
                                     <span
                                         @class([
                                             'ico-sort theard-table sort_up',
@@ -221,11 +221,10 @@
                                                 && count($article->supervisor_review['violation_code']) === 0)
                                             <div class="btn-status">
                                                 <a attr-status={{AGREE}} class="check-true check-violation-code" href="javascript:void(0)"></a>
-                                                <a attr-status={{DISAGREE}} class="check-false check-violation-code" href="javascript:void(0)"></a>
+                                                <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
                                             </div>
                                         @else
                                             <div class="style__code--article" style="width:100%">
-
                                                 @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR)
                                                 && count($article->supervisor_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
@@ -256,7 +255,7 @@
                             {{-- ==================================================== --}}
                             {{-- ================= OPERATOR COLUMN ================== --}}
                             {{-- ==================================================== --}}
-                            @if(@Auth::user()->role === "OPERATOR")
+                            @if(Auth::user())
                             <div class="track track-three">
                                 <div class="entry-three">
                                     {{-- ==================================================== --}}
@@ -305,13 +304,22 @@
                                             </div>
                                         @else
                                             <div class="style__code--article" style="width:100%">
-                                                @foreach ($article->operator_review['violation_code'] as $detectionCode)
-                                                    <div>
-                                                        <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
-                                                            {{ $detectionCode['name'] ?? '' }}
-                                                        </a>
+                                                @if((isPendingStatus($article->operator_review['status']) || isViolationStatus($article->operator_review['status'])) && !isRole(ROLE_OPERATOR)
+                                                && count($article->operator_review['violation_code']) === 0)
+                                                    <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
+                                                        <p
+                                                            class="status-title reviewing-color"
+                                                        >{{ 'Reviewing' }}</p>
                                                     </div>
-                                                @endforeach
+                                                @else
+                                                    @foreach ($article->operator_review['violation_code'] as $detectionCode)
+                                                        <div>
+                                                            <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                                {{$detectionCode['name'] ?? ''}}
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         @endif
                                     </div>
@@ -355,7 +363,7 @@
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
-                {{ __("When you move this post to non-violation list, you can not change the status in the future.") }}
+                {{ __("Confirm this article as non-violation, you can not change the status in the future.") }}
             </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -373,7 +381,7 @@
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
-                {{ __("When you move this post to violation list, you can not change the status in the future.") }}
+                {{ __("Confirm this article as violation, you can not change the status in the future.") }}
             </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -401,7 +409,7 @@
     </div>
 
     <div class="modal-title open-modal" id="selectCodeModal">
-        <div class="modal-content">
+        <div class="modal-content modal-content-code">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
@@ -470,9 +478,9 @@
         </li>
         @endforeach
     </ul>
-</div>
-<div class="row-pagination">
+    <div class="row-pagination">
     {{ $articles->links('layouts.my-paginate') }}
+    </div>
 </div>
 
 

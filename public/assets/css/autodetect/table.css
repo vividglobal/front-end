@@ -254,9 +254,8 @@
     }
 
   .modal-img{
-      width: 591px;
-      height: 591px;
-      margin-bottom: 20px;
+    width: 56%;
+    margin-bottom: 20px;
   }
 
 .select--country {
@@ -596,12 +595,26 @@ input[type=checkbox] {
   line-height: 23px;
   color: #000000;
 }
-
+.no-file-upload{
+    font-size: 23px !important;
+    font-family: 'Avenir Next';
+    font-weight: 500 !important;
+    font-size: 16px;
+    line-height: 22px;
+    color: #C7C7C7 !important;
+    text-align: center;
+}
+.row-upload{
+  max-height: 353px;
+  overflow-y: scroll;
+}
 .paginate_showing{
     display: flex;
     margin-left: 60px;
 }
-
+.status-title-p{
+  margin-right: 5px;
+}
 .style_violation_type{
     display: block !important;
     overflow: auto;

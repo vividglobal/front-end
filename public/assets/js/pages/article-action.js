@@ -122,6 +122,7 @@ $(document).ready(function(){
         }).get();
 
         if(violationCode.length === 0) {
+            alert('Please select as least 1 type of violation.')
             return false;
         }
         agreeStatus = DISAGREE;
@@ -153,11 +154,16 @@ $(document).ready(function(){
     function updateDetectionColumnAfterSelectViolationCode(data) {
         let codeString = '';
         for (let i = 0; i < data.violation_code.length; i++) {
-            codeString += `<p>${data.violation_code[i].name}</p>`
+            codeString += 
+                        `<div>
+                            <a>
+                                ${data.violation_code[i].name}
+                            </a>
+                        </div>`
         }
         let typeString = '';
         for (let i = 0; i < data.violation_types.length; i++) {
-            typeString += `<p>${data.violation_types[i].name}</p>`
+            typeString += `<p style=color:${data.violation_types[i].color}>${data.violation_types[i].name}</p>`
         }
 
         if(CURRENT_ROLE === SUPERVISOR_ROLE) {
@@ -172,7 +178,7 @@ $(document).ready(function(){
 
             currentRow.find(`.${lowercaseRole}-violation-type`).html(typeString)
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
-                `<div class="entry-title-threee entry-title-tyle reviewing-title">
+                `<div class="style__code--article" style="display:block; width: 100%;">
                     ${codeString}
                 </div>`
             );
@@ -217,7 +223,7 @@ $(document).ready(function(){
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
                 `<div class="btn-status">
                     <a attr-status="${AGREE}" class="check-true check-violation-code" href="javascript:void(0)"></a>
-                    <a attr-status="${DISAGREE}" class="check-false check-violation-code dishable_overlay" href="javascript:void(0)"></a>
+                    <a attr-status="${DISAGREE}" class="check-false-disabled check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
         }else {
