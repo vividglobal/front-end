@@ -159,8 +159,8 @@
                             @auth
                             <div class="track">
                                 <div class="entry">
-                                @if(@Auth::user()->role === "OPERATOR")
-                                    <div class="list--status" id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}">
+                                    <div class="list--status {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
+                                    id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{@Auth::user()->role}}">
                                         @if(isset($article->progress_status))
                                             @if($article->progress_status == "NOT_STARTED")
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
@@ -190,15 +190,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                @else
-                                    <select class="list--select-right disabled-select" id="cars" disabled>
-                                        <option value="Select">Not started</option>
-                                        <option value="Processing">Processing</option>
-                                        @if($article->has_document)
-                                        <option value="Completed">Completed</option>
-                                        @endif
-                                    </select>
-                                @endif
                                 </div>
                             </div>
                             @if(@Auth::user()->role === "OPERATOR")

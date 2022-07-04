@@ -39,7 +39,7 @@
     width: 100%;
     background: var(--white);
     padding: 22px;
-    z-index: 1;
+    z-index: 105;
   }
 
   .close__modal{
@@ -67,7 +67,7 @@
   }
 
   .content-modal p{
-    font-family: avenir;
+    font-family: "avenir";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -143,6 +143,8 @@
       margin-top: 20px;
   }
 
+
+
   .list--suspected__text--img > div:nth-child(2),
   .list--suspected__text--img > div:first-child{
     margin-left: 0px;
@@ -160,7 +162,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: avenir;
+    font-family: "avenir";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

@@ -11,40 +11,48 @@ $("document").ready(function(){
     })
 
     selectOneViolation.on("click", function(){
-        var value = $(this).find("p").html()
-        var id = $(this).find("p").attr("data-id");
-        var idrow = $(`#${targetEL}`).attr("data-idEL");
-        $(`#${targetEL}`).find("> p").html(value)
-        $(`#${targetEL}`).find("> p").attr("data-id",id)
-        $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("background-gray")
-        $(`#${targetEL}`).find(".select--status").find(".select__one--status").find("img").hide()
-        $(this).addClass("background-gray")
-        $(this).find("img").show()
+            let value = $(this).find("p").html()
+            let id = $(this).find("p").attr("data-id");
+            let idrow = $(`#${targetEL}`).attr("data-idEL");
+            $(`#${targetEL}`).find("> p").html(value)
+            $(`#${targetEL}`).find("> p").attr("data-id",id)
+            $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("background-gray")
+            $(`#${targetEL}`).find(".select--status").find(".select__one--status").find("img").hide()
+            $(this).addClass("background-gray")
+            $(this).find("img").show()
+            show_overlay()
 
-        const url = `${idrow}/switch-progress-status`;
-        let csrf = $('meta[name="csrf-token"]').attr('content')
-        $.ajax({
-            method: "PUT",
-            url: url,
-            headers: {
-                'X-CSRF-TOKEN': csrf,
-            },
-            data:{
-                "progress_status" : id.toUpperCase(),
-            }
-        })
-        .done(function( msg ) {
-            window.location.href = window.location.href
-        });
+            const url = `${idrow}/switch-progress-status`;
+            let csrf = $('meta[name="csrf-token"]').attr('content')
+            $.ajax({
+                method: "PUT",
+                url: url,
+                headers: {
+                    'X-CSRF-TOKEN': csrf,
+                },
+                data:{
+                    "progress_status" : id.toUpperCase(),
+                }
+            })
+            .done(function( msg ) {
+                if(msg){
+                    hide_overlay()
+                    openSnackBar("Change status progress successfully",1500)
+                    setTimeout(()=>{
+                        window.location.href = window.location.href
+                    },1500)
+                }
+            });
     })
 
     btnViolation.click(function(event) {
-        let idEl = $(this).attr("id")
-        targetEL = idEl;
-        $(".list--status").not(this).find(".select--status").hide()
-        $(this).find(".select--status").toggle();
-
-
+        let role = $(this).attr("data-role");
+        if(role.toUpperCase() == "OPERATOR"){
+            let idEl = $(this).attr("id")
+            targetEL = idEl;
+            $(".list--status").not(this).find(".select--status").hide()
+            $(this).find(".select--status").toggle();
+        }
     });
 
     $(document).mouseup(function(e){

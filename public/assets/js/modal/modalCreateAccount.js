@@ -99,6 +99,7 @@ $("document").ready(function(){
         }
 
         if(flag){
+            show_overlay()
             const url = '/admins';
 
             $.ajax({
@@ -116,8 +117,14 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                window.location.href = window.location.href
-                resetModal()
+                hide_overlay()
+                if(msg){
+                    openSnackBar("Create user successfully",1500)
+                    setTimeout(()=>{
+                        window.location.href = window.location.href
+                    },1500)
+                    resetModal()
+                }
             });
         }
     })

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="list--search--select" >
+<div class="list--search--select fix_manual" >
     <div class="list--title">
         <p>{{ __('Label violations') }}</p>
     </div>
