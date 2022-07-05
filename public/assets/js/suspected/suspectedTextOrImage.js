@@ -7,7 +7,7 @@ $("document").ready(function(){
     //Checkbox suspected
         $(".suspected__text__area textarea").val("")
         $(".checkbox__suspected:first-child").find("input").attr("checked",true)
-        $(".suspected__text__area textarea").attr("disabled",true).attr("placeholder","Enter the suspected text")
+        $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text")
         $(".file-input").show()
         $(".checkbox__suspected:first-child").addClass("active_checked")
 
@@ -17,12 +17,11 @@ $("document").ready(function(){
             $(this).addClass("active_checked")
             $(".suspected__text__area textarea").val("")
             if($(this).find("input").attr("id") === "image"){
-                $(".suspected__text__area textarea").attr("disabled",true).attr("placeholder","Enter the suspected text")
+                $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text").focus()
                 $(".file-input").show()
             }else{
-                $(".suspected__text__area textarea").removeAttr("disabled").attr("placeholder","Enter the suspected link").focus()
+                $(".suspected__text__area textarea").attr("placeholder","Enter the suspected link").focus()
                 $(".file-input").hide()
-
             }
     })
 
@@ -33,9 +32,8 @@ $("document").ready(function(){
             if (!fileInput.value) return
             var value = fileInput.value.replace(/^.*[\\\/]/, '')
             el.className += ' -chosen'
-            $(".suspected__text__area textarea").val(value)
+            $(".suspected__file__area").find(".file-input").find(".label").text(value)
         }
     }
 
-    // $(".country_mobi").find(".slc_general").css({"display":"none"})
 })

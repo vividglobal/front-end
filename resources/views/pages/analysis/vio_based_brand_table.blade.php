@@ -1,4 +1,4 @@
-<div class="table_analysis">
+<div class="table_analysis table_brand">
     <ul class="table_analysis_header">
         <li>{{ __('No') }}</li>
         <li>{{ __('Brand/Company') }}</li>

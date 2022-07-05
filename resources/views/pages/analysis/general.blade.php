@@ -1,3 +1,6 @@
+<div class="title_table_analysis index__violation l-4 m-12 c-12">
+    <p>Violation status</p>
+</div>
 <div class="index__violation l-4 m-12 c-12">
     <div >
         <p class="title-violation">{{ __('Non-violation') }}</p>
