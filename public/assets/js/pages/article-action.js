@@ -56,6 +56,7 @@ $(document).ready(function(){
         if(agreeStatus === DISAGREE || (botStatus === STATUS_NONE_VIOLATION && reviewStatus === STATUS_VIOLATION) ) {
             actionStep = ACTION_CHECK_CODE;
             violationCodeModal.show();
+            $(".mdl-js").css("overflow-y","hidden");
         }else {
             let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
             isLoading = false;

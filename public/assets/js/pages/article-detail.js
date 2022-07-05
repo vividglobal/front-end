@@ -1,16 +1,86 @@
 $(document).ready(function(){
-    let modalconfim = $('.modal-title-mobile');
+    let confirmModalVio = $('#confirm-violation');
+    let confirmModal = $('#confirm-non-violation');
+    let span = $('.close');
+    let confirmArticleAsViolationModal = $('#confirmArticleAsViolation')
+    let actionStep;
 
-
+    span.click(function () {
+        confirmModalVio.hide();
+        confirmModal.hide();
+        confirmArticleAsViolationModal.hide()
+    });
     $(".history-back").click(function(){
-        console.log(true);
         history.back(1);
     })
 
-    $(".btn-violation").click(function(){
-        modalconfim.show();
-        $("#confirm-violation").click(function(){
-            
-        })
+    $(document).on('click', '.check-status', function() {
+        // document.documentElement.style.overflow = 'hidden';
+        currentRow = $(this).parents('.container-row-mobile');
+        document.body.scroll = "no";
+        articleId = $(this).attr('data-id');
+        agreeStatus = $(this).attr('attr-status');
+        botStatus = $('.bot-status').attr('data-status');
+        if(agreeStatus === DISAGREE) {
+            if(botStatus === STATUS_VIOLATION) {
+                confirmModal.show();
+            }else {
+                actionStep = ACTION_CHECK_STATUS;
+                confirmArticleAsViolationModal.show();
+            }
+        }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
+            confirmModal.show();
+        }else if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
+            confirmModalVio.show();
+        }
     })
+    $('.btn-confirm-non-violation').click(async function() {
+        let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
+        addOverlayScroll();
+    
+        if(response.success) {
+            if(CURRENT_ROLE === SUPERVISOR_ROLE) {
+
+            }
+        }
+    })
+
+
+
+    function removeCurrentRow() {
+        $(`tr[data-id="${articleId}"]`).fadeOut('slow');
+        $(`div[data-id="${articleId}"]`).fadeOut('slow');
+        closeCodeModal();
+        confirmModal.hide();
+    }
+
+    function addOverlayScroll() {
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
+    }
+
+    function closeCodeModal() {
+        violationCodeModal.hide();
+        $('input[type=checkbox]').each(function()
+        {
+            this.checked = false;
+        });
+    }
+
+    async function action_moderate_article(action, status, violationCode = []) {
+        // if(isLoading) {return}
+        // show_overlay();
+        isLoading = true;
+        return await $.ajax({
+            url : `/articles/${articleId}/action-moderate?_method=PUT`,
+            method : 'PUT',
+            data : {
+                _token : csrf,
+                is_agreed: agreeStatus,
+                action : action,
+                status : status,
+                violation_code : JSON.stringify(violationCode)
+            }
+        });
+    }
 })
