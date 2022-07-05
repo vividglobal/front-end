@@ -48,6 +48,7 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     font-size: 15px;
     line-height: 15px;
     padding: 10px;
+    white-space: nowrap;
 }
 .violation-color{
     background: var(--pink);
