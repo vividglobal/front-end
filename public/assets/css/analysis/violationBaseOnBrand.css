@@ -30,9 +30,14 @@
   }
 
 .Base_violation--brand .table_analysis .table_analysis_body li,
-.Base_violation--brand .table_analysis .table_analysis_header li{
+.Base_violation--brand .table_analysis .header_brand li{
     text-align: center;
     padding: 10px 0;
+}
+
+.head_code li {
+    padding: 10px 0;
+    padding-left: 20px;
 }
 
 .Base_violation--brand .table_analysis .table_analysis_header li{
@@ -46,19 +51,19 @@
 }
 
 .item_base_on_brand,
-.Base_violation--brand .table_analysis .table_analysis_header li{
+.Base_violation--brand .table_analysis .header_brand li{
     width: 19.5%;
     text-align:left;
     padding-left: 20px;
 }
 
 .item_base_on_brand:first-child,
-.Base_violation--brand .table_analysis .table_analysis_header li:nth-child(1){
+.Base_violation--brand .table_analysis .header_brand li:nth-child(1){
     width: 8.5%;
 }
 
 .item_base_on_brand:nth-child(2),
-.Base_violation--brand .table_analysis .table_analysis_header li:nth-child(2){
+.Base_violation--brand .table_analysis .header_brand li:nth-child(2){
     width: 33%;
     text-align: left;
     padding-left: 20px;
@@ -105,19 +110,19 @@
 }
 
 .base_code_item{
-    width: 8.5% !important;
+    width: 8.5% ;
 }
 
 .base_code_item:nth-child(2){
-    width: 19.2% !important;
+    width: 19.2% ;
 }
 
 .base_code_item:nth-child(3){
-    width: 53.5% !important;
+    width: 53.5% ;
 }
 
 .base_code_item:nth-child(4){
-    width: 20.8% !important;
+    width: 20.8% ;
 }
 
 .title_table_analysis{

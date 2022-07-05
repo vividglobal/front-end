@@ -1,5 +1,5 @@
 <div class="table_analysis table_brand">
-    <ul class="table_analysis_header">
+    <ul class="table_analysis_header header_brand">
         <li>{{ __('No') }}</li>
         <li>{{ __('Brand/Company') }}</li>
         <li>

@@ -13,6 +13,11 @@
         margin: 0 30px 0 60px;
     }
 
+    .list_slc_analysis .btn__apply,
+    .list_slc_analysis #daterange{
+        display: none;
+    }
+
     .title_analysis .list--select--option{
         margin: 0 30px 0 0px;
     }
@@ -21,6 +26,18 @@
     .Base_violation--brand,
     .index_violation-nonViolation{
         margin: 15px 30px 0 15px;
+    }
+
+    .Base_violation--brand{
+        padding: 20px;
+    }
+
+    .Base_violation--brand .list--select--option{
+        display: block;
+    }
+
+    .Base_violation--brand .list--select__right{
+        width: 100%;
     }
 
     .index_violation-nonViolation{
@@ -141,9 +158,138 @@
         display: none;
     }
 
-    .table_brand .table_analysis_body{
-        display: block;
-        position: relative;
+    .table_brand .table_analysis_body > li:nth-child(2){
+        margin-top: 10px;
     }
 
+    .table_analysis_body{
+        display: block;
+        position: relative;
+        border-bottom: 1px solid var(--gray-C7);
+    }
+
+    .table_analysis_body >  .item_base_on_brand{
+        width: 100% !important;
+    }
+
+    .item_base_on_brand{
+        padding: 0px 0px 5px 0 !important;
+    }
+
+    .table_brand .table_analysis_body li:nth-child(2){
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 170%;
+        color: var(--black);
+    }
+
+    .res_item_brand{
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .res_item_brand .item_base_on_brand{
+        width: auto ;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px !important;
+        line-height: 170%;
+    }
+
+    .res_item_brand .item_base_on_brand:nth-child(2){
+        position: absolute;
+        top: 30px;
+        color: #D80027 !important;
+    }
+
+    .res_item_brand .item_base_on_brand:nth-child(2):after{
+        content : " violations";
+        color: #D80027 !important;
+    }
+
+    .res_item_brand .item_base_on_brand:first-child{
+        padding-right: 30px !important;
+    }
+
+    .res_item_brand .item_base_on_brand:first-child:before{
+        content : "Article: ";
+        color: var(--gray-6F);
+    }
+
+    .res_item_brand .item_base_on_brand:nth-child(3):before{
+        content : "Percentage: ";
+        color: var(--gray-6F);
+    }
+
+    /* TABLE ON CONDE */
+    .base_code_item{
+        padding-left: 0px !important;
+        padding: 0px 0px 5px 0 !important;
+        width: 100% !important;
+    }
+
+    .base_code_item:nth-child(5){
+        position: absolute;
+        top: 0px;
+        right: 0;
+        text-align: right !important;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px !important;
+        line-height: 170%;
+        padding-top: 15px !important;
+    }
+
+    .base_code_item:nth-child(5):before{
+        content: "Article: ";
+        color: var(--gray-6F);
+    }
+
+    .table_code .table_analysis_body .base_code_item:nth-child(2){
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 170%;
+        padding-top: 10px !important;
+    }
+
+    .table_code .table_analysis_body .base_code_item{
+        width: 100% !important;
+    }
+
+    .table_code .table_analysis_body .base_code_item:nth-child(4):before{
+        content: "Violation type: ";
+        color: var(--gray-6F);
+    }
+
+    .type_pc{
+        display: none;
+    }
+
+    .type_mobi{
+        display: block;
+        width: 100% !important;
+    }
+
+    .sort_base_on-brand{
+        margin-top: 10px;
+    }
+
+    .sort_base_on-code{
+        margin-top: 10px;
+        border-top: 1px solid var(--gray-C7);
+        padding-top: 10px;
+    }
+
+}
+
+@media (max-width: 739px){
+    .btn_excel:before{
+        content: "Export";
+    }
 }
