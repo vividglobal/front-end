@@ -30,7 +30,7 @@ $("document").ready(function(){
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
         document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";
+        document.body.scroll = "unset";
     })
 
     function closeNav() {
@@ -49,12 +49,13 @@ $(".open_Nav_filter ").click(function(){
     $("#myNav").removeClass("open_menu")
     $(".overlay").css({"width":"100%","display":"block"})
     document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = "no";
+    document.body.scroll = "unset";
 })
 
 $(".closeFilter ").click(function(){
     $("#myFilter").removeClass("open_menu")
     $(".overlay").css({"width":"0%","display":"none"})
+    $(".checkbox_mobi").find("#toggle").hide()
     document.documentElement.style.overflow = 'scroll';
     document.body.scroll = "yes";
 })

@@ -5,7 +5,7 @@
         <p>{{ __('Analysis') }}</p>
     </div>
     <!-- list Btn  -->
-    <div class="list--select--option">
+    <div class="list--select--option slc_analysis">
         <div class="list--select__left">
             <div id="daterange" style="width:203px">
                 <i class="ico-date"></i>
@@ -17,9 +17,8 @@
         <div class="list--select__right">
             @auth
                 <a href="{{ getExportUrl() }}" target="_blank"
-                    class="btn--export--excel" style="width: 179px;display: flex;justify-content:center;text-decoration: unset">
-                    <p class="btn_excel">{{ __('Export Excel') }}</p>
-                    <img src="{{asset('assets/image/Under-than-white.svg')}}" alt="" style="margin-left: 12px;">
+                    class="btn--export--excel" >
+                    <p class="btn_excel"></p>
                 </a>
             @endauth
         </div>
@@ -29,7 +28,7 @@
 <div class="index_violation-nonViolation rows" id="general">
 </div>
 
-<div class="Base_violation--brand">
+<div class="Base_violation--brand table_brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply"], 'show_all_filter' => false])

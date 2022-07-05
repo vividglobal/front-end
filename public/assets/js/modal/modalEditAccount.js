@@ -66,7 +66,7 @@ $("document").ready(function(){
         $(".overlay").css({"width":"100%","display":"block"})
         $(`#${auth}`).attr('checked', true)
         document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";
+        document.body.scroll = "unset";
     }
 
     //value modal edit profile

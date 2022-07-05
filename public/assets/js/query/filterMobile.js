@@ -70,6 +70,36 @@ $(document).ready(function(){
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find("> p").attr("data-name",value)
     })
 
+    $(".sort_based_on_brands").find(".container_checkbox").change(function() {
+        let sortValue = $(this).find("p").attr("data-sort-value")
+        let sortField = $(this).find("p").attr("data-sort-field")
+        let value =  $(this).find("p").text()
+        let table =  $(this).find("p").attr("data-table")
+        $(".sort_based_on_brands").find(".container_checkbox").find("input").prop('checked',false)
+        $(".sort_based_on_brands").find(".container_checkbox").find("span").removeClass("activeRadio")
+        $(this).find("input").prop('checked',true)
+        $(this).find("span").addClass("activeRadio");
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").text(`${value} (Sort based on brand)`)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-sort-value",sortValue)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-sort-field",sortField)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-table",table)
+    })
+
+    $(".sort_based_on_code").find(".container_checkbox").change(function() {
+        let sortValue = $(this).find("p").attr("data-sort-value")
+        let sortField = $(this).find("p").attr("data-sort-field")
+        let value =  $(this).find("p").text()
+        let table =  $(this).find("p").attr("data-table")
+        $(".sort_based_on_code").find(".container_checkbox").find("input").prop('checked',false)
+        $(".sort_based_on_code").find(".container_checkbox").find("span").removeClass("activeRadio")
+        $(this).find("input").prop('checked',true)
+        $(this).find("span").addClass("activeRadio");
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").text(`${value} (Sort based on code)`)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-sort-value",sortValue)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-sort-field",sortField)
+        $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-table",table)
+    })
+
 })
 
 

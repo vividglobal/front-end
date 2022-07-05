@@ -13,7 +13,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.check-status', function() {
         document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "no";
+        document.body.scroll = "unset";
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
@@ -41,7 +41,7 @@ $(document).ready(function(){
         if($(this).hasClass('check-true-disabled') || $(this).hasClass('check-false-disabled')) {return}
         if($(this).hasClass("dishable_overlay")){
             document.documentElement.style.overflow = 'hidden';
-            document.body.scroll = "no";
+            document.body.scroll = "unset";
         }
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');

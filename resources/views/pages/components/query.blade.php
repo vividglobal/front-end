@@ -40,7 +40,7 @@
             @auth
                 <a href="{{ getExportUrl() }}" target="_blank"
                 class="btn--export--excel">
-                    <p class="btn_excel">{{ __('Export Excel') }}</p>
+                    <p class="btn_excel"></p>
                 </a>
             @endauth
             @endif
@@ -52,13 +52,11 @@
  <div id="myFilter" class="sideFilter">
     <a class="closebtn closeFilter" onclick="closeNav()"><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
     <div class="filter_list-mobi">
-        @if(in_array('date', $list_filter) || $show_all_filter)
             <div id="daterange" class="daterange_mobi">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
-        @endif
         <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">
                 <div>
@@ -67,7 +65,12 @@
                 </div>
                 <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
+            @if(!request ()-> is ('analysis'))
             <p data-value="A to Z">A to Z</p>
+            @else
+            <p class="text_brand"></p>
+            <p class="text_code"></p>
+            @endif
             @include('pages/components/sort')
         </div>
         <div class="border_gray"></div>
