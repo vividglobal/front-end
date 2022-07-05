@@ -1,14 +1,9 @@
-<table class="table_analysis">
-    <thead>
-        <tr>
-            <th>No</th>
-            <th style="width: 19.2%;">
-            {{ __('Code article') }}
-            </th>
-            <th style="width: 53.5%;">
-            {{ __('Violation type') }}
-            </th>
-            <th style="width: 14.8%;">
+<div class="table_analysis">
+    <ul class="table_analysis_header">
+        <li class="base_code_item">No</li>
+        <li  class="base_code_item">{{ __('Code article') }}</li>
+        <li  class="base_code_item">{{ __('Violation type') }}</li>
+        <li  class="base_code_item">
             <div class="th-title-rights">
                 <p>{{ __('Articles') }}</p>
                 <span
@@ -24,22 +19,19 @@
                     ])
                     data-sort-field="total_article" data-sort-value="{{ DESC }}"></span>
             </div>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($codeData as $key => $code)
-        <tr>
-            <td>
+        </li>
+    </ul>
+    @foreach($codeData as $key => $code)
+    <ul class="table_analysis_body">
+            <li  class="base_code_item">
                 {{ ($key + 1) + (($codeData->currentpage() - 1) * $codeData->perpage()) }}
-            </td>
-            <td>{{ $code->name }}</td>
-            <td>{{ $code->type_name }}</td>
-            <td>{{ $code->total_article }}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+            </li>
+            <li  class="base_code_item">{{ $code->name }}</li>
+            <li  class="base_code_item">{{ $code->type_name }}</li>
+            <li  class="base_code_item">{{ $code->total_article }}</li>
+    </ul>
+    @endforeach
+</div>
 <div class="row-pagination">
     {{ $codeData->links('layouts.my-paginate') }}
 </div>

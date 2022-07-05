@@ -13,24 +13,29 @@
     padding: 0 !important;
 }
 
+.table_analysis_body,
+.table_analysis_header{
+    display: flex;
+}
+
 .Base_violation--brand .list--select--option .list--select__left .list--violation--type{
     margin: 0!important;
 }
 
-.Base_violation--brand table {
+.Base_violation--brand .table_analysis {
     border-collapse: collapse;
     width: 100%;
     margin-top: 12px;
     margin-bottom: 26px;
   }
 
-.Base_violation--brand table tr td,
-.Base_violation--brand table tr th{
+.Base_violation--brand .table_analysis .table_analysis_body li,
+.Base_violation--brand .table_analysis .table_analysis_header li{
     text-align: center;
     padding: 10px 0;
 }
 
-.Base_violation--brand table tr th{
+.Base_violation--brand .table_analysis .table_analysis_header li{
     background-color: var(--gray-F4);
     font-style: normal;
     font-weight: 600;
@@ -40,23 +45,35 @@
     position: relative;
 }
 
-.Base_violation--brand table tr th{
-    width: 14.16%;
+.item_base_on_brand,
+.Base_violation--brand .table_analysis .table_analysis_header li{
+    width: 19.5%;
     text-align:left;
     padding-left: 20px;
 }
 
-.Base_violation--brand table tr th:nth-child(1){
+.item_base_on_brand:first-child,
+.Base_violation--brand .table_analysis .table_analysis_header li:nth-child(1){
     width: 8.5%;
 }
 
-.Base_violation--brand table tr th:nth-child(2){
-    width: 39%;
+.item_base_on_brand:nth-child(2),
+.Base_violation--brand .table_analysis .table_analysis_header li:nth-child(2){
+    width: 33%;
     text-align: left;
     padding-left: 20px;
 }
 
-.Base_violation--brand table tr td{
+.res_item_brand{
+    width: 58.5%;
+    display: flex;
+}
+
+.res_item_brand .item_base_on_brand{
+    width: 33.33%;
+}
+
+.Base_violation--brand .table_analysis .table_analysis_body li{
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -66,9 +83,14 @@
     padding-left: 20px;
 }
 
+.Base_violation--brand .list--select--option .list--select__right{
+    width: 25%;
+}
+
 .demo__pagination{
     text-align:right;
 }
+
 .demo__pagination span{
     margin: 0 15px;
     font-style: normal;
@@ -81,3 +103,24 @@
 .flex-space_beetween{
     justify-content:space-between !important;
 }
+
+.base_code_item{
+    width: 8.5% !important;
+}
+
+.base_code_item:nth-child(2){
+    width: 19.2% !important;
+}
+
+.base_code_item:nth-child(3){
+    width: 53.5% !important;
+}
+
+.base_code_item:nth-child(4){
+    width: 20.8% !important;
+}
+
+.title_table_analysis{
+    display: none;
+}
+

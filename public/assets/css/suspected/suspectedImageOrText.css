@@ -76,6 +76,13 @@
     padding: 13px 34px 0 34px;
     text-align: center;
     color: var(--gray-6F);
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
 
   }
   .file-input.-chosen > .label {
@@ -127,7 +134,11 @@
 
   .list--suspected__text--img{
     margin-bottom: 10px;
-    }
+}
     .list--suspected__text--img div{
         width: 100%;
+    }
+
+    .suspected__file__area  .file-input{
+        border: 1px solid var(--gray-C7);
     }

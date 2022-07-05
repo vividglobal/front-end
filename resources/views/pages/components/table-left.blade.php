@@ -99,7 +99,7 @@
 </div>
 
 <div class="modalimg open-modal" id="imageModal">
-    <div class="modal-content">
+    <div class="modal-content modal-content-img">
         <div class="div-close">
             <span class="close">&times;</span>
         </div>

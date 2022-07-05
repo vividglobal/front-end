@@ -193,7 +193,7 @@
     width: 100%;
     max-height: 475px;
     top: 50%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
   }
   .head-modal{
       width: 100%;
@@ -389,7 +389,7 @@
     margin-left: -1px;
   }
   .track-three{
-    flex: 1 0 calc(950px);
+    flex: 1 0 calc(680px);
   }
 .track-link{
   flex: 1 0 calc(60px);
@@ -449,6 +449,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .modal-content-img{
+    overflow-y: none !important;
+    top: 49%;
+    max-height: none;
   }
 
 
