@@ -1,5 +1,5 @@
 $("document").ready(function(){
-    var inputs = document.querySelectorAll('.file-input')
+    var inputs = document.querySelectorAll('.file-input_detect')
     for (var i = 0, len = inputs.length; i < len; i++) {
         customInput(inputs[i])
     }
@@ -8,7 +8,7 @@ $("document").ready(function(){
         $(".suspected__text__area textarea").val("")
         $(".checkbox__suspected:first-child").find("input").attr("checked",true)
         $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text")
-        $(".file-input").show()
+        $(".file-input_detect").show()
         $(".checkbox__suspected:first-child").addClass("active_checked")
 
 
@@ -18,21 +18,21 @@ $("document").ready(function(){
             $(".suspected__text__area textarea").val("")
             if($(this).find("input").attr("id") === "image"){
                 $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text").focus()
-                $(".file-input").show()
+                $(".file-input_detect").show()
             }else{
                 $(".suspected__text__area textarea").attr("placeholder","Enter the suspected link").focus()
-                $(".file-input").hide()
+                $(".file-input_detect").hide()
             }
     })
 
     function customInput (el) {
     const fileInput = el.querySelector('[type="file"]')
-    fileInput.onchange =
+        fileInput.onchange =
         fileInput.onmouseout = function () {
             if (!fileInput.value) return
             var value = fileInput.value.replace(/^.*[\\\/]/, '')
             el.className += ' -chosen'
-            $(".suspected__file__area").find(".file-input").find(".label").text(value)
+            $(".suspected__file__area").find(".file-input_detect").find(".label").text(value)
         }
     }
 

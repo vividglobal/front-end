@@ -1,12 +1,12 @@
-var modalconfim = $('.modal-confirm-title')
-var btnSwitch = $('.btn-switch');
-var span = $('.close');
+let modalconfim = $('.modal-confirm-title')
+let btnSwitch = $('.btn-switch');
+let span = $('.close');
 let articleId;
 
 btnSwitch.click(function () {
-    var id = $(this).attr("data-id")
+    let id = $(this).attr("data-id")
     modalconfim.show();
-    var url = ""+id+"/action-reset"
+    let url = ""+id+"/action-reset"
     let csrf = $('meta[name="csrf-token"]').attr('content')
     currentRow = $(this).parents('.scroll-table');
     articleId = currentRow.attr('data-id');

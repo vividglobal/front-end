@@ -409,7 +409,7 @@
     </div>
 
     <div class="modal-title open-modal" id="selectCodeModal">
-        <div class="modal-content modal-content-code">
+        <div class="modal-content modal-content-code chosee-code-style">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>
@@ -441,7 +441,6 @@
     </div>
 </div>
 
-
 <div class="container-table" id="div-moblie">
     <ul class="container-row-mobile">
         @foreach ($articles as $key => $article)
@@ -467,7 +466,6 @@
                                 ])
                                 data-status="{{$botStatus}}"                   
                             >{{getStatusText($botStatus)}}</p>
-
                             <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>                                   
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
