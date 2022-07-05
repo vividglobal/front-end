@@ -193,7 +193,7 @@
     width: 100%;
     max-height: 475px;
     top: 50%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
   }
   .head-modal{
       width: 100%;
@@ -449,6 +449,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .modal-content-img{
+    overflow-y: none !important;
+    top: 49%;
+    max-height: none;
   }
 
 
