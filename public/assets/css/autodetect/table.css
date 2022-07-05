@@ -153,10 +153,8 @@
 
 /* Modal Box */
 .modal-title {
-    /* display: none; */
     position: fixed;
     z-index: 1000;
-    /* padding-top: 100px; */
     left: 0;
     top: 0;
     width: 100%;
@@ -181,7 +179,10 @@
     background-color: rgba(0, 0, 0, .4);
     text-align: center;
 }
-
+.chosee-code-style{
+  max-height: 591px !important;
+  top: 50% !important;
+}
   .modal-content {
     background-color: #fefefe;
     margin: 0;
@@ -254,7 +255,7 @@
     }
 
   .modal-img{
-    width: 56%;
+    width: 50%;
     margin-bottom: 20px;
   }
 
