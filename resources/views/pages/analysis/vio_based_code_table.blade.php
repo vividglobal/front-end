@@ -1,5 +1,5 @@
 <div class="table_analysis">
-    <ul class="table_analysis_header">
+    <ul class="table_analysis_header head_code">
         <li class="base_code_item">No</li>
         <li  class="base_code_item">{{ __('Code article') }}</li>
         <li  class="base_code_item">{{ __('Violation type') }}</li>
@@ -27,7 +27,8 @@
                 {{ ($key + 1) + (($codeData->currentpage() - 1) * $codeData->perpage()) }}
             </li>
             <li  class="base_code_item">{{ $code->name }}</li>
-            <li  class="base_code_item">{{ $code->type_name }}</li>
+            <li  class="base_code_item type_pc">{{ $code->type_name }}</li>
+            <li  class="base_code_item type_mobi">{{ $code->type_name }}</li>
             <li  class="base_code_item">{{ $code->total_article }}</li>
     </ul>
     @endforeach
