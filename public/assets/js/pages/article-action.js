@@ -148,7 +148,8 @@ $(document).ready(function(){
 
     $('.btn-confirm-violation-and-choose-code').click(async function() {
         confirmArticleAsViolationModal.hide();
-        await updateStatusViolationColumnAndEnableReviewViolationCodeButton()
+        let disabledDisagreeBtn = true;
+        await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
     });
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
@@ -207,7 +208,7 @@ $(document).ready(function(){
         });
     }
 
-    async function updateStatusViolationColumnAndEnableReviewViolationCodeButton() {
+    async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
         isLoading = false;
         hide_overlay();
@@ -223,7 +224,7 @@ $(document).ready(function(){
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
                 `<div class="btn-status">
                     <a attr-status="${AGREE}" class="check-true check-violation-code" href="javascript:void(0)"></a>
-                    <a attr-status="${DISAGREE}" class="check-false-disabled check-violation-code dishable_overlay" href="javascript:void(0)"></a>
+                    <a attr-status="${DISAGREE}" class="check-false${disabledDisagreeBtn ? '-disabled' : ''} check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
         }else {
