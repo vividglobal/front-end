@@ -8,23 +8,22 @@
     <div class="list--suspected__text--img">
         <div  class="rows ">
             <label class="container__checkbox checkbox__suspected col l-4 m-6 c-6 ">
-                <input type="radio" name="radio" id="image">
+                <input type="radio" name="label_type" value="{{ LABEL_TYPE_IMAGE }}" id="image">
                 <span class="checkmark"></span>
             </label>
             <label class="container__checkbox checkbox__suspected col l-7 m-6 c-6">
-                <input type="radio" name="radio" id="text">
+                <input type="radio" name="label_type" value="{{ LABEL_TYPE_URL }}" id="text">
                 <span class="checkmark"></span>
             </label>
         </div>
         <!-- choose file -->
         <div class="rows">
             <div class="suspected__text__area l-8 m-12 c-12">
-                <textarea name="" id="" cols="30" rows="10">
-                </textarea>
+                <textarea name="text" cols="30" rows="10"></textarea>
             </div>
             <div class="suspected__file__area l-3 m-12 c-12">
-                <div class='file-input_detect'>
-                    <input type='file'>
+                <div class='file-input'>
+                    <input type='file' name="image">
                     <span class='button'><img src="{{asset('assets/image/upfile.svg')}}" alt=""></span>
                     <span class='label' data-js-label>{{ __('Or drop the image here') }}</label>
                 </div>
@@ -38,15 +37,15 @@
         <div class="select--country slc_suspected" id="language">
             <div class="search--input--country search_suspected" id="div-search">
                 <img src="{{asset('assets/image/search.svg')}}" alt="">
-                <input type="text" placeholder="Search for country" class="search--country">
+                <input type="text" name="country" placeholder="Search for country" class="search--country">
             </div>
             <div class="contain--selection">
-                <div class="select__one--country option_suspected  " id=0>
+                <div class="select__one--country option_suspected" id=0>
                     <p data-id=0 >{{ __('-Select country-') }}</p>
                     <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                 </div>
                 @foreach ($countries as $country)
-                    <div class="select__one--country option_suspected  " id="{{$country->_id}}">
+                    <div class="select__one--country option_suspected" id="{{$country->_id}}">
                         <p  data-id={{$country->_id}}>{{$country->name}}</p>
                         <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                     </div>
@@ -81,7 +80,13 @@
         </div>
     </div>
     <div class="border_gray gray_mobi"></div>
-@include('pages/manual-detection/captcha')
+
+    @include('pages/manual-detection/captcha')
+
+    <div class="btn__check">
+        <button id='submit_form'>{{ __('Check') }}</button>
+    </div>
+
 <div class="title__result">
     <p>{{ __('Result:') }}</p>
 </div>
@@ -91,10 +96,17 @@
 <div class="row-a">
     @include('pages/components/table-detect-label', compact('violationCode'))
 </div>
+
+<script>
+    const LABEL_TYPE_IMAGE = "{{ LABEL_TYPE_IMAGE }}";
+    const LABEL_TYPE_URL = "{{ LABEL_TYPE_URL }}";
+</script>
+
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+<script src="{{ asset('assets/js/pages/manual-detection.js') }}"></script>
 
 @endsection
 

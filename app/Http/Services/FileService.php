@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 class FileService
 {
     const DOCUMENT_PATH = 'public/documents/';
+    const ARTICLE_PATH = 'public/articles/';
 
     public $fileExtensions = ['pdf'];
 

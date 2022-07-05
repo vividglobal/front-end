@@ -5,15 +5,22 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Article\CreateRequest;
+use App\Http\Requests\Article\ManualLabelRequest;
+
 use App\Models\Mongo\Article;
 use App\Models\Mongo\ArticleLegalDocument;
 use App\Models\Mongo\ViolationCode;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Mongo\Country;
 
 use App\Http\Services\UserRoleService;
 use App\Http\Services\ExportService;
 use App\Http\Services\DocumentService;
+use App\Http\Services\CapchaService;
+use App\Http\Services\ArticleService;
+use App\Http\Services\FileService;
+
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ArticleController extends Controller
 {
@@ -46,7 +53,7 @@ class ArticleController extends Controller
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $params['status'] = Article::STATUS_PENDING;
 
-        if(isset($params['export']) && $params['export'] === true && Auth::check()) {
+        if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
 
             return  $this->exportPendingArticles('label-detection-violation',$articles);
@@ -305,16 +312,6 @@ class ArticleController extends Controller
                         $reviewStatus = $botViolationStatus;
                         $isDoneReview = true;
                     }else {
-                        // supervisor / operator needs to submit new violation code
-                        // if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
-                        //     return $this->responseFail([], "Please add violation code for this article");
-                        // }
-                        // $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
-                        // if(count($data) === 0) {
-                        //     return $this->responseFail([], "Invalid violation code");
-                        // }
-                        // $reviewViolationCode = $data['violation_code'];
-                        // $reviewViolationTypes = $data['violation_types'];
                         $reviewViolationCode = [];
                         $reviewViolationTypes = [];
                         $reviewStatus = Article::STATUS_VIOLATION;
@@ -384,34 +381,8 @@ class ArticleController extends Controller
     }
 
     private function getViolationCodeAndTypeData($violationCodeArr) {
-        $codex = ViolationCode::whereIn('_id', json_decode($violationCodeArr))->get();
-        if($codex) {
-            $listCode = [];
-            $listTypes = [];
-            foreach ($codex as $key => $code) {
-                $listCode[] = [
-                    'id' => $code->_id,
-                    'name' => $code->name,
-                ];
-                $type = $code->violationType()->first();
-                $listTypes[] = [
-                    'id'    => $type->_id,
-                    'name'  => $type->name,
-                    'color' => $type->color
-                ];
-            }
-            $unique_type_array = [];
-            foreach($listTypes as $element) {
-                $hash = $element['id'];
-                $unique_type_array[$hash] = $element;
-            }
-            $violationTypes = array_values($unique_type_array);
-            return [
-                'violation_code'  => $listCode,
-                'violation_types' => $violationTypes
-            ];
-        }
-        return [];
+        $articleService = new ArticleService();
+        return $articleService->getViolationCodeAndTypeData($violationCodeArr);
     }
 
     public function resetArticleToOriginState(Request $request, $id) {
@@ -456,5 +427,53 @@ class ArticleController extends Controller
     public function getOne($id) {
         $article = Article::findOrFail($id);
         return view('pages/components/article-detail', compact('article'));
+    }
+
+    public function detectArticleManually(ManualLabelRequest $request) {
+        $validated = $request->validated();
+
+        $capchaService = new CapchaService;
+        $isVerified = $capchaService->verify($validated['capcha_token']);
+        if(!$isVerified) {
+            return $this->responseFail([], "Invalid capcha");
+        }
+        $countryData = null;
+        if($validated['country_id']) {
+            $country = Country::find($validated['country_id']);
+            
+            if($country) {
+                $countryData = [
+                    'id' => $validated['country_id'],
+                    'name' => $country['name']
+                ];
+            }
+        }
+        $detectionImage = null;
+        if($request->hasFile('image')) {
+            $articleId = ''; // Will replace by AI API on final phase!!!
+
+            $fileService = new FileService();
+            $uploadResponse = $fileService->upload(FileService::ARTICLE_PATH.$articleId.'/', $request->file('image'));
+            $detectionImage = $request->getSchemeAndHttpHost() . $uploadResponse['path'];
+        }
+
+        $detectionUrl = isset($validated['url']) ? $validated['url'] : null;
+        $detectionText = isset($validated['caption']) ? $validated['caption'] : null;
+
+        // Will replace by AI API on final phase!!!
+        $articleService = new ArticleService();
+        $article = $articleService->createDummy(
+            $max = 1,
+            Article::DETECTION_TYPE_MANUAL,
+            $countryData,
+            $detectionImage,
+            $detectionUrl,
+            $detectionText,
+            $publishedDate = time(),
+            $crawlDate = time()
+        );
+
+        return $this->responseSuccess($article, "Label violation successfully");
+
     }
 }

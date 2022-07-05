@@ -1,7 +1,7 @@
 <script>
-    var getToken;
+    var captchaToken = null;
     function onSubmit(token) {
-        getToken = token;
+        captchaToken = token;
 
     }
     function validate(event) {
@@ -9,17 +9,15 @@
     }
 
     function onload() {
-        var element = document.getElementById('submit_captcha');
-        element.onclick = validate;
+        var element = document.getElementById('submit_form');
     }
 </script>
-    <form>
-        <div id='recaptcha' class="g-recaptcha"
-            data-sitekey= <?php echo env("RECAPTCHA_SITE_KEY") ?>
-            data-callback="onSubmit"
-            data-size="visible"></div>
-        <div class="btn__check">
-            <button id='submit_captcha'>{{ __('Check') }}</button>
-        </div>
-    </form>
+
+<form>
+    <div id='recaptcha' class="g-recaptcha"
+        data-sitekey= <?php echo env("RECAPTCHA_SITE_KEY") ?>
+        data-callback="onSubmit"
+        data-size="visible"></div>
+</form>
+
 <script>onload();</script>

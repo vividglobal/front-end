@@ -21,6 +21,9 @@ define('ROLE_OPERATOR', Admin::ROLE_OPERATOR);
 define('ASC', 'ASC');
 define('DESC', 'DESC');
 
+define('LABEL_TYPE_IMAGE', 'LABEL_TYPE_IMAGE');
+define('LABEL_TYPE_URL', 'LABEL_TYPE_URL');
+
 if (! function_exists('dump_data')) {
     function dump_data() {
         $args = func_get_args();

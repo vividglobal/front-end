@@ -23,6 +23,7 @@ Route::controller(Web\ArticleController::class)->group(function () {
         Route::get('/non-violation', 'getNoneViolationList');
         Route::get('/{id}/documents', 'documents');
         Route::get('/{id}/details', 'getOne');
+        Route::post('/manual-label-violation', 'detectArticleManually');
     });
 });
 
