@@ -6,6 +6,7 @@ let articleId;
 btnSwitch.click(function () {
     let id = $(this).attr("data-id")
     modalconfim.show();
+    $(".mdl-js").css("overflow-y","hidden");
     let url = ""+id+"/action-reset"
     let csrf = $('meta[name="csrf-token"]').attr('content')
     currentRow = $(this).parents('.scroll-table');
@@ -30,6 +31,7 @@ btnSwitch.click(function () {
         {
                 this.checked = false;
         });
+        $(".mdl-js").css("overflow-y","scroll");
     });
 });
 function removeCurrentRow() {
@@ -38,10 +40,12 @@ function removeCurrentRow() {
 }
 span.click(function () {
     modalconfim.hide();
+    $(".mdl-js").css("overflow-y","scroll");
 });
 
 $(window).on('click', function (e) {
     if ($(e.target).is('.modal-confirm-title')) {
         modalconfim.hide();
+        $(".mdl-js").css("overflow-y","scroll");
     }
 });

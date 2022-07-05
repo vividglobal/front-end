@@ -10,7 +10,7 @@ $(document).ready(function () {
     let span = $('.close');
     let checklogin = ""
     let csrf = $('meta[name="csrf-token"]').attr('content');
-    var elementExists = document.querySelector(".modal-title");
+    let elementExists = document.querySelector(".modal-title");
 
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
@@ -18,6 +18,8 @@ $(document).ready(function () {
         imageModal.find('.head-modal h1').text(brandName)
         imageModal.find('img').attr('src', imgSrc)
         imageModal.show();
+        $(".mdl-js").css("overflow-y","hidden");
+
     });
 
     btn.click(function () {
@@ -26,8 +28,8 @@ $(document).ready(function () {
         captionModal.find('.head-modal h1').text(brandName)
         captionModal.find('.title-modal').text(caption)
         captionModal.show();
+        $(".mdl-js").css("overflow-y","hidden");
     });
-
     span.click(function () {
         captionModal.hide();
         imageModal.hide();
@@ -35,28 +37,35 @@ $(document).ready(function () {
         btnuploadfile.hide();
         $('.div-item').remove();
         $('.no-file-remove').remove();
+        $(".mdl-js").css("overflow-y","scroll");
 
     });
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-title')) {
             captionModal.hide();
+            $(".mdl-js").css("overflow-y","scroll");
+
         }
         if ($(e.target).is('.modal-upload-file')) {
             uploadModal.hide();
             btnuploadfile.hide();
             $('.div-item').remove();
             $('.no-file-remove').remove();
+            $(".mdl-js").css("overflow-y","scroll");
 
         }
         if ($(e.target).is('.modalimg')) {
             imageModal.hide();
+        $(".mdl-js").css("overflow-y","scroll");
         }
+        // $(".mdl-js").css("overflow-y","scroll");
     });
 
     let rowId =""
     uploadfile.click(function(e) {
         $(this).addClass("check")
         uploadModal.show();
+        $(".mdl-js").css("overflow-y","hidden");
         show_overlay()
         rowId = $(this).attr("data-id")
         checklogin = $('.check-login').attr('t-login');
