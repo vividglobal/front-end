@@ -46,7 +46,7 @@ class ArticleController extends Controller
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $params['status'] = Article::STATUS_PENDING;
 
-        if(isset($params['export']) && $params['export'] === true && Auth::check()) {
+        if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
 
             return  $this->exportPendingArticles('label-detection-violation',$articles);
@@ -456,5 +456,9 @@ class ArticleController extends Controller
     public function getOne($id) {
         $article = Article::findOrFail($id);
         return view('pages/components/article-detail', compact('article'));
+    }
+
+    public function detectArticleManually(Request $request) {
+
     }
 }

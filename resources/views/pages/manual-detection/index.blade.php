@@ -8,19 +8,18 @@
     <div class="list--suspected__text--img">
         <div  class="rows ">
             <label class="container__checkbox checkbox__suspected col l-4 m-6 c-6 ">
-                <input type="radio" name="radio" id="image">
+                <input type="radio" name="label_type" value="text_image" id="image">
                 <span class="checkmark"></span>
             </label>
             <label class="container__checkbox checkbox__suspected col l-7 m-6 c-6">
-                <input type="radio" name="radio" id="text">
+                <input type="radio" name="label_type" value="url" id="text">
                 <span class="checkmark"></span>
             </label>
         </div>
         <!-- choose file -->
         <div class="rows">
             <div class="suspected__text__area l-8 m-12 c-12">
-                <textarea name="" id="" cols="30" rows="10">
-                </textarea>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
             </div>
             <div class="suspected__file__area l-3 m-12 c-12">
                 <div class='file-input'>
@@ -95,6 +94,7 @@
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+<script src="{{ asset('assets/js/pages/manual-detection.js') }}"></script>
 
 @endsection
 

@@ -1,3 +1,14 @@
+<form>
+    <div id='recaptcha' class="g-recaptcha"
+        data-sitekey= <?php echo env("RECAPTCHA_SITE_KEY") ?>
+        data-callback="onSubmit"
+        data-size="visible"></div>
+    <div class="btn__check">
+        <button id='submit_captcha'>{{ __('Check') }}</button>
+    </div>
+</form>
+<script>onload();</script>
+
 <script>
     var getToken;
     function onSubmit(token) {
@@ -12,13 +23,3 @@
         element.onclick = validate;
     }
 </script>
-    <form>
-        <div id='recaptcha' class="g-recaptcha"
-            data-sitekey= <?php echo env("RECAPTCHA_SITE_KEY") ?>
-            data-callback="onSubmit"
-            data-size="visible"></div>
-        <div class="btn__check">
-            <button id='submit_captcha'>{{ __('Check') }}</button>
-        </div>
-    </form>
-<script>onload();</script>
