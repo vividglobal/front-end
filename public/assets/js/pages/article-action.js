@@ -154,7 +154,7 @@ $(document).ready(function(){
     function updateDetectionColumnAfterSelectViolationCode(data) {
         let codeString = '';
         for (let i = 0; i < data.violation_code.length; i++) {
-            codeString += 
+            codeString +=
                         `<div>
                             <a>
                                 ${data.violation_code[i].name}

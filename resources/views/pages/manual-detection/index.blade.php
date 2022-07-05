@@ -23,7 +23,7 @@
                 </textarea>
             </div>
             <div class="suspected__file__area l-3 m-12 c-12">
-                <div class='file-input'>
+                <div class='file-input_detect'>
                     <input type='file'>
                     <span class='button'><img src="{{asset('assets/image/upfile.svg')}}" alt=""></span>
                     <span class='label' data-js-label>{{ __('Or drop the image here') }}</label>

@@ -38,7 +38,7 @@
     background: var(--white);
   }
 
-  .file-input {
+  .file-input_detect {
     max-width: 203px;
     max-height: 203px;
     width: 100%;
@@ -52,7 +52,7 @@
     /* border: 1px solid var(--gray-C7); */
   }
 
-  .file-input > [type='file'] {
+  .file-input_detect > [type='file'] {
     position: absolute;
     top: 0;
     left: 0;
@@ -63,11 +63,11 @@
     cursor: pointer;
   }
 
-  .file-input > .button {
+  .file-input_detect > .button {
     cursor: pointer;
   }
 
-  .file-input > .label {
+  .file-input_detect > .label {
 
     font-style: normal;
     font-weight: 400;
@@ -85,7 +85,7 @@
     cursor: pointer;
 
   }
-  .file-input.-chosen > .label {
+  .file-input_detect .-chosen > .label {
     opacity: 1;
   }
 
@@ -139,6 +139,6 @@
         width: 100%;
     }
 
-    .suspected__file__area  .file-input{
+    .suspected__file__area  .file-input_detect{
         border: 1px solid var(--gray-C7);
     }
