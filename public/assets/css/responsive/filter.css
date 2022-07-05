@@ -75,6 +75,18 @@
     #recaptcha div:first-child{
         margin-top: 25px;
     }
+
+    .sort_value{
+        border-bottom: 1px solid var(--gray-C7);
+    }
+
+    .sort_value .container_checkbox{
+        margin-bottom: 10px;
+    }
+
+    .sort_by .container_checkbox{
+        margin-top: 10px;
+    }
 }
 
 @media (min-width: 740px) and (max-width: 1113px){

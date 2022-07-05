@@ -94,75 +94,83 @@ $("document").ready(function () {
             .css({ "text-decoration": "underline" });
     }
 
+    function sortByparam(img,btn,paramSortBy){
+        let getDataValue =   $(".sort_mobi").find("> p").attr("data-value")
+        switch (paramSortBy) {
+            case "company_name":
+                $(".sort_company").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Company`)
+                $(".sort_mobi").find("> p").attr("data-name","Company")
+                break;
+            case "country_name":
+                $(".sort_country").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Country`)
+                $(".sort_mobi").find("> p").attr("data-name","Country")
+                break;
+            case "brand_name":
+                $(".sort_brand").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Brand`)
+                $(".sort_mobi").find("> p").attr("data-name","Brand")
+                break;
+            case "published_date":
+                $(".sort_public_date").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Published date`)
+                $(".sort_mobi").find("> p").attr("data-name","Published date")
+                break;
+            case "crawl_date":
+                $(".sort_crawl_date").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Crawl date`)
+                $(".sort_mobi").find("> p").attr("data-name","Crawl date")
+                break;
+            case "bot_status":
+                $(".sort_crawl_date").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: VIVID's status`)
+                $(".sort_mobi").find("> p").attr("data-name","VIVID's status")
+
+                break;
+            case "supervisor_status":
+                $(".sort_supervisor").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Supervisor's status`)
+                $(".sort_mobi").find("> p").attr("data-name","Supervisor's status")
+                break;
+            case "operator_status":
+                $(".sort_operator").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Operator's status`)
+                $(".sort_mobi").find("> p").attr("data-name","Operator's status")
+                break;
+            case "penalty_issued":
+                $(".sort_penalty_issued").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Penalty issued`)
+                $(".sort_mobi").find("> p").attr("data-name","Penalty issued")
+                break;
+            default:
+        }
+    }
+
     ///ENABLE---- DISABLE SORT IMAGE
     if (paramSortBy !== null && paramSortValue !== null) {
+
+            $(".sort_value").find(".container_checkbox").find("span").removeClass("activeRadio");
+            $(".sort_value").find(".container_checkbox").find("input").prop('checked',false)
+            $(".sort_by").find(`#${paramSortBy}`).find("span").addClass("activeRadio");
+            $(".sort_by").find(`#${paramSortBy}`).find("input").prop('checked',true)
+            $(".sort_mobi").find("> p").attr("data-by",paramSortBy)
         if (paramSortValue === "asc") {
-            var up_disable = "../assets/image/Archive/up_disable.svg";
+            $(".sort_value").find(".asc").find("input").prop('checked',true)
+            $(".sort_value").find(".asc").find("span").addClass("activeRadio");
+            $(".sort_mobi").find("> p").attr("data-value","A to Z")
+            var img = "../assets/image/Archive/up_disable.svg";
             var btn = ".sort_up";
-            switch (paramSortBy) {
-                case "company_name":
-                    $(".sort_company").find(btn).attr("src", up_disable);
-                    break;
-                case "country_name":
-                    $(".sort_country").find(btn).attr("src", up_disable);
-                    break;
-                case "brand_name":
-                    $(".sort_brand").find(btn).attr("src", up_disable);
-                    break;
-                case "published_date":
-                    $(".sort_public_date").find(btn).attr("src", up_disable);
-                    break;
-                case "crawl_date":
-                    $(".sort_crawl_date").find(btn).attr("src", up_disable);
-                    break;
-                case "sort_bot_status":
-                    $(".sort_crawl_date").find(btn).attr("src", up_disable);
-                    break;
-                case "supervisor_status":
-                    $(".sort_supervisor").find(btn).attr("src", up_disable);
-                    break;
-                case "operator_status":
-                    $(".sort_operator").find(btn).attr("src", up_disable);
-                    break;
-                case "penalty_issued":
-                    $(".sort_penalty_issued").find(btn).attr("src", up_disable);
-                    break;
-                default:
-            }
+            sortByparam(img,btn,paramSortBy)
         } else {
-            var up_disable = "../assets/image/Archive/down_disable.svg";
+            $(".sort_value").find(".desc").find("input").prop('checked',true)
+            $(".sort_value").find(".desc").find("span").addClass("activeRadio");
+            $(".sort_mobi").find("> p").attr("data-value","Z to A")
+            var img = "../assets/image/Archive/down_disable.svg";
             var btn = ".sort_down";
-            switch (paramSortBy) {
-                case "company_name":
-                    $(".sort_company").find(btn).attr("src", up_disable);
-                    break;
-                case "country_name":
-                    $(".sort_country").find(btn).attr("src", up_disable);
-                    break;
-                case "brand_name":
-                    $(".sort_brand").find(btn).attr("src", up_disable);
-                    break;
-                case "published_date":
-                    $(".sort_public_date").find(btn).attr("src", up_disable);
-                    break;
-                case "crawl_date":
-                    $(".sort_crawl_date").find(btn).attr("src", up_disable);
-                    break;
-                case "sort_bot_status":
-                    $(".sort_crawl_date").find(btn).attr("src", up_disable);
-                    break;
-                case "supervisor_status":
-                    $(".sort_supervisor").find(btn).attr("src", up_disable);
-                    break;
-                case "operator_status":
-                    $(".sort_operator").find(btn).attr("src", up_disable);
-                    break;
-                case "penalty_issued":
-                    $(".sort_penalty_issued").find(btn).attr("src", up_disable);
-                    break;
-                default:
-            }
+            sortByparam(img,btn,paramSortBy)
         }
+
     }
 
     function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param,nameMb) {
@@ -219,8 +227,21 @@ $("document").ready(function () {
     })
 
     $(".btn__apply").on("click", function () {
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width > 1113){
             replaceURL(paramSortBy, paramSortValue);
-            resetFiter()
+        }else{
+            let getParamSortValue = $(".sort_mobi").find("> p").attr("data-value")
+            let getParamSortBy = $(".sort_mobi").find("> p").attr("data-by")
+            if(getParamSortBy !== undefined && getParamSortValue !== undefined){
+                if(getParamSortValue == "A to Z"){
+                    replaceURL(getParamSortBy,"asc");
+                }else{
+                    replaceURL(getParamSortBy,"desc");
+                }
+            }
+        }
+        resetFiter()
     });
 
     //LIST SHOWING
