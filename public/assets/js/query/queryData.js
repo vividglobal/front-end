@@ -222,7 +222,6 @@ $("document").ready(function () {
             let nameMb = $(".violation_mobi");
             returnTextButtonQuery(name, "", "", "", paramViolation,nameMb);
         }
-
         resetFiter()
     })
 

@@ -78,6 +78,10 @@
     line-height: 22px;
 }
 
+.btn_excel:before{
+    content: "Export excel";
+}
+
 .btn_excel{
     color: var(--white);
     font-family: 'Avenir' !important;

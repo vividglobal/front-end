@@ -99,15 +99,33 @@ $(document).ready(function(){
             newParams.push('violation_type_id='+violationTypeId);
             brandStrParams = newParams.join('&');
         }
+        let sortFieldBrand = $(".sort_mobi").find(".text_brand").attr("data-sort-field");
+        let sortValueBrand = $(".sort_mobi").find(".text_brand").attr("data-sort-value");
+        let parentTableBrand = $(".sort_mobi").find(".text_brand").attr("data-table");
+
+        let sortFieldCode = $(".sort_mobi").find(".text_code").attr("data-sort-field");
+        let sortValueCode = $(".sort_mobi").find(".text_code").attr("data-sort-value");
+        let parentTableCode = $(".sort_mobi").find(".text_code").attr("data-table");
+        if(parentTableBrand !== undefined){
+            sortForAnalysis(sortFieldBrand,sortValueBrand,parentTableBrand)
+        }
+        if(parentTableCode !== undefined){
+            sortForAnalysis(sortFieldCode,sortValueCode,parentTableCode)
+        }
+
         getViolationBasedBrand();
+        resetFiter()
     })
 
     $(document).on('click', '.ico-sort', function() {
         let sortField = $(this).attr('data-sort-field');
         let sortValue = $(this).attr('data-sort-value');
-        let newParams = [];
         let parentTableId = $(this).parents('.table-wrapper').attr('id');
+        sortForAnalysis(sortField,sortValue,parentTableId)
+    });
 
+    function sortForAnalysis(sortField,sortValue,parentTableId){
+        let newParams = [];
         if(parentTableId === 'vio-based-brand') {
             newParams = removeParamFromList(brandStrParams.split('&'), 'sort_by');
             newParams.push(`sort_by=${sortField}`);
@@ -121,7 +139,7 @@ $(document).ready(function(){
             codeStrParams = newParams.join('&');
             getViolationBasedCode();
         }
-    });
+    }
 
     function removeParamFromList(list, name) {
         let newParams = [];
@@ -132,6 +150,18 @@ $(document).ready(function(){
         }
         return newParams;
     }
+
+    function resetFiter(){
+        $("#myFilter").removeClass("open_menu")
+        $(".overlay").css({"width":"0%","display":"none"})
+        $(".checkbox_mobi").find("#toggle").hide()
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
+    }
+
+    $(".close__filter").click(function() {
+        resetFiter()
+    })
 
     async function getGeneralData() {
         add_loader(generalIdEl);
