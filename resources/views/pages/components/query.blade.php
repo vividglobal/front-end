@@ -48,7 +48,6 @@
     </div>
 </div>
 
-
  {{-- //MOBILE --}}
  <div id="myFilter" class="sideFilter">
     <a class="closebtn closeFilter" onclick="closeNav()"><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
@@ -60,7 +59,7 @@
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
         @endif
-        <div class="checkbox_mobi">
+        <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">
                 <div>
                     <img src="{{asset('assets/image/sort_black.svg')}}" alt="">
@@ -68,7 +67,7 @@
                 </div>
                 <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
-            <p></p>
+            <p data-value="A to Z">A to Z</p>
             @include('pages/components/sort')
         </div>
         <div class="border_gray"></div>

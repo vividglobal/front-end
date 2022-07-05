@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="list--search--select" style="margin:0 199px">
+<div class="list--search--select title_analysis" >
     <div class="list--title">
         <p>{{ __('Analysis') }}</p>
     </div>
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="index_violation-nonViolation" id="general"></div>
+<div class="index_violation-nonViolation rows" id="general"></div>
 
 <div class="Base_violation--brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">

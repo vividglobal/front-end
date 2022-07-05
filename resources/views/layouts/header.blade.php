@@ -126,7 +126,7 @@
         @include('modal/editAccount')
     </div>
     <div class="overlay overlay_nav" ></div>
-    <span class="open_Nav {{(request ()-> is ('/')) ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
     <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) ? 'hide': ''}}" style="cursor:pointer" ></span>
 </div>
 

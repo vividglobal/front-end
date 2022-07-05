@@ -2,6 +2,7 @@
     var getToken;
     function onSubmit(token) {
         getToken = token;
+
     }
     function validate(event) {
         event.preventDefault();
