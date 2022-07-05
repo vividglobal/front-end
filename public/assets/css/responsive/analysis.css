@@ -1,7 +1,149 @@
-@media (max-width: 1113px) {
+@media (max-width: 1233px) {
+    .Base_violation--brand,
+    .index_violation-nonViolation,
     .title_analysis .list--select--option,
     .title_analysis .list--title {
+        margin: 15px 150px;
+    }
+}
+
+@media (max-width: 1113px) {
+    /* //STATUS */
+    .title_analysis .list--title {
         margin: 0 30px 0 60px;
+    }
+
+    .title_analysis .list--select--option{
+        margin: 0 30px 0 0px;
+    }
+
+
+    .Base_violation--brand,
+    .index_violation-nonViolation{
+        margin: 15px 30px 0 15px;
+    }
+
+    .index_violation-nonViolation{
+        height: 100%;
+    }
+
+    .title_table_analysis{
+        display: block;
+        text-align: center;
+        margin: 20px 0 10px 0;
+    }
+
+    .title_table_analysis p{
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 20px;
+        line-height: 29px;
+        color: #072136;
+    }
+
+    .index__violation {
+        display: block;
+    }
+
+    .index__violation:nth-child(2) div{
+        background: #E2F2E3;
+        margin: 0px 20px 10px 20px;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .index__violation:nth-child(3) div{
+        background: #FFD2DA;
+        margin: 0px 20px 10px 20px;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .index__violation:nth-child(4) div{
+        background: #DDEAF3;
+        margin: 0px 20px 20px 20px;
+        position: relative;
+        border-radius: 5px;
+    }
+
+    .title-violation{
+        padding: 15px 20px ;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 170%;
+        color: #6F6F6F;
+    }
+
+    .number-violation{
+        padding: 0px 20px 15px 20px;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 31px;
+        line-height: 42px;
+        color: #5DA364 !important;
+    }
+
+    .index__violation:nth-child(3) > div .number-violation{
+        color: #D80027 !important;
+    }
+
+    .index__violation:nth-child(4) > div .number-violation{
+        color: var(--primary) !important;
+    }
+
+    .index__violation:nth-child(4) > div:after{
+        content: '100%';
+        position: absolute;
+        top: 0px;
+        right: 0;
+        margin: 15px 20px;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 136.5%;
+        color: var(--gray-6F) !important;
+    }
+
+    .percent-violation{
+        position: absolute;
+        top: 0px;
+        right: 0;
+        margin: 15px 20px;
+        background: transparent !important;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 136.5%;
+        color: var(--gray-6F) !important;
+    }
+    /* TABLE BASE ON BRAND */
+    .Base_violation--brand .list--select--option .list--select__right{
+        width: 100%;
+    }
+
+    .Base_violation--brand .list--select--option .list--select__right p {
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 20px;
+        line-height: 29px;
+        color: var(--primary);
+    }
+
+    .table_analysis_body > li:first-child,
+    .table_analysis_header{
+        display: none;
+    }
+
+    .table_brand .table_analysis_body{
+        display: block;
+        position: relative;
     }
 
 }

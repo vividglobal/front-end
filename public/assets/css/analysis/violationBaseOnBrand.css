@@ -83,6 +83,10 @@
     padding-left: 20px;
 }
 
+.Base_violation--brand .list--select--option .list--select__right{
+    width: 25%;
+}
+
 .demo__pagination{
     text-align:right;
 }
@@ -116,4 +120,7 @@
     width: 20.8% !important;
 }
 
+.title_table_analysis{
+    display: none;
+}
 
