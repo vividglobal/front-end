@@ -22,6 +22,10 @@
         margin: 0 16px;
     }
 
+    .btn__check{
+        margin-left: 16px;
+    }
+
     .fix_manual > form .btn__check{
         max-width: 100% !important;
     }
