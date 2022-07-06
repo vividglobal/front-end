@@ -37,10 +37,8 @@ $("document").ready(function(){
             .done(function( msg ) {
                 if(msg){
                     hide_overlay()
-                    openSnackBar("Change status progress successfully",1500)
-                    setTimeout(()=>{
-                        window.location.href = window.location.href
-                    },1500)
+                    show_success("Change status progress successfully",1500)
+                    window.location.href = window.location.href
                 }
             });
     })

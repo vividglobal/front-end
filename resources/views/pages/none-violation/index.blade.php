@@ -3,7 +3,7 @@
 @section('content')
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Code violation list') }}</p>
+        <p>{{ __('Non-violation list') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
     <!-- list Btn  -->

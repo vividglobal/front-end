@@ -64,13 +64,15 @@ $(document).ready(function () {
     let rowId =""
     uploadfile.click(function(e) {
         $(this).addClass("check")
+        let user = $(this).attr("data-user")
         uploadModal.show();
         $(".mdl-js").css("overflow-y","hidden");
         show_overlay()
         rowId = $(this).attr("data-id")
         checklogin = $('.check-login').attr('t-login');
-        renderFileItem(rowId)
+        renderFileItem(rowId,user)
     })
+
     $(document).on('change', '.file-input', async function(){
         $('.no-file-remove').remove();
         let flag = true
@@ -131,7 +133,7 @@ $(document).ready(function () {
         }
     })
 
-    function renderFileItem(rowId) {
+    function renderFileItem(rowId,user) {
         $.ajax({
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
@@ -160,12 +162,14 @@ $(document).ready(function () {
                             $('#box_list_file').prepend(fileHtmlItems);
                         }
                     }else{
-                        fileHtmlItems = `<div class="no-file-remove" style="
-                        display: flex;
-                        justify-content: center;">
-                        <p class="no-file-upload">No files</p>
-                        </div>`
-                        $('#box_list_file').prepend(fileHtmlItems);
+                        if(user.toUpperCase() !== "OPERATOR"){
+                            fileHtmlItems = `<div class="no-file-remove" style="
+                            display: flex;
+                            justify-content: center;">
+                            <p class="no-file-upload">No files</p>
+                            </div>`
+                            $('.no_files').prepend(fileHtmlItems);
+                        }
                     }
                 }
                 hide_overlay()

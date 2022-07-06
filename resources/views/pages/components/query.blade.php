@@ -9,7 +9,7 @@
 
         <div class="list_filter">
             @if(in_array('date', $list_filter) || $show_all_filter)
-            <div id="daterange">
+            <div id="daterange" class="no_apply">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
@@ -50,12 +50,17 @@
 
  {{-- //MOBILE --}}
  <div id="myFilter" class="sideFilter">
-    <a class="closebtn closeFilter" onclick="closeNav()"><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
+    <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
     <div class="filter_list-mobi">
-            <div id="daterange" class="daterange_mobi">
+            <div id="daterange" class="daterange_mobi no_apply">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+            </div>
+            <div id="daterange" class="daterange_mobi is_apply">
+                <i class="ico-date"></i>
+                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
             </div>
         <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">
@@ -147,8 +152,8 @@
         <div class="border_gray"></div>
     </div>
     <div class="btn_apply_mobi">
-        <button class="btn__apply" id="apply_query" >Apply</button>
         <button class="close__filter">Cancel</button>
+        <button class="btn__apply" id="apply_query" >Apply</button>
     </div>
   </div>
 

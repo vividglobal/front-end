@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <link rel="stylesheet" href="../assets/css/userManual/style.css">
+<link rel="stylesheet" href="../assets/css/responsive/user-manual.css">
     <div class="list--search--select" >
         <div class="list--title">
             <p>{{ __('Guide video') }}</p>
@@ -15,7 +16,7 @@
     </div>
 </div>
 <div class="list--search--select" >
-    <div class="list--title">
+    <div class="list--title title_instruction">
         <p>{{ __('Instruction list') }}</p>
     </div>
 </div>
@@ -138,7 +139,7 @@
             </div>
             <a href="#cl6">
                 <button class="child-accordion">
-                     __("Kiểm duyệt bài viết mà Vivid dự đoán là “Vi phạm“")  <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                     {{ __("Kiểm duyệt bài viết mà Vivid dự đoán là “Vi phạm“") }}  <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl6">
@@ -245,7 +246,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-27.png') }}" loading="lazy">
             </div>
             <a href="#cl10">
-                <button class="child-accordion"> __("Hướng dẫn cách lấy đường dẫn từ bài viết mà Vivid đã quét") ?>
+                <button class="child-accordion"> {{__("Hướng dẫn cách lấy đường dẫn từ bài viết mà Vivid đã quét")}} ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
@@ -325,27 +326,5 @@
         </div>
         </div>
 </div>
-<script>
-            $(document).ready(function(){
-                $(".accordion").click(function(e){
-                    let target = $(this).closest('a').attr("href");
-                    var img = $(this).find("img").attr("src")
-                    $(this).find("img").attr("src","{{ asset('assets/image/plus.svg') }}")
-                    if(img.indexOf("plus")!== -1){
-                        $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
-                    }
-                    $(target).slideToggle(0,"linear");
-                })
-
-                $(".child-accordion").click(function(e){
-                    let target = $(this).closest('a').attr("href");
-                    var img = $(this).find("img").attr("src")
-                    $(this).find("img").attr("src","{{ asset('assets/image/plus.svg') }}")
-                    if(img.indexOf("plus")!== -1){
-                        $(this).find("img").attr("src","{{ asset('assets/image/minus.svg') }}")
-                    }
-                    $(target).slideToggle(0,"linear");
-                })
-            })
-        </script>
+<script src="{{ asset('assets/js/pages/user-manual.js') }}"></script>
 @endsection

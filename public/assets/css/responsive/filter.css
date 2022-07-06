@@ -1,3 +1,6 @@
+.is_apply{
+    display: none !important;
+}
 @media(max-width: 1113px){
     .list_filter{
         display: none;
@@ -54,7 +57,7 @@
         max-width: 100%;
     }
 
-    .btn_apply_mobi button:nth-child(2){
+    .btn_apply_mobi button:nth-child(1){
         border: 1px solid var(--gray-C7);
         background: var(--white);
         color: var(--gray-6F);
@@ -124,6 +127,14 @@
     }
     .btn_apply_mobi{
         width: 100%;
+    }
+
+    .is_apply{
+        display: flex !important;
+    }
+
+    .no_apply{
+        display: none !important;
     }
 }
 

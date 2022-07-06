@@ -1,0 +1,39 @@
+@media(max-width: 1113px) {
+    .list--title {
+        margin-left: 30px;
+    }
+
+    .container__usermanual{
+        margin: 0 60px;
+    }
+
+    .wrapper{
+        margin: 0;
+    }
+
+    .title_instruction{
+        margin: 10px 0 10px 30px;
+    }
+}
+
+@media (max-width: 873px) {
+    .accordion{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 739px) {
+    .container__usermanual{
+        margin: 0 15px;
+    }
+    .accordion{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 560px) {
+    .accordion{
+        font-size: 14px;
+        height: 90px;
+    }
+}

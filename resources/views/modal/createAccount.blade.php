@@ -33,7 +33,7 @@
                 <div class="modal--input " >
                     <p>{{ __('New password') }}</p>
                     <div class="input--modal">
-                        <input type="password" placeholder="Enter your current password" class="form-pwd create_pwd  " name="password">
+                        <input type="password" placeholder="Enter your password" class="form-pwd create_pwd  " name="password">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                 </div>

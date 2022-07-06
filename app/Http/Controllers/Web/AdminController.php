@@ -8,6 +8,7 @@ use App\Models\Mongo\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\CreateRequest;
 use App\Http\Requests\Admin\UpdateRequest;
+use Illuminate\Hashing\BcryptHasher;
 
 class AdminController extends Controller
 {
@@ -29,15 +30,20 @@ class AdminController extends Controller
     public function update(UpdateRequest $request, Admin $admin ,$id)
     {
         $admin = Admin::find($id);
+        $hasher = app('hash');
         $input = $request->all();
+
         if(isset($input['password'])){
-            $input['password'] = Hash::make($input['password']);
+            if ($hasher->check($input['password_current'], $admin->password)) {
+                $input['password'] = Hash::make($input['password']);
+            }else{
+                return $this->responseFail([], "Incorrect old password. Please re-enter correct password.");
+            }
         }
 
-        if($admin) {
-            $admin->update($input);
-            return $this->responseSuccess([], "Update admin successfully");
-        }
+        $admin->update($input);
+        return $this->responseSuccess([], "Update admin successfully");
+
         return $this->responseFail([], "Update admin Failed");
     }
 

@@ -1,17 +1,30 @@
 $("document").ready(function () {
 
-  $('input[name="daterange"]').daterangepicker({
-                autoUpdateInput: false,
-                autoApply: true,
-                maxDate: new Date(),
-                drops: "up",
-                opens: "right",
-                drops: "down",
-                locale: {
-                    firstDay: 1,
-                    format: "DD/MM/YYYY",
-                },
-            });
+  $('.no_apply').find('input[name="daterange"]').daterangepicker({
+        autoUpdateInput: false,
+        autoApply: true,
+        maxDate: new Date(),
+        drops: "up",
+        opens: "right",
+        drops: "down",
+        locale: {
+            firstDay: 1,
+            format: "DD/MM/YYYY",
+        },
+    });
+
+    $('.is_apply').find('input[name="daterange"]').daterangepicker({
+        autoUpdateInput: false,
+        autoApply: false,
+        maxDate: new Date(),
+        drops: "up",
+        opens: "right",
+        drops: "down",
+        locale: {
+            firstDay: 1,
+            format: "DD/MM/YYYY",
+        },
+    });
 
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
