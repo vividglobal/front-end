@@ -161,7 +161,7 @@
                                 <div class="entry">
                                     <div class="list--status {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
                                     id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{@Auth::user()->role}}">
-                                        @if(isset($article->progress_status))
+                                        @if(isset($article->progress_status) && empty($article->progress_status))
                                             @if($article->progress_status == "NOT_STARTED")
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
                                             @elseif($article->progress_status == "PROCESSING")
@@ -293,7 +293,7 @@
             <a href="/articles/{{$article->_id}}/details" style="text-decoration: none;">
                 <div class="lish-child">
                     <div class="media-img">
-                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">                           
+                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
                     </div>
                     <div class="media-body">
                         <div class="media-body-top">
@@ -309,10 +309,10 @@
                                     'violation-color'   => isViolationStatus($botStatus),
                                     'unviolation-color' => isNoneViolationStatus($botStatus)
                                 ])
-                                data-status="{{$botStatus}}"                   
+                                data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
 
-                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>                                   
+                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
                         <h4 class="p-style">Nature One Dairy - Australia</h4>
