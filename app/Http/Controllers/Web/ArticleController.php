@@ -342,7 +342,7 @@ class ArticleController extends Controller
                     if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
                         return $this->responseFail([], "Please add violation code for this article");
                     }
-                    $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
+                    $data = $this->getViolationCodeAndTypeData(json_decode($inputs['violation_code']));
                     if(count($data) === 0) {
                         return $this->responseFail([], "Invalid violation code");
                     }
