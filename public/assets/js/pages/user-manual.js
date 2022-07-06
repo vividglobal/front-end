@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $(".accordion").click(function(e){
-        let target = $(this).closest('a').attr("href");
+        let target = $(this).closest('a').attr("data-id");
         var img = $(this).find("img").attr("src")
         $(".accordion").not(this).closest('a').closest(".wrap-accordion").find(".panel").hide()
         $(".accordion").not(this).closest('a').closest(".wrap-accordion").find(".panel").find("div").hide()
@@ -13,10 +13,12 @@ $(document).ready(function(){
             $(this).find("img").attr("src","../../assets/image/plus.svg")
             $(target).hide();
         }
+
+        $(this)[0].scrollIntoView();
     })
 
     $(".child-accordion").click(function(e){
-        let target = $(this).closest('a').attr("href");
+        let target = $(this).closest('a').attr("data-id");
         var img = $(this).find("img").attr("src")
         $(".child-accordion").not(this).closest('a').closest(".panel").find(".add").hide()
         $(".child-accordion").not(this).closest('a').closest(".panel").find("a").find("img").attr("src","../../assets/image/plus.svg")
@@ -27,5 +29,6 @@ $(document).ready(function(){
             $(this).find("img").attr("src","../../assets/image/plus.svg")
             $(target).hide();
         }
+        $(this)[0].scrollIntoView();
     })
 })

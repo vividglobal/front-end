@@ -13,6 +13,7 @@
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
             @endif
             @if(in_array('brand', $list_filter) || $show_all_filter)
@@ -33,7 +34,7 @@
             @if(in_array('showing', $list_filter)|| $show_all_filter)
                 <p>{{ __('Showing') }}</p>
                 <div class="list--showing">
-                    <select name="" id=""></select>
+                    <select ></select>
                 </div>
             @endif
             @if(in_array('excel', $list_filter)|| $show_all_filter)
@@ -56,11 +57,13 @@
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
             <div id="daterange" class="daterange_mobi is_apply">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
         <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">

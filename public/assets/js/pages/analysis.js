@@ -75,6 +75,15 @@ $(document).ready(function(){
         }
     })
 
+     // REMOVE DATERANGE
+     $(".remove_daterange").click(function(){
+        let date = $('input[name="daterange"]').val()
+        if(date !== ""){
+            $('input[name="daterange"]').val("")
+            window.location.href = window.location.href
+        }
+    })
+
     $(document).on('click', ".pagination li", function(){
         let page = parseInt($(this).find("a").text());
         if(page) {

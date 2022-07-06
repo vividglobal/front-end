@@ -171,8 +171,9 @@ $("document").ready(function(){
                 }
             }else{
                 if(pwd.length  < 6 || re_pwd.length  < 6 || current_pwd.length < 6 ){
-                    $(".edit_re_password").text("Password length is more than 6 characters")
-                }else if(pwd == re_pwd){
+                    $(".edit_re_password").text("Password length is more than 6 characters and is required")
+                }else{
+                    if(pwd == re_pwd){
                     show_overlay()
                     $.ajax({
                         method: "PUT",
@@ -188,19 +189,20 @@ $("document").ready(function(){
                             "password_current" : current_pwd,
                             "role" : checkedAuth
                         }
-                    })
-                    .done(function( msg ) {
-                        show_success("Profile updated successfully")
-                        hide_overlay()
-                        window.location.href = window.location.href
-                        resetModal()
-                    })
-                    .fail(function(error) {
-                        $(".edit_current_password").text(error.responseJSON.message)
-                        hide_overlay()
-                    });
-                }else{
-                    $(".edit_re_password").text("Confirmation password does not match. Please re-enter")
+                        })
+                        .done(function( msg ) {
+                            show_success("Profile updated successfully")
+                            hide_overlay()
+                            window.location.href = window.location.href
+                            resetModal()
+                        })
+                        .fail(function(error) {
+                            $(".edit_current_password").text(error.responseJSON.message)
+                            hide_overlay()
+                        });
+                    }else{
+                        $(".edit_re_password").text("Password and confirmation password does not match. Please re-enter")
+                    }
                 }
             }
         }

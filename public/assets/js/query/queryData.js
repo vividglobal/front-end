@@ -419,5 +419,13 @@ $("document").ready(function () {
             );
         }
     }
+    // REMOVE DATERANGE
+    $(".remove_daterange").click(function(){
+        let date = $('input[name="daterange"]').val()
+        if(date !== ""){
+            $('input[name="daterange"]').val("")
+            replaceURL(paramSortBy, paramSortValue)
+        }
+    })
 
 });
