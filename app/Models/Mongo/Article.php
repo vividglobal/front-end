@@ -96,8 +96,8 @@ class Article extends Model
         }
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date']);
-            $endDate = strtotime($params['end_date']);
+            $startDate = strtotime($params['start_date'].' 00:00:00');
+            $endDate = strtotime($params['end_date'].' 23:59:59');
             $matchConditions[] = [ '$gte' => [ '$published_date',  $startDate ] ];
             $matchConditions[] = [ '$lte' => [ '$published_date',  $endDate ] ];
         }
