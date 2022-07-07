@@ -107,6 +107,11 @@ $(document).ready(function () {
                     if(JSON.parse(response).data.article_id === rowId){
                         $(".check").attr('src','../assets/image/dislega2.png');
                         $(".date-penalty").find(`#${rowId}`).text(now)
+                        let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                        .find(".select--status").find(".select__one--status:nth-child(3)")
+                        if(progressStatus.hasClass("hide")){
+                            progressStatus.addClass("show").removeClass("hide")
+                        }
                     }
                 }
                 show_success(message);
@@ -170,28 +175,48 @@ $(document).ready(function () {
     $(document).on("click", '.delete-file', async function (){
         let rowIdelemnet = $(this).attr("id-delete");
         let parentItem = $(this).parents('.items_file')
+        let filesNumber = $(".item-one-file").length
+        DeleteFile(rowIdelemnet,parentItem,filesNumber)
+    })
+
+    function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
-        let response = await $.ajax({
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
+            data :{
+                "article_id": filesNumber <= 1 ? rowId : ""
+            },
             method: "DELETE",
             url:"/articles-document/"+rowIdelemnet+"",
-        });
-        let chekclengthfile = $("div#box_list_file").children().length
-        if(chekclengthfile <= 13){
-            $("div#box_list_file").removeClass("row-upload")
-        }
-        hide_overlay()
-        if(response.success) {
-            parentItem.remove();
-            let item = $('.div-item')
-            if(item.length === 0){
-                $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
-                $(".date-penalty").find(`#${rowId}`).text("")
+        })
+        .done(function( msg){
+            if(msg){
+                hide_overlay()
+                parentItem.remove();
+                show_success(msg.message);
+                let item = $('.div-item')
+                if(item.length === 0){
+                    $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
+                    $(".date-penalty").find(`#${rowId}`).text("")
+                    let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                    .find(".select--status")
+                    if(progressStatus.find(".select__one--status:nth-child(3)").hasClass("show")){
+                        progressStatus.find(".select__one--status:nth-child(3)").addClass("hide").removeClass("show")
+                    }
+                    let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                    if(getTextStatus.text().trim() == "Completed"){
+                        progressStatus.find(".select__one--status:first-child").addClass("background-gray")
+                        progressStatus.find(".select__one--status:first-child").find("img").show()
+                        getTextStatus.text("Not started").attr("data-id","not_started")
+                    }
+                }
             }
-            show_success("Old document deleted successfully!");
-        }else {
-        }
-    })
+        })
+        .fail(function(error){
+            show_error(error.responseJSON.message);
+            hide_overlay()
+        })
+    }
 });

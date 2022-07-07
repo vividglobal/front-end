@@ -90,3 +90,7 @@
     font-size: 14px !important;
     line-height: 22px !important;
 }
+
+.un_create_profile_header{
+    display: none;
+}

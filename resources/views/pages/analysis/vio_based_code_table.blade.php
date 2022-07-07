@@ -43,4 +43,5 @@
         var color = colors[i % colors.length];
         $(divs[i]).css('color', color);
     };
+
 </script>
