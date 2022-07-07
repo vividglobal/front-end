@@ -31,8 +31,11 @@
         position: absolute;
         top: 0;
         right: 0;
-        margin: 17px 20px 0 0 ;
-        z-index: 103;
+        margin: 10px 20px 0 0 ;
+    }
+
+    .unvailable_create_profile{
+        display:none;
     }
 
     .thead_admin{

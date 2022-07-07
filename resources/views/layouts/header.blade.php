@@ -128,6 +128,7 @@
     <div class="overlay overlay_nav" ></div>
     <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
     <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) ? 'hide': ''}}" style="cursor:pointer" ></span>
+    <span class="create__profile {{!(request ()-> is ('admins')) ? "hide": ''}} un_create_profile_header" style="cursor:pointer" ></span>
 </div>
 
 

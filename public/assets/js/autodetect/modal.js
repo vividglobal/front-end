@@ -107,6 +107,11 @@ $(document).ready(function () {
                     if(JSON.parse(response).data.article_id === rowId){
                         $(".check").attr('src','../assets/image/dislega2.png');
                         $(".date-penalty").find(`#${rowId}`).text(now)
+                        let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                        .find(".select--status").find(".select__one--status:nth-child(3)")
+                        if(progressStatus.hasClass("hide")){
+                            progressStatus.addClass("show").removeClass("hide")
+                        }
                     }
                 }
                 show_success(message);
@@ -190,7 +195,18 @@ $(document).ready(function () {
                 $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                 $(".date-penalty").find(`#${rowId}`).text("")
             }
+<<<<<<< HEAD
             show_success("Old document deleted successfully!");
+=======
+            show_success(response.message);
+            if(!$(".item-one-file").is(":visible")){
+                let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                .find(".select--status").find(".select__one--status:nth-child(3)")
+                if(progressStatus.hasClass("show")){
+                    progressStatus.addClass("hide").removeClass("show")
+                }
+            }
+>>>>>>> a49decc (fix Ui)
         }else {
         }
     })
