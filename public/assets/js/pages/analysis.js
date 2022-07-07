@@ -4,7 +4,21 @@ $(".list--violation--type").find("> p").text("Violation type")
 
 $(document).ready(function(){
     // OPEN DATE RANGER
-    $('input[name="daterange"]').daterangepicker({
+
+    $('.is_apply').find('input[name="daterange"]').daterangepicker({
+        autoUpdateInput: false,
+        autoApply: false,
+        maxDate: new Date(),
+        drops: "up",
+        opens: "right",
+        drops: "down",
+        locale: {
+            firstDay: 1,
+            format: "DD/MM/YYYY",
+        },
+    });
+
+    $('.no_apply').find('input[name="daterange"]').daterangepicker({
         autoUpdateInput: false,
         autoApply: true,
         maxDate: new Date(),
@@ -16,6 +30,7 @@ $(document).ready(function(){
             format: "DD/MM/YYYY",
         },
     });
+
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
         function (ev, picker) {
@@ -57,6 +72,15 @@ $(document).ready(function(){
             getGeneralData();
             getViolationBasedBrand();
             getViolationBasedCode();
+        }
+    })
+
+     // REMOVE DATERANGE
+     $(".remove_daterange").click(function(){
+        let date = $('.form--daterange').val() || $('.date_mobile').val();
+        if(date !== ""){
+            $('input[name="daterange"]').val("")
+            window.location.href = window.location.href
         }
     })
 

@@ -124,6 +124,7 @@
                             <div class="track">
                                 <div class="entry">
                                     <img class="td-link upload-file" id={{$article->_id}}
+                                        data-user="{{@Auth::user()->role}}"
                                         @if($article->has_document)
                                             src="{{ asset('assets/image/dislega2.png') }}"
                                         @else
@@ -161,7 +162,7 @@
                                 <div class="entry">
                                     <div class="list--status {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
                                     id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{@Auth::user()->role}}">
-                                        @if(isset($article->progress_status) && empty($article->progress_status))
+                                        @if(isset($article->progress_status) && $article->progress_status != "")
                                             @if($article->progress_status == "NOT_STARTED")
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
                                             @elseif($article->progress_status == "PROCESSING")
@@ -249,6 +250,7 @@
                     </div>
                 </div>
                 @endif
+                <div class="no_files"></div>
             </div>
         </div>
     </div>
@@ -267,7 +269,7 @@
                 Select image to upload:
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Upload Image" name="submit">
-                </form>
+            </form>
             </div>
         </div>
     </div>
@@ -276,7 +278,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p>Are you sure moving this post to auto-detect violations list?</p>
+                <p style="text-align: center;">Are you sure moving this post to auto-detect violations list?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -326,9 +328,6 @@
     {{ $articles->links('layouts.my-paginate') }}
     </div>
 </div>
-
-
-
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>

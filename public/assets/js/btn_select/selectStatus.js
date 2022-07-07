@@ -37,12 +37,16 @@ $("document").ready(function(){
             .done(function( msg ) {
                 if(msg){
                     hide_overlay()
-                    openSnackBar("Change status progress successfully",1500)
-                    setTimeout(()=>{
-                        window.location.href = window.location.href
-                    },1500)
+                    show_success("Change status progress successfully")
+                    window.location.href = window.location.href
                 }
-            });
+            })
+            .fail(function( error ) {
+                show_error
+                hide_overlay()
+                show_error("Change status progress failed")
+                window.location.href = window.location.href
+            })
     })
 
     btnViolation.click(function(event) {

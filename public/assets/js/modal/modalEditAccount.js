@@ -48,8 +48,6 @@ $("document").ready(function(){
         var email = $(this).find("input").attr("data-email")
         var id = $(this).find("input").attr("data-id")
         $(".title-modal").find("p").text("Edit account information")
-        let authUser =  $("#edit__profile").find("input").attr("data-auth") ;
-        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         $(".delete__profile_modal").addClass("open_delete_user")
         checkedAuth = auth;
 
@@ -99,28 +97,23 @@ $("document").ready(function(){
     $(".btn__change--password").on("click",function(){
         $(".edit-password").show();
         $(".edit-password-confirm").show();
+        $(".current-password").show();
         $(".btn__change--password").hide();
     })
 
-    //pwd
-    $(".img-seen-pwd").on("click",function(){
-        if($(".form-pwd").attr("type") === "text"){
-            $(".form-pwd").attr("type","password")
-            $(".img-seen-pwd").attr("src","../assets/image/unseen.svg")
-        }else{
-            $(".img-seen-pwd").attr("src","../assets/image/seen.svg")
-            $(".form-pwd").attr("type","text")
-        }
-
+    $(".form-pwd").keyup(function(){
+        $(".text-dangers").text("")
     })
-      //re-pwd
-    $(".img-re-seen-pwd").on("click",function(){
-        if($(".form-re-pwd").attr("type") === "text"){
-            $(".form-re-pwd").attr("type","password")
-            $(".img-re-seen-pwd").attr("src","../assets/image/unseen.svg")
+
+    //pwd-show
+    $(".img-seen-pwd").on("click",function(){
+        let getType = $(this).closest(".input--modal").find("input").attr("type");
+        if(getType == "text"){
+            $(this).closest(".input--modal").find("input").attr("type","password");
+            $(this).closest(".input--modal").find("img").attr("src","../assets/image/unseen.svg")
         }else{
-            $(".form-re-pwd").attr("type","text")
-            $(".img-re-seen-pwd").attr("src","../assets/image/seen.svg")
+            $(this).closest(".input--modal").find("input").attr("type","text");
+            $(this).closest(".input--modal").find("img").attr("src","../assets/image/seen.svg")
         }
     })
 
@@ -136,6 +129,7 @@ $("document").ready(function(){
         $(".edit_password").text("")
         let name = $('.edit_name').val();
         let number = $('input[name="edit_number"]').val();
+        let current_pwd = $('input[name="edit_current_pwd"]').val();
         let pwd = $('input[name="edit_pwd"]').val();
         let id = $('input[name="edit_id_user"]').attr("data-id");
         let email = $('input[name="edit_id_user"]').attr("data-email");
@@ -144,7 +138,8 @@ $("document").ready(function(){
         let csrf = $('meta[name="csrf-token"]').attr('content')
         const url = '/admins/' + id;
         if(name !== "" && number !== "" && checkedAuth !== undefined){
-            if(pwd === "" && re_pwd === ""){
+            if(pwd === "" && re_pwd === "" && current_pwd === ""){
+                // NO UPTATE PWD
                 if(number.match(regexPhone)){
                     show_overlay()
                     $.ajax({
@@ -162,25 +157,27 @@ $("document").ready(function(){
                     })
                     .done(function( msg ) {
                         if(msg){
-                            hide_overlay()
                             if(msg){
-                                openSnackBar("Update user successfully",1500)
-                                setTimeout(()=>{
-                                    window.location.href = window.location.href
-                                },1500)
+                                hide_overlay()
+                                show_success("Profile updated successfully")
+                                window.location.href = window.location.href
                                 resetModal()
                             }
                         }
+                    })
+                    .fail(function(error) {
+                        $(".edit_current_password").text("Profile updated failed")
+                        hide_overlay()
                     });
                     resetModal()
                 }else{
                     $(".error_number").text("Invalid phone number")
                 }
             }else{
-                if(pwd.length  < 6){
-                    $(".edit_password").text("Password length is more than 6 characters")
-                }
-                if(pwd === re_pwd && pwd.length > 6){
+                if(pwd.length  < 6 || re_pwd.length  < 6 || current_pwd.length < 6 ){
+                    $(".edit_re_password").text("Password length is more than 6 characters and is required")
+                }else{
+                    if(pwd == re_pwd){
                     show_overlay()
                     $.ajax({
                         method: "PUT",
@@ -193,24 +190,23 @@ $("document").ready(function(){
                             "email" : email,
                             "phone_number" : number,
                             "password" : pwd,
+                            "password_current" : current_pwd,
                             "role" : checkedAuth
                         }
-                    })
-                    .done(function( msg ) {
-                        if(msg){
+                        })
+                        .done(function( msg ) {
+                            show_success("Profile updated successfully")
                             hide_overlay()
-                            if(msg){
-                                openSnackBar("Update user successfully",1500)
-                                setTimeout(()=>{
-                                    window.location.href = window.location.href
-                                },1500)
-                                resetModal()
-                            }
-                        }
-                    });
-                    resetModal()
-                }else{
-                    $(".edit_re_password").text("Confirmed password does not match")
+                            window.location.href = window.location.href
+                            resetModal()
+                        })
+                        .fail(function(error) {
+                            $(".edit_current_password").text(error.responseJSON.message)
+                            hide_overlay()
+                        });
+                    }else{
+                        $(".edit_re_password").text("Password and confirmation password does not match. Please re-enter")
+                    }
                 }
             }
         }
@@ -221,9 +217,7 @@ $("document").ready(function(){
         if(number === ""){
             $(".error_number").text("Phone number is required")
         }
-
     })
-
     // Modal delete account----------------------------------------------------------------
     $(".delete__profile").on("click",function(){
         $("#modal__delete-account").addClass("modal__open")

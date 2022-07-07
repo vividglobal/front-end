@@ -19,13 +19,13 @@
     }
 
     .title_analysis .list--select--option{
-        margin: 0 30px 0 0px;
+        margin: 0 16px 0 0px;
     }
 
 
     .Base_violation--brand,
     .index_violation-nonViolation{
-        margin: 15px 30px 0 15px;
+        margin: 15px 16px 0 15px;
     }
 
     .Base_violation--brand{
@@ -160,6 +160,7 @@
 
     .table_analysis_body > li:nth-child(2){
         margin-top: 10px;
+        width:  60% !important;
     }
 
     .table_analysis_body{

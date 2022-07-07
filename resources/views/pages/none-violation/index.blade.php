@@ -3,9 +3,9 @@
 @section('content')
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Code violation list') }}</p>
+        <p>{{ __('Non-violation list') }}</p>
     </div>
-    @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
+    @include('pages/components/query', ['list_filter' => ["search","date","brand","country","apply","excel"], 'show_all_filter' => false])
     <!-- list Btn  -->
 </div>
 
@@ -51,11 +51,11 @@
                         <div class="track track-non">
                             <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
-                        @auth
+                        @if(@Auth::user()->role === "OPERATOR")
                         <div class="track track-non">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
-                        @endauth
+                        @endif
                     </div>
                 </div>
                 <div class="tracks syncscroll container-scroll-non" name="myElements">
@@ -76,13 +76,13 @@
                                     <a href={{ __($article->link ?? '' )}}><img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt=""></a>
                                 </div>
                             </div>
-                            @auth
+                            @if(@Auth::user()->role === "OPERATOR")
                             <div class="track track-non">
                                 <div class="entry">
                                     <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
                                 </div>
                             </div>
-                            @endauth
+                            @endif
                         </div>
                     @endforeach
                 </div>

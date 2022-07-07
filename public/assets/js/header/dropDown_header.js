@@ -20,7 +20,6 @@ $("document").ready(function(){
 
 //    ---------NAV MENU---------
     var documentElement = document.querySelector('.overlay');
-    let btnHideNav = document.querySelector(".closebtn")
     let screenOverlay = document.querySelector(".overlay_nav")
 
     $(".open_Nav").click(function(){
@@ -60,9 +59,9 @@ $(".closeFilter ").click(function(){
     document.body.scroll = "yes";
 })
 
-    btnHideNav.onclick = function(){
+    $("#myNav").find(".closebtn").click(function(){
         closeNav();
-    }
+    })
 
     screenOverlay.onclick = function(){
         closeNav();
