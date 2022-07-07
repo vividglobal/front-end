@@ -12,12 +12,15 @@
     right: 10px;
     bottom: 30px;
     font-size: 17px;
+    z-index: 1100 !important;
 }
 
 .toaster.show {
     visibility: visible;
     -webkit-animation: fadein 0.5s, fadeout 0.5s 3s;
     animation: fadein 0.5s, fadeout 0.5s 3s;
+    z-index: 1100 !important;
+
 }
 
 .toaster.success {

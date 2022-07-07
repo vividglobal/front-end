@@ -65,7 +65,8 @@ $(document).ready(function(){
                 show_success(response.message);
                 updateDetectionColumnAfterSelectViolationCode(response.data);
             }else {
-                show_error(response.message);
+                show_error('Evaluation failed!');
+                hide_overlay();
             }
         }
     });
@@ -105,7 +106,9 @@ $(document).ready(function(){
                 removeCurrentRow();
             }
         }else {
-            show_error(response.message);
+            show_error('Evaluation failed!');
+            confirmModal.hide();
+            hide_overlay();
         }
     });
 
@@ -116,14 +119,13 @@ $(document).ready(function(){
     });
 
     $('.btn-select-code').click(async function() {
-        addOverlayScroll();
         setDefaulSearchModal()
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
             return $(this).val();
         }).get();
 
         if(violationCode.length === 0) {
-            alert('Please select as least 1 type of violation.')
+            show_error("Please select as least 1 type of violation.");
             return false;
         }
         agreeStatus = DISAGREE;
@@ -131,11 +133,13 @@ $(document).ready(function(){
         isLoading = false;
         hide_overlay();
         if(response.success) {
+            addOverlayScroll();
             updateDetectionColumnAfterSelectViolationCode(response.data);
             closeCodeModal();
             show_success(response.message);
         }else {
-            show_error(response.message);
+            show_error('Evaluation failed!');
+            hide_overlay();
         }
     });
 
@@ -148,6 +152,7 @@ $(document).ready(function(){
     })
 
     $('.btn-confirm-violation-and-choose-code').click(async function() {
+        $(".mdl-js").css("overflow-y","scroll");
         confirmArticleAsViolationModal.hide();
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
@@ -197,7 +202,7 @@ $(document).ready(function(){
     }
 
     function addOverlayScroll() {
-        document.documentElement.style.overflow = 'scroll';
+        document.documentElement.style.overflow = 'unset';
         document.body.scroll = "yes";
     }
 
@@ -229,7 +234,8 @@ $(document).ready(function(){
                 </div>`
             );
         }else {
-            show_error(response.message);
+            show_error('Evaluation failed!');
+            hide_overlay();
         }
     }
 

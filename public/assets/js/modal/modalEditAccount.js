@@ -23,7 +23,8 @@ $("document").ready(function(){
         $(".checkbox_mobi").find("#toggle").hide()
         $(".delete__profile_modal").removeClass("open_delete_user")
         $(".overlay").css({"width":"0%","display":"none"})
-        document.documentElement.style.overflow = 'scroll';
+        document.documentElement.style.overflow = 'unset';
+
         document.body.scroll = "yes";
     }
     let checkedAuth;

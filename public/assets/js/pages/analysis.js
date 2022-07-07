@@ -179,7 +179,8 @@ $(document).ready(function(){
         $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".checkbox_mobi").find("#toggle").hide()
-        document.documentElement.style.overflow = 'scroll';
+        document.documentElement.style.overflow = 'unset';
+
         document.body.scroll = "yes";
     }
 

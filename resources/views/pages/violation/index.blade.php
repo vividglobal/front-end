@@ -102,8 +102,8 @@
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    @if(isset($article->operator_review['date']))
-                                    <h3>{{date("d/m/Y",$article->operator_review['date'] )}}</h3>
+                                    @if(isset($article->operator_review['review_date']))
+                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'] )}}</h3>
                                     @endif
                                 </div>
                             </div>
@@ -133,7 +133,6 @@
                                         data-id={{$article->_id }} alt="upload-icon">
                                 </div>
                             </div>
-
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio">
@@ -234,7 +233,7 @@
                 <h1 >Legal documents</h1>
             </div>
             <div class="modal-body">
-                <div class="row row-upload" id="box_list_file">
+                <div class="row" id="box_list_file">
                 @if(isRole(ROLE_OPERATOR))
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">
                         <div class="content_file p-2">
@@ -282,7 +281,7 @@
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
-                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Confirm</button>
             </div>
         </div>
     </div>
