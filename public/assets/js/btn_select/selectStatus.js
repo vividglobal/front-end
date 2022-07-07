@@ -38,13 +38,11 @@ $("document").ready(function(){
                 if(msg){
                     hide_overlay()
                     show_success(msg.message)
-                    window.location.href = window.location.href
                 }
             })
             .fail(function( error ) {
                 hide_overlay()
                 show_error(error.responseJSON.message)
-                window.location.href = window.location.href
             })
     })
 

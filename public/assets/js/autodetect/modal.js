@@ -185,59 +185,48 @@ $(document).ready(function () {
     $(document).on("click", '.delete-file', async function (){
         let rowIdelemnet = $(this).attr("id-delete");
         let parentItem = $(this).parents('.items_file')
+        let filesNumber = $(".item-one-file").length
+        DeleteFile(rowIdelemnet,parentItem,filesNumber)
+    })
+
+    function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
-        let response = await $.ajax({
+        $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
+            data :{
+                "article_id": filesNumber <= 1 ? rowId : ""
+            },
             method: "DELETE",
             url:"/articles-document/"+rowIdelemnet+"",
-        });
-        hide_overlay()
-        if(response.success) {
-            parentItem.remove();
-            let item = $('.div-item')
-            if(item.length === 0){
-                $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
-                $(".date-penalty").find(`#${rowId}`).text("")
-            }
-            show_success(response.message);
-
-            if(!$(".item-one-file").is(":visible")){
-                let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
-                .find(".select--status").find(".select__one--status:nth-child(3)")
-                if(progressStatus.hasClass("show")){
-                    progressStatus.addClass("hide").removeClass("show")
-                }
-                let checkStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
-                if(checkStatus.text().trim() == "Completed"){
-                    const url = `${rowId}/switch-progress-status`;
-                    $.ajax({
-                        method: "PUT",
-                        url: url,
-                        headers: {
-                            'X-CSRF-TOKEN': csrf,
-                        },
-                        data:{
-                            "progress_status" : "PROCESSING",
-                        }
-                    })
-                    .done(function( msg ) {
-                        if(msg){
-                            show_success(msg.message)
-                            let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
-                            .find(".select--status").find(".select__one--status:nth-child(2)")
-                            progressStatus.addClass("background-gray")
-                            progressStatus.find("img").show()
-                            checkStatus.text("Processing").attr("data-id","Processing")
-                        }
-                    })
-                    .fail(function( error ) {
-                        show_error(error.responseJSON.message)
-                    })
+        })
+        .done(function( msg){
+            if(msg){
+                hide_overlay()
+                parentItem.remove();
+                show_success(msg.message);
+                let item = $('.div-item')
+                if(item.length === 0){
+                    $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
+                    $(".date-penalty").find(`#${rowId}`).text("")
+                    let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                    .find(".select--status")
+                    if(progressStatus.find(".select__one--status:nth-child(3)").hasClass("show")){
+                        progressStatus.find(".select__one--status:nth-child(3)").addClass("hide").removeClass("show")
+                    }
+                    let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                    if(getTextStatus.text().trim() == "Completed"){
+                        progressStatus.find(".select__one--status:first-child").addClass("background-gray")
+                        progressStatus.find(".select__one--status:first-child").find("img").show()
+                        getTextStatus.text("Not started").attr("data-id","not_started")
+                    }
                 }
             }
-        }else {
-        }
-    })
+        })
+        .fail(function(error){
+            show_error(error.responseJSON.message);
+            hide_overlay()
+        })
+    }
 });

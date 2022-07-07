@@ -710,6 +710,7 @@ input[type=checkbox] {
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
+    color: var(--black) !important;
 }
     /* SELECT STATUS  */
 .select__one--status img{

@@ -257,10 +257,8 @@ class ArticleController extends Controller
         $inputs = $validator->validated();
         $article = Article::find($id);
         if($article && $article->progress_status === Article::PROGRESS_COMPLETED) {
-            if(isset($$article->documents)){
-                if(count($article->documents) === 0) {
-                    return $this->responseFail([], "Please upload legal documents for this article");
-                }
+            if(isset($$article->documents) && count($article->documents) === 0) {
+                return $this->responseFail([], "Please upload legal documents for this article");
             }
         }
 

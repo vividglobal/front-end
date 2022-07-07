@@ -34,7 +34,14 @@ class ArticleLegalDocumentController extends Controller
 
     public function delete(Request $request, $id) {
         $document = ArticleLegalDocument::find($id);
+        $inputs = $request->all();
         if($document) {
+            if(isset($inputs['article_id'])){
+                $articleId = $inputs['article_id'];
+                $article = Article::find($articleId);
+                $article->progress_status = Article::PROGRESS_NOT_STARTED;
+                $article->update();
+            }
             $documentService = new DocumentService();
             $deleted = $documentService->delete($document);
             if($deleted) {
