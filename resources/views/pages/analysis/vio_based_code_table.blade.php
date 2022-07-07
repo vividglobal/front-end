@@ -36,3 +36,11 @@
 <div class="row-pagination">
     {{ $codeData->links('layouts.my-paginate') }}
 </div>
+<script>
+    var colors = ['#F37422', '#EEBA00', '#EF5DA8', '#0097A0'];
+    var divs = $('.type_mobi');
+    for (var i = 0; i < divs.length; i++) {
+        var color = colors[i % colors.length];
+        $(divs[i]).css('color', color);
+    };
+</script>

@@ -273,3 +273,8 @@
     background: var(--primary);
   }
 
+.remove_daterange{
+    width: 15px !important;
+    border: 1px solid var(--gray-C7);
+    border-radius: 50%;
+}

@@ -47,10 +47,18 @@
                 @endif
                 @endauth
                 <p class="btn__change--password">{{ __('Change Password') }}</p>
+                <div class="modal--input current-password" style="display:none">
+                    <p>{{ __('Current password') }}</p>
+                    <div class="input--modal">
+                        <input type="password" placeholder="Enter your current password" class="form-pwd edit_pwd" name="edit_current_pwd">
+                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
+                    </div>
+                </div>
+                <p class="text-dangers edit_current_password "></p>
                 <div class="modal--input edit-password" style="display:none">
                     <p>{{ __('New password') }}</p>
                     <div class="input--modal">
-                        <input type="password" placeholder="Enter your current password" class="form-pwd edit_pwd" name="edit_pwd">
+                        <input type="password" placeholder="Enter your new password" class="form-pwd edit_pwd" name="edit_pwd">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                 </div>
@@ -59,7 +67,7 @@
                     <p>{{ __('Confirm password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Re-enter your password" class="form-re-pwd edit_re_pwd" name="edit_re_pwd">
-                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-re-seen-pwd">
+                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                 </div>
                 <p class="text-dangers edit_re_password "></p>

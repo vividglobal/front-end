@@ -26,6 +26,7 @@ $("document").ready(function(){
     $(".create__profile").on("click",function(){
         $(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
+        $(".overlay").css({"width":"100%", "display": "block"})
     })
 
 
@@ -117,12 +118,18 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                hide_overlay()
                 if(msg){
-                    openSnackBar("Create user successfully",1500)
-                    setTimeout(()=>{
-                        window.location.href = window.location.href
-                    },1500)
+                    hide_overlay()
+                    show_success("Create account successfully")
+                    window.location.href = window.location.href
+                    resetModal()
+                }
+            })
+            .fail(function( error ) {
+                if(error){
+                    show_error("Create account failed")
+                    hide_overlay()
+                    window.location.href = window.location.href
                     resetModal()
                 }
             });

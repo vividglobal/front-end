@@ -9,10 +9,11 @@
 
         <div class="list_filter">
             @if(in_array('date', $list_filter) || $show_all_filter)
-            <div id="daterange">
+            <div id="daterange" class="no_apply">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
             @endif
             @if(in_array('brand', $list_filter) || $show_all_filter)
@@ -33,7 +34,7 @@
             @if(in_array('showing', $list_filter)|| $show_all_filter)
                 <p>{{ __('Showing') }}</p>
                 <div class="list--showing">
-                    <select name="" id=""></select>
+                    <select ></select>
                 </div>
             @endif
             @if(in_array('excel', $list_filter)|| $show_all_filter)
@@ -50,12 +51,19 @@
 
  {{-- //MOBILE --}}
  <div id="myFilter" class="sideFilter">
-    <a class="closebtn closeFilter" onclick="closeNav()"><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
+    <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
     <div class="filter_list-mobi">
-            <div id="daterange" class="daterange_mobi">
+            <div id="daterange" class="daterange_mobi no_apply">
                 <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
+            </div>
+            <div id="daterange" class="daterange_mobi is_apply">
+                <i class="ico-date"></i>
+                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
         <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">
@@ -125,30 +133,32 @@
             </div>
         </div>
         <div class="border_gray"></div>
-        <div class="checkbox_mobi ">
-            <div class="checkbox_title">
-                <div>
-                    <img src="{{asset('assets/image/type.svg')}}" alt="">
-                    <span>{{ __("Violation type") }}</span>
+        @if(!request ()->is('articles/non-violation'))
+            <div class="checkbox_mobi ">
+                <div class="checkbox_title">
+                    <div>
+                        <img src="{{asset('assets/image/type.svg')}}" alt="">
+                        <span>{{ __("Violation type") }}</span>
+                    </div>
+                    <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
                 </div>
-                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
+                <p></p>
+                <div class="select--violation--type violation_mobi" id="toggle">
+                    @foreach ($violationTypes as $violationType)
+                        <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
+                            <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                    @endforeach
+                </div>
             </div>
-            <p></p>
-            <div class="select--violation--type violation_mobi" id="toggle">
-                @foreach ($violationTypes as $violationType)
-                    <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
-                        <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>
-                        <input type="checkbox"  name="radio" class="input_checkbox">
-                        <span class="checkmark_checkbox"></span>
-                    </label>
-                @endforeach
-            </div>
-        </div>
         <div class="border_gray"></div>
+        @endif
     </div>
     <div class="btn_apply_mobi">
-        <button class="btn__apply" id="apply_query" >Apply</button>
         <button class="close__filter">Cancel</button>
+        <button class="btn__apply" id="apply_query" >Apply</button>
     </div>
   </div>
 

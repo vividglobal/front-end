@@ -702,3 +702,7 @@ background: var(--primary);
 .input-style > .button{
   padding-top: 0px;
 }
+
+.no_files{
+    overflow: hidden;
+}
