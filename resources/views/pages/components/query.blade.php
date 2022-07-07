@@ -133,26 +133,28 @@
             </div>
         </div>
         <div class="border_gray"></div>
-        <div class="checkbox_mobi ">
-            <div class="checkbox_title">
-                <div>
-                    <img src="{{asset('assets/image/type.svg')}}" alt="">
-                    <span>{{ __("Violation type") }}</span>
+        @if(!request ()->is('articles/non-violation'))
+            <div class="checkbox_mobi ">
+                <div class="checkbox_title">
+                    <div>
+                        <img src="{{asset('assets/image/type.svg')}}" alt="">
+                        <span>{{ __("Violation type") }}</span>
+                    </div>
+                    <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
                 </div>
-                <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
+                <p></p>
+                <div class="select--violation--type violation_mobi" id="toggle">
+                    @foreach ($violationTypes as $violationType)
+                        <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
+                            <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                    @endforeach
+                </div>
             </div>
-            <p></p>
-            <div class="select--violation--type violation_mobi" id="toggle">
-                @foreach ($violationTypes as $violationType)
-                    <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
-                        <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>
-                        <input type="checkbox"  name="radio" class="input_checkbox">
-                        <span class="checkmark_checkbox"></span>
-                    </label>
-                @endforeach
-            </div>
-        </div>
         <div class="border_gray"></div>
+        @endif
     </div>
     <div class="btn_apply_mobi">
         <button class="close__filter">Cancel</button>
