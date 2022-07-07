@@ -665,7 +665,9 @@ input[type=checkbox] {
     width: 90%;
     margin: 0 auto;
 }
-
+.modal-upfile{
+  top: 45% !important;
+}
 .list--status p{
     padding-left: 10px;
 }

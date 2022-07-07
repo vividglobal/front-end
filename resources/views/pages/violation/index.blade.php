@@ -223,7 +223,7 @@
         @if(isRole(ROLE_OPERATOR))
             <div class="check-login" t-login="true"></div>
         @endif
-        <div class="modal-content">
+        <div class="modal-content modal-upfile">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>

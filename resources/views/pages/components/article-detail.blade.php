@@ -175,10 +175,20 @@
                         @endif
                     </div>
                 </div>
-                <div class="table-code-buton">
-                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-                        <h2>Reset code article</h2>
-                    </div>
+                <div id="table-code-buton-supervisor">
+                    <div class="table-code-buton" id="table-code-buton-supervisor">
+                    @if(isPendingStatus($article->supervisor_review['status']))
+                        <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
+                            <h2>Confirm violation status</h2>
+                        </div>
+                        <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
+                            <h2>Confirm non-violation status</h2>
+                        </div>
+                    @elseif(isViolationStatus($article->supervisor_review['status']))
+                        <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
+                            <h2>Reset code article</h2>
+                        </div>
+                    @endif
                 </div>
             {{-- ==================================================== --}}
             {{-- ================= OPERATOR COLUMN ================== --}}
@@ -240,14 +250,6 @@
         </div>
     </div>
 </div>
-                        <!-- <div class="table-code-buton">
-                            <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-                                <h2>Confirm violation status</h2>
-                            </div>
-                            <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
-                                <h2>Confirm non-violation status</h2>
-                            </div>
-                        </div> -->
 
 <div class="modal-title-mobile" id="confirm-violation"> 
     <div class="modal-confirm-content-mobile">
