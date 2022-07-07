@@ -202,11 +202,39 @@ $(document).ready(function () {
                 $(".date-penalty").find(`#${rowId}`).text("")
             }
             show_success(response.message);
+
             if(!$(".item-one-file").is(":visible")){
                 let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
                 .find(".select--status").find(".select__one--status:nth-child(3)")
                 if(progressStatus.hasClass("show")){
                     progressStatus.addClass("hide").removeClass("show")
+                }
+                let checkStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                if(checkStatus.text().trim() == "Completed"){
+                    const url = `${rowId}/switch-progress-status`;
+                    $.ajax({
+                        method: "PUT",
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': csrf,
+                        },
+                        data:{
+                            "progress_status" : "PROCESSING",
+                        }
+                    })
+                    .done(function( msg ) {
+                        if(msg){
+                            show_success(msg.message)
+                            let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                            .find(".select--status").find(".select__one--status:nth-child(2)")
+                            progressStatus.addClass("background-gray")
+                            progressStatus.find("img").show()
+                            checkStatus.text("Processing").attr("data-id","Processing")
+                        }
+                    })
+                    .fail(function( error ) {
+                        show_error(error.responseJSON.message)
+                    })
                 }
             }
         }else {

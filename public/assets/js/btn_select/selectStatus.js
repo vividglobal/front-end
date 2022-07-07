@@ -37,14 +37,13 @@ $("document").ready(function(){
             .done(function( msg ) {
                 if(msg){
                     hide_overlay()
-                    show_success("Change status progress successfully")
+                    show_success(msg.message)
                     window.location.href = window.location.href
                 }
             })
             .fail(function( error ) {
-                show_error
                 hide_overlay()
-                show_error("Change status progress failed")
+                show_error(error.responseJSON.message)
                 window.location.href = window.location.href
             })
     })
