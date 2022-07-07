@@ -1,5 +1,5 @@
 $("document").ready(function () {
-
+    // DATERANGE SELECT
   $('.no_apply').find('input[name="daterange"]').daterangepicker({
         autoUpdateInput: false,
         autoApply: true,
@@ -106,7 +106,7 @@ $("document").ready(function () {
             .find(`#${violation_code_id}`)
             .css({ "text-decoration": "underline" });
     }
-
+    // SORT MOBI
     function sortByparam(img,btn,paramSortBy){
         let getDataValue =   $(".sort_mobi").find("> p").attr("data-value")
         switch (paramSortBy) {
@@ -186,6 +186,7 @@ $("document").ready(function () {
 
     }
 
+    // RETURN TEXT FILTER WHEN PARAMS IS EXIST
     function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param,nameMb) {
         let name = $(nameBtn).find(`#${param}`).find("p").text();
         $(textBtn).find("> p").text(name);
@@ -201,9 +202,9 @@ $("document").ready(function () {
         $(nameMb).find(`#${param}`).find("> input").prop('checked',true)
         $(nameMb).find(`#${param}`).find("> span").addClass("activeRadio")
     }
-
     //  ----------------------------
-    //  APPLY BUTTON
+
+    //  CLOSE FILTER MOBI
     function resetFiter(){
         $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"0%","display":"none"})
@@ -237,7 +238,7 @@ $("document").ready(function () {
         }
         resetFiter()
     })
-
+    // APPLY BTN FILTER
     $(".btn__apply").on("click", function () {
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
@@ -263,7 +264,7 @@ $("document").ready(function () {
             replaceURL(paramSortBy, paramSortValue);
         });
 
-    // SORT BUTTON UP
+    // SORT BUTTON UP PC
     $(".sort_up").click(function () {
         var sortBy = $(this).closest("div").find("p").text().toLowerCase();
         if (sortBy == "country" || sortBy == "company" || sortBy == "brand") {
@@ -276,7 +277,7 @@ $("document").ready(function () {
         var sortValue = "asc";
         replaceURL(sortBy, sortValue);
     });
-    // SORT BUTTON DOWM
+    // SORT BUTTON DOWM PC
     $(".sort_down").click(function () {
         var sortBy = $(this).closest("div").find("p").text().toLowerCase();
         if (sortBy == "country" || sortBy == "company" || sortBy == "brand") {
@@ -311,7 +312,7 @@ $("document").ready(function () {
 
     //GET VALUE
     function getParams(sortBy, sortValue, page) {
-        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
             let date = $('input[name="daterange"]').val() || "";
             let brandCompany = $(".list--company--brand")
@@ -322,7 +323,7 @@ $("document").ready(function () {
             .find("> p")
             .attr("data-id");
             let search = $(".search").val() ? $(".search").val() : "";
-            let perpage = $(".list--showing").find("select").val();
+            let perpageText = $(".list--showing").find("select").val() || perpage;
             let end__Date = "";
             let start__Date = "";
             if (date !== "") {
@@ -337,7 +338,7 @@ $("document").ready(function () {
                 violationType,
                 start__Date,
                 end__Date,
-                perpage,
+                perpageText,
                 sortBy,
                 sortValue,
                 page
@@ -369,7 +370,6 @@ $("document").ready(function () {
                 page
             );
         }
-
     }
 
     // --------------CHANGE PARAMETERS--------------
@@ -403,7 +403,7 @@ $("document").ready(function () {
         this.sortValue = sortValue ? `&sort_value=${sortValue}` : "";
         this.page = page ? `&page=${page}` : "";
     }
-
+    // URL PARAM
     function replaceURL(sortBy, sortValue, page) {
         data = getParams(sortBy, sortValue, page);
         let url = "";
@@ -419,12 +419,13 @@ $("document").ready(function () {
             );
         }
     }
+
     // REMOVE DATERANGE
     $(".remove_daterange").click(function(){
-        let date = $('input[name="daterange"]').val()
+        let date = $('input[name="daterange"]').val() || $('.date_mobile').val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
-            replaceURL(paramSortBy, paramSortValue)
+            replaceURL()
         }
     })
 

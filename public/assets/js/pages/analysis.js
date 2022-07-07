@@ -77,7 +77,7 @@ $(document).ready(function(){
 
      // REMOVE DATERANGE
      $(".remove_daterange").click(function(){
-        let date = $('input[name="daterange"]').val()
+        let date = $('.form--daterange').val() || $('.date_mobile').val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
             window.location.href = window.location.href

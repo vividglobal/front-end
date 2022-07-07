@@ -17,17 +17,24 @@
 }
 
 @media (max-width: 873px) {
+    .child-accordion,
     .accordion{
         font-size: 16px;
     }
+
 }
 
 @media (max-width: 739px) {
     .container__usermanual{
         margin: 0 15px;
     }
+    .child-accordion,
     .accordion{
         font-size: 14px;
+    }
+    .child-accordion > img,
+    .accordion > img{
+        width: 15px;
     }
 }
 

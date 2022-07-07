@@ -157,13 +157,17 @@ $("document").ready(function(){
                     })
                     .done(function( msg ) {
                         if(msg){
-                            hide_overlay()
                             if(msg){
+                                hide_overlay()
                                 show_success("Profile updated successfully")
                                 window.location.href = window.location.href
                                 resetModal()
                             }
                         }
+                    })
+                    .fail(function(error) {
+                        $(".edit_current_password").text("Profile updated failed")
+                        hide_overlay()
                     });
                     resetModal()
                 }else{

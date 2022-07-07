@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="../assets/css/adminManagement/style.css">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
+<script src="{{ asset('assets/js/pages/adminManagement.js') }}"></script>
 
 @include("modal/createAccount")
 <div class="list--search--select" >
@@ -12,8 +13,8 @@
     </div>
     <!-- list Btn  -->
     <div class="list_query">
-        <div class="query_left">
-            @include('pages/components/query', ['list_filter' => ["search","apply"], 'show_all_filter' => false])
+        <div class="query_left search_admin">
+            @include('pages/components/query', ['list_filter' => ["search"], 'show_all_filter' => false])
         </div>
         <div class="list_query-right">
             @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
@@ -52,6 +53,9 @@
 
         </ul>
         @endforeach
+        <div class="no_search_reusult" style="display:none">
+            @include('noSearchResult/index')
+        </div>
     </div>
 </div>
 <div class="row-pagination">

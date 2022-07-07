@@ -18,7 +18,6 @@ selectOneVCountry.on("click", function(){
 // ----------------------------------------------------------------
 
 $(document).mouseup(function(e){
-
 //select validate country
 var inputCountry = $("#div-validate-search-country")
 if (!btnVCountry.is(e.target) && btnVCountry.has(e.target).length === 0) {
@@ -30,7 +29,5 @@ if (!btnVCountry.is(e.target) && btnVCountry.has(e.target).length === 0) {
           selectVCountry.val("")
       }
 }
-
 });
-
 })

@@ -13,9 +13,11 @@ use Illuminate\Hashing\BcryptHasher;
 class AdminController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $admins = Admin::paginate(10);
+        $perpage = $request->query('perpage') ? $request->query('perpage') : 10;
+
+        $admins = Admin::paginate($perpage);
         return view('pages/admin-management/index', compact('admins'));
     }
 

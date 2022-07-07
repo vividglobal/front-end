@@ -118,9 +118,17 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                hide_overlay()
                 if(msg){
-                    show_success("Create user successfully")
+                    hide_overlay()
+                    show_success("Create account successfully")
+                    window.location.href = window.location.href
+                    resetModal()
+                }
+            })
+            .fail(function( error ) {
+                if(error){
+                    show_error("Create account failed")
+                    hide_overlay()
                     window.location.href = window.location.href
                     resetModal()
                 }

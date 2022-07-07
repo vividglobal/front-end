@@ -26,7 +26,11 @@ btnSwitch.click(function () {
             if(msg){
                 show_success("This post has been moved to auto - detect violation list");
             }
-        });
+        })
+        .fail(function(){
+            hide_overlay()
+            show_error("This post go to failed state");
+        })
         modalconfim.hide();
         $('input[type=checkbox]').each(function()
         {

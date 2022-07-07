@@ -307,8 +307,8 @@
         </div>
         <a data-id="#sl11"><button class="accordion"> {{__("Hướng dẫn thêm quản trị viên mới")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl11">
-            <p><span> {{__("Lưu ý")}}: </span>  {__("Trên trang website của Vivid chỉ có 3 đối tượng người dùng gồm Nhà điều hành,
-            Nhà giám sát và Quản trị viên. Chỉ có Quản trị viên mới có quyền thêm quản trị viên mới")}.
+            <p><span> {{__("Lưu ý")}}: </span>  {{__("Trên trang website của Vivid chỉ có 3 đối tượng người dùng gồm Nhà điều hành,
+            Nhà giám sát và Quản trị viên. Chỉ có Quản trị viên mới có quyền thêm quản trị viên mới")}}.
             </p>
             <p><span> {{__("Bước 1")}}:</span>  {{__("Nhấp vào trang “Quản lý admin”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-38.png') }}" loading="lazy">
