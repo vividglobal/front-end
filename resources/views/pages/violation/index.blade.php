@@ -94,7 +94,7 @@
                 </div>
                 <div class="tracks syncscroll container-scroll" name="myElements">
                     @foreach ($articles as $key => $article)
-                        <div data-id="{{ $article->_id }}" class="scroll-table" >
+                        <div data-id="{{ $article->_id }}" class="scroll-table" id="{{ $article->_id }}">
                             <div class="track">
                                 <div class="entry">
                                     <h3>{{date("d/m/Y",$article->published_date)}}</h3>
@@ -163,7 +163,7 @@
                                     <div class="list--status {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
                                     id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{@Auth::user()->role}}">
                                         @if(isset($article->progress_status) && $article->progress_status != "")
-                                            @if($article->progress_status == "NOT_STARTED")
+                                            @if($article->progress_status == "NOT_STARTED" || $article->progress_status == "PENDING")
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
                                             @elseif($article->progress_status == "PROCESSING")
                                                 <p data-id="Processing" >{{ __("Processing") }}</p>
@@ -183,12 +183,10 @@
                                                 <p data-id="Processing" >{{ __("Processing") }}</p>
                                                 <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                                             </div>
-                                            @if($article->has_document)
-                                                <div class="select__one--status list-option"  id="Completed">
-                                                    <p data-id="Completed" >{{ __(' Completed ') }}</p>
-                                                    <img src="{{asset('assets/image/tickV.svg')}}" alt="">
-                                                </div>
-                                            @endif
+                                            <div class="select__one--status list-option {{$article->has_document ? "show" : "hide"}}"  id="Completed">
+                                                <p data-id="Completed" >{{ __(' Completed ') }}</p>
+                                                <img src="{{asset('assets/image/tickV.svg')}}" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

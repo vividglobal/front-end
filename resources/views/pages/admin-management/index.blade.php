@@ -18,7 +18,7 @@
         </div>
         <div class="list_query-right">
             @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
-            <div class="create__profile" >
+            <div class="create__profile unvailable_create_profile" >
             </div>
         </div>
 
