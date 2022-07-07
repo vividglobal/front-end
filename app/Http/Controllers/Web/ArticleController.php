@@ -387,7 +387,7 @@ class ArticleController extends Controller
 
     public function resetArticleToOriginState(Request $request, $id) {
         $article = Article::find($id);
-        if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
+        if($article) {
             $status = $article->status;
             $article->status = Article::STATUS_PENDING;
             $article->progress_status = Article::STATUS_PENDING;

@@ -109,11 +109,11 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p>Are you sure moving this post to auto-detect violations list?</p>
+                <p>ARE YOU SURE TO MOVE THIS POST BACK TO AUTO-DECTECT VIOLATIONS?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
-                <button class="confirm-btn btn-yes" id="confirm-yes">Yes</button>
+                <button class="confirm-btn btn-yes" id="confirm-yes">Confirm</button>
             </div>
         </div>
     </div>

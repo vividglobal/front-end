@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(@Auth::user())
+                        @if(Auth::user()->role === "ADMIN" || isRole(ROLE_OPERATOR))
                         <div class="track track-three">
                             <div class="heading-three"><p>{{ __('Operator') }}</p></div>
                             <div class="heading-three-title">
@@ -255,7 +255,7 @@
                             {{-- ==================================================== --}}
                             {{-- ================= OPERATOR COLUMN ================== --}}
                             {{-- ==================================================== --}}
-                            @if(Auth::user())
+                            @if(Auth::user()->role === "ADMIN" || isRole(ROLE_OPERATOR))
                             <div class="track track-three">
                                 <div class="entry-three">
                                     {{-- ==================================================== --}}
@@ -363,7 +363,11 @@
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
+            @if(isRole(ROLE_SUPERVISOR))
                 {{ __("Confirm this article as non-violation, you can not change the status in the future.") }}
+            @else
+                {{ __(" ARE YOU SURE TO MOVE THIS POST TO THE NON-VIOLATION LIST?.") }}
+            @endif
             </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -380,9 +384,16 @@
             <div class="head-modal">
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
-            <p class="title-modal" style="text-align: center;display: block;">
-                {{ __("Confirm this article as violation, you can not change the status in the future.") }}
-            </p>
+            @if(isRole(ROLE_SUPERVISOR))
+                <p class="title-modal" style="text-align: center;display: block;">
+                    {{ __("Confirm this article as violation, you can not change the status in the future.") }}
+                </p>
+            @else
+                <p class="title-modal" style="text-align: center;display: block;">
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{__("* Please re-check the violation code for this post")}}
+                </p>
+            @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -398,9 +409,16 @@
             <div class="head-modal">
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
+            @if(isRole(ROLE_SUPERVISOR))
             <p class="title-modal" style="text-align: center;display: block;">
                 {{ __("Confirm this article as violation, you can not change the status in the future.") }}
             </p>
+            @else
+                <p class="title-modal" style="text-align: center;display: block;">
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{__("* Please re-check the violation code for this post")}}
+                </p>
+            @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation-and-choose-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -435,7 +453,7 @@
             </div>
             <div class="btn-confirm">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
-                <button class="confirm-btn btn-select-code btn-confirm-style" id="confirm-yes">{{ __('Save change') }}</button>
+                <button class="confirm-btn btn-select-code btn-confirm-style" id="">{{ __('Save change') }}</button>
             </div>
         </div>
     </div>

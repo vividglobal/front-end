@@ -39,7 +39,8 @@ $("document").ready(function(){
         $(".overlay").css({"width":"0%","display":"none"})
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
-        document.documentElement.style.overflow = 'scroll';
+        document.documentElement.style.overflow = 'unset';
+
         document.body.scroll = "yes";
     }
 
@@ -56,7 +57,7 @@ $(".closeFilter ").click(function(){
     $("#myFilter").removeClass("open_menu")
     $(".overlay").css({"width":"0%","display":"none"})
     $(".checkbox_mobi").find("#toggle").hide()
-    document.documentElement.style.overflow = 'scroll';
+    document.documentElement.style.overflow = 'unset';
     document.body.scroll = "yes";
 })
 
