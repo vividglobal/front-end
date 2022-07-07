@@ -28,7 +28,6 @@ class ArticleLegalDocumentController extends Controller
             $uploaded = $documentService->upload($articleId, $request);
             return $this->responseSuccess($uploaded, "Document upload successfully");
         }
-
         return $this->responseFail([], "Invalid article");
     }
 

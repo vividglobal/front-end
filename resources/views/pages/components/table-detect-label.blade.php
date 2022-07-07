@@ -364,7 +364,8 @@
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
             @if(isRole(ROLE_SUPERVISOR))
-                {{ __("Confirm this article as non-violation, you can not change the status in the future.") }}
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{__("*You cannot change your decision in the future")}}
             @else
                 {{ __(" ARE YOU SURE TO MOVE THIS POST TO THE NON-VIOLATION LIST?.") }}
             @endif
@@ -384,16 +385,10 @@
             <div class="head-modal">
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
-            @if(isRole(ROLE_SUPERVISOR))
-                <p class="title-modal" style="text-align: center;display: block;">
-                    {{ __("Confirm this article as violation, you can not change the status in the future.") }}
-                </p>
-            @else
-                <p class="title-modal" style="text-align: center;display: block;">
+                <p class="title-modal" style="text-align: center;display: block;">   
                     {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
-            @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -409,16 +404,15 @@
             <div class="head-modal">
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
-            @if(isRole(ROLE_SUPERVISOR))
-            <p class="title-modal" style="text-align: center;display: block;">
-                {{ __("Confirm this article as violation, you can not change the status in the future.") }}
-            </p>
-            @else
                 <p class="title-modal" style="text-align: center;display: block;">
+                @if(isRole(ROLE_SUPERVISOR))
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{__("*You need to verify the violation code for this post and cannot change your decision in the future")}}
+                @else
                     {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
                     {{__("* Please re-check the violation code for this post")}}
+                @endif
                 </p>
-            @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation-and-choose-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>

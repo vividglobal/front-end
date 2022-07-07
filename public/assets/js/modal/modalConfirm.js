@@ -42,7 +42,6 @@ btnSwitch.click(function () {
         });
         $(".mdl-js").css("overflow-y","scroll");
     });
-    show_success("This post has been successfully moved to auto-dectect violation!");
     $(".mdl-js").css("overflow-y","scroll");
 });
 function removeCurrentRow() {
