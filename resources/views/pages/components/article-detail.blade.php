@@ -123,57 +123,63 @@
             {{-- ==================================================== --}}
             {{-- ================= SUPERVISOR COLUMN ================ --}}
             {{-- ==================================================== --}}
-            <div class="table-code">
-                <div class="table-code-top">
-                    <h2>Supervisor</h2>
-                    @if(isset($article->detection_result['violation_code']))
-                    <?php
-                        $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
-                        ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
-                    ?>
-                    @endif
-                    <p
-                        @class([
-                            'status-title',
-                            'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
-                            'violation-color'   => isViolationStatus($article->supervisor_review['status']),
-                            'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
-                        ])
-                        data-status="{{$article->supervisor_review['status']}}"
-                        >{{ getStatusText($article->supervisor_review['status']) }}</p>
-                </div>
-                @if(($article->supervisor_review['status'] === "VIOLATION") && isRole(ROLE_SUPERVISOR))
-                    <div class="table-code-aticle">
-                        <img class="img-icon-detail" src="{{ asset('assets/image/dis-code.png') }}" alt="">
-                        <div>
+                <div class="table-code" id="table-add">
+                    <div id="table-box">
+                        <div class="table-code-top">
+                            <h2>Supervisor</h2>
                             @if(isset($article->detection_result['violation_code']))
-                                <h4 class="p-style">Code article</h4>
-                                @foreach ($article->detection_result['violation_code'] as $detectionCode)
-                                    <div>
-                                        <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
-                                            {{$detectionCode['name'] ?? ''}}
-                                        </h4>
+                            <?php
+                                $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
+                                ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
+                            ?>
+                            @endif
+                            <p
+                                @class([
+                                    'status-title',
+                                    'reviewing-color'   => isPendingStatus($article->supervisor_review['status']),
+                                    'violation-color'   => isViolationStatus($article->supervisor_review['status']),
+                                    'unviolation-color' => isNoneViolationStatus($article->supervisor_review['status'])
+                                ])
+                                data-status="{{$article->supervisor_review['status']}}"
+                                >{{ getStatusText($article->supervisor_review['status']) }}
+                            </p>
+                        </div>
+                        @if(($article->supervisor_review['status'] === "VIOLATION") && isRole(ROLE_SUPERVISOR) && $article->detection_result['violation_code'])
+                        <div class="table-code-aticle">
+                            <img class="img-icon-detail" src="{{ asset('assets/image/dis-code.png') }}" alt="">
+                            <div>
+                                @if(isset($article->detection_result['violation_code']))
+                                    <h4 class="p-style">Code article</h4>
+                                    @foreach ($article->detection_result['violation_code'] as $detectionCode)
+                                        <div>
+                                            <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                {{$detectionCode['name'] ?? ''}}
+                                            </h4>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                        <div class="table-code-tile">
+                            @if(isset($article->detection_result['violation_types']))
+                                @foreach ($article->detection_result['violation_types'] as $detectionType)
+                                    <div style="display: flex;align-items: center;">
+                                        <div class="color-circle-big" >
+                                            <div class="color-circle" style="background: #6F6F6F;"></div>
+                                        </div>
+                                        <h4 class="p-style">{{$detectionType['name'] ?? ''}}</h4>
                                     </div>
                                 @endforeach
                             @endif
                         </div>
-                    </div>
-                    <div class="table-code-tile">
-                        @if(isset($article->detection_result['violation_types']))
-                            @foreach ($article->detection_result['violation_types'] as $detectionType)
-                                <div style="display: flex;align-items: center;">
-                                    <div class="color-circle-big" >
-                                        <div class="color-circle" style="background: #6F6F6F;"></div>
-                                    </div>
-                                    <h4 class="p-style">{{$detectionType['name'] ?? ''}}</h4>
-                                </div>
-                            @endforeach
                         @endif
                     </div>
-                @else
-                    <h1 class="not-yet-opera">Not yet rated</h1>
-                @endif
-            </div>
+                </div>
+                <div class="table-code-buton">
+                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
+                        <h2>Reset code article</h2>
+                    </div>
+                </div>
             {{-- ==================================================== --}}
             {{-- ================= OPERATOR COLUMN ================== --}}
             {{-- ==================================================== --}}
@@ -231,21 +237,17 @@
                     @endif
                 </div>
             @endif
-
-            <div class="table-code-buton">
-                <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-                    <h2>Confirm violation status</h2>
-                </div>
-                <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
-                    <h2>Confirm non-violation status</h2>
-                </div>
-            </div>
-
-
         </div>
     </div>
 </div>
-
+                        <!-- <div class="table-code-buton">
+                            <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
+                                <h2>Confirm violation status</h2>
+                            </div>
+                            <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
+                                <h2>Confirm non-violation status</h2>
+                            </div>
+                        </div> -->
 
 <div class="modal-title-mobile" id="confirm-violation"> 
     <div class="modal-confirm-content-mobile">

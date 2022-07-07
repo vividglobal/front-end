@@ -572,14 +572,18 @@
   font-weight: 500;
 }
 .style__code_vio{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: auto;
-    width: 100%;
-    padding: 10px;
-    border-left: none;
-    border-right: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  width: 100%;
+  padding: 10px;
+  border-left: none;
+  border-right: none;
+  justify-content: flex-start;
+}
+.success{
+  z-index: 1200;
 }
 .hide-div{
   display: none;

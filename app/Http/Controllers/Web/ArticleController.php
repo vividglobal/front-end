@@ -340,7 +340,7 @@ class ArticleController extends Controller
                     if(!isset($inputs['violation_code']) || count(json_decode($inputs['violation_code'])) === 0) {
                         return $this->responseFail([], "Please add violation code for this article");
                     }
-                    $data = $this->getViolationCodeAndTypeData($inputs['violation_code']);
+                    $data = $this->getViolationCodeAndTypeData(json_decode($inputs['violation_code']));
                     if(count($data) === 0) {
                         return $this->responseFail([], "Invalid violation code");
                     }
@@ -385,7 +385,7 @@ class ArticleController extends Controller
 
     public function resetArticleToOriginState(Request $request, $id) {
         $article = Article::find($id);
-        if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
+        if($article) {
             $status = $article->status;
             $article->status = Article::STATUS_PENDING;
             $article->progress_status = Article::STATUS_PENDING;
