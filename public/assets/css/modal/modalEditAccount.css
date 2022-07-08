@@ -38,7 +38,7 @@
     max-width: 650px;
     width: 100%;
     background: var(--white);
-    padding: 22px;
+    padding: 15px;
     z-index: 105;
   }
 
@@ -93,7 +93,7 @@
   .input--modal{
    display: flex;
    border: 1px solid var(--gray-C7);
-   padding: 15px;
+   padding: 10px;
   }
 
   .input--modal input {
@@ -227,6 +227,8 @@
     color: var(--danger) !important;
     margin-top: 5px !important;
     font-family: 'Avenir Next' !important;
+    font-size: 12px !important;
+    line-height: 5px !important;
 }
 
 .modal_edit_user{

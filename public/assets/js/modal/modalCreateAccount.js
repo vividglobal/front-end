@@ -6,7 +6,6 @@ $("document").ready(function(){
         $(".create_number").val("");
         $(".create_pwd").val("");
         $(".create_re_pwd").val("");
-        $(`input[name="role"]`).removeAttr('checked')
         $(".text_name").text("")
         $(".text_email").text("")
         $(".text_phone").text("")
@@ -62,7 +61,9 @@ $("document").ready(function(){
             $(".text_email").text("Please enter your email")
             flag = false;
 
-        }else if(regexEmail.test(email) == false){
+        }
+
+        if(!regexEmail.test(email)){
             $(".text_email").text("Email does not match")
             flag = false;
         }

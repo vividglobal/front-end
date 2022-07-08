@@ -9,13 +9,21 @@
                     <p>{{ __('Edit account information') }}</p>
                 </div>
                     <input type="hidden" class="edit_id_user" name="edit_id_user">
-                <div class="modal--input">
+                <div class="modal--input ">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
                         <input type="text" placeholder="Enter your Name" class="form-name edit_name" name="edit_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers error_name"></p>
+                </div>
+                <div class="modal--input input_email" style="display:none">
+                    <p>{{ __('E-mail') }}</p>
+                    <div class="input--modal">
+                        <input type="text" placeholder="Enter your Email" class="form-number create_email  " name="email">
+                        <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
+                    </div>
+                    <p class="text-dangers text_email"></p>
                 </div>
                 <div class="modal--input">
                     <p>{{ __('Phone number') }}</p>

@@ -25,6 +25,7 @@ $("document").ready(function(){
         $(".checkbox_mobi").find("#toggle").hide()
         $(".delete__profile_modal").removeClass("open_delete_user")
         $(".overlay").css({"width":"0%","display":"none"})
+        $(".input_email").hide()
         document.documentElement.style.overflow = 'unset';
         document.body.scroll = "yes";
     }
@@ -49,6 +50,7 @@ $("document").ready(function(){
         var auth = $(this).find("input").attr("data-auth")
         var email = $(this).find("input").attr("data-email")
         var id = $(this).find("input").attr("data-id")
+        $(".input_email").show()
         $(".title-modal").find("p").text("Edit account information")
         $(".delete__profile_modal").addClass("open_delete_user")
         checkedAuth = auth;
@@ -62,7 +64,7 @@ $("document").ready(function(){
         $('input[name="edit_name"]').val(name)
         $('input[name="edit_number"]').val(phone)
         $('input[name="edit_id_user"]').attr("data-id",id)
-        $('input[name="edit_id_user"]').attr("data-email",email)
+        $('input[name="email"]').val(email)
         $(".overlay").css({"width":"100%","display":"block"})
         $(`#${auth}`).attr('checked', true)
         document.documentElement.style.overflow = 'hidden';
@@ -143,58 +145,44 @@ $("document").ready(function(){
         let current_pwd = $('input[name="edit_current_pwd"]').val();
         let pwd = $('input[name="edit_pwd"]').val();
         let id = $('input[name="edit_id_user"]').attr("data-id");
-        let email = $('input[name="edit_id_user"]').attr("data-email");
+        let email = $('.create_email').val();
         let re_pwd = $('input[name="edit_re_pwd"]').val();
         var regexPhone = /^0+[0-9]{9,10}$/;
         var regexPassword = /^.{6,20}$/;
-        let csrf = $('meta[name="csrf-token"]').attr('content')
+        const regexEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var flag = true;
-        const url = '/admins/' + id;
 
         if(name === ""){
             $(".error_name").text("Please enter your full name");
             flag = false;
         }
+
         if(number === ""){
             $(".error_number").text("Please enter phone number")
             flag = false;
-        }else if(number.match(regexPhone) == null){
+        }
+
+        if(number.match(regexPhone) == null){
             $(".error_number").text("Please enter the valid phone number format")
+            flag = false;
+        }
+
+        if(!regexEmail.test(email)){
+            $(".text_email").text("Email does not match")
             flag = false;
         }
 
         if(flag){
             if(pwd === "" && re_pwd === "" && current_pwd === ""){
                 // NO UPTATE PWD
-               show_overlay()
-                    $.ajax({
-                        method: "PUT",
-                        url: url,
-                        headers: {
-                            'X-CSRF-TOKEN': csrf,
-                        },
-                        data:{
-                            "full_name" : name,
-                            "email" : email,
-                            "phone_number" : number,
-                            "role" : checkedAuth
-                        }
-                    })
-                    .done(function( msg ) {
-                        if(msg){
-                            if(msg){
-                                hide_overlay()
-                                show_success("Profile updated successfully")
-                                window.location.href = window.location.href
-                                resetModal()
-                            }
-                        }
-                    })
-                    .fail(function(error) {
-                        $(".edit_current_password").text("Profile updated failed")
-                        hide_overlay()
-                    });
-                    resetModal()
+                let data = {
+                    "full_name" : name,
+                    "email" : email,
+                    "phone_number" : number,
+                    "role" : checkedAuth
+                }
+                updateProfile(data,id)
+
             }else{
                 if(!pwd.match(regexPassword)){
                     $(".edit_password").text("Please enter password from 6 - 20 characters")
@@ -214,36 +202,44 @@ $("document").ready(function(){
                     flag = false;
                 }
                 if(flag){
-                    show_overlay()
-                    $.ajax({
-                        method: "PUT",
-                        url: url,
-                        headers: {
-                            'X-CSRF-TOKEN': csrf,
-                        },
-                        data:{
-                            "full_name" : name,
-                            "email" : email,
-                            "phone_number" : number,
-                            "password" : pwd,
-                            "password_current" : current_pwd,
-                            "role" : checkedAuth
-                        }
-                        })
-                        .done(function( msg ) {
-                            show_success("Profile updated successfully")
-                            hide_overlay()
-                            window.location.href = window.location.href
-                            resetModal()
-                        })
-                        .fail(function(error) {
-                            $(".edit_current_password").text(error.responseJSON.message)
-                            hide_overlay()
-                        });
+                    let data = {
+                        "full_name" : name,
+                        "email" : email,
+                        "phone_number" : number,
+                        "password" : pwd,
+                        "password_current" : current_pwd,
+                        "role" : checkedAuth
+                    }
+                    updateProfile(data,id)
                 }
             }
         }
     })
+
+    function updateProfile(data,id){
+        show_overlay()
+        const url = '/admins/' + id;
+        let csrf = $('meta[name="csrf-token"]').attr('content')
+        $.ajax({
+            method: "PUT",
+            url: url,
+            headers: {
+                'X-CSRF-TOKEN': csrf,
+            },
+            data: data
+            })
+            .done(function( msg ) {
+                show_success("Profile updated successfully")
+                hide_overlay()
+                window.location.href = window.location.href
+                resetModal()
+            })
+            .fail(function(error) {
+                $(".edit_current_password").text(error.responseJSON.message)
+                hide_overlay()
+            });
+    }
+
     // Modal delete account----------------------------------------------------------------
     $(".delete__profile").on("click",function(){
         $("#modal__delete-account").addClass("modal__open")
