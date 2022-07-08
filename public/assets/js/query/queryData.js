@@ -333,7 +333,7 @@ $("document").ready(function () {
             let violationType = $(".list--violation--type")
             .find("> p")
             .attr("data-id");
-            let search = $(".search").val() ? $(".search").val() : "";
+            let search = $(".search").val() ? $(".search").val().trim() : "";
             let perpageText = $(".list--showing").find("select").val() || perpage;
             let end__Date = "";
             let start__Date = "";
@@ -359,7 +359,7 @@ $("document").ready(function () {
             let brandCompany = $(".select--company-or-brand").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
-            let search = $(".search").val() ? $(".search").val() : "";
+            let search = $(".search").val() ? $(".search").val().trim() : "";
             let perpage = "";
             let end__Date = "";
             let start__Date = "";
