@@ -38,11 +38,19 @@ $("document").ready(function(){
                 if(msg){
                     hide_overlay()
                     show_success(msg.message)
+<<<<<<< HEAD
+=======
+                    window.location.href = window.location.href
+>>>>>>> 93d1a07 (fix progress status)
                 }
             })
             .fail(function( error ) {
                 hide_overlay()
                 show_error(error.responseJSON.message)
+<<<<<<< HEAD
+=======
+                window.location.href = window.location.href
+>>>>>>> 93d1a07 (fix progress status)
             })
     })
 

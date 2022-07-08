@@ -200,6 +200,7 @@ $(document).ready(function () {
             },
             method: "DELETE",
             url:"/articles-document/"+rowIdelemnet+"",
+<<<<<<< HEAD
         })
         .done(function( msg){
             if(msg){
@@ -221,6 +222,51 @@ $(document).ready(function () {
                         progressStatus.find(".select__one--status:first-child").find("img").show()
                         getTextStatus.text("Not started").attr("data-id","not_started")
                     }
+=======
+        });
+        hide_overlay()
+        if(response.success) {
+            parentItem.remove();
+            let item = $('.div-item')
+            if(item.length === 0){
+                $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
+                $(".date-penalty").find(`#${rowId}`).text("")
+            }
+            show_success(response.message);
+
+            if(!$(".item-one-file").is(":visible")){
+                let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                .find(".select--status").find(".select__one--status:nth-child(3)")
+                if(progressStatus.hasClass("show")){
+                    progressStatus.addClass("hide").removeClass("show")
+>>>>>>> 93d1a07 (fix progress status)
+                }
+                let checkStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                if(checkStatus.text().trim() == "Completed"){
+                    const url = `${rowId}/switch-progress-status`;
+                    $.ajax({
+                        method: "PUT",
+                        url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': csrf,
+                        },
+                        data:{
+                            "progress_status" : "PROCESSING",
+                        }
+                    })
+                    .done(function( msg ) {
+                        if(msg){
+                            show_success(msg.message)
+                            let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                            .find(".select--status").find(".select__one--status:nth-child(2)")
+                            progressStatus.addClass("background-gray")
+                            progressStatus.find("img").show()
+                            checkStatus.text("Processing").attr("data-id","Processing")
+                        }
+                    })
+                    .fail(function( error ) {
+                        show_error(error.responseJSON.message)
+                    })
                 }
             }
         })
