@@ -190,6 +190,7 @@
     left: 0;
     height: 25px;
     width: 25px;
+    border-radius: 50%;
     background-color: var(--white);
     border: 1px solid var(--primary);
   }
@@ -213,20 +214,19 @@
   }
 
   .container__checkbox .checkmark:after {
-    left: 5px;
-    top: -2px;
-    width: 13px;
-    height: 20px;
-    border: solid var(--gray-6F);
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    border: solid var(--primary-color);
+    border-radius: 50%;
+    background: var(--primary);
   }
 
   .text-dangers{
-    color: var(--danger);
+    color: var(--danger) !important;
     margin-top: 5px !important;
+    font-family: 'Avenir Next' !important;
 }
 
 .modal_edit_user{

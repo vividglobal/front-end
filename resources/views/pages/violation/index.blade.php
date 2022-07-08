@@ -164,7 +164,7 @@
                                         @if(isset($article->progress_status) && $article->progress_status != "")
                                             @if($article->progress_status == "NOT_STARTED" || $article->progress_status == "PENDING")
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
-                                            @elseif($article->progress_status == "PROCESSING")
+                                            @elseif($article->progress_status == "PROCESSING" || $article->progress_status == "PENDING")
                                                 <p data-id="Processing" >{{ __("Processing") }}</p>
                                             @elseif($article->progress_status == "COMPLETED")
                                                 <p data-id="Completed" >{{ __(' Completed ') }}</p>
@@ -223,7 +223,7 @@
         @if(isRole(ROLE_OPERATOR))
             <div class="check-login" t-login="true"></div>
         @endif
-        <div class="modal-content">
+        <div class="modal-content modal-upfile">
             <div class="div-close">
                 <span class="close">&times;</span>
             </div>

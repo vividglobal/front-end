@@ -143,7 +143,7 @@
 
     .daterangepicker .daterangepicker.ltr .ranges, .daterangepicker.ltr .drp-calendar {
         float: none !important;
-        height: 50vh !important;
+        height: 55vh !important;
     }
 
     .daterangepicker .drp-calendar.right .daterangepicker_input {

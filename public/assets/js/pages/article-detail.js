@@ -36,7 +36,7 @@ $(document).ready(function(){
         }
     })
 
-    $('.btn-confirm-non-violation').click(async function() {
+    $('.btn-confirm-violation-and-choose-code').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         addOverlayScroll();
         if(response.success) {
@@ -51,14 +51,19 @@ $(document).ready(function(){
                 $('.table-code-buton').remove();
             }
         }
-        confirmModal.hide();
+        confirmArticleAsViolationModal.hide();
     })
 
 
-    $('.btn-confirm-violation-and-choose-code').click(async function() {
-        confirmArticleAsViolationModal.hide();
+    $('.btn-confirm-non-violation').click(async function() {
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
+        fileHtmlItems = `
+        <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
+            <h2>Reset code article</h2>
+        </div>`
+        $('#table-code-buton-supervisor').prepend(fileHtmlItems);
+        confirmModal.hide();
     })
 
 

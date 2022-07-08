@@ -80,7 +80,6 @@ $(document).ready(function(){
         let date = $('.form--daterange').val() || $('.date_mobile').val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
-            window.location.href = window.location.href
         }
     })
 

@@ -3,6 +3,7 @@ $("document").ready(function(){
         $(".modal").removeClass("modal__open")
         $(".btn__change--password").show();
         $(".edit-password").hide();
+        $(".current-password").hide();
         $(".edit-password-confirm").hide();
         $(".form-pwd").val("");
         $(".form-re-pwd").val("");
@@ -13,6 +14,7 @@ $("document").ready(function(){
         $('input[name="edit_name"]').val("")
         $('input[name="edit_number"]').val("")
         $(`input[name="role"]`).removeAttr('checked')
+        $("checkmark").after()
         $(`input[name="edit_id_user"]`).removeAttr('data-id')
         $(`input[name="edit_id_user"]`).removeAttr('data-email')
         $(".edit_re_password").text("")
@@ -24,7 +26,6 @@ $("document").ready(function(){
         $(".delete__profile_modal").removeClass("open_delete_user")
         $(".overlay").css({"width":"0%","display":"none"})
         document.documentElement.style.overflow = 'unset';
-
         document.body.scroll = "yes";
     }
     let checkedAuth;
@@ -102,8 +103,12 @@ $("document").ready(function(){
         $(".btn__change--password").hide();
     })
 
-    $(".form-pwd").keyup(function(){
-        $(".text-dangers").text("")
+    $(".input--modal").find("input").keyup(function(){
+        $(this).closest(".input--modal").closest(".modal--input").find(".text-dangers").text("")
+    })
+
+    $(".container__checkbox").find("input").on("change",function(){
+        $(this).closest(".container__checkbox").closest("div").closest(".modal--input").find(".text-dangers").text("")
     })
 
     //pwd-show
@@ -118,8 +123,13 @@ $("document").ready(function(){
         }
     })
 
-    $(".btn__cancel-button").on("click",function(){
+    $(".cancel_create-account").on("click",function(){
         resetModal()
+    })
+
+    $(".cancel_delete_user").on("click",function(){
+        $("#modal__delete-account").removeClass("modal__open")
+        $(".overlay").css({"width":"0%","display":"none"})
     })
 
     $(".edit_profile").on("click",function(e){
@@ -135,14 +145,28 @@ $("document").ready(function(){
         let id = $('input[name="edit_id_user"]').attr("data-id");
         let email = $('input[name="edit_id_user"]').attr("data-email");
         let re_pwd = $('input[name="edit_re_pwd"]').val();
-        const regexPhone = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/;
+        var regexPhone = /^0+[0-9]{9,10}$/;
+        var regexPassword = /^.{6,20}$/;
         let csrf = $('meta[name="csrf-token"]').attr('content')
+        var flag = true;
         const url = '/admins/' + id;
-        if(name !== "" && number !== "" && checkedAuth !== undefined){
+
+        if(name === ""){
+            $(".error_name").text("Please enter your full name");
+            flag = false;
+        }
+        if(number === ""){
+            $(".error_number").text("Please enter phone number")
+            flag = false;
+        }else if(number.match(regexPhone) == null){
+            $(".error_number").text("Please enter the valid phone number format")
+            flag = false;
+        }
+
+        if(flag){
             if(pwd === "" && re_pwd === "" && current_pwd === ""){
                 // NO UPTATE PWD
-                if(number.match(regexPhone)){
-                    show_overlay()
+               show_overlay()
                     $.ajax({
                         method: "PUT",
                         url: url,
@@ -171,14 +195,25 @@ $("document").ready(function(){
                         hide_overlay()
                     });
                     resetModal()
-                }else{
-                    $(".error_number").text("Invalid phone number")
-                }
             }else{
-                if(pwd.length  < 6 || re_pwd.length  < 6 || current_pwd.length < 6 ){
-                    $(".edit_re_password").text("Password length is more than 6 characters and is required")
-                }else{
-                    if(pwd == re_pwd){
+                if(!pwd.match(regexPassword)){
+                    $(".edit_password").text("Please enter password from 6 - 20 characters")
+                    flag = false;
+                }
+                if(!re_pwd.match(regexPassword)){
+                    $(".edit_re_password").text("Please enter re-password from 6 - 20 characters")
+                    flag = false;
+                }
+                if(!current_pwd.match(regexPassword)){
+                    $(".edit_current_password").text("Please enter current password from 6 - 20 characters")
+                    flag = false;
+                }
+
+                if(pwd !== re_pwd){
+                    $(".edit_password").text("Password and confirmation password does not match. Please re-enter")
+                    flag = false;
+                }
+                if(flag){
                     show_overlay()
                     $.ajax({
                         method: "PUT",
@@ -205,18 +240,8 @@ $("document").ready(function(){
                             $(".edit_current_password").text(error.responseJSON.message)
                             hide_overlay()
                         });
-                    }else{
-                        $(".edit_re_password").text("Password and confirmation password does not match. Please re-enter")
-                    }
                 }
             }
-        }
-
-        if(name === ""){
-            $(".error_name").text("Name is required")
-        }
-        if(number === ""){
-            $(".error_number").text("Phone number is required")
         }
     })
     // Modal delete account----------------------------------------------------------------

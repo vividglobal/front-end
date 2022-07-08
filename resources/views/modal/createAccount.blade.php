@@ -12,40 +12,40 @@
                         <input type="text" id="name" placeholder="Enter your Name" class="form-name create_name" name="full_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
+                    <p class="text-dangers text_name"></p>
                 </div>
-                <p class="text-dangers text_name"></p>
                 <div class="modal--input">
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
                         <input type="text" placeholder="Enter your Email" class="form-number create_email  " name="email">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
                     </div>
+                    <p class="text-dangers text_email"></p>
                 </div>
-                <p class="text-dangers text_email"></p>
                 <div class="modal--input">
                     <p>{{ __('Phone number') }}</p>
                     <div class="input--modal">
                         <input type="text" placeholder="Enter your Number" class="form-number create_number  " name="phone_number">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__number">
                     </div>
+                    <p class="text-dangers text_phone"></p>
                 </div>
-                <p class="text-dangers text_phone"></p>
-                <div class="modal--input " >
+                <div class="modal--input" >
                     <p>{{ __('New password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Enter your password" class="form-pwd create_pwd  " name="password">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
+                    <p class="text-dangers text_password"></p>
                 </div>
-                <p class="text-dangers text_password"></p>
-                <div class="modal--input " >
+                <div class="modal--input" >
                     <p>{{ __('Confirm password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Re-enter your password" class="form-re-pwd create_re_pwd  " name="password_confirmation">
-                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-re-seen-pwd">
+                        <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
+                    <p class="text-dangers text_re-password"></p>
                 </div>
-                <p class="text-dangers text_re-password"></p>
                 <div class="modal--input">
                     <p>{{ __('Authority') }}</p>
                     <div style="display: flex; justify-content:space-around">
@@ -62,8 +62,8 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
+                    <p class="text-dangers text_auth"></p>
                 </div>
-                <p class="text-dangers text_auth"></p>
             </div>
             <div class="btn-modal">
                 <button class="btn__cancel-button cancel_create-account btn_cancel_mobi">{{ __('Cancel') }}</button>

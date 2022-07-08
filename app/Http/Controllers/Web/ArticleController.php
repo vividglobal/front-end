@@ -34,7 +34,7 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
-        
+
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
 
@@ -250,25 +250,23 @@ class ArticleController extends Controller
         $validator = Validator::make($request->all(), [
             'progress_status' => 'required|in:'.Article::PROGRESS_NOT_STARTED.','.Article::PROGRESS_PROCESSING.','.Article::PROGRESS_COMPLETED
         ]);
-
         if ($validator->fails()) {
             throw new \Illuminate\Validation\ValidationException($validator);
         }
 
         $inputs = $validator->validated();
         $article = Article::find($id);
-        if($article && $article->progress_status !== Article::PROGRESS_COMPLETED) {
-            if(isset($$article->documents)){
-                if(count($article->documents) === 0) {
-                    return $this->responseFail([], "Please upload legal documents for this article");
-                }
+        if($article && $article->progress_status === Article::PROGRESS_COMPLETED) {
+            if(isset($$article->documents) && count($article->documents) === 0) {
+                return $this->responseFail([], "Please upload legal documents for this article");
             }
-            $article->progress_status = $inputs['progress_status'];
-            $article->update();
-
-            return $this->responseSuccess([], "Switch progression status successfully");
         }
 
+        $article->progress_status = $inputs['progress_status'];
+        $result = $article->update();
+        if($result){
+            return $this->responseSuccess([], "Switch progression status successfully");
+        }
         return $this->responseFail([], "Switch progression status failed");
     }
 
@@ -440,7 +438,7 @@ class ArticleController extends Controller
         $countryData = null;
         if($validated['country_id']) {
             $country = Country::find($validated['country_id']);
-            
+
             if($country) {
                 $countryData = [
                     'id' => $validated['country_id'],
