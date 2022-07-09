@@ -191,12 +191,13 @@ $(document).ready(function () {
 
     function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
+        let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
             data :{
-                "article_id": filesNumber <= 1 ? rowId : ""
+                "article_id": filesNumber <= 1 && getTextStatus.text().trim() == "Completed" ? rowId : ""
             },
             method: "DELETE",
             url:"/articles-document/"+rowIdelemnet+"",
@@ -210,44 +211,18 @@ $(document).ready(function () {
                 if(item.length === 0){
                     $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                     $(".date-penalty").find(`#${rowId}`).text("")
-                    let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                    var progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
                     .find(".select--status")
+                    // HIDE COMPELTE
                     if(progressStatus.find(".select__one--status:nth-child(3)").hasClass("show")){
                         progressStatus.find(".select__one--status:nth-child(3)").addClass("hide").removeClass("show")
                     }
-                    let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                    // PROGRESS STATUS IS COMPLETE => NOT_STARTED
                     if(getTextStatus.text().trim() == "Completed"){
-                        progressStatus.find(".select__one--status:first-child").addClass("background-gray")
-                        progressStatus.find(".select__one--status:first-child").find("img").show()
+                        progressStatus.find(".select__one--status:nth-child(1)").addClass("background-gray")
+                        progressStatus.find(".select__one--status:nth-child(1)").find("img").show()
                         getTextStatus.text("Not started").attr("data-id","not_started")
                     }
-                }
-                let checkStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
-                if(checkStatus.text().trim() == "Completed"){
-                    const url = `${rowId}/switch-progress-status`;
-                    $.ajax({
-                        method: "PUT",
-                        url: url,
-                        headers: {
-                            'X-CSRF-TOKEN': csrf,
-                        },
-                        data:{
-                            "progress_status" : "PROCESSING",
-                        }
-                    })
-                    .done(function( msg ) {
-                        if(msg){
-                            show_success(msg.message)
-                            let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
-                            .find(".select--status").find(".select__one--status:nth-child(2)")
-                            progressStatus.addClass("background-gray")
-                            progressStatus.find("img").show()
-                            checkStatus.text("Processing").attr("data-id","Processing")
-                        }
-                    })
-                    .fail(function( error ) {
-                        show_error(error.responseJSON.message)
-                    })
                 }
             }
         })
