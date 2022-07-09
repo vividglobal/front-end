@@ -51,7 +51,10 @@
                     <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
                     data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
                 </li>
-                <li><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
+                <li>
+                    <img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt="">
+                    <input type="hidden" data-id ={{ $admin["_id"] }} >
+                </li>
             </div>
 
         </ul>
@@ -79,9 +82,8 @@
             <button class="btn__cancel-button cancel_delete_user" style="float:left;margin-right:10px">
             {{ __('Cancel') }}
             </button>
-            <form action="admins/{{ $admin->_id }}" method="post">
-                @csrf
-                @method('DELETE')
+            <form  >
+                <input type="hidden" data-id="">
                 <button class="btn__delete--user" type="submit">{{ __('Yes') }}</button>
             </form>
         </div>

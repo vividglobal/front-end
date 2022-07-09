@@ -27,6 +27,8 @@ $("document").ready(function(){
         $(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
         $(".overlay").css({"width":"100%", "display": "block"})
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "unset";
     })
 
 

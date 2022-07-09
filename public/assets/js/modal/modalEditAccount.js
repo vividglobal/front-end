@@ -132,6 +132,8 @@ $("document").ready(function(){
     $(".cancel_delete_user").on("click",function(){
         $("#modal__delete-account").removeClass("modal__open")
         $(".overlay").css({"width":"0%","display":"none"})
+        document.documentElement.style.overflow = 'unset';
+        document.body.scroll = "yes";
     })
 
     $(".edit_profile").on("click",function(e){
@@ -229,10 +231,7 @@ $("document").ready(function(){
             data: data
             })
             .done(function( msg ) {
-                show_success("Profile updated successfully")
-                hide_overlay()
-                window.location.href = window.location.href
-                resetModal()
+                ReturnMessage.success("Profile updated successfully")
             })
             .fail(function(error) {
                 $(".edit_current_password").text(error.responseJSON.message)
@@ -244,13 +243,60 @@ $("document").ready(function(){
     $(".delete__profile").on("click",function(){
         $("#modal__delete-account").addClass("modal__open")
         $(".overlay").css({"width": "100%", "display": "block"})
+        $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("Remove user")
+        let id  = $(this).closest("li").find("input").attr("data-id");
+        $(".btn__delete--user").closest("form").find("input").attr("data-id",id);
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "unset";
     })
 
-    $(".btn__delete--user").on("click",function(){
+    $(".btn__delete--user").on("click",function(e){
+        e.preventDefault()
+        let id = $(this).closest("form").find("input").attr("data-id")
         show_overlay()
-        resetModal()
-        setTimeout(()=>{
-            hide_overlay()
-        },1500)
+        const url = '/admins/' + id;
+        let csrf = $('meta[name="csrf-token"]').attr('content')
+        $.ajax({
+            method: "DELETE",
+            url: url,
+            headers: {
+                'X-CSRF-TOKEN': csrf,
+            },
+            })
+            .done(function( msg ) {
+                show_success(msg.message)
+                hide_overlay()
+                resetModal()
+                if($(".tbody_admin").length == 1){
+                    const queryString = window.location.search;
+                    const urlParams = new URLSearchParams(queryString);
+                    const page = parseInt(urlParams.get("page"));
+                    if(page > 1){
+                        let url = window.location.href
+                        let replace = url.replace(`&page=${page}`,`&page=${page - 1}`)
+                        window.location.href = replace
+                    }
+                }else{
+                    window.location.href = window.location.href
+                }
+            })
+            .fail(function(error) {
+                ReturnMessage.error(error.responseJSON.message)
+            })
     })
+
+    const ReturnMessage  = {
+        success:(message)=>{
+            show_success(message)
+            hide_overlay()
+            window.location.href = window.location.href
+            resetModal()
+        },
+        error: (message)=>{
+            show_error(message)
+            hide_overlay()
+            window.location.href = window.location.href
+            resetModal()
+        }
+    }
 })

@@ -3,7 +3,7 @@
 .modal {
     visibility: hidden;
     opacity: 0;
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
