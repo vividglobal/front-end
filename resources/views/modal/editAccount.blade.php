@@ -20,7 +20,7 @@
                 <div class="modal--input input_email" style="display:none">
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Email" class="form-number create_email  " name="email">
+                        <input type="text" placeholder="Enter your Email" class="form-number edit_email  " name="email">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
                     </div>
                     <p class="text-dangers text_email"></p>

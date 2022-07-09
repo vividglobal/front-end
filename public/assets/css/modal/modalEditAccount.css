@@ -103,6 +103,10 @@
     background-color: var(--white);
   }
 
+  .input--modal input::placeholder{
+      color: var(--gray-C7);
+  }
+
   .btn__change--password{
     font-family: 'Brandon Grotesque';
     font-style: normal;

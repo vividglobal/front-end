@@ -145,7 +145,7 @@ $("document").ready(function(){
         let current_pwd = $('input[name="edit_current_pwd"]').val();
         let pwd = $('input[name="edit_pwd"]').val();
         let id = $('input[name="edit_id_user"]').attr("data-id");
-        let email = $('.create_email').val();
+        let email = $('.edit_email').val();
         let re_pwd = $('input[name="edit_re_pwd"]').val();
         var regexPhone = /^0+[0-9]{9,10}$/;
         var regexPassword = /^.{6,20}$/;
