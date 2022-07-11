@@ -48,6 +48,13 @@ $(document).ready(function(){
         confirmArticleAsViolationModal.hide();
     })
 
+    $('.btn-confirm-violation').click(async function() {
+        updateStatusViolationColumnAndEnableReviewViolationCodeButton();
+        addOverlayScroll();
+        confirmModalVio.hide();
+        // hide_overlay();
+    });
+
 
     $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
@@ -72,6 +79,7 @@ $(document).ready(function(){
 
     $('.add-violation-code').click(async function() {
         openselectcode.show();
+        articleId = $(this).attr('data-id');
     })
 
     $('.btn-select-code').click(async function() {
@@ -98,22 +106,48 @@ $(document).ready(function(){
     })
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
-        let codeString = '';
+        let codelish = '';
         for (let i = 0; i < data.violation_code.length; i++) {
-            codeString += `
-            
+            codelish += `
+                <div>
+                    <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                        ${data.violation_code[i].name}
+                    </h4>
+                </div>
             `
         }
         let typelishcode = '';
         for (let i = 0; i < data.violation_types.length; i++) {
-            typelishcode += `<p style=color:${data.violation_types[i].color}>${data.violation_types[i].name}</p>`
+            typelishcode += `
+            <div style="display: flex;align-items: center;">
+                <div class="color-circle-big" >
+                    <div class="color-circle" style="background: #6F6F6F;"></div>
+                </div>
+                <h4 class="p-style"> ${data.violation_types[i].name}</h4>
+            </div>
+            `
         }
-        let typeString = `
-        <div class="table-code-tile">
-            ${typelishcode}
-        </div>
+        fileHtmlItems = `
+            <div id="table-box">
+                <div class="table-code-top">
+                    <h2>Supervisor</h2>
+                    <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+                </div>
+                <div class="table-code-aticle">
+                    <img class="img-icon-detail" src="http://localhost:8099/assets/image/dis-code.png" alt="">
+                    <div>
+                        <h4 class="p-style">Code article</h4>
+                        ${codelish}
+
+                    </div>
+                </div>
+                <div class="table-code-tile">
+                    ${typelishcode}
+                </div>
+            </div>
         `
-        $('#table-add').prepend(typeString);
+        $('#table-add').prepend(fileHtmlItems);
+        $('#table-code-buton-all').remove()
     }
 
     function removeCurrentRow() {
@@ -128,13 +162,6 @@ $(document).ready(function(){
         document.body.scroll = "yes";
     }
 
-    // function closeCodeModal() {
-    //     violationCodeModal.hide();
-    //     $('input[type=checkbox]').each(function()
-    //     {
-    //         this.checked = false;
-    //     });
-    // }
 
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
@@ -143,7 +170,7 @@ $(document).ready(function(){
         $('#table-code-buton-supervisor').remove();
         fileHtmlItems = `
             <div class="table-code-buton" id="table-code-buton-supervisor">
-                <div data-id="${articleId}" class="check-true add-violation-code btn-violation btn-violation-code">
+                <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code check-violation-code">
                     <h2>Select code article</h2>
                 </div>
             </div>`

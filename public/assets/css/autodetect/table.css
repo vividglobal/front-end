@@ -583,7 +583,7 @@
   /* padding: 10px; */
   border-left: none;
   border-right: none;
-  justify-content: center;
+  /* justify-content: center; */
 }
 .style__code--tile{
   display: flex;
@@ -599,6 +599,9 @@
 }
 .style__code_vio:hover{
   overflow: auto;
+}
+.style__code_vio_length{
+  display: flex;
 }
 .success{
   z-index: 1200;
