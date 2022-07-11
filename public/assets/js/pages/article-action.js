@@ -60,7 +60,6 @@ $(document).ready(function(){
         }else {
             let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
             isLoading = false;
-            hide_overlay();
             if(response.success) {
                 show_success(response.message);
                 updateDetectionColumnAfterSelectViolationCode(response.data);
@@ -69,6 +68,7 @@ $(document).ready(function(){
                 hide_overlay();
             }
         }
+        hide_overlay();
     });
 
     $('.open-modal').on('click', '.close', function() {
@@ -85,13 +85,14 @@ $(document).ready(function(){
     });
 
     $('.btn-confirm-non-violation').click(async function() {
+        confirmModal.hide()
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         addOverlayScroll();
         isLoading = false;
-        hide_overlay();
         if(response.success) {
             show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
+                confirmModal.hide();
                 currentRow.find(`.${lowercaseRole}-violation-type`).html('')
                 currentRow.find(`.${lowercaseRole}-violation-code`).html(
                     `<div class="entry-title-threee entry-title-tyle reviewing-title"></div>`
@@ -101,21 +102,21 @@ $(document).ready(function(){
                         <p data-status="${STATUS_NONE_VIOLATION}" class="status-title unviolation-color">Non-violation</p>
                     </div>`
                 );
-                confirmModal.hide();
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
                 removeCurrentRow();
             }
         }else {
             show_error('Evaluation failed!');
             confirmModal.hide();
-            hide_overlay();
         }
+        hide_overlay();
     });
 
     $('.btn-confirm-violation').click(async function() {
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         addOverlayScroll();
         confirmModalVio.hide();
+        // hide_overlay();
     });
 
     $('.btn-select-code').click(async function() {
@@ -132,6 +133,7 @@ $(document).ready(function(){
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode);
         isLoading = false;
         hide_overlay();
+        closeCodeModal()
         if(response.success) {
             addOverlayScroll();
             updateDetectionColumnAfterSelectViolationCode(response.data);
@@ -192,11 +194,12 @@ $(document).ready(function(){
         }else if(CURRENT_ROLE === OPERATOR_ROLE) {
             removeCurrentRow();
         }
+        hide_overlay();
     }
 
     function removeCurrentRow() {
-        $(`tr[data-id="${articleId}"]`).fadeOut('slow');
-        $(`div[data-id="${articleId}"]`).fadeOut('slow');
+        $(`tr[data-id="${articleId}"]`).fadeOut();
+        $(`div[data-id="${articleId}"]`).fadeOut();
         closeCodeModal();
         confirmModal.hide();
     }
@@ -217,7 +220,6 @@ $(document).ready(function(){
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
         isLoading = false;
-        hide_overlay();
         if(response.success) {
             show_success(response.message);
             // Update status label
@@ -226,17 +228,17 @@ $(document).ready(function(){
                     <p data-status="${STATUS_VIOLATION}" class="status-title violation-color">Violation</p>
                 </div>`
             );
-
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
                 `<div class="btn-status">
                     <a attr-status="${AGREE}" class="check-true check-violation-code" href="javascript:void(0)"></a>
                     <a attr-status="${DISAGREE}" class="check-false${disabledDisagreeBtn ? '-disabled' : ''} check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
+            
         }else {
             show_error('Evaluation failed!');
-            hide_overlay();
         }
+        hide_overlay();
     }
 
     async function action_moderate_article(action, status, violationCode = []) {

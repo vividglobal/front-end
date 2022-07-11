@@ -35,7 +35,7 @@
                         </div>
                         <div class="track track-non">
                             <div class=" heading th-title-right sort_crawl_date">
-                                <p>{{ __('Crawl date') }}</p>
+                                <p>{{ __('Checking date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
@@ -73,7 +73,7 @@
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}}><img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt=""></a>
+                                    <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt=""></a>
                                 </div>
                             </div>
                             @if(@Auth::user()->role === "OPERATOR")

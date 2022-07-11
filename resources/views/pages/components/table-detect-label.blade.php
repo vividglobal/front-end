@@ -364,7 +364,7 @@
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
             @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
                     {{__("*You cannot change your decision in the future")}}
             @else
                 {{ __(" ARE YOU SURE TO MOVE THIS POST TO THE NON-VIOLATION LIST?.") }}
@@ -386,7 +386,7 @@
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
                 <p class="title-modal" style="text-align: center;display: block;">   
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
             <div class="head-confirm-btn">
@@ -406,10 +406,10 @@
             </div>
                 <p class="title-modal" style="text-align: center;display: block;">
                 @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
                     {{__("*You need to verify the violation code for this post and cannot change your decision in the future")}}
                 @else
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
                     {{__("* Please re-check the violation code for this post")}}
                 @endif
                 </p>
@@ -419,6 +419,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     <div class="modal-title open-modal" id="selectCodeModal">
         <div class="modal-content modal-content-code chosee-code-style">
@@ -452,6 +455,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="container-table" id="div-moblie">
     <ul class="container-row-mobile">
