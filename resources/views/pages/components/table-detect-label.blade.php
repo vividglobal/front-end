@@ -123,12 +123,12 @@
                         <div data-id="{{ $article->_id }}" class="scroll-table" >
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track track-link">
@@ -159,7 +159,7 @@
                                             >{{ getStatusText($botStatus)}}</p>
                                         @endif
                                     </div>
-                                    <div class="style__code--article" style="display:block">
+                                    <div class="style__code--article" style="display:block;justify-content:@if(count($article->detection_result['violation_code']) < 7) center @endif">
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div>
@@ -224,7 +224,7 @@
                                                 <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="style__code--article" style="width:100%">
+                                            <div class="style__code--article" style="width:100%;justify-content:@if(count($article->supervisor_review['violation_code']) < 7) center @endif">
                                                 @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR)
                                                 && count($article->supervisor_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
@@ -303,7 +303,7 @@
                                                     href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="style__code--article" style="width:100%">
+                                            <div class="style__code--article" style="width:100%;justify-content:@if(count($article->operator_review['violation_code']) < 7) center @endif">
                                                 @if((isPendingStatus($article->operator_review['status']) || isViolationStatus($article->operator_review['status'])) && !isRole(ROLE_OPERATOR)
                                                 && count($article->operator_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
@@ -364,7 +364,7 @@
             </div>
             <p class="title-modal" style="text-align: center;display: block;">
             @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
                     {{__("*You cannot change your decision in the future")}}
             @else
                 {{ __(" ARE YOU SURE TO MOVE THIS POST TO THE NON-VIOLATION LIST?.") }}
@@ -406,10 +406,10 @@
             </div>
                 <p class="title-modal" style="text-align: center;display: block;">
                 @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
                     {{__("*You need to verify the violation code for this post and cannot change your decision in the future")}}
                 @else
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
                     {{__("* Please re-check the violation code for this post")}}
                 @endif
                 </p>
@@ -419,6 +419,9 @@
             </div>
         </div>
     </div>
+
+
+
 
     <div class="modal-title open-modal" id="selectCodeModal">
         <div class="modal-content modal-content-code chosee-code-style">
@@ -452,6 +455,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="container-table" id="div-moblie">
     <ul class="container-row-mobile">

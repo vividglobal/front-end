@@ -5,7 +5,7 @@ USER root
 COPY ./ /var/www/html
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends openssl sudo nano libssl-dev libcurl4-openssl-dev git curl libxml2-dev unzip zlib1g-dev libzip-dev libonig-dev\
+    && apt-get install -y --no-install-recommends cron openssl sudo nano libssl-dev libcurl4-openssl-dev git curl libxml2-dev unzip zlib1g-dev libzip-dev libonig-dev\
     && pecl install mongodb \
     && pecl install zlib zip \
     && cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \

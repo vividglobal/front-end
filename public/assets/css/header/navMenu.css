@@ -172,18 +172,20 @@ li:nth-child(3) img{
 .activeBackground{
     background-color: var(--gray-F4);
 }
-
+/* .test{
+margin: auto;
+} */
 .style__code--article{
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
-    border-left:1px solid #E5E5E5;
-    border-right:1px solid #E5E5E5;
+    border-left: 1px solid #E5E5E5;
+    border-right: 1px solid #E5E5E5;
     width: 30%;
-    padding: 10px;
+    /* padding: 10px; */
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .style__code--article:hover{

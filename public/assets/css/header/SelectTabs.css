@@ -77,6 +77,10 @@
     cursor: pointer;
 }
 
+.li-delete-profile{
+    padding-left: 10px !important;
+}
+
 .list--showing{
     padding: 13px;
     border: 1px solid var(--gray-C7);;

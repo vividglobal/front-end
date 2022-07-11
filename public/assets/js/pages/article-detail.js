@@ -1,15 +1,21 @@
 $(document).ready(function(){
-    let confirmModalVio = $('#confirm-violation');
-    let confirmModal = $('#confirm-non-violation');
-    let span = $('.close');
+    let articleId;
+    let currentRow;
+    let agreeStatus;
+    let botStatus;
+    let confirmModal = $('#confirmActionModal');
+    let confirmModalVio = $('#confirmActionModal-violation');
     let confirmArticleAsViolationModal = $('#confirmArticleAsViolation')
+    let span = $('.close');
+    let openselectcode = $('.open-modal-mobile-code')
     let actionStep;
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
 
     span.click(function () {
-        confirmModalVio.hide();
         confirmModal.hide();
+        confirmModalVio.hide();
         confirmArticleAsViolationModal.hide()
+        openselectcode.hide();
     });
     $(".history-back").click(function(){
         history.back(1);
@@ -32,46 +38,123 @@ $(document).ready(function(){
         }else if(botStatus === STATUS_NONE_VIOLATION && agreeStatus === AGREE) {
             confirmModal.show();
         }else if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
-            confirmModalVio.show();
+            confirmModalVio.show()
         }
     })
 
     $('.btn-confirm-violation-and-choose-code').click(async function() {
+        let disabledDisagreeBtn = true;
+        await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
+        confirmArticleAsViolationModal.hide();
+    })
+
+    $('.btn-confirm-violation').click(async function() {
+        updateStatusViolationColumnAndEnableReviewViolationCodeButton();
+        addOverlayScroll();
+        confirmModalVio.hide();
+        // hide_overlay();
+    });
+
+
+    $('.btn-confirm-non-violation').click(async function() {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         addOverlayScroll();
         if(response.success) {
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
-                $('#table-box').remove();
+                $('.table-button-all').remove();
                 fileHtmlItems = `
                     <div class="table-code-top">
                         <h2>Supervisor</h2>
                         <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
                     </div>`
-                $('#table-add').prepend(fileHtmlItems);
-                $('.table-code-buton').remove();
+                    $('#table-add').prepend(fileHtmlItems);
+            }else if(CURRENT_ROLE === OPERATOR_ROLE) {
+                removeCurrentRow();
             }
+        }else {
+            show_error('Evaluation failed!');
         }
-        confirmArticleAsViolationModal.hide();
-    })
-
-
-    $('.btn-confirm-non-violation').click(async function() {
-        let disabledDisagreeBtn = true;
-        await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
-        fileHtmlItems = `
-        <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-            <h2>Reset code article</h2>
-        </div>`
-        $('#table-code-buton-supervisor').prepend(fileHtmlItems);
         confirmModal.hide();
     })
 
+    $('.add-violation-code').click(async function() {
+        openselectcode.show();
+        articleId = $(this).attr('data-id');
+    })
+
+    $('.btn-select-code').click(async function() {
+        actionStep = ACTION_CHECK_CODE;
+        openselectcode.hide();
+        let violationCode = $("input[name='violation_code[]']:checked").map(function(){
+            return $(this).val();
+        }).get();
+        if(violationCode.length === 0) {
+            show_error("Please select as least 1 type of violation.");
+            return false;
+        }
+        agreeStatus = DISAGREE;
+        let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode)
+        if(response.success) {
+            addOverlayScroll();
+            updateDetectionColumnAfterSelectViolationCode(response.data);
+            closeCodeModal();
+            show_success(response.message);
+        }else {
+            show_error('Evaluation failed!');
+            hide_overlay();
+        }
+    })
+
+    function updateDetectionColumnAfterSelectViolationCode(data) {
+        let codelish = '';
+        for (let i = 0; i < data.violation_code.length; i++) {
+            codelish += `
+                <div>
+                    <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                        ${data.violation_code[i].name}
+                    </h4>
+                </div>
+            `
+        }
+        let typelishcode = '';
+        for (let i = 0; i < data.violation_types.length; i++) {
+            typelishcode += `
+            <div style="display: flex;align-items: center;">
+                <div class="color-circle-big" >
+                    <div class="color-circle" style="background: #6F6F6F;"></div>
+                </div>
+                <h4 class="p-style"> ${data.violation_types[i].name}</h4>
+            </div>
+            `
+        }
+        fileHtmlItems = `
+            <div id="table-box">
+                <div class="table-code-top">
+                    <h2>Supervisor</h2>
+                    <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+                </div>
+                <div class="table-code-aticle">
+                    <img class="img-icon-detail" src="http://localhost:8099/assets/image/dis-code.png" alt="">
+                    <div>
+                        <h4 class="p-style">Code article</h4>
+                        ${codelish}
+
+                    </div>
+                </div>
+                <div class="table-code-tile">
+                    ${typelishcode}
+                </div>
+            </div>
+        `
+        $('#table-add').prepend(fileHtmlItems);
+        $('#table-code-buton-all').remove()
+    }
 
     function removeCurrentRow() {
         $(`tr[data-id="${articleId}"]`).fadeOut('slow');
         $(`div[data-id="${articleId}"]`).fadeOut('slow');
         closeCodeModal();
-        confirmModal.hide();
+        confirmModalVio.hide();
     }
 
     function addOverlayScroll() {
@@ -79,29 +162,25 @@ $(document).ready(function(){
         document.body.scroll = "yes";
     }
 
-    function closeCodeModal() {
-        violationCodeModal.hide();
-        $('input[type=checkbox]').each(function()
-        {
-            this.checked = false;
-        });
-    }
 
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
         if(response.success) {
         // Update status label
-        $('#table-box').remove();
+        $('#table-code-buton-supervisor').remove();
         fileHtmlItems = `
-            <div class="table-code-top">
-                <h2>Supervisor</h2>
-                <p class="bot-status status-title violation-color" data-status="VIOLATION">Violation</p>
+            <div class="table-code-buton" id="table-code-buton-supervisor">
+                <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code check-violation-code">
+                    <h2>Select code article</h2>
+                </div>
             </div>`
-            $('#table-add').prepend(fileHtmlItems);
-            $('.table-code-buton').remove();
+            $('#table-code-buton-all').prepend(fileHtmlItems);
+
+            $('.add-violation-code').click(async function() {
+                openselectcode.show();
+            })    
         }
     }
-
     async function action_moderate_article(action, status, violationCode = []) {
         // if(isLoading) {return}
         // show_overlay();
