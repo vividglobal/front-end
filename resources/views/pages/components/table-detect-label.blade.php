@@ -123,12 +123,12 @@
                         <div data-id="{{ $article->_id }}" class="scroll-table" >
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->crawl_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track track-link">
@@ -159,7 +159,7 @@
                                             >{{ getStatusText($botStatus)}}</p>
                                         @endif
                                     </div>
-                                    <div class="style__code--article" style="display:block">
+                                    <div class="style__code--article" style="display:block;justify-content:@if(count($article->detection_result['violation_code']) < 7) center @endif">
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div>
@@ -224,7 +224,7 @@
                                                 <a attr-status={{DISAGREE}} class="check-false-disabled check-violation-code" href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="style__code--article" style="width:100%">
+                                            <div class="style__code--article" style="width:100%;justify-content:@if(count($article->supervisor_review['violation_code']) < 7) center @endif">
                                                 @if((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR)
                                                 && count($article->supervisor_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
@@ -303,7 +303,7 @@
                                                     href="javascript:void(0)"></a>
                                             </div>
                                         @else
-                                            <div class="style__code--article" style="width:100%">
+                                            <div class="style__code--article" style="width:100%;justify-content:@if(count($article->operator_review['violation_code']) < 7) center @endif">
                                                 @if((isPendingStatus($article->operator_review['status']) || isViolationStatus($article->operator_review['status'])) && !isRole(ROLE_OPERATOR)
                                                 && count($article->operator_review['violation_code']) === 0)
                                                     <div class="entry-title-threee entry-title-tyle reviewing-title alignt-item_center">
@@ -482,7 +482,7 @@
                                 ])
                                 data-status="{{$botStatus}}"                   
                             >{{getStatusText($botStatus)}}</p>
-                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>                                   
+                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>                                   
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
                         <h4 class="p-style">Nature One Dairy - Australia</h4>

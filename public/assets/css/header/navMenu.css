@@ -172,7 +172,9 @@ li:nth-child(3) img{
 .activeBackground{
     background-color: var(--gray-F4);
 }
-
+/* .test{
+margin: auto;
+} */
 .style__code--article{
     display: flex !important;
     flex-direction: column;
@@ -183,7 +185,7 @@ li:nth-child(3) img{
     width: 30%;
     /* padding: 10px; */
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .style__code--article:hover{

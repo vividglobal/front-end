@@ -97,20 +97,20 @@
                         <div data-id="{{ $article->_id }}" class="scroll-table" id="{{ $article->_id }}">
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("d/m/Y",$article->published_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
                                     @if(isset($article->operator_review['review_date']))
-                                    <h3>{{date("d/m/Y",$article->operator_review['review_date'] )}}</h3>
+                                    <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
                                     @endif
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry date-penalty">
                                     @if($article->has_document)
-                                    <h3  id={{$article->_id}}>{{date("d/m/Y",$article->penalty_issued/1000)}}</h3>
+                                    <h3  id={{$article->_id}}>{{date("m-d-Y",$article->penalty_issued/1000)}}</h3>
                                     @else
                                     <h3 id={{$article->_id}}></h3>
                                     @endif
@@ -135,16 +135,16 @@
                             </div>
                             <div class="track ">
                                 <div class="entry-three ">
-                                    <div class="style__code--article style__code_vio">
-                                            @foreach ($article->operator_review['violation_code'] as $detectioncode)
-                                                    <div>
-                                                        @isset($article->brand['name'])
-                                                            <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
-                                                                {{$detectioncode['name'] ?? ''}}
-                                                            </a>
-                                                        @endisset
-                                                    </div>
-                                            @endforeach
+                                    <div class="style__code--article style__code_vio" style="justify-content:@if(count($article->operator_review['violation_code']) < 7) center @endif">
+                                        @foreach ($article->operator_review['violation_code'] as $detectioncode)
+                                            <div>
+                                                @isset($article->brand['name'])
+                                                    <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                        {{$detectioncode['name'] ?? ''}}
+                                                    </a>
+                                                @endisset
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -311,7 +311,7 @@
                                 data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
 
-                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>
+                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
                         <h4 class="p-style">Nature One Dairy - Australia</h4>
@@ -324,6 +324,9 @@
     <div class="row-pagination">
     {{ $articles->links('layouts.my-paginate') }}
     </div>
+    @if(count($articles) == 0)
+    @include('noSearchResult/index')
+    @endif 
 </div>
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>

@@ -53,14 +53,14 @@
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
                         <h4 class="p-style">Published date</h4>
-                        <h4 class="h4-title">{{date("d/m/Y",$article->published_date)}}</h4>
+                        <h4 class="h4-title">{{date("m-d-Y",$article->published_date)}}</h4>
                     </div>
                 </li>
                 <li class="detail-infoi">
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
                         <h4 class="p-style">Crawl date</h4>
-                        <h4 class="h4-title">{{date("d/m/Y",$article->crawl_date)}}</h4>
+                        <h4 class="h4-title">{{date("m-d-Y",$article->crawl_date)}}</h4>
                     </div>
                 </li>
             </ul>
@@ -134,7 +134,6 @@
                                 $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
                                 ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
                             ?>
-                            @endif
                             <p
                                 @class([
                                     'status-title',
@@ -146,6 +145,7 @@
                                 >{{ getStatusText($article->supervisor_review['status']) }}
                             </p>
                         </div>
+                        @endif
                         @if($article->supervisor_review['violation_code'])
                         <div class="table-code-aticle">
                             <img class="img-icon-detail" src="{{ asset('assets/image/dis-code.png') }}" alt="">
