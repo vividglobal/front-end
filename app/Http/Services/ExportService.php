@@ -16,9 +16,12 @@ class ExportService
     const CSV_EXT = '.csv';
     const TEMP_DIR = '/excelTemp';
 
+    const RENDER_TREAM_TO_BROWSER = 'STREAM_TO_BROWSER';
+    const RENDER_TO_FILE = 'DOWNLOAD_TO_FILE';
+
     // [sheets(['row_titles' => ['title 1', 'title 2', ...], 'name' => 'name', 'data' => [[1,2,3,4,5,6], [1,2,3,4,5,6], [...]] ])]
     // [fileName('name')]
-    public static function exportExcelFile($sheets, $fileName, $extension = self::EXCEL_EXT) {
+    public static function exportExcelFile($sheets, $fileName, $renderType = self::RENDER_TREAM_TO_BROWSER, $extension = self::EXCEL_EXT) {
         $writer = WriterEntityFactory::createXLSXWriter();
         $customTempFolderPath = __DIR__ . self::TEMP_DIR;
         if (!file_exists( $customTempFolderPath)) {
@@ -26,7 +29,14 @@ class ExportService
         }
         $writer->setTempFolder($customTempFolderPath);
         // stream data directly to the browser
-        $writer->openToBrowser($fileName.$extension); 
+        $file = $fileName.$extension;
+        
+        if($renderType === self::RENDER_TREAM_TO_BROWSER) {
+            $writer->openToBrowser($file);
+        }else {
+            // Save in public folder
+            $writer->openToFile(public_path($file));
+        }
         
         // Styles
         $border = (new BorderBuilder())

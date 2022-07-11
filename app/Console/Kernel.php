@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\AnalysisWeeklyReport::class
     ];
 
     /**
@@ -24,7 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // Run the task every week on Monday at 8:00
+        $schedule->command('analytic:weekly-report')->weeklyOn(1, '8:00')->runInBackground();
     }
 
     /**
