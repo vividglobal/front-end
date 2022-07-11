@@ -1,18 +1,16 @@
  /* checkbox suspected */
  .checkbox__suspected .checkmark:after{
-    left: 5px;
-    top: -2px;
-    width: 12px;
-    height: 18px;
-    border: solid var(--white);
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    border: solid var(--primary-color);
+    border-radius: 50%;
+    background: var(--primary);
   }
   .checkbox__suspected:hover input ~ .checkmark,
   .checkbox__suspected input:checked ~ .checkmark {
-    background: var(--primary);
+    background: var(--white);
   }
   /* text area  */
 
@@ -109,11 +107,9 @@
   }
 
   .title__result{
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 136.5%;
-    margin-bottom: 10px;
+    border: 1px solid #ebebeb;
+    width: 100%;
+    margin-bottom: 30px;
   }
 
   .active_checked{
@@ -142,3 +138,8 @@
     .suspected__file__area  .file-input_detect{
         border: 1px solid var(--gray-C7);
     }
+
+
+textarea {
+    resize: none;
+  }

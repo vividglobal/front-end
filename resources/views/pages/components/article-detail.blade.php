@@ -25,7 +25,7 @@
                             'violation-color'   => isViolationStatus($botStatus),
                             'unviolation-color' => isNoneViolationStatus($botStatus)
                         ])
-                        data-status="{{$botStatus}}"                   
+                        data-status="{{$botStatus}}"
                     >{{getStatusText($botStatus)}}</p>
                 <div class="media-link">
                     <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
@@ -88,10 +88,10 @@
                             'violation-color'   => isViolationStatus($botStatus),
                             'unviolation-color' => isNoneViolationStatus($botStatus)
                         ])
-                        data-status="{{$botStatus}}"                   
+                        data-status="{{$botStatus}}"
                     >{{getStatusText($botStatus)}}</p>
                 </div>
-                @if(($article->detection_result['violation_code']))        
+                @if(($article->detection_result['violation_code']))
                     <div class="table-code-aticle">
                         <img class="img-icon-detail" src="{{ asset('assets/image/code.png') }}" alt="">
                         <div>
@@ -217,7 +217,7 @@
                                     @endforeach
                                 @endif
                             </div>
-                        </div>           
+                        </div>
                         <div class="table-code-tile">
                             @if(isset($article->detection_result['violation_types']))
                                 @foreach ($article->detection_result['violation_types'] as $detectionType)

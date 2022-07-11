@@ -42,6 +42,7 @@ Route::controller(Web\AdminController::class)->group(function () {
             Route::get('/', 'index');
             Route::post('/', 'create');
             Route::delete('/{id}', 'delete');
+            Route::put('/{id}/update-password', 'changePassword');
         });
         Route::put('/{id}', 'update')->middleware('auth');
     });
