@@ -1,33 +1,6 @@
 $("document").ready(function(){
-    function resetModal(){
-        $(".modal").removeClass("modal__open")
-        $(".btn__change--password").show();
-        $(".edit-password").hide();
-        $(".edit-password-confirm").hide();
-        $(".form-pwd").val("");
-        $(".form-re-pwd").val("");
-        $(".form-re-pwd").attr("type","password")
-        $(".img-re-seen-pwd").attr("src","../assets/image/unseen.svg")
-        $(".form-pwd").attr("type","password")
-        $(".img-seen-pwd").attr("src","../assets/image/unseen.svg")
-        $('input[name="edit_name"]').val("")
-        $('input[name="edit_number"]').val("")
-        $(`input[name="role"]`).removeAttr('checked')
-        $(`input[name="edit_id_user"]`).removeAttr('data-id')
-        $(`input[name="edit_id_user"]`).removeAttr('data-email')
-        $(".edit_re_password").text("")
-        $(".error_number").text("")
-        $(".error_name").text("")
-        $(".edit_password").text("")
-        $("#myFilter").removeClass("open_menu")
-        $(".checkbox_mobi").find("#toggle").hide()
-        $(".delete__profile_modal").removeClass("open_delete_user")
-        $(".overlay").css({"width":"0%","display":"none"})
-        document.documentElement.style.overflow = 'unset';
-
-        document.body.scroll = "yes";
-    }
     let checkedAuth;
+    const csrf = $('meta[name="csrf-token"]').attr('content');
 
       //  Btn open modal
     var documentElement = document.querySelector('.overlay');
@@ -136,7 +109,7 @@ $("document").ready(function(){
         let email = $('input[name="edit_id_user"]').attr("data-email");
         let re_pwd = $('input[name="edit_re_pwd"]').val();
         const regexPhone = /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/;
-        let csrf = $('meta[name="csrf-token"]').attr('content')
+        
         const url = '/admins/' + id;
         if(name !== "" && number !== "" && checkedAuth !== undefined){
             if(pwd === "" && re_pwd === "" && current_pwd === ""){
@@ -161,8 +134,10 @@ $("document").ready(function(){
                             if(msg){
                                 hide_overlay()
                                 show_success("Profile updated successfully")
-                                window.location.href = window.location.href
                                 resetModal()
+                                setTimeout(() => {
+                                    window.location.href = window.location.href
+                                }, 3000);
                             }
                         }
                     })
@@ -198,8 +173,11 @@ $("document").ready(function(){
                         .done(function( msg ) {
                             show_success("Profile updated successfully")
                             hide_overlay()
-                            window.location.href = window.location.href
                             resetModal()
+                            setTimeout(() => {
+                                window.location.href = window.location.href
+                            }, 3000);
+
                         })
                         .fail(function(error) {
                             $(".edit_current_password").text(error.responseJSON.message)
@@ -219,17 +197,64 @@ $("document").ready(function(){
             $(".error_number").text("Phone number is required")
         }
     })
+
+    var parentRow;
     // Modal delete account----------------------------------------------------------------
     $(".delete__profile").on("click",function(){
+        parentRow = $(this).parents('.tbody_admin');
         $("#modal__delete-account").addClass("modal__open")
         $(".overlay").css({"width": "100%", "display": "block"})
     })
 
-    $(".btn__delete--user").on("click",function(){
-        show_overlay()
-        resetModal()
-        setTimeout(()=>{
-            hide_overlay()
-        },1500)
+    $(".btn__delete--user").on("click", async function(e) {
+        e.preventDefault();
+        show_overlay();
+        const userId = parentRow.find('input[name="user_id"]').attr('data-id');
+
+        let response = await $.ajax({
+            method: "DELETE",
+            url: `/admins/${userId}`,
+            headers: {
+                'X-CSRF-TOKEN': csrf,
+            },
+            data:{}
+        });
+        hide_overlay();
+        resetModal();
+        if(response.success) {
+            parentRow.fadeOut('slow');
+            show_success(response.message);
+        }else {
+            show_error(response.message);
+        }
     })
 })
+
+function resetModal(){
+    $(".modal").removeClass("modal__open")
+    $(".btn__change--password").show();
+    $(".edit-password").hide();
+    $(".edit-password-confirm").hide();
+    $(".form-pwd").val("");
+    $(".form-re-pwd").val("");
+    $(".form-re-pwd").attr("type","password")
+    $(".img-re-seen-pwd").attr("src","../assets/image/unseen.svg")
+    $(".form-pwd").attr("type","password")
+    $(".img-seen-pwd").attr("src","../assets/image/unseen.svg")
+    $('input[name="edit_name"]').val("")
+    $('input[name="edit_number"]').val("")
+    $(`input[name="role"]`).removeAttr('checked')
+    $(`input[name="edit_id_user"]`).removeAttr('data-id')
+    $(`input[name="edit_id_user"]`).removeAttr('data-email')
+    $(".edit_re_password").text("")
+    $(".error_number").text("")
+    $(".error_name").text("")
+    $(".edit_password").text("")
+    $("#myFilter").removeClass("open_menu")
+    $(".checkbox_mobi").find("#toggle").hide()
+    $(".delete__profile_modal").removeClass("open_delete_user")
+    $(".overlay").css({"width":"0%","display":"none"})
+    document.documentElement.style.overflow = 'unset';
+
+    document.body.scroll = "yes";
+}

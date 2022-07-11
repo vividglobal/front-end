@@ -121,7 +121,6 @@ $("document").ready(function(){
                 if(msg){
                     hide_overlay()
                     show_success("Create account successfully")
-                    window.location.href = window.location.href
                     resetModal()
                 }
             })
@@ -129,7 +128,6 @@ $("document").ready(function(){
                 if(error){
                     show_error("Create account failed")
                     hide_overlay()
-                    window.location.href = window.location.href
                     resetModal()
                 }
             });

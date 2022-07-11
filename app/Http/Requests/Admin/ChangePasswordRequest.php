@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Mongo\Admin;
 
-class UpdateRequest extends FormRequest
+class ChangePasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,7 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'full_name'    => 'required|max:100',
-            'phone_number' => 'required',
-            'role'         => 'required|in:'.Admin::ROLE_ADMIN.','.Admin::ROLE_SUPERVISOR.','.Admin::ROLE_OPERATOR,
+            'password'    => 'required|min:8'
         ];
     }
 }
