@@ -8,6 +8,10 @@
         margin: 0px !important;
     }
 
+    .fix_manual .list--title{
+        margin-left: 45px;
+    }
+
     .checkbox__suspected:nth-child(2):after {
       content: "URL";
     }

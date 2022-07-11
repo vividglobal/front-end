@@ -63,7 +63,7 @@
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 500;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 170%;
     color: #6F6F6F;
     text-decoration: none;
@@ -74,6 +74,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
+    margin-top: 15px;
   }
 
   .checkbox_title{

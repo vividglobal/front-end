@@ -24,7 +24,7 @@ $("document").ready(function(){
 
     //   //  Btn open modal
     $(".create__profile").on("click",function(){
-        $(".title-modal").find("p").text("Add admins")
+        $("#create__modal-account").find(".modal__content").find(".container_modal_edit").find(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
         $(".overlay").css({"width":"100%", "display": "block"})
         document.documentElement.style.overflow = 'hidden';
@@ -37,11 +37,11 @@ $("document").ready(function(){
     })
 
     $(".save_account").on("click",function(){
-        let name  = $(".create_name").val();
-        let email  = $(".create_email").val();
-        let phone  = $(".create_number").val();
-        let pwd  = $(".create_pwd").val();
-        let re_pwd  = $(".create_re_pwd").val();
+        let name  = $(".create_name").val().trim();
+        let email  = $(".create_email").val().trim();
+        let phone  = $(".create_number").val().trim();
+        let pwd  = $(".create_pwd").val().trim();
+        let re_pwd  = $(".create_re_pwd").val().trim();
         $(".text_name").text("")
         $(".text_email").text("")
         $(".text_phone").text("")
@@ -51,7 +51,6 @@ $("document").ready(function(){
         var flag = true;
         let csrf = $('meta[name="csrf-token"]').attr('content')
         var testphone = /^0+[0-9]{9,10}$/;
-        const regexEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var regexPassword = /^.{6,20}$/;
 
         if(name === ""){
@@ -65,8 +64,8 @@ $("document").ready(function(){
 
         }
 
-        if(!regexEmail.test(email)){
-            $(".text_email").text("Email does not match")
+        if(!validateEmail(email)){
+            $(".text_email").text("Please enter valid email format")
             flag = false;
         }
 
@@ -118,20 +117,17 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                if(msg){
-                    hide_overlay()
-                    show_success("Create account successfully")
-                    resetModal()
-                }
+                ReturnMessage.success(msg.message)
+                resetModal()
             })
             .fail(function( error ) {
                 if(error){
-                    show_error("Create account failed")
-                    hide_overlay()
-                    resetModal()
+                    ReturnMessage.error(error.responseJSON.message)
                 }
             });
         }
     })
 
 })
+
+

@@ -32,7 +32,7 @@
 <div class="Base_violation--brand table_brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left" style="justify-content: flex-end">
-            @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply"], 'show_all_filter' => false])
+            @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply","fillter_mobile"], 'show_all_filter' => false])
         </div>
         <div class="list--select__right" style="justify-content: flex-start">
             <p class="title__base--violation">{{ __('Violation based on brands') }}</p>

@@ -97,12 +97,12 @@
                     @endif
                 @else
                     <div class="nav__btn--login  after-login no-padding col l-1 m-1 no-margin">
-                        <img src="{{ asset('assets/image/user.svg') }}" alt="">
+                        {{-- <img src="{{ asset('assets/image/user.svg') }}" alt=""> --}}
                         <p class="name_login">{{ @Auth::user()->full_name }}</p>
                         <div class="dropdown-login">
                             <div id="edit__profile">
                                 <p>Profile</p>
-                                <input type="hidden" data-name ={{ @Auth::user()->full_name }}
+                                <input type="hidden" data-name ="{{ @Auth::user()->full_name }}"
                                 data-phone ={{ @Auth::user()->phone_number }} data-auth ={{ @Auth::user()->role }}
                                 data-id ={{ @Auth::user()->_id }} data-email ={{ @Auth::user()->email }}>
                             </div>
@@ -128,8 +128,6 @@
     </div>
     <div class="overlay overlay_nav" ></div>
     <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
-    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) || (request ()-> is ('login')) ? 'hide': ''}}" style="cursor:pointer" ></span>
-    <span class="create__profile {{!(request ()-> is ('admins')) ? "hide": ''}} un_create_profile_header" style="cursor:pointer" ></span>
 </div>
 @endif
 

@@ -42,6 +42,7 @@
     <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
     <script src="{{ asset('assets/js/common/loading.js') }}"></script>
     <script src="{{ asset('assets/js/query/filterMobile.js') }}"></script>
+    <script src="{{ asset('assets/js/modal/returnMessage.js') }}"></script>
 </head>
 <body>
     <div id="app">

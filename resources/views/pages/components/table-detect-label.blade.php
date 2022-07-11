@@ -385,7 +385,7 @@
             <div class="head-modal">
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
-                <p class="title-modal" style="text-align: center;display: block;">   
+                <p class="title-modal" style="text-align: center;display: block;">
                     {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
@@ -460,7 +460,7 @@
             <a href="/articles/{{$article->_id}}/details" style="text-decoration: none;">
                 <div class="lish-child">
                     <div class="media-img">
-                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">                           
+                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
                     </div>
                     <div class="media-body">
                         <div class="media-body-top">
@@ -476,9 +476,9 @@
                                     'violation-color'   => isViolationStatus($botStatus),
                                     'unviolation-color' => isNoneViolationStatus($botStatus)
                                 ])
-                                data-status="{{$botStatus}}"                   
+                                data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
-                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>                                   
+                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
                         <h4 class="p-style">Nature One Dairy - Australia</h4>

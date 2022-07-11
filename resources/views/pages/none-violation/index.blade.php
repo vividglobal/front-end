@@ -5,7 +5,7 @@
     <div class="list--title">
         <p>{{ __('Non-violation list') }}</p>
     </div>
-    @include('pages/components/query', ['list_filter' => ["search","date","brand","country","apply","excel"], 'show_all_filter' => false])
+    @include('pages/components/query', ['list_filter' => ["search","date","brand","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     <!-- list Btn  -->
 </div>
 
