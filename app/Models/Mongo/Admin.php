@@ -15,6 +15,8 @@ class Admin extends Model
     const ROLE_SUPERVISOR = 'SUPERVISOR';
     const ROLE_OPERATOR = 'OPERATOR';
 
+    const DEFAULT_LIMIT = 10;
+
     protected $fillable = [
         'full_name',
         'password',
@@ -26,4 +28,10 @@ class Admin extends Model
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getList($params) {
+        $perpage = $params['perpage'] ?? self::DEFAULT_LIMIT;
+        $admins = self::paginate($perpage);
+        return $admins;
+    }
 }

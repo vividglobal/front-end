@@ -30,6 +30,7 @@ $("document").ready(function(){
         document.body.scroll = "yes";
     }
     let checkedAuth;
+    const csrf = $('meta[name="csrf-token"]').attr('content');
 
       //  Btn open modal
     var documentElement = document.querySelector('.overlay');
@@ -241,6 +242,7 @@ $("document").ready(function(){
 
     // Modal delete account----------------------------------------------------------------
     $(".delete__profile").on("click",function(){
+        parentRow = $(this).parents('.tbody_admin');
         $("#modal__delete-account").addClass("modal__open")
         $(".overlay").css({"width": "100%", "display": "block"})
         $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("Remove user")

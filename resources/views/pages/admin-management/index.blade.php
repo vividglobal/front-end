@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" href="../assets/css/adminManagement/style.css">
+<link rel="stylesheet" href="{{ asset('assets/css/adminManagement/style.css') }}">
 <script src="{{ asset('assets/js/modal/modalCreateAccount.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
 <script src="{{ asset('assets/js/pages/adminManagement.js') }}"></script>
@@ -48,8 +48,8 @@
             <div class= "img_admin">
                 <li class="edit__profile">
                     <span class="btn_edit"></span>
-                    <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
-                    data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
+                    <input type="hidden" name="user_id" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
+                        data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
                 </li>
                 <li>
                     <img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt="">

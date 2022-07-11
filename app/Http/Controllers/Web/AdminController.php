@@ -8,56 +8,77 @@ use App\Models\Mongo\Admin;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Admin\CreateRequest;
 use App\Http\Requests\Admin\UpdateRequest;
-use Illuminate\Hashing\BcryptHasher;
+use App\Http\Requests\Admin\ChangePasswordRequest;
 
 class AdminController extends Controller
 {
 
     public function index(Request $request)
     {
-        $perpage = $request->query('perpage') ? $request->query('perpage') : 10;
+        $params = $request->all();
+        $adminModel = new Admin;
+        $admins = $adminModel->getList($params);
 
-        $admins = Admin::paginate($perpage);
         return view('pages/admin-management/index', compact('admins'));
     }
 
     public function create(CreateRequest $request)
     {
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        Admin::create($input);
-        return $this->responseSuccess([], "Create admin successfully");
+        $validated = $request->validated();
+        $validated['password'] = Hash::make($validated['password']);
+        $admin = Admin::where(['email' => $validated['password'], 'phone_number' => $validated['phone_number']])->first();
+        if($admin) {
+
+            return $this->responseFail([], "Email or phone number already existed.");
+        }
+        $newAdmin = Admin::create($validated);
+
+        return $this->responseSuccess($newAdmin, "Create admin successfully");
     }
 
     public function update(UpdateRequest $request, Admin $admin ,$id)
     {
+        $validated = $request->validated();
         $admin = Admin::find($id);
-        $hasher = app('hash');
-        $input = $request->all();
+        if(!$admin) {
 
-        if(isset($input['password'])){
-            if ($hasher->check($input['password_current'], $admin->password)) {
-                $input['password'] = Hash::make($input['password']);
-            }else{
-                return $this->responseFail([], "Incorrect old password. Please re-enter correct password.");
-            }
+            return $this->responseFail([], "Admin not found");
         }
 
-        $admin->update($input);
-        return $this->responseSuccess([], "Update admin successfully");
+        $admin->update($validated);
 
-        return $this->responseFail([], "Update admin Failed");
+        return $this->responseSuccess([], "Update admin successfully");
+    }
+
+    public function changePassword(ChangePasswordRequest $request ,$id)
+    {
+        $validated = $request->validated();
+        $admin = Admin::find($id);
+        if(!$admin) {
+            return $this->responseFail([], "Admin not found");
+        }
+
+        $newPassword = Hash::make($validated['password']);
+        if($newPassword !== $admin->password) {
+            return $this->responseFail([], "Current password does not match");
+        }
+
+        $validated['password'] =  $newPassword;
+        $admin->update($validated);
+
+        return $this->responseSuccess([], "Update admin successfully");
     }
 
     public function delete($id)
     {
-        $admin = Admin::findOrFail($id);
-        $result =  $admin->delete($id);
+        $admin = Admin::find($id);
+        if(!$admin) {
 
-        if($result){
-        return $this->responseSuccess([], "Delete profile successfully");
+            return $this->responseFail([], "Admin not found");
         }
 
-        return $this->responseFail([], "Delete profile Failed");
+        $admin->delete();
+
+        return $this->responseSuccess([], "Delete admin successfully");
     }
 }
