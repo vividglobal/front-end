@@ -424,7 +424,8 @@ class ArticleController extends Controller
 
     public function getOne($id) {
         $article = Article::findOrFail($id);
-        return view('pages/components/article-detail', compact('article'));
+        $violationCode = ViolationCode::all();
+        return view('pages/components/article-detail', compact('article','violationCode'));
     }
 
     public function detectArticleManually(ManualLabelRequest $request) {

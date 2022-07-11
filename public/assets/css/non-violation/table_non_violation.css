@@ -68,7 +68,7 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
 .entry-title-tyle{
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: flex-start;
     padding: 10px;
 }

@@ -31,7 +31,7 @@
             <li>{{ __('Full name') }}</li>
             <li>{{ __('Email') }}</li>
             <li>{{ __('Phone number') }}</li>
-            <li>{{ __('Auliority') }}</li>
+            <li>{{ __('Authority') }}</li>
             <li>{{ __('Edit') }}</li>
             <li>{{ __('Delete') }}</li>
         </ul>
@@ -41,14 +41,14 @@
             <li>{{ $admin->full_name }}</li>
             <li>{{ $admin->email }}</li>
             <li>{{ $admin->phone_number }}</li>
-            <li class="style_{{ $admin->role }}">{{ $admin->role }}</li>
+            <li class="style_{{ $admin->role }} styleauthor">{{ $admin->role }}</li>
             <div class= "img_admin">
                 <li class="edit__profile">
                     <span class="btn_edit"></span>
                     <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
                     data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
                 </li>
-                <li><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
+                <li class="li-delete-profile"><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
             </div>
 
         </ul>
