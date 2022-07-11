@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
         return [
             'full_name'    => 'required|max:100',
             'phone_number' => 'required',
+            'email'        => 'required|email|unique:email',
             'role'         => 'required|in:'.Admin::ROLE_ADMIN.','.Admin::ROLE_SUPERVISOR.','.Admin::ROLE_OPERATOR,
         ];
     }

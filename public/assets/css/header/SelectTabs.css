@@ -199,12 +199,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     position: absolute;
-    margin-left: 22px;
+    margin-right: 25px;
+    cursor: pointer;
+    text-align: right;
 }
 
 .after-login:after{
     content: url(../../image/Under-than.svg);
-    margin-left: 70px;
+    width: 100%;
+    text-align: right;
 }
 
 @media (min-width: 1440px){

@@ -53,12 +53,12 @@
                             <input type="radio" name="role" value="ADMIN">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container__checkbox authorization create_authority">{{ __('Operator') }}
-                            <input type="radio" name="role" value="OPERATOR">
-                            <span class="checkmark"></span>
-                        </label>
                         <label class="container__checkbox authorization create_authority">{{ __('Supervisor') }}
                             <input type="radio" name="role" value="SUPERVISOR">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container__checkbox authorization create_authority">{{ __('Operator') }}
+                            <input type="radio" name="role" value="OPERATOR">
                             <span class="checkmark"></span>
                         </label>
                     </div>

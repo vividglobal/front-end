@@ -35,24 +35,24 @@ $("document").ready(function(){
       //  Btn open modal
     var documentElement = document.querySelector('.overlay');
     $("#edit__profile").on("click",function(){
-        var name = $(this).find("input").attr("data-name")
-        var phone = $(this).find("input").attr("data-phone")
-        var auth = $(this).find("input").attr("data-auth")
-        var id = $(this).find("input").attr("data-id")
-        var email = $(this).find("input").attr("data-email")
-        $(".title-modal").find("p").text("Edit your profile")
+        var name = $(this).find("input").attr("data-name").trim()
+        var phone = $(this).find("input").attr("data-phone").trim()
+        var auth = $(this).find("input").attr("data-auth").trim()
+        var id = $(this).find("input").attr("data-id").trim()
+        var email = $(this).find("input").attr("data-email").trim()
+        $(".container_modal_edit").find(".title-modal").find("p").text("Edit your profile")
         checkedAuth = auth;
         ModalEditProfile(name,phone,auth,email,id)
     })
 
     $(".edit__profile").on("click",function(){
-        var name = $(this).find("input").attr("data-name")
-        var phone = $(this).find("input").attr("data-phone")
-        var auth = $(this).find("input").attr("data-auth")
-        var email = $(this).find("input").attr("data-email")
-        var id = $(this).find("input").attr("data-id")
+        var name = $(this).find("input").attr("data-name").trim()
+        var phone = $(this).find("input").attr("data-phone").trim()
+        var auth = $(this).find("input").attr("data-auth").trim()
+        var email = $(this).find("input").attr("data-email").trim()
+        var id = $(this).find("input").attr("data-id").trim()
         $(".input_email").show()
-        $(".title-modal").find("p").text("Edit account information")
+        $(".container_modal_edit").find(".title-modal").find("p").text("Edit account information")
         $(".delete__profile_modal").addClass("open_delete_user")
         checkedAuth = auth;
 
@@ -143,16 +143,15 @@ $("document").ready(function(){
         $(".error_number").text("")
         $(".error_name").text("")
         $(".edit_password").text("")
-        let name = $('.edit_name').val();
-        let number = $('input[name="edit_number"]').val();
-        let current_pwd = $('input[name="edit_current_pwd"]').val();
-        let pwd = $('input[name="edit_pwd"]').val();
+        let name = $('.edit_name').val().trim();
+        let number = $('input[name="edit_number"]').val().trim();
+        let current_pwd = $('input[name="edit_current_pwd"]').val().trim();
+        let pwd = $('input[name="edit_pwd"]').val().trim();
         let id = $('input[name="edit_id_user"]').attr("data-id");
-        let email = $('.edit_email').val();
-        let re_pwd = $('input[name="edit_re_pwd"]').val();
+        let email = $('.edit_email').val().trim();
+        let re_pwd = $('input[name="edit_re_pwd"]').val().trim();
         var regexPhone = /^0+[0-9]{9,10}$/;
         var regexPassword = /^.{6,20}$/;
-        const regexEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         var flag = true;
 
         if(name === ""){
@@ -170,13 +169,61 @@ $("document").ready(function(){
             flag = false;
         }
 
-        if(!regexEmail.test(email)){
-            $(".text_email").text("Email does not match")
+        if(!validateEmail(email)){
+            $(".text_email").text("Please enter valid email format")
             flag = false;
         }
 
-        if(flag){
-            if(pwd === "" && re_pwd === "" && current_pwd === ""){
+        if(pwd !== "" && re_pwd !== "" && current_pwd !== ""){
+            if(!pwd.match(regexPassword)){
+                $(".edit_password").text("Please enter password from 6 - 20 characters")
+                flag = false;
+            }
+            if(!re_pwd.match(regexPassword)){
+                $(".edit_re_password").text("Please enter re-password from 6 - 20 characters")
+                flag = false;
+            }
+            if(!current_pwd.match(regexPassword)){
+                $(".edit_current_password").text("Please enter current password from 6 - 20 characters")
+                flag = false;
+            }
+
+            if(pwd !== re_pwd){
+                $(".edit_password").text("Password and confirmation password does not match. Please re-enter")
+                flag = false;
+            }
+
+            if(flag){
+                const url = '/admins/' + id + '/update-password';
+                let csrf = $('meta[name="csrf-token"]').attr('content')
+                $.ajax({
+                    method: "PUT",
+                    url: url,
+                    headers: {
+                        'X-CSRF-TOKEN': csrf,
+                    },
+                    data: {
+                        "password" : pwd,
+                        "current_password" : current_pwd,
+                    }
+                    })
+                    .done(function( msg ) {
+                        if(msg){
+                            let data = {
+                                "full_name" : name,
+                                "email" : email,
+                                "phone_number" : number,
+                                "role" : checkedAuth
+                            }
+                            updateProfile(data,id)
+                        }
+                    })
+                    .fail(function(error) {
+                        $(".edit_current_password").text(error.responseJSON.message)
+                    });
+            }
+        }else{
+            if(flag){
                 // NO UPTATE PWD
                 let data = {
                     "full_name" : name,
@@ -185,36 +232,6 @@ $("document").ready(function(){
                     "role" : checkedAuth
                 }
                 updateProfile(data,id)
-
-            }else{
-                if(!pwd.match(regexPassword)){
-                    $(".edit_password").text("Please enter password from 6 - 20 characters")
-                    flag = false;
-                }
-                if(!re_pwd.match(regexPassword)){
-                    $(".edit_re_password").text("Please enter re-password from 6 - 20 characters")
-                    flag = false;
-                }
-                if(!current_pwd.match(regexPassword)){
-                    $(".edit_current_password").text("Please enter current password from 6 - 20 characters")
-                    flag = false;
-                }
-
-                if(pwd !== re_pwd){
-                    $(".edit_password").text("Password and confirmation password does not match. Please re-enter")
-                    flag = false;
-                }
-                if(flag){
-                    let data = {
-                        "full_name" : name,
-                        "email" : email,
-                        "phone_number" : number,
-                        "password" : pwd,
-                        "password_current" : current_pwd,
-                        "role" : checkedAuth
-                    }
-                    updateProfile(data,id)
-                }
             }
         }
     })
@@ -232,11 +249,10 @@ $("document").ready(function(){
             data: data
             })
             .done(function( msg ) {
-                ReturnMessage.success("Profile updated successfully")
+                ReturnMessage.success(msg.message)
             })
             .fail(function(error) {
-                $(".edit_current_password").text(error.responseJSON.message)
-                hide_overlay()
+                ReturnMessage.error(error.responseJSON.message)
             });
     }
 
@@ -245,7 +261,7 @@ $("document").ready(function(){
         parentRow = $(this).parents('.tbody_admin');
         $("#modal__delete-account").addClass("modal__open")
         $(".overlay").css({"width": "100%", "display": "block"})
-        $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("Remove user")
+        $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("REMOVE ADMIN")
         let id  = $(this).closest("li").find("input").attr("data-id");
         $(".btn__delete--user").closest("form").find("input").attr("data-id",id);
         document.documentElement.style.overflow = 'hidden';
@@ -287,18 +303,12 @@ $("document").ready(function(){
             })
     })
 
-    const ReturnMessage  = {
-        success:(message)=>{
-            show_success(message)
-            hide_overlay()
-            window.location.href = window.location.href
-            resetModal()
-        },
-        error: (message)=>{
-            show_error(message)
-            hide_overlay()
-            window.location.href = window.location.href
-            resetModal()
-        }
-    }
 })
+
+const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };

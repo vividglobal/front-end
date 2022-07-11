@@ -52,11 +52,16 @@
 </div>
 
  {{-- //MOBILE --}}
+
+@if(in_array('fillter_mobile', $list_filter))
+    <span class="open_Nav_filter" style="cursor:pointer" ></span>
+@endif
+
  <div id="myFilter" class="sideFilter">
     <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
+
     <div class="filter_list-mobi">
             <div id="daterange" class="daterange_mobi no_apply">
-                <i class="ico-date"></i>
                 <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                 <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
                 <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
@@ -99,6 +104,10 @@
                     <input type="text" placeholder="Search for Brand" class="search--brand">
                 </div>
                 <div class="contain--selection">
+                        <label class="container_checkbox select__one" ><p  data-id=0 >None</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
                     @foreach ($brands as $brand)
                         <label class="container_checkbox select__one" id={{$brand->_id}}><p  data-id={{$brand->_id}} >{{$brand->name}}</p>
                             <input type="checkbox"  name="radio" class="input_checkbox">
@@ -124,6 +133,10 @@
                     <input type="text" placeholder="Search for country" class="search--country" >
                 </div>
                 <div class="contain--selection contain_country">
+                        <label class="container_checkbox select__one--country option_general" ><p  data-id=0 >None</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
                     @foreach ($countries as $country)
                         <label class="container_checkbox select__one--country option_general" id={{$country->_id}}>
                             <p  data-id={{$country->_id}} >{{$country->name}}</p>
@@ -146,6 +159,10 @@
                 </div>
                 <p></p>
                 <div class="select--violation--type violation_mobi" id="toggle">
+                        <label class="container_checkbox select__one--violation--type" ><p  data-id=0 >None</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
                     @foreach ($violationTypes as $violationType)
                         <label class="container_checkbox select__one--violation--type" id={{$violationType->_id}}>
                             <p  data-id={{$violationType->_id}}>{{$violationType->name}}</p>

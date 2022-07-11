@@ -7,7 +7,7 @@
             <p>Auto-dectect violations</p>
         </div>
         <!-- list Btn  -->
-        @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
+        @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     </div>
         <!-- Table -->
         @include('pages/components/table-detect-label', compact('violationCode'))

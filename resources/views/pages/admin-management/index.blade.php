@@ -10,6 +10,7 @@
 <div class="list--search--select" >
     <div class="list--title">
         <p>{{ __('Admin Management') }}</p>
+        <span class="create__profile btn_create_user_mobi" style="cursor:pointer" ></span>
     </div>
     <!-- list Btn  -->
     <div class="list_query">
@@ -48,8 +49,8 @@
             <div class= "img_admin">
                 <li class="edit__profile">
                     <span class="btn_edit"></span>
-                    <input type="hidden" name="user_id" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
-                        data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
+                    <input type="hidden" name="user_id" data-name ="{{ $admin["full_name"] }}" data-phone ={{ $admin["phone_number"] }}
+                        data-auth ="{{ $admin["role"] }}" data-id ="{{ $admin["_id"] }}" data-email ="{{ $admin["email"] }}">
                 </li>
                 <li>
                     <img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt="">
@@ -74,10 +75,10 @@
         <div class="close__modal">
         </div>
         <div class="title-modal">
-            <p>{{ __('Remove user') }}</p>
+            <p>{{ __('REMOVE ADMIN') }}</p>
         </div>
         <div class="content-modal">
-            <p style="font-weight: 500;">Are you sure to remove this user?</p>
+            <p style="font-weight: 500;">Are you sure to remove this admin ?</p>
         </div>
         <div class="btn-modal" style="display:inline-block;width: 100%;">
             <button class="btn__cancel-button cancel_delete_user" style="float:left;margin-right:10px">

@@ -60,7 +60,7 @@ $(document).ready(function(){
 
     // General
     $('.btn__apply').click(function() {
-        let dateRange = $('input[name="daterange"]').val();
+        let dateRange = $('input[name="daterange"]').val() || $(".date_mobile").val();
         let startDate = "";
         let endDate = "";
         if(dateRange) {
@@ -68,7 +68,7 @@ $(document).ready(function(){
             startDate = arr[0].trim().replace(/[/]/g,"-");
             endDate = arr[1].trim().replace(/[/]/g,"-");
             generalStrParams = brandStrParams = codeStrParams = `&start_date=${startDate}&end_date=${endDate}`;
-
+            console.log(generalStrParams)
             getGeneralData();
             getViolationBasedBrand();
             getViolationBasedCode();
@@ -80,6 +80,7 @@ $(document).ready(function(){
         let date = $('.form--daterange').val() || $('.date_mobile').val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
+            window.location.href = window.location.href
         }
     })
 
@@ -189,21 +190,21 @@ $(document).ready(function(){
 
     async function getGeneralData() {
         add_loader(generalIdEl);
-        let htmlResponse = await get('/analysis/general'+generalStrParams);
+        let htmlResponse = await get('/analysis/general?1=1'+generalStrParams);
         $(generalIdEl).html(htmlResponse)
         remove_loader(generalIdEl);
     }
 
     async function getViolationBasedBrand() {
         add_loader(brandIdEl);
-        let htmlResponse = await get('/analysis/violation-by-brand'+brandStrParams);
+        let htmlResponse = await get('/analysis/violation-by-brand?1=1'+brandStrParams);
         $(brandIdEl).html(htmlResponse)
         remove_loader(brandIdEl)
     }
 
     async function getViolationBasedCode() {
         add_loader(codeIdEl);
-        let htmlResponse = await get('/analysis/violation-by-code'+codeStrParams);
+        let htmlResponse = await get('/analysis/violation-by-code?1=1'+codeStrParams);
         $(codeIdEl).html(htmlResponse)
         remove_loader(codeIdEl)
     }

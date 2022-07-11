@@ -22,305 +22,310 @@
 </div>
 <div class="container__usermanual" >
     <div class="wrap-accordion">
-        <a data-id="#sl1" ><button class="accordion"> {{ __('Hướng dẫn cách kiểm tra vi phạm') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl1" ><button class="accordion"> {{ __('Instructions on how to check for violations') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl1">
-            <a data-id="#cl1"><button class="child-accordion"><?= __("Hướng dẫn cách kiểm tra vi phạm bằng Hình ảnh hoặc Văn bản") ?>
+            <a data-id="#cl1"><button class="child-accordion"><?= __("Instructions on how to check for violations with Image or Text") ?>
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
             <div class="add" id="cl1">
-                <p><span>{{ __('Bước 1 ') }}:</span>  {{__("Truy cập trang 'Kiểm tra vi phạm' trên thanh menu")}}.</p>
-                <p><span> {{__("Bước 2 ")}}:</span>  {{__("Nhập nội dung của bạn bằng văn bản hoặc tải ảnh lên máy tính của bạn")}}.</p>
+                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Label violations upon requests' page in the menu bar")}}.</p>
+                <p><span> {{__("Step 2 ")}}:</span>  {{__(" Enter your content with text or upload photos to your computer")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
-                <p><span> {{__("Bước 3")}}: </span>  {{__("Nhấp vào nút 'Kiểm tra' để kiểm tra các vi phạm nội dung của bạn")}}.</p>
+                <p><span> {{__("Step 3")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
-                <p><span></span>  {{__("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")}}.</p>
+                <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
             </div>
-            <a data-id="#cl2"><button class="child-accordion"> {{__("Hướng dẫn kiểm tra vi phạm bằng đường dẫn")}}
+            <a data-id="#cl2"><button class="child-accordion"> {{__("Instructions for checking violations by link")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
             <div class="add" id="cl2">
-                <p><span>{{ __('Bước 1 ') }}:</span>  {{__("Truy cập trang 'Kiểm tra vi phạm' trên thanh menu")}}.</p>
-                <p><span>{{__("Bước 2 ")}}:</span>  {{__("Nhập nội dung của bạn bằng cách dán đường dẫn của website hoặc hình ảnh, bài viết trên Fanpage thuộc")}}
-                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("danh sách ")}} </a>
-                 {{__("này")}}.</p>
+                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Label violations upon requests' page in the menu bar")}}.</p>
+                <p><span>{{__("Step 2 ")}}:</span>  {{__(" Enter your content by pasting the link of the website or the images, articles on the Fanpage on")}}
+                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this ")}} </a>
+                 {{__("list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-4.png') }}" loading="lazy">
-                <p><span>{{__("Bước 3")}}: </span>  {{__("Nhấp vào nút 'Kiểm tra' để kiểm tra các vi phạm nội dung của bạn")}} .</p>
+                <p><span>{{__("Step 3")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
-                <p><span></span>  {{__("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")}}.</p>
+                <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
             </div>
         </div>
         <a data-id="#sl2">
-            <button class="accordion"> {{__("Hướng dẫn lấy đường dẫn hợp lệ để kiểm tra vi phạm theo yêu cầu")}}
+            <button class="accordion"> {{__("Instructions for getting a valid path to check for violations on demand")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
         </a>
         <div class="panel" id="sl2">
-            <a data-id="#cl3"><button class="child-accordion"> {{__("Đường dẫn trang website hợp lệ")}}
+            <a data-id="#cl3"><button class="child-accordion"> {{__("Valid website link")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
             <div class="add" id="cl3">
-                <p><span></span> {{__("Bất kỳ liên kết nào có cùng tên miền trong trang web")}}
-                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("danh sách ")}} </a>  {{__("này")}},  {{__("ví dụ")}}:</p>
+                <p><span></span> {{ __("Any link with the same domain name in the website  ") }}
+                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this")}} </a>  {{__("list")}},  {{__("examples")}}:</p>
                 <p><span></span><a href="https://www.nestlemomandme.vn/">www.nestlemomandme.vn</a>  {{__("hoặc")}} <a href=" https://www.nestlemomandme.vn/cerelac"> www.nestlemomandme.vn/cerelac</a>.</p>
             </div>
             <a data-id="#cl4">
-            <button class="child-accordion"> {{__("Cách lấy đường dẫn hợp lệ trên Fanpage")}}
+            <button class="child-accordion"> {{__("How to get a valid link on Fanpage")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
             <div class="add" id="cl4">
-                <p><span></span> <strong> {{__("Cách lấy đường dẫn hợp lệ của một bài đăng trên Fanpage")}}.</strong></p>
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Truy cập Fanpage có sẵn trên danh sách Fanpage đã được cung cấp")}}.</p>
+                <p><span></span> <strong> {{__("How to get the valid link of a post on Fanpage.")}}.</strong></p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Access the available Fanpage on the provided Fanpage list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-5.png') }}" loading="lazy">
-                <p><span> {{__("Bước 2")}}:</span> {{__("Chọn bài đăng bạn muốn kiểm tra vi phạm")}}.</p>
-                <p><span> {{__("Bước 3")}}: </span>  {{__("Nhấp chuột phải vào dòng thời gian bên dưới tên Fanpage")}}.</p>
+                <p><span> {{__("Step 2")}}:</span> {{__(" Select the post you want to check for violations")}}.</p>
+                <p><span> {{__("Step 3")}}: </span>  {{__(" Right click on the timeline below the Fanpage name")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-6.png') }}" loading="lazy">
-                <p><span> {{__("Bước 4")}}: </span>  {{__(" Nhấp vào mở liên kết trong tab mới hoặc cửa sổ mới và bạn sẽ được điều hướng sang bài viết")}}.</p>
-                <p><span> {{__("Bước 5")}}: </span>  {{__("Sau khi trang web đã tải xong, sao chép đường dẫn ngắn với cấu trúc như hình bên dưới và quay trở lại trang website Vivid để kiểm tra")}}.</p>
+                <p><span> {{__("Step 4")}}: </span>  {{__(" Click on open link in new tab or new window and you will be navigated to the article")}}.</p>
+                <p><span> {{__("Step 5")}}: </span>  {{__(" After the website has finished loading, copy the short link with the structure as shown below and return to the Vivid website to check")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-7.png') }}" loading="lazy">
-                <p><span> {{__("Bước 6")}}: </span>  {{__("Nhấn Ctrl V hoặc nhấp vào icon bên dưới để dán đường dẫn vừa sao chép vào phần kiểm tra vi phạm")}}.</p>
+                <p><span> {{__("Step 6")}}: </span>  {{__(" Press Ctrl V or click the icon below to paste the copied path into the violation check section")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-8.png') }}" loading="lazy">
-                <p><span> {{__("Bước 7")}}: </span>  {{__("Nhấp vào nút 'Kiểm tra' để kiểm tra các vi phạm nội dung của bạn")}}.</p>
+                <p><span> {{__("Step 7")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
-                <p><span></span>  {{__("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")}}.</p>
+                <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__("Cách lấy đường dẫn hợp lệ một hình ảnh trên Fanpage")}}</strong></p>
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Truy cập Fanpage có sẵn trên danh sách Fanpage đã được cung cấp")}}.</p>
+                <p><span></span> <strong> {{__("How to get a valid link for an image on Fanpage?")}}</strong></p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Access the available Fanpage on the provided Fanpage list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-5.png') }}" loading="lazy">
-                <p><span> {{__("Bước 2")}}:</span>  {{__("Nhấp hình ảnh bạn muốn kiểm tra vi phạm và sao chép đường dẫn như hình bên dưới")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the image you want to check for violations and copy the link as shown below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-41.png') }}" loading="lazy">
-                <p><span> {{__("Bước 3")}}: </span>  {{__("Quay trở về trang Vivid ở phần kiểm tra bằng đường dẫn, Nhấn Ctrl V hoặc nhấp vào icon bên dưới để dán đường dẫn vừa sao chép vào phần kiểm tra vi phạm")}}.</p>
+                <p><span> {{__("Step 3")}}: </span>  {{__(" Return to the Vivid page in the link check section, Press Ctrl V or click the icon below to paste the copied link into the violation check")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-8.png') }}" loading="lazy">
-                <p><span> {{__("Bước 4")}}: </span>  {{__("Nhấp vào nút 'Kiểm tra' để kiểm tra các vi phạm nội dung của bạn")}} .</p>
+                <p><span> {{__("Step 4")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
-                <p><span></span>  {{__("Sau khi hệ thống kiểm tra vi phạm, quản trị viên có thể xem lại kết quả bên dưới")}}.</p>
+                <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
             </div>
         </div>
-        <a data-id="#sl3"><button class="accordion "> {{__("Hướng dẫn kiểm duyệt vi phạm")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl3"><button class="accordion "> {{__("Guide to censorship violations")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl3">
-            <p> {{__("Trang website Vivid cho phép kiểm duyệt vi phạm ở 2 trang")}}:</p>
+            <p> {{__("Vivid website allows censorship violations on 2 pages")}}:</p>
             <ul>
-                <li> {{__("Cảnh báo vi phạm (máy tự quét và trả về tình trạng nghi vấn nghi phạm)")}}</li>
-                <li> {{__("Kiểm tra vi phạm (người dùng tự quét và máy kiểm tra tình trạng nghi vấn nghi phạm)")}}</li>
+                <li> {{__("Violation alert (Systems scans and returns suspect status)")}}</li>
+                <li> {{__("Violation check (User self-scan and Systems status checker)")}}</li>
             </ul>
             <a data-id="#cl5">
-            <button class="child-accordion"> {{__("Kiểm duyệt bài viết mà Vivid dự đoán là 'Không vi phạm'") }}
+            <button class="child-accordion"> {{__("Moderate posts that VIVID predicts as 'no violated'") }}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
             <div class="add" id=cl5>
                 <img src="{{ asset('assets/image/usermanual/img-9.png') }}" loading="lazy">
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Xác nhận trạng thái của bài viết")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Confirm the status of the post")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-12.png') }}" loading="lazy">
                 <ul class="img-ul">
                     <li>
-                         {__("Nhấp vào nút “tick” màu xanh nếu đồng ý với trạng thái Không vi phạm của hệ thống. Sau khi nhấp vào hệ thống sẽ hiển thị một thông báo để xác nhận
-                         lại hành động duyệt trạng thái. Sau khi nhấp vào nút “Có” bài viết sẽ tự động chuyển sang danh sách Không vi phạm và không cần qua bước 2")}.
+                         {{__("Click the blue “tick” button if you agree with the system's No Violation status. After clicking,
+                         the system will display a message to confirm the status browsing action.
+                         After clicking the “Yes” button the post will automatically move to the No Violations list and no need to go through step 2")}}.
                         <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                     </li>
                     <li>
-                         {{__("Nhấp vào nút “X” màu đỏ nếu không đồng ý với trạng thái Không vi phạm của hệ thống. Sau khi nhấp vào hệ thống sẽ hiển thị một
-                          thông báo để xác nhận lại hành động duyệt trạng thái. Sau khi nhấp vào nút “Có” bài viết sẽ tự động chuyển trạng thái Vi phạm")}}.
+                         {{__("Click the red “X” button if you disagree with the system's No Violation status. After clicking,
+                          the system will display a message to confirm the status browsing action. After clicking the “Yes” button,
+                           the post will automatically change to Violation status")}}.
                         <img src="{{ asset('assets/image/usermanual/img-11.png') }}" loading="lazy">
                     </li>
                 </ul>
-                <p><span> {{__("Bước 2")}}:</span>  {{__("Xác nhận loại vi phạm bằng cách nhấp vào bất kỳ nút X và Tick để chọn loại vi phạm cho bài viết")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Confirm the type of violation by clicking any of the X and Tick buttons to select the type of violation for the article")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-15.png') }}" loading="lazy">
-                <p><span> {{__("Bước 3")}}:</span>  {{__("Chọn loại vi phạm phù hợp")}}.</p>
+                <p><span> {{__("Step 3")}}:</span>  {{__(" Choose the appropriate type of violation")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-14.png') }}" loading="lazy">
-                <p><span> {{__("Bước 4")}}:</span>  {{__("Nhấp vào nút “Lưu thay đổi”")}}.</p>
+                <p><span> {{__("Step 4")}}:</span>  {{__(" Click the “Save Changes” button”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-40.png') }}" loading="lazy">
             </div>
             <a data-id="#cl6">
                 <button class="child-accordion">
-                     {{ __("Kiểm duyệt bài viết mà Vivid dự đoán là “Vi phạm“") }}  <img src="{{ asset('assets/image/plus.svg') }}" alt="">
+                     {{ __("Moderate posts that VIVID predicts as 'violated'") }}  <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl6">
                 <img src="{{ asset('assets/image/usermanual/img-42.png') }}" loading="lazy">
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Xác nhận trạng thái của bài viết")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Confirm the status of the post")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-15.png') }}" loading="lazy">
                 <ul class="img-ul">
                     <li>
-                          {{__("Nhấp vào nút “tick” màu xanh nếu đồng ý với trạng thái Vi phạm của hệ thống. Sau khi nhấp vào hệ thống sẽ
-                          hiển thị một thông báo để xác nhận lại hành động duyệt trạng thái. Sau khi nhấp vào nút “Có” bài viết sẽ tự động chuyển trạng thái Vi phạm")}}.
+                          {{__("Click the blue “tick” button if you agree with the Violation status of the system.
+                           After clicking, the system will display a message to confirm the status browsing action.
+                            After clicking the “Yes” button, the post will automatically change to Violation status")}}.
                         <img src="{{ asset('assets/image/usermanual/img-11.png') }}" loading="lazy">
                     </li>
                     <li>
-                         {{__("Nhấp vào nút “X” màu đỏ nếu không đồng ý với trạng thái Vi phạm của hệ thống. Sau khi nhấp vào hệ thống
-                         sẽ hiển thị một thông báo để xác nhận lại hành động duyệt trạng thái. Sau khi nhấp vào nút “Có” bài viết sẽ
-                         tự động chuyển sang “Danh sách không vi phạm” và không cần sang bước 2")}}.
+                         {{ __("Click the red “X” button if disagree with the Violation status of the system.
+                          After clicking, the system will display a message to confirm the status browsing action.
+                           After clicking the “Yes” button, the post will automatically move to the “No Violations List” and no need to go to step 2") }}.
                         <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                     </li>
                 </ul>
-                <p><span> {{__("Bước 2")}}:</span>  {{__("Xác nhận loại vi phạm bằng cách nhấp vào bất kỳ nút")}}:</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Confirm type of violation by clicking any button")}}:</p>
                 <img src="{{ asset('assets/image/usermanual/img-12.png') }}" loading="lazy">
                 <ul class="img-ul">
                     <li>
-                         {{__("Tick: Nếu đồng ý với tất cả loại vi phạm mà hệ thống đã kiểm tra được. Sau khi nhấp vào nút tick,
-                        một thông báo sẽ hiển thị lên để xác nhận.Nhấp vào nút “Có”, hệ thống sẽ chuyển bài viết này sang danh sách vi phạm")}}.
+                         {{__("Tick: If you agree with all types of violations that the system has checked.
+                         After clicking the tick button, a message will show up to confirm. Click the “Yes” button,
+                         the system will move this article to the list of violations")}}.
                         <img src="{{ asset('assets/image/usermanual/img-16.png') }}" loading="lazy">
                     </li>
                     <li>
-                        {{__(" X: Nếu không đồng ý với tất cả loại vi phạm mà hệ thống đã kiểm tra được")}}.
+                        {{__(" X: If you disagree with all types of violations that the system has checked")}}.
                     </li>
                 </ul>
-                <p><span> {{__("Bước 3")}}:</span>  {{__("Chọn loại vi phạm phù hợp bằng cách tick thêm hoặc xóa những loại vi phạm mà hệ thống đã tick sẵn")}}.</p>
+                <p><span> {{__("Step 3")}}:</span>  {{__(" Select the appropriate type of violation by ticking more or deleting the types of violations that the system has already ticked")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-17.png') }}" loading="lazy">
-                <p><span> {{__("Bước 4")}}:</span>  {{__("Nhấp vào nút “Lưu thay đổi” và bài viết sẽ được chuyển sang “Danh sách vi phạm”")}}.</p>
+                <p><span> {{__("Step 4")}}:</span>  {{__(" Click the “Save Changes” button and the post will be moved to the “Violations List”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-13.png') }}" loading="lazy">
             </div>
         </div>
-        <a data-id="#sl4"><button class="accordion"> {{__("Hướng dẫn chuyển đổi trạng thái")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl4"><button class="accordion"> {{__("State transition instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl4">
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Select “Track Violations” on the menu bar and click “ Violations” or “Non-Violations”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Bước 2")}}:</span> {{__("Nhấp vào nút ở cột “Chuyển đổi trạng thái”")}}.</p>
+            <p><span> {{__("Step 2")}}:</span> {{__(" Click the button in the “State progress” column")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
-            <p><span> {{__("Bước 3")}}: </span> {{__("Quay trở về trang “Cảnh báo vi phạm” hoặc “Kiểm tra vi phạm” để kiểm duyệt vi phạm bài viết lại từ đầu")}}.</p>
+            <p><span> {{__("Step 3")}}: </span> {{__(" Return to the “Violation Alert” or “Violation Check” page to moderate the article for violations from the beginning")}}.</p>
         </div>
-        <a data-id="#sl5"><button class="accordion"> {{__("Hướng dẫn thay đổi tiến độ xử lý vi phạm")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl5"><button class="accordion"> {{__("Instructions to change the progress of violation handling")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl5">
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Chọn “Theo dõi vi phạm” trên thanh menu và nhấp vào “Danh sách vi phạm” hoặc “Danh sách không vi phạm”")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Select “Track Violations” on the menu bar and click “ Violations” or “Non-Violations”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Bước 2")}}:</span>  {{__("Thay đổi “Tiến độ trạng thái” phù hợp")}}.</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Change the “Progress Status” accordingly")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-20.png') }}" loading="lazy">
             <ul>
                 <li>
-                    <span> {{__('Chưa bắt đầu')}} :</span>  {{__("Bài viết này vẫn chưa được kiểm tra và xử lý")}}.
+                    <span> {{__('Not started')}} :</span>  {{__(" This posts has not been checked and processed yet.")}}.
                 </li>
                 <li>
-                    <span> {{__('Đang xử lý')}} :</span>  {{__("Bài viết này đang được xử lý và chờ đăng tải văn bản xử lý chính thức")}}.
+                    <span> {{__('Processing')}} :</span>  {{__(" This posts is being processed and waiting for the official document to be posted")}}.
                 </li>
                 <li>
-                    <span> {{__('Hoàn thành')}} :</span>  {{__("Đã xử lý vi phạm bài viết thành công và công khai văn bản xử lý
-                    (Chỉ có thể chọn trạng thái này khi đã đăng tải ít nhất 1 văn bản xử lý cho bài viết)")}}.
+                    <span> {{__('Completed')}} :</span>  {{__("The posts has been handled successfully and the handling text is published
+                    (This status can only be selected when at least 1 handling text has been posted for the article")}}.
                 </li>
             </ul>
         </div>
         <a data-id="#sl6">
             <button class="accordion">
-             {{__("Hướng dẫn cách tải các văn bản xử lý vi phạm")}}
+             {{__("Instructions on how to upload violation handling documents")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
         </a>
         <div class="panel" id="sl6">
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Truy cập “Theo dõi vi phạm” và chọn “Danh sách vi phạm” trên thanh menu")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Go to “Trace Violations ” and select “Violations List” on the menu bar")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Bước 2")}}:</span>  {{__("Tại “Văn bản xử lý”, bấm vào nút có hình thư mục như bên dưới")}}.</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" At “Legal documents”, click on the button with the folder image as below")}}.</p>
             <ul>
-                <li> {{__("Nếu màu nút là xám, không có văn bản nào được tải lên gần đây")}}.</li>
-                <li> {{__("Nếu màu nút là đỏ, có ít nhất một văn bản được tải lên gần đây")}}.</li>
+                <li> {{__("If the button color is gray, no text has been uploaded recently")}}.</li>
+                <li> {{__("If the button color is red, there is at least one recently uploaded text")}}.</li>
             </ul>
             <img src="{{ asset('assets/image/usermanual/img-21.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Bước 3")}}: </span>  {{__("Thêm văn bản khác bằng cách nhấp vào biểu tượng dấu cộng và chọn văn bản bạn muốn tải lên")}}.</p>
+            <p><span> {{__("Step 3")}}: </span>  {{__(" Add more text by clicking the plus icon and selecting the text you want to upload")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy" style="width:100%">
-            <p><span></span>  {{__("Sau khi tải lên thành công, một thông báo sẽ xuất hiện ở cuối màn hình bên phải")}}.</p>
+            <p><span></span>  {{__(" After the upload is successful, a message will appear at the bottom of the screen on the right.")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-23.png') }}" loading="lazy" style="width:100%">
-            <p><span></span>  {{__("Quản trị viên có thể kiểm tra lại tài liệu bằng cách nhấp vào tài liệu")}}.</p>
-            <p><span> {{__("Bước 4")}}: </span>  {{__("Khi quản trị viên hoàn tất quá trình tải tài liệu lên, nút thư mục sẽ chuyển sang màu đỏ và cập nhật ngày tải tài liệu mới nhất")}}.</p>
+            <p><span></span>  {{__(" Admin can check the document again by clicking on the document.")}}.</p>
+            <p><span> {{__("Step 4")}}: </span>  {{__(" When the admin completes the document upload process, the folder button will turn red and update the latest document upload date")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy" style="width:100%">
         </div>
         <a data-id="#sl7">
-            <button class="accordion"> {{__("Hướng dẫn xem nội dung chi tiết của bài viết")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
+            <button class="accordion"> {{__("Instructions for viewing the detailed content of the article")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
         <div class="panel" id="sl7">
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Chọn bài viết cần xem")}}.</p>
-            <p><span> {{__("Bước 2")}}:</span>  {{__("Nhấp vào “Hình ảnh” của bài viết")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Select the article you want to see")}}.</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Image” of the article")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-25.png') }}" loading="lazy">
-            <p><span> {{__("Bước 3")}}:</span>  {{__("Nhấp vào icon mũi tên để xem lần lượt các hình ảnh của bài viết (nếu bài viết có nhiều ảnh)")}}.</p>
+            <p><span> {{__("Step 3")}}:</span>  {{__(" Click the arrow icon to view the images of the article in turn (if the article has many images)")}}.</p>
             <a data-id="#cl9">
-                <button class="child-accordion"> {{__("Hướng dẫn xem đầy đủ nội dung bài viết")}}
+                <button class="child-accordion"> {{__("Instructions to view the full article content")}}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl9">
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Chọn bài viết cần xem")}}.</p>
-                <p><span> {{__("Bước 2")}}:</span> {{__("Nhấp vào “Nội dung” của bài viết để xem nội dung đầy đủ của bài viết")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Select the article you want to see")}}.</p>
+                <p><span> {{__("Step 2")}}:</span> {{__(" Click on the “Caption” of the article to see the full text of the article")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-26.png') }}" loading="lazy">
                 <img src="{{ asset('assets/image/usermanual/img-27.png') }}" loading="lazy">
             </div>
             <a data-id="#cl10">
-                <button class="child-accordion"> {{__("Hướng dẫn cách lấy đường dẫn từ bài viết mà Vivid đã quét")}} ?>
+                <button class="child-accordion"> {{__("Instructions on how to get links from articles that Vivid has scanned")}} ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl10">
-                <p><span></span> {{__("Nhấp vào icon ở cột đường link để truy cập vào đường dẫn hoặc nhấp chuột phải để sao chép đường dẫn")}}.</p>
+                <p><span></span> {{__(" Click the icon in the link column to access the Link or right click to copy the link")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-28.png') }}" loading="lazy">
             </div>
         </div>
-        <a data-id="#sl8"><button class="accordion"> {{__("Hướng dẫn tìm kiếm bài viết theo từ khóa và ngày kiểm tra")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl8"><button class="accordion"> {{__("Instructions for searching articles by keyword and test date")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl8">
             <a data-id="#cl7">
-                <button class="child-accordion"> {{__("Tìm kiếm bài viết theo nội dung") }}
+                <button class="child-accordion"> {{__("Search articles by Caption") }}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl7">
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Nhập thông tin tìm kiếm ví dụ “Blackmores”")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Enter search information for example “Blackmores”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-30.png') }}" loading="lazy">
-                <p><span> {{__("Bước 2")}}:</span>  {{__("Nhấn nút Enter và các bài viết liên quan có từ khóa Blackmores hoặc của Fanpage Blackmores sẽ hiển thị ở bên dưới")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related articles with the keyword Blackmores or of the Blackmores Fanpage will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-29.png') }}" loading="lazy">
             </div>
             <a data-id="#cl8">
-                <button class="child-accordion"> {{__("Tìm kiếm bài viết theo ngày máy kiểm tra vi phạm")}}
+                <button class="child-accordion"> {{__("Search articles by date of violation checker")}}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
             <div class="add" id="cl8">
-                <p><span> {{__("Bước 1")}}:</span>  {{__("Nhấp vào khung “Bạn vui lòng chọn ngày”")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Click on the box “Please select a date”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-31.png') }}" loading="lazy">
-                <p><span> {{__("Bước 2")}}:</span>  {{__("Chọn khoảng thời gian mong muốn")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Select the desired time period")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-32.png') }}" loading="lazy">
-                <p><span></span> {{__("Sau khi chọn ngày những bài đăng được đăng tải trong khoảng thời gian được chọn sẽ được hiển thị bên dưới")}}.</p>
+                <p><span></span> {{__("After selecting the date the posts published in the selected time period will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-33.png') }}" loading="lazy">
             </div>
         </div>
-        <a data-id="#sl9"><button class="accordion"> {{__("Hướng dẫn sắp xếp các bài viết theo từng chế độ")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl9"><button class="accordion"> {{__("Instructions for arranging articles by mode")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl9">
-            <p><span></span>  {{__("Quản trị viên có thể sắp xếp các bài viết theo chế độ")}}:</p>
+            <p><span></span>  {{__(" Admin can sort posts by mode")}}:</p>
             <ul>
-                <li> {{__("Ngày (ngày đăng, ngày kiểm tra, ngày xử lý, ngày quét): Theo thứ tự ngày mới nhất và cũ nhất")}}.</li>
-                <li> {{__("Trạng thái (vi phạm hoặc không vi phạm): Theo thứ tự Alphabet")}}. </li>
-                <li> {{__("Tên hãng: Theo thứ tự Alphabet")}}.</li>
+                <li> {{__("Date (posted date, audited date, processed date, craw date): In order of newest and oldest date")}}.</li>
+                <li> {{__("Status (violating or not violating): In alphabetical order")}}. </li>
+                <li> {{__("Brand Name: In alphabetical order")}}.</li>
             </ul>
-            <p><span></span>  {{__("Quản trị viên có thể sắp xếp theo chế độ bằng cách nhấp vào icon 2 mũi tên bên cạnh nội dung mình muốn sắp xếp bài
-                                viết (ví dụ bên dưới minh họa cho sắp xếp bài viết theo ngày xử lý mới nhất và cũ nhất)")}}
+            <p><span></span>  {{__(" Admins can sort by mode by clicking on the 2 arrow icon next to the content they want to sort posts
+                                (the example below illustrates how to sort posts by newest and oldest processing date)")}}
             </p>
             <img src="{{ asset('assets/image/usermanual/img-34.png') }}" loading="lazy">
         </div>
-        <a data-id="#sl10"><button class="accordion"> {{__("Hướng dẫn xuất dữ liệu")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl10"><button class="accordion"> {{__("Data export instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl10">
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Truy cập vào trang cần xuất dữ liệu (Cảnh báo vi phạm, Danh sách vi phạm, Danh sách không vi phạm, Kiểm tra vi phạm)")}}.</p>
-            <p><span> {{__("Bước 2")}}:</span>  {{__("Nhấp vào nút “Xuất excel” và đợi hệ thống tải danh sách excel về máy")}}.</p>
-            <p><span> {{__("Lưu ý")}}:</span> {{ __("Nếu không chọn bất kỳ cách sắp xếp nào đặc biệt như nội dung từ khóa, thời gian thì hệ thống sẽ
-            tải xuống đúng số lượng bài viết đang hiển thị trực tiếp trên trang Vivid (Như hình ở trên đang hiển thị 10 bài thì khi tải về excel sẽ có 10 bài)")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Go to the page to export data (Auto-detect violations, Violation List, Non-Violation List, Label violations upon requests)")}}.</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Click the “Export excel” button and wait for the system to download the excel list to your computer")}}.</p>
+            <p><span> {{__("Note")}}:</span> {{ __(" If you do not choose any special arrangement such as keyword content,
+            time, the system will download the correct number of articles displayed directly on the Vivid page (As the picture above shows 10 articles,
+            when download excel will have 10 lessons)")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-35.png') }}" loading="lazy" >
-            <p><span></span>  {{__("Excel tải về sẽ có format như sau")}}: </p>
+            <p><span></span>  {{__(" The downloaded Excel will have the following format ")}}: </p>
             <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy" style="width:100%">
         </div>
-        <a data-id="#sl11"><button class="accordion"> {{__("Hướng dẫn thêm quản trị viên mới")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl11"><button class="accordion"> {{__("Instructions for adding a new administrator")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl11">
-            <p><span> {{__("Lưu ý")}}: </span>  {{__("Trên trang website của Vivid chỉ có 3 đối tượng người dùng gồm Nhà điều hành,
-            Nhà giám sát và Quản trị viên. Chỉ có Quản trị viên mới có quyền thêm quản trị viên mới")}}.
+            <p><span> {{__("Note")}}: </span>  {{__(" On Vivid's website, there are only 3 user objects including Operator, Supervisor and Administrator.
+            Only Administrators have the right to add new admins.")}}.
             </p>
-            <p><span> {{__("Bước 1")}}:</span>  {{__("Nhấp vào trang “Quản lý admin”")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Click on the “Admins management” page”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-38.png') }}" loading="lazy">
-            <p><span> {{__("Bước 2")}}:</span>  {{__("Nhấp vào nút “Thêm admin”")}}.</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Click the “Add admin” button.")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-37.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Bước 3")}}:</span> {{ __("Điền các trường thông tin bắt buộc bao gồm")}}:</p>
+            <p><span> {{__("Step 3")}}:</span> {{ __(" Fill in the required fields including:")}}:</p>
             <ul>
-                <li> {{__("Họ và tên")}}</li>
-                <li> {{__("Địa chỉ email")}}</li>
-                <li> {{__("Số điện thoại")}}</li>
-                <li> {{__("Mật khẩu")}}</li>
-                <li> {{__("Quyền trên website (Admin, Giám sát, Điều hành)")}}?></li>
+                <li> {{__("Full name")}}</li>
+                <li> {{__("Email address")}}</li>
+                <li> {{__("Phone number")}}</li>
+                <li> {{__("Pasword")}}</li>
+                <li> {{__("Permissions on the website (Admin, Supervisor, Operator)")}}?></li>
             </ul>
             <img src="{{ asset('assets/image/usermanual/img-39.png') }}" loading="lazy">
         </div>

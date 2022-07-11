@@ -26,28 +26,42 @@ class AdminController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
-        $admin = Admin::where(['email' => $validated['password'], 'phone_number' => $validated['phone_number']])->first();
+        $admin = Admin::where('email' , '=' , $validated['email'])->orWhere('phone_number' , '=' , $validated['phone_number'])->first();
         if($admin) {
-
             return $this->responseFail([], "Email or phone number already existed.");
         }
         $newAdmin = Admin::create($validated);
 
-        return $this->responseSuccess($newAdmin, "Create admin successfully");
+        return $this->responseSuccess($newAdmin, "Create account successfully");
     }
 
     public function update(UpdateRequest $request, Admin $admin ,$id)
     {
         $validated = $request->validated();
         $admin = Admin::find($id);
-        if(!$admin) {
 
-            return $this->responseFail([], "Admin not found");
+        if($admin -> email !== $request->email){
+            $checkEmailIsExist = Admin::where('email' , '=' , $validated['email'])->first();
+
+            if($checkEmailIsExist) {
+                return $this->responseFail([], "Email already existed.");
+            }
+        }
+
+        if($admin -> phone_number !== $request->phone_number){
+            $checkNumberisExist = Admin::where('phone_number' , '=' , $validated['phone_number'])->first();
+
+            if($checkNumberisExist) {
+                return $this->responseFail([], "Phone number already existed.");
+            }
+        }
+
+        if(!$admin) {
+            return $this->responseFail([], "Account not found");
         }
 
         $admin->update($validated);
-
-        return $this->responseSuccess([], "Update admin successfully");
+        return $this->responseSuccess([], "Successfully updated");
     }
 
     public function changePassword(ChangePasswordRequest $request ,$id)
@@ -55,30 +69,29 @@ class AdminController extends Controller
         $validated = $request->validated();
         $admin = Admin::find($id);
         if(!$admin) {
-            return $this->responseFail([], "Admin not found");
+            return $this->responseFail([], "Account not found");
+        }
+
+        $currentPassword = Hash::check($validated['current_password'], $admin->password);
+        if(!$currentPassword) {
+            return $this->responseFail([], "Old password is incorrect! Please re-enter");
         }
 
         $newPassword = Hash::make($validated['password']);
-        if($newPassword !== $admin->password) {
-            return $this->responseFail([], "Current password does not match");
-        }
-
         $validated['password'] =  $newPassword;
         $admin->update($validated);
 
-        return $this->responseSuccess([], "Update admin successfully");
+        return $this->responseSuccess([], "Successfully updated");
     }
 
     public function delete($id)
     {
         $admin = Admin::find($id);
         if(!$admin) {
-
-            return $this->responseFail([], "Admin not found");
+            return $this->responseFail([], "Account not found");
         }
-
         $admin->delete();
 
-        return $this->responseSuccess([], "Delete admin successfully");
+        return $this->responseSuccess([], "Account deleted successfully");
     }
 }

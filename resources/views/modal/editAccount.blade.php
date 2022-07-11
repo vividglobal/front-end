@@ -41,12 +41,12 @@
                                 <input type="radio" name="role" value="ADMIN" id="ADMIN">
                                 <span class="checkmark"></span>
                             </label>
-                            <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Operator') }}
-                                <input type="radio" name="role" value="OPERATOR" id="OPERATOR">
-                                <span class="checkmark"></span>
-                            </label>
                             <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Supervisor') }}
                                 <input type="radio" name="role" value="SUPERVISOR" id="SUPERVISOR">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Operator') }}
+                                <input type="radio" name="role" value="OPERATOR" id="OPERATOR">
                                 <span class="checkmark"></span>
                             </label>
                     </div>

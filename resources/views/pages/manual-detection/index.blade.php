@@ -92,7 +92,7 @@
 <div class="title__result">
 </div>
 <!-- list Btn  -->
-@include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel"], 'show_all_filter' => false])
+@include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
 </div>
 <div class="row-a">
     @include('pages/components/table-detect-label', compact('violationCode'))
