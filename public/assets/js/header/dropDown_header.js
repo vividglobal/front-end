@@ -20,7 +20,6 @@ $("document").ready(function(){
 
 //    ---------NAV MENU---------
     var documentElement = document.querySelector('.overlay');
-    let screenOverlay = document.querySelector(".overlay_nav")
 
     $(".open_Nav").click(function(){
         $("#myNav").addClass("open_menu")
@@ -64,9 +63,9 @@ $(".closeFilter ").click(function(){
         closeNav();
     })
 
-    screenOverlay.onclick = function(){
-        closeNav();
-    }
+    $(".overlay_nav").click(function(){
+        closeNav()
+    })
 
     $(".nav-link").click(function(){
         closeNav()

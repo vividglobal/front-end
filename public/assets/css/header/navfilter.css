@@ -278,3 +278,8 @@
     border: 1px solid var(--gray-C7);
     border-radius: 50%;
 }
+
+.btn-search{
+    background-color: var(--white);
+    border: none;
+}

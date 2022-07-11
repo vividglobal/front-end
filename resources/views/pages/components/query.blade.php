@@ -1,10 +1,12 @@
 <div class="list--select--option {{ request ()->is('analysis') ? 'padding_btn_analysis' : '' }}" >
     <div class="list--select__left {{ request ()->is('analysis') ? 'max_width' : '' }}" >
         @if(in_array('search', $list_filter) || $show_all_filter)
-            <div class="list--search ">
-                <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
-                <input type="text" placeholder="Search" class="search">
-            </div>
+            <form class="list--search " id="form_search">
+                <button class="btn-search" type= "submit" alt="menu_icon">
+                    <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
+                </button>
+                <input type="text" placeholder="Search" class="search" name="keyword" >
+            </form>
         @endif
 
         <div class="list_filter">
@@ -116,7 +118,7 @@
                 <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
-            <div class="select--country slc_general country_mobi" id="toggle">
+            <div class="select--country slc_general country_mobi filter_country_mobi" id="toggle">
                 <div class="search--input--country search_general" id="div-search">
                     <img src="{{asset('assets/image/search.svg')}}" alt="">
                     <input type="text" placeholder="Search for country" class="search--country" >

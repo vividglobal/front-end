@@ -80,7 +80,7 @@ $("document").ready(function () {
 
     if (paramCountry !== null) {
         let name = $(".country_pc");
-        let list = $(".list--country");
+        let list = $(".ctr_general");
         let nameMb = $(".country_mobi");
         let select = $(".select--country");
         let option = ".option_general";
@@ -188,7 +188,7 @@ $("document").ready(function () {
 
     // RETURN TEXT FILTER WHEN PARAMS IS EXIST
     function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param,nameMb) {
-        let name = $(nameBtn).find(`#${param}`).find("p").text();
+        let name = $(textBtn).find(nameBtn).find(`#${param}`).find("> p").text();
         $(textBtn).find("> p").text(name);
         $(textBtn).find("> p").attr("data-id", param);
         $(selectBtn)
@@ -253,6 +253,8 @@ $("document").ready(function () {
                 }else{
                     replaceURL(getParamSortBy,"desc");
                 }
+            }else{
+                replaceURL(paramSortBy, paramSortValue);
             }
         }
         resetFiter()
@@ -310,6 +312,14 @@ $("document").ready(function () {
                 replaceURL(paramSortBy, paramSortValue, value);
             }
         });
+    // BTN SEARCH ICON FOR MOBI
+    $("#form_search").submit(function (e) {
+        e.preventDefault()
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width < 1113){
+            replaceURL()
+        }
+    })
 
     //GET VALUE
     function getParams(sortBy, sortValue, page) {
@@ -319,11 +329,11 @@ $("document").ready(function () {
             let brandCompany = $(".list--company--brand")
             .find("> p")
             .attr("data-id");
-            let country = $(".list--country").find("> p").attr("data-id");
+            let country = $(".ctr_general").find("> p").attr("data-id");
             let violationType = $(".list--violation--type")
             .find("> p")
             .attr("data-id");
-            let search = $(".search").val() ? $(".search").val() : "";
+            let search = $(".search").val() ? $(".search").val().trim() : "";
             let perpageText = $(".list--showing").find("select").val() || perpage;
             let end__Date = "";
             let start__Date = "";
@@ -347,9 +357,9 @@ $("document").ready(function () {
         }else{
             let date = $('.date_mobile').val() || "";
             let brandCompany = $(".select--company-or-brand").closest(".checkbox_mobi").find("p").attr("data-id") || ""
-            let country = $(".select--country").closest(".checkbox_mobi").find("p").attr("data-id") || ""
+            let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
-            let search = $(".search").val() ? $(".search").val() : "";
+            let search = $(".search").val() ? $(".search").val().trim() : "";
             let perpage = "";
             let end__Date = "";
             let start__Date = "";
@@ -423,10 +433,13 @@ $("document").ready(function () {
 
     // REMOVE DATERANGE
     $(".remove_daterange").click(function(){
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         let date = $('input[name="daterange"]').val() || $('.date_mobile').val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
-            replaceURL()
+            if(width > 1113){
+                replaceURL()
+            }
         }
     })
 

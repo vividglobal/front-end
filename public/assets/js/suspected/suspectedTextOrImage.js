@@ -19,11 +19,13 @@ $("document").ready(function(){
             if($(this).find("input").attr("id") === "image"){
                 $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text").focus()
                 $(".file-input_detect").show()
-                $(".ctr_suspected").show()
+                $(".check_demo").show()
+                $(".check_country").show()
             }else{
                 $(".suspected__text__area textarea").attr("placeholder","Enter the suspected link").focus()
                 $(".file-input_detect").hide()
-                $(".ctr_suspected").hide()
+                $(".check_demo").hide()
+                $(".check_country").hide()
             }
     })
 

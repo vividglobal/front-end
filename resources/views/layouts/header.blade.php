@@ -1,6 +1,7 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 
+@if(!request () -> is ('articles/'. request()->id .'/details'))
 <div class="nav_container
  {{(request () -> is ('login')) || request () -> is ('password/reset') ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
  {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}
@@ -127,8 +128,8 @@
     </div>
     <div class="overlay overlay_nav" ></div>
     <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
-    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) ? 'hide': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav_filter {{(request ()-> is ('/')) || (request ()-> is ('admins')) || (request ()-> is ('user-manual')) || (request ()-> is ('login')) ? 'hide': ''}}" style="cursor:pointer" ></span>
     <span class="create__profile {{!(request ()-> is ('admins')) ? "hide": ''}} un_create_profile_header" style="cursor:pointer" ></span>
 </div>
-
+@endif
 

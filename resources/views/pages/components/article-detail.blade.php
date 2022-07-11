@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="container-table" id="div-moblie">
+<div class="container-table" id="div-moblie" style="margin-top:0px">
     <div class="container-row-mobile">
         <div class="list-child">
             <div class="lish-top">
@@ -24,7 +24,7 @@
                             'violation-color'   => isViolationStatus($botStatus),
                             'unviolation-color' => isNoneViolationStatus($botStatus)
                         ])
-                        data-status="{{$botStatus}}"                   
+                        data-status="{{$botStatus}}"
                     >{{getStatusText($botStatus)}}</p>
                 <div class="media-link">
                     <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
@@ -87,10 +87,10 @@
                             'violation-color'   => isViolationStatus($botStatus),
                             'unviolation-color' => isNoneViolationStatus($botStatus)
                         ])
-                        data-status="{{$botStatus}}"                   
+                        data-status="{{$botStatus}}"
                     >{{getStatusText($botStatus)}}</p>
                 </div>
-                @if(($article->detection_result['violation_code']))        
+                @if(($article->detection_result['violation_code']))
                     <div class="table-code-aticle">
                         <img class="img-icon-detail" src="{{ asset('assets/image/code.png') }}" alt="">
                         <div>
@@ -229,7 +229,7 @@
                                     @endforeach
                                 @endif
                             </div>
-                        </div>           
+                        </div>
                         <div class="table-code-tile">
                             @if(isset($article->detection_result['violation_types']))
                                 @foreach ($article->detection_result['violation_types'] as $detectionType)
@@ -251,7 +251,7 @@
     </div>
 </div>
 
-<div class="modal-title-mobile" id="confirm-violation"> 
+<div class="modal-title-mobile" id="confirm-violation">
     <div class="modal-confirm-content-mobile">
         <div class="div-close">
             <span class="close">&times;</span>
@@ -269,7 +269,7 @@
     </div>
 </div>
 
-<div class="modal-title-mobile" id="confirmArticleAsViolation"> 
+<div class="modal-title-mobile" id="confirmArticleAsViolation">
     <div class="modal-confirm-content-mobile">
         <div class="div-close">
             <span class="close">&times;</span>
@@ -287,7 +287,7 @@
     </div>
 </div>
 
-<div class="modal-title-mobile" id="confirm-non-violation"> 
+<div class="modal-title-mobile" id="confirm-non-violation">
     <div class="modal-confirm-content-mobile">
         <div class="div-close">
             <span class="close">&times;</span>
