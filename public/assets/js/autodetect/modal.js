@@ -19,7 +19,9 @@ $(document).ready(function () {
         imageModal.find('img').attr('src', imgSrc)
         imageModal.show();
         $(".mdl-js").css("overflow-y","hidden");
+
     });
+
     btn.click(function () {
         let caption = $(this).find('a').text();
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -36,8 +38,29 @@ $(document).ready(function () {
         $('.div-item').remove();
         $('.no-file-remove').remove();
         $(".mdl-js").css("overflow-y","scroll");
-        $("div#box_list_file").removeClass("row-upload")
+
     });
+    $(window).on('click', function (e) {
+        if ($(e.target).is('.modal-title')) {
+            captionModal.hide();
+            $(".mdl-js").css("overflow-y","scroll");
+
+        }
+        if ($(e.target).is('.modal-upload-file')) {
+            uploadModal.hide();
+            btnuploadfile.hide();
+            $('.div-item').remove();
+            $('.no-file-remove').remove();
+            $(".mdl-js").css("overflow-y","scroll");
+
+        }
+        if ($(e.target).is('.modalimg')) {
+            imageModal.hide();
+        $(".mdl-js").css("overflow-y","scroll");
+        }
+        // $(".mdl-js").css("overflow-y","scroll");
+    });
+
     let rowId =""
     uploadfile.click(function(e) {
         $(this).addClass("check")
@@ -51,23 +74,17 @@ $(document).ready(function () {
     })
 
     $(document).on('change', '.file-input', async function(){
+        $('.no-file-remove').remove();
         let flag = true
         let form = new FormData();
         let files = $('#upload')[0].files;
         if (files.length > 5) {
             flag = false
-            show_error("You are only allowed to upload a maximum of 5 files at a time")
+            alert('You are only allowed to upload a maximum of 5 files at a time');
         }
         if(files.length !== 0 && flag){
             show_overlay()
             for(let i = 0; i < files.length; i++){
-                let extension = (files[i].name).split('.').pop().toLowerCase();
-                if ($.inArray(extension, ['pdf']) == -1) {
-                    hide_overlay()
-                    show_error("You have uploaded files that are not in the correct PDF format")
-                    return false;
-                }
-                $('.no-file-remove').remove();
             form.append("document", files[i]);
             form.append("article_id", rowId);
                 let settings = {
@@ -115,10 +132,6 @@ $(document).ready(function () {
                     }
                 }
                 show_success(message);
-                let chekclengthfile = $("div#box_list_file").children().length
-                if(chekclengthfile >= 12){
-                    $("div#box_list_file").addClass("row-upload")
-                }
             }
             hide_overlay()
             $('#upload').val('');
@@ -134,9 +147,6 @@ $(document).ready(function () {
                 if(res){
                     loading.hide()
                     btnuploadfile.show()
-                    if((res.data).length >= 12){
-                        $("div#box_list_file").addClass("row-upload")
-                    }
                     if((res.data).length>0){
                         for(let i = 0 ; i<(res.data).length;i++){
                             fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
@@ -181,12 +191,13 @@ $(document).ready(function () {
 
     function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
+        let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
             },
             data :{
-                "article_id": filesNumber <= 1 ? rowId : ""
+                "article_id": filesNumber <= 1 && getTextStatus.text().trim() == "Completed" ? rowId : ""
             },
             method: "DELETE",
             url:"/articles-document/"+rowIdelemnet+"",
@@ -200,15 +211,16 @@ $(document).ready(function () {
                 if(item.length === 0){
                     $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                     $(".date-penalty").find(`#${rowId}`).text("")
-                    let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
+                    var progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
                     .find(".select--status")
+                    // HIDE COMPELTE
                     if(progressStatus.find(".select__one--status:nth-child(3)").hasClass("show")){
                         progressStatus.find(".select__one--status:nth-child(3)").addClass("hide").removeClass("show")
                     }
-                    let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+                    // PROGRESS STATUS IS COMPLETE => NOT_STARTED
                     if(getTextStatus.text().trim() == "Completed"){
-                        progressStatus.find(".select__one--status:first-child").addClass("background-gray")
-                        progressStatus.find(".select__one--status:first-child").find("img").show()
+                        progressStatus.find(".select__one--status:nth-child(1)").addClass("background-gray")
+                        progressStatus.find(".select__one--status:nth-child(1)").find("img").show()
                         getTextStatus.text("Not started").attr("data-id","not_started")
                     }
                 }

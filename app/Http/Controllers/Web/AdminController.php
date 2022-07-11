@@ -52,7 +52,12 @@ class AdminController extends Controller
     public function delete($id)
     {
         $admin = Admin::findOrFail($id);
-        $admin->delete($id);
-        return redirect('/admins')->with('success', 'Delete admin successfully');
+        $result =  $admin->delete($id);
+
+        if($result){
+        return $this->responseSuccess([], "Delete profile successfully");
+        }
+
+        return $this->responseFail([], "Delete profile Failed");
     }
 }

@@ -92,7 +92,7 @@ class ViolationCode extends Model
                     ],
                     [
                         '$project' => [
-                            '_id' => 1, 'name' => 1
+                            '_id' => 1, 'name' => 1, 'color' => 1
                         ]
                     ]
                 ]
@@ -114,7 +114,8 @@ class ViolationCode extends Model
                 '_id' => 1,
                 'name' => 1,
                 'total_article' => 1,
-                'type_name' => '$violation_type.name'
+                'type_name' => '$violation_type.name',
+                'type_color' => '$violation_type.color'
             ]
         ];
 

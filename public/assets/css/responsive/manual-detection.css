@@ -16,7 +16,6 @@
     }
 
     .fix_manual .list--select--option,
-    .fix_manual .title__result,
     .fix_manual > form,
     .fix_manual .list--suspected__text--img{
         margin: 0 16px;

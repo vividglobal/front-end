@@ -14,7 +14,10 @@
     <!-- list Btn  -->
     <div class="list_query">
         <div class="query_left search_admin">
-            @include('pages/components/query', ['list_filter' => ["search"], 'show_all_filter' => false])
+            <div class="list--search " id="form_search">
+                <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
+                <input type="text" placeholder="Search" class="search" name="keyword" >
+            </div>
         </div>
         <div class="list_query-right">
             @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
@@ -37,7 +40,7 @@
         </ul>
         @foreach ($admins as $key => $admin)
         <ul class="tbody_admin">
-            <li scope="row">{{$key + 1}}</li>
+            <li scope="row">{{ ($key + 1) + (($admins->currentpage() - 1) * $admins->perpage()) }}</li>
             <li>{{ $admin->full_name }}</li>
             <li>{{ $admin->email }}</li>
             <li>{{ $admin->phone_number }}</li>
@@ -48,7 +51,10 @@
                     <input type="hidden" data-name ={{ $admin["full_name"] }} data-phone ={{ $admin["phone_number"] }}
                     data-auth ={{ $admin["role"] }} data-id ={{ $admin["_id"] }} data-email ={{ $admin["email"] }}>
                 </li>
-                <li><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
+                <li>
+                    <img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt="">
+                    <input type="hidden" data-id ={{ $admin["_id"] }} >
+                </li>
             </div>
 
         </ul>
@@ -73,12 +79,11 @@
             <p style="font-weight: 500;">Are you sure to remove this user?</p>
         </div>
         <div class="btn-modal" style="display:inline-block;width: 100%;">
-            <button class="btn__cancel-button" style="float:left;margin-right:10px">
+            <button class="btn__cancel-button cancel_delete_user" style="float:left;margin-right:10px">
             {{ __('Cancel') }}
             </button>
-            <form action="admins/{{ $admin->_id }}" method="post">
-                @csrf
-                @method('DELETE')
+            <form  >
+                <input type="hidden" data-id="">
                 <button class="btn__delete--user" type="submit">{{ __('Yes') }}</button>
             </form>
         </div>

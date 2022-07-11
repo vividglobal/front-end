@@ -3,7 +3,7 @@
 .modal {
     visibility: hidden;
     opacity: 0;
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +38,7 @@
     max-width: 650px;
     width: 100%;
     background: var(--white);
-    padding: 22px;
+    padding: 15px;
     z-index: 105;
   }
 
@@ -93,7 +93,7 @@
   .input--modal{
    display: flex;
    border: 1px solid var(--gray-C7);
-   padding: 15px;
+   padding: 10px;
   }
 
   .input--modal input {
@@ -101,6 +101,10 @@
     width: 100%;
     padding-right: 5px;
     background-color: var(--white);
+  }
+
+  .input--modal input::placeholder{
+      color: var(--gray-C7);
   }
 
   .btn__change--password{
@@ -190,6 +194,7 @@
     left: 0;
     height: 25px;
     width: 25px;
+    border-radius: 50%;
     background-color: var(--white);
     border: 1px solid var(--primary);
   }
@@ -213,20 +218,21 @@
   }
 
   .container__checkbox .checkmark:after {
-    left: 5px;
-    top: -2px;
-    width: 13px;
-    height: 20px;
-    border: solid var(--gray-6F);
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    border: solid var(--primary-color);
+    border-radius: 50%;
+    background: var(--primary);
   }
 
   .text-dangers{
-    color: var(--danger);
+    color: var(--danger) !important;
     margin-top: 5px !important;
+    font-family: 'Avenir Next' !important;
+    font-size: 12px !important;
+    line-height: 5px !important;
 }
 
 .modal_edit_user{
