@@ -83,6 +83,7 @@ $(document).ready(function(){
     })
 
     $('.btn-select-code').click(async function() {
+        $('#violation-code-item').remove()
         actionStep = ACTION_CHECK_CODE;
         openselectcode.hide();
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
@@ -162,23 +163,63 @@ $(document).ready(function(){
         document.body.scroll = "yes";
     }
 
+    $(document).on('click', '.check-violation-code', async function() {
+        let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
+        if(response.success) {
+            show_success(response.message);
+            updateDetectionColumnAfterSelectViolationCode(response.data);
+        }else {
+            show_error('Evaluation failed!');
+            hide_overlay();
+        }
+    })
+
 
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
         if(response.success) {
         // Update status label
         $('#table-code-buton-supervisor').remove();
+
+        if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
+            violationitem =`
+            <div class="table-code-top" id="violation-code-item">
+                <h2>Supervisor</h2>
+                <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+            </div>
+            `
+            $('#table-add').prepend(violationitem);
+
+            fileHtmlItems = `
+                <div class="table-code-buton" id="table-code-buton-supervisor">
+                    <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  check-status btn-violation">
+                        <h2>Agree code article</h2>
+                    </div>
+                    <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
+                        <h2>Reselect code article</h2>
+                    </div>
+                </div>
+            `
+        }else{
+        violationitem =`
+        <div class="table-code-top" id="violation-code-item">
+            <h2>Supervisor</h2>
+            <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+        </div>
+        `
+        $('#table-add').prepend(violationitem);
+
         fileHtmlItems = `
             <div class="table-code-buton" id="table-code-buton-supervisor">
                 <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code check-violation-code">
                     <h2>Select code article</h2>
                 </div>
-            </div>`
-            $('#table-code-buton-all').prepend(fileHtmlItems);
-
-            $('.add-violation-code').click(async function() {
-                openselectcode.show();
-            })    
+            </div>`;
+        }
+        $('#table-code-buton-all').prepend(fileHtmlItems);
+        $('.add-violation-code').click(async function() {
+            openselectcode.show();
+        })    
         }
     }
     async function action_moderate_article(action, status, violationCode = []) {

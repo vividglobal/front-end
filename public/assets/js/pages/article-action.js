@@ -184,10 +184,10 @@ $(document).ready(function(){
                     <p data-status="${data.status}" class="status-title ${colorClass}">${violationLabel}</p>
                 </div>`
             );
-
+            data.violation_code.length
             currentRow.find(`.${lowercaseRole}-violation-type`).html(typeString)
             currentRow.find(`.${lowercaseRole}-violation-code`).html(
-                `<div class="style__code--article" style="display:block; width: 100%;">
+                `<div class="style__code--article" style="display:block; width: 100%; ${data.violation_code.length < 7 ? "display:block; width: 100%;justify-content: center":"display:block; width: 100%"}">
                     ${codeString}
                 </div>`
             );

@@ -80,13 +80,22 @@ $(document).ready(function () {
         let files = $('#upload')[0].files;
         if (files.length > 5) {
             flag = false
-            alert('You are only allowed to upload a maximum of 5 files at a time');
+            show_error("You are only allowed to upload a maximum of 5 files at a time")
+
         }
+        
         if(files.length !== 0 && flag){
             show_overlay()
             for(let i = 0; i < files.length; i++){
-            form.append("document", files[i]);
-            form.append("article_id", rowId);
+                let extension = (files[i].name).split('.').pop().toLowerCase();
+                if ($.inArray(extension, ['pdf']) == -1) {
+                    hide_overlay()
+                    show_error("You have uploaded files that are not in the correct PDF format")
+                    return false;
+                }
+                $('.no-file-remove').remove();
+                form.append("document", files[i]);
+                form.append("article_id", rowId);
                 let settings = {
                     "url": "/articles-document/upload",
                     "method": "POST",
