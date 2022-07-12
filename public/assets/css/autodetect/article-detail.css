@@ -295,10 +295,16 @@ color: #000000;
 .media-body{
 width: 80%;
 }
+.pagination li {
+    padding: 1px 10px !important;
+}
 }
 
 @media only screen and (max-width: 425px) {
 .media-body{
 width: 75%;
+}
+.pagination li {
+    padding: 1px 10px !important;
 }
 }
