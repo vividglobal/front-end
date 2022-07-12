@@ -26,9 +26,14 @@ class AdminController extends Controller
     {
         $validated = $request->validated();
         $validated['password'] = Hash::make($validated['password']);
-        $admin = Admin::where('email' , '=' , $validated['email'])->orWhere('phone_number' , '=' , $validated['phone_number'])->first();
+        $admin = Admin::where('email' , $validated['email'])->first();
         if($admin) {
-            return $this->responseFail([], "Email or phone number already existed.");
+            return $this->responseFail([], "Email already existed.");
+        }
+
+        $admin = Admin::where('phone_number' , $validated['phone_number'])->first();
+        if($admin) {
+            return $this->responseFail([], "Phone number already existed.");
         }
         $newAdmin = Admin::create($validated);
 

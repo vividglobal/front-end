@@ -15,7 +15,7 @@ $("document").ready(function(){
     })
 
     $(".btn--export--excel").on("click",function(){
-        window.location.replace(`${window.location.pathname}?export=${true}`)
+        // window.location.replace(`${window.location.pathname}?export=${true}`)
     })
 
 })

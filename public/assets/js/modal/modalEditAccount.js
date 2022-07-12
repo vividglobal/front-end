@@ -244,10 +244,20 @@ $("document").ready(function(){
             data: data
             })
             .done(function( msg ) {
-                ReturnMessage.success(msg.message)
+                ReturnMessage.success(msg.message);
             })
             .fail(function(error) {
-                ReturnMessage.error(error.responseJSON.message)
+                let errResponse = error.responseJSON;
+                let message = error.responseJSON.message;
+                if(errResponse?.errors) {
+                    let errors = errResponse?.errors;
+                    for(let key in errors) {
+                        for (let i = 0; i < errors[key].length; i++) {
+                            message += '\n'+errors[key][i]
+                        }
+                    }
+                }
+                ReturnMessage.error(message);
             });
     }
 

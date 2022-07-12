@@ -9,7 +9,7 @@
                 <div class="modal--input">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
-                        <input type="text" id="name" placeholder="Enter your Name" class="form-name create_name" name="full_name">
+                        <input type="text" id="name" placeholder="Enter your name" class="form-name create_name" name="full_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_name"></p>

@@ -12,7 +12,7 @@
                 <div class="modal--input ">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Name" class="form-name edit_name" name="edit_name">
+                        <input type="text" placeholder="Enter your name" class="form-name edit_name" name="edit_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers error_name"></p>

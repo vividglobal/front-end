@@ -164,6 +164,11 @@ $(document).ready(function(){
     }
 
     $(document).on('click', '.check-violation-code', async function() {
+        if(botStatus === STATUS_VIOLATION) {
+            articleId = $(this).attr('data-id');
+            agreeStatus = $(this).attr('attr-status');
+        }
+        $('#violation-code-item').remove()
         let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
         if(response.success) {
             show_success(response.message);
@@ -192,7 +197,7 @@ $(document).ready(function(){
 
             fileHtmlItems = `
                 <div class="table-code-buton" id="table-code-buton-supervisor">
-                    <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  check-status btn-violation">
+                    <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
                         <h2>Agree code article</h2>
                     </div>
                     <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">

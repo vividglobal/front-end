@@ -33,18 +33,20 @@ class ArticleLegalDocumentController extends Controller
 
     public function delete(Request $request, $id) {
         $document = ArticleLegalDocument::find($id);
-        $inputs = $request->all();
         if($document) {
-            if(isset($inputs['article_id'])){
-                $articleId = $inputs['article_id'];
-                $article = Article::find($articleId);
-                $article->progress_status = Article::PROGRESS_NOT_STARTED;
-                $article->update();
-            }
             $documentService = new DocumentService();
             $deleted = $documentService->delete($document);
             if($deleted) {
-                return $this->responseSuccess($deleted, "Delete old file successfully");
+                $articleDocuments = ArticleLegalDocument::where('article_id', $document->article_id)->count();
+                if($articleDocuments === 0 ) {
+                    $article = Article::find($document->article_id);
+                    if($article) {
+                        $article->progress_status = Article::PROGRESS_NOT_STARTED;
+                        $article->update();
+                    }
+                }
+
+                return $this->responseSuccess([], "Delete old file successfully");
             }
         }
         return $this->responseFail([], "Invalid document");
