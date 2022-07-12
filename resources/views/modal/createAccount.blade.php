@@ -9,7 +9,7 @@
                 <div class="modal--input">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
-                        <input type="text" id="name" placeholder="Enter your Name" class="form-name create_name" name="full_name">
+                        <input type="text" id="name" placeholder="Enter your name" class="form-name create_name" name="full_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_name"></p>
@@ -17,7 +17,7 @@
                 <div class="modal--input">
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Email" class="form-number create_email  " name="email">
+                        <input type="text" placeholder="Enter your email" class="form-number create_email  " name="email">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
                     </div>
                     <p class="text-dangers text_email"></p>
@@ -25,13 +25,13 @@
                 <div class="modal--input">
                     <p>{{ __('Phone number') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Number" class="form-number create_number  " name="phone_number">
+                        <input type="text" placeholder="Enter your number" class="form-number create_number  " name="phone_number">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__number">
                     </div>
                     <p class="text-dangers text_phone"></p>
                 </div>
                 <div class="modal--input" >
-                    <p>{{ __('New password') }}</p>
+                    <p>{{ __('Password') }}</p>
                     <div class="input--modal">
                         <input type="password" placeholder="Enter your password" class="form-pwd create_pwd  " name="password">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
