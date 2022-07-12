@@ -230,10 +230,11 @@
 
   .text-dangers{
     color: var(--danger) !important;
-    margin-top: 5px !important;
+    padding-top: 10px !important;
     font-family: 'Avenir Next' !important;
     font-size: 12px !important;
     line-height: 5px !important;
+    display: block;
 }
 
 .modal_edit_user{

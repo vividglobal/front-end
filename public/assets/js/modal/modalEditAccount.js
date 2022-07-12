@@ -84,12 +84,7 @@ $("document").ready(function(){
         //name
     $(".img-edit__name").on("click",function(){
         $(".form-name").removeAttr('disabled');
-        $(".form-name").focus();
-    })
-    //number
-    $(".img-edit__number").on("click",function(){
-            $(".form-number").removeAttr('disabled');
-            $(".form-number").focus();
+        $(this).closest('.input--modal').find('input').focus();
     })
 
     //checked Radio Button

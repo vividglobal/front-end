@@ -67,7 +67,7 @@ $(document).ready(function(){
             let arr = dateRange.split('-');
             startDate = arr[0].trim().replace(/[/]/g,"-");
             endDate = arr[1].trim().replace(/[/]/g,"-");
-            generalStrParams = brandStrParams = codeStrParams = `&start_date=${startDate}&end_date=${endDate}`;
+            generalStrParams = brandStrParams = codeStrParams = `?1=1&start_date=${startDate}&end_date=${endDate}`;
         }else{
             generalStrParams = brandStrParams = codeStrParams = '?1=1'
         }

@@ -21,7 +21,7 @@
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
                         <input type="text" placeholder="Enter your Email" class="form-number edit_email  " name="email">
-                        <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
+                        <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_email"></p>
                 </div>
@@ -29,7 +29,7 @@
                     <p>{{ __('Phone number') }}</p>
                     <div class="input--modal">
                         <input type="text" placeholder="Enter your Number" class="form-number edit_number"  name="edit_number">
-                        <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__number">
+                        <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers error_number"></p>
                 </div>
