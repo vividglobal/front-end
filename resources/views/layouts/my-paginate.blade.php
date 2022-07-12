@@ -28,7 +28,6 @@
                         @else
                             <li class="cursor" ><a >{{ $page }}</a></li>
                         @endif
-
                     @endforeach
                 @endif
             @endforeach

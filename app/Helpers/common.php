@@ -117,8 +117,3 @@ if (! function_exists('checkSort')) {
     }
 }
 
-if (! function_exists('getPageOnPagination')) {
-    function getPageOnPagination($page) {
-        return url()->full() . "&page=".$page;
-    }
-}
