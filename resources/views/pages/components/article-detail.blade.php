@@ -252,7 +252,7 @@
                     </div>
                 @elseif(($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='VIOLATION' 
                 && !$article->supervisor_review['violation_code'])
-                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status check-violation-code btn-violation">
+                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-violation-code btn-violation">
                         <h2>Agree code article</h2>
                     </div>
                     <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false add-violation-code  btn-non-violation">
