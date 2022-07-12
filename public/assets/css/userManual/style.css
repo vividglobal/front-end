@@ -68,14 +68,10 @@ video[poster] {
     margin:0 20px ;
   }
 
-  .panel .child-accordion:first-child{
-    padding-top: 0px;
-  }
 
   .child-accordion {
     background:  var(--white);
-    padding-top: 18px;
-    padding-bottom: 18px;
+    padding: 9px 0;
     width: 100%;
     font-family: "Avenir";
     font-style: normal;

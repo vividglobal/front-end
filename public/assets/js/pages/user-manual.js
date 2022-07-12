@@ -13,8 +13,9 @@ $(document).ready(function(){
             $(this).find("img").attr("src","../../assets/image/plus.svg")
             $(target).hide();
         }
-
-        $(this)[0].scrollIntoView();
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(this).offset().top
+        });
     })
 
     $(".child-accordion").click(function(e){
@@ -29,6 +30,8 @@ $(document).ready(function(){
             $(this).find("img").attr("src","../../assets/image/plus.svg")
             $(target).hide();
         }
-        $(this)[0].scrollIntoView();
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(this).offset().top
+        });
     })
 })
