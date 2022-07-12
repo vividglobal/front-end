@@ -262,7 +262,7 @@ $("document").ready(function(){
         $("#modal__delete-account").addClass("modal__open")
         $(".overlay").css({"width": "100%", "display": "block"})
         $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("REMOVE ADMIN")
-        let id  = $(this).closest("li").find("input").attr("data-id");
+        let id  = $(this).closest("li").find("input").attr("data-id") || $(".edit_id_user").attr("data-id");
         $(".btn__delete--user").closest("form").find("input").attr("data-id",id);
         document.documentElement.style.overflow = 'hidden';
         document.body.scroll = "unset";

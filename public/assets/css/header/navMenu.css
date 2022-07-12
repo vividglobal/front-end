@@ -19,7 +19,7 @@
 }
 
 .nav--btn__after--login{
-    margin-right: 2.1em;
+    margin: 0 30px;
     cursor: pointer;
 }
 
@@ -47,6 +47,10 @@
     align-items: center;
 }
 
+.nav-menu{
+    justify-content: center;
+}
+
 nav-menu > ul li{
     display: flex;
     flex-direction: column;
@@ -68,7 +72,7 @@ nav-menu > ul li{
 .nav--dropdown{
     position: absolute;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
-    top: 80px;
+    top: 75px;
     width: 195px;
     background-color: var(--white);
     display: none;
@@ -76,7 +80,7 @@ nav-menu > ul li{
 }
 
 .style_dropdown{
-    top: 75px;
+    top: 65px;
 }
 
 .nav--dropdown li {
@@ -107,6 +111,12 @@ nav-menu > ul li{
 
 li:nth-child(3) img{
     margin-left:9px
+}
+
+.nav__btn--login{
+    position: absolute;
+    right: 50px;
+    top: 26px;
 }
 
 
@@ -144,10 +154,10 @@ li:nth-child(3) img{
 
 .dropdown-login{
     position: absolute;
-    top: 80px;
+    top: 45px;
     width: 195px;
-    right: 0px;
-    background-color:var(--white);
+    right: -47px;
+    background-color: var(--white);
     display: none;
     box-shadow: 0px 3px 4px rgb(0 0 0 / 15%);
 }
@@ -225,10 +235,14 @@ li:nth-child(3) img{
     display: flex;
     justify-content: end;
     align-items: center;
+    width: 175px;
+    position: absolute;
+    top: 5px;
+    right: 50px;
 }
 
 .padding_no_login{
-    padding: 8px 60px;
+    padding: 16px 60px;
 }
 
 .padding_has_login{

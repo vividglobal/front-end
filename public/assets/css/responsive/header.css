@@ -1,7 +1,7 @@
 @media (max-width: 1440px) {
 
     .nav--btn__after--login {
-        margin-right: 1.3em;
+        margin: 0 15px;
     }
 
     .nav--btn__after--login > a{
@@ -13,6 +13,10 @@
     }
     .padding_has_login{
         padding: 20px 60px;
+    }
+
+    .btn_no-login{
+        width:  150px;
     }
 }
 
@@ -102,6 +106,11 @@
 
     .after-login {
         align-items: inherit;
+    }
+
+    .nav__btn--login{
+        position: inherit;
+        margin-left: 16px !important;
     }
 
     .closebtn img{

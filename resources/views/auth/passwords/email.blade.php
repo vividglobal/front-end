@@ -18,7 +18,8 @@
                     <div class="email--login">
                         <img src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
                         <input id="email" type="email" class=" @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
+                        name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email"
+                        oninvalid="this.setCustomValidity('Please enter your email')">
                     </div>
                     @error('email')
                         <span class="invalid-feedback d-block" role="alert">

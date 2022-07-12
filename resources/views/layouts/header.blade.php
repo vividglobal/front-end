@@ -10,7 +10,7 @@
         <a href="javascript:void(0)" class="closebtn" ><img src="{{ asset('assets/image/menu.svg') }}" alt=""></a>
         <div class="overlay-content">
             <div class="rows nav-menu" >
-                <div class="no-padding {{Auth::user()!== null ? "col l-11 m-11 had_login"  : "col l-10 m-10 no_login"}}" >
+                <div class="no-padding {{Auth::user()!== null ? " had_login"  : " no_login"}}" >
                     <ul class="rows no-gutters l-o-2 btn__header center-header">
                         <li class="nav--btn__after--login " >
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
@@ -91,12 +91,12 @@
                 </div>
                 @guest
                     @if (Route::has('login'))
-                        <div class="nav__btn--login col l-2 m-2 no-margin btn_no-login" >
+                        <div class="nav__btn--login no-margin btn_no-login" >
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </div>
                     @endif
                 @else
-                    <div class="nav__btn--login  after-login no-padding col l-1 m-1 no-margin">
+                    <div class="nav__btn--login  after-login no-margin" style="{{ request () -> is ('/') ? "top:30px" : "" }}">
                         {{-- <img src="{{ asset('assets/image/user.svg') }}" alt=""> --}}
                         <p class="name_login">{{ @Auth::user()->full_name }}</p>
                         <div class="dropdown-login">

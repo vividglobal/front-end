@@ -12,14 +12,14 @@
                         <div class="email--login">
                             <img src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
                             <input id="email" type="email" class=" @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email">
+                            name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email" oninvalid="this.setCustomValidity('Please enter information to login')">
                         </div>
                     <p class="title__login" style="margin-top:21px">{{ __('Password') }}</p>
                     <div class="input__pwd--login">
                         <div class="email--login">
                             <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
                             <input id="password" type="password" class="@error('password') is-invalid @enderror"
-                            name="password" required autocomplete="current-password" placeholder="Enter your pasword">
+                            name="password" required autocomplete="current-password" placeholder="Enter your pasword" oninvalid="this.setCustomValidity('Please enter information to login')">
                         </div>
                         @error('email')
                             <span class="text-dangers" role="alert">
