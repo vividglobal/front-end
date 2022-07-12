@@ -127,9 +127,9 @@
             <div class="table-code" id="table-add">
                 @if(getStatusText($article->supervisor_review['status'])!== 'Reviewing')
                     <div id="table-box">
-                        <div class="table-code-top">
+                        <div class="table-code-top" id="violation-code-item">
                             <h2>Supervisor</h2>
-                            @if(isset($article->detection_result['violation_code']))
+                            @if(isset($article->supervisor_review['violation_code']))
                             <?php
                                 $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
                                 ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
@@ -237,7 +237,7 @@
             @endif
         </div>
         <div id="table-code-buton-all" class="table-button-all">
-                <div class="table-code-buton" id="table-code-buton-supervisor">
+            <div class="table-code-buton" id="table-code-buton-supervisor">
                 @if(isPendingStatus($article->supervisor_review['status']))
                     <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
                         <h2>Agree with VIVID’s status</h2>
@@ -245,18 +245,23 @@
                     <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
                         <h2>Disagree with VIVID’s status</h2>
                     </div>
-                @elseif(isViolationStatus($article->supervisor_review['status']) && !($article->supervisor_review['violation_code']))
+                @elseif(isViolationStatus($article->supervisor_review['status']) && !($article->supervisor_review['violation_code'])
+                && ($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')
                     <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true add-violation-code check-violation-code btn-violation btn-violation-code">
-                        <h2>Select code article</h2>
+                        <h2>Select code article</h2> 
+                    </div>
+                @elseif(($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='VIOLATION' 
+                && !$article->supervisor_review['violation_code'])
+                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status check-violation-code btn-violation">
+                        <h2>Agree code article</h2>
+                    </div>
+                    <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false add-violation-code  btn-non-violation">
+                        <h2>Reselect code article</h2>
                     </div>
                 @endif
             </div>
         </div>
 </div>
-
-
-
-
 
 <div class="modal-title-mobile" id="confirmActionModal"> 
     <div class="modal-confirm-content-mobile">
