@@ -184,7 +184,8 @@
     content: url(../../image/Under-than.svg);
     width: 10px;
     height: 10px;
-    margin-left: 5px;
+    margin-bottom: 15px;
+    margin-right: 30px;
 }
 
 .name_login{

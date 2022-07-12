@@ -75,7 +75,7 @@
         <div class="close__modal">
         </div>
         <div class="title-modal">
-            <p>{{ __('REMOVE ADMIN') }}</p>
+            <p>{{ __('Remove admin') }}</p>
         </div>
         <div class="content-modal">
             <p style="font-weight: 500;">Are you sure to remove this admin ?</p>

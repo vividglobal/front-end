@@ -48,6 +48,7 @@
 
   .close__modal:before{
     content: url(../../image/x.svg);
+    cursor: pointer;
   }
 
   .title-modal{

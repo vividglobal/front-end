@@ -188,7 +188,7 @@ $("document").ready(function () {
 
     // RETURN TEXT FILTER WHEN PARAMS IS EXIST
     function returnTextButtonQuery(nameBtn, textBtn, selectBtn, option, param,nameMb) {
-        let name = $(textBtn).find(nameBtn).find(`#${param}`).find("> p").text();
+        let name = $(textBtn).find(nameBtn).find(`#${param}`).find("> p").text() || $(`#${param}`).find("> p").text()  ;
         $(textBtn).find("> p").text(name);
         $(textBtn).find("> p").attr("data-id", param);
         $(selectBtn)
@@ -196,7 +196,6 @@ $("document").ready(function () {
             .removeClass("background-gray");
         $(selectBtn).find(`#${param}`).find("img").show();
         $(selectBtn).find(`#${param}`).addClass("background-gray");
-
         $(nameMb).closest(".checkbox_mobi").find("> p").text(name)
         $(nameMb).closest(".checkbox_mobi").find("> p").attr("data-id",param)
         $(nameMb).find(`#${param}`).find("> input").prop('checked',true)
