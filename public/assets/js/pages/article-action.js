@@ -86,6 +86,7 @@ $(document).ready(function(){
 
     $('.btn-confirm-non-violation').click(async function() {
         confirmModal.hide()
+        $(".mdl-js").css("overflow-y","scroll");
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         addOverlayScroll();
         isLoading = false;
