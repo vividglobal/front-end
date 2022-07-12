@@ -12,7 +12,7 @@
                 <div class="modal--input ">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Name" class="form-name edit_name" name="edit_name">
+                        <input type="text" placeholder="Enter your name" class="form-name edit_name" name="edit_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers error_name"></p>
@@ -20,7 +20,7 @@
                 <div class="modal--input input_email" style="display:none">
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Email" class="form-number edit_email  " name="email">
+                        <input type="text" placeholder="Enter your email" class="form-number edit_email  " name="email">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__email">
                     </div>
                     <p class="text-dangers text_email"></p>
@@ -28,7 +28,7 @@
                 <div class="modal--input">
                     <p>{{ __('Phone number') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Number" class="form-number edit_number"  name="edit_number">
+                        <input type="text" placeholder="Enter your number" class="form-number edit_number"  name="edit_number">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__number">
                     </div>
                     <p class="text-dangers error_number"></p>

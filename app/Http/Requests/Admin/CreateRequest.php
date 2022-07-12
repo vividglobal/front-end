@@ -26,7 +26,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'full_name'    => 'required|max:100',
-            'password'     => 'required',
+            'password'     => 'required|min:6|max:20',
             'email'        => 'required|email|unique:email',
             'phone_number' => 'required',
             'role'         => 'required|in:'.Admin::ROLE_ADMIN.','.Admin::ROLE_SUPERVISOR.','.Admin::ROLE_OPERATOR,

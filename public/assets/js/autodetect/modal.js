@@ -85,11 +85,9 @@ $(document).ready(function () {
         }
         
         if(files.length !== 0 && flag){
-            show_overlay()
             for(let i = 0; i < files.length; i++){
                 let extension = (files[i].name).split('.').pop().toLowerCase();
                 if ($.inArray(extension, ['pdf']) == -1) {
-                    hide_overlay()
                     show_error("You have uploaded files that are not in the correct PDF format")
                     return false;
                 }
@@ -101,7 +99,7 @@ $(document).ready(function () {
                     "method": "POST",
                     "timeout": 0,
                     "headers": {
-                        "Accept": "application/json",
+                        // "Accept": "application/json",
                         'X-CSRF-TOKEN': csrf,
                     },
                     "processData": false,
@@ -109,10 +107,12 @@ $(document).ready(function () {
                     "contentType": false,
                     "data": form
                 };
-                let response = await $.ajax(settings)
-                let message = JSON.parse(response).message
-                if(JSON.parse(response).success) {
-                    let date = JSON.parse(response).data.modified
+                show_overlay()
+                $.ajax(settings)
+                .done(function(res) {
+                    let response = JSON.parse(res)
+                    show_success(response.message);
+                    let date = response.data.modified;
                     let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
                     fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
                     <div class="content_file p-2">
@@ -120,17 +120,17 @@ $(document).ready(function () {
                                 <div class="item-one-file">
                                     <div class="div-file">
                                         <img src="../assets/image/icon-pdf.png" alt="">
-                                        <a href=${JSON.parse(response).data.url} class="doc-file" target="_blank"> ${JSON.parse(response).data.name} </a>
+                                        <a href=${response.data.url} class="doc-file" target="_blank"> ${response.data.name} </a>
                                     </div>
                                     <div class="div-delete">
-                                        <span id-delete=${JSON.parse(response).data._id} class="delete-file">&times;</span>
+                                        <span id-delete=${response.data._id} class="delete-file">&times;</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div> `
                     $('#box_list_file').prepend(fileHtmlItems);
-                    if(JSON.parse(response).data.article_id === rowId){
+                    if(response.data.article_id === rowId){
                         $(".check").attr('src','../assets/image/dislega2.png');
                         $(".date-penalty").find(`#${rowId}`).text(now)
                         let progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")
@@ -139,10 +139,16 @@ $(document).ready(function () {
                             progressStatus.addClass("show").removeClass("hide")
                         }
                     }
-                }
-                show_success(message);
+                    hide_overlay();
+                })
+                .fail(function(err) {
+                    let errResponse = JSON.parse(err.responseText)
+                    hide_overlay();
+                    show_error(errResponse.message)
+                })
+
             }
-            hide_overlay()
+            // hide_overlay()
             $('#upload').val('');
         }
     })

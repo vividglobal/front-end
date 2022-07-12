@@ -56,7 +56,6 @@
                     <img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt="">
                     <input type="hidden" data-id ={{ $admin["_id"] }} >
                 </li>
-                <li class="li-delete-profile"><img class="delete__profile" src="{{asset('assets/image/remove.svg')}}" alt=""></li>
             </div>
 
         </ul>
