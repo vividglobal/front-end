@@ -24,14 +24,11 @@
                 @if (is_array($element))
                     @foreach ($element as $page => $url)
                         @if ($page == $paginator->currentPage())
-                            <li class="active"><span>{{ $page }}</span></li>
-                        @elseif (($page == $paginator->currentPage() + 1 || $page == $paginator->currentPage() + 2) || $page == $paginator->lastPage())
-                            <li><a href="{{ $url }}"  id="div-mobile">{{ $page }}</a></li>
-                        @elseif ($page == $paginator->lastPage() - 1)
-                            <li class="disabled" id="div-mobile"><span><i class="fa fa-ellipsis-h"></i></span></li>
+                            <li class="active" aria-current="page"><span>{{ $page }}</span></li>
                         @else
-                            <li class="cursor" id="div-pc" ><a >{{ $page }}</a></li>
+                            <li class="cursor" ><a >{{ $page }}</a></li>
                         @endif
+
                     @endforeach
                 @endif
             @endforeach

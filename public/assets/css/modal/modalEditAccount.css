@@ -234,6 +234,8 @@
     font-family: 'Avenir Next' !important;
     font-size: 12px !important;
     line-height: 5px !important;
+    display: block;
+    padding-top: 10px;
 }
 
 .modal_edit_user{
