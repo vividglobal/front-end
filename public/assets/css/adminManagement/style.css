@@ -1,5 +1,5 @@
 .table__admin--management{
-    margin: 28px 60px;
+    margin: 28px 60px 14px 60px;
 }
 
 .admin__management{
@@ -124,9 +124,16 @@
 }
 
 .img_admin{
-    width: 12.4%;
+    width: 16.8%;
     display: flex;
-    justify-content: space-between;
+}
+
+.img_admin li{
+    width: 50% !important;
+}
+
+.img_admin > li:nth-child(2){
+    padding-left: 35px;
 }
 
 .edit__profile{
@@ -139,4 +146,9 @@
 
 .btn_edit{
     cursor: pointer;
+}
+
+.pagenate_admin{
+    margin-bottom: 20px;
+    margin-right: 60px;
 }

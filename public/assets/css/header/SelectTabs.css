@@ -209,6 +209,7 @@
     content: url(../../image/Under-than.svg);
     width: 100%;
     text-align: right;
+    cursor: pointer;
 }
 
 @media (min-width: 1440px){

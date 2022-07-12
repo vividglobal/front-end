@@ -21,7 +21,6 @@
             </div>
         </div>
         <div class="list_query-right">
-            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
             <div class="create__profile unvailable_create_profile" >
             </div>
         </div>
@@ -65,8 +64,15 @@
         </div>
     </div>
 </div>
-<div class="row-pagination">
+<div class="paginate_showing pagenate_admin">
+    @if(count($admins) > 0)
+        <div style="margin-top:20px">
+            @include('pages/components/query', ['list_filter' => ["showing"], 'show_all_filter' => false])
+        </div>
+    @endif
+    <div class="row-pagination">
         {{ $admins->links('layouts.my-paginate') }}
+    </div>
 </div>
 <!-- ---------------MODAL-DELETE------------------ -->
 <div id="modal__delete-account" class="modal">
