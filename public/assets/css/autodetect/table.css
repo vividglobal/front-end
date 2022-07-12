@@ -642,6 +642,7 @@ input[type=checkbox] {
 .paginate_showing{
     display: flex;
     margin-left: 60px;
+    margin-bottom: 20px;
 }
 .status-title-p{
   margin-right: 5px;
@@ -657,7 +658,7 @@ input[type=checkbox] {
 .style_violation_type::-webkit-scrollbar {
   width: 6px;
 
-} 
+}
 .styleauthor{
   text-transform: lowercase;
 }
