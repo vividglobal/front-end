@@ -116,3 +116,9 @@ if (! function_exists('checkSort')) {
         return isset($params['sort_by']) && $params['sort_by'] === $field && isset($params['sort_value']) && strtoupper($params['sort_value']) === $sort;
     }
 }
+
+if (! function_exists('getPageOnPagination')) {
+    function getPageOnPagination($page) {
+        return url()->full() . "&page=".$page;
+    }
+}

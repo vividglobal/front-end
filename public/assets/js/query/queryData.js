@@ -294,23 +294,23 @@ $("document").ready(function () {
     });
 
     // BUTTOM PAGINATE
-    $(".pagination")
-        .find("li")
-        .click(function () {
-            var value = parseInt($(this).find("a").text());
-            if (isNaN(value)) {
-                const page = parseInt(urlParams.get("page"));
-                let btn = $(this).find("a").attr("id");
-                if (btn == "prev_page" && page !== 1) {
-                    replaceURL(paramSortBy, paramSortValue, page - 1);
-                }
-                if (btn == "next_page") {
-                    replaceURL(paramSortBy, paramSortValue, page + 1);
-                }
-            } else {
-                replaceURL(paramSortBy, paramSortValue, value);
-            }
-        });
+    // $(".pagination")
+    //     .find("li")
+    //     .click(function () {
+    //         var value = parseInt($(this).find("a").text());
+    //         if (isNaN(value)) {
+    //             const page = parseInt(urlParams.get("page"));
+    //             let btn = $(this).find("a").attr("id");
+    //             if (btn == "prev_page" && page !== 1) {
+    //                 replaceURL(paramSortBy, paramSortValue, page - 1);
+    //             }
+    //             if (btn == "next_page") {
+    //                 replaceURL(paramSortBy, paramSortValue, page + 1);
+    //             }
+    //         } else {
+    //             replaceURL(paramSortBy, paramSortValue, value);
+    //         }
+    //     });
     // BTN SEARCH ICON FOR MOBI
     $("#form_search").submit(function (e) {
         e.preventDefault()
