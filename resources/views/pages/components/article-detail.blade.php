@@ -176,6 +176,14 @@
                         </div>
                         @endif
                     </div>
+                    @elseif((isPendingStatus($article->supervisor_review['status']) || isViolationStatus($article->supervisor_review['status'])) && !isRole(ROLE_SUPERVISOR)
+                    && count($article->supervisor_review['violation_code']) === 0)
+                    <div id="table-box">
+                        <div class="table-code-top" id="violation-code-item">
+                            <h2>Supervisor</h2>
+                            <p class="status-title reviewing-color" data-status="PENDING">Reviewing</p>
+                        </div>
+                    </div>
                 @endif
             </div>
             {{-- ==================================================== --}}
@@ -247,7 +255,7 @@
                     </div>
                 @elseif(isViolationStatus($article->supervisor_review['status']) && !($article->supervisor_review['violation_code'])
                 && ($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')
-                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true add-violation-code check-violation-code btn-violation btn-violation-code">
+                    <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true add-violation-code btn-violation btn-violation-code">
                         <h2>Select code article</h2> 
                     </div>
                 @elseif(($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='VIOLATION' 
