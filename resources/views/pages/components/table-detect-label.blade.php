@@ -349,7 +349,7 @@
             </div>
         @endif
         <div class="row-pagination">
-            {{ $articles->links('layouts.my-paginate') }}
+            {{ $articles->onEachSide(1)->links('layouts.my-paginate')}}
         </div>
     </div>
 
@@ -386,7 +386,7 @@
                 <h1>{{ __('Are you sure?') }}</h1>
             </div>
                 <p class="title-modal" style="text-align: center;display: block;">
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br>
+                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
             <div class="head-confirm-btn">
@@ -435,7 +435,7 @@
                 <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
                 <input type="text" placeholder="Search for violation code" class="search">
             </div>
-            <div class="row">
+            <div class="row" style="overflow-y: scroll">
                 @foreach($violationCode as $key => $code)
                 <div class="col-md-4 check__box">
                     <div class="checkbox-code">
@@ -482,7 +482,7 @@
                                 ])
                                 data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
-                            <p class="p-style">{{date("d/m/Y",$article->published_date)}}</p>
+                            <p class="p-style">{{date("m/d/Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">Nature One Dairy Australia</h3>
                         <h4 class="p-style">Nature One Dairy - Australia</h4>
@@ -493,7 +493,7 @@
         @endforeach
     </ul>
     <div class="row-pagination">
-    {{ $articles->links('layouts.my-paginate') }}
+    {{ $articles->onEachSide(1)->links('layouts.my-paginate')}}
     </div>
 </div>
 

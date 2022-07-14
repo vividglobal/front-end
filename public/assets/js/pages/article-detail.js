@@ -22,6 +22,8 @@ $(document).ready(function(){
     })
 
     $(document).on('click', '.check-status', function() {
+        show_overlay()
+        // document.documentElement.style.overflow = 'hidden';
         currentRow = $(this).parents('.container-row-mobile');
         document.body.scroll = "no";
         articleId = $(this).attr('data-id');
@@ -39,19 +41,24 @@ $(document).ready(function(){
         }else if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
             confirmModalVio.show()
         }
+        hide_overlay()
     })
 
     $('.btn-confirm-violation-and-choose-code').click(async function() {
+        show_overlay()
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
         confirmArticleAsViolationModal.hide();
+        hide_overlay()
     })
 
     $('.btn-confirm-violation').click(async function() {
+        show_overlay()
+
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         addOverlayScroll();
         confirmModalVio.hide();
-        // hide_overlay();
+        hide_overlay();
     });
 
 
@@ -82,9 +89,6 @@ $(document).ready(function(){
     })
 
     $('.btn-select-code').click(async function() {
-        $('#violation-code-item').remove()
-        actionStep = ACTION_CHECK_CODE;
-        openselectcode.hide();
         let violationCode = $("input[name='violation_code[]']:checked").map(function(){
             return $(this).val();
         }).get();
@@ -92,9 +96,14 @@ $(document).ready(function(){
             show_error("Please select as least 1 type of violation.");
             return false;
         }
+        show_overlay()
+        $('#violation-code-item').remove()
+        actionStep = ACTION_CHECK_CODE;
+        openselectcode.hide();
         agreeStatus = DISAGREE;
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode)
         if(response.success) {
+            hide_overlay();
             addOverlayScroll();
             updateDetectionColumnAfterSelectViolationCode(response.data);
             closeCodeModal();
@@ -162,6 +171,8 @@ $(document).ready(function(){
     }
 
     $(document).on('click', '.check-violation-code', async function() {
+        show_overlay()
+        botStatus = $('.bot-status').attr('data-status');
         if(botStatus === STATUS_VIOLATION) {
             articleId = $(this).attr('data-id');
             agreeStatus = $(this).attr('attr-status');
@@ -171,6 +182,7 @@ $(document).ready(function(){
         if(response.success) {
             show_success(response.message);
             updateDetectionColumnAfterSelectViolationCode(response.data);
+            hide_overlay()
         }else {
             show_error('Evaluation failed!');
             hide_overlay();
@@ -214,7 +226,7 @@ $(document).ready(function(){
 
         fileHtmlItems = `
             <div class="table-code-buton" id="table-code-buton-supervisor">
-                <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code check-violation-code">
+                <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
                     <h2>Select code article</h2>
                 </div>
             </div>`;

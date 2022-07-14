@@ -43,4 +43,12 @@ class AnalysisController extends Controller
         $codeData = $this->analyticService->_getViolationBasedOnCode($request->all());
         return view('pages/analysis/vio_based_code_table', compact('codeData'));
     }
+
+      // ============================================ //
+     // ================== CHART =================== //
+    // =========================================== //
+    public function violationBasedCountries() {
+        $countryData = $this->analyticService->violationBasedCountries();
+        return view('charts/violation_based_country', compact('countryData'));
+    }
 }
