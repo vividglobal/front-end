@@ -27,12 +27,19 @@ $("document").ready(function(){
         $("#create__modal-account").find(".modal__content").find(".container_modal_edit").find(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
         $(".overlay").css({"width":"100%", "display": "block"})
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "unset";
+        scrollScreen.disable()
     })
 
 
     $(".cancel_create-account").on("click",function(){
+        resetModal()
+    })
+
+    $(".close__modal").click(function(){
+        resetModal()
+    })
+
+    $(".overlay").click(function(){
         resetModal()
     })
 
@@ -58,10 +65,19 @@ $("document").ready(function(){
             flag = false;
         }
 
+        if(name.length > 100){
+            $(".text_name").text("Please enter your name max length of 100 characters");
+            flag = false;
+        }
+
         if(email === ""){
             $(".text_email").text("Please enter your email")
             flag = false;
+        }
 
+        if(email.length > 100){
+            $(".text_email").text("Please enter your email max length of 100 characters");
+            flag = false;
         }
 
         if(!validateEmail(email)){

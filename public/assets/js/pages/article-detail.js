@@ -22,7 +22,6 @@ $(document).ready(function(){
     })
 
     $(document).on('click', '.check-status', function() {
-        // document.documentElement.style.overflow = 'hidden';
         currentRow = $(this).parents('.container-row-mobile');
         document.body.scroll = "no";
         articleId = $(this).attr('data-id');
@@ -159,8 +158,7 @@ $(document).ready(function(){
     }
 
     function addOverlayScroll() {
-        document.documentElement.style.overflow = 'unset';
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
     $(document).on('click', '.check-violation-code', async function() {
@@ -224,7 +222,7 @@ $(document).ready(function(){
         $('#table-code-buton-all').prepend(fileHtmlItems);
         $('.add-violation-code').click(async function() {
             openselectcode.show();
-        })    
+        })
         }
     }
     async function action_moderate_article(action, status, violationCode = []) {

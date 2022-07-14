@@ -1,7 +1,7 @@
-@media (max-width: 1440px) {
+@media (max-width: 1445px) {
 
     .nav--btn__after--login {
-        margin: 0 15px;
+        margin: 0 10px;
     }
 
     .nav--btn__after--login > a{
@@ -333,14 +333,17 @@
     }
 }
 
+@media (max-width: 500px) {
+    .open_menu{
+        width: 100% !important;
+        z-index: 102;
+    }
+}
+
 @media (max-width: 425px) {
     .padding_has_login,
     .padding_no_login{
         padding: 8px 16px;
-    }
-    .open_menu{
-        width: 100% !important;
-        z-index: 102;
     }
     .background__vituar-3 .rows .background__content {
         padding: 85px 0 145px 0;

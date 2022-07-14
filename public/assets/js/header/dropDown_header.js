@@ -27,8 +27,7 @@ $("document").ready(function(){
         $(".overlay").css({"width":"100%","display":"block"})
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "unset";
+        scrollScreen.disable()
     })
 
     function closeNav() {
@@ -37,9 +36,7 @@ $("document").ready(function(){
         $(".overlay").css({"width":"0%","display":"none"})
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
-        document.documentElement.style.overflow = 'unset';
-
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
 //    ---------NAV FILTER---------
@@ -47,16 +44,14 @@ $(".open_Nav_filter ").click(function(){
     $("#myFilter").addClass("open_menu")
     $("#myNav").removeClass("open_menu")
     $(".overlay").css({"width":"100%","display":"block"})
-    document.documentElement.style.overflow = 'hidden';
-    document.body.scroll = "unset";
+    scrollScreen.disable()
 })
 
 $(".closeFilter ").click(function(){
     $("#myFilter").removeClass("open_menu")
     $(".overlay").css({"width":"0%","display":"none"})
     $(".checkbox_mobi").find("#toggle").hide()
-    document.documentElement.style.overflow = 'unset';
-    document.body.scroll = "yes";
+    scrollScreen.enable()
 })
 
     $("#myNav").find(".closebtn").click(function(){

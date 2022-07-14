@@ -24,10 +24,6 @@
         border-bottom: 1px solid var(--gray-C7);
     }
 
-    .panel img {
-        width: 100%;
-    }
-
     .child-accordion{
         font-weight: 500;
     }
@@ -36,12 +32,23 @@
         background-color: var(--gray-F4);
         transition: background 0.3s linear;
     }
+
+    .title_instruction{
+        margin-left: 0;
+    }
+    .wrapper{
+        height: 50vw;
+    }
 }
 
 @media (max-width: 873px) {
     .child-accordion,
     .accordion{
         font-size: 16px;
+    }
+
+    .panel p{
+        font-size: 13px;
     }
 
 }

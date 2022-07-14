@@ -143,3 +143,42 @@
 textarea {
     resize: none;
   }
+
+  #modal-country-label_mobi .full_modal .container_modal_edit{
+    height: 90%;
+  }
+
+  #modal-country-label_mobi .full_modal > .btn-modal{
+    height: 10%;
+    z-index: 1;
+  }
+
+  #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country .option_general span{
+    top: 12px;
+  }
+  #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country .option_general p{
+    padding-left: 10px;
+    color: var(--black);
+  }
+
+  #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country{
+    max-height: inherit;
+    height: 100%;
+    }
+
+#modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .search--input--country{
+    margin: 20px 0px 10px 0px;
+    padding: 15px;
+}
+
+#modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .search--input--country input{
+    padding-left: 10px;
+}
+

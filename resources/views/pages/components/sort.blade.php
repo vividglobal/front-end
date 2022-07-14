@@ -1,7 +1,6 @@
 {{-- SORT FOR MOBILE --}}
 
 <div class="checkbox_list_sort" id="toggle">
-    @if(!request ()-> is ('analysis'))
         <div class="sort_value">
             <label class="container_checkbox asc" > <p data-value="A to Z">A to Z</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
@@ -12,6 +11,7 @@
                 <span class="checkmark_checkbox"></span>
             </label>
         </div>
+    @if(!request ()-> is ('analysis'))
         <div class="sort_by">
             <label class="container_checkbox" id="company_name" > <p data-by="company_name">Company</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
@@ -52,7 +52,8 @@
                 @endif
             @endauth
             @if(request ()-> is ('articles/violation'))
-                <label class="container_checkbox" id="sort_penalty_issued" > <p data-by="sort_penalty_issued">Penalty issued</p>
+                <label class="container_checkbox" id="sort_penalty_issued" > <p
+                    data-by="sort_penalty_issued">Penalty issued</p>
                     <input type="checkbox" name="radio" class="input_checkbox">
                     <span class="checkmark_checkbox"></span>
                 </label>
@@ -60,31 +61,20 @@
         </div>
         @else
             <div class="sort_based_on_brands">
-                <p>Sort based on brand</p>
-                <label class="container_checkbox" > <p data-sort-field="total_article" data-sort-value="ASC" data-table="vio-based-brand">Article: Sort Ascending</p>
+                <label class="container_checkbox" > <p data-sort-field="total_article"
+                    data-table="vio-based-brand" data-name="Article">Article</p>
                     <input type="checkbox" name="radio" class="input_checkbox">
                     <span class="checkmark_checkbox"></span>
                 </label>
-                <label class="container_checkbox" > <p data-sort-field="total_article" data-sort-value="DESC" data-table="vio-based-brand">Article: Sort Descending</p>
-                    <input type="checkbox" name="radio" class="input_checkbox">
-                    <span class="checkmark_checkbox"></span>
-                </label>
-                <label class="container_checkbox" > <p data-sort-field="total_violation_article" data-sort-value="ASC" data-table="vio-based-brand">Violation: Sort Ascending</p>
-                    <input type="checkbox" name="radio" class="input_checkbox">
-                    <span class="checkmark_checkbox"></span>
-                </label>
-                <label class="container_checkbox" > <p data-sort-field="total_violation_article" data-sort-value="DESC" data-table="vio-based-brand">Violation: Sort Descending</p>
+                <label class="container_checkbox" > <p data-sort-field="total_violation_article"
+                    data-table="vio-based-brand" data-name="Violation">Violation</p>
                     <input type="checkbox" name="radio" class="input_checkbox">
                     <span class="checkmark_checkbox"></span>
                 </label>
             </div>
             <div class="sort_based_on_code">
-                <p>Sort based on code</p>
-                <label class="container_checkbox" > <p data-sort-field="total_article" data-sort-value="ASC" data-table="vio-based-code">Article: Sort Ascending</p>
-                    <input type="checkbox" name="radio" class="input_checkbox">
-                    <span class="checkmark_checkbox"></span>
-                </label>
-                <label class="container_checkbox" > <p data-sort-field="total_article" data-sort-value="DESC" data-table="vio-based-code">Article: Sort Descending</p>
+                <label class="container_checkbox" > <p data-sort-field="total_article"
+                    data-table="vio-based-code" data-name="Article">Article</p>
                     <input type="checkbox" name="radio" class="input_checkbox">
                     <span class="checkmark_checkbox"></span>
                 </label>

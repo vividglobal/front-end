@@ -34,12 +34,6 @@
                         <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
                             required autocomplete="new-password" placeholder="Enter your password">
                     </div>
-                    @error('password')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
                     {{-- CONFIRM PASSWORD INPUT --}}
                     <p class="title__login">{{ __('Confirm Password') }}</p>
                     <div class="email--login">
@@ -47,7 +41,11 @@
                         <input id="password-confirm" type="password" name="password_confirmation"
                             required autocomplete="new-password" placeholder="Enter confirm password">
                     </div>
-
+                    @error('password')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <button type="submit" class="btn_submit">
                         {{ __('Reset password') }}
                     </button>
