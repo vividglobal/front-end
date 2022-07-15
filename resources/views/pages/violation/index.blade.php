@@ -321,25 +321,6 @@
     </div>
 </div>
 
-
-                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
-                        </div>
-                        <h3 class="title-style">Nature One Dairy Australia</h3>
-                        <h4 class="p-style">Nature One Dairy - Australia</h4>
-                    </div>
-                </div>
-            </a>
-        </li>
-        @endforeach
-    </ul>
-    <div class="row-pagination">
-    {{ $articles->links('layouts.my-paginate') }}
-    </div>
-    @if(count($articles) == 0)
-    @include('noSearchResult/index')
-    @endif
-</div>
-
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
