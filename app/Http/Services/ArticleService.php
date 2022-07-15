@@ -113,19 +113,19 @@ class ArticleService
                     'violation_code'  => $violation_code_arr,
                     'violation_types' => $violation_types_arr,
                     'status'          => $botStatus,
-                    'date'            => $articleDetetionCrawlDate
+                    'crawl_date'      => $articleDetetionCrawlDate
                 ],
                 'supervisor_review' => [
                     'violation_code'  => [],
                     'violation_types' => [],
                     "status"          => "PENDING",
-                    'date'            => null
+                    'review_date'     => null
                 ],
                 'operator_review' => [
                     'violation_code'  => [],
                     'violation_types' => [],
                     "status"          => "PENDING",
-                    'date'            => null
+                    'review_date'     => null
                 ],
                 'status'         => 'PENDING',
                 'detection_type' => $articleDetectionType,
