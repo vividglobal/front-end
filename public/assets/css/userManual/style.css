@@ -68,10 +68,6 @@ video[poster] {
     margin: 20px 25px;
   }
 
-  .panel:first-child{
-    border-bottom: 1px solid var(--gray-C7);
-  }
-
   .child-accordion {
     background:  var(--white);
     padding: 9px 0;
@@ -103,7 +99,6 @@ video[poster] {
     padding-bottom: 20px;
     font-style: normal;
     color: #262626;
-    border-bottom: 1px solid var(--gray-C7);
   }
   .panel .at {
     transition: opacity 0.5s ease;
@@ -162,4 +157,11 @@ video[poster] {
 
   .wrap-accordion a{
       text-decoration: none;
+  }
+
+  .border_grays{
+    border-bottom: 1px solid var(--gray-C7);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: none;
   }

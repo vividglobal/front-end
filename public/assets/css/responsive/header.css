@@ -308,6 +308,12 @@
     }
 }
 
+@media (max-width: 1113px) {
+    .nav-link:hover{
+        color: var(--white) !important;
+    }
+}
+
 @media (min-width: 740px) and (max-width: 1113px){
     .padding_has_login,
     .padding_no_login{

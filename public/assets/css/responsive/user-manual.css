@@ -35,6 +35,10 @@
     .wrapper{
         height: 50vw;
     }
+    .border_grays{
+        display: block;
+    }
+
 }
 
 @media (max-width: 873px) {
