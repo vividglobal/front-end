@@ -10,7 +10,6 @@ $(document).ready(function(){
     let openselectcode = $('.open-modal-mobile-code')
     let actionStep;
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
-
     span.click(function () {
         confirmModal.hide();
         confirmModalVio.hide();
@@ -20,6 +19,38 @@ $(document).ready(function(){
     $(".history-back").click(function(){
         history.back(1);
     })
+
+    $('#copy-link').click(function(){
+        let Url = $(this).attr("link-copy");
+        var isiOSDevice = navigator.userAgent.match(/ipad|iphone/i);
+            if (!isiOSDevice) {
+                document.addEventListener('copy', function(e) {
+                    e.clipboardData.setData('text/plain', Url);
+                    e.preventDefault();
+                }, true);
+            } else {
+                copyToClipboard(Url);
+            }
+            document.execCommand('copy');
+            if (Url != "" && Url != "javascript:void(0)") {
+                show_success('Copy link successful')
+            } else {
+                show_error('The URL does not exist')
+            }
+    })
+    
+    function copyToClipboard(text) {
+        var textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+            var successful = document.execCommand('copy');
+        } catch (err) {
+            return
+        }
+        document.body.removeChild(textArea);
+    }
 
     $(document).on('click', '.check-status', function() {
         show_overlay()
@@ -54,7 +85,6 @@ $(document).ready(function(){
 
     $('.btn-confirm-violation').click(async function() {
         show_overlay()
-
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         addOverlayScroll();
         confirmModalVio.hide();
@@ -63,9 +93,11 @@ $(document).ready(function(){
 
 
     $('.btn-confirm-non-violation').click(async function() {
+        show_overlay();
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_NONE_VIOLATION);
         addOverlayScroll();
         if(response.success) {
+            show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
                 $('.table-button-all').remove();
                 fileHtmlItems = `
@@ -75,12 +107,13 @@ $(document).ready(function(){
                     </div>`
                     $('#table-add').prepend(fileHtmlItems);
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
-                removeCurrentRow();
+            window.location.href = '/articles/auto-detection'
             }
         }else {
             show_error('Evaluation failed!');
         }
         confirmModal.hide();
+        hide_overlay();
     })
 
     $('.add-violation-code').click(async function() {
@@ -103,11 +136,18 @@ $(document).ready(function(){
         agreeStatus = DISAGREE;
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode)
         if(response.success) {
+            show_success(response.message);
+            if(CURRENT_ROLE === SUPERVISOR_ROLE){
             hide_overlay();
             addOverlayScroll();
             updateDetectionColumnAfterSelectViolationCode(response.data);
             closeCodeModal();
             show_success(response.message);
+            }else if(CURRENT_ROLE === OPERATOR_ROLE){
+                setTimeout(() => {
+                    window.location.href = '/articles/auto-detection'
+                }, 3000);
+            }
         }else {
             show_error('Evaluation failed!');
             hide_overlay();
@@ -115,47 +155,51 @@ $(document).ready(function(){
     })
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
-        let codelish = '';
-        for (let i = 0; i < data.violation_code.length; i++) {
-            codelish += `
-                <div>
-                    <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
-                        ${data.violation_code[i].name}
-                    </h4>
-                </div>
-            `
-        }
-        let typelishcode = '';
-        for (let i = 0; i < data.violation_types.length; i++) {
-            typelishcode += `
-            <div style="display: flex;align-items: center;">
-                <div class="color-circle-big" >
-                    <div class="color-circle" style="background: #6F6F6F;"></div>
-                </div>
-                <h4 class="p-style"> ${data.violation_types[i].name}</h4>
-            </div>
-            `
-        }
-        fileHtmlItems = `
-            <div id="table-box">
-                <div class="table-code-top">
-                    <h2>Supervisor</h2>
-                    <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
-                </div>
-                <div class="table-code-aticle">
-                    <img class="img-icon-detail" src="http://localhost:8099/assets/image/dis-code.png" alt="">
+        if(CURRENT_ROLE === SUPERVISOR_ROLE) {
+            let codelish = '';
+            for (let i = 0; i < data.violation_code.length; i++) {
+                codelish += `
                     <div>
-                        <h4 class="p-style">Code article</h4>
-                        ${codelish}
-
+                        <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                            ${data.violation_code[i].name}
+                        </h4>
+                    </div>
+                `
+            }
+            let typelishcode = '';
+            for (let i = 0; i < data.violation_types.length; i++) {
+                console.log(data.violation_types[i]);
+                typelishcode += `
+                <div style="display: flex;align-items: center;">
+                    <div class="color-circle-big" >
+                        <div class="color-circle" style="background:${data.violation_types[i].color};"></div>
+                    </div>
+                    <h4 class="p-style"> ${data.violation_types[i].name}</h4>
+                </div>
+                `
+            }
+            fileHtmlItems = `
+                <div id="table-box">
+                    <div class="table-code-top">
+                        <h2>Supervisor</h2>
+                        <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+                    </div>
+                    <div class="table-code-aticle">
+                        <img class="img-icon-detail" src="http://localhost:8099/assets/image/dis-code.png" alt="">
+                        <div>
+                            <h4 class="p-style">Code article</h4>
+                            ${codelish}
+                        </div>
+                    </div>
+                    <div class="table-code-tile">
+                        ${typelishcode}
                     </div>
                 </div>
-                <div class="table-code-tile">
-                    ${typelishcode}
-                </div>
-            </div>
-        `
-        $('#table-add').prepend(fileHtmlItems);
+            `
+            $('#table-add').prepend(fileHtmlItems);
+        }if(CURRENT_ROLE === OPERATOR_ROLE) {
+        window.location.href = '/articles/auto-detection'
+        }
         $('#table-code-buton-all').remove()
     }
 
@@ -195,8 +239,27 @@ $(document).ready(function(){
         if(response.success) {
         // Update status label
         $('#table-code-buton-supervisor').remove();
+        if(CURRENT_ROLE === SUPERVISOR_ROLE){
+            if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE ) {
+                violationitem =`
+                <div class="table-code-top" id="violation-code-item">
+                    <h2>Supervisor</h2>
+                    <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+                </div>
+                `
+                $('#table-add').prepend(violationitem);
 
-        if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE) {
+                fileHtmlItems = `
+                    <div class="table-code-buton" id="table-code-buton-supervisor">
+                        <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
+                            <h2>Agree code article</h2>
+                        </div>
+                        <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
+                            <h2>Reselect code article</h2>
+                        </div>
+                    </div>
+                `
+            }else{
             violationitem =`
             <div class="table-code-top" id="violation-code-item">
                 <h2>Supervisor</h2>
@@ -207,29 +270,47 @@ $(document).ready(function(){
 
             fileHtmlItems = `
                 <div class="table-code-buton" id="table-code-buton-supervisor">
-                    <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
-                        <h2>Agree code article</h2>
+                    <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
+                        <h2>Select code article</h2>
                     </div>
-                    <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
-                        <h2>Reselect code article</h2>
-                    </div>
+                </div>`;
+            }
+        }else
+        if(CURRENT_ROLE === OPERATOR_ROLE){
+            if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE ) {
+                violationitem =`
+                <div class="table-code-top" id="violation-code-item">
+                    <h2>Operator</h2>
+                    <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
                 </div>
+                `
+                $('#table-add-operator').prepend(violationitem);
+                fileHtmlItems = `
+                    <div class="table-code-buton" id="table-code-buton-operator">
+                        <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
+                            <h2>Agree code article</h2>
+                        </div>
+                        <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
+                            <h2>Reselect code article</h2>
+                        </div>
+                    </div>
+                `
+            }else{
+            violationitem =`
+            <div class="table-code-top" id="violation-code-item">
+                <h2>Operator</h2>
+                <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
+            </div>
             `
-        }else{
-        violationitem =`
-        <div class="table-code-top" id="violation-code-item">
-            <h2>Supervisor</h2>
-            <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
-        </div>
-        `
-        $('#table-add').prepend(violationitem);
+            $('#table-add-operator').prepend(violationitem);
 
-        fileHtmlItems = `
-            <div class="table-code-buton" id="table-code-buton-supervisor">
-                <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
-                    <h2>Select code article</h2>
-                </div>
-            </div>`;
+            fileHtmlItems = `
+                <div class="table-code-buton" id="table-code-buton-supervisor">
+                    <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
+                        <h2>Select code article</h2>
+                    </div>
+                </div>`;
+            }
         }
         $('#table-code-buton-all').prepend(fileHtmlItems);
         $('.add-violation-code').click(async function() {

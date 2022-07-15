@@ -81,9 +81,7 @@ $(document).ready(function () {
         if (files.length > 5) {
             flag = false
             show_error("You are only allowed to upload a maximum of 5 files at a time")
-
         }
-        
         if(files.length !== 0 && flag){
             for(let i = 0; i < files.length; i++){
                 let extension = (files[i].name).split('.').pop().toLowerCase();
@@ -113,7 +111,7 @@ $(document).ready(function () {
                     let response = JSON.parse(res)
                     show_success(response.message);
                     let date = response.data.modified;
-                    let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("DD/MM/YYYY");
+                    let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("MM-DD-YYYY");
                     fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
                     <div class="content_file p-2">
                     <div class=" d-flex justify-content-between align-items-center">
@@ -207,6 +205,7 @@ $(document).ready(function () {
     function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
         let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
+        console.log(getTextStatus);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
