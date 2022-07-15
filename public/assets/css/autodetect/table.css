@@ -277,6 +277,7 @@
     justify-content: flex-end;
     align-items: center;
     margin-top: 20px;
+    /* justify-content: flex-start; */
 }
 .pagination li{
     color: var(--black);
@@ -294,6 +295,7 @@
     flex: none;
     order: 2;
     flex-grow: 0;
+    height: 35px;
 }
 .pagination li a{
     float: left;

@@ -68,7 +68,8 @@
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <h3>{{date("m-d-Y",$article->crawl_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
+                                    
                                 </div>
                             </div>
                             <div class="track track-non">
