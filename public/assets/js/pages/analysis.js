@@ -3,6 +3,7 @@ $(".list--country").find("> p").text("Country")
 $(".list--violation--type").find("> p").text("Violation type")
 
 $(document).ready(function(){
+    // FILTER MOBI BTN
     $(".fillter_brand").find(".open_Nav_filter").click(function(){
         $(".sort_based_on_code").hide()
         $('.sort_based_on_brands').show()
@@ -25,7 +26,7 @@ $(document).ready(function(){
     })
 
     // OPEN DATE RANGER
-
+    // BTN APPLY
     $('.is_apply').find('input[name="daterange"]').daterangepicker({
         autoUpdateInput: false,
         autoApply: false,
@@ -38,7 +39,7 @@ $(document).ready(function(){
             format: "DD/MM/YYYY",
         },
     });
-
+    //NO BTN APPLY
     $('.no_apply').find('input[name="daterange"]').daterangepicker({
         autoUpdateInput: false,
         autoApply: true,
@@ -51,6 +52,7 @@ $(document).ready(function(){
             format: "DD/MM/YYYY",
         },
     });
+
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
         function (ev, picker) {
@@ -80,10 +82,6 @@ $(document).ready(function(){
     getViolationBasedCode();
 
     // General
-    $('.btn__apply').click(function() {
-        let dateRange = $("input[name=daterange]:visible").val();
-        checkDate(dateRange)
-    })
 
     function checkDate(date){
         let dateRange = date
@@ -135,6 +133,8 @@ $(document).ready(function(){
     })
 
     $(".btn__apply").on("click",function(){
+        let dateRange = $("input[name=daterange]:visible").val();
+
         let brandCompanyId = $(".list--company--brand").find("> p").attr("data-id");
         newParams = [];
 
@@ -167,7 +167,7 @@ $(document).ready(function(){
             sortForAnalysis(sortField,sortValue,getTable)
         }
 
-        getViolationBasedBrand();
+        checkDate(dateRange)
         resetFiter()
     })
 
@@ -181,7 +181,7 @@ $(document).ready(function(){
     function sortForAnalysis(sortField,sortValue,getTable){
         let newParams = [];
         if(getTable === 'vio-based-brand') {
-                newParams = removeParamFromList(brandStrParams.split('&'), 'sort_by');
+                newParams = removeParamFromList(brandStrParams.split('&'));
                 newParams.push(`sort_by=${sortField}`);
             if(sortValue == "A to Z" || sortValue == "ASC"){
                 newParams.push(`sort_value=ASC`);
@@ -191,7 +191,7 @@ $(document).ready(function(){
                 brandStrParams = newParams.join('&');
                 getViolationBasedBrand();
         }else if(getTable === 'vio-based-code') {
-                newParams = removeParamFromList(codeStrParams.split('&'), 'sort_by')
+                newParams = removeParamFromList(codeStrParams.split('&'))
                 newParams.push(`sort_by=${sortField}`);
             if(sortValue == "A to Z" || sortValue == "ASC"){
                 newParams.push(`sort_value=ASC`);
@@ -203,13 +203,10 @@ $(document).ready(function(){
         }
     }
 
-    function removeParamFromList(list, name) {
-        let newParams = [];
-        for (let i = 0; i < list.length; i++) {
-            if(!list[i].includes(name)) {
-                newParams.push(list[i])
-            }
-        }
+    function removeParamFromList(list) {
+        let newParams = list.filter(index=>{
+            return index.indexOf("sort_value") == -1 && index.indexOf('sort_by') == -1
+        })
         return newParams;
     }
 

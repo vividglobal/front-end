@@ -7,6 +7,7 @@
 
     .content__vituar{
         padding: 0 16px;
+        margin-top: 0 !important;
     }
 
     .background__vituar-7 .background__image{
@@ -59,6 +60,7 @@
 
     .content__vituar{
         padding: 0 16px;
+        margin-top: 0 !important;
     }
 
     .background__vituar-3 .rows{
@@ -120,6 +122,7 @@
 
     .content__vituar{
         padding: 0 16px;
+        margin-top: 0 !important;
     }
 
     .background__vituar-2 .background__content p:first-child{
