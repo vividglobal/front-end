@@ -45,23 +45,19 @@ class CompanyBrand extends Model
             ];
         }
 
-        $matchConditions = [
-            [ '$or' => [
-                [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
-                [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
-            ]]
-        ];
+        $matchConditions = [];
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date']);
-            $endDate = strtotime($params['end_date']);
-            $matchConditions[] = [ '$and'=> [
-                [
-                    [ '$gte'=> [ '$operator_review.date',  $startDate ] ],
-                    [ '$lte'=> [ '$operator_review.date',  $endDate ] ],
-                ]
-            ] ];
+            $startDate = strtotime($params['start_date'].' 00:00:00');
+            $endDate = strtotime($params['end_date'].' 23:59:59');
+            $matchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
         }
+
+        $matchConditions[] = [ '$or' => [
+            [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
+            [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
+        ]];
 
         $aggregateQuery[] = [
             '$lookup' => [
@@ -116,7 +112,7 @@ class CompanyBrand extends Model
                 'pipeline' => $violationArticlePipeLine
             ]
         ];
-
+        // dd($aggregateQuery);
         return $aggregateQuery;
     }
 

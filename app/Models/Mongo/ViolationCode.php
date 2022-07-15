@@ -42,14 +42,10 @@ class ViolationCode extends Model
         ];
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date']);
-            $endDate = strtotime($params['end_date']);
-            $matchConditions[] = [ '$and'=> [
-                [
-                    [ '$gte'=> [ '$operator_review.date',  $startDate ] ],
-                    [ '$lte'=> [ '$operator_review.date',  $endDate ] ],
-                ]
-            ] ];
+            $startDate = strtotime($params['start_date'].' 00:00:00');
+            $endDate = strtotime($params['end_date'].' 23:59:59');
+            $matchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
         }
 
         $aggregateQuery[] = [
@@ -134,7 +130,7 @@ class ViolationCode extends Model
             $aggregateQuery[] = ['$skip' => ($page - 1) * $this->perPage];
             $aggregateQuery[] = ['$limit' => $this->perPage];
         }
-
+        // dd($aggregateQuery);
         $collection = self::raw(function ($collection) use ($aggregateQuery) {
             return $collection->aggregate($aggregateQuery);
         });
