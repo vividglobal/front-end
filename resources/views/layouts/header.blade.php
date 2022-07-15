@@ -1,7 +1,7 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 
-@if(!request () -> is ('articles/'. request()->id .'/details'))
+@if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
 <div class="nav_container
  {{(request () -> is ('login')) || request () -> is ('password/reset') ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
  {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}

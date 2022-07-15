@@ -136,10 +136,10 @@ $(document).ready(function(){
         hide_overlay();
         closeCodeModal()
         if(response.success) {
-            addOverlayScroll();
-            updateDetectionColumnAfterSelectViolationCode(response.data);
-            closeCodeModal();
-            show_success(response.message);
+                addOverlayScroll();
+                updateDetectionColumnAfterSelectViolationCode(response.data);
+                closeCodeModal();
+                show_success(response.message);
         }else {
             show_error('Evaluation failed!');
             hide_overlay();
