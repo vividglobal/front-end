@@ -8,7 +8,6 @@
 .index__violation{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .title-violation{
@@ -19,12 +18,16 @@
     color: var(--gray-6F);
 }
 
+.title_table_analysis{
+    align-items: center;
+}
+
 .number-violation{
     font-style: normal;
     font-weight: 600;
     font-size: 50px;
     line-height: 136.5%;
-    color: var(--success);
+    color: var(--primary);
 }
 
 .padding_btn_analysis .create__profile{
@@ -33,9 +36,10 @@
 }
 
 .percent-violation{
-    color: var(--success);
+    color: var(--danger);
     padding: 3px 5px;
-    background-color: var(--percent_success);
+    background-color: var(--pink);
+
     display: inline-block;
     border-radius: 5px;
 }
@@ -45,16 +49,16 @@
 }
 
 .index__violation:nth-child(2) .percent-violation{
-    background-color: var(--pink);
+    background-color: var(--percent_success);
 }
 
 .index__violation:nth-child(2) .percent-violation,
 .index__violation:nth-child(2) .number-violation{
-    color: var(--danger);
+    color: var(--success);
 }
 
 .index__violation:nth-child(3) .number-violation{
-    color: var(--primary);
+    color: var(--danger);
 }
 
 .table_analysis tbody tr th img{
@@ -80,4 +84,13 @@
 
 .type_mobi{
     display: none;
+}
+
+.title_table_analysis p{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: var(--primary);
 }

@@ -105,7 +105,7 @@ $("document").ready(function(){
         }
 
         if(pwd.match(regexPassword) && re_pwd.match(regexPassword) && pwd !== re_pwd){
-            $(".text_re-password").text("Password and confirmation password does not match. Please re-enter")
+            $(".text_re-password").text("Password and confirmation password does not match. Please re-enter in \" Confirm password \"")
             flag = false;
         }
 
