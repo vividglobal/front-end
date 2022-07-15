@@ -143,6 +143,38 @@ $(document).ready(function(){
         }
     })
 
+    $(document).on('click', ".pagination li:last-child", function(){
+              let getTableId = $(this).parents('.table-wrapper').attr('id');
+            if(getTableId === 'vio-based-brand') {
+                let lengthPagination = $("#vio-based-brand .row-pagination nav .pagination li").length - 2
+                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+                newParams.push('page='+lengthPagination);
+                brandStrParams = newParams.join('&');
+                getViolationBasedBrand();
+            }else if(getTableId === 'vio-based-code') {
+                let lengthPage = $("#vio-based-code .row-pagination nav .pagination li").length - 2
+                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+                newParams.push('page='+lengthPage);
+                codeStrParams = newParams.join('&');
+                getViolationBasedCode();
+            }
+    })
+
+    $(document).on('click', ".pagination li:first-child", function(){
+        let getTableId = $(this).parents('.table-wrapper').attr('id');
+      if(getTableId === 'vio-based-brand') {
+          let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+          newParams.push('page='+1);
+          brandStrParams = newParams.join('&');
+          getViolationBasedBrand();
+      }else if(getTableId === 'vio-based-code') {
+          let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+          newParams.push('page='+1);
+          codeStrParams = newParams.join('&');
+          getViolationBasedCode();
+      }
+})
+
     $(".btn__apply").on("click",function(){
         let dateRange = $("input[name=daterange]:visible").val();
         checkDate(dateRange)

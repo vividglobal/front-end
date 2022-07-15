@@ -193,7 +193,7 @@ $("document").ready(function(){
             }
 
             if(pwd !== re_pwd){
-                $(".edit_password").text("Password and confirmation password does not match. Please re-enter")
+                $(".edit_re_password").text("Password and confirmation password does not match. Please re-enter in \" Confirm password \"")
                 flag = false;
             }
 

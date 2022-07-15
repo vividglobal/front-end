@@ -265,9 +265,9 @@ class ArticleController extends Controller
         $article->progress_status = $inputs['progress_status'];
         $result = $article->update();
         if($result){
-            return $this->responseSuccess([], "Switch progression status successfully");
+            return $this->responseSuccess([], "Change status progress successfully");
         }
-        return $this->responseFail([], "Switch progression status failed");
+        return $this->responseFail([], "Change status progress failed");
     }
 
     public function moderateArticle(Request $request, $id) {
