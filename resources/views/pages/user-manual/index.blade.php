@@ -37,6 +37,7 @@
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
             </div>
+            <span class="border_grays"></span>
             <a data-id="#cl2"><button class="child-accordion"> {{__("Instructions for checking violations by link")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
@@ -51,6 +52,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
+                <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl2">
@@ -68,6 +70,7 @@
                 <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this")}} </a>  {{__("list")}},  {{__("examples")}}:</p>
                 <p><span></span><a href="https://www.nestlemomandme.vn/">www.nestlemomandme.vn</a>  {{__("hoặc")}} <a href=" https://www.nestlemomandme.vn/cerelac"> www.nestlemomandme.vn/cerelac</a>.</p>
             </div>
+            <span class="border_grays"></span>
             <a data-id="#cl4">
             <button class="child-accordion"> {{__("How to get a valid link on Fanpage")}}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -100,6 +103,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
+                <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl3"><button class="accordion "> {{__("Guide to censorship violations")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -109,6 +113,7 @@
                 <li> {{__("Violation alert (Systems scans and returns suspect status)")}}</li>
                 <li> {{__("Violation check (User self-scan and Systems status checker)")}}</li>
             </ul>
+            <span class="border_grays"></span>
             <a data-id="#cl5">
             <button class="child-accordion"> {{__("Moderate posts that VIVID predicts as 'no violated'") }}
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -139,6 +144,7 @@
                 <p><span> {{__("Step 4")}}:</span>  {{__(" Click the “Save Changes” button”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-40.png') }}" loading="lazy">
             </div>
+            <span class="border_grays"></span>
             <a data-id="#cl6">
                 <button class="child-accordion">
                      {{ __("Moderate posts that VIVID predicts as 'violated'") }}  <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -179,6 +185,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-17.png') }}" loading="lazy">
                 <p><span> {{__("Step 4")}}:</span>  {{__(" Click the “Save Changes” button and the post will be moved to the “Violations List”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-13.png') }}" loading="lazy">
+                <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl4"><button class="accordion"> {{__("State transition instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -188,6 +195,7 @@
             <p><span> {{__("Step 2")}}:</span> {{__(" Click the button in the “State progress” column")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
             <p><span> {{__("Step 3")}}: </span> {{__(" Return to the “Violation Alert” or “Violation Check” page to moderate the article for violations from the beginning")}}.</p>
+            <span class="border_grays"></span>
         </div>
         <a data-id="#sl5"><button class="accordion"> {{__("Instructions to change the progress of violation handling")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl5">
@@ -207,6 +215,7 @@
                     (This status can only be selected when at least 1 handling text has been posted for the article")}}.
                 </li>
             </ul>
+            <span class="border_grays"></span>
         </div>
         <a data-id="#sl6">
             <button class="accordion">
@@ -230,6 +239,7 @@
             <p><span></span>  {{__(" Admin can check the document again by clicking on the document.")}}.</p>
             <p><span> {{__("Step 4")}}: </span>  {{__(" When the admin completes the document upload process, the folder button will turn red and update the latest document upload date")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy" style="width:100%">
+            <span class="border_grays"></span>
         </div>
         <a data-id="#sl7">
             <button class="accordion"> {{__("Instructions for viewing the detailed content of the article")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button>
@@ -238,6 +248,7 @@
             <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Image” of the article")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-25.png') }}" loading="lazy">
             <p><span> {{__("Step 3")}}:</span>  {{__(" Click the arrow icon to view the images of the article in turn (if the article has many images)")}}.</p>
+            <span class="border_grays"></span>
             <a data-id="#cl9">
                 <button class="child-accordion"> {{__("Instructions to view the full article content")}}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -249,6 +260,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-26.png') }}" loading="lazy">
                 <img src="{{ asset('assets/image/usermanual/img-27.png') }}" loading="lazy">
             </div>
+            <span class="border_grays"></span>
             <a data-id="#cl10">
                 <button class="child-accordion"> {{__("Instructions on how to get links from articles that Vivid has scanned")}} ?>
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -257,6 +269,7 @@
             <div class="add" id="cl10">
                 <p><span></span> {{__(" Click the icon in the link column to access the Link or right click to copy the link")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-28.png') }}" loading="lazy">
+                <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl8"><button class="accordion"> {{__("Instructions for searching articles by keyword and test date")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -272,6 +285,7 @@
                 <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related articles with the keyword Blackmores or of the Blackmores Fanpage will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-29.png') }}" loading="lazy">
             </div>
+            <span class="border_grays"></span>
             <a data-id="#cl8">
                 <button class="child-accordion"> {{__("Search articles by date of violation checker")}}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
@@ -284,6 +298,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-32.png') }}" loading="lazy">
                 <p><span></span> {{__("After selecting the date the posts published in the selected time period will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-33.png') }}" loading="lazy">
+                <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl9"><button class="accordion"> {{__("Instructions for arranging articles by mode")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -298,6 +313,7 @@
                                 (the example below illustrates how to sort posts by newest and oldest processing date)")}}
             </p>
             <img src="{{ asset('assets/image/usermanual/img-34.png') }}" loading="lazy">
+            <span class="border_grays"></span>
         </div>
         <a data-id="#sl10"><button class="accordion"> {{__("Data export instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl10">
@@ -309,6 +325,7 @@
             <img src="{{ asset('assets/image/usermanual/img-35.png') }}" loading="lazy" >
             <p><span></span>  {{__(" The downloaded Excel will have the following format ")}}: </p>
             <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy" style="width:100%">
+            <span class="border_grays"></span>
         </div>
         <a data-id="#sl11"><button class="accordion"> {{__("Instructions for adding a new administrator")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl11">
@@ -328,6 +345,7 @@
                 <li> {{__("Permissions on the website (Admin, Supervisor, Operator)")}}?></li>
             </ul>
             <img src="{{ asset('assets/image/usermanual/img-39.png') }}" loading="lazy">
+            <span class="border_grays"></span>
         </div>
         </div>
 </div>
