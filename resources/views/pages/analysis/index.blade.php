@@ -13,6 +13,12 @@
                 <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
                 <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
             </div>
+            <div id="daterange" class="is_apply {{!@Auth::user() ? 'no-margin' : ''}}">
+                <i class="ico-date"></i>
+                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
+            </div>
             <button class="btn__apply">{{ __('Apply') }}</button>
         </div>
         <div class="list--select__right">
@@ -31,7 +37,7 @@
 
 <div class="Base_violation--brand table_brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
-        <div class="list--select__left" style="justify-content: flex-end">
+        <div class="list--select__left fillter_brand" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply","fillter_mobile"], 'show_all_filter' => false])
         </div>
         <div class="list--select__right" style="justify-content: flex-start">
@@ -41,8 +47,11 @@
     <div class="table-wrapper" id="vio-based-brand"></div>
 </div>
 
-<div class="Base_violation--brand">
-    <div class="list--select--option" >
+<div class="Base_violation--brand  table_brand">
+    <div class="list--select--option" style="flex-direction: row-reverse;">
+        <div class="list--select__left fillter_code" style="justify-content: flex-end">
+            @include('pages/components/query', ['list_filter' => ["fillter_mobile"], 'show_all_filter' => false])
+        </div>
         <div class="list--select__right" style="justify-content: flex-start">
             <p class="title__base--violation">Violation based on code</p>
         </div>

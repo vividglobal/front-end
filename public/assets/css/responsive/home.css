@@ -1,6 +1,6 @@
 @media (min-width: 740px) and (max-width: 1113px){
     .vituar_validation{
-        background: url(../../image/home/bg_vituar_mb.svg) no-repeat center center !important;
+        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
@@ -23,6 +23,9 @@
     .open__nav--menu{
         width: 40% !important;
     }
+    .background__vituar-4{
+        margin: 0 60px;
+    }
 }
 
 @media (min-width: 426px) and (max-width: 739px){
@@ -31,7 +34,7 @@
     }
 
     .vituar_validation{
-        background: url(../../image/home/bg_vituar_mb.svg) no-repeat center center !important;
+        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
@@ -110,7 +113,7 @@
     }
 
     .vituar_validation{
-        background: url(../../image/home/bg_vituar_mb.svg) no-repeat center center !important;
+        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
@@ -129,20 +132,33 @@
     }
 
     .content__vituar p:first-child {
-        font-family: 'Brandon Grotesque';
-        font-style: normal;
-        font-weight: 420;
-        font-size: 39px;
-        line-height: 60px;
+        font-size: 39px !important;
+        line-height: 60px !important;
     }
 
     .content__vituar p:nth-child(2) {
         text-align: justify !important;
         padding-right: 0 !important;
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 170%;
     }
+
+    .content__vituar button{
+        font-family: 'Avenir Next';
+        font-weight: 500 !important;
+        font-size: 16px !important;
+        line-height: 170% !important;
+        padding: 10px 25px !important;
+    }
+
+
 
     .background__vituar-2 .background__content p{
         max-width:100%;
+        margin-bottom: 30px;
     }
 
     .background__vituar-2{
@@ -170,7 +186,7 @@
     .background__vituar-4 p{
         margin-bottom: 0 !important;
         padding : 0 16px 20px 16px !important;
-        margin-top: 140px !important;
+        margin-top: 80px !important;
         text-align:justify;
     }
 

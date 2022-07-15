@@ -3,6 +3,27 @@ $(".list--country").find("> p").text("Country")
 $(".list--violation--type").find("> p").text("Violation type")
 
 $(document).ready(function(){
+    $(".fillter_brand").find(".open_Nav_filter").click(function(){
+        $(".sort_based_on_code").hide()
+        $('.sort_based_on_brands').show()
+        $(".checkbox_mobi").show()
+        $(".border_gray").show()
+        $(".text_brand").show()
+        $(".text_code").hide()
+    })
+
+    $(".fillter_code").find(".open_Nav_filter").click(function(){
+        $(".sort_based_on_code").show()
+        $('.sort_based_on_brands').hide()
+        $(".checkbox_mobi").hide()
+        $(".checkbox_mobi:first-child").show()
+        $(".border_gray").hide()
+        $(".border_sort").show()
+        $(".text_brand").hide()
+        $(".text_code").show()
+
+    })
+
     // OPEN DATE RANGER
 
     $('.is_apply').find('input[name="daterange"]').daterangepicker({
@@ -30,15 +51,15 @@ $(document).ready(function(){
             format: "DD/MM/YYYY",
         },
     });
-
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
         function (ev, picker) {
-            $(this).val(
-                picker.startDate.format("DD/MM/YYYY") +
-                    " - " +
-                    picker.endDate.format("DD/MM/YYYY")
-            );
+            let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            let value = picker.startDate.format("DD/MM/YYYY") + " - " + picker.endDate.format("DD/MM/YYYY")
+            $(this).val(value);
+            if(width <= 500){
+                checkDate(value)
+            }
             startDate = picker.startDate.format("DD-MM-YYYY");
             endDate = picker.endDate.format("DD-MM-YYYY");
         }
@@ -60,7 +81,12 @@ $(document).ready(function(){
 
     // General
     $('.btn__apply').click(function() {
-        let dateRange = $('input[name="daterange"]').val() || $(".date_mobile").val();
+        let dateRange = $("input[name=daterange]:visible").val();
+        checkDate(dateRange)
+    })
+
+    function checkDate(date){
+        let dateRange = date
         let startDate = "";
         let endDate = "";
         if(dateRange) {
@@ -74,27 +100,32 @@ $(document).ready(function(){
         getGeneralData();
         getViolationBasedBrand();
         getViolationBasedCode();
-    })
+    }
 
      // REMOVE DATERANGE
      $(".remove_daterange").click(function(){
-        let date = $('.form--daterange').val() || $('.date_mobile').val();
+        let date = $('input[name="daterange"]:visible').val()
         if(date !== ""){
             $('input[name="daterange"]').val("")
         }
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width <= 500){
+            checkDate("")
+        }
     })
+
 
     $(document).on('click', ".pagination li", function(){
         let page = parseInt($(this).find("a").text());
         if(page) {
-            let parentTableId = $(this).parents('.table-wrapper').attr('id');
-            if(parentTableId === 'vio-based-brand') {
+            let getTableId = $(this).parents('.table-wrapper').attr('id');
+            if(getTableId === 'vio-based-brand') {
 
                 let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
                 newParams.push('page='+page);
                 brandStrParams = newParams.join('&');
                 getViolationBasedBrand();
-            }else if(parentTableId === 'vio-based-code') {
+            }else if(getTableId === 'vio-based-code') {
                 let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
                 newParams.push('page='+page);
                 codeStrParams = newParams.join('&');
@@ -128,19 +159,14 @@ $(document).ready(function(){
             brandStrParams = new_arr.join('&');
         }
 
-        let sortFieldBrand = $(".sort_mobi").find(".text_brand").attr("data-sort-field");
-        let sortValueBrand = $(".sort_mobi").find(".text_brand").attr("data-sort-value");
-        let parentTableBrand = $(".sort_mobi").find(".text_brand").attr("data-table");
+        let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
+        let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
+        let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
 
-        let sortFieldCode = $(".sort_mobi").find(".text_code").attr("data-sort-field");
-        let sortValueCode = $(".sort_mobi").find(".text_code").attr("data-sort-value");
-        let parentTableCode = $(".sort_mobi").find(".text_code").attr("data-table");
-        if(parentTableBrand !== undefined){
-            sortForAnalysis(sortFieldBrand,sortValueBrand,parentTableBrand)
+        if(getTable !== undefined){
+            sortForAnalysis(sortField,sortValue,getTable)
         }
-        if(parentTableCode !== undefined){
-            sortForAnalysis(sortFieldCode,sortValueCode,parentTableCode)
-        }
+
         getViolationBasedBrand();
         resetFiter()
     })
@@ -148,22 +174,30 @@ $(document).ready(function(){
     $(document).on('click', '.ico-sort', function() {
         let sortField = $(this).attr('data-sort-field');
         let sortValue = $(this).attr('data-sort-value');
-        let parentTableId = $(this).parents('.table-wrapper').attr('id');
-        sortForAnalysis(sortField,sortValue,parentTableId)
+        let getTableId = $(this).parents('.table-wrapper').attr('id');
+        sortForAnalysis(sortField,sortValue,getTableId)
     });
 
-    function sortForAnalysis(sortField,sortValue,parentTableId){
+    function sortForAnalysis(sortField,sortValue,getTable){
         let newParams = [];
-        if(parentTableId === 'vio-based-brand') {
-            newParams = removeParamFromList(brandStrParams.split('&'), 'sort_by');
-            newParams.push(`sort_by=${sortField}`);
-            newParams.push(`sort_value=${sortValue}`);
-            brandStrParams = newParams.join('&');
-            getViolationBasedBrand();
-        }else if(parentTableId === 'vio-based-code') {
-            newParams = removeParamFromList(codeStrParams.split('&'), 'sort_by')
-            newParams.push(`sort_by=${sortField}`);
-            newParams.push(`sort_value=${sortValue}`);
+        if(getTable === 'vio-based-brand') {
+                newParams = removeParamFromList(brandStrParams.split('&'), 'sort_by');
+                newParams.push(`sort_by=${sortField}`);
+            if(sortValue == "A to Z" || sortValue == "ASC"){
+                newParams.push(`sort_value=ASC`);
+            }else if(sortValue == "Z to A" || sortValue == "DESC"){
+                newParams.push(`sort_value=DESC`);
+            }
+                brandStrParams = newParams.join('&');
+                getViolationBasedBrand();
+        }else if(getTable === 'vio-based-code') {
+                newParams = removeParamFromList(codeStrParams.split('&'), 'sort_by')
+                newParams.push(`sort_by=${sortField}`);
+            if(sortValue == "A to Z" || sortValue == "ASC"){
+                newParams.push(`sort_value=ASC`);
+            }else if(sortValue == "Z to A" || sortValue == "DESC"){
+                newParams.push(`sort_value=DESC`);
+            }
             codeStrParams = newParams.join('&');
             getViolationBasedCode();
         }
@@ -183,9 +217,7 @@ $(document).ready(function(){
         $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".checkbox_mobi").find("#toggle").hide()
-        document.documentElement.style.overflow = 'unset';
-
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
     $(".close__filter").click(function() {

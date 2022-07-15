@@ -33,12 +33,12 @@
 
     <script src="{{ asset('assets/js/btn_select/HTMLSelect.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/searchSelect.js') }}"></script>
-    <script src="{{ asset('assets/js/btn_select/countrySuspected.js') }}"></script>
+    <script src="{{ asset('assets/js/btn_select/country-label.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectBrandAndCompany.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectCountry.js') }}"></script>
     <script src="{{ asset('assets/js/btn_select/selectViolationType.js') }}"></script>
-    <script src="{{ asset('assets/js/suspected/suspectedTextOrImage.js') }}"></script>
-    <script src="{{ asset('assets/js/suspected/suspectedCountry.js') }}"></script>
+    <script src="{{ asset('assets/js/label-violation/label-text-or-image.js') }}"></script>
+    <script src="{{ asset('assets/js/label-violation/select-get-country.js') }}"></script>
     <script src="{{ asset('assets/js/common/toaster.js') }}"></script>
     <script src="{{ asset('assets/js/common/loading.js') }}"></script>
     <script src="{{ asset('assets/js/query/filterMobile.js') }}"></script>

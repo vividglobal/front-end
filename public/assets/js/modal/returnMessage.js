@@ -9,3 +9,15 @@ const ReturnMessage  = {
         hide_overlay()
     }
 }
+
+
+const scrollScreen = {
+    enable : ()=>{
+        document.documentElement.style.overflow = 'unset';
+        document.body.scroll = "yes";
+    },
+    disable : ()=>{
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "unset";
+    }
+}

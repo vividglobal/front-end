@@ -418,7 +418,7 @@
     background-color: #0C3C60 !important;
 }
 
-@media(max-width:425px){
+@media(max-width:500px){
     .daterangepicker.show-calendar .drp-buttons {
         display: flex;
       }

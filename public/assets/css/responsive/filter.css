@@ -11,11 +11,15 @@
     }
 
     .list--search--select{
-        margin-left: 16px;
+        margin: 0 16px;
     }
 
     .list--search{
         width: 270px;
+    }
+
+    .list--select__left{
+        margin-top: 15px;
     }
 
     .open_Nav_filter{
@@ -83,6 +87,7 @@
 
     .sort_value{
         border-bottom: 1px solid var(--gray-C7);
+        margin-bottom: 10px;
     }
 
     .sort_value .container_checkbox{
@@ -93,18 +98,13 @@
         margin-top: 10px;
     }
 
-    .sort_based_on_code,
-    .sort_based_on_brands{
-        margin-top: 10px;
-        border-top: 1px solid var(--gray-C7);
-        padding-top: 10px;
-    }
-
     .sort_based_on_brands p,
     .sort_based_on_code p{
         font-size: 14px;
         margin-bottom: 10px;
     }
+
+
 }
 
 @media (min-width: 740px) and (max-width: 1113px){
@@ -115,11 +115,22 @@
     .btn_apply_mobi{
         width: 60%;
     }
+
+    .list--search{
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .btn_apply_mobi{
+        width: 100%;
+    }
 }
 
 @media (max-width: 425px) {
     .list--search{
-        width: 65%;
+        width: 100%;
+        margin-right: 0px;
     }
     .open_Nav_filter{
         margin-right: 10px;
@@ -127,10 +138,9 @@
     .list--title{
         margin-left: 30px;
     }
-    .btn_apply_mobi{
-        width: 100%;
-    }
+}
 
+@media(max-width: 500px){
     .is_apply{
         display: flex !important;
     }

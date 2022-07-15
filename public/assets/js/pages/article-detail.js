@@ -167,8 +167,7 @@ $(document).ready(function(){
     }
 
     function addOverlayScroll() {
-        document.documentElement.style.overflow = 'unset';
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
     $(document).on('click', '.check-violation-code', async function() {
@@ -235,7 +234,7 @@ $(document).ready(function(){
         $('#table-code-buton-all').prepend(fileHtmlItems);
         $('.add-violation-code').click(async function() {
             openselectcode.show();
-        })    
+        })
         }
     }
     async function action_moderate_article(action, status, violationCode = []) {

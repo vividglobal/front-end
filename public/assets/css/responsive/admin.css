@@ -12,6 +12,7 @@
     .list_query{
         display: block !important;
         margin-right: 20px !important;
+        margin-top: 15px;
     }
 
     .query_left .list--select__left {
@@ -37,7 +38,7 @@
         position: absolute;
         top: 0;
         right: 0;
-        margin: 10px 20px 0 0 ;
+        margin: 17px 16px 0 0 ;
         z-index: 102 !important;
     }
 
@@ -106,6 +107,10 @@
         display: none;
     }
 
+    .pagenate_admin > div:first-child{
+        display: none;
+    }
+
     .img_admin{
         position: absolute;
         top: 25%;
@@ -135,5 +140,13 @@
         color: #D80027;
         text-decoration: underline;
     }
+}
 
+@media (max-width: 739px){
+    .search_admin .list--search {
+        width: 100%;
+    }
+    .list_query{
+        margin-right: 0 !important;
+    }
 }

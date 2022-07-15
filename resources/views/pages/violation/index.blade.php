@@ -33,17 +33,17 @@
                             </div>
                         </div>
                         <div class="track">
-                            <div class=" heading th-title-right sort_crawl_date">
+                            <div class=" heading th-title-right sort_checking_date">
                                 <p>{{ __('Checking date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
-                                        'disabled' => checkSort(request()->all(), 'crawl_date', ASC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', ASC)
                                     ])></span>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_down',
-                                        'disabled' => checkSort(request()->all(), 'crawl_date', DESC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', DESC)
                                     ])></span>
                             </div>
                         </div>
@@ -326,7 +326,7 @@
     </div>
     @if(count($articles) == 0)
     @include('noSearchResult/index')
-    @endif 
+    @endif
 </div>
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>

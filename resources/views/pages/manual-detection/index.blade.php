@@ -65,21 +65,6 @@
                 <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             <p></p>
-            <div class="select--country slc_general country_mobi" id="toggle">
-                <div class="search--input--country search_general" id="div-search">
-                    <img src="{{asset('assets/image/search.svg')}}" alt="">
-                    <input type="text" placeholder="Search for country" class="search--country" >
-                </div>
-                <div class="contain--selection contain_country">
-                    @foreach ($countries as $country)
-                        <label class="container_checkbox select__one--country option_general" id={{$country->_id}}>
-                            <p  data-id={{$country->_id}} >{{$country->name}}</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
-                    @endforeach
-                </div>
-            </div>
         </div>
         <div class="border_gray gray_mobi "></div>
     </div>
@@ -98,6 +83,42 @@
     @include('pages/components/table-detect-label', compact('violationCode'))
 </div>
 
+<div id="modal-country-label_mobi" class="modal">
+    <div class="modal__content full_modal">
+        <div class="container_modal_edit">
+            <div class="close__modal close_modal_mobi"></div>
+            <div class="title-modal title_mobile">
+                <p>{{ __('Select country') }}</p>
+            </div>
+            <div class=" slc_general country_mobi" id="toggle">
+                <div class="search--input--country search_general" id="div-search">
+                    <img src="{{asset('assets/image/search.svg')}}" alt="">
+                    <input type="text" placeholder="Search for country" class="search--country" >
+                </div>
+                <div class="contain--selection contain_country">
+                        <label class="container_checkbox select__one--country option_general" id=0>
+                            <p  data-id=0 >None</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                    @foreach ($countries as $country)
+                        <label class="container_checkbox select__one--country option_general" id={{$country->_id}}>
+                            <p  data-id={{$country->_id}} >{{$country->name}}</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <div class="btn-modal rows no-margin">
+            <button class="btn__cancel-button btn_cancel_mobi cancel_create-account">{{ __('Cancel') }}</button>
+            <button class="btn_edit_mobi get_country_mobi">{{ __('Save change') }}</button>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</div>
+
 <script>
     const LABEL_TYPE_IMAGE = "{{ LABEL_TYPE_IMAGE }}";
     const LABEL_TYPE_URL = "{{ LABEL_TYPE_URL }}";
@@ -110,4 +131,5 @@
 <script src="{{ asset('assets/js/pages/manual-detection.js') }}"></script>
 
 @endsection
+
 
