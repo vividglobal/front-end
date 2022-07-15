@@ -93,6 +93,7 @@
             </div>
         </div>
         <div class="list-child-function">
+            @if(Auth::user())
             <div class="list-child-top">
                 <h3 class="title-style">Status progress</h3>
                 <div class="list--status list--status-mobile {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
@@ -125,6 +126,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @if(isRole(ROLE_OPERATOR))
             <div class="list-child-top">
                 <h3 class="title-style">Switch status</h3>

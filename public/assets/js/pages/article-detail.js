@@ -104,7 +104,8 @@ $(document).ready(function(){
                     <div class="table-code-top">
                         <h2>Supervisor</h2>
                         <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
-                    </div>`
+                    </div>
+                    `
                     $('#table-add').prepend(fileHtmlItems);
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
             window.location.href = '/articles/auto-detection'
@@ -168,7 +169,6 @@ $(document).ready(function(){
             }
             let typelishcode = '';
             for (let i = 0; i < data.violation_types.length; i++) {
-                console.log(data.violation_types[i]);
                 typelishcode += `
                 <div style="display: flex;align-items: center;">
                     <div class="color-circle-big" >
