@@ -1,6 +1,6 @@
 .py-4 {
     overflow-x: hidden !important;
-    padding-top: 0.2rem!important;
+    padding-top: 0rem!important;
 }
 
 .vituar_validation{
@@ -18,6 +18,7 @@
     margin: 0 auto;
     padding-top: 189px;
     padding-bottom: 258px;
+    margin-top: 2px;
 }
 
 .content__vituar p{
@@ -85,7 +86,7 @@
 
 
 .background__vituar-2{
-    margin: 83px auto;
+    margin: 70px auto;
 }
 
 .background__vituar-2 > .background__image {

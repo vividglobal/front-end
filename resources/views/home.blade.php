@@ -28,7 +28,7 @@
         </div>
 </div>
 <div class=" background__vituar-3 ">
-        <div class="rows no-gutters">
+        <div class="rows">
             <div class="background__image col l-6 m-6 c-12" >
                 <img src="{{asset('assets/image/home/img-3.jpg')}}" alt="" style="width:100%">
             </div>
@@ -50,10 +50,10 @@
 </div>
 <div class="background__vituar-5 rows">
         <div class="background__image col-6">
-            <img src="{{asset('assets/image/home/A&T.png')}}" alt="">
+            <img src="{{asset('assets/image/home/A&T.svg')}}" alt="">
         </div>
         <div class="background__image col-6">
-            <img src="{{asset('assets/image/home/hekate.png')}}" alt="">
+            <img src="{{asset('assets/image/home/hekate.svg')}}" alt="">
         </div>
 </div>
 <div class="background__vituar-6">

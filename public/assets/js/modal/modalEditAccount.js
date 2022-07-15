@@ -18,16 +18,15 @@ $("document").ready(function(){
         $(`input[name="edit_id_user"]`).removeAttr('data-id')
         $(`input[name="edit_id_user"]`).removeAttr('data-email')
         $(".edit_re_password").text("")
-        $(".error_number").text("")
-        $(".error_name").text("")
         $(".edit_password").text("")
         $("#myFilter").removeClass("open_menu")
+        $(".error_number").text("")
+        $(".error_name").text("")
         $(".checkbox_mobi").find("#toggle").hide()
         $(".delete__profile_modal").removeClass("open_delete_user")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".input_email").hide()
-        document.documentElement.style.overflow = 'unset';
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
     let checkedAuth;
     const csrf = $('meta[name="csrf-token"]').attr('content');
@@ -68,8 +67,8 @@ $("document").ready(function(){
         $('input[name="email"]').val(email)
         $(".overlay").css({"width":"100%","display":"block"})
         $(`#${auth}`).attr('checked', true)
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "unset";
+        scrollScreen.disable()
+
     }
 
     //value modal edit profile
@@ -128,8 +127,8 @@ $("document").ready(function(){
     $(".cancel_delete_user").on("click",function(){
         $("#modal__delete-account").removeClass("modal__open")
         $(".overlay").css({"width":"0%","display":"none"})
-        document.documentElement.style.overflow = 'unset';
-        document.body.scroll = "yes";
+        scrollScreen.enable()
+
     })
 
     $(".edit_profile").on("click",function(e){
@@ -154,6 +153,11 @@ $("document").ready(function(){
             flag = false;
         }
 
+        if(name.length > 100){
+            $(".error_name").text("Please enter your name max length of 100 characters");
+            flag = false;
+        }
+
         if(number === ""){
             $(".error_number").text("Please enter phone number")
             flag = false;
@@ -169,7 +173,12 @@ $("document").ready(function(){
             flag = false;
         }
 
-        if(pwd !== "" && re_pwd !== "" && current_pwd !== ""){
+        if(email.length > 100){
+            $(".text_email").text("Please enter your email max length of 100 characters");
+            flag = false;
+        }
+
+        if(pwd !== "" || re_pwd !== "" || current_pwd !== ""){
             if(!pwd.match(regexPassword)){
                 $(".edit_password").text("Please enter password from 6 - 20 characters")
                 flag = false;
@@ -229,6 +238,7 @@ $("document").ready(function(){
                 updateProfile(data,id)
             }
         }
+
     })
 
     function updateProfile(data,id){
@@ -269,8 +279,8 @@ $("document").ready(function(){
         $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("REMOVE ADMIN")
         let id  = $(this).closest("li").find("input").attr("data-id") || $(".edit_id_user").attr("data-id");
         $(".btn__delete--user").closest("form").find("input").attr("data-id",id);
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "unset";
+        scrollScreen.disable()
+
     })
 
     $(".btn__delete--user").on("click",function(e){
@@ -296,7 +306,7 @@ $("document").ready(function(){
                     const page = parseInt(urlParams.get("page"));
                     if(page > 1){
                         let url = window.location.href
-                        let replace = url.replace(`&page=${page}`,`&page=${page - 1}`)
+                        let replace = url.replace(`page=${page}`,`page=${page - 1}`)
                         window.location.href = replace
                     }
                 }else{

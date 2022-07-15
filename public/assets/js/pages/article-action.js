@@ -12,8 +12,7 @@ $(document).ready(function(){
     let botStatus;
 
     $(document).on('click', '.check-status', function() {
-        document.documentElement.style.overflow = 'hidden';
-        document.body.scroll = "unset";
+        scrollScreen.disable()
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
@@ -40,8 +39,7 @@ $(document).ready(function(){
     $(document).on('click', '.check-violation-code', async function() {
         if($(this).hasClass('check-true-disabled') || $(this).hasClass('check-false-disabled')) {return}
         if($(this).hasClass("dishable_overlay")){
-            document.documentElement.style.overflow = 'hidden';
-            document.body.scroll = "unset";
+            scrollScreen.disable()
         }
         currentRow = $(this).parents('.scroll-table');
         articleId = currentRow.attr('data-id');
@@ -206,8 +204,7 @@ $(document).ready(function(){
     }
 
     function addOverlayScroll() {
-        document.documentElement.style.overflow = 'unset';
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
     function closeCodeModal() {
@@ -235,7 +232,7 @@ $(document).ready(function(){
                     <a attr-status="${DISAGREE}" class="check-false${disabledDisagreeBtn ? '-disabled' : ''} check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
-            
+
         }else {
             show_error('Evaluation failed!');
         }

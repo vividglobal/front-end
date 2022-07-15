@@ -35,6 +35,7 @@ Route::controller(Web\AnalysisController::class)->group(function () {
         Route::get('/general', 'getGeneralData');
         Route::get('/violation-by-brand', 'getViolationBasedOnBrands');
         Route::get('/violation-by-code', 'getViolationBasedOnCode');
+        Route::get('/violation-by-country', 'violationBasedCountries');
     });
 });
 

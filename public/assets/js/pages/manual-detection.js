@@ -8,7 +8,7 @@ $(document).ready(function() {
         let formData = new FormData;
         let label_type = $('input[name="label_type"]:checked').val();
         let text = $('textarea[name="text"]').val();
-        let country = $('.select_country_manual > p').attr('data-id') ?? '';
+        let country = $('.select_country_manual > p').attr('data-id') || $(".country_mobile").find("> p:visible").attr('data-id') || '';
 
         if(label_type == LABEL_TYPE_IMAGE) {
             if($('input[name="image"]')[0].files.length === 0 && text === '') {

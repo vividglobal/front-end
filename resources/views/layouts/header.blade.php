@@ -3,8 +3,8 @@
 
 @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
 <div class="nav_container
- {{(request () -> is ('login')) || request () -> is ('password/reset') ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
- {{(!request () -> is ('login')) && !request () -> is ('password/reset') && !request () -> is ('/') ? 'active_bg_header' : ''}}
+ {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
+ {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
   ">
     <div id="myNav" class="overlay_header">
         <a href="javascript:void(0)" class="closebtn" ><img src="{{ asset('assets/image/menu.svg') }}" alt=""></a>
@@ -127,7 +127,7 @@
         @include('modal/editAccount')
     </div>
     <div class="overlay overlay_nav" ></div>
-    <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
+    <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
 </div>
 @endif
 

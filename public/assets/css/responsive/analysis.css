@@ -13,13 +13,17 @@
         margin: 0 30px;
     }
 
+    #daterange{
+        height: 46px;
+    }
+
     .list_slc_analysis .btn__apply,
     .list_slc_analysis #daterange{
         display: none;
     }
 
     .title_analysis .list--select--option{
-        margin: 0 16px 0 0px;
+        margin: 0px;
     }
 
 
@@ -30,10 +34,6 @@
 
     .Base_violation--brand{
         padding: 20px;
-    }
-
-    .Base_violation--brand .list--select--option{
-        display: block;
     }
 
     .Base_violation--brand .list--select__right{
@@ -225,9 +225,12 @@
         color: var(--gray-6F);
     }
 
-    .slc_analysis .list--select__left .btn__apply,
     .slc_analysis .list--select__left #daterange{
-        display: none;
+        display:  fixed !important;
+    }
+    .Base_violation--brand .list--select--option .list--select__left,
+    .slc_analysis .list--select__left{
+        margin-top: 0;
     }
 
     /* TABLE ON CONDE */
@@ -282,10 +285,31 @@
         padding-top :10px;
     }
 
+    .table_brand .list--select--option .list--select__left .open_Nav_filter{
+        margin: 0px;
+        top: 0px;
+        position: relative;
+        z-index: 0;
+    }
+
+    .table_brand .list--select--option .list--select__left{
+        width: inherit ;
+    }
+
 }
 
 @media (max-width: 739px){
     .btn_excel:before{
         content: "Export";
+    }
+
+    .slc_analysis .list--select__left #daterange{
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 500px){
+    .slc_analysis .list--select__left .btn__apply{
+        display: none;
     }
 }

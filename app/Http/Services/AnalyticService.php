@@ -6,6 +6,7 @@ use App\Models\Mongo\Admin;
 use App\Models\Mongo\Article;
 use App\Models\Mongo\ViolationCode;
 use App\Models\Mongo\CompanyBrand;
+use App\Models\Mongo\Country;
 
 use App\Http\Services\ExportService;
 use Illuminate\Support\Facades\Mail;
@@ -127,5 +128,21 @@ class AnalyticService {
         }
 
         unlink($fileWithPath);
+    }
+
+      // ============================================ //
+     // ================== CHARTS =================== //
+    // =========================================== //
+    public function violationBasedCountries() {
+        $countryModel = new Country();
+        $data = $countryModel->violationByCountries();
+        $countryData = [];
+        foreach ($data as $key => $value) {
+            $countryData[] = [
+                'country'        => $value->country,
+                'total_articles' => $value->total_articles
+            ];
+        }
+        return $countryData;
     }
 }

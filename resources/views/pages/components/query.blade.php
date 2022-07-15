@@ -61,17 +61,19 @@
     <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
 
     <div class="filter_list-mobi">
-            <div id="daterange" class="daterange_mobi no_apply">
-                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
-                <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
-                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
-            </div>
-            <div id="daterange" class="daterange_mobi is_apply">
-                <i class="ico-date"></i>
-                <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
-                <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
-                <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
-            </div>
+            @if(!request() -> is('analysis'))
+                <div id="daterange" class="daterange_mobi no_apply">
+                    <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                    <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                    <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
+                </div>
+                <div id="daterange" class="daterange_mobi is_apply">
+                    <i class="ico-date"></i>
+                    <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
+                    <input type="text" class="form--daterange" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
+                    <img class="remove_daterange" src="{{ asset('assets/image/x.svg') }}" alt="">
+                </div>
+            @endif
         <div class="checkbox_mobi sort_mobi">
             <div class="checkbox_title">
                 <div>
@@ -81,14 +83,14 @@
                 <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
             </div>
             @if(!request ()-> is ('analysis'))
-            <p data-value="A to Z">A to Z</p>
+                <p data-value="A to Z">A to Z</p>
             @else
-            <p class="text_brand"></p>
-            <p class="text_code"></p>
+                <p class="text_brand" data-value="A to Z">A to Z</p>
+                <p class="text_code" data-value="A to Z">A to Z</p>
             @endif
             @include('pages/components/sort')
         </div>
-        <div class="border_gray"></div>
+        <div class="border_gray border_sort"></div>
         <div class="checkbox_mobi">
             <div class="checkbox_title">
                 <div>

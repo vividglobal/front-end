@@ -25,6 +25,9 @@
     <link href="{{ asset('assets/css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/grid.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/all.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('assets/js/modal/returnMessage.js') }}"></script>
+
 </head>
 <body>
     <div id="app">

@@ -135,6 +135,11 @@ $("document").ready(function () {
                 $(".sort_mobi").find("> p").text(`${getDataValue}: Crawl date`)
                 $(".sort_mobi").find("> p").attr("data-name","Crawl date")
                 break;
+            case "checking_date":
+                $(".sort_checking_date").find(btn).attr("src", img);
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Crawl date`)
+                $(".sort_mobi").find("> p").attr("data-name","Crawl date")
+                break;
             case "bot_status":
                 $(".sort_crawl_date").find(btn).attr("src", img);
                 $(".sort_mobi").find("> p").text(`${getDataValue}: VIVID's status`)
@@ -208,9 +213,7 @@ $("document").ready(function () {
         $("#myFilter").removeClass("open_menu")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".checkbox_mobi").find("#toggle").hide()
-        document.documentElement.style.overflow = 'unset';
-
-        document.body.scroll = "yes";
+        scrollScreen.enable()
     }
 
     $(".close__filter").click(function() {
@@ -324,7 +327,7 @@ $("document").ready(function () {
     function getParams(sortBy, sortValue, page) {
             let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
-            let date = $('input[name="daterange"]').val() || "";
+            let date = $("input[name=daterange]:visible").val();
             let brandCompany = $(".list--company--brand")
             .find("> p")
             .attr("data-id");
@@ -354,7 +357,7 @@ $("document").ready(function () {
                 page
             );
         }else{
-            let date = $('.date_mobile').val() || "";
+            let date = $("input[name=daterange]:visible").val();
             let brandCompany = $(".select--company-or-brand").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
@@ -362,7 +365,8 @@ $("document").ready(function () {
             let perpage = "";
             let end__Date = "";
             let start__Date = "";
-            if (date !== "") {
+
+            if (date !== "" && date) {
                 let arr = date.split("-");
                 end__Date = arr[1].trim().replace(/[/]/g, "-");
                 start__Date = arr[0].trim().replace(/[/]/g, "-");
@@ -433,7 +437,7 @@ $("document").ready(function () {
     // REMOVE DATERANGE
     $(".remove_daterange").click(function(){
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-        let date = $('input[name="daterange"]').val() || $('.date_mobile').val();
+        let date = $("input[name=daterange]:visible").val();
         if(date !== ""){
             $('input[name="daterange"]').val("")
             if(width > 1113){

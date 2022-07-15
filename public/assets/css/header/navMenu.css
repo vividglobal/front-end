@@ -33,6 +33,10 @@
     color: var(--primary);
 }
 
+.nav-link:hover{
+    color: var(--primary) !important;
+}
+
 .after-login{
     display: flex;
     align-items: center;

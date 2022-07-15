@@ -69,17 +69,17 @@
                             </div>
                         </div>
                         <div class="track">
-                            <div class=" heading th-title-right sort_crawl_date">
+                            <div class=" heading th-title-right sort_checking_date">
                                 <p>{{ __('Checking date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
-                                        'disabled' => checkSort(request()->all(), 'crawl_date', ASC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', ASC)
                                     ])></span>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_down',
-                                        'disabled' => checkSort(request()->all(), 'crawl_date', DESC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', DESC)
                                     ])></span>
                             </div>
                         </div>
@@ -322,6 +322,23 @@
 </div>
 
 
+                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
+                        </div>
+                        <h3 class="title-style">Nature One Dairy Australia</h3>
+                        <h4 class="p-style">Nature One Dairy - Australia</h4>
+                    </div>
+                </div>
+            </a>
+        </li>
+        @endforeach
+    </ul>
+    <div class="row-pagination">
+    {{ $articles->links('layouts.my-paginate') }}
+    </div>
+    @if(count($articles) == 0)
+    @include('noSearchResult/index')
+    @endif
+</div>
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>

@@ -1,5 +1,4 @@
 @extends('layouts.login')
-
 @section('content')
     <div class="container-login rows no-gutters">
         <div class="form__login col l-6 m-12 c-12">
@@ -28,18 +27,12 @@
                     @enderror
 
                     {{-- PASSWORD INPUT --}}
-                    <p class="title__login">{{ __('Password') }}</p>
+                    <p class="title__login">{{ __('New password') }}</p>
                     <div class="email--login">
                         <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
                         <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
                             required autocomplete="new-password" placeholder="Enter your password">
                     </div>
-                    @error('password')
-                        <span class="invalid-feedback d-block" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
                     {{-- CONFIRM PASSWORD INPUT --}}
                     <p class="title__login">{{ __('Confirm Password') }}</p>
                     <div class="email--login">
@@ -47,7 +40,11 @@
                         <input id="password-confirm" type="password" name="password_confirmation"
                             required autocomplete="new-password" placeholder="Enter confirm password">
                     </div>
-
+                    @error('password')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     <button type="submit" class="btn_submit">
                         {{ __('Reset password') }}
                     </button>
