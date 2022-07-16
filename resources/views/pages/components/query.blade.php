@@ -28,7 +28,7 @@
                 @include('pages/components/violationType')
             @endif
             @if(in_array('apply', $list_filter) || $show_all_filter)
-                <button class="btn__apply" id="apply_query">Apply</button>
+                <button class="btn__apply" id="apply_query ">Apply</button>
             @endif
         </div>
 

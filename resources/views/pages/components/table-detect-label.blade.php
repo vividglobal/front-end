@@ -492,6 +492,9 @@
         </li>
         @endforeach
     </ul>
+    @if(count($articles) == 0)
+        @include('noSearchResult/index')
+    @endif
     <div class="row-pagination">
     {{ $articles->onEachSide(1)->links('layouts.my-paginate')}}
     </div>

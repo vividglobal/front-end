@@ -273,7 +273,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 .pagination li{
     color: var(--black);

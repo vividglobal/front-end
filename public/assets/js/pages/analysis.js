@@ -72,6 +72,18 @@ $(document).ready(function(){
         }
     }
 
+    $("#apply_date").click(function(){
+        let date = $('input[name="daterange"]:visible').val()
+        if(date !== ""){
+            checkDate(date)
+        }else{
+            checkDate("")
+        }
+        getGeneralData();
+        getViolationBasedBrand();
+        getViolationBasedCode();
+    })
+
      // REMOVE DATERANGE
      $(".remove_daterange").click(function(){
         let date = $('input[name="daterange"]:visible').val()
