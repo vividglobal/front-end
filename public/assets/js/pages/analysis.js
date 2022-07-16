@@ -40,7 +40,8 @@ $(document).ready(function(){
             format: "DD/MM/YYYY",
         },
     });
-
+    // ------------------------------------
+    // SET DATE
     $('input[name="daterange"]').on(
         "apply.daterangepicker",
         function (ev, picker) {
@@ -49,6 +50,14 @@ $(document).ready(function(){
             $(this).val(value);
             if(width <= 500){
                 checkDate(value)
+                fillterTableBrand()
+                let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
+                let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
+                let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
+
+                if(getTable !== undefined){
+                    sortForAnalysis(sortField,sortValue,getTable,"mobi")
+                }
                 getGeneralData();
                 getViolationBasedBrand();
                 getViolationBasedCode();
@@ -71,7 +80,8 @@ $(document).ready(function(){
             generalStrParams = brandStrParams = codeStrParams = '?1=1'
         }
     }
-
+    // ------------------------------------
+    // BTN APPLY DATE
     $("#apply_date").click(function(){
         let date = $('input[name="daterange"]:visible').val()
         if(date !== ""){
@@ -79,6 +89,15 @@ $(document).ready(function(){
         }else{
             checkDate("")
         }
+        fillterTableBrand()
+        let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
+        let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
+        let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
+
+        if(getTable !== undefined){
+            sortForAnalysis(sortField,sortValue,getTable,"mobi")
+        }
+
         getGeneralData();
         getViolationBasedBrand();
         getViolationBasedCode();
@@ -98,6 +117,112 @@ $(document).ready(function(){
             getViolationBasedCode();
         }
     })
+    // ------------------------------------
+
+    // PAGINATION BTN
+    $(document).on('click', ".pagination li", function(){
+        let page = parseInt($(this).find("a").text());
+        if(page) {
+            let getTableId = $(this).parents('.table-wrapper').attr('id');
+            if(getTableId === 'vio-based-brand') {
+
+                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+                newParams.push('page='+page);
+                brandStrParams = newParams.join('&');
+                getViolationBasedBrand();
+            }else if(getTableId === 'vio-based-code') {
+                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+                newParams.push('page='+page);
+                codeStrParams = newParams.join('&');
+                getViolationBasedCode();
+            }
+        }
+    })
+    // NEXT BTN
+    $(document).on('click', ".pagination li:last-child", function(){
+              let getTableId = $(this).parents('.table-wrapper').attr('id');
+            if(getTableId === 'vio-based-brand') {
+                let lengthPagination = $("#vio-based-brand .row-pagination nav .pagination li").length - 2
+                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+                newParams.push('page='+lengthPagination);
+                brandStrParams = newParams.join('&');
+                getViolationBasedBrand();
+            }else if(getTableId === 'vio-based-code') {
+                let lengthPage = $("#vio-based-code .row-pagination nav .pagination li").length - 2
+                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+                newParams.push('page='+lengthPage);
+                codeStrParams = newParams.join('&');
+                getViolationBasedCode();
+            }
+    })
+    // PREV BTN
+    $(document).on('click', ".pagination li:first-child", function(){
+        let getTableId = $(this).parents('.table-wrapper').attr('id');
+      if(getTableId === 'vio-based-brand') {
+          let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+          newParams.push('page='+1);
+          brandStrParams = newParams.join('&');
+          getViolationBasedBrand();
+      }else if(getTableId === 'vio-based-code') {
+          let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+          newParams.push('page='+1);
+          codeStrParams = newParams.join('&');
+          getViolationBasedCode();
+      }
+})
+    // ------------------------------------
+    // BTN APPLY FILLTER BRAND
+    $(".btn__apply").on("click",function(){
+        fillterTableBrand()
+        let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
+        let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
+        let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
+
+        if(getTable !== undefined){
+            sortForAnalysis(sortField,sortValue,getTable,"mobi")
+        }
+
+        if(getTable == "vio-based-code"){
+            getViolationBasedCode();
+        }else{
+            getViolationBasedBrand();
+        }
+        resetFiter()
+    })
+
+    function fillterTableBrand(){
+        newParams = [];
+        let brandCompanyId = $(".list--company--brand").find("> p").attr("data-id");
+        if(brandCompanyId) {
+            newParams = removeParamFromList(brandStrParams.split('&'), 'brand_id')
+            newParams.push('brand_id='+brandCompanyId);
+            const new_arr = newParams.filter(item => item !== 'brand_id=0');
+            brandStrParams = new_arr.join('&');
+        }
+        let countryId = $(".list--country").find("> p").attr("data-id");
+        if(countryId) {
+            newParams = removeParamFromList(brandStrParams.split('&'), 'country_id')
+            newParams.push('country_id='+countryId);
+            const new_arr = newParams.filter(item => item !== 'country_id=0');
+            brandStrParams = new_arr.join('&');
+        }
+
+        let violationTypeId = $(".list--violation--type").find("> p").attr("data-id");
+        if(violationTypeId) {
+            newParams = removeParamFromList(brandStrParams.split('&'), 'violation_type_id')
+            newParams.push('violation_type_id='+violationTypeId);
+            const new_arr = newParams.filter(item => item !== 'violation_type_id=0');
+            brandStrParams = new_arr.join('&');
+        }
+    }
+
+    // BTN ICON SORT PC
+    $(document).on('click', '.ico-sort', function() {
+        let sortField = $(this).attr('data-sort-field');
+        let sortValue = $(this).attr('data-sort-value');
+        let getTableId = $(this).parents('.table-wrapper').attr('id');
+        sortForAnalysis(sortField,sortValue,getTableId,"pc")
+    });
 
     function sortForAnalysis(sortField,sortValue,getTable,device){
         let newParams = [];
@@ -127,115 +252,14 @@ $(document).ready(function(){
                 }
         }
     }
-
     function removeParamFromList(list) {
         let newParams = list.filter(index=>{
             return index.indexOf("sort_by") == -1 && index.indexOf("sort_value") == -1
         })
         return newParams;
     }
-
-
-    $(document).on('click', ".pagination li", function(){
-        let page = parseInt($(this).find("a").text());
-        if(page) {
-            let getTableId = $(this).parents('.table-wrapper').attr('id');
-            if(getTableId === 'vio-based-brand') {
-
-                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-                newParams.push('page='+page);
-                brandStrParams = newParams.join('&');
-                getViolationBasedBrand();
-            }else if(getTableId === 'vio-based-code') {
-                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-                newParams.push('page='+page);
-                codeStrParams = newParams.join('&');
-                getViolationBasedCode();
-            }
-        }
-    })
-
-    $(document).on('click', ".pagination li:last-child", function(){
-              let getTableId = $(this).parents('.table-wrapper').attr('id');
-            if(getTableId === 'vio-based-brand') {
-                let lengthPagination = $("#vio-based-brand .row-pagination nav .pagination li").length - 2
-                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-                newParams.push('page='+lengthPagination);
-                brandStrParams = newParams.join('&');
-                getViolationBasedBrand();
-            }else if(getTableId === 'vio-based-code') {
-                let lengthPage = $("#vio-based-code .row-pagination nav .pagination li").length - 2
-                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-                newParams.push('page='+lengthPage);
-                codeStrParams = newParams.join('&');
-                getViolationBasedCode();
-            }
-    })
-
-    $(document).on('click', ".pagination li:first-child", function(){
-        let getTableId = $(this).parents('.table-wrapper').attr('id');
-      if(getTableId === 'vio-based-brand') {
-          let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-          newParams.push('page='+1);
-          brandStrParams = newParams.join('&');
-          getViolationBasedBrand();
-      }else if(getTableId === 'vio-based-code') {
-          let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-          newParams.push('page='+1);
-          codeStrParams = newParams.join('&');
-          getViolationBasedCode();
-      }
-})
-
-    $(".btn__apply").on("click",function(){
-        let dateRange = $("input[name=daterange]:visible").val();
-        checkDate(dateRange)
-        newParams = [];
-
-        let brandCompanyId = $(".list--company--brand").find("> p").attr("data-id");
-        if(brandCompanyId) {
-            newParams = removeParamFromList(brandStrParams.split('&'), 'brand_id')
-            newParams.push('brand_id='+brandCompanyId);
-            const new_arr = newParams.filter(item => item !== 'brand_id=0');
-            brandStrParams = new_arr.join('&');
-        }
-        let countryId = $(".list--country").find("> p").attr("data-id");
-        if(countryId) {
-            newParams = removeParamFromList(brandStrParams.split('&'), 'country_id')
-            newParams.push('country_id='+countryId);
-            const new_arr = newParams.filter(item => item !== 'country_id=0');
-            brandStrParams = new_arr.join('&');
-        }
-
-        let violationTypeId = $(".list--violation--type").find("> p").attr("data-id");
-        if(violationTypeId) {
-            newParams = removeParamFromList(brandStrParams.split('&'), 'violation_type_id')
-            newParams.push('violation_type_id='+violationTypeId);
-            const new_arr = newParams.filter(item => item !== 'violation_type_id=0');
-            brandStrParams = new_arr.join('&');
-        }
-
-        let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
-        let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
-        let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
-
-        if(getTable !== undefined){
-            sortForAnalysis(sortField,sortValue,getTable,"mobi")
-        }
-
-        getGeneralData();
-        getViolationBasedBrand();
-        getViolationBasedCode();
-        resetFiter()
-    })
-
-    $(document).on('click', '.ico-sort', function() {
-        let sortField = $(this).attr('data-sort-field');
-        let sortValue = $(this).attr('data-sort-value');
-        let getTableId = $(this).parents('.table-wrapper').attr('id');
-        sortForAnalysis(sortField,sortValue,getTableId,"pc")
-    });
-
+    // ------------------------------------
+    // URL
     async function getGeneralData() {
         add_loader(generalIdEl);
         let htmlResponse = await get('/analysis/general'+generalStrParams);
