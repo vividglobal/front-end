@@ -428,6 +428,18 @@ class ArticleController extends Controller
         return view('pages/components/article-detail', compact('article','violationCode'));
     }
 
+    public function getOneViolation($id){
+        $article = Article::findOrFail($id);
+        $violationCode = ViolationCode::all();
+        return view('pages/components/violation-detail', compact('article','violationCode')); 
+    }
+
+    public function getOneNonViolation($id){
+        $article = Article::findOrFail($id);
+        $violationCode = ViolationCode::all();
+        return view('pages/components/non-violation-detail', compact('article','violationCode'));
+    }
+
     public function detectArticleManually(ManualLabelRequest $request) {
         $validated = $request->validated();
 

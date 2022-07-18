@@ -21,7 +21,6 @@ $("document").ready(function(){
             $(this).addClass("background-gray")
             $(this).find("img").show()
             show_overlay()
-
             const url = `${idrow}/switch-progress-status`;
             let csrf = $('meta[name="csrf-token"]').attr('content')
             $.ajax({

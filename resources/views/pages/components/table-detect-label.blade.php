@@ -360,16 +360,20 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Are you sure?') }}</h1>
+                <h1>{{ __('Confirmation') }}</h1>
             </div>
-            <p class="title-modal" style="text-align: center;display: block;">
             @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
-                    {{__("*You cannot change your decision in the future")}}
+                <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                {{ __("Are you sure to define this post's status non-violation?")}}
+                </p>
+                <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
+                    {{__("* You cannot change your decision in the future")}}
+                </p>
             @else
-                {{ __(" ARE YOU SURE TO MOVE THIS POST TO THE NON-VIOLATION LIST?.") }}
+                <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                    {{ __("Are you sure to move this post to the non-violation list?") }}
+                </p>
             @endif
-            </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-non-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -383,10 +387,12 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Are you sure?') }}</h1>
+                <h1>{{ __('Confirmation') }}</h1>
             </div>
-                <p class="title-modal" style="text-align: center;display: block;">
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
+                <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                    {{ __("Are you sure to define this post's status violation?")}}
+                </p>
+                <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
             <div class="head-confirm-btn">
@@ -402,17 +408,23 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1>{{ __('Are you sure?') }}</h1>
+                <h1>{{ __('Confirmation') }}</h1>
             </div>
-                <p class="title-modal" style="text-align: center;display: block;">
                 @if(isRole(ROLE_SUPERVISOR))
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS NON-VIOLATION?")}} <br><br>
-                    {{__("*You need to verify the violation code for this post and cannot change your decision in the future")}}
+                    <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                    {{ __("Are you sure to define this post's status non-violation?")}}
+                    </p>
+                    <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
+                    {{__("* You need to verify the violation code for this post and cannot change your decision in the future")}}
+                    </p>
                 @else
-                    {{ __("ARE YOU SURE TO DEFINE THIS POST'S STATUS VIOLATION?")}} <br><br>
-                    {{__("* Please re-check the violation code for this post")}}
+                    <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                        {{ __("Are you sure to define this post's status violation?")}}
+                    </p>
+                    <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
+                        {{__("* Please re-check the violation code for this post")}}
+                    </p>
                 @endif
-                </p>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation-and-choose-code btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -435,7 +447,7 @@
                 <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
                 <input type="text" placeholder="Search for violation code" class="search">
             </div>
-            <div class="row" style="overflow-y: scroll">
+            <div class="row" style="overflow-y: auto">
                 @foreach($violationCode as $key => $code)
                 <div class="col-md-4 check__box">
                     <div class="checkbox-code">
@@ -457,7 +469,7 @@
 </div>
 
 
-<div class="container-table" id="div-moblie">
+<div class="container-table container-table-mobile" id="div-moblie">
     <ul class="container-row-mobile">
         @foreach ($articles as $key => $article)
         <li class="lish-body">
@@ -484,8 +496,8 @@
                             >{{getStatusText($botStatus)}}</p>
                             <p class="p-style">{{date("m/d/Y",$article->published_date)}}</p>
                         </div>
-                        <h3 class="title-style">Nature One Dairy Australia</h3>
-                        <h4 class="p-style">Nature One Dairy - Australia</h4>
+                        <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
+                        <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>
                     </div>
                 </div>
             </a>

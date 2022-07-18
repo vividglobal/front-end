@@ -30,7 +30,9 @@
 .toaster.error {
     background-color: var(--danger);
 }
-
+.toaster-style-mobile{
+    width: 74%;
+}
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
     to {bottom: 30px; opacity: 1;}

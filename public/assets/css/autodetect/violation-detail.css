@@ -1,0 +1,128 @@
+.list-child-function{
+    width: 100%;
+    border-top: 1px solid #ccc;
+    /* padding: 10px; */
+}
+.list-child-top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.list--status-mobile{
+    width: 40%;
+    margin: inherit;
+}
+.btn-switch-mobile{
+    width: 24px;
+    height: 24px;
+}
+.upload-file-mobile{
+    width: 24px;
+    height: 24px;
+}
+.select--status-moblie{
+    top: 49px;
+    left: -3px;
+}
+.modal-confirm-title-mobile{
+    /* width: 95%; */
+    /* display: block; */
+}
+.modal-confirm-content-mobile{
+    width: 90%;
+}
+.modal-body-mobile{
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    bottom: 70px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+.button-upload-file{
+    width: 100%;
+    background-color: white;
+    display: flex;
+    position: fixed;
+    bottom: 0px;
+    align-items: flex-end;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+}
+.file-input-mobile{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    width: 50%;
+    height: 49px;
+    color: var(--white);
+    background: var(--primary);
+    max-width: none;
+    max-height: none;
+}
+.modal-file-data{
+    width: 100%;
+    padding: 10px;
+    max-height: 300px;
+    overflow: auto;
+}
+.item-lish{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.file-item{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+.doc-file{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--black);
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.completed{
+    display:none;
+}
+.completed-show{
+    display:flex
+}
+
+.button-upload-cancel{
+    align-items: flex-end;
+    justify-content: center;
+}
+.btn-cancel-moblie{
+    width: 95%;
+    margin-right: 0px !important;
+}
+.modal-tile-uploadfile{
+    font-family: 'Brandon Grotesque' !important;
+    font-style: normal !important;
+    font-weight: 420 !important;
+    font-size: 20px !important;
+    line-height: 29px !important;
+    color: #0C3C60;
+}
+.items_file-style{
+    margin-bottom: 10px;
+}
+.button-upload-style{
+    width: 45% !important;
+    margin-bottom: 10px !important;
+    font-family: 'Avenir Next'!important;
+font-style: normal;
+font-weight: 600;
+font-size: 18px I !important;
+line-height: 136.5%;
+}
