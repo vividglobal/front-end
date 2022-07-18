@@ -421,5 +421,7 @@
 @media(max-width:500px){
     .daterangepicker.show-calendar .drp-buttons {
         display: flex;
+        height: 80px;
+        align-items: flex-end;
       }
 }
