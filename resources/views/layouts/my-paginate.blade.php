@@ -8,8 +8,8 @@
                     <span aria-hidden="true">&lt;</span>
                 </li>
             @else
-                <li>
-                    <a class="page-link" href="{{!request ()-> is ('analysis/violation-by-brand') && !request ()-> is ('analysis/violation-by-code') ? \Request::url() : "javascript:void(0)" }}" rel="prev" aria-label="@lang('pagination.first')">&#60;</a>
+                <li class="cursor">
+                    <a class="" href="{{!request ()-> is ('analysis/violation-by-brand') && !request ()-> is ('analysis/violation-by-code') ? \Request::url() : "javascript:void(0)" }}" rel="prev" aria-label="@lang('pagination.first')">&#60;</a>
                 </li>
             @endif
 

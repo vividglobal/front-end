@@ -568,6 +568,7 @@
 }
 .page-link{
   border: none !important;
+  padding: none !important;
 }
 .track-one-title{
   flex: 1 0 calc(40%) !important;
