@@ -19,6 +19,11 @@
                 <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
                 <input type="text" placeholder="Search" class="search" name="keyword" >
             </div>
+            @if(count($admins) > 0)
+            <div style="margin-top:20px">
+                @include('pages/components/query', ['list_filter' => ["fillter_mobile"], 'show_all_filter' => false])
+            </div>
+        @endif
         </div>
         <div class="list_query-right">
             <div class="create__profile unvailable_create_profile" >
@@ -85,11 +90,11 @@
         <div class="content-modal">
             <p style="font-weight: 500;">Are you sure to remove this admin ?</p>
         </div>
-        <div class="btn-modal" style="display:inline-block;width: 100%;">
-            <button class="btn__cancel-button cancel_delete_user" style="float:left;margin-right:10px">
+        <div class="btn-modal btn-modal_delete" >
+            <button class="btn__cancel-button cancel_delete_user" >
             {{ __('Cancel') }}
             </button>
-            <form  >
+            <form  class="form_btn">
                 <input type="hidden" data-id="">
                 <button class="btn__delete--user" type="submit">{{ __('Yes') }}</button>
             </form>

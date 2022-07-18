@@ -564,6 +564,15 @@
 .page-link{
   border: none !important;
 }
+
+.page-link:focus {
+    z-index: 1;
+    color: var(--gray-6F);
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
 .track-one-title{
   flex: 1 0 calc(40%) !important;
 }

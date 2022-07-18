@@ -49,6 +49,18 @@ $(document).ready(function(){
             $(this).closest(".select--violation--type").closest(".checkbox_mobi").find("> p").attr("data-id",id)
         }
     })
+    $(".select__one--showing").change(function(){
+        let value =  $(this).find("p").text()
+        let id  = $(this).find("p").attr("data-id")
+        $("select__one--showing").find("input").prop('checked',false)
+        $(".select__one--showing").find("span").removeClass("activeRadio")
+        $(this).find("input").prop('checked',true)
+        $(this).find("span").addClass("activeRadio");
+        if(id !== 0){
+            $(this).closest(".select--showing").closest(".checkbox_mobi").find("> p").text(value)
+            $(this).closest(".select--showing").closest(".checkbox_mobi").find("> p").attr("data-id",id)
+        }
+    })
 
     //SORT
     $(".sort_value").find(".container_checkbox:first-child").find("input").prop('checked',true)
@@ -113,6 +125,8 @@ $(document).ready(function(){
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-name",name)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-table",table)
     })
+
+
 
 })
 

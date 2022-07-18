@@ -1,7 +1,7 @@
 <div id="create__modal-account" class="modal">
     <div class="modal__content full_modal">
         <div class="container_modal_edit">
-            <div class="close__modal close_modal_mobi">
+            <div class="close__modal close_modal_mobi content_creat-account">
             </div>
             <div class="title-modal title_mobile">
                 <p>{{ __('Edit account information') }}</p>

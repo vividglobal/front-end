@@ -68,7 +68,7 @@
     width: 100%;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 170%;
     color: var(--black);
     text-align: justify;
@@ -158,6 +158,7 @@
 
 .background__vituar-7{
     margin: 0 60px;
+    margin-bottom: 155px;
 }
 
 .background__vituar-7 .background__image{
@@ -166,19 +167,21 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 141px;
-    padding-bottom: 45px;
+    text-align: center;
+    justify-content: center;
+    height: 33vw;
 }
 
 .background__vituar-7 .background__image p{
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 152.5%;
     color: var(--black);
-    padding-top: 45px;
-    padding-bottom: 141px;
+    padding-top: 1.5vw;
     text-align:center;
+    height: 45px;
 }
+
 
 

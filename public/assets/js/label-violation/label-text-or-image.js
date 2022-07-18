@@ -16,6 +16,9 @@ $("document").ready(function(){
             $(".checkbox__suspected").removeClass("active_checked")
             $(this).addClass("active_checked")
             $(".suspected__text__area textarea").val("")
+            $("#submit_form").css("background","var(--gray-C7)")
+            $(".file-input_detect .label").text("Or drop the image here")
+            $(".file-input_detect input").val("")
             if($(this).find("input").attr("id") === "image"){
                 $(".suspected__text__area textarea").attr("placeholder","Enter the suspected text").focus()
                 $(".file-input_detect").show()
@@ -29,6 +32,15 @@ $("document").ready(function(){
             }
     })
 
+    $(".suspected__text__area").keyup(function(e){
+        let value = $(this).find("textarea").val().trim()
+        if(value !== ""){
+            $("#submit_form").css("background","var(--primary)")
+        }else{
+            $("#submit_form").css("background","var(--gray-C7)")
+        }
+    })
+
     function customInput (el) {
     const fileInput = el.querySelector('[type="file"]')
         fileInput.onchange =
@@ -37,6 +49,7 @@ $("document").ready(function(){
             var value = fileInput.value.replace(/^.*[\\\/]/, '')
             el.className += ' -chosen'
             $(".suspected__file__area").find(".file-input_detect").find(".label").text(value)
+            $("#submit_form").css("background","var(--primary)")
         }
     }
 

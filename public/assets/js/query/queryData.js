@@ -58,6 +58,9 @@ $("document").ready(function () {
     }
     if (perpage !== null) {
         $(".list--showing").find("select").val(parseInt(perpage));
+        $(".select--showing").closest(".checkbox_mobi").find("> p").text(perpage) ;
+        $(".select--showing").find(`#${perpage}`).find("input").attr("checked",true)
+        $(".select--showing").find(`#${perpage}`).find("span").addClass("activeRadio")
     }
 
     if (paramStart_date !== null && paramEnd_date !== null) {
@@ -223,6 +226,8 @@ $("document").ready(function () {
             $(".select__one--country").find("span").removeClass("activeRadio")
             $("select__one--violation--type").find("input").prop('checked',false)
             $(".select__one--violation--type").find("span").removeClass("activeRadio")
+            $("select__one--showing").find("input").prop('checked',false)
+            $(".select__one--showing").find("span").removeClass("activeRadio")
             $(".checkbox_mobi").find("> p").text("")
         if(parambrands !== null){
             let name = $(".brand_pc");
@@ -238,6 +243,11 @@ $("document").ready(function () {
             let name = $(".violation_pc");
             let nameMb = $(".violation_mobi");
             returnTextButtonQuery(name, "", "", "", paramViolation,nameMb);
+        }
+        if(perpage !== null){
+            $(".select--showing").closest(".checkbox_mobi").find("> p").text(perpage) ;
+            $(".select--showing").find(`#${perpage}`).find("input").attr("checked",true)
+            $(".select--showing").find(`#${perpage}`).find("span").addClass("activeRadio")
         }
         resetFiter()
     })
@@ -314,6 +324,18 @@ $("document").ready(function () {
                 replaceURL(paramSortBy, paramSortValue, value);
             }
         });
+
+    $(".pagination").find("li:first-child").click(function () {
+        replaceURL(paramSortBy, paramSortValue, 1);
+    })
+
+    $(".pagination").find("li:last-child").click(function (e) {
+        let value =  $(".pagination:visible").find("li:nth-last-child(2)").find("a").text()
+        if(value){
+            replaceURL(paramSortBy, paramSortValue, value);
+        }
+    })
+
     // BTN SEARCH ICON FOR MOBI
     $("#form_search").submit(function (e) {
         e.preventDefault()
@@ -362,10 +384,9 @@ $("document").ready(function () {
             let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let search = $(".search").val() ? $(".search").val().trim() : "";
-            let perpage = "";
+            let perpage = $(".select--showing:visible").closest(".checkbox_mobi").find("> p").text() ;
             let end__Date = "";
             let start__Date = "";
-
             if (date !== "" && date) {
                 let arr = date.split("-");
                 end__Date = arr[1].trim().replace(/[/]/g, "-");

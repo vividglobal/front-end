@@ -11,6 +11,10 @@
     width: 100%;
 }
 
+.search_admin > div:nth-child(2){
+    display: none;
+}
+
 .admin__management .thead_admin{
     display: flex;
 }

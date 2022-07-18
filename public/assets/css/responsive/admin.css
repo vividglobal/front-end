@@ -11,8 +11,8 @@
 
     .list_query{
         display: block !important;
-        margin-right: 20px !important;
         margin-top: 15px;
+        margin-right: 0 !important;
     }
 
     .query_left .list--select__left {
@@ -23,6 +23,25 @@
     .query_left .list--select__left .list--search {
         width: 100% !important;
         margin : 0 !important;
+    }
+
+    .search_admin .list--search {
+        margin-top: 40px;
+    }
+
+    .search_admin{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search_admin > div:nth-child(2){
+        display: block !important;
+    }
+
+    .search_admin > div:nth-child(2) .open_Nav_filter{
+        top: inherit;
+        margin-top: 8px;
+        z-index: 1;
     }
 
     .create__profile{
@@ -39,7 +58,7 @@
         top: 0;
         right: 0;
         margin: 17px 16px 0 0 ;
-        z-index: 102 !important;
+        /* z-index: 102 !important; */
     }
 
     .unvailable_create_profile{
@@ -128,7 +147,11 @@
     }
 
     .tbody_admin > li:nth-child(4):before{
-        content : "Number: ";
+        content : "Phone number: ";
+    }
+
+    .tbody_admin > li:nth-child(4){
+
     }
 
     .delete__profile_modal{
@@ -144,9 +167,6 @@
 
 @media (max-width: 739px){
     .search_admin .list--search {
-        width: 100%;
-    }
-    .list_query{
-        margin-right: 0 !important;
+        width: 93%;
     }
 }

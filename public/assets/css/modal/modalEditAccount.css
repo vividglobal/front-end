@@ -121,9 +121,11 @@
     margin-top: 10px;
   }
   .btn-modal{
-      display: flex;
-      justify-content:space-between;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
   }
+
   .btn-modal button{
     margin-top: 13px;
     padding: 12px 0;
@@ -136,7 +138,7 @@
     color: var(--gray-6F);
     background-color: var(--white);
     border: 1px solid #C7C7C7;
-    width: 48%;
+    width: 49%;
   }
 
   .btn-modal button:last-child{
@@ -147,8 +149,6 @@
   .list--suspected__text--img > div:first-child{
       margin-top: 20px;
   }
-
-
 
   .list--suspected__text--img > div:nth-child(2),
   .list--suspected__text--img > div:first-child{
