@@ -33,14 +33,19 @@
                         <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password"
                             required autocomplete="new-password" placeholder="Enter your password">
                     </div>
+                    @error('password')
+                        <span class="invalid-feedback d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     {{-- CONFIRM PASSWORD INPUT --}}
                     <p class="title__login">{{ __('Confirm Password') }}</p>
                     <div class="email--login">
                         <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
-                        <input id="password-confirm" type="password" name="password_confirmation"
+                        <input id="password-confirm" type="password" name="confirm_password"
                             required autocomplete="new-password" placeholder="Enter confirm password">
                     </div>
-                    @error('password')
+                    @error('confirm_password')
                         <span class="invalid-feedback d-block" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

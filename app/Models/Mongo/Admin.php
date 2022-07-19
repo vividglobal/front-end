@@ -3,6 +3,8 @@
 namespace App\Models\Mongo;
 
 use Jenssegers\Mongodb\Eloquent\Model;
+use MongoDB\BSON\Regex;
+use App\Http\Services\UserRoleService;
 
 class Admin extends Model
 {
@@ -31,7 +33,15 @@ class Admin extends Model
 
     public function getList($params) {
         $perpage = $params['perpage'] ?? self::DEFAULT_LIMIT;
-        $admins = self::paginate($perpage);
+
+        if(isset($params['keyword'])) {
+            $keyword = $params['keyword'];
+            $admins = self::where("full_name","LIKE", "%{$keyword}%")->orwhere("email","LIKE", "%{$keyword}%")
+            ->orwhere("phone_number","LIKE", "%{$keyword}%")->orwhere("role","LIKE", "%{$keyword}%")->paginate($perpage);
+        }else{
+            $admins = self::paginate($perpage);
+        }
+
         return $admins;
     }
 }

@@ -15,9 +15,8 @@
     <!-- list Btn  -->
     <div class="list_query">
         <div class="query_left search_admin">
-            <div class="list--search " id="form_search">
-                <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
-                <input type="text" placeholder="Search" class="search" name="keyword" >
+            <div >
+                @include('pages/components/query', ['list_filter' => ["fillter_mobile","search","apply"], 'show_all_filter' => false])
             </div>
         </div>
         <div class="list_query-right">
@@ -59,9 +58,11 @@
 
         </ul>
         @endforeach
-        <div class="no_search_reusult" style="display:none">
+        @if(count($admins) == 0)
+        <div class="no_search_reusult" >
             @include('noSearchResult/index')
         </div>
+        @endif
     </div>
 </div>
 <div class="paginate_showing pagenate_admin">
@@ -85,11 +86,11 @@
         <div class="content-modal">
             <p style="font-weight: 500;">Are you sure to remove this admin ?</p>
         </div>
-        <div class="btn-modal" style="display:inline-block;width: 100%;">
-            <button class="btn__cancel-button cancel_delete_user" style="float:left;margin-right:10px">
+        <div class="btn-modal btn-modal_delete" >
+            <button class="btn__cancel-button cancel_delete_user" >
             {{ __('Cancel') }}
             </button>
-            <form  >
+            <form  class="form_btn">
                 <input type="hidden" data-id="">
                 <button class="btn__delete--user" type="submit">{{ __('Yes') }}</button>
             </form>

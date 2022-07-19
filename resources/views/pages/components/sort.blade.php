@@ -29,28 +29,35 @@
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
             </label>
+            @if(!request ()-> is ('articles/violation') && !request ()-> is ('articles/non-violation'))
             <label class="container_checkbox" id="crawl_date" > <p data-by="crawl_date">Crawl date</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
             </label>
-            @auth
-                @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/manual-detection'))
+            @else
+            <label class="container_checkbox" id="checking_date" > <p data-by="checking_date">Checking date</p>
+                <input type="checkbox" name="radio" class="input_checkbox">
+                <span class="checkmark_checkbox"></span>
+            </label>
+            @endif
+            @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/manual-detection'))
                     <label class="container_checkbox" id="bot_status" > <p data-by="bot_status">VIVID's status</p>
                         <input type="checkbox" name="radio" class="input_checkbox">
                         <span class="checkmark_checkbox"></span>
                     </label>
+                @auth
                     <label class="container_checkbox" id="supervisor_status" > <p data-by="supervisor_status">Supervisor's status</p>
                         <input type="checkbox" name="radio" class="input_checkbox">
                         <span class="checkmark_checkbox"></span>
                     </label>
-                    @if(@Auth::user()->role === "OPERATOR")
+                    @if(@Auth::user()->role === "OPERATOR" || @Auth::user()->role === "ADMIN")
                     <label class="container_checkbox" id="operator_status" > <p data-by="operator_status">Operator's status</p>
                         <input type="checkbox" name="radio" class="input_checkbox">
                         <span class="checkmark_checkbox"></span>
                     </label>
                     @endif
-                @endif
-            @endauth
+                @endauth
+            @endif
             @if(request ()-> is ('articles/violation'))
                 <label class="container_checkbox" id="sort_penalty_issued" > <p
                     data-by="sort_penalty_issued">Penalty issued</p>

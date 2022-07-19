@@ -124,52 +124,39 @@ $(document).ready(function(){
         let page = parseInt($(this).find("a").text());
         if(page) {
             let getTableId = $(this).parents('.table-wrapper').attr('id');
-            if(getTableId === 'vio-based-brand') {
-
-                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-                newParams.push('page='+page);
-                brandStrParams = newParams.join('&');
-                getViolationBasedBrand();
-            }else if(getTableId === 'vio-based-code') {
-                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-                newParams.push('page='+page);
-                codeStrParams = newParams.join('&');
-                getViolationBasedCode();
-            }
+            pageTable(getTableId,page)
         }
     })
     // NEXT BTN
     $(document).on('click', ".pagination li:last-child", function(){
-              let getTableId = $(this).parents('.table-wrapper').attr('id');
-            if(getTableId === 'vio-based-brand') {
-                let lengthPagination = $("#vio-based-brand .row-pagination nav .pagination li").length - 2
-                let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-                newParams.push('page='+lengthPagination);
-                brandStrParams = newParams.join('&');
-                getViolationBasedBrand();
-            }else if(getTableId === 'vio-based-code') {
-                let lengthPage = $("#vio-based-code .row-pagination nav .pagination li").length - 2
-                let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-                newParams.push('page='+lengthPage);
-                codeStrParams = newParams.join('&');
-                getViolationBasedCode();
-            }
+        let getTableId = $(this).parents('.table-wrapper').attr('id');
+        let lengthPagination = $(this).closest('.pagination').find("li:nth-last-child(2)").find("a").text()
+        if(lengthPagination){
+            pageTable(getTableId,lengthPagination)
+        }
     })
     // PREV BTN
     $(document).on('click', ".pagination li:first-child", function(){
         let getTableId = $(this).parents('.table-wrapper').attr('id');
-      if(getTableId === 'vio-based-brand') {
-          let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
-          newParams.push('page='+1);
-          brandStrParams = newParams.join('&');
-          getViolationBasedBrand();
-      }else if(getTableId === 'vio-based-code') {
-          let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
-          newParams.push('page='+1);
-          codeStrParams = newParams.join('&');
-          getViolationBasedCode();
-      }
-})
+        let lengthPagination = $(this).closest('.pagination').find("li:nth-child(2)").find("a").text()
+        if(lengthPagination){
+            pageTable(getTableId,lengthPagination)
+        }
+    })
+
+    function pageTable (getTableId,perPage){
+        if(getTableId === 'vio-based-brand') {
+            let newParams = removeParamFromList(brandStrParams.split('&'), 'page')
+            newParams.push('page='+perPage);
+            brandStrParams = newParams.join('&');
+            getViolationBasedBrand();
+        }else if(getTableId === 'vio-based-code') {
+            let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
+            newParams.push('page='+perPage);
+            codeStrParams = newParams.join('&');
+            getViolationBasedCode();
+        }
+    }
     // ------------------------------------
     // BTN APPLY FILLTER BRAND
     $(".btn__apply").on("click",function(){
@@ -196,14 +183,14 @@ $(document).ready(function(){
         if(brandCompanyId) {
             newParams = removeParamFromList(brandStrParams.split('&'), 'brand_id')
             newParams.push('brand_id='+brandCompanyId);
-            const new_arr = newParams.filter(item => item !== 'brand_id=0');
+            const new_arr = removeParamFromList(newParams, 'brand_id=0')
             brandStrParams = new_arr.join('&');
         }
         let countryId = $(".list--country").find("> p").attr("data-id");
         if(countryId) {
             newParams = removeParamFromList(brandStrParams.split('&'), 'country_id')
             newParams.push('country_id='+countryId);
-            const new_arr = newParams.filter(item => item !== 'country_id=0');
+            const new_arr = removeParamFromList(newParams, 'country_id=0')
             brandStrParams = new_arr.join('&');
         }
 
@@ -211,7 +198,7 @@ $(document).ready(function(){
         if(violationTypeId) {
             newParams = removeParamFromList(brandStrParams.split('&'), 'violation_type_id')
             newParams.push('violation_type_id='+violationTypeId);
-            const new_arr = newParams.filter(item => item !== 'violation_type_id=0');
+            const new_arr = removeParamFromList(newParams, 'violation_type_id=0')
             brandStrParams = new_arr.join('&');
         }
     }
@@ -227,7 +214,7 @@ $(document).ready(function(){
     function sortForAnalysis(sortField,sortValue,getTable,device){
         let newParams = [];
         if(getTable === 'vio-based-brand') {
-                newParams = removeParamFromList(brandStrParams.split('&'));
+                newParams = removeParamFromList(brandStrParams.split('&'),"sort_value");
                 newParams.push(`sort_by=${sortField}`);
             if(sortValue == "A to Z" || sortValue == "ASC"){
                 newParams.push(`sort_value=ASC`);
@@ -239,7 +226,7 @@ $(document).ready(function(){
                     getViolationBasedBrand();
                 }
         }else if(getTable === 'vio-based-code') {
-                newParams = removeParamFromList(codeStrParams.split('&'))
+                newParams = removeParamFromList(codeStrParams.split('&'),"sort_value")
                 newParams.push(`sort_by=${sortField}`);
             if(sortValue == "A to Z" || sortValue == "ASC"){
                 newParams.push(`sort_value=ASC`);
@@ -252,9 +239,9 @@ $(document).ready(function(){
                 }
         }
     }
-    function removeParamFromList(list) {
+    function removeParamFromList(list,item) {
         let newParams = list.filter(index=>{
-            return index.indexOf("sort_by") == -1 && index.indexOf("sort_value") == -1
+            return index.indexOf("sort_by") == -1 && index.indexOf(item) == -1
         })
         return newParams;
     }

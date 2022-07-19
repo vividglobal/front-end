@@ -74,6 +74,7 @@
         z-index: 101 !important;
         position: absolute;
         top: 5px;
+        width: max-content;
     }
 
     .name_trace--violation:after {
@@ -116,6 +117,14 @@
 
     .closebtn img{
         padding: 16px;
+
+    }
+
+    #myNav .closebtn img{
+        padding: 16px;
+        position: absolute;
+        right: 0;
+        z-index: 104;
     }
 
     .nav_container{
@@ -143,7 +152,7 @@
       .overlay-content {
         position: relative;
         width: 100%;
-        margin-top: 30px;
+        margin-top: 5px;
       }
 
       .dropdown_mbl-display{
@@ -206,6 +215,7 @@
       .nav-menu{
         display: flex;
         flex-direction: column;
+        margin-top: 50px;
       }
 
       .nav-menu .no-padding{
