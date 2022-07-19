@@ -19,7 +19,7 @@
         <!-- choose file -->
         <div class="rows">
             <div class="suspected__text__area l-8 m-12 c-12">
-                <textarea name="text" cols="30" rows="10"></textarea>
+                <textarea class="input-style-focus" name="text" cols="30" rows="10"></textarea>
             </div>
             <div class="suspected__file__area l-3 m-12 c-12">
                 <div class='file-input_detect'>
@@ -39,7 +39,7 @@
             <div class="select--country slc_suspected" id="language">
                 <div class="search--input--country search_suspected" id="div-search">
                     <img src="{{asset('assets/image/search.svg')}}" alt="">
-                    <input type="text" name="country" placeholder="Search for country" class="search--country">
+                    <input type="text" name="country" placeholder="Search for country" class="search--country input-style-focus">
                 </div>
                 <div class="contain--selection">
                     <div class="select__one--country option_suspected" id=0>
@@ -93,7 +93,7 @@
             <div class=" slc_general country_mobi" id="toggle">
                 <div class="search--input--country search_general" id="div-search">
                     <img src="{{asset('assets/image/search.svg')}}" alt="">
-                    <input type="text" placeholder="Search for country" class="search--country" >
+                    <input type="text" placeholder="Search for country" class="search--country input-style-focus" >
                 </div>
                 <div class="contain--selection contain_country">
                         <label class="container_checkbox select__one--country option_general" id=0>

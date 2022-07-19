@@ -99,6 +99,7 @@ $(document).ready(function(){
         if(response.success) {
             show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE) {
+                $('#table-add').addClass('table-code')
                 $('.table-button-all').remove();
                 fileHtmlItems = `
                     <div class="table-code-top">
@@ -233,6 +234,19 @@ $(document).ready(function(){
         }
     })
 
+      // SEARCH ARTICLE_CODE MODAL
+    $(".search_code_article").on("keyup",function(e){
+        let value = e.target.value.toLowerCase()
+            if(value){
+                $(".row-style").height('auto');
+            }else{
+                $(".row-style").height('calc(100% - 14vh - 80px)');
+            }
+            $(".col-md-1").filter(function(){
+                $(this).toggle($(this).find('.checkbox-code').find(".check_box_code").text().toLowerCase().indexOf(value) > -1)
+            })
+    })
+
 
     async function updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn = false) {
         let response = await action_moderate_article(ACTION_CHECK_STATUS, STATUS_VIOLATION);
@@ -240,6 +254,7 @@ $(document).ready(function(){
         // Update status label
         $('#table-code-buton-supervisor').remove();
         if(CURRENT_ROLE === SUPERVISOR_ROLE){
+            $('#table-add').addClass('table-code')
             if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE ) {
                 violationitem =`
                 <div class="table-code-top" id="violation-code-item">
@@ -277,6 +292,7 @@ $(document).ready(function(){
             }
         }else
         if(CURRENT_ROLE === OPERATOR_ROLE){
+            $('#table-add-operator').addClass('table-code')
             if(botStatus === STATUS_VIOLATION && agreeStatus === AGREE ) {
                 violationitem =`
                 <div class="table-code-top" id="violation-code-item">

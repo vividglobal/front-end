@@ -5,7 +5,7 @@
                 <button class="btn-search" type= "submit" alt="menu_icon">
                     <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
                 </button>
-                <input type="text" placeholder="Search" class="search" name="keyword" >
+                <input type="text" placeholder="Search" class="search input-style-focus" name="keyword" >
             </form>
         @endif
 
@@ -103,7 +103,7 @@
             <div class="select--company-or-brand brand_mobi" id="toggle">
                 <div class="search--input">
                     <img src="{{asset('assets/image/search.svg')}}" alt="">
-                    <input type="text" placeholder="Search for Brand" class="search--brand">
+                    <input type="text" placeholder="Search for Brand" class="search--brand input-style-focus">
                 </div>
                 <div class="contain--selection">
                         <label class="container_checkbox select__one" ><p  data-id=0 >None</p>
@@ -132,7 +132,7 @@
             <div class="select--country slc_general country_mobi filter_country_mobi" id="toggle">
                 <div class="search--input--country search_general" id="div-search">
                     <img src="{{asset('assets/image/search.svg')}}" alt="">
-                    <input type="text" placeholder="Search for country" class="search--country" >
+                    <input type="text" placeholder="Search for country" class="search--country input-style-focus" >
                 </div>
                 <div class="contain--selection contain_country">
                         <label class="container_checkbox select__one--country option_general" ><p  data-id=0 >None</p>

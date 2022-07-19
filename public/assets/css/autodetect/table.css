@@ -521,9 +521,10 @@
   justify-content: center;
 }
 .btn-confirm-mobile{
+  margin-left: -20px;
   position: fixed;
-  width: 100%;
-  background-color: white;
+  width: 100vw;
+  bottom: 0;
 }
 .checkmark{
   cursor: pointer;

@@ -147,7 +147,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p>ARE YOU SURE TO MOVE THIS POST BACK TO AUTO-DECTECT VIOLATIONS?</p>
+                <p>Are you sure to move this post back to auto-dectect violation?</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>

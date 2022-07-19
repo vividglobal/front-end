@@ -17,7 +17,7 @@
         <div class="query_left search_admin">
             <div class="list--search " id="form_search">
                 <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
-                <input type="text" placeholder="Search" class="search" name="keyword" >
+                <input type="text" placeholder="Search" class="search input-style-focus" name="keyword" >
             </div>
         </div>
         <div class="list_query-right">

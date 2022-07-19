@@ -9,7 +9,7 @@
                 <div class="modal--input">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
-                        <input type="text" id="name" placeholder="Enter your name" class="form-name create_name" name="full_name">
+                        <input type="text" id="name" placeholder="Enter your name" class="form-name create_name input-style-focus" name="full_name">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_name"></p>
@@ -17,7 +17,7 @@
                 <div class="modal--input">
                     <p>{{ __('E-mail') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Email" class="form-number create_email  " name="email">
+                        <input type="text" placeholder="Enter your Email" class="form-number create_email input-style-focus" name="email">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_email"></p>
@@ -25,7 +25,7 @@
                 <div class="modal--input">
                     <p>{{ __('Phone number') }}</p>
                     <div class="input--modal">
-                        <input type="text" placeholder="Enter your Number" class="form-number create_number  " name="phone_number">
+                        <input type="text" placeholder="Enter your Number" class="form-number create_number input-style-focus " name="phone_number">
                         <img src="{{ asset('assets/image/edit.svg') }}" alt="" class="img-edit__name">
                     </div>
                     <p class="text-dangers text_phone"></p>
@@ -33,7 +33,7 @@
                 <div class="modal--input" >
                     <p>{{ __('Password') }}</p>
                     <div class="input--modal">
-                        <input type="password" placeholder="Enter your password" class="form-pwd create_pwd  " name="password">
+                        <input type="password" placeholder="Enter your password" class="form-pwd create_pwd input-style-focus " name="password">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                     <p class="text-dangers text_password"></p>
@@ -41,7 +41,7 @@
                 <div class="modal--input" >
                     <p>{{ __('Confirm password') }}</p>
                     <div class="input--modal">
-                        <input type="password" placeholder="Re-enter your password" class="form-re-pwd create_re_pwd  " name="password_confirmation">
+                        <input type="password" placeholder="Re-enter your password" class="form-re-pwd create_re_pwd input-style-focus " name="password_confirmation">
                         <img src="{{asset('assets/image/unseen.svg')}}" alt="" class="img-seen-pwd">
                     </div>
                     <p class="text-dangers text_re-password"></p>

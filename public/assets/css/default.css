@@ -71,3 +71,7 @@ button:focus{
 	outline: none;
 }
 
+.input-style-focus:focus, .input-style-focus.focus {
+	outline: none !important;
+	box-shadow: 0 0 0 0 rgba(0, 123, 255, 0) !important;
+}
