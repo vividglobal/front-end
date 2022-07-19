@@ -1,8 +1,10 @@
 const ReturnMessage  = {
     success:(message)=>{
-        show_success(message)
         hide_overlay()
-        window.location.href = window.location.href
+        show_success(message)
+        setTimeout(() => {
+            window.location.href = window.location.href
+        },500)
     },
     error: (message)=>{
         show_error(message)

@@ -133,8 +133,10 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                ReturnMessage.success(msg.message)
                 resetModal()
+                if(msg){
+                    ReturnMessage.success(msg.message)
+                }
             })
             .fail(function( error ) {
                 if(error){

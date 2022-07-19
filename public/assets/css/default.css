@@ -111,3 +111,7 @@ select{
     -ms-user-select: none;
     user-select: none;
 }
+
+.show{
+    display: block !important;
+}
