@@ -94,3 +94,15 @@
     line-height: 136.5%;
     color: var(--primary);
 }
+
+#apply_date{
+    background-color: var(--primary);
+    color: var(--white);
+    font-family: 'Avenir';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 14px;
+    line-height: 22px;
+    width: 120px;
+    border: none;
+}

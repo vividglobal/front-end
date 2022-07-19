@@ -3,7 +3,7 @@
         <div class="modal__content full_modal">
             <div class="container_modal_edit">
 
-                <div class="close__modal close_modal_mobi">
+                <div class="close__modal close_modal_mobi edit_account ">
                 </div>
                 <div class="title-modal title_mobile">
                     <p>{{ __('Edit account information') }}</p>
@@ -34,22 +34,23 @@
                     <p class="text-dangers error_number"></p>
                 </div>
                 @if(@Auth::user()->role === "ADMIN")
-                <div class="modal--input">
+                <div class="modal--input role_modal ">
                     <p>{{ __('Authority') }}</p>
-                    <div class="rows no-margin">
-                            <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Admin') }}
-                                <input type="radio" name="role" value="ADMIN" id="ADMIN">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Supervisor') }}
-                                <input type="radio" name="role" value="SUPERVISOR" id="SUPERVISOR">
-                                <span class="checkmark"></span>
-                            </label>
-                            <label class="container__checkbox authorization edit_authority l-4 m-12 c-12">{{ __('Operator') }}
-                                <input type="radio" name="role" value="OPERATOR" id="OPERATOR">
-                                <span class="checkmark"></span>
-                            </label>
+                    <div  class="role_edit">
+                        <label class="container__checkbox authorization edit_authority">{{ __('Admin') }}
+                            <input type="radio" name="role" value="ADMIN" id="ADMIN">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container__checkbox authorization edit_authority">{{ __('Supervisor') }}
+                            <input type="radio" name="role" value="SUPERVISOR" id="SUPERVISOR">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container__checkbox authorization edit_authority">{{ __('Operator') }}
+                            <input type="radio" name="role" value="OPERATOR" id="OPERATOR">
+                            <span class="checkmark"></span>
+                        </label>
                     </div>
+                    <p class="text-dangers text_auth"></p>
                 </div>
                 @endif
                 <p class="btn__change--password">{{ __('Change Password') }}</p>
@@ -78,9 +79,8 @@
                     <p class="text-dangers edit_re_password "></p>
                 </div>
                 <p class="delete__profile_modal delete__profile">Remove this user</p>
-
             </div>
-            <div class="btn-modal rows no-margin">
+            <div class="btn-modal no-margin">
                 <button class="btn__cancel-button btn_cancel_mobi cancel_create-account">{{ __('Cancel') }}</button>
                 <button class="edit_profile btn_edit_mobi">{{ __('Save change') }}</button>
             </div>

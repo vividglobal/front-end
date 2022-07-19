@@ -61,16 +61,22 @@
 </div>
 <div class="background__vituar-7 rows">
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="{{asset('assets/image/home/face-detection.svg')}}" alt="">
-        <p>{{ __('Auto-detecting Code violations 24/7') }}</p>
+        <div>
+            <img src="{{asset('assets/image/home/face-detection.svg')}}" alt="">
+            <p>{{ __('Auto-detecting Code violations 24/7') }}</p>
+        </div>
     </div>
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="{{asset('assets/image/home/edit.svg')}}" alt="">
-        <p>{{ __('Labelling Code violations upon requests') }}</p>
+        <div>
+            <img src="{{asset('assets/image/home/edit.svg')}}" alt="">
+            <p>{{ __('Labelling Code violations upon requests') }}</p>
+        </div>
     </div>
     <div class="background__image col l-4 m-4 c-12 no-margin">
-        <img src="{{asset('assets/image/home/auction.svg')}}" alt="">
-        <p>{{ __('Tracing violations from detection to penalty') }}</p>
+        <div>
+            <img src="{{asset('assets/image/home/auction.svg')}}" alt="">
+            <p>{{ __('Tracing violations from detection to penalty') }}</p>
+        </div>
     </div>
 </div>
 @endsection

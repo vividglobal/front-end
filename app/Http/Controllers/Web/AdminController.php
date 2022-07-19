@@ -18,7 +18,6 @@ class AdminController extends Controller
         $params = $request->all();
         $adminModel = new Admin;
         $admins = $adminModel->getList($params);
-
         return view('pages/admin-management/index', compact('admins'));
     }
 

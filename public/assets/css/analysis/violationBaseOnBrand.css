@@ -18,10 +18,6 @@
     display: flex;
 }
 
-.Base_violation--brand .list--select--option .list--select__left .list--violation--type{
-    margin: 0!important;
-}
-
 .Base_violation--brand .table_analysis {
     border-collapse: collapse;
     width: 100%;

@@ -312,4 +312,8 @@
     .slc_analysis .list--select__left .btn__apply{
         display: none;
     }
+
+    #apply_date{
+        display: none;
+    }
 }

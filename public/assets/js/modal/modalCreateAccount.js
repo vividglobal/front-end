@@ -138,7 +138,16 @@ $("document").ready(function(){
             })
             .fail(function( error ) {
                 if(error){
-                    ReturnMessage.error(error.responseJSON.message)
+                    let msg = error.responseJSON.message
+                    if(msg.toLowerCase().indexOf("email") > -1){
+                        $(".text_email").text(msg)
+                        hide_overlay()
+                    }else if(msg.toLowerCase().indexOf("phone") > -1){
+                        $(".text_phone").text(msg)
+                        hide_overlay()
+                    }else{
+                        ReturnMessage.error(error.responseJSON.message)
+                    }
                 }
             });
         }

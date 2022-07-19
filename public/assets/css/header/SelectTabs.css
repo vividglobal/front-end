@@ -12,6 +12,7 @@
     justify-content: center;
     cursor: pointer;
     margin-right: 5px;
+    height: 45.6px;
 }
 
 .list--country{
@@ -119,6 +120,7 @@
     justify-content: space-between;
     position: relative;
     cursor: pointer;
+    margin-right: 5px;
 }
 
 .list--select--option{
@@ -146,6 +148,8 @@
     font-size: 35px;
     line-height: 50px;
     margin: 24px 0 15px 0;
+    width: max-content;
+    display:inline-block;
 }
 
 .list--select__right{

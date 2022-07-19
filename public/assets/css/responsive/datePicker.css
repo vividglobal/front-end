@@ -83,6 +83,7 @@
         border: 1px solid #C7C7C7;
         background-color: var(--white);
         padding: 12px 0;
+        height: 50px;
     }
 
     .daterangepicker .drp-buttons .applyBtn{
@@ -131,7 +132,7 @@
 
     .daterangepicker .daterangepicker.ltr .ranges, .daterangepicker.ltr .drp-calendar {
         float: none !important;
-        height: 55vh !important;
+        /* height: 55vh !important; */
     }
 
     .daterangepicker .drp-calendar.right .daterangepicker_input {

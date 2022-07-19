@@ -8,10 +8,13 @@
 
     .list--title{
         margin-left: 60px;
+        width: max-content;
+        display: inline-block;
     }
 
     .list--search--select{
         margin: 0 16px;
+        z-index: 99;
     }
 
     .list--search{
@@ -33,41 +36,41 @@
         right: 0;
         margin-right: 16px;
         top: 7px;
-        z-index: 102;
         margin-top: 5px;
+        /* z-index: 102; */
     }
 
     .btn_apply_mobi{
-        position:fixed;
-        bottom: 0;
-        width: 40%;
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
         display: flex;
         justify-content: center;
         background : var(--white);
+        -webkit-backface-visibility: hidden;
     }
 
-    .btn_apply_mobi button{
-        width: 46%;
-        padding: 12px;
-        margin: 5px;
-        margin-bottom: 10px;
-        border: none;
-        background: var(--primary);
-        font-family: 'Avenir Next';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 20px;
-        color: var(--white);
-        border-radius: 5px;
-        max-width: 100%;
-    }
+        .btn_apply_mobi button{
+            width: 46%;
+            padding: 12px;
+            margin: 5px;
+            margin-bottom: 10px;
+            border: none;
+            background: var(--primary);
+            font-family: 'Avenir Next';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 20px;
+            color: var(--white);
+            max-width: 100%;
+        }
 
-    .btn_apply_mobi button:nth-child(1){
-        border: 1px solid var(--gray-C7);
-        background: var(--white);
-        color: var(--gray-6F);
-    }
+        .btn_apply_mobi button:nth-child(1){
+            border: 1px solid var(--gray-C7);
+            background: var(--white);
+            color: var(--gray-6F);
+        }
 
     .daterange_mobi{
         width: auto !important;
@@ -112,17 +115,7 @@
 }
 
 @media (min-width: 426px) and (max-width: 739px){
-    .btn_apply_mobi{
-        width: 60%;
-    }
-
     .list--search{
-        width: 100%;
-    }
-}
-
-@media (max-width: 500px) {
-    .btn_apply_mobi{
         width: 100%;
     }
 }

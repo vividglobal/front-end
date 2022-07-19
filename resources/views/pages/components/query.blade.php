@@ -28,7 +28,7 @@
                 @include('pages/components/violationType')
             @endif
             @if(in_array('apply', $list_filter) || $show_all_filter)
-                <button class="btn__apply" id="apply_query">Apply</button>
+                <button class="btn__apply" id="apply_query ">Apply</button>
             @endif
         </div>
 
@@ -50,7 +50,6 @@
         </div>
     </div>
 </div>
-
  {{-- //MOBILE --}}
 
 @if(in_array('fillter_mobile', $list_filter))
@@ -61,7 +60,7 @@
     <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
 
     <div class="filter_list-mobi">
-            @if(!request() -> is('analysis'))
+            @if(!request() -> is('analysis') && !request() -> is('admins'))
                 <div id="daterange" class="daterange_mobi no_apply">
                     <img src="{{ asset('assets/image/calendar.svg') }}" alt="">
                     <input type="text" class="form--daterange date_mobile" name="daterange"  placeholder="Select Date" autocomplete="off" readonly/>
@@ -175,6 +174,36 @@
                 </div>
             </div>
         <div class="border_gray"></div>
+        @endif
+        @if(!request()->is('analysis') )
+            <div class="checkbox_mobi">
+                <div class="checkbox_title">
+                    <div>
+                        <span>{{ __("Showing") }}</span>
+                    </div>
+                    <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
+                </div>
+                <p></p>
+                <div class="select--showing " id="toggle" style="display:none">
+                        <label class="container_checkbox select__one--showing" id=10><p  data-id=10 >10</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                        <label class="container_checkbox select__one--showing" id=25><p  data-id=25 >25</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                        <label class="container_checkbox select__one--showing" id=50><p  data-id=50 >50</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                        <label class="container_checkbox select__one--showing" id=100><p  data-id=100 >100</p>
+                            <input type="checkbox"  name="radio" class="input_checkbox">
+                            <span class="checkmark_checkbox"></span>
+                        </label>
+                </div>
+            </div>
+            <div class="border_gray"></div>
         @endif
     </div>
     <div class="btn_apply_mobi">

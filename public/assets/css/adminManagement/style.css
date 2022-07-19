@@ -11,6 +11,14 @@
     width: 100%;
 }
 
+.search_admin > div:nth-child(2) .list--select--option {
+    height: 100%;
+}
+
+.search_admin > div:nth-child(2) .list--select--option .list--select__left {
+    height: 100%;
+}
+
 .admin__management .thead_admin{
     display: flex;
 }
@@ -116,6 +124,7 @@
 
 .query_left{
     width: 50%;
+    display: flex;
 }
 
 .role_mobile{

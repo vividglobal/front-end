@@ -276,8 +276,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 20px;
-    /* justify-content: flex-start; */
+    margin: 20px 0;
 }
 .pagination li{
     color: var(--black);
@@ -571,6 +570,15 @@
   border: none !important;
   padding: none !important;
 }
+
+.page-link:focus {
+    z-index: 1;
+    color: var(--gray-6F);
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+}
+
 .track-one-title{
   flex: 1 0 calc(40%) !important;
 }

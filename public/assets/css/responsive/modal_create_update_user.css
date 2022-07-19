@@ -1,15 +1,45 @@
 @media (max-width: 1113px) {
     .full_modal {
         border-radius: 0;
-        height: 100vh;
+        max-height: 100vh;
+        height: 100%;
         max-width:100%;
+        overflow-y: auto;
+        position: relative;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .modal--input:last-child{
+        margin-bottom: 10px;
+    }
+
+    .btn-modal button{
+        margin-top: 0px;
+    }
+
+    .btn-modal{
+        display: flex;
+        height: max-content;
+        align-items: flex-end;
+      }
+
+    .title_mobile{
+        display: none;
+    }
+
+    .container_modal_edit{
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .modal_edit_user #modal-account{
         position: fixed;
+    }
+
+    .role_edit{
+        display: block;
     }
 
     .authorization .checkmark:after{
@@ -46,8 +76,46 @@
         color: #0C3C60;
     }
 
+    .close_modal_mobi{
+        display: flex;
+        align-items: center;
+    }
+
     .close_modal_mobi:before{
         content: url(../../image/ep_back.svg);
+      }
+
+    .content_creat-account:after{
+        content: "Add admin";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px;
+        line-height: 36px;
+        color: var(--primary);
+        margin-left: 10px;
+      }
+
+      .content_edit2_account:after{
+        content: "Edit account information";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px;
+        line-height: 36px;
+        color: var(--primary);
+        margin-left: 10px;
+      }
+
+      .content_edit1_account:after{
+        content: "Edit your profile";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px;
+        line-height: 36px;
+        color: var(--primary);
+        margin-left: 10px;
       }
 
       .btn_cancel_mobi {
@@ -63,4 +131,24 @@
         display: block;
     }
 
+
+
+    .btn-modal_delete form .btn__delete--user {
+        margin-bottom: 0px;
+    }
+
+}
+.btn-modal_delete{
+    position: initial;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.form_btn{
+    width: 49%;
+}
+
+.btn-modal_delete form .btn__delete--user {
+    width: 100%;
 }
