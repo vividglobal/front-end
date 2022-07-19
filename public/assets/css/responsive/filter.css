@@ -37,7 +37,7 @@
         margin-right: 16px;
         top: 7px;
         margin-top: 5px;
-        z-index: 102;
+        /* z-index: 102; */
     }
 
     .btn_apply_mobi{

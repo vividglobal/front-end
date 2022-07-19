@@ -7,7 +7,7 @@
  {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
   ">
     <div id="myNav" class="overlay_header">
-        <a href="javascript:void(0)" class="closebtn" ><img src="{{ asset('assets/image/menu.svg') }}" alt=""></a>
+        <a href="javascript:void(0)" class="closebtn" ><img src="{{ asset('assets/image/cancel.svg') }}" alt=""></a>
         <div class="overlay-content">
             <div class="rows nav-menu" >
                 <div class="no-padding {{Auth::user()!== null ? " had_login"  : " no_login"}}" >

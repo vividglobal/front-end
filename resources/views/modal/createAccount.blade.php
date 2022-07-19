@@ -48,7 +48,7 @@
                 </div>
                 <div class="modal--input">
                     <p>{{ __('Authority') }}</p>
-                    <div style="display: flex; justify-content:space-around">
+                    <div class="role_edit">
                         <label class="container__checkbox authorization create_authority">{{ __('Admin') }}
                             <input type="radio" name="role" value="ADMIN">
                             <span class="checkmark"></span>

@@ -58,7 +58,7 @@ $("document").ready(function () {
     }
     if (perpage !== null) {
         $(".list--showing").find("select").val(parseInt(perpage));
-        $(".select--showing").closest(".checkbox_mobi").find("> p").text(perpage) ;
+        $(".select--showing").closest(".checkbox_mobi").find("> p").text(perpage).attr("data-id",perpage); ;
         $(".select--showing").find(`#${perpage}`).find("input").attr("checked",true)
         $(".select--showing").find(`#${perpage}`).find("span").addClass("activeRadio")
     }
@@ -349,7 +349,7 @@ $("document").ready(function () {
     function getParams(sortBy, sortValue, page) {
             let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
-            let date = $("input[name=daterange]:visible").val();
+            let date = $("input[name=daterange]:visible").val() ?? "";
             let brandCompany = $(".list--company--brand")
             .find("> p")
             .attr("data-id");
@@ -384,7 +384,7 @@ $("document").ready(function () {
             let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let search = $(".search").val() ? $(".search").val().trim() : "";
-            let perpage = $(".select--showing:visible").closest(".checkbox_mobi").find("> p").text() ;
+            let perpage = $(".select--showing").closest(".checkbox_mobi").find("> p").attr("data-id") || "";
             let end__Date = "";
             let start__Date = "";
             if (date !== "" && date) {

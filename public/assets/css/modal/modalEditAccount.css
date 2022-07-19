@@ -155,6 +155,11 @@
     margin-left: 0px;
   }
 
+  .role_edit{
+      display: flex;
+      justify-content:space-around;
+  }
+
   /* modal checkbox  */
   .container__checkbox {
     display: block;
@@ -172,7 +177,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: var(--gray-6F);
+    /* color: var(--gray-6F); */
   }
 
   .container__checkbox input {
@@ -249,3 +254,4 @@
 .delete__profile_modal{
     display: none ;
 }
+

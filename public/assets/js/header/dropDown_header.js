@@ -14,7 +14,10 @@ $("document").ready(function(){
        if (!dropdown.is(e.target) && dropdown.has(e.target).length === 0) {
                $(".dropdown-login").hide()
        }else{
-           $(".dropdown-login").slideToggle(200,'linear');
+            let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            if(width > 1113){
+                $(".dropdown-login").slideToggle(200,'linear');
+            }
        }
    });
 
@@ -62,13 +65,13 @@ $(".closeFilter ").click(function(){
         closeNav()
     })
 
-    $(".nav-link").click(function(){
-        closeNav()
-    })
+    // $(".nav-link").click(function(){
+    //     closeNav()
+    // })
 
-    $(".dropdown-item").click(function(){
-        closeNav()
-    })
+    // $(".dropdown-item").click(function(){
+    //     closeNav()
+    // })
 
     $("#edit__profile").click(function(){
         $("#myNav").removeClass("open_menu")

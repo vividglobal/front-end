@@ -15,15 +15,9 @@
     <!-- list Btn  -->
     <div class="list_query">
         <div class="query_left search_admin">
-            <div class="list--search " id="form_search">
-                <img src="{{ asset('assets/image/search.svg') }}" class="btn-search">
-                <input type="text" placeholder="Search" class="search" name="keyword" >
+            <div >
+                @include('pages/components/query', ['list_filter' => ["fillter_mobile","search","apply"], 'show_all_filter' => false])
             </div>
-            @if(count($admins) > 0)
-            <div style="margin-top:20px">
-                @include('pages/components/query', ['list_filter' => ["fillter_mobile"], 'show_all_filter' => false])
-            </div>
-        @endif
         </div>
         <div class="list_query-right">
             <div class="create__profile unvailable_create_profile" >
@@ -64,9 +58,11 @@
 
         </ul>
         @endforeach
-        <div class="no_search_reusult" style="display:none">
+        @if(count($admins) == 0)
+        <div class="no_search_reusult" >
             @include('noSearchResult/index')
         </div>
+        @endif
     </div>
 </div>
 <div class="paginate_showing pagenate_admin">

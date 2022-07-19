@@ -6,14 +6,23 @@
         max-width:100%;
         overflow-y: auto;
         position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .modal--input:last-child{
+        margin-bottom: 10px;
+    }
+
+    .btn-modal button{
+        margin-top: 0px;
     }
 
     .btn-modal{
         display: flex;
-        position: absolute;
-        right: 16px;
-        left: 16px;
-        bottom: 0px;
+        height: max-content;
+        align-items: flex-end;
       }
 
     .title_mobile{
@@ -23,16 +32,15 @@
     .container_modal_edit{
         overflow-y: auto;
         overflow-x: hidden;
-        height: 90%;
     }
 
     .modal_edit_user #modal-account{
         position: fixed;
     }
 
-    .btn-modal button:last-child{
-        margin-bottom: 20px;
-      }
+    .role_edit{
+        display: block;
+    }
 
     .authorization .checkmark:after{
         top: 4px !important;;

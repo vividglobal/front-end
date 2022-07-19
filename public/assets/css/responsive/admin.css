@@ -38,9 +38,9 @@
         display: block !important;
     }
 
-    .search_admin > div:nth-child(2) .open_Nav_filter{
+    .search_admin > div .open_Nav_filter{
         top: inherit;
-        margin-top: 8px;
+        margin-top: -35px;
         z-index: 1;
     }
 
@@ -119,7 +119,7 @@
 
     .btn_edit:after{
         content: url(../../image/edit_user.svg) !important;
-        padding-right: 20px;
+        padding-right: 16px;
     }
 
     .img_admin > li:nth-child(2){
@@ -150,10 +150,6 @@
         content : "Phone number: ";
     }
 
-    .tbody_admin > li:nth-child(4){
-
-    }
-
     .delete__profile_modal{
         font-family: 'Avenir Next';
         font-style: normal;
@@ -163,10 +159,24 @@
         color: #D80027;
         text-decoration: underline;
     }
+
+
 }
 
 @media (max-width: 739px){
     .search_admin .list--search {
         width: 93%;
+    }
+}
+
+@media (max-width : 425px) {
+    .search_admin > div .open_Nav_filter{
+        right: 6px;
+    }
+}
+
+@media (max-width : 340px) {
+    .search_admin > div .open_Nav_filter{
+        right: 11px;
     }
 }

@@ -8,6 +8,7 @@
     background-color: var(--white);
     overflow-x: hidden;
     transition: 0.5s;
+    overflow-y: hidden;
   }
 
   .sideFilter a {
@@ -290,4 +291,5 @@
 .btn-search{
     background-color: var(--white);
     border: none;
+    width: 40px;
 }

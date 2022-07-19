@@ -175,8 +175,7 @@
             </div>
         <div class="border_gray"></div>
         @endif
-        @if(!request()->is('analysis') && isset($articles))
-            @if(count($articles) > 0)
+        @if(!request()->is('analysis') )
             <div class="checkbox_mobi">
                 <div class="checkbox_title">
                     <div>
@@ -185,7 +184,7 @@
                     <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
                 </div>
                 <p></p>
-                <div class="select--showing violation_mobi" id="toggle" style="display:none">
+                <div class="select--showing " id="toggle" style="display:none">
                         <label class="container_checkbox select__one--showing" id=10><p  data-id=10 >10</p>
                             <input type="checkbox"  name="radio" class="input_checkbox">
                             <span class="checkmark_checkbox"></span>
@@ -205,39 +204,6 @@
                 </div>
             </div>
             <div class="border_gray"></div>
-            @endif
-        @endif
-        @if(request()->is('admins'))
-            @if(count($admins) > 0)
-            <div class="checkbox_mobi ">
-                <div class="checkbox_title">
-                    <div>
-                        <span>{{ __("Showing") }}</span>
-                    </div>
-                    <img src="{{asset('assets/image/under_than-black.svg')}}" alt="">
-                </div>
-                <p></p>
-                <div class="select--showing violation_mobi" id="toggle" style="display:none">
-                        <label class="container_checkbox select__one--showing" id=10><p  data-id=10 >10</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
-                        <label class="container_checkbox select__one--showing" id=25><p  data-id=25 >25</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
-                        <label class="container_checkbox select__one--showing" id=50><p  data-id=50 >50</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
-                        <label class="container_checkbox select__one--showing" id=100><p  data-id=100 >100</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
-                </div>
-            </div>
-            <div class="border_gray"></div>
-            @endif
         @endif
     </div>
     <div class="btn_apply_mobi">

@@ -40,7 +40,8 @@ $("document").ready(function(){
         var id = $(this).find("input").attr("data-id").trim()
         var email = $(this).find("input").attr("data-email").trim()
         $(".container_modal_edit").find(".title-modal").find("p").text("Edit your profile")
-        $(".close__modal").addClass(".content_edit1_account")
+        $(".edit_account").addClass("content_edit1_account")
+        $(".edit_account").removeClass("content_edit2_account")
         $(".role_modal").hide()
         checkedAuth = auth;
         ModalEditProfile(name,phone,auth,email,id)
@@ -52,6 +53,9 @@ $("document").ready(function(){
         var auth = $(this).find("input").attr("data-auth").trim()
         var email = $(this).find("input").attr("data-email").trim()
         var id = $(this).find("input").attr("data-id").trim()
+        $(".edit_account").addClass("content_edit2_account")
+        $(".edit_account").removeClass("content_edit1_account")
+
         $(".role_modal").show()
         $(".input_email").show()
         $(".container_modal_edit").find(".title-modal").find("p").text("Edit account information")
