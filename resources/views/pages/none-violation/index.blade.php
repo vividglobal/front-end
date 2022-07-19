@@ -9,7 +9,7 @@
     <!-- list Btn  -->
 </div>
 
-<div class="container-table">
+<div class="container-table" id="div-pc">
     <div class="container_row">
         <div class="col-left ">
             @include('pages.components.table-left')
@@ -68,7 +68,8 @@
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <h3>{{date("m-d-Y",$article->crawl_date)}}</h3>
+                                    <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
+                                    
                                 </div>
                             </div>
                             <div class="track track-non">
@@ -103,6 +104,43 @@
         </div>
     </div>
 
+</div>
+
+
+<div class="container-table container-table-mobile" id="div-moblie">
+    <ul class="container-row-mobile">
+        @foreach ($articles as $key => $article)
+            <li class="lish-body">
+                <a href="/articles/{{$article->_id}}/non-violation" style="text-decoration: none;">
+                    <div class="lish-child">
+                        <div class="media-img">
+                            <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                        </div>
+                        <div class="media-body">
+                            <div class="media-body-top">
+                                @if(isset($article->operator_review['violation_code']))
+                                <?php
+                                    $botStatus = count($article->detection_result['violation_code']) > 0 && isset($article->detection_result['violation_code'])
+                                    ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
+                                ?>
+                                @endif
+                                <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
+                                <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
+                            </div>
+                            <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
+                            <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        @endforeach
+    </ul>
+    <div class="row-pagination">
+    {{ $articles->onEachSide(1)->links('layouts.my-paginate')}}
+    </div>
+    @if(count($articles) == 0)
+    @include('noSearchResult/index')
+    @endif 
 </div>
 
 <div class="modal-confirm-title">

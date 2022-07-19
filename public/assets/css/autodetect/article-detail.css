@@ -102,6 +102,12 @@ flex-direction: column;
     float: left;
     padding: 10px 0px;
 }
+.detail-infoi-left{
+    width: 59%;
+}
+.detail-infoi-right{
+    width: 39%;
+}
 .h4-title{
     font-family: 'Avenir Next';
 font-style: normal;
@@ -131,7 +137,13 @@ color: #000000;
     border: 1px solid #C7C7C7;
     margin-bottom: 10px;
 }
-
+.table-code-operator{
+    border: 1px solid #C7C7C7;
+    margin-bottom: 10px;
+}
+.table-code-border{
+    border:none;
+}
 .table-code-top{
     width: 100%;
     display: flex;
@@ -149,6 +161,9 @@ color: #000000;
     color: #6F6F6F;
 }
 .table-code-buton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 .table-code-aticle{
@@ -203,9 +218,9 @@ color: #000000;
     width: 100%;
 }
 .btn-violation{
-    width: 100%;
+    width: 95%;
     background: #0C3C60;
-    margin-bottom: 10px;
+    margin: 10px;
     font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
@@ -216,7 +231,7 @@ color: #000000;
     padding: 10px;
 }
 .btn-non-violation{
-    width: 100%;
+    width: 95%;
     border: 1px solid #C7C7C7;
     font-family: 'Avenir Next';
     font-style: normal;
@@ -226,6 +241,7 @@ color: #000000;
     text-align: center;
     color: #6F6F6F;
     padding: 10px;
+    margin: 0px 10px 10px 10px;
 
 }
 .modal-title-mobile{
