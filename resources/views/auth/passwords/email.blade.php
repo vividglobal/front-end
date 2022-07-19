@@ -16,8 +16,8 @@
 
                     <p class="title__login">{{ __('E-mail') }}</p>
                     <div class="email--login">
-                        <img src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
-                        <input id="email" type="email" class=" @error('email') is-invalid @enderror"
+                        <img  src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
+                        <input id="email" type="email" class="input-style-focus @error('email') is-invalid @enderror"
                         name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email"
                         oninvalid="this.setCustomValidity('Please enter your email')">
                     </div>

@@ -4,7 +4,7 @@
 @section('content')
 
 
-<div class="container-table container-table-mobile" id="div-moblie">
+<div class="container-table container-table-mobile" id="">
     <div class="container-row-mobile">
         <div class="list-child">
             <div class="lish-top">
@@ -125,7 +125,14 @@
             {{-- ==================================================== --}}
             {{-- ================= SUPERVISOR COLUMN ================ --}}
             {{-- ==================================================== --}}
+            @if(getStatusText($article->supervisor_review['status'])!== 'Reviewing')
             <div class="table-code" id="table-add">
+            @elseif((isRole(ROLE_OPERATOR) && getStatusText($article->supervisor_review['status'])== 'Reviewing') || Auth::user()->role === "ADMIN")
+            <div class="table-code" id="table-add">
+            @else
+            <div class="" id="table-add">
+            @endif
+
                 @if(Auth::user()->role === "ADMIN")
                     <div class="table-code-top" id="violation-code-item">
                         <h2>Supervisor</h2>
@@ -199,7 +206,13 @@
             {{-- ================= OPERATOR COLUMN ================== --}}
             {{-- ==================================================== --}}
             @if(Auth::user()->role === "ADMIN" || isRole(ROLE_OPERATOR))
+            @if(getStatusText($article->operator_review['status'])!== 'Reviewing')
             <div class="table-code" id="table-add-operator">
+            @elseif(Auth::user()->role === "ADMIN")
+            <div class="table-code" id="table-add-operator">
+            @else
+            <div class="" id="table-add-operator">
+            @endif
                 @if(Auth::user()->role === "ADMIN")
                     <div class="table-code-top" id="violation-code-item">
                         <h2>Operator</h2>
@@ -357,10 +370,18 @@
         <div class="head-modal">
             <h1>{{ __('Confirmation') }}</h1>
         </div>
-        <p class="title-modal" style="text-align: center;display: block;">
-            {{ __("When you choose this status, you have to verify violation code.") }}
-
-        </p>
+        @if(isRole(ROLE_SUPERVISOR))
+            <p class="title-modal" style="text-align: center;display: block;">
+                {{ __("Are you sure to define this post's status violation?") }}
+            </p>
+            <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
+                    {{__("* Please re-check the violation code for this post")}}
+            </p>
+        @else
+            <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                {{ __("Are you sure to define this post's status violation?") }}
+            </p>
+        @endif
         <div class="head-confirm-btn">
             <button class="confirm-btn btn-cancel close">Cancel</button>
             <button class="confirm-btn btn-confirm-style btn-confirm-violation" id="confirm-yes">{{ __('Yes') }}</button>
@@ -388,10 +409,7 @@
         @else
             <p class="title-modal title-modal-style" style="text-align: center;display: block;">
                 {{ __("Are you sure to define this post's status violation?")}}
-            </p>
-            <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
-                {{__("* Please re-check the violation code for this post")}}
-            </p>                            
+            </p>                          
         @endif  
 
         <div class="head-confirm-btn">
@@ -405,20 +423,22 @@
 <div class="open-modal-mobile-code">
     <div class="modal-title-mobile-code" id="selectCodeModalMobile">
         <div class="modal-content-mobile-code">
-            <div class="lish-top">
-                <img class="close" src="{{ asset('assets/image/back.png') }}" alt="">
-                <h1 class="lish-title-style">{{ __('Reset code article')}}</h1>
+            <div>
+                <div class="lish-top">
+                    <img class="close" src="{{ asset('assets/image/back.png') }}" alt="">
+                    <h1 class="lish-title-style">{{ __('Reset code article')}}</h1>
+                </div>
+                <div class="search_code_article">
+                    <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
+                    <input type="text" placeholder="Search for violation code" class="search input-style-focus">
+                </div>
             </div>
-            <div class="search_code_article">
-                <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
-                <input type="text" placeholder="Search for violation code" class="search">
-            </div>
-            <div class="row">
+            <div class="row row-style">
                 @foreach($violationCode as $key => $code)
                 <div class="col-md-1 check__box">
                     <div class="checkbox-code">
                         <label class="check_box_code">
-                            <input id="id-function-code" type="checkbox" name="violation_code[]"  value={{ $code->id }}>
+                            <input class="input-style" id="id-function-code" type="checkbox" name="violation_code[]"  value={{ $code->id }}>
                             <span class="checkmark_code"></span>
                             {{ $code->name }}
                         </label>
@@ -426,10 +446,10 @@
                 </div>
                 @endforeach
             </div>
-        </div>
-        <div class="btn-confirm btn-confirm-mobile">
-            <button class="confirm-btn btn-cancel close button-upload-style">Cancel</button>
-            <button class="confirm-btn btn-select-code btn-confirm-style button-upload-style" id="">{{ __('Apply') }}</button>
+            <div class="btn-confirm btn-confirm-mobile">
+                <button class="confirm-btn btn-cancel close button-upload-style">Cancel</button>
+                <button class="confirm-btn btn-select-code btn-confirm-style button-upload-style" id="">{{ __('Apply') }}</button>
+            </div>
         </div>
     </div>
 </div>

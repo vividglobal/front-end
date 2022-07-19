@@ -389,12 +389,18 @@
             <div class="head-modal">
                 <h1>{{ __('Confirmation') }}</h1>
             </div>
+            @if(isRole(ROLE_SUPERVISOR))
                 <p class="title-modal title-modal-style" style="text-align: center;display: block;">
                     {{ __("Are you sure to define this post's status violation?")}}
                 </p>
                 <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
                     {{__("* Please re-check the violation code for this post")}}
                 </p>
+            @else
+                <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                    {{ __("Are you sure to define this post's status violation?")}}
+                </p>
+            @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
                 <button class="confirm-btn btn-confirm-violation btn-confirm-style" id="confirm-yes">{{ __('Confirm') }}</button>
@@ -411,19 +417,16 @@
                 <h1>{{ __('Confirmation') }}</h1>
             </div>
                 @if(isRole(ROLE_SUPERVISOR))
-                    <p class="title-modal title-modal-style" style="text-align: center;display: block;">
-                    {{ __("Are you sure to define this post's status non-violation?")}}
-                    </p>
-                    <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
-                    {{__("* You need to verify the violation code for this post and cannot change your decision in the future")}}
-                    </p>
+                        <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                            {{ __("Are you sure to define this post's status violation?")}}
+                        </p>
+                        <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
+                            {{__("* You need to verify the violation code for this post and cannot change your decision in the future")}}
+                        </p>
                 @else
-                    <p class="title-modal title-modal-style" style="text-align: center;display: block;">
-                        {{ __("Are you sure to define this post's status violation?")}}
-                    </p>
-                    <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
-                        {{__("* Please re-check the violation code for this post")}}
-                    </p>
+                        <p class="title-modal title-modal-style" style="text-align: center;display: block;">
+                            {{ __("Are you sure to define this post's status violation?")}}
+                        </p>
                 @endif
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
@@ -445,7 +448,7 @@
             </div>
             <div class="search_code_article">
                 <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
-                <input type="text" placeholder="Search for violation code" class="search">
+                <input type="text" placeholder="Search for violation code" class="search input-style-focus">
             </div>
             <div class="row" style="overflow-y: auto">
                 @foreach($violationCode as $key => $code)
