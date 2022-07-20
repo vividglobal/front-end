@@ -13,6 +13,7 @@ $("document").ready(function(){
         $(".text_re-password").text("")
         $(".text_auth").text("")
         $(".text-dangers").text("")
+        $(".overlay").css({"width":"0%", "display": "none"})
     }
     let checkedAuth;
 
