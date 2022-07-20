@@ -13,6 +13,10 @@
         </div>
     @if(!request ()-> is ('analysis'))
         <div class="sort_by">
+            <label class="container_checkbox" id="None" > <p data-by="None">None</p>
+                <input type="checkbox" name="radio" class="input_checkbox">
+                <span class="checkmark_checkbox"></span>
+            </label>
             <label class="container_checkbox" id="company_name" > <p data-by="company_name">Company</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
@@ -35,7 +39,7 @@
                 <span class="checkmark_checkbox"></span>
             </label>
             @else
-            <label class="container_checkbox" id="checking_date" > <p data-by="checking_date">Checking date</p>
+            <label class="container_checkbox" id="checking_date" > <p data-by="checking_date">Review date</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
             </label>
@@ -68,6 +72,11 @@
         </div>
         @else
             <div class="sort_based_on_brands">
+                <label class="container_checkbox" > <p data-sort-field="None"
+                    data-table="vio-based-brand" data-name="None">None</p>
+                    <input type="checkbox" name="radio" class="input_checkbox">
+                    <span class="checkmark_checkbox"></span>
+                </label>
                 <label class="container_checkbox" > <p data-sort-field="total_article"
                     data-table="vio-based-brand" data-name="Article">Article</p>
                     <input type="checkbox" name="radio" class="input_checkbox">
@@ -80,6 +89,11 @@
                 </label>
             </div>
             <div class="sort_based_on_code">
+                <label class="container_checkbox" > <p data-sort-field="None"
+                    data-table="vio-based-code" data-name="None">None</p>
+                    <input type="checkbox" name="radio" class="input_checkbox">
+                    <span class="checkmark_checkbox"></span>
+                </label>
                 <label class="container_checkbox" > <p data-sort-field="total_article"
                     data-table="vio-based-code" data-name="Article">Article</p>
                     <input type="checkbox" name="radio" class="input_checkbox">

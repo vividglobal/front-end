@@ -165,3 +165,7 @@ video[poster] {
     margin-bottom: 15px;
     display: none;
   }
+
+  .container__usermanual{
+      margin-bottom: 130px;
+  }

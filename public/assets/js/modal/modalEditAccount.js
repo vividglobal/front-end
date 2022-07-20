@@ -19,12 +19,12 @@ $("document").ready(function(){
         $(`input[name="edit_id_user"]`).removeAttr('data-email')
         $(".edit_re_password").text("")
         $(".edit_password").text("")
-        $("#myFilter").removeClass("open_menu")
         $(".error_number").text("")
         $(".error_name").text("")
         $(".checkbox_mobi").find("#toggle").hide()
         $(".delete__profile_modal").removeClass("open_delete_user")
-        $(".overlay").css({"width":"0%","display":"none"})
+        navigation.hide("#myFilter")
+        overlay.hide()
         $(".input_email").hide()
         scrollScreen.enable()
     }
@@ -73,7 +73,7 @@ $("document").ready(function(){
         $('input[name="edit_number"]').val(phone)
         $('input[name="edit_id_user"]').attr("data-id",id)
         $('input[name="email"]').val(email)
-        $(".overlay").css({"width":"100%","display":"block"})
+        overlay.show()
         $(`#${auth}`).attr('checked', true)
         scrollScreen.disable()
 
@@ -134,7 +134,7 @@ $("document").ready(function(){
 
     $(".cancel_delete_user").on("click",function(){
         $("#modal__delete-account").removeClass("modal__open")
-        $(".overlay").css({"width":"0%","display":"none"})
+        overlay.hide()
         scrollScreen.enable()
 
     })
@@ -285,7 +285,7 @@ $("document").ready(function(){
     $(".delete__profile").on("click",function(){
         parentRow = $(this).parents('.tbody_admin');
         $("#modal__delete-account").addClass("modal__open")
-        $(".overlay").css({"width": "100%", "display": "block"})
+        overlay.show()
         $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("REMOVE ADMIN")
         let id  = $(this).closest("li").find("input").attr("data-id") || $(".edit_id_user").attr("data-id");
         $(".btn__delete--user").closest("form").find("input").attr("data-id",id);
@@ -308,6 +308,7 @@ $("document").ready(function(){
             })
             .done(function( msg ) {
                 resetModal()
+                hide_overlay()
                 if(msg){
                     show_success(msg.message)
                 }

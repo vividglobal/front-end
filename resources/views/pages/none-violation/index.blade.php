@@ -3,7 +3,7 @@
 @section('content')
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Non-violation list') }}</p>
+        <p>{{ __('Unable to detect') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -35,16 +35,16 @@
                         </div>
                         <div class="track track-non">
                             <div class=" heading th-title-right sort_checking_date">
-                                <p>{{ __('Checking date') }}</p>
+                                <p>{{ __('Review date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
-                                        'disabled' => checkSort(request()->all(), 'checking_date', ASC)
+                                        'disabled' => checkSort(request()->all(), 'review_date', ASC)
                                     ])></span>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_down',
-                                        'disabled' => checkSort(request()->all(), 'checking_date', DESC)
+                                        'disabled' => checkSort(request()->all(), 'review_date', DESC)
                                     ])></span>
                             </div>
                         </div>

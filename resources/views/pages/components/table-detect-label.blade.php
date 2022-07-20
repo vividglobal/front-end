@@ -173,7 +173,11 @@
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" >
                                         @if(isset($article->detection_result['violation_types']))
                                         @foreach ($article->detection_result['violation_types'] as $detectionType)
-                                            <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p>
+                                            <a href="{{ getUrlName( "violation_type_id" , $detectionType['id'] ) }}" id={{ $detectionType['id'] }}
+                                            style="color:{{$detectionType['color'] ?? ''}};text-decoration:none">
+                                                {{$detectionType['name'] ?? ''}}
+                                            </a>
+                                            {{-- <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p> --}}
                                         @endforeach
                                         @endif
                                     </div>
@@ -371,7 +375,7 @@
                 </p>
             @else
                 <p class="title-modal title-modal-style" style="text-align: center;display: block;">
-                    {{ __("Are you sure to move this post to the non-violation list?") }}
+                    {{ __("Are you sure to move this post to the Unable to detect ?") }}
                 </p>
             @endif
             <div class="head-confirm-btn">

@@ -13,7 +13,8 @@ $("document").ready(function(){
         $(".text_re-password").text("")
         $(".text_auth").text("")
         $(".text-dangers").text("")
-        $(".overlay").css({"width":"0%", "display": "none"})
+        overlay.hide()
+
     }
     let checkedAuth;
 
@@ -27,7 +28,7 @@ $("document").ready(function(){
     $(".create__profile").on("click",function(){
         $("#create__modal-account").find(".modal__content").find(".container_modal_edit").find(".title-modal").find("p").text("Add admins")
         $("#create__modal-account").addClass("modal__open")
-        $(".overlay").css({"width":"100%", "display": "block"})
+        overlay.show()
         scrollScreen.disable()
     })
 

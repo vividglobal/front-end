@@ -115,3 +115,5 @@ select{
 .show{
     display: block !important;
 }
+
+input { -webkit-user-select:text;}

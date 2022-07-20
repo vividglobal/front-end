@@ -25,34 +25,36 @@ $("document").ready(function(){
     var documentElement = document.querySelector('.overlay');
 
     $(".open_Nav").click(function(){
-        $("#myNav").addClass("open_menu")
-        $("#myFilter").removeClass("open_menu")
-        $(".overlay").css({"width":"100%","display":"block"})
+        navigation.show("#myNav")
+        navigation.hide("#myFilter")
+        overlay.show()
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
+        $(".overlay_header").css("left","0")
         scrollScreen.disable()
     })
 
     function closeNav() {
-        $("#myNav").removeClass("open_menu")
-        $("#myFilter").removeClass("open_menu")
-        $(".overlay").css({"width":"0%","display":"none"})
+        navigation.hide("#myNav")
+        navigation.hide("#myFilter")
+        overlay.hide()
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than.svg")
+        $(".overlay_header").css("left","-100%")
         scrollScreen.enable()
     }
 
 //    ---------NAV FILTER---------
 $(".open_Nav_filter ").click(function(){
-    $("#myFilter").addClass("open_menu")
-    $("#myNav").removeClass("open_menu")
-    $(".overlay").css({"width":"100%","display":"block"})
+    navigation.hide("#myNav")
+    navigation.show("#myFilter")
+    overlay.show()
     scrollScreen.disable()
 })
 
 $(".closeFilter ").click(function(){
-    $("#myFilter").removeClass("open_menu")
-    $(".overlay").css({"width":"0%","display":"none"})
+    navigation.hide("#myFilter")
+    overlay.hide()
     $(".checkbox_mobi").find("#toggle").hide()
     scrollScreen.enable()
 })
@@ -74,8 +76,7 @@ $(".closeFilter ").click(function(){
     // })
 
     $("#edit__profile").click(function(){
-        $("#myNav").removeClass("open_menu")
-
+        navigation.hide("#myNav")
     })
 
 })

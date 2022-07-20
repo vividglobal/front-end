@@ -2,7 +2,7 @@
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 @stack('styles')
 
-@if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
+{{-- @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation'))) --}}
 <div class="nav_container
  {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
  {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
@@ -13,6 +13,10 @@
             <div class="rows nav-menu" >
                 <div class="no-padding {{Auth::user()!== null ? " had_login"  : " no_login"}}" >
                     <ul class="rows no-gutters l-o-2 btn__header center-header">
+                        <li class="nav--btn__after--login name_user" >
+                            <p class="" >{{ __(Auth::user()->role) }}</p>
+                            <p class="" >{{ __(Auth::user()->full_name) }}</p>
+                        </li>
                         <li class="nav--btn__after--login " >
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                             <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
@@ -25,7 +29,7 @@
                         </li>
                         <li class="nav--btn__after--login">
                             <div class="name_trace--violation">
-                                {{ __('Trace Violations') }}
+                                {{ __('Violation reviewed') }}
                             </div>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/violation')) || request () -> is ("articles/non-violation") ? 'activeHeader': ''}}"
@@ -35,7 +39,7 @@
                                 <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item"href="/articles/violation">
-                                            {{ __('Code violation list') }}
+                                            {{ __('Code violations') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/violation')) ? 'activeHeader': ''}}"
@@ -46,7 +50,7 @@
                                 <li class="{{(request () -> is ('articles/non-violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item" href="/articles/non-violation">
-                                            {{ __('Non-violation list') }}
+                                            {{ __('Unable to detect') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/non-violation')) ? 'activeHeader': ''}}"
@@ -128,7 +132,9 @@
         @include('modal/editAccount')
     </div>
     <div class="overlay overlay_nav" ></div>
+    @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
     <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
+    @endif
 </div>
-@endif
+{{-- @endif --}}
 

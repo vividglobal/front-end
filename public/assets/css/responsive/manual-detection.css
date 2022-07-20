@@ -26,8 +26,12 @@
     }
 
     .btn__check{
-        margin-left: 16px;
+        max-width: 100%;
+        width: 100%;
+        position: relative;
+        padding: 0 16px;
     }
+
 
     .fix_manual > form .btn__check{
         max-width: 100% !important;
@@ -96,5 +100,8 @@
 @media (max-width: 739px) {
     .fix_manual .list--select--option .list--select__left .list--search {
         width: 100%;
+    }
+    .search__result__table p{
+        font-size: 30px;
     }
 }

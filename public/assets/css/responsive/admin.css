@@ -171,11 +171,20 @@
     .search_admins{
         width: 90%;
     }
+
+    .pagenate_admin {
+        margin-right: 0px !important;
+        display: block;
+    }
+
 }
 
 @media (max-width: 739px){
     .search_admin .list--search {
         width: 93%;
+    }
+    #modal__delete-account .modal__content{
+        margin: 0 20px;
     }
 }
 

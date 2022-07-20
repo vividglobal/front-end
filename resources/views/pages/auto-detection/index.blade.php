@@ -4,7 +4,7 @@
 <div class="row-a">
     <div class="list--search--select" >
         <div class="list--title">
-            <p>Auto-dectect violations</p>
+            <p>Auto-detect violations</p>
         </div>
         <!-- list Btn  -->
         @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])

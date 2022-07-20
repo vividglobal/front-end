@@ -92,6 +92,10 @@ $(document).ready(function(){
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find("> p").text(`${getSort}: ${value}`)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find("> p").attr("data-by",sortValue)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find("> p").attr("data-name",value)
+        if(value == "None"){
+            $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find("> p").text(`${getSort}`)
+        }
+
     })
 
     $(".sort_based_on_brands").find(".container_checkbox").change(function() {
@@ -108,6 +112,9 @@ $(document).ready(function(){
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-by",sortValue)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-name",name)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").attr("data-table",table)
+        if(value == "None"){
+            $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_brand").text(`${getSort}`)
+        }
     })
 
     $(".sort_based_on_code").find(".container_checkbox").change(function() {
@@ -124,6 +131,10 @@ $(document).ready(function(){
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-by",sortValue)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-name",name)
         $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").attr("data-table",table)
+        if(value == "None"){
+            $(this).closest(".checkbox_list_sort").closest(".checkbox_mobi").find(".text_code").text(`${getSort}`)
+
+        }
     })
 
 

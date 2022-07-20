@@ -197,15 +197,19 @@
     font-weight: 420;
     font-size: 18px;
     line-height: 29px;
-    color: #0C3C60;
-    width: 80px;
+    color: var(--primary);
+    width: 70%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     position: absolute;
-    margin-right: 25px;
+    margin-right: 30px;
     cursor: pointer;
-    text-align: right;
+    text-align: left;
+}
+
+.name_user{
+    display: none;
 }
 
 .after-login:after{
@@ -213,6 +217,26 @@
     width: 100%;
     text-align: right;
     cursor: pointer;
+    margin-right: 10px;
+}
+
+
+.image_user{
+    width: 40px;
+    height: 40px;
+    background: #E7ECED;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 105px;
+    font-family: 'Brandon Grotesque';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 20px;
+    line-height: 29px;
+    color: #0C3C60;
 }
 
 @media (min-width: 1440px){

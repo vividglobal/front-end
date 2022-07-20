@@ -46,7 +46,7 @@ $(document).ready(function(){
         "apply.daterangepicker",
         function (ev, picker) {
             let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-            let value = picker.startDate.format("DD/MM/YYYY") + " - " + picker.endDate.format("DD/MM/YYYY")
+            let value = picker.startDate.format("MM/DD/YYYY") + " - " + picker.endDate.format("MM/DD/YYYY")
             $(this).val(value);
             if(width <= 500){
                 checkDate(value)
@@ -72,9 +72,11 @@ $(document).ready(function(){
         let startDate = "";
         let endDate = "";
         if(dateRange) {
-            let arr = dateRange.split('-');
-            startDate = arr[0].trim().replace(/[/]/g,"-");
-            endDate = arr[1].trim().replace(/[/]/g,"-");
+            let arr = date.split("-");
+            let startDatePicker = arr[0].split("/")
+            let endDatePicker = arr[1].split("/")
+            startDate = `${startDatePicker[1].trim()}-${startDatePicker[0].trim()}-${startDatePicker[2].trim()}`
+            endDate = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             generalStrParams = brandStrParams = codeStrParams = `?1=1&start_date=${startDate}&end_date=${endDate}`;
         }else{
             generalStrParams = brandStrParams = codeStrParams = '?1=1'
@@ -215,11 +217,13 @@ $(document).ready(function(){
         let newParams = [];
         if(getTable === 'vio-based-brand') {
                 newParams = removeParamFromList(brandStrParams.split('&'),"sort_value");
+            if(sortField !== "None") {
                 newParams.push(`sort_by=${sortField}`);
-            if(sortValue == "A to Z" || sortValue == "ASC"){
-                newParams.push(`sort_value=ASC`);
-            }else if(sortValue == "Z to A" || sortValue == "DESC"){
-                newParams.push(`sort_value=DESC`);
+                if(sortValue == "A to Z" || sortValue == "ASC"){
+                    newParams.push(`sort_value=ASC`);
+                }else if(sortValue == "Z to A" || sortValue == "DESC"){
+                    newParams.push(`sort_value=DESC`);
+                }
             }
                 brandStrParams = newParams.join('&');
                 if(device !== "mobi"){
@@ -227,11 +231,13 @@ $(document).ready(function(){
                 }
         }else if(getTable === 'vio-based-code') {
                 newParams = removeParamFromList(codeStrParams.split('&'),"sort_value")
+            if(sortField !== "None"){
                 newParams.push(`sort_by=${sortField}`);
-            if(sortValue == "A to Z" || sortValue == "ASC"){
-                newParams.push(`sort_value=ASC`);
-            }else if(sortValue == "Z to A" || sortValue == "DESC"){
-                newParams.push(`sort_value=DESC`);
+                if(sortValue == "A to Z" || sortValue == "ASC"){
+                    newParams.push(`sort_value=ASC`);
+                }else if(sortValue == "Z to A" || sortValue == "DESC"){
+                    newParams.push(`sort_value=DESC`);
+                }
             }
                 codeStrParams = newParams.join('&');
                 if(device !== "mobi"){
@@ -301,8 +307,8 @@ $(document).ready(function(){
     })
 
     function resetFiter(){
-        $("#myFilter").removeClass("open_menu")
-        $(".overlay").css({"width":"0%","display":"none"})
+        navigation.hide("#myFilter")
+        overlay.hide()
         $(".checkbox_mobi").find("#toggle").hide()
         scrollScreen.enable()
     }

@@ -138,6 +138,10 @@
         margin-bottom: 0px;
     }
 
+    .content-modal p{
+        margin-bottom: 10px;
+    }
+
 }
 .btn-modal_delete{
     position: initial;

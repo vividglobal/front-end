@@ -107,7 +107,7 @@
   }
 
   .title__result{
-    border: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
     width: 100%;
     margin-bottom: 30px;
   }

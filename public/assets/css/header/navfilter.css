@@ -81,7 +81,8 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     height: 20px;
   }
 
@@ -119,7 +120,7 @@
     }
 
   .border_gray{
-    border: 1px solid var(--gray-C7);
+    border-bottom: 1px solid var(--gray-C7);
     width: 100%;
     margin-bottom: 15px;
   }
@@ -131,7 +132,7 @@
   }
 
   .checkbox_mobi .select--company-or-brand .search--input{
-    margin: 20px 0px 15px 0px;
+    margin: 0px 0px 15px 0px;
   }
 
   .checkbox_mobi .select--company-or-brand .search--input img{
@@ -163,7 +164,7 @@
     }
 
     .checkbox_mobi .select--country .search--input--country{
-        margin: 20px 0px 15px 0px;
+        margin: 0px 0px 15px 0px;
     }
 
     .checkbox_mobi .select--country .search--input--country img{
