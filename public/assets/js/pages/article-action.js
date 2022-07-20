@@ -11,6 +11,11 @@ $(document).ready(function(){
     let isLoading = false;
     let botStatus;
 
+    // let perfEntries = performance.getEntriesByType("navigation");
+    // if (perfEntries[0].type === "back_forward") {
+    //     location.reload(true);
+    // }
+
     $(document).on('click', '.check-status', function() {
         scrollScreen.disable()
         currentRow = $(this).parents('.scroll-table');
@@ -66,7 +71,7 @@ $(document).ready(function(){
                 hide_overlay();
             }
         }
-        hide_overlay();
+        // hide_overlay();
     });
 
     $('.open-modal').on('click', '.close', function() {
@@ -133,6 +138,7 @@ $(document).ready(function(){
         isLoading = false;
         hide_overlay();
         closeCodeModal()
+        console.log(response);
         if(response.success) {
                 addOverlayScroll();
                 updateDetectionColumnAfterSelectViolationCode(response.data);
@@ -193,7 +199,7 @@ $(document).ready(function(){
         }else if(CURRENT_ROLE === OPERATOR_ROLE) {
             removeCurrentRow();
         }
-        hide_overlay();
+        // hide_overlay();
     }
 
     function removeCurrentRow() {

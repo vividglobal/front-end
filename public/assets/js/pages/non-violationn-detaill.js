@@ -21,6 +21,8 @@ btnSwitch.click(function () {
     modalconfim.show();
     currentRow = $(this).parents('.scroll-table');
     articleId = currentRow.attr('data-id');
+    articleId = $('.btn-switch-mobile').attr('data-id');
+
 });
 
 span.click(function () {
@@ -48,7 +50,7 @@ $("#confirm-mobile").click(function(){
             show_success("This post has been moved to auto - detect violation list");
             $('#toaster').addClass('toaster-style-mobile')
             setTimeout(() => {
-                window.location.href = '/articles/non-violation'
+                window.location.replace(window.location.pathname.replace(articleId + "/non-violation", "non-violation"));
             });
         }
     })

@@ -24,7 +24,7 @@ btnSwitch.click(function () {
     $('#confirm-mobile').attr('data-id',id)
     modalconfim.show();
     currentRow = $(this).parents('.scroll-table');
-    articleId = currentRow.attr('data-id');
+    articleId = $('.btn-switch-mobile').attr('data-id');
 });
 
 $("#confirm-mobile").click(function(){
@@ -44,7 +44,7 @@ $("#confirm-mobile").click(function(){
             show_success("This post has been successfully moved to auto-dectect violation.");
             $('#toaster').addClass('toaster-style-mobile')
             setTimeout(() => {
-                window.location.href = '/articles/violation'
+                window.location.replace(window.location.pathname.replace(articleId + "/violation", "violation"));
             });
         }
     })
@@ -165,6 +165,9 @@ $(document).on('change', '.file-input', async function(){
                 $('#toaster').addClass('toaster-style-mobile')
                 return false;
             }
+        }
+        show_overlay()
+        for(let i = 0; i < files.length; i++){
             $('.no-file-remove').remove();
             form.append("document", files[i]);
             form.append("article_id", rowId);
@@ -181,7 +184,6 @@ $(document).on('change', '.file-input', async function(){
                 "contentType": false,
                 "data": form
             };
-            show_overlay()
             $.ajax(settings)
                 .done(function(res) {
                     let response = JSON.parse(res)

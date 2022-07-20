@@ -266,7 +266,7 @@
             <div class="head-modal">
                 <h1 >Legal documents</h1>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-body-file">
                 <div class="row" id="box_list_file">
                 @if(isRole(ROLE_OPERATOR))
                 <div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file btn-uploadfile">

@@ -89,6 +89,9 @@ $(document).ready(function () {
                     show_error("You have uploaded files that are not in the correct PDF format")
                     return false;
                 }
+            }
+            show_overlay()
+            for(let i = 0; i < files.length; i++){
                 $('.no-file-remove').remove();
                 form.append("document", files[i]);
                 form.append("article_id", rowId);
@@ -105,7 +108,6 @@ $(document).ready(function () {
                     "contentType": false,
                     "data": form
                 };
-                show_overlay()
                 $.ajax(settings)
                 .done(function(res) {
                     let response = JSON.parse(res)
@@ -146,7 +148,6 @@ $(document).ready(function () {
                 })
 
             }
-            // hide_overlay()
             $('#upload').val('');
         }
     })

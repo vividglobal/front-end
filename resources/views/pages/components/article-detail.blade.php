@@ -1,8 +1,6 @@
-
 @extends('layouts.app')
 
 @section('content')
-
 
 <div class="container-table container-table-mobile" id="">
     <div class="container-row-mobile">
@@ -67,7 +65,7 @@
             <p class="detail-content">
                 {{$article -> caption}}
             </p>
-            <h3 class="title-style">Violation checking</h3>
+            <h3 class="title-style title-style-checking">Violation checking</h3>
 
             {{-- ======================================== --}}
             {{-- ================= VIVID ================ --}}
@@ -455,7 +453,6 @@
 </div>
 
 
-
 <script>
     let STATUS_VIOLATION = '{{ STATUS_VIOLATION }}';
     let STATUS_NONE_VIOLATION = '{{ STATUS_NONE_VIOLATION }}';
@@ -468,5 +465,8 @@
     let SUPERVISOR_ROLE = "{{ ROLE_SUPERVISOR }}";
     let OPERATOR_ROLE = "{{ ROLE_OPERATOR }}";
 </script>
+@push('styles')
+    <link href="{{ asset('assets/css/autodetect/article-detail-desktop.css') }}" rel="stylesheet">
+@endpush
 <script src="{{ asset('assets/js/pages/article-detail.js')}}"></script>
 @endsection
