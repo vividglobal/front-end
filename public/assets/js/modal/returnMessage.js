@@ -4,7 +4,7 @@ const ReturnMessage  = {
         show_success(message)
         setTimeout(() => {
             window.location.href = window.location.href
-        },1000)
+        },500)
     },
     error: (message)=>{
         show_error(message)
