@@ -13,6 +13,7 @@ $("document").ready(function(){
         $(".text_re-password").text("")
         $(".text_auth").text("")
         $(".text-dangers").text("")
+        $(".overlay").css({"width":"0%", "display": "none"})
     }
     let checkedAuth;
 
@@ -133,8 +134,10 @@ $("document").ready(function(){
                 }
             })
             .done(function( msg ) {
-                ReturnMessage.success(msg.message)
                 resetModal()
+                if(msg){
+                    ReturnMessage.success(msg.message)
+                }
             })
             .fail(function( error ) {
                 if(error){

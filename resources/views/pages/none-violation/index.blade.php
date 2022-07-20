@@ -69,7 +69,6 @@
                             <div class="track track-non">
                                 <div class="entry">
                                     <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
-                                    
                                 </div>
                             </div>
                             <div class="track track-non">
@@ -140,7 +139,7 @@
     </div>
     @if(count($articles) == 0)
     @include('noSearchResult/index')
-    @endif 
+    @endif
 </div>
 
 <div class="modal-confirm-title">

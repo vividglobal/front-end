@@ -79,3 +79,10 @@
     }
 }
 
+@media (max-height: 500px){
+    .block__login {
+        height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

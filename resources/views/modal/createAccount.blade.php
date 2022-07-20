@@ -6,6 +6,7 @@
             <div class="title-modal title_mobile">
                 <p>{{ __('Edit account information') }}</p>
             </div>
+            <div class="form_create">
                 <div class="modal--input">
                     <p>{{ __('Full name') }}</p>
                     <div class="input--modal">
@@ -64,6 +65,7 @@
                     </div>
                     <p class="text-dangers text_auth"></p>
                 </div>
+            </div>
             </div>
             <div class="btn-modal">
                 <button class="btn__cancel-button cancel_create-account btn_cancel_mobi">{{ __('Cancel') }}</button>

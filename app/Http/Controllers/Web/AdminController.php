@@ -65,7 +65,7 @@ class AdminController extends Controller
         }
 
         $admin->update($validated);
-        return $this->responseSuccess([], "Successfully updated");
+        return $this->responseSuccess([], "Profile updated successfully");
     }
 
     public function changePassword(ChangePasswordRequest $request ,$id)
@@ -85,7 +85,7 @@ class AdminController extends Controller
         $validated['password'] =  $newPassword;
         $admin->update($validated);
 
-        return $this->responseSuccess([], "Successfully updated");
+        return $this->responseSuccess([], "Profile updated successfully");
     }
 
     public function delete($id)

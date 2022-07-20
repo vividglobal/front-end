@@ -21,9 +21,10 @@
 
     .btn-modal{
         display: flex;
-        height: max-content;
         align-items: flex-end;
-      }
+        width: 100%;
+        z-index: 105;
+    }
 
     .title_mobile{
         display: none;
@@ -151,4 +152,20 @@
 
 .btn-modal_delete form .btn__delete--user {
     width: 100%;
+}
+
+@media (max-height: 740px){
+    .form_create{
+        height: 65vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 1113px){
+    .form_create{
+        height: inherit;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
 }
