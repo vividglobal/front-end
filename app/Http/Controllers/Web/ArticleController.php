@@ -116,6 +116,7 @@ class ArticleController extends Controller
         }
 
         $exportData = [];
+
         foreach ($articles as $key => $article) {
             $botStatus = $article->detection_result['status'] ?? count($article->detection_result['violation_code']) > 0 ? Article::STATUS_VIOLATION : Article::STATUS_NONE_VIOLATION ;
             $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
@@ -170,7 +171,7 @@ class ArticleController extends Controller
 
     public function exportViolationArticles($fileName, $articles) {
         $titles = [
-            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date',
+            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date',
             'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type', 'Status Progress'
         ];
         $exportData = [];
@@ -179,14 +180,14 @@ class ArticleController extends Controller
             $legalDocuments = ''; // From documents collection _id = article_id
             if($article->has_document) {
                 $legalDocuments = [];
-                $penaltyIssued = $article->penalty_issued;
+                $penaltyIssued = $article->penalty_issued ? date('Y-m-d', $article->penalty_issued/1000) : '';;
                 foreach ($article->documents as $document) {
                     $legalDocuments[] = $document->url;
                 }
                 $legalDocuments = implode('', $legalDocuments);
             }
             $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
-            $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
+            $checkingDate = $article->operator_review['review_date'] ? date('Y-m-d', $article->operator_review['review_date']) : '';
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
@@ -195,7 +196,7 @@ class ArticleController extends Controller
                 $article->caption,
                 $article->image,
                 $publishedDate,
-                $crawlDate,
+                $checkingDate,
                 $penaltyIssued,
                 $article->link,
                 $legalDocuments,
@@ -220,7 +221,7 @@ class ArticleController extends Controller
         $exportData = [];
         foreach ($articles as $key => $article) {
             $publishedDate = $article->published_date ? date('Y-m-d', $article->published_date) : '';
-            $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
+            $checkingDate = $article->operator_review['review_date'] ? date('Y-m-d', $article->operator_review['review_date']) : '';
             $row = [
                 $key+1,
                 $article->company['name'] ?? '',
@@ -229,7 +230,7 @@ class ArticleController extends Controller
                 $article->caption,
                 $article->image,
                 $publishedDate,
-                $crawlDate,
+                $checkingDate,
                 $article->link,
             ];
 
@@ -265,7 +266,7 @@ class ArticleController extends Controller
         $article->progress_status = $inputs['progress_status'];
         $result = $article->update();
         if($result){
-            return $this->responseSuccess([], "Change status progress successfully");
+            return $this->responseSuccess([], "Successful state transition");
         }
         return $this->responseFail([], "Change status progress failed");
     }
@@ -431,7 +432,7 @@ class ArticleController extends Controller
     public function getOneViolation($id){
         $article = Article::findOrFail($id);
         $violationCode = ViolationCode::all();
-        return view('pages/components/violation-detail', compact('article','violationCode')); 
+        return view('pages/components/violation-detail', compact('article','violationCode'));
     }
 
     public function getOneNonViolation($id){

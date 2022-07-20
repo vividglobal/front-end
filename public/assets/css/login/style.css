@@ -1,5 +1,6 @@
 .form__login{
     margin: auto ;
+    overflow-y: hidden ;
 }
 
 .bg__login{

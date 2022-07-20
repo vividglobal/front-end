@@ -15,7 +15,7 @@
     <!-- list Btn  -->
     <div class="list_query">
         <div class="query_left search_admin">
-            <div >
+            <div class="search_admins">
                 @include('pages/components/query', ['list_filter' => ["fillter_mobile","search","apply"], 'show_all_filter' => false])
             </div>
         </div>

@@ -262,7 +262,10 @@ $("document").ready(function(){
             data: data
             })
             .done(function( msg ) {
-                ReturnMessage.success(msg.message);
+                resetModal()
+                if(msg){
+                    ReturnMessage.success(msg.message);
+                }
             })
             .fail(function(error) {
                 let msg = error.responseJSON.message
@@ -304,9 +307,10 @@ $("document").ready(function(){
             },
             })
             .done(function( msg ) {
-                show_success(msg.message)
-                hide_overlay()
                 resetModal()
+                if(msg){
+                    show_success(msg.message)
+                }
                 if($(".tbody_admin").length == 1){
                     const queryString = window.location.search;
                     const urlParams = new URLSearchParams(queryString);

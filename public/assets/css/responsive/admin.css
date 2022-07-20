@@ -81,7 +81,9 @@
 
     .tbody_admin > li{
         padding: 5px 0 !important;
-        width: 100% !important;
+        width: 80% !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
     }
 
     .tbody_admin li:nth-child(5){
@@ -100,6 +102,7 @@
 
     .tbody_admin > li:nth-child(2){
         padding-top: 50px !important;
+        color: var(--primary);
     }
 
     .style_ADMIN{
@@ -144,10 +147,12 @@
 
     .tbody_admin > li:nth-child(3):before{
         content : "Email: ";
+        color : var(--gray-6F);
     }
 
     .tbody_admin > li:nth-child(4):before{
         content : "Phone number: ";
+        color : var(--gray-6F);
     }
 
     .delete__profile_modal{
@@ -160,7 +165,9 @@
         text-decoration: underline;
     }
 
-
+    .search_admins{
+        width: 90%;
+    }
 }
 
 @media (max-width: 739px){
@@ -172,6 +179,9 @@
 @media (max-width : 425px) {
     .search_admin > div .open_Nav_filter{
         right: 6px;
+    }
+    .search_admins{
+        width: 80%;
     }
 }
 
