@@ -78,7 +78,7 @@ class CompanyBrand extends Model
 
         // Lookup : total violation articles
         $violationArticleMatch = $matchConditions;
-        $violationArticleMatch[] = [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ];
+        $violationArticleMatch[] = [ '$gt'=> [ ['$size' => '$detection_result.violation_code'],  0 ] ];
 
         if(isset($params['country_id'])) {
             $violationArticleMatch[] = [ '$eq'=> [ '$country.id', $params['country_id'] ] ];
