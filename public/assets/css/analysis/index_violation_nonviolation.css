@@ -8,6 +8,7 @@
 .index__violation{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .title-violation{
@@ -16,6 +17,7 @@
     font-size: 16px;
     line-height: 136.5%;
     color: var(--gray-6F);
+    height: 30px;
 }
 
 .title_table_analysis{
@@ -39,7 +41,14 @@
     color: var(--danger);
     padding: 3px 5px;
     background-color: var(--pink);
+    display: inline-block;
+    border-radius: 5px;
+}
 
+.total-violation{
+    color: var(--white);
+    padding: 3px 5px;
+    background-color: var(--primary);
     display: inline-block;
     border-radius: 5px;
 }
