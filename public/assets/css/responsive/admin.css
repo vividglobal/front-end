@@ -160,7 +160,9 @@
         text-decoration: underline;
     }
 
-
+    .search__result__table p {
+        font-size: 34px;
+    }
 }
 
 @media (max-width: 739px){

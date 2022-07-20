@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container-table container-table-mobile" id="div-moblie">
+<div class="container-table container-table-mobile" id="">
     <div class="container-row-mobile">
         <div class="list-child">
             <div class="lish-top">
@@ -59,7 +59,7 @@
             <p class="detail-content">
                 {{$article -> caption}}
             </p>
-            <h3 class="title-style">Violation checking</h3>
+            <h3 class="title-style title-style-checking">Violation checking</h3>
             <div class="table-code">
             @if(($article->operator_review['violation_code']))
                 <div class="table-code-aticle">
@@ -187,7 +187,9 @@
 
 
 
-
+@push('styles')
+    <link href="{{ asset('assets/css/autodetect/article-detail-desktop.css') }}" rel="stylesheet">
+@endpush
 <!-- <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script> -->
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>

@@ -59,7 +59,7 @@
                 {{$article -> caption}}
             </p>
             @if(isRole(ROLE_OPERATOR))
-            <h3 class="title-style">Violation checking</h3>
+            <h3 class="title-style title-style-checking">Violation checking</h3>
             @endif
         </div>
         @if(isRole(ROLE_OPERATOR))
@@ -86,7 +86,9 @@
     </div>
 </div>
 
-
+@push('styles')
+    <link href="{{ asset('assets/css/autodetect/article-detail-desktop.css') }}" rel="stylesheet">
+@endpush
 <!-- <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script> -->
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>

@@ -10,6 +10,14 @@ $(document).ready(function(){
     let openselectcode = $('.open-modal-mobile-code')
     let actionStep;
     let lowercaseRole = CURRENT_ROLE.toLowerCase();
+    let checkreviewcode = $('.check-review-code').attr('check-id')
+
+
+    // let perfEntries = performance.getEntriesByType("navigation");
+    // if (perfEntries[0].type === "back_forward") {
+    //     window.location.href = '/articles/auto-detection'
+    // }
+
     span.click(function () {
         confirmModal.hide();
         confirmModalVio.hide();
@@ -109,7 +117,8 @@ $(document).ready(function(){
                     `
                     $('#table-add').prepend(fileHtmlItems);
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
-            window.location.href = '/articles/auto-detection'
+                hide_overlay();
+                window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
             }
         }else {
             show_error('Evaluation failed!');
@@ -146,8 +155,9 @@ $(document).ready(function(){
             closeCodeModal();
             show_success(response.message);
             }else if(CURRENT_ROLE === OPERATOR_ROLE){
+                hide_overlay();
                 setTimeout(() => {
-                    window.location.href = '/articles/auto-detection'
+                    window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
                 }, 3000);
             }
         }else {
@@ -199,7 +209,8 @@ $(document).ready(function(){
             `
             $('#table-add').prepend(fileHtmlItems);
         }if(CURRENT_ROLE === OPERATOR_ROLE) {
-        window.location.href = '/articles/auto-detection'
+            hide_overlay();
+            window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
         }
         $('#table-code-buton-all').remove()
     }

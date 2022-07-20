@@ -1,5 +1,6 @@
 <script src="{{ asset('assets/js/header/dropDown_header.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
+@stack('styles')
 
 @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
 <div class="nav_container
