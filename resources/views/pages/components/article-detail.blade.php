@@ -354,7 +354,7 @@
             <h1>{{ __('Confirmation') }}</h1>
         </div>
         @if(isRole(ROLE_SUPERVISOR))
-            <p class="title-modal" style="text-align: center;display: block;">
+            <p class="title-modal title-modal-style" style="text-align: center;display: block;">
                 {{ __("Are you sure to define this post's status violation?") }}
             </p>
             <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
@@ -402,7 +402,6 @@
     </div>
 </div>
 
-
 <div class="open-modal-mobile-code">
     <div class="modal-title-mobile-code" id="selectCodeModalMobile">
         <div class="modal-content-mobile-code">
@@ -416,6 +415,7 @@
                     <input type="text" placeholder="Search for violation code" class="search input-style-focus">
                 </div>
             </div>
+
             <div class="row row-style">
                 @foreach($violationCode as $key => $code)
                 <div class="col-md-1 check__box">
@@ -429,6 +429,7 @@
                 </div>
                 @endforeach
             </div>
+
             <div class="btn-confirm btn-confirm-mobile">
                 <button class="confirm-btn btn-cancel close button-upload-style button-cancel-style">Cancel</button>
                 <button class="confirm-btn btn-select-code btn-confirm-style button-upload-style" id="">{{ __('Apply') }}</button>

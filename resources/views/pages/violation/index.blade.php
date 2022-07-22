@@ -4,7 +4,7 @@
 
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Code violations correct') }}</p>
+        <p>{{ __('Code violations') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -70,7 +70,7 @@
                         </div>
                         <div class="track track-violiton">
                             <div class=" heading th-title-right sort_checking_date">
-                                <p>{{ __('Review date correct') }}</p>
+                                <p>{{ __('Review date') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',

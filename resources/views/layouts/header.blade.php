@@ -41,7 +41,7 @@
                                 <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item"href="/articles/violation">
-                                            {{ __('Code violations correct') }}
+                                            {{ __('Code violations') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/violation')) ? 'activeHeader': ''}}"
@@ -52,7 +52,7 @@
                                 <li class="{{(request () -> is ('articles/non-violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item" href="/articles/non-violation">
-                                            {{ __('Unable to detect correct') }}
+                                            {{ __('Unable to detect') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/non-violation')) ? 'activeHeader': ''}}"
@@ -63,7 +63,7 @@
                             </ul>
                         </li>
                         <li  class="nav--btn__after--login">
-                            <a class="nav-link" href="/articles/manual-detection">{{ __('Submit violations correct') }}</a>
+                            <a class="nav-link" href="/articles/manual-detection">{{ __('Submit violations') }}</a>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/manual-detection')) ? 'activeHeader': ''}}"
                             >

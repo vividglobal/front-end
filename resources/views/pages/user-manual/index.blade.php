@@ -29,7 +29,7 @@
             </button>
             </a>
             <div class="add" id="cl1">
-                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Submit violations correct upon requests' page in the menu bar")}}.</p>
+                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Submit violations upon requests' page in the menu bar")}}.</p>
                 <p><span> {{__("Step 2 ")}}:</span>  {{__(" Enter your content with text or upload photos to your computer")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}}.</p>
@@ -43,10 +43,10 @@
             </button>
             </a>
             <div class="add" id="cl2">
-                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Submit violations correct upon requests' page in the menu bar")}}.</p>
+                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the 'Submit violations upon requests' page in the menu bar")}}.</p>
                 <p><span>{{__("Step 2 ")}}:</span>  {{__(" Enter your content by pasting the link of the website or the images, articles on the Fanpage on")}}
                 <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this ")}} </a>
-                 {{__("list")}}.</p>
+                {{__("list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-4.png') }}" loading="lazy">
                 <p><span>{{__("Step 3")}}: </span>  {{__(" Click the 'Check' button to check your content for violations")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
@@ -317,7 +317,7 @@
         </div>
         <a data-id="#sl10"><button class="accordion"> {{__("Data export instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl10">
-            <p><span> {{__("Step 1")}}:</span>  {{__(" Go to the page to export data (Auto-detect violations, Violation List, Unable to detect List, Submit violations correct upon requests)")}}.</p>
+            <p><span> {{__("Step 1")}}:</span>  {{__(" Go to the page to export data (Auto-detect violations, Violation List, Unable to detect List, Submit violations upon requests)")}}.</p>
             <p><span> {{__("Step 2")}}:</span>  {{__(" Click the “Export excel” button and wait for the system to download the excel list to your computer")}}.</p>
             <p><span> {{__("Note")}}:</span> {{ __(" If you do not choose any special arrangement such as keyword content,
             time, the system will download the correct number of articles displayed directly on the Vivid page (As the picture above shows 10 articles,

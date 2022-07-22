@@ -39,7 +39,7 @@
                 <span class="checkmark_checkbox"></span>
             </label>
             @else
-            <label class="container_checkbox" id="checking_date" > <p data-by="checking_date">Review date correct</p>
+            <label class="container_checkbox" id="checking_date" > <p data-by="checking_date">Review date</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
             </label>
