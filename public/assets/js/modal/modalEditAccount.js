@@ -82,11 +82,27 @@ $("document").ready(function(){
     //value modal edit profile
 
     $(".close__modal").on("click",function(){
-        resetModal()
+        let id = $(".overlay").attr("data-id")
+        if(id && id == "del_user"){
+            $("#modal__delete-account").removeClass("modal__open")
+            overlay.hide()
+            scrollScreen.enable()
+            $(".overlay").removeAttr("data-id")
+        }else{
+            resetModal()
+        }
     })
 
     $(".overlay").on("click",function(){
-        resetModal()
+        let id = $(this).attr("data-id")
+        if(id && id == "del_user"){
+            $("#modal__delete-account").removeClass("modal__open")
+            overlay.hide()
+            scrollScreen.enable()
+            $(".overlay").removeAttr("data-id")
+        }else{
+            resetModal()
+        }
     })
         //name
     $(".img-edit__name").on("click",function(){
@@ -136,7 +152,7 @@ $("document").ready(function(){
         $("#modal__delete-account").removeClass("modal__open")
         overlay.hide()
         scrollScreen.enable()
-
+        $(".overlay").removeAttr("data-id")
     })
 
     $(".edit_profile").on("click",function(e){
@@ -285,6 +301,7 @@ $("document").ready(function(){
     $(".delete__profile").on("click",function(){
         parentRow = $(this).parents('.tbody_admin');
         $("#modal__delete-account").addClass("modal__open")
+        $(".overlay").attr("data-id","del_user")
         overlay.show()
         $("#modal__delete-account").find(".modal__content").find("title").find("> p").text("REMOVE ADMIN")
         let id  = $(this).closest("li").find("input").attr("data-id") || $(".edit_id_user").attr("data-id");
@@ -311,6 +328,7 @@ $("document").ready(function(){
                 hide_overlay()
                 if(msg){
                     show_success(msg.message)
+                    $(".overlay").removeAttr("data-id")
                 }
                 if($(".tbody_admin").length == 1){
                     const queryString = window.location.search;

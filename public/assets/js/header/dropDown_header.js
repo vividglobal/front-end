@@ -68,7 +68,7 @@ $(".closeFilter ").click(function(){
     })
 
     $(".overlay_nav").click(function(){
-        closeNav()
+            closeNav()
     })
 
     // $(".nav-link").click(function(){
