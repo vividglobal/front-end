@@ -13,11 +13,6 @@ $(document).ready(function(){
     let checkreviewcode = $('.check-review-code').attr('check-id')
 
 
-    // let perfEntries = performance.getEntriesByType("navigation");
-    // if (perfEntries[0].type === "back_forward") {
-    //     window.location.href = '/articles/auto-detection'
-    // }
-
     span.click(function () {
         confirmModal.hide();
         confirmModalVio.hide();
@@ -88,6 +83,7 @@ $(document).ready(function(){
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
         confirmArticleAsViolationModal.hide();
+        reload()
         hide_overlay()
     })
 
@@ -96,6 +92,7 @@ $(document).ready(function(){
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         addOverlayScroll();
         confirmModalVio.hide();
+        reload()
         hide_overlay();
     });
 
@@ -112,7 +109,7 @@ $(document).ready(function(){
                 fileHtmlItems = `
                     <div class="table-code-top">
                         <h2>Supervisor</h2>
-                        <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
+                        <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
                     </div>
                     `
                     $('#table-add').prepend(fileHtmlItems);
@@ -124,6 +121,7 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
         }
         confirmModal.hide();
+        reload()
         hide_overlay();
     })
 
@@ -147,7 +145,6 @@ $(document).ready(function(){
         agreeStatus = DISAGREE;
         let response = await action_moderate_article(actionStep, STATUS_VIOLATION, violationCode)
         if(response.success) {
-            show_success(response.message);
             if(CURRENT_ROLE === SUPERVISOR_ROLE){
             hide_overlay();
             addOverlayScroll();
@@ -156,6 +153,7 @@ $(document).ready(function(){
             show_success(response.message);
             }else if(CURRENT_ROLE === OPERATOR_ROLE){
                 hide_overlay();
+                show_success(response.message);
                 setTimeout(() => {
                     window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
                 }, 3000);
@@ -164,6 +162,7 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
+        reload();
     })
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
@@ -196,7 +195,7 @@ $(document).ready(function(){
                         <p class="status-title violation-color" data-status="VIOLATION">Violation</p>
                     </div>
                     <div class="table-code-aticle">
-                        <img class="img-icon-detail" src="http://localhost:8099/assets/image/dis-code.png" alt="">
+                        <img class="img-icon-detail" src="/assets/image/dis-code.png" alt="">
                         <div>
                             <h4 class="p-style">Code article</h4>
                             ${codelish}
@@ -222,6 +221,13 @@ $(document).ready(function(){
         confirmModalVio.hide();
     }
 
+    function reload(){
+        let childrenlength = $('#children-length >tr').length -1
+        if(childrenlength === 15){
+            location.reload(true);
+        }
+    }
+
     function addOverlayScroll() {
         scrollScreen.enable()
     }
@@ -243,6 +249,7 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
+        reload()
     })
 
       // SEARCH ARTICLE_CODE MODAL

@@ -51,7 +51,7 @@
                 <li class="detail-infoi detail-infoi-right">
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
-                        <h4 class="p-style">Crawl date</h4>
+                        <h4 class="p-style">Checking date</h4>
                         <h4 class="h4-title">{{date("m-d-Y",$article->crawl_date)}}</h4>
                     </div>
                 </li>
@@ -95,7 +95,7 @@
         <div class="list-child-function">
             @if(Auth::user())
             <div class="list-child-top">
-                <h3 class="title-style">Status progress</h3>
+                <h3 class="title-style status-leal">Status progress</h3>
                 <div class="list--status list--status-mobile {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
                 data-idEL="{{ $article->_id }}" id="status_1" data-role="{{@Auth::user()->role}}">
                     @if(isset($article->progress_status) && $article->progress_status != "")
@@ -129,12 +129,12 @@
             @endif
             @if(isRole(ROLE_OPERATOR))
             <div class="list-child-top">
-                <h3 class="title-style">Switch status</h3>
+                <h3 class="title-style status-leal">Switch status</h3>
                 <img  class="td-link btn-switch-mobile" src="{{asset('assets/image/switch-mobile.png')}}" alt="#" data-id={{$article->_id }} >
             </div>
             @endif
             <div class="list-child-top">
-                <h3 class="title-style">Legal documents</h3>
+                <h3 class="title-style status-leal">Legal documents</h3>
                 <img class="td-link upload-file-mobile" data-id={{$article->_id}} src={{ asset('assets/image/ico-upload-mobile.png') }} data-user="{{@Auth::user()->role}}">
             </div>
         </div>
@@ -148,7 +148,7 @@
             <p style="text-align: center;">Are you sure to move this post back to auto-dectect violation?</p>
         </div>
         <div class="head-confirm-btn">
-            <button class="confirm-btn btn-cancel close">Cancel</button>
+            <button class="confirm-btn btn-cancel close button-cancel-style">Cancel</button>
             <button class="confirm-btn btn-yes" id="confirm-mobile">Confirm</button>
         </div>
     </div>
@@ -171,16 +171,16 @@
     </div>
     @if(isRole(ROLE_OPERATOR))
     <div class="head-confirm-btn button-upload-file">
-        <button class="confirm-btn btn-cancel close button-upload-style">Cancel</button>
+        <button class="confirm-btn btn-cancel close button-upload-style button-cancel-style">Cancel</button>
         <!-- <input type='file' class="confirm-btn btn-yes" id="confirm-mobile" accept="application/pdf" multiple @change="trySubmitFile"></input> -->
         <div class='file-input input-style file-input-mobile button-upload-style'>
-            <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
-            <span class='button'>Upload file</span>
+            <input type='file' id="upload" accept="application/pdf" @change="trySubmitFile" multiple>
+            <span class='button' >Upload file</span>
         </div>
     </div>
     @else
     <div class="head-confirm-btn button-upload-file button-upload-cancel">
-        <button class="confirm-btn btn-cancel close btn-cancel-moblie">Cancel</button>
+        <button class="confirm-btn btn-cancel close btn-cancel-moblie button-cancel-style">Cancel</button>
     </div>    
     @endif
 </div>

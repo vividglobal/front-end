@@ -45,7 +45,7 @@ $("#confirm-mobile").click(function(){
             $('#toaster').addClass('toaster-style-mobile')
             setTimeout(() => {
                 window.location.replace(window.location.pathname.replace(articleId + "/violation", "violation"));
-            });
+            },3000);
         }
     })
     .fail(function(){
@@ -210,6 +210,7 @@ $(document).on('change', '.file-input', async function(){
                     show_error(errResponse.message)
                 })
         }
+        $('#upload').val('');
     }
 })
 
@@ -325,10 +326,6 @@ function DeleteFile(rowIdelemnet,parentItem,filesNumber){
                 $('.completed').hide()
                 getTextStatus.text("Not started").attr("data-id","not_started")
                 $(`#${targetEL}`).find("> p").html("Not started")
-
-                // $(`#${targetEL}`).find("> p").attr("data-id",id)
-                // $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("background-gray")
-                // $(`#${targetEL}`).find(".select--status").find(".select__one--status").find("img").hide()
                 $(".entry").find(`#${rowId}`).attr("src","../assets/image/lega1.png")
                 $(".date-penalty").find(`#${rowId}`).text("")
                 var progressStatus =  $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status")

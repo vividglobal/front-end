@@ -33,7 +33,6 @@ span.click(function () {
 
 
 $("#confirm-mobile").click(function(){
-    console.log($(this).attr("data-id"));
     url_reset =  "action-reset"
     show_overlay()
     $.ajax({
@@ -51,7 +50,7 @@ $("#confirm-mobile").click(function(){
             $('#toaster').addClass('toaster-style-mobile')
             setTimeout(() => {
                 window.location.replace(window.location.pathname.replace(articleId + "/non-violation", "non-violation"));
-            });
+            },3000);
         }
     })
     .fail(function(){

@@ -56,7 +56,7 @@
     <span class="open_Nav_filter" style="cursor:pointer" ></span>
 @endif
 
- <div id="myFilter" class="sideFilter">
+<div id="myFilter" class="sideFilter">
     <a class="closebtn closeFilter" ><img src="{{ asset('assets/image/ep_back.svg') }}" alt="">{{ __("Filter") }}</a>
 
     <div class="filter_list-mobi">
@@ -210,5 +210,5 @@
         <button class="close__filter">Cancel</button>
         <button class="btn__apply" id="apply_query" >Apply</button>
     </div>
-  </div>
+</div>
 

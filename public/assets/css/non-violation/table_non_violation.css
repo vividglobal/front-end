@@ -86,3 +86,7 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
 .track-non{
     flex: 1 0 calc(25%);
 }
+.entry-one-item{
+    display: flex !important;
+    justify-content: flex-start;
+}

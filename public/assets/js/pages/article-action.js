@@ -64,14 +64,16 @@ $(document).ready(function(){
             let response = await action_moderate_article(ACTION_CHECK_CODE, STATUS_VIOLATION);
             isLoading = false;
             if(response.success) {
+                hide_overlay();
                 show_success(response.message);
                 updateDetectionColumnAfterSelectViolationCode(response.data);
             }else {
-                show_error('Evaluation failed!');
                 hide_overlay();
+                show_error('Evaluation failed!');
             }
         }
         // hide_overlay();
+        
     });
 
     $('.open-modal').on('click', '.close', function() {
@@ -103,7 +105,7 @@ $(document).ready(function(){
                 );
                 currentRow.find(`.${lowercaseRole}-violation-action`).html(
                     `<div class="entry-title-threee entry-title-tyle reviewing-title">
-                        <p data-status="${STATUS_NONE_VIOLATION}" class="status-title unviolation-color">Non-violation</p>
+                        <p data-status="${STATUS_NONE_VIOLATION}" class="status-title unviolation-color">Unable to detect</p>
                     </div>`
                 );
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
@@ -138,7 +140,6 @@ $(document).ready(function(){
         isLoading = false;
         hide_overlay();
         closeCodeModal()
-        console.log(response);
         if(response.success) {
                 addOverlayScroll();
                 updateDetectionColumnAfterSelectViolationCode(response.data);
@@ -183,7 +184,7 @@ $(document).ready(function(){
         if(CURRENT_ROLE === SUPERVISOR_ROLE) {
             // Update status label
             let colorClass = data.status === STATUS_VIOLATION ? 'violation-color' : 'unviolation-color';
-            let violationLabel = data.status === STATUS_VIOLATION ? 'Violation' : 'Non-violation';
+            let violationLabel = data.status === STATUS_VIOLATION ? 'Violation' : 'Unable to detect';
             currentRow.find(`.${lowercaseRole}-violation-action`).html(
                 `<div class="entry-title-threee entry-title-tyle reviewing-title">
                     <p data-status="${data.status}" class="status-title ${colorClass}">${violationLabel}</p>
@@ -205,8 +206,13 @@ $(document).ready(function(){
     function removeCurrentRow() {
         $(`tr[data-id="${articleId}"]`).fadeOut();
         $(`div[data-id="${articleId}"]`).fadeOut();
+        $(`tr[data-id="${articleId}"]`).remove()
         closeCodeModal();
         confirmModal.hide();
+        let childrenlength = $('#children-length >tr').length
+        if(childrenlength === 15 || childrenlength === 0){
+            location.reload(true);
+        }
     }
 
     function addOverlayScroll() {
@@ -238,9 +244,6 @@ $(document).ready(function(){
                     <a attr-status="${DISAGREE}" class="check-false${disabledDisagreeBtn ? '-disabled' : ''} check-violation-code dishable_overlay" href="javascript:void(0)"></a>
                 </div>`
             );
-
-        }else {
-            show_error('Evaluation failed!');
         }
         hide_overlay();
     }
@@ -259,6 +262,10 @@ $(document).ready(function(){
                 status : status,
                 violation_code : JSON.stringify(violationCode)
             }
-        });
+        })
+        .fail(function(error){
+            show_error('Evaluation failed!');
+            hide_overlay()
+        })
     }
 })

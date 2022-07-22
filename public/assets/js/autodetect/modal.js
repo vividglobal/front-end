@@ -41,24 +41,13 @@ $(document).ready(function () {
 
     });
     $(window).on('click', function (e) {
-        if ($(e.target).is('.modal-title')) {
-            captionModal.hide();
-            $(".mdl-js").css("overflow-y","scroll");
-
-        }
         if ($(e.target).is('.modal-upload-file')) {
             uploadModal.hide();
             btnuploadfile.hide();
             $('.div-item').remove();
             $('.no-file-remove').remove();
             $(".mdl-js").css("overflow-y","scroll");
-
         }
-        if ($(e.target).is('.modalimg')) {
-            imageModal.hide();
-        $(".mdl-js").css("overflow-y","scroll");
-        }
-        // $(".mdl-js").css("overflow-y","scroll");
     });
 
     let rowId =""
@@ -144,9 +133,8 @@ $(document).ready(function () {
                 .fail(function(err) {
                     let errResponse = JSON.parse(err.responseText)
                     hide_overlay();
-                    show_error(errResponse.message)
+                    show_error('Document upload failed')
                 })
-
             }
             $('#upload').val('');
         }
@@ -157,7 +145,8 @@ $(document).ready(function () {
             url: "/articles/"+rowId+"/documents",
             method: 'GET',
             dataType:'JSON',
-            success: function(res){
+        })
+        .done(function( res ) {
                 if(res){
                     loading.hide()
                     btnuploadfile.show()
@@ -192,8 +181,13 @@ $(document).ready(function () {
                     }
                 }
                 hide_overlay()
-            }
-        });
+        })
+        .fail(function(){
+            uploadModal.hide();
+            hide_overlay()
+            show_error("Failed state");
+        })
+        
     }
 
     $(document).on("click", '.delete-file', async function (){
@@ -206,7 +200,6 @@ $(document).ready(function () {
     function DeleteFile(rowIdelemnet,parentItem,filesNumber){
         show_overlay()
         let getTextStatus = $(`#${rowId}`).find(".track:nth-child(8)").find(".entry").find(".list--status").find("> p")
-        console.log(getTextStatus);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': csrf,
@@ -215,7 +208,7 @@ $(document).ready(function () {
                 "article_id": filesNumber <= 1 && getTextStatus.text().trim() == "Completed" ? rowId : ""
             },
             method: "DELETE",
-            url:"/articles-document/"+rowIdelemnet+"",
+            url:"/articles-document/"+rowIdelemnet+""
         })
         .done(function( msg){
             if(msg){
@@ -242,7 +235,7 @@ $(document).ready(function () {
             }
         })
         .fail(function(error){
-            show_error(error.responseJSON.message);
+            show_error('Deleting old files failed');
             hide_overlay()
         })
     }

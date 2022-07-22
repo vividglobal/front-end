@@ -3,21 +3,6 @@
         <tr>
             <th style="width:2%" class="style-title">{{ __('No') }}</th>
             <th style="width:12%" class="style-title">
-                <div class="th-title-right sort_company">
-                    <p>{{ __('Company') }}</p>
-                    <span
-                        @class([
-                            'ico-sort theard-table sort_up',
-                            'disabled' => checkSort(request()->all(), 'company_name', ASC)
-                        ])></span>
-                    <span
-                        @class([
-                            'ico-sort theard-table sort_down',
-                            'disabled' => checkSort(request()->all(), 'company_name', DESC)
-                        ])></span>
-                </div>
-            </th>
-            <th style="width:12%" class="style-title">
                 <div class="th-title-right sort_country">
                     <p>{{ __('Country') }}</p>
                     <span
@@ -32,6 +17,22 @@
                         ])></span>
                 </div>
             </th>
+            <th style="width:12%" class="style-title">
+                <div class="th-title-right sort_company">
+                    <p>{{ __('Company') }}</p>
+                    <span
+                        @class([
+                            'ico-sort theard-table sort_up',
+                            'disabled' => checkSort(request()->all(), 'company_name', ASC)
+                        ])></span>
+                    <span
+                        @class([
+                            'ico-sort theard-table sort_down',
+                            'disabled' => checkSort(request()->all(), 'company_name', DESC)
+                        ])></span>
+                </div>
+            </th>
+            
             <th style="width:12%" class="style-title sort_brand">
                 <div class="th-title-right">
                     <p>{{ __('Brand') }}</p>
@@ -51,21 +52,21 @@
             <th style="width:15%" class="style-title">{{ __('Image') }}</th>
         </tr>
     </thead>
-    <tbody class="tbdata">
+    <tbody class="tbdata" id="children-length">
         @foreach ($articles as $key => $article)
             <tr class="tr-boder" data-id="{{ $article->_id }}">
                 <td>{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}</td>
                 <td>
-                @isset($article->company['name'])
-                    <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
-                        {{ __($article->company['name'] ?? '' )}}
+                @isset($article->country['name'])
+                    <a  href={{ getUrlName( "country" , $article->country['id']) }}>
+                    {{ __($article->country['name'] ?? '' )}}
                     </a>
                 @endisset
                 </td>
                 <td>
-                @isset($article->country['name'])
-                    <a  href={{ getUrlName( "country" , $article->country['id']) }}>
-                    {{ __($article->country['name'] ?? '' )}}
+                @isset($article->company['name'])
+                    <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
+                        {{ __($article->company['name'] ?? '' )}}
                     </a>
                 @endisset
                 </td>

@@ -52,6 +52,7 @@ $("document").ready(function () {
     const paramSortBy = urlParams.get("sort_by");
     const paramSortValue = urlParams.get("sort_value");
     const violation_code_id = urlParams.get("violation_code_id");
+    const violation_type_id = urlParams.get("violation_type_id");
 
     if (paramKeyword !== null) {
         $(".search").val(paramKeyword);
@@ -107,6 +108,12 @@ $("document").ready(function () {
         $(".style__code--article")
             .find("div")
             .find(`#${violation_code_id}`)
+            .css({ "text-decoration": "underline" });
+    }
+    if (violation_type_id !== null) {
+        $(".style__code--article")
+            .find("div")
+            .find(`#${violation_type_id}`)
             .css({ "text-decoration": "underline" });
     }
     // SORT MOBI
