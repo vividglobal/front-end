@@ -23,12 +23,12 @@ class ViolationTypeSeeder extends Seeder
 
     public function data() {
         return [
-            ['name' => 'Promotion to the public', 'color' => '#A64AC9'],
-            ['name' => 'Labeling, packaging and messaging', 'color' => '#FFCD04'],
-            ['name' => 'Information and Education', 'color' => '#FFB48F'],
-            ['name' => 'Information for Health Workers', 'color' => '#F5E6CC'],
-            ['name' => 'Sponsorships / Conflicts of Interest', 'color' => '#17E9E0'],
-            ['name' => 'BELOW ARE 2016 GUIDANCE [FOODS FOR INFANTS AND YOUNG CHILDREN]', 'color' => '#86C232']
+            ['name' => 'Promotion to the public', 'color' => '#4A2256'],
+            ['name' => 'Labeling, packaging and messaging', 'color' => '#EEBA00'],
+            ['name' => 'Information and Education', 'color' => '#0F62FE'],
+            ['name' => 'Information for Health Workers', 'color' => '#0097A0'],
+            ['name' => 'Sponsorships / Conflicts of Interest', 'color' => '#EF5DA8'],
+            ['name' => 'BELOW ARE 2016 GUIDANCE [FOODS FOR INFANTS AND YOUNG CHILDREN]', 'color' => '#F37422']
         ];
     }
 }

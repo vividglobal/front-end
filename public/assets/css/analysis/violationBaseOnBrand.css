@@ -4,6 +4,10 @@
     padding: 26px 64px;
 }
 
+.table_code{
+    margin-bottom: 150px !important;
+}
+
 .title__base--violation{
     font-style: normal;
     font-weight: 600;
@@ -85,7 +89,7 @@
 }
 
 .Base_violation--brand .list--select--option .list--select__right{
-    width: 25%;
+    width: 45%;
 }
 
 .demo__pagination{
@@ -110,15 +114,25 @@
 }
 
 .base_code_item:nth-child(2){
-    width: 19.2% ;
+    width: 51.5% ;
+
 }
 
 .base_code_item:nth-child(3){
-    width: 53.5% ;
+    width: 19.2% ;
 }
 
 .base_code_item:nth-child(4){
     width: 20.8% ;
 }
 
+.title__country--violation{
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color: #072136;
+    text-align: center;
+}
 

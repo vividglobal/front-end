@@ -2,6 +2,11 @@
 @media(max-width: 1113px){
     .checkbox__suspected:first-child:after {
         content: "Text/image";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 16px;
+        line-height: 23px;
     }
 
     .fix_manual{
@@ -13,7 +18,12 @@
     }
 
     .checkbox__suspected:nth-child(2):after {
-      content: "URL";
+        content: "URL";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 16px;
+        line-height: 23px;
     }
     .checkbox__suspected .checkmark{
         display: none;
@@ -26,8 +36,12 @@
     }
 
     .btn__check{
-        margin-left: 16px;
+        max-width: 100%;
+        width: 100%;
+        position: relative;
+        padding: 0 16px;
     }
+
 
     .fix_manual > form .btn__check{
         max-width: 100% !important;
@@ -44,7 +58,7 @@
 
     .file-input_detect{
         max-width: 100%;
-        border-style: dashed;
+        border-style: dashed !important;
         margin: 12px 0;
     }
 
@@ -68,7 +82,7 @@
 
     .country_mobile{
         display: block;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .check_country{
@@ -91,10 +105,23 @@
         line-height: 29px;
         color: var(--primary);
     }
+
+    .file-input_detect > .label,
+    .input-style-focus::placeholder{
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: var(--gray-C7);
+    }
 }
 
 @media (max-width: 739px) {
     .fix_manual .list--select--option .list--select__left .list--search {
         width: 100%;
+    }
+    .search__result__table p{
+        font-size: 30px;
     }
 }

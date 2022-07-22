@@ -2,7 +2,7 @@
 <script src="{{ asset('assets/js/modal/modalEditAccount.js') }}"></script>
 @stack('styles')
 
-@if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
+{{-- @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation'))) --}}
 <div class="nav_container
  {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
  {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
@@ -13,6 +13,12 @@
             <div class="rows nav-menu" >
                 <div class="no-padding {{Auth::user()!== null ? " had_login"  : " no_login"}}" >
                     <ul class="rows no-gutters l-o-2 btn__header center-header">
+                        @auth
+                        <li class="nav--btn__after--login name_user" >
+                            <p class="" >{{ __(Auth::user()->role) }}</p>
+                            <p class="" >{{ __(Auth::user()->full_name) }}</p>
+                        </li>
+                        @endauth
                         <li class="nav--btn__after--login " >
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                             <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
@@ -23,7 +29,7 @@
                             <div class="nav--btnBorder__bottom {{(request () -> is ('articles/auto-detection')) ? 'activeHeader': ''}}">
                             </div>
                         </li>
-                        <li class="nav--btn__after--login">
+                        <li class="nav--btn__after--login violation_review">
                             <div class="name_trace--violation">
                                 {{ __('Violation reviewed') }}
                             </div>
@@ -97,7 +103,7 @@
                         </div>
                     @endif
                 @else
-                    <div class="nav__btn--login  after-login no-margin" style="{{ request () -> is ('/') ? "top:30px" : "" }}">
+                    <div class="nav__btn--login  after-login no-margin" >
                         {{-- <img src="{{ asset('assets/image/user.svg') }}" alt=""> --}}
                         <p class="name_login">{{ @Auth::user()->full_name }}</p>
                         <div class="dropdown-login">
@@ -128,7 +134,9 @@
         @include('modal/editAccount')
     </div>
     <div class="overlay overlay_nav" ></div>
+    @if((!request () -> is ('articles/'. request()->id .'/details')) && (!request () -> is ('articles/'. request()->id .'/violation')) && (!request () -> is ('articles/'. request()->id .'/non-violation')))
     <span class="open_Nav {{request ()-> is ('/') || request ()-> is ('login') || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'menuWhite': ''}}" style="cursor:pointer" ></span>
+    @endif
 </div>
-@endif
+{{-- @endif --}}
 

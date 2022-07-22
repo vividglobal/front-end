@@ -1,9 +1,12 @@
-@media (max-width: 1233px) {
+@media (max-width: 1300px) {
     .Base_violation--brand,
     .index_violation-nonViolation,
     .title_analysis .list--select--option,
     .title_analysis .list--title {
         margin: 15px 150px;
+    }
+    .title-violation {
+        font-size: 14px;
     }
 }
 
@@ -11,6 +14,7 @@
     /* //STATUS */
     .title_analysis .list--title {
         margin: 0 30px;
+        margin-bottom:15px;
     }
 
     #daterange{
@@ -30,6 +34,7 @@
     .Base_violation--brand,
     .index_violation-nonViolation{
         margin: 15px 16px 0 15px;
+        padding : 0;
     }
 
     .Base_violation--brand{
@@ -57,10 +62,12 @@
         font-size: 20px;
         line-height: 29px;
         color: #072136;
+        padding: 0 20px;
     }
 
     .index__violation {
         display: block;
+        text-align: left;
     }
 
     .index__violation:nth-child(2) div{
@@ -84,23 +91,34 @@
         border-radius: 5px;
     }
 
+    .index__violation:nth-child(5) div{
+        margin: 0px 20px 20px 20px;
+        position: relative;
+        border-radius: 5px;
+    }
+
     .title-violation{
-        padding: 15px 20px ;
         font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
         line-height: 170%;
         color: #6F6F6F;
+        width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 30px;
+        cursor: pointer;
     }
 
     .number-violation{
-        padding: 0px 20px 15px 20px;
         font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 31px;
         line-height: 42px;
+        padding-top: 5px;
         color: #5DA364 !important;
     }
 
@@ -112,12 +130,16 @@
         color: var(--primary) !important;
     }
 
-    .index__violation:nth-child(4) > div:after{
-        content: '100%';
+    .index__violation:nth-child(5) > div .number-violation{
+        color: var(--primary) !important;
+    }
+
+    .percent-violation{
         position: absolute;
         top: 0px;
         right: 0;
         margin: 15px 20px;
+        background: transparent !important;
         font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
@@ -126,7 +148,7 @@
         color: var(--gray-6F) !important;
     }
 
-    .percent-violation{
+    .total-violation{
         position: absolute;
         top: 0px;
         right: 0;
@@ -295,7 +317,10 @@
     .table_brand .list--select--option .list--select__left{
         width: inherit ;
     }
-
+    .title_table_analysis p,
+    .title__country--violation{
+        color: var(--primary);
+    }
 }
 
 @media (max-width: 739px){
@@ -317,3 +342,4 @@
         display: none;
     }
 }
+

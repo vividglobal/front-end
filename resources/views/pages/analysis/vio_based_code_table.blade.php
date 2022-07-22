@@ -1,11 +1,11 @@
 <div class="table_analysis">
     <ul class="table_analysis_header head_code">
         <li class="base_code_item">No</li>
-        <li  class="base_code_item">{{ __('Code article') }}</li>
         <li  class="base_code_item">{{ __('Violation type') }}</li>
+        <li  class="base_code_item">{{ __('Code article') }}</li>
         <li  class="base_code_item">
             <div class="th-title-rights">
-                <p>{{ __('Articles') }}</p>
+                <p>{{ __('Entries') }}</p>
                 <span
                     @class([
                         'ico-sort theard-table sort_up',
@@ -26,8 +26,8 @@
             <li  class="base_code_item">
                 {{ ($key + 1) + (($codeData->currentpage() - 1) * $codeData->perpage()) }}
             </li>
-            <li  class="base_code_item">{{ $code->name }}</li>
             <li  class="base_code_item type_pc">{{ $code->type_name }}</li>
+             <li  class="base_code_item">{{ $code->name }}</li>
             <li  class="base_code_item type_mobi" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
             <li  class="base_code_item">{{ $code->total_article }}</li>
     </ul>

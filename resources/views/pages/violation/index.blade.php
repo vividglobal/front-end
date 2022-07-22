@@ -42,7 +42,7 @@
     </div>
     @if(count($articles) == 0)
     @include('noSearchResult/index')
-    @endif 
+    @endif
 </div>
 <div class="container-table " id="div-pc">
     <div class="container_row">
@@ -183,7 +183,7 @@
                                         @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
                                                 @isset($article->brand['name'])
-                                                    <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                    <a href="javascript:void(0)" id={{ $detectioncode['id'] }}>
                                                         {{$detectioncode['name'] ?? ''}}
                                                     </a>
                                                 @endisset
@@ -196,9 +196,10 @@
                             <div class="track track-one">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item" style="justify-content:@if(count($article->detection_result['violation_types']) <= 5) center !important @endif">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
-                                    <div>
-                                        <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $detectiontype['id'] ) }}" id={{ $detectiontype['id'] }}  style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </a>
-                                    </div>
+                                        <a href="javascript:void(0)" id={{ $detectiontype['id'] }}
+                                        style="color:{{$detectiontype['color'] ?? ''}};text-decoration:none">
+                                            {{$detectiontype['name'] ?? ''}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>

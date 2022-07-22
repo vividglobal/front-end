@@ -30,9 +30,9 @@ $("document").ready(function () {
         "apply.daterangepicker",
         function (ev, picker) {
             $(this).val(
-                picker.startDate.format("DD/MM/YYYY") +
+                picker.startDate.format("MM/DD/YYYY") +
                     " - " +
-                    picker.endDate.format("DD/MM/YYYY")
+                    picker.endDate.format("MM/DD/YYYY")
             );
             startDate = picker.startDate.format("DD-MM-YYYY");
             endDate = picker.endDate.format("DD-MM-YYYY");
@@ -41,7 +41,7 @@ $("document").ready(function () {
 
     // VALUE PARAMS
     const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    const urlParams = (new URL(document.location)).searchParams;
     const perpage = urlParams.get("perpage");
     const paramStart_date = urlParams.get("start_date");
     const paramKeyword = urlParams.get("keyword");
@@ -54,6 +54,7 @@ $("document").ready(function () {
     const violation_code_id = urlParams.get("violation_code_id");
     const violation_type_id = urlParams.get("violation_type_id");
 
+
     if (paramKeyword !== null) {
         $(".search").val(paramKeyword);
     }
@@ -65,8 +66,10 @@ $("document").ready(function () {
     }
 
     if (paramStart_date !== null && paramEnd_date !== null) {
-        let startDay = paramStart_date.replace(/-/g, "/");
-        let endDay = paramEnd_date.replace(/-/g, "/");
+        let startDatePicker = paramStart_date.split("-")
+        let endDatePicker = paramEnd_date.split("-")
+        let startDay = `${startDatePicker[1].trim()}/${startDatePicker[0].trim()}/${startDatePicker[2].trim()}`
+        let endDay = `${endDatePicker[1].trim()}/${endDatePicker[0].trim()}/${endDatePicker[2].trim()}`
         $('input[name="daterange"]').val(startDay + " - " + endDay);
     }
 
@@ -99,6 +102,7 @@ $("document").ready(function () {
         let nameMb = $(".violation_mobi");
         let select = $(".select--violation--type");
         let option = ".select__one--violation--type";
+        $(".bot-violation-code").find(`#${paramViolation}`).css({ "text-decoration": "underline" });
         returnTextButtonQuery(name, list, select, option, paramViolation,nameMb);
     }else{
         $(".list--violation--type").find("> p").text("Violation type")
@@ -110,12 +114,7 @@ $("document").ready(function () {
             .find(`#${violation_code_id}`)
             .css({ "text-decoration": "underline" });
     }
-    if (violation_type_id !== null) {
-        $(".style__code--article")
-            .find("div")
-            .find(`#${violation_type_id}`)
-            .css({ "text-decoration": "underline" });
-    }
+
     // SORT MOBI
     function sortByparam(img,btn,paramSortBy){
         let getDataValue =   $(".sort_mobi").find("> p").attr("data-value")
@@ -147,8 +146,8 @@ $("document").ready(function () {
                 break;
             case "checking_date":
                 $(".sort_checking_date").find(btn).attr("src", img);
-                $(".sort_mobi").find("> p").text(`${getDataValue}: Crawl date`)
-                $(".sort_mobi").find("> p").attr("data-name","Crawl date")
+                $(".sort_mobi").find("> p").text(`${getDataValue}: Review date`)
+                $(".sort_mobi").find("> p").attr("data-name","Review date")
                 break;
             case "bot_status":
                 $(".sort_crawl_date").find(btn).attr("src", img);
@@ -220,7 +219,7 @@ $("document").ready(function () {
 
     //  CLOSE FILTER MOBI
     function resetFiter(){
-        $("#myFilter").removeClass("open_menu")
+        navigation.hide("#myFilter")
         $(".overlay").css({"width":"0%","display":"none"})
         $(".checkbox_mobi").find("#toggle").hide()
         scrollScreen.enable()
@@ -267,11 +266,16 @@ $("document").ready(function () {
             let getParamSortValue = $(".sort_mobi").find("> p").attr("data-value")
             let getParamSortBy = $(".sort_mobi").find("> p").attr("data-by")
             if(getParamSortBy !== undefined && getParamSortValue !== undefined){
-                if(getParamSortValue == "A to Z"){
-                    replaceURL(getParamSortBy,"asc");
+                if(getParamSortBy !== "None"){
+                    if(getParamSortValue == "A to Z"){
+                        replaceURL(getParamSortBy,"asc");
+                    }else{
+                        replaceURL(getParamSortBy,"desc");
+                    }
                 }else{
-                    replaceURL(getParamSortBy,"desc");
+                        replaceURL("","");
                 }
+
             }else{
                 replaceURL(paramSortBy, paramSortValue);
             }
@@ -291,6 +295,8 @@ $("document").ready(function () {
         var sortBy = $(this).closest("div").find("p").text().toLowerCase();
         if (sortBy == "country" || sortBy == "company" || sortBy == "brand") {
             sortBy = `${sortBy}_name`;
+        }else if(sortBy == "review date"){
+            sortBy = `checking_date`;
         } else if (/ /g.test(sortBy)) {
             sortBy = sortBy.replace(/ /g, "_");
         } else if (sortBy == "status") {
@@ -304,6 +310,8 @@ $("document").ready(function () {
         var sortBy = $(this).closest("div").find("p").text().toLowerCase();
         if (sortBy == "country" || sortBy == "company" || sortBy == "brand") {
             sortBy = `${sortBy}_name`;
+        }else if(sortBy == "review date"){
+            sortBy = `checking_date`;
         } else if (/ /g.test(sortBy)) {
             sortBy = sortBy.replace(/ /g, "_");
         } else if (sortBy == "status") {
@@ -370,8 +378,10 @@ $("document").ready(function () {
             let start__Date = "";
             if (date !== "") {
                 let arr = date.split("-");
-                end__Date = arr[1].trim().replace(/[/]/g, "-");
-                start__Date = arr[0].trim().replace(/[/]/g, "-");
+                let startDatePicker = arr[0].split("/")
+                let endDatePicker = arr[1].split("/")
+                start__Date = `${startDatePicker[1].trim()}-${startDatePicker[0].trim()}-${startDatePicker[2].trim()}`
+                end__Date = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             }
             return new keywordSearch(
                 search,
@@ -396,8 +406,10 @@ $("document").ready(function () {
             let start__Date = "";
             if (date !== "" && date) {
                 let arr = date.split("-");
-                end__Date = arr[1].trim().replace(/[/]/g, "-");
-                start__Date = arr[0].trim().replace(/[/]/g, "-");
+                let startDatePicker = arr[0].split("/")
+                let endDatePicker = arr[1].split("/")
+                start__Date = `${startDatePicker[1].trim()}-${startDatePicker[0].trim()}-${startDatePicker[2].trim()}`
+                end__Date = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             }
             return new keywordSearch(
                 search,
@@ -425,7 +437,7 @@ $("document").ready(function () {
         perpage,
         sortBy,
         sortValue,
-        page
+        page,
     ) {
         this.search =
             search !== "" && search !== null ? `&keyword=${search}` : "";
@@ -444,6 +456,7 @@ $("document").ready(function () {
         this.sortBy = sortBy ? `&sort_by=${sortBy}` : "";
         this.sortValue = sortValue ? `&sort_value=${sortValue}` : "";
         this.page = page ? `&page=${page}` : "";
+        this.violation_code = violation_code_id ? `&violation_code_id=${violation_code_id}` : "";
     }
     // URL PARAM
     function replaceURL(sortBy, sortValue, page) {
@@ -473,5 +486,34 @@ $("document").ready(function () {
             }
         }
     })
+
+    $(".style__code--article div > a").click(function(){
+        let getId = $(this).attr("id")
+        geturl(getId,"violation_code_id")
+    })
+
+    $(".bot-violation-code > a").click(function(){
+        let getId = $(this).attr("id")
+        geturl(getId,"violation_type_id")
+    })
+
+    function geturl(getId,nameParams){
+        let url = window.location.href
+        let newUrl;
+        if(url.includes(nameParams)){
+            if(nameParams == "violation_code_id"){
+                newUrl = url.replace(`${nameParams}=${violation_code_id}`,`${nameParams}=${getId}`)
+            }else{
+                newUrl = url.replace(`${nameParams}=${paramViolation}`,`${nameParams}=${getId}`)
+            }
+        }else{
+            if(url.includes("?")){
+                newUrl = `${url}&${nameParams}=${getId}`
+            }else{
+                newUrl = `${url}?${nameParams}=${getId}`
+            }
+        }
+        window.location.href = newUrl
+    }
 
 });

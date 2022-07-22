@@ -4,7 +4,7 @@
         <li>{{ __('Brand/Company') }}</li>
         <li>
             <div class="th-title-rights ">
-                <p>{{ __('Articles') }}</p>
+                <p>{{ __('Entries') }}</p>
                 <span
                     @class([
                         'ico-sort theard-table sort_up',

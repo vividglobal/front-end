@@ -163,7 +163,7 @@
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div>
-                                                <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                <a href="javascript:void(0)" id={{ $detectionCode['id'] }}>
                                                     {{$detectionCode['name'] ?? ''}}
                                                 </a>
                                             </div>
@@ -173,10 +173,12 @@
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" style="justify-content:@if(count($article->detection_result['violation_types']) > 5) flex-start @endif">
                                         @if(isset($article->detection_result['violation_types']))
                                         @foreach ($article->detection_result['violation_types'] as $detectionType)
-                                            <div>
-                                                <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $detectionType['id'] ) }}" id={{ $detectionType['id'] }} style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</a>
-                                            </div>
-                                            @endforeach
+                                            <a href="javascript:void(0)" id={{ $detectionType['id'] }}
+                                            style="color:{{$detectionType['color'] ?? ''}};text-decoration:none">
+                                                {{$detectionType['name'] ?? ''}}
+                                            </a>
+                                            {{-- <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p> --}}
+                                        @endforeach
                                         @endif
                                     </div>
                                 </div>

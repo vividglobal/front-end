@@ -31,8 +31,15 @@
         </div>
     </div>
 </div>
-
 <div class="index_violation-nonViolation rows" id="general">
+</div>
+<div class="Base_violation--brand table_brand table_countries">
+    <div >
+        <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
+    </div>
+    <div class="frame-wrapper">
+        <iframe src="/analysis/violation-by-country"  frameborder="0" scrolling="no" ></iframe>
+    </div>
 </div>
 
 <div class="Base_violation--brand table_brand">
@@ -47,13 +54,13 @@
     <div class="table-wrapper" id="vio-based-brand"></div>
 </div>
 
-<div class="Base_violation--brand  table_brand">
+<div class="Base_violation--brand table_brand table_code">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left fillter_code" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["fillter_mobile"], 'show_all_filter' => false])
         </div>
-        <div class="list--select__right" style="justify-content: flex-start">
-            <p class="title__base--violation">Violation based on code</p>
+        <div class="list--select__right" style="justify-content: flex-start;width: 100%;">
+            <p class="title__base--violation"> {{ __("Violations by type and Code article") }} </p>
         </div>
     </div>
     <div class="table-wrapper" id="vio-based-code"></div>
@@ -64,5 +71,6 @@
     let csrf = "{{ csrf_token() }}";
 </script>
 <script src="{{ asset('assets/js/pages/analysis.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/plotly/plotly-2.12.1.min.js') }}"></script>
 
 @endsection

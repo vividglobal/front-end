@@ -1,33 +1,57 @@
 .index_violation-nonViolation{
-    height: 312px;
+    height: 390px;
     border: 1px solid var(--gray-C7);
     margin: 16px 199px;
     display: flex;
+    padding: 30px 60px;
 }
 
-.index__violation{
+.index__violation:first-child{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 
 .title-violation{
+    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
-    font-size: 16px;
-    line-height: 136.5%;
-    color: var(--gray-6F);
+    font-size: 13px;
+    line-height: 170%;
+    color: #6F6F6F;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    text-align: left;
+    width: 80%;
+    padding-right: 10px;
 }
 
 .title_table_analysis{
     align-items: center;
 }
 
+.review_violation .number-violation{
+    color: var(--primary);
+}
+
+.total_entries .number-violation{
+    color: var(--primary);
+}
+
 .number-violation{
+    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 600;
-    font-size: 50px;
-    line-height: 136.5%;
-    color: var(--primary);
+    font-size: 31px;
+    line-height: 42px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
 }
 
 .padding_btn_analysis .create__profile{
@@ -35,29 +59,36 @@
     justify-content: flex-end;
 }
 
+.total-violation,
 .percent-violation{
-    color: var(--danger);
+    color: var(--gray-6F);
     padding: 3px 5px;
-    background-color: var(--pink);
-
     display: inline-block;
     border-radius: 5px;
+    font-family: 'Avenir Next';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 136.5%;
+    position: absolute;
+    top: 15px;
+    right: 25px
 }
 
 .index__violation > div{
     height: 111px;
 }
 
-.index__violation:nth-child(2) .percent-violation{
+.unable_detect .percent-violation{
     background-color: var(--percent_success);
 }
 
-.index__violation:nth-child(2) .percent-violation,
-.index__violation:nth-child(2) .number-violation{
+.unable_detect .percent-violation,
+.unable_detect .number-violation{
     color: var(--success);
 }
 
-.index__violation:nth-child(3) .number-violation{
+.violations_analysis .number-violation{
     color: var(--danger);
 }
 
@@ -92,7 +123,8 @@
     font-weight: 600;
     font-size: 18px;
     line-height: 136.5%;
-    color: var(--primary);
+    color: #072136;
+
 }
 
 #apply_date{
@@ -105,4 +137,58 @@
     line-height: 22px;
     width: 120px;
     border: none;
+}
+
+.index__violation{
+    padding: 10px;
+}
+
+.violations_analysis div{
+    background-color: var(--pink);
+    border-radius: 5px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.review_violation div{
+    background-color:#DDEAF3;
+    border-radius: 5px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.total_entries div {
+    background-color: var(--gray-F4);
+    border-radius: 5px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.unable_detect div{
+    background-color: #E2F2E3;
+    border-radius: 5px;
+    padding: 15px 25px;
+    position: relative;
+}
+
+.frame-wrapper{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /* padding-top: 65.25%; */
+}
+
+.frame-wrapper iframe{
+    position: absolute;
+    top: -50px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.table_countries{
+    height: 600px;
 }

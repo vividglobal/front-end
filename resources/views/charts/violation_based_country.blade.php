@@ -19,6 +19,8 @@
         locations: unpack(countryData, 'country'),
         z: unpack(countryData, 'total_articles'),
         text: unpack(countryData, 'country'),
+        showscale :false,
+
         colorscale: [
             [0.000, "#B4E7F5"],
             [0.111, "#9DDBF0"],
@@ -32,26 +34,30 @@
             [1.000, "#1876B3"]
         ],
         colorbar: {
-            title: 'Violations count'
+            title: 'Violations count',
         },
     }];
 
     const layout = {
-        title: 'Violation based on countries',
+        title: false,
         geo: {
             projection: {
                 type: 'natural earth'
             },
             showland : true,
             landcolor : '#e5ecf6',
-            
+
         },
+        dragmode: false,
         height: 600,
     };
 
     const config = {
         showLink: false,
-        responsive: true
+        responsive: true,
+        displayModeBar: false,
+        scrollZoom: true,
+        // staticPlot: true,
     }
 
     Plotly.newPlot("violation-by-country-chart", data, layout, config);
