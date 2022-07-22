@@ -14,7 +14,7 @@ class Article extends Model
 
     protected $collection = 'articles';
 
-    const PER_PAGE = 10;
+    const PER_PAGE = 25;
     const SORT_BY_FIELD = 'detection_result.date';
     const SORT_VALUE = -1;
 

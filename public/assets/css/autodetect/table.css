@@ -550,6 +550,12 @@
   overflow: scroll;
   padding: 10px;
 }
+
+.bot-violation-code p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .bot-violation-code::-webkit-scrollbar{
   display: none;
 }

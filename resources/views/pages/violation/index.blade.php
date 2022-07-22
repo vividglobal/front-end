@@ -175,7 +175,7 @@
                                         @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
                                                 @isset($article->brand['name'])
-                                                    <a href="{{ getUrlName( "violation_code_id" , $detectioncode['id'] ) }}" id={{ $detectioncode['id'] }}>
+                                                    <a href="javascript:void(0)" id={{ $detectioncode['id'] }}>
                                                         {{$detectioncode['name'] ?? ''}}
                                                     </a>
                                                 @endisset
@@ -188,7 +188,10 @@
                             <div class="track track-one">
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
-                                        <p style="color:{{$detectiontype['color'] ?? ''}}">{{$detectiontype['name'] ?? ''}} </p>
+                                        <a href="javascript:void(0)" id={{ $detectiontype['id'] }}
+                                        style="color:{{$detectiontype['color'] ?? ''}};text-decoration:none">
+                                            {{$detectiontype['name'] ?? ''}}
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>

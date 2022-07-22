@@ -63,7 +63,7 @@
                             </ul>
                         </li>
                         <li  class="nav--btn__after--login">
-                            <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
+                            <a class="nav-link" href="/articles/manual-detection">{{ __('Submit violations') }}</a>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/manual-detection')) ? 'activeHeader': ''}}"
                             >

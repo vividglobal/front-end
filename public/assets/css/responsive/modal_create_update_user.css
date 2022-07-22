@@ -84,7 +84,18 @@
 
     .close_modal_mobi:before{
         content: url(../../image/ep_back.svg);
-      }
+    }
+
+    .close_modal_mobi:after{
+        content: "Select country";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 25px;
+        line-height: 36px;
+        color: var(--primary);
+        padding-left: 10px;
+    }
 
     .content_creat-account:after{
         content: "Add admin";

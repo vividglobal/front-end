@@ -39,12 +39,12 @@
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
-                                        'disabled' => checkSort(request()->all(), 'review_date', ASC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', ASC)
                                     ])></span>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_down',
-                                        'disabled' => checkSort(request()->all(), 'review_date', DESC)
+                                        'disabled' => checkSort(request()->all(), 'checking_date', DESC)
                                     ])></span>
                             </div>
                         </div>

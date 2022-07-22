@@ -41,7 +41,7 @@ $("document").ready(function () {
 
     // VALUE PARAMS
     const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
+    const urlParams = (new URL(document.location)).searchParams;
     const perpage = urlParams.get("perpage");
     const paramStart_date = urlParams.get("start_date");
     const paramKeyword = urlParams.get("keyword");
@@ -52,6 +52,7 @@ $("document").ready(function () {
     const paramSortBy = urlParams.get("sort_by");
     const paramSortValue = urlParams.get("sort_value");
     const violation_code_id = urlParams.get("violation_code_id");
+
 
     if (paramKeyword !== null) {
         $(".search").val(paramKeyword);
@@ -100,7 +101,7 @@ $("document").ready(function () {
         let nameMb = $(".violation_mobi");
         let select = $(".select--violation--type");
         let option = ".select__one--violation--type";
-        $(".style_violation_type").find(`#${paramViolation}`).css({ "text-decoration": "underline" });
+        $(".bot-violation-code").find(`#${paramViolation}`).css({ "text-decoration": "underline" });
         returnTextButtonQuery(name, list, select, option, paramViolation,nameMb);
     }else{
         $(".list--violation--type").find("> p").text("Violation type")
@@ -484,5 +485,34 @@ $("document").ready(function () {
             }
         }
     })
+
+    $(".style__code--article div > a").click(function(){
+        let getId = $(this).attr("id")
+        geturl(getId,"violation_code_id")
+    })
+
+    $(".bot-violation-code > a").click(function(){
+        let getId = $(this).attr("id")
+        geturl(getId,"violation_type_id")
+    })
+
+    function geturl(getId,nameParams){
+        let url = window.location.href
+        let newUrl;
+        if(url.includes(nameParams)){
+            if(nameParams == "violation_code_id"){
+                newUrl = url.replace(`${nameParams}=${violation_code_id}`,`${nameParams}=${getId}`)
+            }else{
+                newUrl = url.replace(`${nameParams}=${paramViolation}`,`${nameParams}=${getId}`)
+            }
+        }else{
+            if(url.includes("?")){
+                newUrl = `${url}&${nameParams}=${getId}`
+            }else{
+                newUrl = `${url}?${nameParams}=${getId}`
+            }
+        }
+        window.location.href = newUrl
+    }
 
 });

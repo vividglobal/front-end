@@ -1,7 +1,7 @@
-@media (max-width: 1445px) {
+@media (max-width: 1450px) {
 
     .nav--btn__after--login {
-        margin: 0 15px;
+        margin: 0 10px;
     }
 
     .nav--btn__after--login > a{
@@ -20,7 +20,11 @@
     }
 
     .nav__btn--login {
-        width:  130px;
+        width:  110px;
+        right: 20px;
+    }
+    .name_login{
+        width: 65%;
     }
 }
 
@@ -194,6 +198,7 @@
         }
 
       .nav--btn__after--login{
+        margin: 0 16px;
         margin-bottom: 40px;
       }
 
@@ -247,6 +252,8 @@
       .nav-menu{
         display: flex;
         flex-direction: column;
+        width: 100%;
+        margin: 0;
         margin-top: 50px;
       }
 
@@ -334,7 +341,6 @@
 
       .btn_no-login {
         justify-content: flex-start;
-        padding-left: 16px;
     }
 
       .nav__btn--login > a {
@@ -353,9 +359,6 @@
 @media (max-width: 1113px) {
     .nav-link:hover{
         color: var(--white) !important;
-    }
-    .nav--btn__after--login{
-        width: 94% ;
     }
 }
 
@@ -383,9 +386,8 @@
         width: 60% !important;
         z-index: 102;
     }
-
     .name_trace--violation:after {
-        margin-right: 19px;
+        margin-right: 10px;
     }
 }
 
@@ -395,7 +397,7 @@
         z-index: 102;
     }
     .name_trace--violation:after {
-        margin-right: 19px;
+        margin-right: 10px;
     }
 }
 

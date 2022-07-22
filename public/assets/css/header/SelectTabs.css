@@ -24,7 +24,7 @@
 .list--company--brand img,
 #daterange img,
 .list--search img {
-    margin: 0 5px;
+    margin: -2px 10px;
     width: 10px;
 }
 
@@ -84,7 +84,7 @@
 
 .list--showing{
     padding: 13px;
-    border: 1px solid var(--gray-C7);;
+    border: 1px solid var(--gray-C7);
 }
 
 .list--showing select,

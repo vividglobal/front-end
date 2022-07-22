@@ -1,9 +1,12 @@
-@media (max-width: 1233px) {
+@media (max-width: 1300px) {
     .Base_violation--brand,
     .index_violation-nonViolation,
     .title_analysis .list--select--option,
     .title_analysis .list--title {
         margin: 15px 150px;
+    }
+    .title-violation {
+        font-size: 14px;
     }
 }
 
@@ -11,6 +14,7 @@
     /* //STATUS */
     .title_analysis .list--title {
         margin: 0 30px;
+        margin-bottom:15px;
     }
 
     #daterange{
@@ -30,6 +34,7 @@
     .Base_violation--brand,
     .index_violation-nonViolation{
         margin: 15px 16px 0 15px;
+        padding : 0;
     }
 
     .Base_violation--brand{
@@ -87,14 +92,12 @@
     }
 
     .index__violation:nth-child(5) div{
-        background: #DDEAF3;
         margin: 0px 20px 20px 20px;
         position: relative;
         border-radius: 5px;
     }
 
     .title-violation{
-        padding: 15px 20px;
         font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
@@ -110,12 +113,12 @@
     }
 
     .number-violation{
-        padding: 0px 20px 15px 20px;
         font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 31px;
         line-height: 42px;
+        padding-top: 5px;
         color: #5DA364 !important;
     }
 
@@ -314,7 +317,10 @@
     .table_brand .list--select--option .list--select__left{
         width: inherit ;
     }
-
+    .title_table_analysis p,
+    .title__country--violation{
+        color: var(--primary);
+    }
 }
 
 @media (max-width: 739px){
@@ -336,3 +342,4 @@
         display: none;
     }
 }
+

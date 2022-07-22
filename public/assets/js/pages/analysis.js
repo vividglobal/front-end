@@ -321,3 +321,4 @@ $(document).ready(function(){
     $(".list--country").find("> p").text("Country")
     $(".list--violation--type").find("> p").text("Violation type")
 })
+

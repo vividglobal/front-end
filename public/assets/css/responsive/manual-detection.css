@@ -2,6 +2,11 @@
 @media(max-width: 1113px){
     .checkbox__suspected:first-child:after {
         content: "Text/image";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 16px;
+        line-height: 23px;
     }
 
     .fix_manual{
@@ -13,7 +18,12 @@
     }
 
     .checkbox__suspected:nth-child(2):after {
-      content: "URL";
+        content: "URL";
+        font-family: 'Brandon Grotesque';
+        font-style: normal;
+        font-weight: 420;
+        font-size: 16px;
+        line-height: 23px;
     }
     .checkbox__suspected .checkmark{
         display: none;
@@ -48,7 +58,7 @@
 
     .file-input_detect{
         max-width: 100%;
-        border-style: dashed;
+        border-style: dashed !important;
         margin: 12px 0;
     }
 
@@ -72,7 +82,7 @@
 
     .country_mobile{
         display: block;
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .check_country{
@@ -94,6 +104,16 @@
         font-size: 20px;
         line-height: 29px;
         color: var(--primary);
+    }
+
+    .file-input_detect > .label,
+    .input-style-focus::placeholder{
+        font-family: 'Avenir Next';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 22px;
+        color: var(--gray-C7);
     }
 }
 

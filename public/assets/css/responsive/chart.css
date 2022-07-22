@@ -1,0 +1,89 @@
+@media (max-width: 739px) {
+    .frame-wrapper iframe{
+        top: -85px;
+    }
+    .table_countries{
+        height: 515px;
+    }
+}
+
+@media (max-width: 650px) {
+    .frame-wrapper iframe{
+        left: -50px;
+        width: 115%;
+    }
+}
+
+@media (max-width: 600px) {
+    .frame-wrapper iframe{
+        left: -60px;
+        width: 120%;
+    }
+}
+
+@media (max-width: 550px) {
+    .frame-wrapper iframe{
+        left: -70px;
+        width: 130%;
+    }
+}
+
+@media (max-width: 500px) {
+    .frame-wrapper iframe{
+        left: -80px;
+        width: 135%;
+    }
+}
+
+@media (max-width: 450px) {
+    .frame-wrapper iframe{
+        left: -76px;
+        width: 142%;
+        top: -135px;
+    }
+    .table_countries{
+        height: 465px;
+    }
+}
+
+@media (max-width: 400px) {
+    .frame-wrapper iframe{
+        left: -85px;
+        width: 150%;
+    }
+}
+
+@media (max-width: 375px) {
+    .frame-wrapper iframe{
+        left: -77px;
+        top: -150px;
+    }
+}
+
+@media (max-width: 350px) {
+    .frame-wrapper iframe{
+        left: -78px;
+        width: 155%;
+    }
+}
+
+@media (max-width: 335px) {
+    .frame-wrapper iframe{
+        left: -84px;
+        width: 161%;
+    }
+}
+
+@media (max-width: 300px) {
+    .frame-wrapper iframe{
+        left: -82px;
+        width: 170%;
+    }
+}
+
+@media (max-width: 320px) {
+    .frame-wrapper iframe{
+        left: -81px;
+        width: 165%;
+    }
+}
