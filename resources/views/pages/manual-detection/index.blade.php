@@ -2,7 +2,7 @@
 @section('content')
 <div class="list--search--select fix_manual" >
     <div class="list--title">
-        <p>{{ __('Submit violations') }}</p>
+        <p>{{ __('Submit violations correct') }}</p>
     </div>
     <!-- Checkbox suspected -->
     <div class="list--suspected__text--img">

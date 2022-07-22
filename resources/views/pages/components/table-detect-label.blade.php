@@ -170,7 +170,7 @@
                                         @endforeach
                                         @endif
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" >
+                                    <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" style="justify-content:@if(count($article->detection_result['violation_types']) > 5) flex-start @endif">
                                         @if(isset($article->detection_result['violation_types']))
                                         @foreach ($article->detection_result['violation_types'] as $detectionType)
                                             <a href="javascript:void(0)" id={{ $detectionType['id'] }}
@@ -248,9 +248,11 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <div class="entry-title-threee entry-title-tyle supervisor-violation-type style_violation_type">
+                                    <div class="entry-title-threee entry-title-tyle supervisor-violation-type style_violation_type" style="justify-content:@if(count($article->supervisor_review['violation_types']) >= 5) flex-start @endif">
                                         @foreach ($article->supervisor_review['violation_types'] as $supervisorType)
-                                            <p style="color:{{ $supervisorType['color'] ?? ''}}">{{ $supervisorType['name'] ?? '' }}</p>
+                                        <div>
+                                            <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $supervisorType['id'] ) }}" id={{ $supervisorType['id'] }} style="color:{{ $supervisorType['color'] ?? ''}}">{{ $supervisorType['name'] ?? '' }}</a>
+                                        </div>
                                         @endforeach
                                     </div>
                                 </div>
@@ -368,14 +370,14 @@
             </div>
             @if(isRole(ROLE_SUPERVISOR))
                 <p class="title-modal title-modal-style" style="text-align: center;display: block;">
-                {{ __("Are you sure to define this post's status non-violation?")}}
+                {{ __("Are you sure to define this post's status unable to detect?")}}
                 </p>
                 <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
                     {{__("* You cannot change your decision in the future")}}
                 </p>
             @else
                 <p class="title-modal title-modal-style" style="text-align: center;display: block;">
-                    {{ __("Are you sure to move this post to the Unable to detect ?") }}
+                    {{ __("Are you sure to move this post to the unable to detect list?") }}
                 </p>
             @endif
             <div class="head-confirm-btn">
@@ -451,7 +453,7 @@
                 <h1 class="fix_heade_modal">{{ __('Choose violation code') }}</h1>
             </div>
             <div class="search_code_article">
-                <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search">
+                <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search img-style-focus">
                 <input type="text" placeholder="Search for violation code" class="search input-style-focus">
             </div>
             <div class="row" style="overflow-y: auto">

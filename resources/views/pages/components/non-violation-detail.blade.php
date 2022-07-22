@@ -17,7 +17,7 @@
                         ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
                     ?>
                     @endif
-                    <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
+                    <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
                 <div class="media-link" id="copy-link"  link-copy={{$article -> link ?? '' }}>
                     <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
                     <p>Copy URL</p>
@@ -50,7 +50,7 @@
                 <li class="detail-infoi detail-infoi-right">
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
-                        <h4 class="p-style">Crawl date</h4>
+                        <h4 class="p-style">Checking date</h4>
                         <h4 class="h4-title">{{date("m-d-Y",$article->crawl_date)}}</h4>
                     </div>
                 </li>
@@ -65,7 +65,7 @@
         @if(isRole(ROLE_OPERATOR))
         <div class="list-child-function">
             <div class="list-child-top">
-                <h3 class="title-style">Switch status</h3>
+                <h3 class="title-style status-leal">Switch status</h3>
                 <img  class="td-link btn-switch-mobile" src="{{asset('assets/image/switch-mobile.png')}}" alt="#" data-id={{$article->_id }} >
             </div>
         </div>
@@ -80,7 +80,7 @@
             <p style="text-align: center;">Are you sure to move this post back to auto-dectect violation?</p>
         </div>
         <div class="head-confirm-btn">
-            <button class="confirm-btn btn-cancel close">Cancel</button>
+            <button class="confirm-btn btn-cancel close button-cancel-style">Cancel</button>
             <button class="confirm-btn btn-yes" id="confirm-mobile">Confirm</button>
         </div>
     </div>

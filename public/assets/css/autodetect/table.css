@@ -384,7 +384,9 @@
   .track {
     flex: 1 0 calc(158px);
   }
-
+.track-violiton{
+  flex: 1 0 calc(190px);
+}
   .track:first-child .entry{
       border-left: none;
   }
@@ -590,7 +592,7 @@
 }
 .entry-one-item{
   display: flex !important;
-  ustify-content: flex-start !important;
+  justify-content: flex-start !important;
 }
 .entry-one-item p{
   line-height: 22px;
@@ -791,7 +793,16 @@ input[type=checkbox] {
     font-style: italic;
     font-size: 14px;
 }
-
+.detectiontype{
+    text-decoration: none;
+    line-height: 25px;
+}
+.detectiontype:hover{
+  text-decoration: underline;
+}
+.img-style-focus{
+  width: 22px;
+}
 @media only screen and (min-width: 740px) and (max-width: 1113px) {
     #div-pc{
       display: none;

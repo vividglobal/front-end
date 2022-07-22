@@ -3,7 +3,7 @@
 @section('content')
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Unable to detect') }}</p>
+        <p>{{ __('Unable to detect correct') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -35,7 +35,7 @@
                         </div>
                         <div class="track track-non">
                             <div class=" heading th-title-right sort_checking_date">
-                                <p>{{ __('Review date') }}</p>
+                                <p>{{ __('Review date correct') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
@@ -123,7 +123,7 @@
                                     ? STATUS_VIOLATION : STATUS_NONE_VIOLATION;
                                 ?>
                                 @endif
-                                <p class="status-title unviolation-color" data-status="NON_VIOLATION">Non-violation</p>
+                                <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
                                 <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
                             </div>
                             <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>

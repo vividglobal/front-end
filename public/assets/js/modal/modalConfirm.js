@@ -15,6 +15,7 @@ btnSwitch.click(function () {
     articleId = currentRow.attr('data-id');
 });
 $("#confirm-yes").click(function(){
+    let childrenlength = $('#children-length >tr').length -1
     show_overlay()
     $.ajax({
         headers: {
@@ -39,11 +40,15 @@ $("#confirm-yes").click(function(){
     {
             this.checked = false;
     });
+    if(childrenlength === 15 || childrenlength === 0){
+        location.reload(true);
+    }
     $(".mdl-js").css("overflow-y","scroll");
 });
 function removeCurrentRow() {
     $(`tr[data-id="${articleId}"]`).fadeOut('slow');
     $(`div[data-id="${articleId}"]`).fadeOut('slow');
+    $(`tr[data-id="${articleId}"]`).remove()
     // $(`div[data-id="${articleId}"]`).remove();
 }
 

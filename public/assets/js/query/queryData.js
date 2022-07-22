@@ -52,6 +52,7 @@ $("document").ready(function () {
     const paramSortBy = urlParams.get("sort_by");
     const paramSortValue = urlParams.get("sort_value");
     const violation_code_id = urlParams.get("violation_code_id");
+    const violation_type_id = urlParams.get("violation_type_id");
 
 
     if (paramKeyword !== null) {

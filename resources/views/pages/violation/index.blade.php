@@ -4,7 +4,7 @@
 
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Code violations') }}</p>
+        <p>{{ __('Code violations correct') }}</p>
     </div>
     @include('pages/components/query', ['list_filter' => ["search","date","brand","violation","country","apply","excel","fillter_mobile"], 'show_all_filter' => false])
     <!-- list Btn  -->
@@ -68,9 +68,9 @@
                                     ])></span>
                             </div>
                         </div>
-                        <div class="track">
+                        <div class="track track-violiton">
                             <div class=" heading th-title-right sort_checking_date">
-                                <p>{{ __('Review date') }}</p>
+                                <p>{{ __('Review date correct') }}</p>
                                 <span
                                     @class([
                                         'ico-sort theard-table sort_up',
@@ -83,6 +83,7 @@
                                     ])></span>
                             </div>
                         </div>
+                        @if(@Auth::user())
                         <div class="track">
                             <div class=" heading th-title-right sort_penalty_issued">
                                 <p>{{ __('Penalty issued') }}</p>
@@ -98,14 +99,17 @@
                                     ])></span>
                             </div>
                         </div>
+                        @endif
                         <div class="track track-link">
                             <div class="heading"><p>{{ __('Link') }}</p></div>
                         </div>
+                        @if(@Auth::user())
                         <div class="track">
                             <div class=" heading th-title-right">
                                 <p>{{ __('Legal documents') }}</p>
                             </div>
                         </div>
+                        @endif
                         <div class="track">
                             <div class=" heading th-title-right">
                                 <p>{{ __('Code article') }}</p>
@@ -136,14 +140,15 @@
                                     <h3>{{date("m-d-Y",$article->published_date)}}</h3>
                                 </div>
                             </div>
-                            <div class="track">
+                            <div class="track track-violiton">
                                 <div class="entry">
                                     @if(isset($article->operator_review['review_date']))
                                     <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
                                     @endif
                                 </div>
                             </div>
-                            <div class="track">
+                            @if(@Auth::user())
+                            <div class="track ">
                                 <div class="entry date-penalty">
                                     @if($article->has_document)
                                     <h3  id={{$article->_id}}>{{date("m-d-Y",$article->penalty_issued/1000)}}</h3>
@@ -152,11 +157,13 @@
                                     @endif
                                 </div>
                             </div>
+                            @endif
                             <div class="track track-link">
                                 <div class="entry">
                                     <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="{{ asset('assets/image/link.png')}}" alt="link-icon"></a>
                                 </div>
                             </div>
+                            @if(@Auth::user())
                             <div class="track">
                                 <div class="entry">
                                     <img class="td-link upload-file" id={{$article->_id}}
@@ -169,6 +176,7 @@
                                         data-id={{$article->_id }} alt="upload-icon">
                                 </div>
                             </div>
+                            @endif
                             <div class="track ">
                                 <div class="entry-three ">
                                     <div class="style__code--article style__code_vio" style="justify-content:@if(count($article->operator_review['violation_code']) < 7) center @endif">
@@ -186,7 +194,7 @@
                             </div>
 
                             <div class="track track-one">
-                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item">
+                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item" style="justify-content:@if(count($article->detection_result['violation_types']) <= 5) center !important @endif">
                                     @foreach ($article->operator_review['violation_types'] as $detectiontype)
                                         <a href="javascript:void(0)" id={{ $detectiontype['id'] }}
                                         style="color:{{$detectiontype['color'] ?? ''}};text-decoration:none">
@@ -267,7 +275,7 @@
                 <span class="close">&times;</span>
             </div>
             <div class="head-modal">
-                <h1 >Legal documents</h1>
+                <h1>Legal documents</h1>
             </div>
             <div class="modal-body modal-body-file">
                 <div class="row" id="box_list_file">
