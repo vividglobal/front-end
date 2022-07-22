@@ -94,7 +94,7 @@
 }
 
 .list--company--brand{
-    width: 170px;
+    width: 175px;
     display: flex;
     border: 1px solid var(--gray-C7);
     padding: 14px 0 ;
@@ -210,6 +210,10 @@
 
 .name_user{
     display: none;
+}
+
+.btn_edit_profile_mb #edit__profile p{
+    margin-bottom: 20px;
 }
 
 .after-login:after{

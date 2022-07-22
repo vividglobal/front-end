@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<div class="Base_violation--brand table_brand">
+<div class="Base_violation--brand table_brand" id="tb_brand">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left fillter_brand" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["brand", "country", "violation", "apply","fillter_mobile"], 'show_all_filter' => false])
@@ -54,7 +54,7 @@
     <div class="table-wrapper" id="vio-based-brand"></div>
 </div>
 
-<div class="Base_violation--brand table_brand table_code">
+<div class="Base_violation--brand table_brand table_code" id="tb_code">
     <div class="list--select--option" style="flex-direction: row-reverse;">
         <div class="list--select__left fillter_code" style="justify-content: flex-end">
             @include('pages/components/query', ['list_filter' => ["fillter_mobile"], 'show_all_filter' => false])

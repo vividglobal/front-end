@@ -33,7 +33,7 @@
 
     .Base_violation--brand,
     .index_violation-nonViolation{
-        margin: 15px 16px 0 15px;
+        margin: 15px;
         padding : 0;
     }
 
@@ -217,7 +217,7 @@
         width: auto ;
         font-family: 'Avenir Next';
         font-style: normal;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 13px !important;
         line-height: 170%;
     }
@@ -231,6 +231,10 @@
     .res_item_brand .item_base_on_brand:nth-child(2):after{
         content : " violations";
         color: #D80027 !important;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 170%;
     }
 
     .res_item_brand .item_base_on_brand:first-child{
