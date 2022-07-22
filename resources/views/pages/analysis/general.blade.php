@@ -3,7 +3,7 @@
 </div>
     <div class="index__violation l-4 m-12 c-12">
         <div >
-            <p class="title-violation">{{ __('Non-violation') }}</p>
+            <p class="title-violation">{{ __('Unable to detect') }}</p>
             <p class="number-violation">{{ $generalData['non_violation'] }}</p>
             <p class="percent-violation">{{ $generalData['percentile_non_violation'] }}%</p>
         </div>

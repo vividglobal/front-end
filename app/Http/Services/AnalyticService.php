@@ -56,11 +56,11 @@ class AnalyticService {
 
         // Sheet General data
         $titles = [
-            'Non-violation',
+            'Unable to detect',
             'Violation',
             'Total articles',
             'Percentile of Violation',
-            'Percentile of Non-violation'
+            'Percentile of Unable to detect'
         ];
         $exportData = [
             [

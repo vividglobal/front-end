@@ -25,7 +25,7 @@
                         </li>
                         <li class="nav--btn__after--login">
                             <div class="name_trace--violation">
-                                {{ __('Trace Violations') }}
+                                {{ __('Violation reviewed') }}
                             </div>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/violation')) || request () -> is ("articles/non-violation") ? 'activeHeader': ''}}"
@@ -35,7 +35,7 @@
                                 <li  class="{{(request () -> is ('articles/violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item"href="/articles/violation">
-                                            {{ __('Code violation list') }}
+                                            {{ __('Code violations correct') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/violation')) ? 'activeHeader': ''}}"
@@ -46,7 +46,7 @@
                                 <li class="{{(request () -> is ('articles/non-violation')) ? 'activeBackground': ''}}">
                                     <div class="drop_nav_violation">
                                         <a class="dropdown-item" href="/articles/non-violation">
-                                            {{ __('Non-violation list') }}
+                                            {{ __('Unable to detect correct') }}
                                         </a>
                                         <div class="nav--btnBorder__bottom dropdown_mbl-display
                                         {{(request () -> is ('articles/non-violation')) ? 'activeHeader': ''}}"
@@ -57,7 +57,7 @@
                             </ul>
                         </li>
                         <li  class="nav--btn__after--login">
-                            <a class="nav-link" href="/articles/manual-detection">{{ __('Label violations') }}</a>
+                            <a class="nav-link" href="/articles/manual-detection">{{ __('Submit violations correct') }}</a>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/manual-detection')) ? 'activeHeader': ''}}"
                             >

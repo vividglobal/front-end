@@ -92,7 +92,7 @@ if (! function_exists('getStatusText')) {
             case Article::STATUS_VIOLATION:
                 return 'Violation';
             case Article::STATUS_NONE_VIOLATION:
-                return 'Non-violation';
+                return 'Unable to detect';
             default:
                 return $status;
         }
