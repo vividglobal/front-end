@@ -91,10 +91,10 @@ $(".closeFilter ").click(function(){
     $(".name_user").click(function(){
 
         if($(".edit_profile_mb").hasClass("show")){
-            $(".nav_home").css("margin-top","0px")
+            $(".nav_home").removeClass("padding-70")
             $(".edit_profile_mb").addClass("hide").removeClass("show")
         }else{
-            $(".nav_home").css("margin-top","70px")
+            $(".nav_home").addClass("padding-70")
             $(".edit_profile_mb").addClass("show").removeClass("hide")
         }
     })
