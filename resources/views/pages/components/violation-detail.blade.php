@@ -51,7 +51,7 @@
                 <li class="detail-infoi detail-infoi-right">
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
-                        <h4 class="p-style">Checking date</h4>
+                        <h4 class="p-style">Review date</h4>
                         <h4 class="h4-title">{{date("m-d-Y",$article->crawl_date)}}</h4>
                     </div>
                 </li>
@@ -180,7 +180,7 @@
     </div>
     @else
     <div class="head-confirm-btn button-upload-file button-upload-cancel">
-        <button class="confirm-btn btn-cancel close btn-cancel-moblie button-cancel-style">Cancel</button>
+        <button class="confirm-btn btn-cancel close btn-cancel-moblie button-cancel-style" style="margin-bottom: 10px;">Cancel</button>
     </div>    
     @endif
 </div>

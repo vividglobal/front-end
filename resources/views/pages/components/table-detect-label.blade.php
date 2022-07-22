@@ -503,7 +503,7 @@
                                 ])
                                 data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
-                            <p class="p-style">{{date("m/d/Y",$article->published_date)}}</p>
+                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
                         <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>
