@@ -319,7 +319,7 @@
     .row-style{
         height: calc(100% - 14vh - 80px);
         overflow: auto;
-        padding-bottom: 40px;
+        /* padding-bottom: 40px; */
     }
     .input-style{
         margin-right: 10px;
@@ -338,6 +338,12 @@
         font-size: 16px;
         line-height: 22px;
         color: #000000;
+    }
+    .btn-confirm-mobile{
+        margin-left: -20px;
+        position: sticky;
+        width: 100vw;
+        bottom: 0;
     }
     /*  */
     @media only screen and (min-width: 426px) and (max-width: 739px) {
