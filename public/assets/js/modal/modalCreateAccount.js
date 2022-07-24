@@ -1,6 +1,6 @@
 $("document").ready(function(){
     function resetModal(){
-        $(".modal").removeClass("modal__open")
+        $("#create__modal-account").removeClass("modal__open")
         $(".create_name").val("");
         $(".create_email").val("");
         $(".create_number").val("");

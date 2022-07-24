@@ -152,11 +152,17 @@ $(document).ready(function(){
             newParams.push('page='+perPage);
             brandStrParams = newParams.join('&');
             getViolationBasedBrand();
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(`#tb_brand`).offset().top
+            });
         }else if(getTableId === 'vio-based-code') {
             let newParams = removeParamFromList(codeStrParams.split('&'), 'page')
             newParams.push('page='+perPage);
             codeStrParams = newParams.join('&');
             getViolationBasedCode();
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(`#tb_code`).offset().top
+            });
         }
     }
     // ------------------------------------

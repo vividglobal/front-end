@@ -11,21 +11,26 @@
                     <p class="title__login">{{ __('E-mail') }}</p>
                         <div class="email--login">
                             <img src="{{ asset('/assets/image/email.svg') }}" alt="email-icon" >
-                            <input id="email" type="email" class="input-style-focus @error('email') is-invalid @enderror" 
-                            name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email" oninvalid="this.setCustomValidity('Please enter information to login')">
+                            <input id="email" type="email" class="input-style-focus @error('email') is-invalid @enderror"
+                            name="email"   placeholder="Enter your email" >
                         </div>
-                    <p class="title__login" style="margin-top:21px">{{ __('Password') }}</p>
+                    @error('email')
+                        <span class="text-dangers" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <p class="title__login" >{{ __('Password') }}</p>
                     <div class="input__pwd--login">
                         <div class="email--login">
                             <img src="{{ asset('/assets/image/key.svg') }}" alt="key-icon" >
                             <input id="password" type="password" class="input-style-focus @error('password') is-invalid @enderror"
-                            name="password" required autocomplete="current-password" placeholder="Enter your pasword" oninvalid="this.setCustomValidity('Please enter information to login')">
+                            name="password"  placeholder="Enter your pasword" >
                         </div>
-                        @error('email')
-                            <span class="text-dangers" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        @error('password')
+                        <span class="text-dangers" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
                     </div>
                     <div class="bottom__login">
                         <label class="container__remember--me">

@@ -31,6 +31,10 @@ $("document").ready(function(){
         $(".nav--btn__after--login").find("div").find("img").attr("src","../assets/image/Under-than-white.svg")
         $(".after-login").find("img:nth-child(2)").attr("src","../assets/image/Under-than-white.svg")
         $(".overlay_header").css("left","0")
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width < 1113){
+            $(".overlay").css("z-index","2")
+        }
         scrollScreen.disable()
     })
 
@@ -64,7 +68,7 @@ $(".closeFilter ").click(function(){
     })
 
     $(".overlay_nav").click(function(){
-        closeNav()
+            closeNav()
     })
 
     // $(".nav-link").click(function(){
@@ -77,6 +81,22 @@ $(".closeFilter ").click(function(){
 
     $("#edit__profile").click(function(){
         navigation.hide("#myNav")
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        if(width < 1113){
+            $(".overlay").css("z-index","0")
+            $(".btn_menu_nav").show()
+        }
+    })
+
+    $(".name_user").click(function(){
+
+        if($(".edit_profile_mb").hasClass("show")){
+            $(".nav_home").removeClass("padding-70")
+            $(".edit_profile_mb").addClass("hide").removeClass("show")
+        }else{
+            $(".nav_home").addClass("padding-70")
+            $(".edit_profile_mb").addClass("show").removeClass("hide")
+        }
     })
 
 })

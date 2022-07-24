@@ -38,7 +38,6 @@ $("document").ready(function () {
             endDate = picker.endDate.format("DD-MM-YYYY");
         }
     );
-
     // VALUE PARAMS
     const queryString = window.location.search;
     const urlParams = (new URL(document.location)).searchParams;
@@ -52,9 +51,6 @@ $("document").ready(function () {
     const paramSortBy = urlParams.get("sort_by");
     const paramSortValue = urlParams.get("sort_value");
     const violation_code_id = urlParams.get("violation_code_id");
-    const violation_type_id = urlParams.get("violation_type_id");
-
-
     if (paramKeyword !== null) {
         $(".search").val(paramKeyword);
     }
@@ -373,6 +369,8 @@ $("document").ready(function () {
             .find("> p")
             .attr("data-id");
             let search = $(".search").val() ? $(".search").val().trim() : "";
+            let searchCheck = search.replace(/[()]/g,"")
+            let newKeyWordSearch = `${encodeURIComponent(searchCheck)}`
             let perpageText = $(".list--showing").find("select").val() || perpage;
             let end__Date = "";
             let start__Date = "";
@@ -384,7 +382,7 @@ $("document").ready(function () {
                 end__Date = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             }
             return new keywordSearch(
-                search,
+                newKeyWordSearch,
                 brandCompany,
                 country,
                 violationType,
@@ -401,6 +399,8 @@ $("document").ready(function () {
             let country = $(".filter_country_mobi").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let violationType = $(".select--violation--type").closest(".checkbox_mobi").find("p").attr("data-id") || ""
             let search = $(".search").val() ? $(".search").val().trim() : "";
+            let searchCheck = search.replace(/[()]/g,"")
+            let newKeyWordSearch = `${encodeURIComponent(searchCheck)}`
             let perpage = $(".select--showing").closest(".checkbox_mobi").find("> p").attr("data-id") || "";
             let end__Date = "";
             let start__Date = "";
@@ -412,7 +412,7 @@ $("document").ready(function () {
                 end__Date = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             }
             return new keywordSearch(
-                search,
+                newKeyWordSearch,
                 brandCompany,
                 country,
                 violationType,

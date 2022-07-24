@@ -16,10 +16,13 @@
                         @auth
                         <li class="nav--btn__after--login name_user" >
                             <p class="" >{{ __(Auth::user()->role) }}</p>
-                            <p class="" >{{ __(Auth::user()->full_name) }}</p>
+                            <div class="btn_nameUser">
+                                <p class="" >{{ __(Auth::user()->full_name) }}</p>
+                                <div class="name_trace--violation"></div>
+                            </div>
                         </li>
                         @endauth
-                        <li class="nav--btn__after--login " >
+                        <li class="nav--btn__after--login nav_home" >
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                             <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
                             </div>
@@ -107,7 +110,7 @@
                         {{-- <img src="{{ asset('assets/image/user.svg') }}" alt=""> --}}
                         <p class="name_login">{{ @Auth::user()->full_name }}</p>
                         <div class="dropdown-login">
-                            <div id="edit__profile">
+                            <div id="edit__profile" class="edit_profile_mb">
                                 <p>Profile</p>
                                 <input type="hidden" data-name ="{{ @Auth::user()->full_name }}"
                                 data-phone ={{ @Auth::user()->phone_number }} data-auth ={{ @Auth::user()->role }}

@@ -185,10 +185,6 @@
                 </div>
                 <p></p>
                 <div class="select--showing " id="toggle" style="display:none">
-                        <label class="container_checkbox select__one--showing" id=10><p  data-id=10 >10</p>
-                            <input type="checkbox"  name="radio" class="input_checkbox">
-                            <span class="checkmark_checkbox"></span>
-                        </label>
                         <label class="container_checkbox select__one--showing" id=25><p  data-id=25 >25</p>
                             <input type="checkbox"  name="radio" class="input_checkbox">
                             <span class="checkmark_checkbox"></span>
