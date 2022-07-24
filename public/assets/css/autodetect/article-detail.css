@@ -321,7 +321,7 @@ color: #000000;
 .row-style{
     height: calc(100% - 14vh - 80px);
     overflow: auto;
-    padding-bottom: 40px;
+    /* padding-bottom: 40px; */
 }
 .input-style{
     margin-right: 10px;
@@ -414,6 +414,13 @@ color: #000000;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+.btn-confirm-mobile{
+    margin-left: -20px;
+    width: 100vw;
+    background-color: white;
+    /* bottom: 0;
+    position: fixed; */
 }
 /*  */
 @media only screen and (min-width: 426px) and (max-width: 739px) {

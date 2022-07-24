@@ -18,6 +18,7 @@ $(document).ready(function(){
         confirmModalVio.hide();
         confirmArticleAsViolationModal.hide()
         openselectcode.hide();
+        $(".mdl-js").css("overflow-y","scroll");
     });
     $(".history-back").click(function(){
         history.back(1);
@@ -124,6 +125,7 @@ $(document).ready(function(){
 
     $('.add-violation-code').click(async function() {
         openselectcode.show();
+        $(".mdl-js").css("overflow-y","hidden");
         articleId = $(this).attr('data-id');
     })
 
@@ -159,6 +161,8 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
+        $(".mdl-js").css("overflow-y","scroll");
+
     })
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
