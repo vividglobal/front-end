@@ -191,46 +191,42 @@ class Article extends Model
                 ]
             ]
         ];
-        if($isSupervisor || $isOperator) {
-            // List supervisor violation types
-            $aggregateQuery[] = [
-                '$lookup' => [
-                    'as'   => 'supervisor_violation_types',
-                    'from' => 'violation_types',
-                    'let'  => [ 'list_in_ids'=> '$supervisor_type_ids' ],
-                    'pipeline' => [
-                        ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
-                        [ '$match' =>
-                            [
-                                '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
-                            ]
-                        ],
+        // List supervisor violation types
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as'   => 'supervisor_violation_types',
+                'from' => 'violation_types',
+                'let'  => [ 'list_in_ids'=> '$supervisor_type_ids' ],
+                'pipeline' => [
+                    ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
+                    [ '$match' =>
+                        [
+                            '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
+                        ]
+                    ],
 
-                        ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
-                    ]
+                    ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
                 ]
-            ];
-        }
-        if($isOperator) {
-            // List operator violation types
-            $aggregateQuery[] = [
-                '$lookup' => [
-                    'as'   => 'operator_violation_types',
-                    'from' => 'violation_types',
-                    'let'  => [ 'list_in_ids'=> '$operator_type_ids' ],
-                    'pipeline' => [
-                        ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
-                        [ '$match' =>
-                            [
-                                '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
-                            ]
-                        ],
+            ]
+        ];
+        // List operator violation types
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as'   => 'operator_violation_types',
+                'from' => 'violation_types',
+                'let'  => [ 'list_in_ids'=> '$operator_type_ids' ],
+                'pipeline' => [
+                    ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
+                    [ '$match' =>
+                        [
+                            '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
+                        ]
+                    ],
 
-                        ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
-                    ]
+                    ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
                 ]
-            ];
-        }
+            ]
+        ];
 
         if(isset($params['status']) && $params['status'] === self::STATUS_VIOLATION ) {
             $aggregateQuery[] = [
