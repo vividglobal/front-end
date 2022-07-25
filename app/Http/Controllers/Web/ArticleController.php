@@ -76,7 +76,6 @@ class ArticleController extends Controller
         }
 
         $articles = $articleModel->getList($params);
-
         return view('pages/violation/index', compact('articles'));
     }
 
