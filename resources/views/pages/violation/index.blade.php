@@ -124,7 +124,7 @@
                                 <p>{{ __('Status progress') }}</p>
                             </div>
                         </div>
-                        @if(@Auth::user()->role === "OPERATOR")
+                        @if(isRole(ROLE_OPERATOR))
                         <div class="track track-switch">
                             <div class="heading"><p>{{ __('Switch status') }}</p></div>
                         </div>
@@ -167,7 +167,7 @@
                             <div class="track">
                                 <div class="entry">
                                     <img class="td-link upload-file" id={{$article->_id}}
-                                        data-user="{{@Auth::user()->role}}"
+                                        data-user="{{getRole()}}"
                                         @if($article->has_document)
                                             src="{{ asset('assets/image/dislega2.png') }}"
                                         @else
@@ -194,11 +194,11 @@
                             </div>
 
                             <div class="track track-one">
-                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item" style="justify-content:@if(count($article->detection_result['violation_types']) <= 5) center !important @endif">
-                                    @foreach ($article->operator_review['violation_types'] as $detectiontype)
-                                        <a href="javascript:void(0)" id={{ $detectiontype['id'] }}
-                                        style="color:{{$detectiontype['color'] ?? ''}};text-decoration:none">
-                                            {{$detectiontype['name'] ?? ''}}
+                                <div class="entry  entry-title-tyle bot-violation-code entry-one-item" style="justify-content:@if(count($article->operator_violation_types) <= 5) center !important @endif">
+                                    @foreach ($article->operator_violation_types as $detectiontype)
+                                        <a href="javascript:void(0)" id={{ $detectiontype->_id }}
+                                        style="color:{{$detectiontype->color ?? ''}};text-decoration:none">
+                                            {{$detectiontype->name ?? ''}}
                                         </a>
                                     @endforeach
                                 </div>
@@ -206,14 +206,14 @@
                             @auth
                             <div class="track">
                                 <div class="entry">
-                                    <div class="list--status {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
-                                    id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{@Auth::user()->role}}">
+                                    <div class="list--status {{!isRole(ROLE_OPERATOR) ? "none_list-status" : ""}}"
+                                    id="status_{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}" data-idEL="{{ $article->_id }}" data-role="{{getRole()}}">
                                         @if(isset($article->progress_status) && $article->progress_status != "")
-                                            @if($article->progress_status == "NOT_STARTED")
+                                            @if($article->progress_status === NOT_STARTED)
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>
-                                            @elseif($article->progress_status == "PROCESSING" || $article->progress_status == "PENDING")
+                                            @elseif($article->progress_status === PROCESSING)
                                                 <p data-id="Processing" >{{ __("Processing") }}</p>
-                                            @elseif($article->progress_status == "COMPLETED")
+                                            @elseif($article->progress_status === COMPLETED)
                                                 <p data-id="Completed" >{{ __(' Completed ') }}</p>
                                             @endif
                                         @else
@@ -237,7 +237,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if(@Auth::user()->role === "OPERATOR")
+                            @if(isRole(ROLE_OPERATOR))
                             <div class="track track-switch">
                                 <div class="entry">
                                     <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
