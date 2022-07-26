@@ -18,7 +18,9 @@ $(document).ready(function(){
         confirmModalVio.hide();
         confirmArticleAsViolationModal.hide()
         openselectcode.hide();
-        $(".mdl-js").css("overflow-y","scroll");
+        // $(".mdl-js").css("overflow-y","scroll");
+        $('body').css("overflow-y","scroll");
+
     });
     $(".history-back").click(function(){
         history.back(1);
@@ -125,7 +127,7 @@ $(document).ready(function(){
 
     $('.add-violation-code').click(async function() {
         openselectcode.show();
-        $(".mdl-js").css("overflow-y","hidden");
+        $('body').css("overflow-y","hidden");
         articleId = $(this).attr('data-id');
     })
 
