@@ -44,7 +44,7 @@
                 <span class="checkmark_checkbox"></span>
             </label>
             @endif
-            @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/unable-to-detect'))
+            @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/submit-violation'))
                     <label class="container_checkbox" id="bot_status" > <p data-by="bot_status">VIVID's status</p>
                         <input type="checkbox" name="radio" class="input_checkbox">
                         <span class="checkmark_checkbox"></span>
