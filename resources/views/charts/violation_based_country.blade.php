@@ -57,7 +57,7 @@
         showLink: false,
         responsive: true,
         displaylogo: false,
-        displayModeBar: true,
+        displayModeBar: false,
         // scrollZoom: true,
         // staticPlot: true,
     }
