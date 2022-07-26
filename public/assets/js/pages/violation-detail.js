@@ -130,7 +130,8 @@ function renderFileItem(rowId,user) {
                     if(user.toUpperCase() !== "OPERATOR"){
                         fileHtmlItems = `<div class="no-file-remove" style="
                         display: flex;
-                        justify-content: center;">
+                        justify-content: center;
+                        margin-bottom: 10px;">
                         <p class="no-file-upload">No files</p>
                         </div>`
                         $('.no_files').prepend(fileHtmlItems);

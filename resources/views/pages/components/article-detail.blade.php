@@ -354,7 +354,7 @@
             <h1>{{ __('Confirmation') }}</h1>
         </div>
         @if(isRole(ROLE_SUPERVISOR))
-            <p class="title-modal" style="text-align: center;display: block;">
+            <p class="title-modal title-modal-style" style="text-align: center;display: block;">
                 {{ __("Are you sure to define this post's status violation?") }}
             </p>
             <p class="title-modal title-modal-watching" style="text-align: center;display: block;">
@@ -402,11 +402,11 @@
     </div>
 </div>
 
-
-<div class="open-modal-mobile-code">
+<div class="open-modal-mobile-code" >
     <div class="modal-title-mobile-code" id="selectCodeModalMobile">
-        <div class="modal-content-mobile-code">
-            <div>
+        <div class="modal-content-mobile-code" style="display: flex;flex-direction: column;justify-content: space-between;">
+
+            <div style="height: 100px;">
                 <div class="lish-top">
                     <img class="close" src="{{ asset('assets/image/back.png') }}" alt="">
                     <h1 class="lish-title-style">{{ __('Reset code article')}}</h1>

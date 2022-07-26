@@ -76,7 +76,6 @@ class ArticleController extends Controller
         }
 
         $articles = $articleModel->getList($params);
-
         return view('pages/violation/index', compact('articles'));
     }
 
@@ -361,14 +360,14 @@ class ArticleController extends Controller
                 'status'          => $reviewStatus,
                 'review_date'     => time()
             ];
-            $reviewMessage = "Review Complete";
+            $reviewMessage = "Review Completed.";
             if(UserRoleService::isSupervisor()) {
                 $article->supervisor_review = $reviewData;
             }else if(UserRoleService::isOperator()) {
                 $article->operator_review = $reviewData;
                 if($isDoneReview) {
                     $article->status = $reviewStatus;
-                    $reviewMessage = "Review complete";
+                    $reviewMessage = "Review completed.";
                 }
             }
             $article->update();

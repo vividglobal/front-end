@@ -86,6 +86,8 @@ class Article extends Model
         $matchConditions = [];
         $dateField = 'published_date';
         $violationReviewField = 'detection_result';
+        $isSupervisor = UserRoleService::isSupervisor();
+        $isOperator = UserRoleService::isOperator();
 
         if(isset($params['status'])) {
             $status = $params['status'];
@@ -142,10 +144,13 @@ class Article extends Model
 
         $aggregateQuery[] = [
             '$addFields' => [
+                'bot_type_ids'            => '$detection_result.violation_types.id',
                 'bot_type_names'          => '$detection_result.violation_types.name',
                 'bot_code_names'          => '$detection_result.violation_code.name',
+                'supervisor_type_ids'     => '$supervisor_review.violation_types.id',
                 'supervisor_type_names'   => '$supervisor_review.violation_types.name',
                 'supervisor_code_names'   => '$supervisor_review.violation_code.name',
+                'operator_type_ids'       => '$operator_review.violation_types.id',
                 'operator_type_names'     => '$operator_review.violation_types.name',
                 'operator_code_names'     => '$operator_review.violation_code.name',
                 'company_name'            => '$company.name',
@@ -162,6 +167,63 @@ class Article extends Model
                         'then' => true,
                         'else' => false
                     ]
+                ]
+            ]
+        ];
+
+        
+
+        // List bot violation types
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as'   => 'bot_violation_types',
+                'from' => 'violation_types',
+                'let'  => [ 'list_in_ids'=> '$bot_type_ids' ],
+                'pipeline' => [
+                    ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
+                    [ '$match' =>
+                        [
+                            '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
+                        ]
+                    ],
+
+                    ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
+                ]
+            ]
+        ];
+        // List supervisor violation types
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as'   => 'supervisor_violation_types',
+                'from' => 'violation_types',
+                'let'  => [ 'list_in_ids'=> '$supervisor_type_ids' ],
+                'pipeline' => [
+                    ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
+                    [ '$match' =>
+                        [
+                            '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
+                        ]
+                    ],
+
+                    ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
+                ]
+            ]
+        ];
+        // List operator violation types
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as'   => 'operator_violation_types',
+                'from' => 'violation_types',
+                'let'  => [ 'list_in_ids'=> '$operator_type_ids' ],
+                'pipeline' => [
+                    ['$addFields' => ['string_id' => ['$toString' => '$_id']] ],
+                    [ '$match' =>
+                        [
+                            '$expr'=> [ '$and'=> [ '$in' => [ '$string_id', '$$list_in_ids' ] ] ]
+                        ]
+                    ],
+
+                    ['$project'   => ['_id' => '$string_id', 'name' => 1, 'color' => 1 ]]
                 ]
             ]
         ];
@@ -226,9 +288,6 @@ class Article extends Model
                 [ 'bot_type_names' => $keywordRegex ],
                 [ 'bot_code_names' => $keywordRegex ]
             ];
-
-            $isSupervisor = UserRoleService::isSupervisor();
-            $isOperator = UserRoleService::isOperator();
 
             if($isSupervisor || $isOperator) {
                 $searchMatchCondition[] = [ 'supervisor_type_names' => $keywordRegex ];

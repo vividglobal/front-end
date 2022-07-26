@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if(Auth::user()->role === "ADMIN" || isRole(ROLE_OPERATOR))
+                        @if(isRole(ROLE_ADMIN) || isRole(ROLE_OPERATOR))
                         <div class="track track-three">
                             <div class="heading-three"><p>{{ __('Operator') }}</p></div>
                             <div class="heading-three-title">
@@ -171,15 +171,12 @@
                                         @endif
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" style="justify-content:@if(count($article->detection_result['violation_types']) > 5) flex-start @endif">
-                                        @if(isset($article->detection_result['violation_types']))
-                                        @foreach ($article->detection_result['violation_types'] as $detectionType)
-                                            <a href="javascript:void(0)" id={{ $detectionType['id'] }}
-                                            style="color:{{$detectionType['color'] ?? ''}};text-decoration:none">
-                                                {{$detectionType['name'] ?? ''}}
+                                        @foreach ($article->bot_violation_types as $detectionType)
+                                            <a href="javascript:void(0)" id={{ $detectionType->_id }}
+                                            style="color:{{$detectionType->color ?? ''}};text-decoration:none">
+                                                {{$detectionType->name ?? ''}}
                                             </a>
-                                            {{-- <p style="color:{{$detectionType['color'] ?? ''}}">{{$detectionType['name'] ?? ''}}</p> --}}
                                         @endforeach
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -249,9 +246,9 @@
                                         @endif
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle supervisor-violation-type style_violation_type" style="justify-content:@if(count($article->supervisor_review['violation_types']) >= 5) flex-start @endif">
-                                        @foreach ($article->supervisor_review['violation_types'] as $supervisorType)
+                                        @foreach ($article->supervisor_violation_types as $supervisorType)
                                         <div>
-                                            <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $supervisorType['id'] ) }}" id={{ $supervisorType['id'] }} style="color:{{ $supervisorType['color'] ?? ''}}">{{ $supervisorType['name'] ?? '' }}</a>
+                                            <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $supervisorType->_id ) }}" id={{ $supervisorType->_id }} style="color:{{ $supervisorType->color ?? ''}}">{{ $supervisorType->name ?? '' }}</a>
                                         </div>
                                         @endforeach
                                     </div>
@@ -261,7 +258,7 @@
                             {{-- ==================================================== --}}
                             {{-- ================= OPERATOR COLUMN ================== --}}
                             {{-- ==================================================== --}}
-                            @if(Auth::user()->role === "ADMIN" || isRole(ROLE_OPERATOR))
+                            @if(isRole(ROLE_ADMIN) || isRole(ROLE_OPERATOR))
                             <div class="track track-three">
                                 <div class="entry-three">
                                     {{-- ==================================================== --}}
@@ -330,8 +327,8 @@
                                         @endif
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle operator-violation-type style_violation_type">
-                                        @foreach ($article->operator_review['violation_types'] as $operatorType)
-                                            <p style="color:{{ $operatorType['color'] ?? ''}}">{{ $operatorType['name'] ?? '' }}</p>
+                                        @foreach ($article->operator_violation_types as $operatorType)
+                                            <p style="color:{{ $operatorType->color ?? ''}}">{{ $operatorType->name ?? '' }}</p>
                                         @endforeach
                                     </div>
                                 </div>
@@ -503,7 +500,7 @@
                                 ])
                                 data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
-                            <p class="p-style">{{date("m/d/Y",$article->published_date)}}</p>
+                            <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
                         </div>
                         <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
                         <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>

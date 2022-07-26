@@ -18,6 +18,7 @@ $(document).ready(function(){
         confirmModalVio.hide();
         confirmArticleAsViolationModal.hide()
         openselectcode.hide();
+        $(".mdl-js").css("overflow-y","scroll");
     });
     $(".history-back").click(function(){
         history.back(1);
@@ -83,7 +84,6 @@ $(document).ready(function(){
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
         confirmArticleAsViolationModal.hide();
-        reload()
         hide_overlay()
     })
 
@@ -92,7 +92,6 @@ $(document).ready(function(){
         updateStatusViolationColumnAndEnableReviewViolationCodeButton();
         addOverlayScroll();
         confirmModalVio.hide();
-        reload()
         hide_overlay();
     });
 
@@ -121,12 +120,12 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
         }
         confirmModal.hide();
-        reload()
         hide_overlay();
     })
 
     $('.add-violation-code').click(async function() {
         openselectcode.show();
+        $(".mdl-js").css("overflow-y","hidden");
         articleId = $(this).attr('data-id');
     })
 
@@ -162,7 +161,8 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
-        reload();
+        $(".mdl-js").css("overflow-y","scroll");
+
     })
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
@@ -221,13 +221,6 @@ $(document).ready(function(){
         confirmModalVio.hide();
     }
 
-    function reload(){
-        let childrenlength = $('#children-length >tr').length -1
-        if(childrenlength === 15){
-            location.reload(true);
-        }
-    }
-
     function addOverlayScroll() {
         scrollScreen.enable()
     }
@@ -249,7 +242,6 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
-        reload()
     })
 
       // SEARCH ARTICLE_CODE MODAL
@@ -355,6 +347,7 @@ $(document).ready(function(){
     async function action_moderate_article(action, status, violationCode = []) {
         // if(isLoading) {return}
         // show_overlay();
+        console.log(articleId);
         isLoading = true;
         return await $.ajax({
             url : `/articles/${articleId}/action-moderate?_method=PUT`,
