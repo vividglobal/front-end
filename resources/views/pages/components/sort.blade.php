@@ -33,7 +33,7 @@
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
             </label>
-            @if(!request ()-> is ('articles/violation') && !request ()-> is ('articles/non-violation'))
+            @if(!request ()-> is ('articles/code-violation') && !request ()-> is ('articles/unable-to-detect'))
             <label class="container_checkbox" id="crawl_date" > <p data-by="crawl_date">Crawl date</p>
                 <input type="checkbox" name="radio" class="input_checkbox">
                 <span class="checkmark_checkbox"></span>
@@ -44,7 +44,7 @@
                 <span class="checkmark_checkbox"></span>
             </label>
             @endif
-            @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/manual-detection'))
+            @if(request ()-> is ('articles/auto-detection') || request ()-> is ('articles/unable-to-detect'))
                     <label class="container_checkbox" id="bot_status" > <p data-by="bot_status">VIVID's status</p>
                         <input type="checkbox" name="radio" class="input_checkbox">
                         <span class="checkmark_checkbox"></span>
@@ -62,7 +62,7 @@
                     @endif
                 @endauth
             @endif
-            @if(request ()-> is ('articles/violation'))
+            @if(request ()-> is ('articles/code-violation'))
                 <label class="container_checkbox" id="sort_penalty_issued" > <p
                     data-by="sort_penalty_issued">Penalty issued</p>
                     <input type="checkbox" name="radio" class="input_checkbox">

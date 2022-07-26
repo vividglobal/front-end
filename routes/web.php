@@ -18,9 +18,9 @@ Route::view('/', 'home');
 Route::controller(Web\ArticleController::class)->group(function () {
     Route::prefix('articles')->group(function () {
         Route::get('/auto-detection', 'getAutoDetectionList');
-        Route::get('/manual-detection', 'getManualDetectionList');
-        Route::get('/violation', 'getViolationList');
-        Route::get('/non-violation', 'getNoneViolationList');
+        Route::get('/submit-violation', 'getManualDetectionList');
+        Route::get('/code-violation', 'getViolationList');
+        Route::get('/unable-to-detect', 'getNoneViolationList');
         Route::get('/{id}/documents', 'documents');
         Route::get('/{id}/details', 'getOne');
         Route::get('/{id}/violation', 'getOneViolation');

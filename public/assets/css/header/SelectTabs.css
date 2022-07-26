@@ -165,9 +165,10 @@
 .list--select__right p{
     font-family: 'Brandon Grotesque';
     font-style: normal;
-    font-weight: 450;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 136.5%;
+    color:  #072136;
 }
 
 .list--select__right select{

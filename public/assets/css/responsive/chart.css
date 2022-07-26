@@ -1,6 +1,10 @@
+ .modebar {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
 @media (max-width: 739px) {
     .frame-wrapper iframe{
-        top: -85px;
+        top: -10px;
     }
     .table_countries{
         height: 515px;
@@ -9,28 +13,28 @@
 
 @media (max-width: 650px) {
     .frame-wrapper iframe{
-        left: -50px;
-        width: 115%;
+        left: -40px;
+        width: 110%;
     }
 }
 
 @media (max-width: 600px) {
     .frame-wrapper iframe{
-        left: -60px;
-        width: 120%;
+        left: -65px;
+        width: 115%;
     }
 }
 
 @media (max-width: 550px) {
     .frame-wrapper iframe{
-        left: -70px;
-        width: 130%;
+        left: -60px;
+        width: 115%;
     }
 }
 
 @media (max-width: 500px) {
     .frame-wrapper iframe{
-        left: -80px;
+        left: -60px;
         width: 135%;
     }
 }

@@ -19,7 +19,7 @@
         locations: unpack(countryData, 'country'),
         z: unpack(countryData, 'total_articles'),
         text: unpack(countryData, 'country'),
-        showscale :false,
+        showscale : false,
 
         colorscale: [
             [0.000, "#B4E7F5"],
@@ -48,15 +48,17 @@
             landcolor : '#e5ecf6',
 
         },
-        dragmode: false,
+        // dragmode: true,
         height: 600,
     };
+
 
     const config = {
         showLink: false,
         responsive: true,
-        displayModeBar: false,
-        scrollZoom: true,
+        displaylogo: false,
+        displayModeBar: true,
+        // scrollZoom: true,
         // staticPlot: true,
     }
 

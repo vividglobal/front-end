@@ -89,7 +89,7 @@
                         @endforeach
                     @endif
                 </div>
-            @endif    
+            @endif
             </div>
         </div>
         <div class="list-child-function">
@@ -99,9 +99,9 @@
                 <div class="list--status list--status-mobile {{@Auth::user()->role !== "OPERATOR" ? "none_list-status" : ""}}"
                 data-idEL="{{ $article->_id }}" id="status_1" data-role="{{@Auth::user()->role}}">
                     @if(isset($article->progress_status) && $article->progress_status != "")
-                        @if($article->progress_status == "NOT_STARTED")
+                        @if($article->progress_status == "NOT_STARTED" || $article->progress_status == "PENDING")
                             <p data-id="not_started" >{{ __("Not started") }}</p>
-                        @elseif($article->progress_status == "PROCESSING" || $article->progress_status == "PENDING")
+                        @elseif($article->progress_status == "PROCESSING" )
                             <p data-id="Processing" >{{ __("Processing") }}</p>
                         @elseif($article->progress_status == "COMPLETED")
                             <p data-id="Completed" >{{ __(' Completed ') }}</p>
@@ -163,7 +163,7 @@
             <h1 class="modal-tile-uploadfile">Legal documents</h1>
         </div>
         <div class="modal-file-data" id="add-file">
-            
+
         </div>
         <div class="no_files">
 
