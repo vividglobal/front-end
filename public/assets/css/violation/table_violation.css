@@ -440,6 +440,8 @@
   font-size: 16px;
   line-height: 22px;
   color: #000000;
+  font-weight: 600;
+  font-size: 17px;
 }
 .head-confirm-btn{
   display: flex;

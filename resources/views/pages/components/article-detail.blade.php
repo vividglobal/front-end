@@ -405,30 +405,31 @@
 <div class="open-modal-mobile-code" >
     <div class="modal-title-mobile-code" id="selectCodeModalMobile">
         <div class="modal-content-mobile-code" style="display: flex;flex-direction: column;justify-content: space-between;">
-
-            <div style="height: 100px;">
-                <div class="lish-top">
-                    <img class="close" src="{{ asset('assets/image/back.png') }}" alt="">
-                    <h1 class="lish-title-style">{{ __('Reset code article')}}</h1>
-                </div>
-                <div class="search_code_article">
-                    <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search btn-search-mobile">
-                    <input type="text" placeholder="Search for violation code" class="search input-style-focus">
-                </div>
-            </div>
-            <div class="row row-style">
-                @foreach($violationCode as $key => $code)
-                <div class="col-md-1 check__box">
-                    <div class="checkbox-code">
-                        <label class="check_box_code">
-                            <input class="input-style" id="id-function-code" type="checkbox" name="violation_code[]"  value={{ $code->id }}>
-                            <span class="checkmark_code"></span>
-                            {{ $code->name }}
-                        </label>
+            <div>                          
+                <div style="height: 100px;">
+                    <div class="lish-top">
+                        <img class="close" src="{{ asset('assets/image/back.png') }}" alt="">
+                        <h1 class="lish-title-style">{{ __('Reset code article')}}</h1>
+                    </div>
+                    <div class="search_code_article">
+                        <img src="{{ asset('assets/image/search.svg') }}" alt="search" class="btn-search btn-search-mobile">
+                        <input type="text" placeholder="Search for violation code" class="search input-style-focus">
                     </div>
                 </div>
-                @endforeach
-            </div>
+                <div class="row row-style">
+                    @foreach($violationCode as $key => $code)
+                    <div class="col-md-1 check__box">
+                        <div class="checkbox-code">
+                            <label class="check_box_code">
+                                <input class="input-style" id="id-function-code" type="checkbox" name="violation_code[]"  value={{ $code->id }}>
+                                <span class="checkmark_code"></span>
+                                {{ $code->name }}
+                            </label>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>  
             <div class="btn-confirm btn-confirm-mobile">
                 <button class="confirm-btn btn-cancel close button-upload-style button-cancel-style">Cancel</button>
                 <button class="confirm-btn btn-select-code btn-confirm-style button-upload-style" id="">{{ __('Apply') }}</button>
