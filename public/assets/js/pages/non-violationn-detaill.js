@@ -48,9 +48,7 @@ $("#confirm-mobile").click(function(){
         if(msg){
             show_success("This post has been moved to auto - detect violation list");
             $('#toaster').addClass('toaster-style-mobile')
-            setTimeout(() => {
-                window.location.replace(window.location.pathname.replace(articleId + "/non-violation", "unable-to-detect"));
-            },3000);
+            BackUrl("/non-violation", "unable-to-detect")
         }
     })
     .fail(function(){
@@ -96,3 +94,4 @@ function copyToClipboard(text) {
     }
     document.body.removeChild(textArea);
 }
+

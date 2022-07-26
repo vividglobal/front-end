@@ -43,9 +43,7 @@ $("#confirm-mobile").click(function(){
         if(msg){
             show_success("This post has been successfully moved to auto-dectect violation.");
             $('#toaster').addClass('toaster-style-mobile')
-            setTimeout(() => {
-                window.location.replace(window.location.pathname.replace(articleId + "/violation", "code-violation"));
-            },3000);
+            BackUrl("/violation", "code-violation")
         }
     })
     .fail(function(){
