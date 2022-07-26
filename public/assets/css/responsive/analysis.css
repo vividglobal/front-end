@@ -21,6 +21,10 @@
         height: 46px;
     }
 
+    .Base_violation--brand .table_analysis .table_analysis_body li{
+        font-weight: 600;
+    }
+
     .list_slc_analysis .btn__apply,
     .list_slc_analysis #daterange{
         display: none;

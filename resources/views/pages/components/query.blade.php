@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="border_gray"></div>
-        @if(!request ()->is('articles/non-violation'))
+        @if(!request ()->is('articles/unable-to-detect'))
             <div class="checkbox_mobi ">
                 <div class="checkbox_title">
                     <div>
