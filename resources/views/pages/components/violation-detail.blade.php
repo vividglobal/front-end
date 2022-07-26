@@ -145,7 +145,7 @@
     <div class="modal-confirm-content modal-confirm-content-mobile">
         <div class="head-confirm">
             <h1>Confirmation</h1>
-            <p style="text-align: center;">Are you sure to move this post back to auto-dectect violation?</p>
+            <p class="title-modal-style" style="text-align: center;">Are you sure to move this post back to auto-dectect violation?</p>
         </div>
         <div class="head-confirm-btn">
             <button class="confirm-btn btn-cancel close button-cancel-style">Cancel</button>

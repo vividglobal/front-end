@@ -160,10 +160,10 @@ $(document).ready(function(){
     })
 
     $('.btn-confirm-violation-and-choose-code').click(async function() {
-        $(".mdl-js").css("overflow-y","scroll");
         confirmArticleAsViolationModal.hide();
         let disabledDisagreeBtn = true;
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
+        addOverlayScroll();
     });
 
     function updateDetectionColumnAfterSelectViolationCode(data) {
