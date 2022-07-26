@@ -153,17 +153,126 @@ class ArticleService
                     'color' => $type->color
                 ];
             }
-            $unique_type_array = [];
-            foreach($listTypes as $element) {
-                $hash = $element['id'];
-                $unique_type_array[$hash] = $element;
-            }
-            $violationTypes = array_values($unique_type_array);
+            $violationTypes = getUniqueArray('id', $listTypes);
+
             return [
                 'violation_code'  => $listCode,
                 'violation_types' => $violationTypes
             ];
         }
+
         return [];
+    }
+
+    public function createArticleFromAIDetection($detectData) {
+        $brandData = [];
+        $companyData = [];
+        if(isset($detectData['brands']) && count($detectData['brands']) > 0) {
+            $brandName = $detectData['brands'][0];
+            $brand = CompanyBrand::where('name', 'like', '%' . $brandName . '%')->first();
+            if($brand) {
+                if($brand->type === CompanyBrand::TYPE_BRAND) {
+                    if(isset($brand->parent_id)) {
+                        $company = CompanyBrand::find($brand->parent_id);
+                        if($company) {
+                            $companyData = [
+                                'id'   => $company->_id,
+                                'name' => $company->name
+                            ];
+                        }
+                    }
+                    $brandData = [
+                        'id'   => $brand->_id,
+                        'name' => $brand->name
+                    ];
+                }else {
+                    $companyData = [
+                        'id'   => $brand->_id,
+                        'name' => $brand->name
+                    ];
+                }
+            }
+        }
+
+        $countryData = [];
+        if(isset($detectData['country_id'])) {
+            $country = Country::find($detectData['country_id']);
+            if($country) {
+                $countryData = [
+                    'id'   => $country->_id,
+                    'name' => $country->name
+                ];
+            }
+        }
+
+        $image   = (isset($detectData['imgs']) && count($detectData['imgs']) > 0)
+                    ? $detectData['imgs'][0] : '';
+        $caption = isset($detectData['text']) ? $detectData['text'] : '';
+        $violationCodeNames =  (isset($detectData['violations']) && count($detectData['violations']) > 0)
+                        ? $detectData['violations'] : [];
+        $publishedDate = strtotime($detectData['post_time']);
+        $link = isset($detectData['url']) ? $detectData['url'] : '';
+
+        $newArticle = [
+            'company'          => $companyData,
+            'country'          => $countryData,
+            'brand'            => $brandData,
+            'caption'          => $caption,
+            'image'            => $image,
+            'link'             => $link,
+            'published_date'   => $publishedDate,
+            'status'           => Article::STATUS_PENDING,
+            'detection_type'   => Article::DETECTION_TYPE_MANUAL,
+        ];
+
+        if(count($violationCodeNames) === 0) {
+            $newArticle['detection_result'] = [
+                'violation_code'  => [],
+                'violation_types' => [],
+                'status'          => Article::STATUS_NONE_VIOLATION,
+                'crawl_date'      => time()
+            ];
+        }else {
+            $violationCodex = ViolationCode::whereIn('name', $violationCodeNames)->get();
+
+            if(!$violationCodex) {
+                return [
+                    'success' => false,
+                    'error'   => 'Invalid violations code : '.implode(', ', $violationCodeNames)
+                ];
+            }
+
+            $violationCodexData = [];
+            $violationTypesData = [];
+            foreach ($violationCodex as $key => $code) {
+                $violationCodexData[] = [
+                    'id' => $code->_id,
+                    'name' => $code->name
+                ];
+                $type = $code->violationType()->first();
+                $violationTypesData[] = [
+                    'id'    => $type->_id,
+                    'name'  => $type->name,
+                    'color' => $type->color
+                ];
+            }
+
+            // Remove duplicated types
+            $violationTypesData = getUniqueArray('id', $violationTypesData);
+            
+            $newArticle['detection_result'] = [
+                'violation_code'  => $violationCodexData,
+                'violation_types' => $violationTypesData,
+                'status'          => Article::STATUS_VIOLATION,
+                'crawl_date'      => time()
+            ];
+        }
+
+        $article = Article::create($newArticle);
+
+        return [
+            'success' => true,
+            'data' => $article
+        ];
     }
 }
