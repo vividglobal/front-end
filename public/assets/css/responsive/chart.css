@@ -36,6 +36,7 @@
     .frame-wrapper iframe{
         left: -60px;
         width: 135%;
+        top: -135px;
     }
 }
 
@@ -43,7 +44,6 @@
     .frame-wrapper iframe{
         left: -76px;
         width: 142%;
-        top: -135px;
     }
     .table_countries{
         height: 465px;
