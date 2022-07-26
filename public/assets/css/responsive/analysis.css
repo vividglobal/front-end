@@ -248,11 +248,13 @@
     .res_item_brand .item_base_on_brand:first-child:before{
         content : "Article: ";
         color: var(--gray-6F);
+        font-weight: 500;
     }
 
     .res_item_brand .item_base_on_brand:nth-child(3):before{
         content : "Percentage: ";
         color: var(--gray-6F);
+        font-weight: 500;
     }
 
     .slc_analysis .list--select__left #daterange{
@@ -284,6 +286,7 @@
 
     .base_code_item:nth-child(5):before{
         content: "Article: ";
+        font-weight: 500;
         color: var(--gray-6F);
     }
 
@@ -303,6 +306,7 @@
     .base_code_item:nth-child(4):before{
         content: "Violation type: ";
         color: var(--gray-6F);
+        font-weight: 500;
     }
 
     .type_pc{
