@@ -24,18 +24,6 @@ define('DESC', 'DESC');
 define('LABEL_TYPE_IMAGE', 'LABEL_TYPE_IMAGE');
 define('LABEL_TYPE_URL', 'LABEL_TYPE_URL');
 
-if (! function_exists('dump_data')) {
-    function dump_data() {
-        $args = func_get_args();
-        echo '<pre>';
-        foreach($args as $ag) {
-            print_r($ag);
-        }
-        echo '<pre>';
-        die();
-    }
-}
-
 if (! function_exists('convertArrayToString')) {
     function convertArrayToString($dataArr, $keyValue) {
         $valueArr = [];
@@ -114,5 +102,16 @@ if (! function_exists('getRole')) {
 if (! function_exists('checkSort')) {
     function checkSort($params, $field, $sort) {
         return isset($params['sort_by']) && $params['sort_by'] === $field && isset($params['sort_value']) && strtoupper($params['sort_value']) === $sort;
+    }
+}
+
+if (! function_exists('getUniqueArray')) {
+    function getUniqueArray($key, $array) {
+        $unique_type_array = [];
+        foreach($array as $element) {
+            $hash = $element[$key];
+            $unique_type_array[$hash] = $element;
+        }
+        return array_values($unique_type_array);
     }
 }
