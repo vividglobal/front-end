@@ -22,7 +22,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: pointer;
     text-align: left;
     width: 80%;
     padding-right: 10px;
@@ -49,7 +48,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: pointer;
     text-align: left;
     width: 100%;
 }

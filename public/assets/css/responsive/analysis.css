@@ -113,7 +113,6 @@
         overflow: hidden;
         text-overflow: ellipsis;
         margin-right: 30px;
-        cursor: pointer;
     }
 
     .number-violation{
