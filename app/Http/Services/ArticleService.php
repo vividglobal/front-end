@@ -93,13 +93,8 @@ class ArticleService
                 $articleDetetionCaption = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
             }
 
-            if($articleDetetionPublishedDate === null) {
-                $articleDetetionPublishedDate = mt_rand(strtotime('01-05-2022'), time());
-            }
-
-            if($articleDetetionCrawlDate === null) {
-                $articleDetetionCrawlDate = mt_rand(strtotime('01-05-2022'), time());
-            }
+            $articleDetetionPublishedDate = mt_rand(strtotime('01-05-2022'), time());
+            $articleDetetionCrawlDate = mt_rand(strtotime('01-05-2022'), time());
 
             $article = [
                 'company' => [],
@@ -205,13 +200,14 @@ class ArticleService
             }
         }
 
-        $image   = (isset($detectData['imgs']) && count($detectData['imgs']) > 0)
-                    ? $detectData['imgs'][0] : '';
-        $caption = isset($detectData['text']) ? $detectData['text'] : '';
+        $image              = (isset($detectData['imgs']) && count($detectData['imgs']) > 0)
+                                ? $detectData['imgs'][0] : '';
+        $caption            = isset($detectData['text']) ? $detectData['text'] : '';
         $violationCodeNames =  (isset($detectData['violations']) && count($detectData['violations']) > 0)
-                        ? $detectData['violations'] : [];
-        $publishedDate = strtotime($detectData['post_time']);
-        $link = isset($detectData['url']) ? $detectData['url'] : '';
+                                ? $detectData['violations'] : [];
+        $publishedDate      = isset($detectData['post_time']) && $detectData['post_time'] != ''
+                                ? strtotime(str_replace('/', '-', $detectData['post_time'])) : null; // post_time format as d/m/Y
+        $link               = isset($detectData['url']) ? $detectData['url'] : '';
 
         $newArticle = [
             'company'          => $companyData,

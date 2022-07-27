@@ -38,7 +38,7 @@ class ManualLabelRequest extends FormRequest
                 $rules['image'] = 'required';
                 $rules['caption'] = 'nullable';
             }
-            if(request()->get('caption') !== null) {
+            if(request()->has('caption')) {
                 $rules['image'] = 'nullable';
                 $rules['caption'] = 'required|string|max:10000';
             }
