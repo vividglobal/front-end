@@ -52,7 +52,7 @@
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
                         <h4 class="p-style">Review date</h4>
-                        <h4 class="h4-title">{{date("m-d-Y",$article->crawl_date)}}</h4>
+                        <h4 class="h4-title">{{date("m-d-Y",$article->operator_review['review_date'] )}}</h4>
                     </div>
                 </li>
             </ul>

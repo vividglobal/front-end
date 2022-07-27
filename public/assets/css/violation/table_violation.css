@@ -425,22 +425,17 @@
   align-items: center;
 }
 .head-confirm h1{
-  font-family: 'Brandon Grotesque';
   font-style: normal;
-  font-weight: 420;
-  font-size: 20px;
-  line-height: 29px;
-  display: flex;
-  align-items: center;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 136.5%;
+  color: var(--primary);
+  font-family: 'Brandon Grotesque';
   color: #082136;
 }
 .head-confirm p{
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  color: #000000;
   font-weight: 600;
+  margin-top: 12px;
   font-size: 17px;
 }
 .head-confirm-btn{
@@ -473,12 +468,13 @@
   font-family: "Avenir roman Font" !important;
 }
 .btn-yes{
-font-style: normal;
-font-weight: 600;
-font-size: 18px;
-line-height: 136.5%;
-color: var(--white);
-background: var(--primary);
+  font-family: "Avenir roman Font";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 136.5%;
+  color: var(--white);
+  background: var(--primary);
 }
 .modal-confirm-title{
     display: none;

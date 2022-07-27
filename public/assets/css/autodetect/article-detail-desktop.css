@@ -317,9 +317,9 @@
         width: 100% !important;
     }
     .row-style{
-        height: calc(100% - 14vh - 80px);
+        /* height: calc(100% - 14vh - 80px); */
         overflow: auto;
-        /* padding-bottom: 40px; */
+        height: calc(100% - 100px);
     }
     .input-style{
         margin-right: 10px;
@@ -363,4 +363,3 @@
         padding: 1px 10px !important;
     }
     }
-    
