@@ -56,6 +56,8 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $params['status'] = Article::STATUS_PENDING;
+        $params['sort_by'] = 'created_at';
+        $params['sort_value'] = 'DESC';
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);

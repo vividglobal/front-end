@@ -49,7 +49,7 @@ class ArticleService
             ['img' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUNlcE_XlGcQFcpoYJJ0reXCkC-SSIIb1FWA&usqp=CAU', 'link' => 'https://shoptretho.com.vn/sua-bot-pediasure-ba-1600gr-1-10-tuoi'],
             ['img' => 'https://vn-test-11.slatic.net/p/c2ce4a21da13450eb390c0277bf296af.jpg', 'link' => 'https://www.lazada.vn/tag/sua-bot-hop/?innerlink=hot_v1']
         ];
-        $detectionType = ['BOT', 'MANUAL'];
+        $detectionType = ['BOT'];
         $dectionStatus = [Article::STATUS_NONE_VIOLATION, Article::STATUS_VIOLATION];
 
         $listArticles = [];
