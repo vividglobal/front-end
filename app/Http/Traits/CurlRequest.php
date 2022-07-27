@@ -17,10 +17,10 @@ trait CurlRequest {
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $body,
+            CURLOPT_HTTPHEADER => $headers
         ));
 
         $response = curl_exec($curl);
-
         curl_close($curl);
         $response = json_decode($response, true);
         return $response ;

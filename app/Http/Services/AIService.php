@@ -15,7 +15,8 @@ class AIService {
 
     public function detectViolationFromUrl($body) {
         $url = env('AI_DETECT_URL') . '/check-violation-global-url';
-        $response = $this->curl_post($url, $body);
+        $headers = ['Content-Type: application/json'];
+        $response = $this->curl_post($url, $body, $headers);
         return $response;
     }
 

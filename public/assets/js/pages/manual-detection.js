@@ -1,6 +1,6 @@
 $(document).ready(function() {
     let isLoading = false;
-    $('#submit_form').on('click', async function() {
+    $('#submit_form').on('click', function() {
         if(isLoading) {
             show_error('Please wait');
             return false;
@@ -43,7 +43,7 @@ $(document).ready(function() {
         formData.append('capcha_token', captchaToken);
         formData.append('country_id', country);
 
-        let response = await $.ajax({
+        $.ajax({
             url: '/articles/manual-label-violation',
             headers: {
                 'X-CSRF-TOKEN': csrf
@@ -52,18 +52,23 @@ $(document).ready(function() {
             data: formData,
             contentType: false,
             processData: false,
+            success: (response) => {
+                isLoading = false;
+                hide_overlay();
+                show_success(response.message);
+                setTimeout(() => {
+                    window.location.href = window.location.href
+                }, 3000);
+            },
+            error: (err) => {
+                isLoading = false;
+                hide_overlay();
+                show_error(err.responseJSON.message);
+                setTimeout(() => {
+                    window.location.href = window.location.href
+                }, 3000);
+            }
         });
-
-        isLoading = false;
-        hide_overlay();
-        if(response.success) {
-            show_success(response.message);
-            setTimeout(() => {
-                window.location.href = window.location.href
-            }, 3000);
-            return;
-        }
-        show_error(response.message);
     })
 });
 

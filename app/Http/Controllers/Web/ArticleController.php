@@ -10,14 +10,12 @@ use App\Http\Requests\Article\ManualLabelRequest;
 use App\Models\Mongo\Article;
 use App\Models\Mongo\ArticleLegalDocument;
 use App\Models\Mongo\ViolationCode;
-use App\Models\Mongo\Country;
 
 use App\Http\Services\UserRoleService;
 use App\Http\Services\ArticleExportService;
 use App\Http\Services\DocumentService;
 use App\Http\Services\CapchaService;
 use App\Http\Services\ArticleService;
-use App\Http\Services\FileService;
 use App\Http\Services\AIService;
 
 use Illuminate\Support\Facades\Auth;
@@ -313,22 +311,30 @@ class ArticleController extends Controller
         $aiService = new AIService();
         if($validated['request_type'] === LABEL_TYPE_IMAGE) {
             if($request->hasFile('image')) {
-                $body['image'] = new CURLFILE($request->file('image'));
+
+                $uploadFile = $request->file('image');
+                $filename = $uploadFile->getClientOriginalName();
+                $filedata = $uploadFile->getPathName();
+
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $type = finfo_file($finfo, $filedata);
+                $imgdata = array('file' => $filedata);
+                $body['image'] =  new \CurlFile($filedata, $type, $filename);
             }
-            if(isset($validated['request_type'])) {
+            if(isset($validated['caption'])) {
                 $body['text'] = $validated['caption'];
             }
             $response = $aiService->detectViolationFromTextAndImage($body);
         }else if($validated['request_type'] === LABEL_TYPE_URL) {
             $body['url'] = $validated['url'];
-            $response = $aiService->detectViolationFromUrl($body);
+            $response = $aiService->detectViolationFromUrl(json_encode($body));
         }
         
         if(!isset($response['status']) || $response['status'] === false) {
             return $this->responseFail([], "Unable to detect. Please try again");
         }
-
-        $response = array_merge($response, $validated);
+        
+        $response = array_merge($response, $body);
         $articleService = new ArticleService();
         $data = $articleService->createArticleFromAIDetection($response);
 
