@@ -11,7 +11,7 @@ class ArticleExportService {
 
     public function exportPendingArticles($fileName, $articles) {
         $titles = [
-            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date', 'Link',
+            '#','Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date', 'Link',
             'VIVID - Status', 'VIVID - Code Article', 'VIVID - Violation Type',
         ];
         $isSupervisor = UserRoleService::isSupervisor();
@@ -32,8 +32,8 @@ class ArticleExportService {
             $crawlDate = $article->crawl_date ? date('Y-m-d', $article->crawl_date) : '';
             $row = [
                 $key+1,
-                $article->company['name'] ?? '',
                 $article->country['name'] ?? '',
+                $article->company['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
@@ -46,7 +46,7 @@ class ArticleExportService {
             ];
 
             if($isSupervisor || $isOperator) {
-                $violationStatus = $article->supervisor_review['status'];
+                $violationStatus =  getStatusText($article->supervisor_review['status']) ;
                 $violationCodeNames = '';
                 $violationTypeNames = '';
                 if($violationStatus === Article::STATUS_VIOLATION) {
@@ -58,7 +58,7 @@ class ArticleExportService {
                 $row[] = $violationTypeNames;
             }
             if($isOperator) {
-                $violationStatus = $article->operator_review['status'];
+                $violationStatus = getStatusText($article->operator_review['status']);
                 $violationCodeNames = '';
                 $violationTypeNames = '';
                 if($violationStatus === Article::STATUS_VIOLATION) {
@@ -80,7 +80,7 @@ class ArticleExportService {
 
     public function exportViolationArticles($fileName, $articles) {
         $titles = [
-            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date',
+            '#', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date',
             'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type', 'Status Progress'
         ];
         $exportData = [];
@@ -99,8 +99,8 @@ class ArticleExportService {
             $checkingDate = $article->operator_review['review_date'] ? date('Y-m-d', $article->operator_review['review_date']) : '';
             $row = [
                 $key+1,
-                $article->company['name'] ?? '',
                 $article->country['name'] ?? '',
+                $article->company['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,
@@ -125,7 +125,7 @@ class ArticleExportService {
 
     public function exportNoneViolationArticles($fileName, $articles) {
         $titles = [
-            '#', 'Company', 'Country', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date', 'Link'
+            '#', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date', 'Link'
         ];
         $exportData = [];
         foreach ($articles as $key => $article) {
@@ -133,8 +133,8 @@ class ArticleExportService {
             $checkingDate = $article->operator_review['review_date'] ? date('Y-m-d', $article->operator_review['review_date']) : '';
             $row = [
                 $key+1,
-                $article->company['name'] ?? '',
                 $article->country['name'] ?? '',
+                $article->company['name'] ?? '',
                 $article->brand['name'] ?? '',
                 $article->caption,
                 $article->image,

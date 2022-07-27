@@ -73,9 +73,6 @@
     right: 25px
 }
 
-.index__violation > div{
-    height: 111px;
-}
 
 .unable_detect .percent-violation{
     background-color: var(--percent_success);
@@ -138,7 +135,8 @@
 }
 
 .index__violation{
-    padding: 10px;
+    padding: 0 8px;
+    height: 110px;
 }
 
 .violations_analysis div{
