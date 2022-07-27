@@ -84,7 +84,6 @@ class Article extends Model
 
     public function aggregateQuery($params) {
         $matchConditions = [];
-        $dateField = 'published_date';
         $violationReviewField = 'detection_result';
         $isSupervisor = UserRoleService::isSupervisor();
         $isOperator = UserRoleService::isOperator();

@@ -58,7 +58,7 @@
                             <textarea rows="10" class="form-control list_urls">{{ implode(', ', $country->list_url) }}</textarea>
                         </td>
                         <td>
-                            <button class="btn btn-success" type="button">Save</button>
+                            <button class="btn btn-success btn-update" type="button">Save</button>
                         </td>
                         <td>
                             <button class="btn btn-danger" type="submit">Delete</button>
@@ -92,7 +92,7 @@
                 BASE_URL + '/' + dataId,
                 {
                     name : value.trim(),
-                    type_id : typeID
+                    list_url : urls
                 }
             )
         })

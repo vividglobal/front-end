@@ -151,7 +151,7 @@ class ArticleService
         return [];
     }
 
-    public function createArticleFromAIDetection($detectData) {
+    public function createArticleFromAIDetection($detectData, $detectionType = Article::DETECTION_TYPE_MANUAL) {
         $brandData = [];
         $companyData = [];
         if(isset($detectData['brands']) && count($detectData['brands']) > 0) {
@@ -190,6 +190,14 @@ class ArticleService
                     'name' => $country->name
                 ];
             }
+        }else if(isset($detectData['url_page'])) {
+            $country = Country::whereIn('list_url', [$detectData['url_page']])->first();
+            if($country) {
+                $countryData = [
+                    'id'   => $country->_id,
+                    'name' => $country->name
+                ];
+            }
         }
 
         $image              = (isset($detectData['imgs']) && count($detectData['imgs']) > 0)
@@ -210,7 +218,7 @@ class ArticleService
             'link'             => $link,
             'published_date'   => $publishedDate,
             'status'           => Article::STATUS_PENDING,
-            'detection_type'   => Article::DETECTION_TYPE_MANUAL,
+            'detection_type'   => $detectionType,
         ];
 
         if(count($violationCodeNames) === 0) {
