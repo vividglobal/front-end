@@ -14,7 +14,7 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -25,7 +25,14 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'violations' => 'array',
+            'brands'     => 'array',
+            'country'    => 'string',
+            'text'       => 'string',
+            'imgs'       => 'array',
+            'url'        => 'string|url',
+            'url_page'   => 'string|url',
+            'post_time'  => 'string',
         ];
     }
 }

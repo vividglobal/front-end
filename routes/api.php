@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth.open.api'])->group(function () {
+    Route::controller(Api\ArticleController::class)->group(function () {
+        Route::prefix('articles')->group(function () {
+            Route::post('/', 'create');
+        });
+    });
 });

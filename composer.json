@@ -8,7 +8,7 @@
         "php": "^7.3|^8.0",
         "box/spout": "^3.3",
         "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/mongodb": "3.8",
         "laravel/framework": "^8.75",
