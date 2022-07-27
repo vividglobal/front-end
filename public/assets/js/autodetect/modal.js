@@ -100,7 +100,6 @@ $(document).ready(function () {
                 $.ajax(settings)
                 .done(function(res) {
                     let response = JSON.parse(res)
-                    show_success(response.message);
                     let date = response.data.modified;
                     let now = moment.utc(date,"YYYY-MM-DD\THH:mm:ss\Z").format("MM-DD-YYYY");
                     fileHtmlItems = `<div class="col-sm-3 col-md-3 col-lg-3 mb-2 items_file div-item">
@@ -129,6 +128,7 @@ $(document).ready(function () {
                         }
                     }
                     hide_overlay();
+                    show_success(response.message);
                 })
                 .fail(function(err) {
                     let errResponse = JSON.parse(err.responseText)
