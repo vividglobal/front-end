@@ -97,6 +97,10 @@ class Article extends Model
             }
         }
 
+        if(isset($params['detection_type'])) {
+            $matchConditions[] = [ '$eq' => [ '$detection_type', $params['detection_type'] ] ];
+        }
+
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date'].' 00:00:00');
             $endDate = strtotime($params['end_date'].' 23:59:59');
