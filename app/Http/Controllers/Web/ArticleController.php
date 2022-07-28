@@ -38,8 +38,9 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_BOT;
         $params['status'] = Article::STATUS_PENDING;
+        $params['date_sort_field'] = 'published_date';
         if(!isset($params['sort_by'])) {
-            $params['sort_by'] = 'published_date';
+            $params['sort_by'] = $params['date_sort_field'];
         }
         if(!isset($params['sort_by'])) {
             $params['sort_value'] = 'DESC';
@@ -62,8 +63,9 @@ class ArticleController extends Controller
         $params = $request->all();
         $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
         $params['status'] = Article::STATUS_PENDING;
+        $params['date_sort_field'] = 'crawl_date';
         if(!isset($params['sort_by'])) {
-            $params['sort_by'] = 'created_at';
+            $params['sort_by'] = $params['date_sort_field'];
         }
         if(!isset($params['sort_by'])) {
             $params['sort_value'] = 'DESC';
@@ -84,6 +86,13 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_VIOLATION;
+        $params['date_sort_field'] = 'checking_date';
+        if(!isset($params['sort_by'])) {
+            $params['sort_by'] = $params['date_sort_field'];
+        }
+        if(!isset($params['sort_by'])) {
+            $params['sort_value'] = 'DESC';
+        }
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
@@ -99,6 +108,13 @@ class ArticleController extends Controller
         $articleModel = new Article();
         $params = $request->all();
         $params['status'] = Article::STATUS_NONE_VIOLATION;
+        $params['date_sort_field'] = 'checking_date';
+        if(!isset($params['sort_by'])) {
+            $params['sort_by'] = $params['date_sort_field'];
+        }
+        if(!isset($params['sort_by'])) {
+            $params['sort_value'] = 'DESC';
+        }
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);

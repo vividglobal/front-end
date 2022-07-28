@@ -14,21 +14,85 @@ use App\Mail\AnalyticWeeklyReport;
 
 class AnalyticService {
 
+    public function getAutoDetectionParams($params) {
+        $finalParams = $params;
+        $finalParams['detection_type'] = Article::DETECTION_TYPE_BOT;
+        $finalParams['status'] = Article::STATUS_PENDING;
+        $finalParams['date_sort_field'] = 'published_date';
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_by'] = $finalParams['date_sort_field'];
+        }
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_value'] = 'DESC';
+        }
+
+        return $finalParams;
+    }
+
+    public function getManualDetectionParams($params) {
+        $finalParams = $params;
+        $finalParams['detection_type'] = Article::DETECTION_TYPE_MANUAL;
+        $finalParams['status'] = Article::STATUS_PENDING;
+        $finalParams['date_sort_field'] = 'crawl_date';
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_by'] = $finalParams['date_sort_field'];
+        }
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_value'] = 'DESC';
+        }
+        return $finalParams;
+    }
+
+    public function getViolationArticlesParams($params) {
+        $finalParams = $params;
+        $finalParams = $this->_getModeratedArticlesParams($finalParams);
+        $finalParams['status'] = Article::STATUS_VIOLATION;
+        return $finalParams;
+    }
+
+    public function getNoneViolationArticlesParams($params) {
+        $finalParams = $params;
+        $finalParams = $this->_getModeratedArticlesParams($finalParams);
+        $finalParams['status'] = Article::STATUS_NONE_VIOLATION;
+        return $finalParams;
+    }
+
+    private function _getModeratedArticlesParams($params) {
+        $finalParams = $params;
+        $finalParams['date_sort_field'] = 'checking_date';
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_by'] = $finalParams['date_sort_field'];
+        }
+        if(!isset($finalParams['sort_by'])) {
+            $finalParams['sort_value'] = 'DESC';
+        }
+        return $finalParams;
+    }
+
     public function _getGeneralData($params)
     {
         $articleModel = new Article();
-        $total = $articleModel->getListCount($params);
 
-        $params['status'] = Article::STATUS_VIOLATION;
-        $violation = $articleModel->getListCount($params);
+        $autoDetectionParams = $this->getAutoDetectionParams($params);
+        $autoDetectionCount = $articleModel->getListCount($autoDetectionParams);
 
-        $params['status'] = Article::STATUS_NONE_VIOLATION;
-        $nonViolation = $articleModel->getListCount($params);
-        $percentileViolation = $total > 0 ? round((($violation / $total ) * 100), 2) : 0;
-        $percentileNonViolation = $total > 0 ? round((($nonViolation / $total ) * 100), 2) : 0;
+        $manualDetectionParams = $this->getAutoDetectionParams($params);
+        $manualDetectionCount = $articleModel->getListCount($manualDetectionParams);
+
+        $violationParams = $this->getViolationArticlesParams($params);
+        $violationCount = $articleModel->getListCount($violationParams);
+
+        $nonViolationParams = $this->getNoneViolationArticlesParams($params);
+        $nonViolationCount = $articleModel->getListCount($nonViolationParams);
+
+        $total = $autoDetectionCount + $manualDetectionCount + $violationCount + $nonViolationCount;
+
+        $percentileViolation = $total > 0 ? round((($violationCount / $total ) * 100), 2) : 0;
+        $percentileNonViolation = $total > 0 ? round((($nonViolationCount / $total ) * 100), 2) : 0;
+
         return [
-            'non_violation' => $nonViolation,
-            'violation'     => $violation,
+            'non_violation' => $nonViolationCount,
+            'violation'     => $violationCount,
             'total'         => $total,
             'percentile_violation'     => $percentileViolation,
             'percentile_non_violation' => $percentileNonViolation,
