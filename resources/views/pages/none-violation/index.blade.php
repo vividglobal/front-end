@@ -73,7 +73,15 @@
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}} target="_blank"><img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt=""></a>
+                                @if($article->link)
+                                    <a href={{ __($article->link ?? '' )}} target="_blank">
+                                        <img class="td-link a-link" src="{{asset('assets/image/link.png')}}" alt="">
+                                    </a>
+                                @else
+                                    <a class="onclick-link-check">
+                                        <img class="td-link a-link" src="{{ asset('assets/image/link.png') }}" alt="">
+                                    </a>
+                                @endif
                                 </div>
                             </div>
                             @if(@Auth::user()->role === "OPERATOR")
@@ -102,9 +110,7 @@
             {{ $articles->links('layouts.my-paginate') }}
         </div>
     </div>
-
 </div>
-
 
 <div class="container-table container-table-mobile" id="div-moblie">
     <ul class="container-row-mobile">
@@ -113,7 +119,11 @@
                 <a href="/articles/{{$article->_id}}/non-violation" style="text-decoration: none;">
                     <div class="lish-child">
                         <div class="media-img">
+                            @if($article->image)
                             <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                            @else
+                            <img  src="{{ asset('assets/image/no-image.jpeg') }}" class="mr-3" style="width:100px">
+                            @endif
                         </div>
                         <div class="media-body">
                             <div class="media-body-top">
