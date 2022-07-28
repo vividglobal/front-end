@@ -345,6 +345,10 @@ class ArticleController extends Controller
         if(!isset($response['status']) || $response['status'] === false) {
             return $this->responseFail([], "Unable to detect. Please try again");
         }
+
+        if(isset($validated['country_id'])) {
+            $body['country_id'] = $validated['country_id'];
+        }
         
         $response = array_merge($response, $body);
         $articleService = new ArticleService();
