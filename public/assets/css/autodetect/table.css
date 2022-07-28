@@ -78,6 +78,9 @@
     height: 100px;
     cursor: pointer;
 }
+.no-img{
+  height: auto;
+}
 .td-link{
     width: 20px;
     height: 20px;
