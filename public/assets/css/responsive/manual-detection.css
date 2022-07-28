@@ -76,6 +76,7 @@
 
     .file-input_detect > .label{
         padding-bottom: 20px;
+        text-align: center;
     }
 
     .list--suspected__text--img div > label{
