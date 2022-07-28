@@ -133,9 +133,15 @@
                             </div>
                             <div class="track track-link">
                                 <div class="entry">
-                                    <a href={{ __($article->link ?? '' )}} target="_blank">
+                                    @if($article->link)
+                                    <a target="_blank" href={{ __($article->link ?? '' )}} >
                                         <img class="td-link a-link" src="{{ asset('assets/image/link.png') }}" alt="">
                                     </a>
+                                    @else
+                                    <a class="onclick-link-check">
+                                        <img class="td-link a-link" src="{{ asset('assets/image/link.png') }}" alt="">
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="track track-three">
@@ -481,9 +487,16 @@
         <li class="lish-body">
             <a href="/articles/{{$article->_id}}/details" style="text-decoration: none;">
                 <div class="lish-child">
+
                     <div class="media-img">
+                        @if($article->image)
                         <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                        @else
+                        <img class="mr-3" style="width:100px"  src="{{ asset('assets/image/no-image.jpeg') }}" >
+
+                        @endif
                     </div>
+                    
                     <div class="media-body">
                         <div class="media-body-top">
                             @if(isset($article->detection_result['violation_code']))

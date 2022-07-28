@@ -9,7 +9,11 @@
                 <img class="history-back" src="{{ asset('assets/image/back.png') }}" alt="">
                 <h1 class="lish-title-style">{{ __($article->brand['name'] ?? '' )}}</h1>
             </div>
+            @if($article->image)
             <img src={{ __($article->image ?? '' ) }} alt="" style="width:100%;margin-bottom: 15px;">
+            @else
+            <img  style="width:100%;margin-bottom: 15px;"  src="{{ asset('assets/image/no-image.jpeg') }}" >
+            @endif
             <div class="media-body-top">
                 @if(isset($article->detection_result['violation_code']))
                     <?php

@@ -10,12 +10,13 @@ $(document).ready(function(){
     let actionStep;
     let isLoading = false;
     let botStatus;
-
     // let perfEntries = performance.getEntriesByType("navigation");
     // if (perfEntries[0].type === "back_forward") {
     //     location.reload(true);
     // }
-
+    $('.onclick-link-check').click(function() {
+        show_error('Link does not exist')
+    })
     $(document).on('click', '.check-status', function() {
         scrollScreen.disable()
         currentRow = $(this).parents('.scroll-table');

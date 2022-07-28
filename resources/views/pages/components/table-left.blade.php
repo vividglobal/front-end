@@ -80,7 +80,11 @@
                 <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
                 <td>
                     <div class="wr-img">
+                        @if($article->image)
                         <img class="td-img clickimg lazy" data-original={{ __($article->image ?? '' ) }} alt="">
+                        @else
+                        <img class="td-img no-img" src="{{ asset('assets/image/no-image.jpeg') }}" >
+                        @endif
                     </div>
                 </td>
             </tr>
