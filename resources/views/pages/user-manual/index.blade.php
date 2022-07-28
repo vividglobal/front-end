@@ -78,8 +78,8 @@
             </button>
             </a>
             <div class="add" id="cl3">
-                <p><span></span> {{ __("Any link with the same domain name in the website this list  ") }}
-                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this")}} </a>  {{__("list")}},  {{__("examples")}}:</p>
+                <p><span></span> {{ __("Any link with the same domain name in the website") }}
+                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this list")}} </a>,  {{__("examples")}}:</p>
                 <p><span></span><a href="https://www.clubillume.com.sg/">https://www.clubillume.com.sg/</a>  {{__("and")}} <a href="https://www.clubillume.com.sg/illuma-stage-3 "> https://www.clubillume.com.sg/illuma-stage-3 </a>.</p>
             </div>
             <span class="border_grays"></span>

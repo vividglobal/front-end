@@ -15,6 +15,7 @@ $(document).ready(function() {
                 show_error('Please upload an image');
                 return false;
             }
+
             if($('input[name="image"]')[0].files.length > 0) {
                 formData.append('image', $('input[name="image"]')[0].files[0]);
             }
@@ -63,7 +64,11 @@ $(document).ready(function() {
             error: (err) => {
                 isLoading = false;
                 hide_overlay();
-                show_error(err.responseJSON.message);
+                if(err.responseJSON.errors.image){
+                    show_error("Please upload file is image");
+                }else{
+                    show_error(err.responseJSON.message);
+                }
                 setTimeout(() => {
                     window.location.href = window.location.href
                 }, 3000);

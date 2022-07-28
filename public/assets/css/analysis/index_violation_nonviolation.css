@@ -116,7 +116,7 @@
     font-family: 'Brandon Grotesque';
     font-style: normal;
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 136.5%;
     color: #072136;
 
@@ -186,5 +186,5 @@
 }
 
 .table_countries{
-    height: 600px;
+    height: 660px;
 }
