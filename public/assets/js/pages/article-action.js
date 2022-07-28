@@ -14,9 +14,7 @@ $(document).ready(function(){
     // if (perfEntries[0].type === "back_forward") {
     //     location.reload(true);
     // }
-    $('.onclick-link-check').click(function() {
-        show_error('Link does not exist')
-    })
+    ClickButonLink()
     $(document).on('click', '.check-status', function() {
         scrollScreen.disable()
         currentRow = $(this).parents('.scroll-table');

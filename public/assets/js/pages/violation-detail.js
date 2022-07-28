@@ -12,7 +12,7 @@ let csrf = $('meta[name="csrf-token"]').attr('content')
 let url
 let id
 
-
+ClickButonLink()
 
 $(".history-back").click(function(){
     history.back(1);

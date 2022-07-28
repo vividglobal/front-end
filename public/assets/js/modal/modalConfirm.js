@@ -6,6 +6,7 @@ let csrf = $('meta[name="csrf-token"]').attr('content')
 let url
 let id
 
+ClickButonLink()
 btnSwitch.click(function () {
     $(".mdl-js").css("overflow-y","hidden");
     id = $(this).attr("data-id")

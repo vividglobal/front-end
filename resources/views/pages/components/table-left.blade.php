@@ -81,7 +81,7 @@
                 <td>
                     <div class="wr-img">
                         @if($article->image)
-                        <img class="td-img clickimg lazy" data-original={{ __($article->image ?? '' ) }} alt="">
+                        <img class="td-img clickimg lazy" data-original={{ __($article->image ?? '' ) }}>
                         @else
                         <img class="td-img no-img" src="{{ asset('assets/image/no-image.jpeg') }}" >
                         @endif

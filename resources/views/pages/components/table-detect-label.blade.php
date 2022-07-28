@@ -489,11 +489,11 @@
                 <div class="lish-child">
 
                     <div class="media-img">
+
                         @if($article->image)
                         <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
                         @else
-                        <img class="mr-3" style="width:100px"  src="{{ asset('assets/image/no-image.jpeg') }}" >
-
+                        <img  src="{{ asset('assets/image/no-image.jpeg') }}" class="mr-3" style="width:100px">
                         @endif
                     </div>
                     
