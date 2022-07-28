@@ -31,15 +31,15 @@ class ManualLabelRequest extends FormRequest
         $request_type = request()->get('request_type');
         if($request_type === LABEL_TYPE_IMAGE) {
             if(!request()->hasFile('image') && request()->get('caption') === null) {
-                $rules['image'] = 'required';
+                $rules['image'] = 'required|mimes:jpg,jpeg,png';
                 $rules['caption'] = 'string|max:10000';
             }
             if(request()->hasFile('image')) {
-                $rules['image'] = 'required';
+                $rules['image'] = 'required|mimes:jpg,jpeg,png';
                 $rules['caption'] = 'nullable';
             }
             if(request()->has('caption')) {
-                $rules['image'] = 'nullable';
+                $rules['image'] = 'nullable|mimes:jpg,jpeg,png';
                 $rules['caption'] = 'required|string|max:10000';
             }
         }else if($request_type === LABEL_TYPE_URL) {
