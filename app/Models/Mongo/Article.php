@@ -88,6 +88,33 @@ class Article extends Model
         $isSupervisor = UserRoleService::isSupervisor();
         $isOperator = UserRoleService::isOperator();
 
+        // Init query
+        $aggregateQuery = [];
+
+        // Add field for easier query matching and sort
+        $aggregateQuery[] = [
+            '$addFields' => [
+                'bot_type_ids'            => '$detection_result.violation_types.id',
+                'bot_type_names'          => '$detection_result.violation_types.name',
+                'bot_code_names'          => '$detection_result.violation_code.name',
+                'supervisor_type_ids'     => '$supervisor_review.violation_types.id',
+                'supervisor_type_names'   => '$supervisor_review.violation_types.name',
+                'supervisor_code_names'   => '$supervisor_review.violation_code.name',
+                'operator_type_ids'       => '$operator_review.violation_types.id',
+                'operator_type_names'     => '$operator_review.violation_types.name',
+                'operator_code_names'     => '$operator_review.violation_code.name',
+                'company_name'            => '$company.name',
+                'brand_name'              => '$brand.name',
+                'country_name'            => '$country.name',
+                'crawl_date'              => '$detection_result.crawl_date',
+                'checking_date'           => '$operator_review.review_date',
+                'bot_status'              => '$detection_result.status',
+                'supervisor_status'       => '$supervisor_review.status',
+                'operator_status'         => '$operator_review.status',
+            ]
+        ];
+
+        // Query match filtering
         if(isset($params['status'])) {
             $status = $params['status'];
             $matchConditions[] = [ '$eq' => [ '$status',  $params['status'] ] ];
@@ -103,8 +130,8 @@ class Article extends Model
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date'].' 00:00:00');
             $endDate = strtotime($params['end_date'].' 23:59:59');
-            $matchConditions[] = [ '$gte' => [ '$published_date',  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$published_date',  $endDate ] ];
+            $matchConditions[] = [ '$gte' => [ '$'.$params['date_sort_field'],  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$'.$params['date_sort_field'],  $endDate ] ];
         }
 
         if(isset($params['country'])) {
@@ -119,14 +146,14 @@ class Article extends Model
             ]];
         }
 
-        $aggregateQuery = [
-            [ '$match'=>
+        $aggregateQuery[] = [
+            '$match'=>
                 [
                     '$expr'=> [ '$and'=> $matchConditions ]
                 ]
-            ]
         ];
 
+        // Join document for each articles
         $aggregateQuery[] = [
             '$lookup' => [
                 'as'   => 'documents',
@@ -147,24 +174,7 @@ class Article extends Model
 
         $aggregateQuery[] = [
             '$addFields' => [
-                'bot_type_ids'            => '$detection_result.violation_types.id',
-                'bot_type_names'          => '$detection_result.violation_types.name',
-                'bot_code_names'          => '$detection_result.violation_code.name',
-                'supervisor_type_ids'     => '$supervisor_review.violation_types.id',
-                'supervisor_type_names'   => '$supervisor_review.violation_types.name',
-                'supervisor_code_names'   => '$supervisor_review.violation_code.name',
-                'operator_type_ids'       => '$operator_review.violation_types.id',
-                'operator_type_names'     => '$operator_review.violation_types.name',
-                'operator_code_names'     => '$operator_review.violation_code.name',
-                'company_name'            => '$company.name',
-                'brand_name'              => '$brand.name',
-                'country_name'            => '$country.name',
-                'crawl_date'              => '$detection_result.crawl_date',
-                'checking_date'           => '$operator_review.review_date',
-                'bot_status'              => '$detection_result.status',
-                'supervisor_status'       => '$supervisor_review.status',
-                'operator_status'         => '$operator_review.status',
-                'has_document'            => [
+                'has_document' => [
                     '$cond' => [
                         'if'   =>  [ '$gt' => [ ['$size' => '$documents'] , 0 ] ],
                         'then' => true,
@@ -173,8 +183,6 @@ class Article extends Model
                 ]
             ]
         ];
-
-        
 
         // List bot violation types
         $aggregateQuery[] = [
@@ -231,6 +239,7 @@ class Article extends Model
             ]
         ];
 
+        // This field only for violation page
         if(isset($params['status']) && $params['status'] === self::STATUS_VIOLATION ) {
             $aggregateQuery[] = [
                 '$addFields' => [
@@ -252,6 +261,7 @@ class Article extends Model
             ];
         }
 
+        // Filter by violation type
         if(isset($params['violation_type_id'])) {
             $aggregateQuery[] = [
                 '$match' =>
@@ -265,6 +275,7 @@ class Article extends Model
             ];
         }
 
+         // Filter by violation code
         if(isset($params['violation_code_id'])) {
             $aggregateQuery[] = [
                 '$match' =>
@@ -278,6 +289,7 @@ class Article extends Model
             ];
         }
 
+        // Search
         if(isset($params['keyword'])) {
             $keyword = $params['keyword'];
             $regex = new Regex('.*'.$keyword, 'i');
@@ -308,6 +320,7 @@ class Article extends Model
                 ],
             ];
         }
+        // dd($aggregateQuery);
         return $aggregateQuery;
     }
 
