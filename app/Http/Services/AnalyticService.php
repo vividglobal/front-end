@@ -58,17 +58,21 @@ class AnalyticService {
         $titles = [
             'Unable to detect',
             'Violation',
+            'Violations detected/submitted',
             'Total articles',
             'Percentile of Violation',
-            'Percentile of Unable to detect'
+            'Percentile of Unable to detect',
+            'Percentile of violations detected/submitted'
         ];
         $exportData = [
             [
                 $generalData['non_violation'],
                 $generalData['violation'],
+                $generalData['total'] - ($generalData['violation'] + $generalData['non_violation']),
                 $generalData['total'],
                 $generalData['percentile_violation'].'%',
                 $generalData['percentile_non_violation'].'%',
+                $generalData['total'] > 0 ? 100 - ( $generalData['percentile_violation'] +  $generalData['percentile_non_violation']).'%' : '0%',
             ]
         ];
         $sheets[] = ['row_titles' => $titles, 'name' => 'General', 'data' => $exportData ];

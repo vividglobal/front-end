@@ -264,7 +264,7 @@
     }
 
       .drop_nav_violation:first-child(){
-          padding-top: 40px;
+          /* padding-top: 40px; */
       }
 
       .drop_nav_violation:nth-child(2){
@@ -306,6 +306,7 @@
 
       .drop_nav_violation{
           margin-left: 30px;
+          height:  inherit;
       }
 
       .center-header{

@@ -43,6 +43,7 @@ $("document").ready(function(){
         $(".edit_account").addClass("content_edit1_account")
         $(".edit_account").removeClass("content_edit2_account")
         $(".role_modal").hide()
+        $('input[name="edit_id_user"]').attr("data-content","edit_by_id")
         checkedAuth = auth;
         ModalEditProfile(name,phone,auth,email,id)
     })
@@ -82,15 +83,22 @@ $("document").ready(function(){
     //value modal edit profile
 
     $(".close__modal").on("click",function(){
-        let id = $(".overlay").attr("data-id")
-        if(id && id == "del_user"){
-            $("#modal__delete-account").removeClass("modal__open")
-            overlay.hide()
-            scrollScreen.enable()
-            $(".overlay").removeAttr("data-id")
+        let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        let content = $('input[name="edit_id_user"]').attr("data-content")
+        if(content && width < 1113){
+            document.location.href="/";
         }else{
-            resetModal()
+            let id = $(".overlay").attr("data-id")
+            if(id && id == "del_user"){
+                $("#modal__delete-account").removeClass("modal__open")
+                overlay.hide()
+                scrollScreen.enable()
+                $(".overlay").removeAttr("data-id")
+            }else{
+                resetModal()
+            }
         }
+        $('input[name="edit_id_user"]').removeAttr("data-content")
     })
 
     $(".overlay").on("click",function(){
@@ -278,10 +286,21 @@ $("document").ready(function(){
             data: data
             })
             .done(function( msg ) {
-                resetModal()
-                if(msg){
-                    ReturnMessage.success(msg.message);
+                let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                let content = $('input[name="edit_id_user"]').attr("data-content")
+                if(content && width < 1113){
+                    hide_overlay()
+                    show_success(msg.message)
+                    setTimeout(() => {
+                        window.location.href = "/";
+                    },1000)
+                }else{
+                    resetModal()
+                    if(msg){
+                        ReturnMessage.success(msg.message);
+                    }
                 }
+
             })
             .fail(function(error) {
                 let msg = error.responseJSON.message
@@ -337,10 +356,14 @@ $("document").ready(function(){
                     if(page > 1){
                         let url = window.location.href
                         let replace = url.replace(`page=${page}`,`page=${page - 1}`)
-                        window.location.href = replace
+                        setTimeout(() => {
+                            window.location.href = replace
+                        },1000)
                     }
                 }else{
-                    window.location.href = window.location.href
+                    setTimeout(() => {
+                        window.location.href = window.location.href
+                    },1200)
                 }
             })
             .fail(function(error) {

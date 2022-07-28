@@ -78,8 +78,10 @@ $(document).ready(function(){
             startDate = `${startDatePicker[1].trim()}-${startDatePicker[0].trim()}-${startDatePicker[2].trim()}`
             endDate = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
             generalStrParams = brandStrParams = codeStrParams = `?1=1&start_date=${startDate}&end_date=${endDate}`;
+            $(".btn--export--excel").attr("href",`${window.location.href}?1=1&start_date=${startDate}&end_date=${endDate}&export=true`)
         }else{
             generalStrParams = brandStrParams = codeStrParams = '?1=1'
+            $(".btn--export--excel").attr("href",`${window.location.href}?1=1&export=true`)
         }
     }
     // ------------------------------------

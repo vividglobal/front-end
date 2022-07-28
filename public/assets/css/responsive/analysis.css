@@ -289,6 +289,16 @@
         color: var(--gray-6F);
     }
 
+    #vio-based-code .table_analysis .table_analysis_body li:nth-child(3){
+        width: 60% !important;
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+
     .table_analysis_body .base_code_item:nth-child(2){
         font-family: 'Avenir Next';
         font-style: normal;

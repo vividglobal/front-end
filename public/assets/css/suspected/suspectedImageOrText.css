@@ -71,16 +71,15 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    padding: 13px 34px 0 34px;
+    padding: 13px 10px;
+    width: 100%;
     text-align: center;
     color: var(--gray-6F);
-    text-decoration: none;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     cursor: pointer;
+    text-align: left;
 
   }
   .file-input_detect .-chosen > .label {
@@ -154,8 +153,14 @@ textarea {
   }
 
   #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country .option_general span{
-    top: 12px;
+    top: 2px;
   }
+
+  #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country{
+      /* overflow-y: hidden; */
+      display: block !important;
+  }
+
   #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country .option_general p{
     padding-left: 10px;
     color: var(--black);
