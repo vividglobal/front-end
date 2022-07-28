@@ -15,6 +15,13 @@ $(document).ready(function() {
                 show_error('Please upload an image');
                 return false;
             }
+
+            let typeFile = $('input[name="image"]')[0].files[0].type
+            if(typeFile == "" || typeFile.match(/.(jpg|jpeg|png)$/i) == null){
+                show_error('Please upload files is image');
+                return false;
+            }
+
             if($('input[name="image"]')[0].files.length > 0) {
                 formData.append('image', $('input[name="image"]')[0].files[0]);
             }

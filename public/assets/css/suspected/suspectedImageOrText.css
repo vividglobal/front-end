@@ -79,7 +79,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    text-align: left;
+    text-align: center;
 
   }
   .file-input_detect .-chosen > .label {

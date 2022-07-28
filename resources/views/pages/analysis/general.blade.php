@@ -21,7 +21,7 @@
         <div>
             <p class="title-violation">{{ __('Violations detected/submitted') }}</p>
             <p class="number-violation">{{ __($generalData['total'] - $generalData['violation'] - $generalData['non_violation'] ) }}</p>
-            <p class="total-violation">{{ __(100 - $generalData['percentile_violation'] - $generalData['percentile_non_violation']) }}%</p>
+            <p class="total-violation">{{ $generalData['total'] > 0 ? 100 - $generalData['percentile_violation'] - $generalData['percentile_non_violation'] : 0 }}% </p>
         </div>
     </div>
     <div class="index__violation {{@Auth::user() ? "l-6" : "l-4" }} m-12 c-12 total_entries">
