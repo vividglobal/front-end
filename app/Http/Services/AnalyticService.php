@@ -72,7 +72,7 @@ class AnalyticService {
                 $generalData['total'],
                 $generalData['percentile_violation'].'%',
                 $generalData['percentile_non_violation'].'%',
-                100 - ( $generalData['percentile_violation'] +  $generalData['percentile_non_violation']).'%',
+                $generalData['total'] > 0 ? 100 - ( $generalData['percentile_violation'] +  $generalData['percentile_non_violation']).'%' : '0%',
             ]
         ];
         $sheets[] = ['row_titles' => $titles, 'name' => 'General', 'data' => $exportData ];

@@ -34,7 +34,7 @@
 
 @media (max-width: 500px) {
     .frame-wrapper iframe{
-        left: -60px;
+        left: -75px;
         width: 135%;
         top: -135px;
     }
