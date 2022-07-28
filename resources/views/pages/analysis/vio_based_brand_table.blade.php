@@ -21,7 +21,7 @@
         </li>
         <li>
             <div class="th-title-rights ">
-                <p>{{ __('Violations') }}</p>
+                <p>{{ __('Violations') }} </p>
                 <span
                     @class([
                         'ico-sort theard-table sort_up',
