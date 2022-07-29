@@ -60,7 +60,7 @@
     }
 
     .title_table_analysis p{
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;
@@ -102,7 +102,6 @@
     }
 
     .title-violation{
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
@@ -116,7 +115,6 @@
     }
 
     .number-violation{
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 31px;
@@ -143,7 +141,6 @@
         right: 0;
         margin: 15px 20px;
         background: transparent !important;
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
@@ -157,7 +154,6 @@
         right: 0;
         margin: 15px 20px;
         background: transparent !important;
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
@@ -170,7 +166,7 @@
     }
 
     .Base_violation--brand .list--select--option .list--select__right p {
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;
@@ -203,7 +199,6 @@
     }
 
     .table_analysis_body li:nth-child(2){
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
@@ -218,7 +213,6 @@
 
     .res_item_brand .item_base_on_brand{
         width: auto ;
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px !important;
@@ -275,7 +269,6 @@
         top: 0px;
         right: 0;
         text-align: right !important;
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 500;
         font-size: 13px !important;
@@ -300,7 +293,6 @@
     }
 
     .table_analysis_body .base_code_item:nth-child(2){
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 500 !important;
         font-size: 16px;

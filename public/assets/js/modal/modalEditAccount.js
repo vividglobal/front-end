@@ -76,6 +76,7 @@ $("document").ready(function(){
         $('input[name="email"]').val(email)
         overlay.show()
         $(`#${auth}`).attr('checked', true)
+        $(`#${auth}`).closest("label").find(".checkmark").addClass('check_role');
         scrollScreen.disable()
 
     }
@@ -121,8 +122,10 @@ $("document").ready(function(){
     //checked Radio Button
     $(`input[name="role"]`).on("change",function(){
         $(`input[name="role"]`).removeAttr('checked')
+        $(this).closest("label").find(".checkmark").removeClass('check_role');
         $(this).attr('checked', true);
-        checkedAuth = $(this).attr("id")
+        $(this).closest(".authorization").find(".checkmark").addClass('check_role');
+        checkedAuth = $(this).attr("value")
     })
 
     $(".btn__change--password").on("click",function(){

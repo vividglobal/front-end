@@ -142,7 +142,7 @@
 }
 
 .list--title p {
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 35px;
@@ -163,7 +163,7 @@
 }
 
 .list--select__right p{
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
@@ -192,7 +192,7 @@
 }
 
 .name_login{
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 18px;
@@ -239,7 +239,7 @@
     align-items: center;
     position: absolute;
     right: 105px;
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 450;
     font-size: 20px;

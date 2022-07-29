@@ -32,7 +32,7 @@ $("document").ready(function(){
             }
     })
 
-    $(".suspected__text__area").keyup(function(e){
+    $(".suspected__text__area").on('input',function(e){
         let value = $(this).find("textarea").val().trim()
         if(value !== ""){
             $("#submit_form").css("background","var(--primary)")

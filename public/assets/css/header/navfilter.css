@@ -48,7 +48,7 @@
   .closeFilter{
     display: flex !important;
     align-items: center;
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 25px !important;
@@ -67,7 +67,6 @@
   }
 
   .checkbox_mobi > p{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -107,7 +106,6 @@
   }
 
   .checkbox_title  div:first-child span{
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -231,7 +229,6 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: 'Avenir Next';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
