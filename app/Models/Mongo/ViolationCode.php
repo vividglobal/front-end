@@ -36,21 +36,40 @@ class ViolationCode extends Model
         $total = self::count();
         $aggregateQuery = [];
 
-        $matchConditions = [
+        $violationPageMatchConditions = [
             [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ],
+            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+        ];
+
+        $autoPageMatchConditions = [
+            [ '$eq'=> [ '$status',  Article::STATUS_PENDING ] ],
+            [ '$eq'=> [ '$detection_type',  Article::DETECTION_TYPE_BOT ] ],
+            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+        ];
+
+        $manualPageMatchConditions = [
+            [ '$eq'=> [ '$status',  Article::STATUS_PENDING ] ],
+            [ '$eq'=> [ '$detection_type',  Article::DETECTION_TYPE_MANUAL ] ],
             [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
         ];
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date'].' 00:00:00');
             $endDate = strtotime($params['end_date'].' 23:59:59');
-            $matchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
+
+            $violationPageMatchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $violationPageMatchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
+
+            $autoPageMatchConditions[] = [ '$gte' => [ '$published_date',  $startDate ] ];
+            $autoPageMatchConditions[] = [ '$lte' => [ '$published_date',  $endDate ] ];
+
+            $manualPageMatchConditions[] = [ '$gte' => [ '$detection_result.crawl_date',  $startDate ] ];
+            $manualPageMatchConditions[] = [ '$lte' => [ '$detection_result.crawl_date',  $endDate ] ];
         }
 
         $aggregateQuery[] = [
             '$lookup' => [
-                'as' => 'articles_by_code',
+                'as' => 'violation_articles_by_code',
                 'from' => 'articles',
                 'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
@@ -63,7 +82,55 @@ class ViolationCode extends Model
                     [ '$match'=>
                         [
                             '$expr' => [
-                                '$and' => $matchConditions
+                                '$and' => $violationPageMatchConditions
+                            ]
+                        ]
+                    ],
+                    ['$project' => ['_id' => 1]]
+                ]
+            ]
+        ];
+
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as' => 'auto_articles_by_code',
+                'from' => 'articles',
+                'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
+                'pipeline' => [
+                    [
+                        '$addFields' => ['articleCodeArr' => '$operator_review.violation_code' ]
+                    ],
+                    [
+                        '$unwind' => '$articleCodeArr'
+                    ],
+                    [ '$match'=>
+                        [
+                            '$expr' => [
+                                '$and' => $autoPageMatchConditions
+                            ]
+                        ]
+                    ],
+                    ['$project' => ['_id' => 1]]
+                ]
+            ]
+        ];
+
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as' => 'manual_articles_by_code',
+                'from' => 'articles',
+                'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
+                'pipeline' => [
+                    [
+                        '$addFields' => ['articleCodeArr' => '$operator_review.violation_code' ]
+                    ],
+                    [
+                        '$unwind' => '$articleCodeArr'
+                    ],
+                    [ '$match'=>
+                        [
+                            '$expr' => [
+                                '$and' => $manualPageMatchConditions
                             ]
                         ]
                     ],
@@ -96,7 +163,7 @@ class ViolationCode extends Model
         ];
         $aggregateQuery[] = [
             '$addFields' => [
-                'total_article' => ['$size' => '$articles_by_code'],
+                'total_article' => ['$sum' => [['$size' => '$violation_articles_by_code'], ['$size' => '$auto_articles_by_code'], ['$size' => '$manual_articles_by_code']]],
                 'violation_type' => [ '$first' => '$violation_types']
             ]
         ];

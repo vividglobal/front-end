@@ -17,6 +17,7 @@ use App\Http\Services\DocumentService;
 use App\Http\Services\CapchaService;
 use App\Http\Services\ArticleService;
 use App\Http\Services\AIService;
+use App\Http\Services\AnalyticService;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,9 +25,11 @@ use Illuminate\Support\Facades\Validator;
 class ArticleController extends Controller
 {
     public $articleExportService;
+    public $analyticService;
 
     function __construct() {
         $this->articleExportService = new ArticleExportService();
+        $this->analyticService = new AnalyticService();
     }
 
      // ============================================= //
@@ -35,20 +38,10 @@ class ArticleController extends Controller
 
     public function getAutoDetectionList(Request $request) {
         $articleModel = new Article();
-        $params = $request->all();
-        $params['detection_type'] = Article::DETECTION_TYPE_BOT;
-        $params['status'] = Article::STATUS_PENDING;
-        $params['date_sort_field'] = 'published_date';
-        if(!isset($params['sort_by'])) {
-            $params['sort_by'] = $params['date_sort_field'];
-        }
-        if(!isset($params['sort_by'])) {
-            $params['sort_value'] = 'DESC';
-        }
+        $params = $this->analyticService->getAutoDetectionParams($request->all());
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
-            $articleExportService = new ArticleExportService();
             return  $this->articleExportService->exportPendingArticles('auto_detection_violation', $articles);
         }
 
@@ -60,16 +53,7 @@ class ArticleController extends Controller
 
     public function getManualDetectionList(Request $request) {
         $articleModel = new Article();
-        $params = $request->all();
-        $params['detection_type'] = Article::DETECTION_TYPE_MANUAL;
-        $params['status'] = Article::STATUS_PENDING;
-        $params['date_sort_field'] = 'crawl_date';
-        if(!isset($params['sort_by'])) {
-            $params['sort_by'] = $params['date_sort_field'];
-        }
-        if(!isset($params['sort_by'])) {
-            $params['sort_value'] = 'DESC';
-        }
+        $params = $this->analyticService->getManualDetectionParams($request->all());
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
@@ -84,15 +68,7 @@ class ArticleController extends Controller
 
     public function getViolationList(Request $request) {
         $articleModel = new Article();
-        $params = $request->all();
-        $params['status'] = Article::STATUS_VIOLATION;
-        $params['date_sort_field'] = 'checking_date';
-        if(!isset($params['sort_by'])) {
-            $params['sort_by'] = $params['date_sort_field'];
-        }
-        if(!isset($params['sort_by'])) {
-            $params['sort_value'] = 'DESC';
-        }
+        $params = $this->analyticService->getViolationArticlesParams($request->all());
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);
@@ -106,15 +82,7 @@ class ArticleController extends Controller
 
     public function getNoneViolationList(Request $request) {
         $articleModel = new Article();
-        $params = $request->all();
-        $params['status'] = Article::STATUS_NONE_VIOLATION;
-        $params['date_sort_field'] = 'checking_date';
-        if(!isset($params['sort_by'])) {
-            $params['sort_by'] = $params['date_sort_field'];
-        }
-        if(!isset($params['sort_by'])) {
-            $params['sort_value'] = 'DESC';
-        }
+        $params = $this->analyticService->getNoneViolationArticlesParams($request->all());
 
         if(isset($params['export']) && $params['export'] == true && Auth::check()) {
             $articles = $articleModel->getList($params, $usePagination = false);

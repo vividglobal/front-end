@@ -76,7 +76,7 @@ class AnalyticService {
         $autoDetectionParams = $this->getAutoDetectionParams($params);
         $autoDetectionCount = $articleModel->getListCount($autoDetectionParams);
 
-        $manualDetectionParams = $this->getAutoDetectionParams($params);
+        $manualDetectionParams = $this->getManualDetectionParams($params);
         $manualDetectionCount = $articleModel->getListCount($manualDetectionParams);
 
         $violationParams = $this->getViolationArticlesParams($params);
