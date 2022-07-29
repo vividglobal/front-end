@@ -123,7 +123,9 @@
                         <div data-id="{{ $article->_id }}" class="scroll-table" >
                             <div class="track">
                                 <div class="entry">
+                                    @isset($article->published_date)
                                     <h3>{{date("m-d-Y",$article->published_date)}}</h3>
+                                    @endisset
                                 </div>
                             </div>
                             <div class="track">
@@ -510,7 +512,9 @@
                                 ])
                                 data-status="{{$botStatus}}"
                             >{{getStatusText($botStatus)}}</p>
+                            @isset($article->published_date)
                             <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
+                            @endisset
                         </div>
                         <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
                         <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>

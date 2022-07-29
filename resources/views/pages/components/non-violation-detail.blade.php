@@ -48,7 +48,9 @@
                     <img class="img-icon-detail" src="{{ asset('assets/image/date.png') }}" alt="">
                     <div>
                         <h4 class="p-style">Published date</h4>
+                        @isset($article->published_date)
                         <h4 class="h4-title">{{date("m-d-Y",$article->published_date)}}</h4>
+                        @endisset
                     </div>
                 </li>
                 <li class="detail-infoi detail-infoi-right">

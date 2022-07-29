@@ -63,7 +63,9 @@
                         <div class="scroll-table" data-id="{{ $article->_id }}">
                         <div class="track track-non">
                                 <div class="entry">
+                                    @isset($article->published_date)
                                     <h3>{{date("m-d-Y",$article->published_date)}}</h3>
+                                    @endisset
                                 </div>
                             </div>
                             <div class="track track-non">
@@ -134,7 +136,9 @@
                                 ?>
                                 @endif
                                 <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
+                                @isset($article->published_date)
                                 <p class="p-style">{{date("m-d-Y",$article->published_date)}}</p>
+                                @endisset
                             </div>
                             <h3 class="title-style">{{ __($article->brand['name'] ?? '' )}}</h3>
                             <h4 class="p-style">{{ __($article->company['name'] ?? '' )}}</h4>
