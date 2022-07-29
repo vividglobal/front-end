@@ -79,7 +79,7 @@
     cursor: pointer;
 }
 .no-img{
-  height: auto;
+  width: 70%;
 }
 .td-link{
     width: 20px;
