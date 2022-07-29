@@ -53,8 +53,7 @@
                 <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the “Submit violations” page in the menu bar")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
                 <p><span>{{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected URL”")}}
-                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this ")}} </a>
-                {{__("list")}}.</p>
+                <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this list")}} </a>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-7.png') }}" loading="lazy">
                 <p><span>{{__("Step 3")}}: </span>  {{__(" Enter suspected link of the website or the images, posts on the Fanpage, Instagram, Website on the provided list")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-8.png') }}" loading="lazy">
