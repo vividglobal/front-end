@@ -89,21 +89,21 @@
 
     .index__violation:nth-child(2) div{
         background: #E2F2E3;
-        margin: 0px 20px 10px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }
 
     .index__violation:nth-child(3) div{
         background: #FFD2DA;
-        margin: 0px 20px 10px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }
 
     .index__violation:nth-child(4) div{
         background: #DDEAF3;
-        margin: 0px 20px 20px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }

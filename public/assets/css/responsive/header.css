@@ -170,6 +170,7 @@
 
     .nav-link{
         display: contents !important;
+        font-size: 20px;
     }
 
     .after-login {
