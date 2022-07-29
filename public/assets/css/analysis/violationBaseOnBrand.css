@@ -135,4 +135,6 @@
 
 .Base_violation--brand .list--select--option .list--select__right p{
     font-size: 20px;
+    margin-right: 5px;
+    font-weight: 600;
 }

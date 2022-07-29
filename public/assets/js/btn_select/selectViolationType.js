@@ -10,6 +10,7 @@ $("document").ready(function(){
         $(".select__one--violation--type:first-child").addClass("background-gray")
         $(".select__one--violation--type:first-child").find("img").show()
     }
+
     selectOneViolation.on("click", function(){
         var value = $(this).find("p").html()
         var id = $(this).find("p").attr("data-id");
@@ -25,13 +26,15 @@ $("document").ready(function(){
         $(this).find("img").show()
     })
 
+    btnViolation.click(function(){
+        selectViolation.slideToggle(300,'linear');
+    })
+
     $(document).mouseup(function(e){
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
             if(width > 1113){
                 if (!btnViolation.is(e.target) && btnViolation.has(e.target).length === 0) {
                     selectViolation.hide()
-                }else{
-                    selectViolation.slideToggle(300,'linear');
                 }
             }
     });
