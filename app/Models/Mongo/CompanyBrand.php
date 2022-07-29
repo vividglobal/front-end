@@ -52,13 +52,32 @@ class CompanyBrand extends Model
             [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
         ]];
 
-         // Only get article from auto and submit violation page where status = PENDING
-        $matchConditions[] = [ '$eq'=> [ '$status' ,  Article::STATUS_PENDING ] ];
 
-        $matchAutoPageCondtions = $matchManualPageConditions = $matchConditions;
+
+        if(isset($params['country_id'])) {
+            $matchConditions[] = [ '$eq'=> [ '$country.id' ,  $params['country_id'] ] ];
+        }
+
+        $matchViolationType = [
+            '$match' =>
+            [
+                'status' =>  Article::STATUS_PENDING
+            ]
+        ];
+        if(isset($params['violation_type_id'])) {
+            $matchViolationType['$match']['detection_result.violation_types'] = [
+                '$elemMatch' => [
+                    'id' => $params['violation_type_id']
+                ]
+            ];
+        }
+
+        $matchAutoPageCondtions = $matchManualPageConditions = $matchViolationPageCondtions = $matchNonViolationPageCondtions = $matchConditions;
 
         $matchAutoPageCondtions[] = [ '$eq' => [ '$detection_type',  Article::DETECTION_TYPE_BOT ] ];
         $matchManualPageConditions[] = [ '$eq' => [ '$detection_type',  Article::DETECTION_TYPE_MANUAL ] ];
+        $matchViolationPageCondtions[] = [ '$eq' => [ '$status',  Article::STATUS_VIOLATION ] ];
+        $matchNonViolationPageCondtions[] = [ '$eq' => [ '$status',  Article::STATUS_NONE_VIOLATION ] ];
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
             $startDate = strtotime($params['start_date'].' 00:00:00');
@@ -69,6 +88,12 @@ class CompanyBrand extends Model
 
             $matchManualPageConditions[] = [ '$gte' => [ '$detection_result.crawl_date',  $startDate ] ];
             $matchManualPageConditions[] = [ '$lte' => [ '$detection_result.crawl_date',  $endDate ] ];
+
+            $matchViolationPageCondtions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $matchViolationPageCondtions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
+
+            $matchNonViolationPageCondtions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $matchNonViolationPageCondtions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
         }
 
 
@@ -80,10 +105,10 @@ class CompanyBrand extends Model
                 'pipeline' => [
                     [ '$match'=>
                         [
-                            '$expr'=>
-                            [ '$and'=> $matchAutoPageCondtions ]
+                            '$expr'=> [ '$and'=> $matchAutoPageCondtions ]
                         ]
                     ],
+                    $matchViolationType,
                     [
                         '$addFields' => [
                             'status' => [
@@ -111,10 +136,10 @@ class CompanyBrand extends Model
                 'pipeline' => [
                     [ '$match'=>
                         [
-                            '$expr'=>
-                            [ '$and'=> $matchManualPageConditions ]
+                            '$expr' => [ '$and'=> $matchManualPageConditions ]
                         ]
                     ],
+                    $matchViolationType,
                     [
                         '$addFields' => [
                             'status' => [
@@ -124,6 +149,59 @@ class CompanyBrand extends Model
                                     'else' => Article::STATUS_NONE_VIOLATION
                                 ],
                             ]
+                        ]
+                    ],
+                    ['$project' => [
+                        '_id' => 1,
+                        'status' => 1
+                    ]]
+                ]
+            ]
+        ];
+
+        $violationArticlesPipeline = [];
+
+        $violationArticlesPipeline[] = [ '$match' =>
+            [
+                '$expr' => [ '$and'=> $matchViolationPageCondtions ]
+            ]
+        ];
+
+        if(isset($params['violation_type_id'])) {
+            $violationArticlesPipeline[] = [
+                '$match' => [
+                    'detection_result.violation_types' => [
+                        '$elemMatch' => [
+                            'id' => $params['violation_type_id']
+                        ]
+                    ]
+                ]
+            ];
+        }
+
+        $violationArticlesPipeline[] = ['$project' => [
+            '_id' => 1,
+            'status' => 1
+        ]];
+
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as' => 'violation_articles_by_brand',
+                'from' => 'articles',
+                'let' => [ 'company_brand_id'=> ['$toString'=> '$_id'] ],
+                'pipeline' => $violationArticlesPipeline
+            ]
+        ];
+
+        $aggregateQuery[] = [
+            '$lookup' => [
+                'as' => 'non_violation_articles_by_brand',
+                'from' => 'articles',
+                'let' => [ 'company_brand_id'=> ['$toString'=> '$_id'] ],
+                'pipeline' => [
+                    [ '$match'=>
+                        [
+                            '$expr' => [ '$and'=> $matchNonViolationPageCondtions ]
                         ]
                     ],
                     ['$project' => [
@@ -157,7 +235,14 @@ class CompanyBrand extends Model
 
         $aggregateQuery[] = [
             '$addFields' => [
-                'total_article' => ['$sum' => [['$size' => '$auto_articles_by_brand'], ['$size' => '$manual_articles_by_brand']] ],
+                'total_article' => [
+                    '$sum' => [
+                        ['$size' => '$auto_articles_by_brand'],
+                        ['$size' => '$violation_articles_by_brand'],
+                        ['$size' => '$non_violation_articles_by_brand'],
+                        ['$size' => '$manual_articles_by_brand']
+                    ]
+                ],
                 'violation_from_auto' => [
                     '$size' => [
                         '$filter' => [
@@ -197,6 +282,8 @@ class CompanyBrand extends Model
                 'queryId' => 1,
                 'auto_articles_by_brand' => 1,
                 'manual_articles_by_brand' => 1,
+                'violation_articles_by_brand' => 1,
+                'non_violation_articles_by_brand' => 1,
                 'total_article' => 1,
                 'violation_from_auto' => 1,
                 'violation_from_manual' => 1,
@@ -233,7 +320,7 @@ class CompanyBrand extends Model
             $this->sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
         $aggregateQuery[] = [
-            '$sort' => [$this->sortField => $this->sortValue]
+            '$sort' => [$this->sortField => $this->sortValue, '_id' => -1]
         ];
 
         if($shouldPaginate) {

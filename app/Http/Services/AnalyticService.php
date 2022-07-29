@@ -201,9 +201,9 @@ class AnalyticService {
       // ============================================ //
      // ================== CHARTS =================== //
     // =========================================== //
-    public function violationBasedCountries() {
+    public function violationBasedCountries($params) {
         $countryModel = new Country();
-        $data = $countryModel->violationByCountries();
+        $data = $countryModel->violationByCountries($params);
         $countryData = [];
         foreach ($data as $key => $value) {
             $countryData[] = [

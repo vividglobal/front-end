@@ -360,7 +360,7 @@ class Article extends Model
             $this->sortValue = strtoupper($params['sort_value']) === 'DESC' ? -1 : 1;
         }
         $aggregateQuery[] = [
-            '$sort' => [$this->sortField => $this->sortValue]
+            '$sort' => [$this->sortField => $this->sortValue, '_id' => -1]
         ];
 
         if($usePagination) {

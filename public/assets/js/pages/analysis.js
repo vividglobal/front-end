@@ -1,17 +1,19 @@
 $(document).ready(function(){
       // -------------------------
-      let generalStrParams = '?1=1';
-      let brandStrParams = '?1=1';
-      let codeStrParams = '?1=1';
+    let generalStrParams = '?1=1';
+    let brandStrParams = '?1=1';
+    let codeStrParams = '?1=1';
+    let mapStrParams = '?1=1';
 
-      let generalIdEl = '#general';
-      let brandIdEl = '#vio-based-brand';
-      let codeIdEl = '#vio-based-code';
+    let generalIdEl = '#general';
+    let brandIdEl = '#vio-based-brand';
+    let codeIdEl = '#vio-based-code';
+    let mapEl = '#world-map';
 
-      // Init
-      getGeneralData();
-      getViolationBasedBrand();
-      getViolationBasedCode();
+    // Init
+    getGeneralData();
+    getViolationBasedBrand();
+    getViolationBasedCode();
       // General
 
     // OPEN DATE RANGER
@@ -61,6 +63,7 @@ $(document).ready(function(){
                 getGeneralData();
                 getViolationBasedBrand();
                 getViolationBasedCode();
+                getViolationBasedCountry();
             }
             startDate = picker.startDate.format("DD-MM-YYYY");
             endDate = picker.endDate.format("DD-MM-YYYY");
@@ -77,10 +80,10 @@ $(document).ready(function(){
             let endDatePicker = arr[1].split("/")
             startDate = `${startDatePicker[1].trim()}-${startDatePicker[0].trim()}-${startDatePicker[2].trim()}`
             endDate = `${endDatePicker[1].trim()}-${endDatePicker[0].trim()}-${endDatePicker[2].trim()}`
-            generalStrParams = brandStrParams = codeStrParams = `?1=1&start_date=${startDate}&end_date=${endDate}`;
+            generalStrParams = brandStrParams = codeStrParams = mapStrParams = `?1=1&start_date=${startDate}&end_date=${endDate}`;
             $(".btn--export--excel").attr("href",`${window.location.href}?1=1&start_date=${startDate}&end_date=${endDate}&export=true`)
         }else{
-            generalStrParams = brandStrParams = codeStrParams = '?1=1'
+            generalStrParams = brandStrParams = codeStrParams = mapStrParams = '?1=1'
             $(".btn--export--excel").attr("href",`${window.location.href}?1=1&export=true`)
         }
     }
@@ -105,6 +108,7 @@ $(document).ready(function(){
         getGeneralData();
         getViolationBasedBrand();
         getViolationBasedCode();
+        getViolationBasedCountry();
     })
 
      // REMOVE DATERANGE
@@ -119,6 +123,7 @@ $(document).ready(function(){
             getGeneralData();
             getViolationBasedBrand();
             getViolationBasedCode();
+            getViolationBasedCountry();
         }
     })
     // ------------------------------------
@@ -280,6 +285,11 @@ $(document).ready(function(){
         let htmlResponse = await get('/analysis/violation-by-code'+codeStrParams);
         $(codeIdEl).html(htmlResponse)
         remove_loader(codeIdEl)
+    }
+
+    async function getViolationBasedCountry() {
+        let mapUrl = '/analysis/violation-by-country'+mapStrParams;
+        $(mapEl).attr('src', mapUrl);
     }
 
     async function get(url) {
