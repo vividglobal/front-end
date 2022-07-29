@@ -16,8 +16,9 @@
 }
 .lish-child{
     width: 100%;
-    padding: 10px;
+    padding: 10px 16px;
     display: flex;
+    height: 123px;
 }
 .media-body{
     width: 90%;
