@@ -3,7 +3,6 @@ $("document").ready(function(){
     var selectCountry = $(".slc_general");
     var selectOneCountry = $(".option_general");
     var btnCountry = $(".ctr_general");
-    var searchCountry = $(".search_general");
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -29,18 +28,18 @@ $("document").ready(function(){
         $(this).find("img").show()
     })
 
+    btnCountry.click(function(e){
+        if(e.target !== $(this).find(".search--country")[0]){
+            selectCountry.slideToggle(300,'linear');
+        }
+    })
+
     $(document).mouseup(function(e){
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         //select country
         if(width >1113){
             if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0 ) {
                 selectCountry.hide()
-            }else{
-                if (!searchCountry.is(e.target) && searchCountry.has(e.target).length === 0)
-                {
-                    selectCountry.slideToggle(300,'linear');
-                    searchCountry.val("")
-                }
             }
         }
 

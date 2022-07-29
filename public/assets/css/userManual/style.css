@@ -112,6 +112,10 @@ video[poster] {
       font-weight: 600;
   }
 
+  .strong{
+      padding: 10px 0;
+  }
+
   .panel img {
     max-width: 100%;
   }

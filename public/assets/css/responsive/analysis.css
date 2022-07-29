@@ -1,4 +1,4 @@
-@media (max-width: 1300px) {
+@media (max-width: 1355px) {
     .Base_violation--brand,
     .index_violation-nonViolation,
     .title_analysis .list--select--option,
@@ -7,6 +7,18 @@
     }
     .title-violation {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 1255px) {
+    .Base_violation--brand,
+    .index_violation-nonViolation,
+    .title_analysis .list--select--option,
+    .title_analysis .list--title {
+        margin: 15px 100px;
+    }
+    .Base_violation--brand{
+        padding: 26px 40px;
     }
 }
 
@@ -38,7 +50,7 @@
     .Base_violation--brand,
     .index_violation-nonViolation{
         margin: 15px;
-        padding : 0;
+        padding : 5px;
     }
 
     .Base_violation--brand{
@@ -56,7 +68,8 @@
     .title_table_analysis{
         display: block;
         text-align: center;
-        margin: 20px 0 10px 0;
+        margin: 10px 0 10px 0;
+        height: 20px;
     }
 
     .title_table_analysis p{
@@ -76,21 +89,21 @@
 
     .index__violation:nth-child(2) div{
         background: #E2F2E3;
-        margin: 0px 20px 10px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }
 
     .index__violation:nth-child(3) div{
         background: #FFD2DA;
-        margin: 0px 20px 10px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }
 
     .index__violation:nth-child(4) div{
         background: #DDEAF3;
-        margin: 0px 20px 20px 20px;
+        margin: 0px 10px 20px 10px;
         position: relative;
         border-radius: 5px;
     }
@@ -168,7 +181,7 @@
     .Base_violation--brand .list--select--option .list--select__right p {
         font-family: var(--bradon);
         font-style: normal;
-        font-weight: 420;
+        font-weight: 600;
         font-size: 20px;
         line-height: 29px;
         color: var(--primary);

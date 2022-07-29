@@ -27,17 +27,17 @@ $("document").ready(function(){
         $(this).find("img").show()
     })
 
+    btnBrand.click(function(e){
+        if(e.target !== $(".search--brand")[0]){
+            selectBrand.slideToggle(300,'linear');
+        }
+    })
+
     $(document).mouseup(function(e){
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
-            var input = $(".search--input");
             if (!btnBrand.is(e.target) && btnBrand.has(e.target).length === 0) {
                 selectBrand.hide()
-            }else{
-                if (!input.is(e.target) && input.has(e.target).length === 0)
-                    {
-                        selectBrand.slideToggle(300,'linear');
-                    }
             }
         }
             $(".select__one").css("display", "flex")

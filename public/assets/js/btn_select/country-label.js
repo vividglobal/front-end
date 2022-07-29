@@ -29,17 +29,16 @@ $("document").ready(function(){
         $(this).find("img").show()
     })
 
+    btnCountry.click(function(e){
+        if(e.target !== $(this).find(".search--country")[0]){
+            selectCountry.slideToggle(300,'linear');
+        }
+    })
+
     $(document).mouseup(function(e){
         //select country
-        var inputCountry = $("#div-search")
         if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0) {
                 selectCountry.hide()
-            }else{
-                if (!searchCountry.is(e.target) && searchCountry.has(e.target).length === 0)
-                {
-                        selectCountry.slideToggle(300,'linear');
-                        searchCountry.val("")
-                }
-        }
+            }
     });
 })

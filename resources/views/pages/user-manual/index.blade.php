@@ -29,9 +29,9 @@
             </button>
             </a>
             <div class="add" id="cl1">
-                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Click on the 'Submit violations' page in the menu bar")}}.</p>
+                <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Click on the “Submit violations” page in the menu bar")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
-                <p><span> {{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected text/Drop image”")}}.</p>
+                <p><span> {{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected text/Drop image ”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}: </span>  {{__(" Enter the suspected text or upload photo from your computer")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-3.png') }}" loading="lazy">
@@ -39,7 +39,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-4.png') }}" loading="lazy" class="inherit_img">
                 <p><span> {{__("Step 5")}}: </span>  {{__(" Click the captcha “I’m not a robot”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-5.png') }}" loading="lazy" class="inherit_img">
-                <p><span> {{__("Step 6")}}: </span>  {{__(" Click the 'Check' button to check violations")}}.</p>
+                <p><span> {{__("Step 6")}}: </span>  {{__(" Click the “Check” button to check violations")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-6.png') }}" loading="lazy">
@@ -52,14 +52,14 @@
             <div class="add" id="cl2">
                 <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Visit the “Submit violations” page in the menu bar")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
-                <p><span>{{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected URL”")}}
+                <p><span>{{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected URL ”")}}
                 <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this list")}} </a>.</p>
                 <img src="{{ asset('assets/image/usermanual/img-7.png') }}" loading="lazy">
                 <p><span>{{__("Step 3")}}: </span>  {{__(" Enter suspected link of the website or the images, posts on the Fanpage, Instagram, Website on the provided list")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-8.png') }}" loading="lazy">
                 <p><span>{{__("Step 4")}}: </span>  {{__(" Click the captcha “I’m not a robot”")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-9.png') }}" loading="lazy">
-                <p><span>{{__("Step 5")}}: </span>  {{__(" Click the 'Check' button to check violations")}} .</p>
+                <p><span>{{__("Step 5")}}: </span>  {{__(" Click the “Check” button to check violations")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-11.png') }}" loading="lazy">
@@ -88,7 +88,7 @@
             </button>
             </a>
             <div class="add" id="cl4">
-                <p><span></span> <strong> {{__("How to get the valid link of a post on Fanpage")}}.</strong></p>
+                <p class="strong"><span></span> <strong> {{__("How to get the valid link of a post on Fanpage")}}.</strong></p>
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Access the available Fanpage on the provided Fanpage list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-12.png') }}" loading="lazy">
                 <p><span> {{__("Step 2")}}:</span> {{__(" Select the post you want to check for violations")}}.</p>
@@ -99,18 +99,18 @@
                 <img src="{{ asset('assets/image/usermanual/img-14.png') }}" loading="lazy">
                 <p><span> {{__("Step 6")}}: </span>  {{__(" Press Ctrl V or click the icon below to paste the copied path into the violation check section")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-77.png') }}" loading="lazy">
-                <p><span> {{__("Step 7")}}: </span>  {{__(" Click the 'Check' button to check violations")}}.</p>
+                <p><span> {{__("Step 7")}}: </span>  {{__(" Click the “Check” button to check violations")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-6.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__("How to get a valid link for an image on Fanpage?")}}</strong></p>
+                <p class="strong"><span></span> <strong> {{__("How to get a valid link for an image on Fanpage?")}}</strong></p>
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Access the available Fanpage on the provided Fanpage list")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-12.png') }}" loading="lazy">
                 <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the image you want to check for violations and copy the link as shown below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-15.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}: </span>  {{__(" Return to the Vivid page in the link check section, Press Ctrl V or click the icon below to paste the copied link into the violation check")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-7.png') }}" loading="lazy">
-                <p><span> {{__("Step 4")}}: </span>  {{__(" Click the 'Check' button to check violations")}} .</p>
+                <p><span> {{__("Step 4")}}: </span>  {{__(" Click the “Check” button to check violations")}} .</p>
                 <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-6.png') }}" loading="lazy">
@@ -128,9 +128,9 @@
                 <img src="{{ asset('assets/image/usermanual/img-55.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" Copy the link as shown belows")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-56.png') }}" loading="lazy">
-                <p><span> {{__("Step 4")}}:</span>  {{__(" Return to the Vivid page in the link check section, Press Ctrl V or click the icon below to paste the copied link into the violation check")}}.</p>
+                <p><span> {{__("Step 4")}}:</span>  {{__(" Return to the Vivid page in the link check section, Press Ctrl V or click on the icon below to paste the copied link into the violation check")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-7.png') }}" loading="lazy">
-                <p><span> {{__("Step 5")}}:</span>  {{__(" Click the 'Check' button to check violations")}}.</p>
+                <p><span> {{__("Step 5")}}:</span>  {{__(" Click the “Check” button to check violations")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-10.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After the system checks for violations, the administrator can review the results below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-6.png') }}" loading="lazy">
@@ -139,7 +139,7 @@
         </div>
         <a data-id="#sl3"><button class="accordion "> {{__("Guide to Check violations for Operators and Supervisors")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl3">
-            <p> {{__("Vivid website allows check violations for Operators and Supervisorss on 2 pages")}}:</p>
+            <p> {{__("Vivid website allows check violations for Operators and Supervisorss on 2 pages")}}.</p>
             <ul>
                 <li> {{__("Auto-detect violations (Systems scans and check violations automatically)")}}</li>
                 <li> {{__("Submit violations (User upload manually to check violations)")}}</li>
@@ -152,14 +152,14 @@
             </a>
             <div class="add" id=cl5>
                 <img src="{{ asset('assets/image/usermanual/img-16.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__("Agree with VIVID’s status")}}.</strong></p>
-                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “tick” button if you agree with the system's Violation status")}}.</p>
+                <p class="strong"><span></span> <strong> {{__("Agree with VIVID’s status")}}.</strong></p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “✓” button if you agree with the system's Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-17.png') }}" loading="lazy">
                 <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically move to the Unable to detect. (Just for Operator but not other account)")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__("Disagree with VIVID’s status")}}.</strong></p>
+                <p class="strong"><span></span> <strong> {{__("Disagree with VIVID’s status")}}.</strong></p>
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Click the red “X” button if you disagree with “Unable to detect” status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-20.png') }}" loading="lazy" class="inherit_img">
                 <p><span></span>  {{__(" After clicking, the system will display a message to confirm the status.")}}.</p>
@@ -168,7 +168,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically change to Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-23.png') }}" loading="lazy">
-                <p><span> {{__("Step 4")}}:</span>  {{__(" Choose code article for this post by clicking on the “Tick’ button on “Code Article” Column")}}.</p>
+                <p><span> {{__("Step 4")}}:</span>  {{__(" Choose code article for this post by clicking on the green “✓” button on “Code Article” Column")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-24.png') }}" loading="lazy">
                 <p><span> {{__("Step 5")}}:</span>  {{__(" Choose the appropriate violation code")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-25.png') }}" loading="lazy" class="inherit_img">
@@ -183,27 +183,27 @@
             </a>
             <div class="add" id="cl6">
                 <img src="{{ asset('assets/image/usermanual/img-27.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__("Agree with VIVID’s status and Code Article")}}.</strong></p>
+                <p class="strong"><span></span> <strong> {{__("Agree with VIVID’s status and Code Article")}}.</strong></p>
                 <img src="{{ asset('assets/image/usermanual/img-28.png') }}" loading="lazy">
-                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “tick” button if you agree with the system's Violation status")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “✓” button if you agree with the system's Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-29.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After clicking, the system will display a message to confirm the status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-21.png') }}" loading="lazy">
-                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}:</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically change to Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-23.png') }}" loading="lazy" >
-                <p><span> {{__("Step 4")}}:</span>  {{__(" Click the green “tick” button if you agree with VIVID’s Code article")}}.</p>
+                <p><span> {{__("Step 4")}}:</span>  {{__(" Click the green “✓” button if you agree with VIVID’s Code article")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-30.png') }}" loading="lazy">
-                <p><span> {{__("Step 5")}}:</span>  {{__(" After agree with Code Artile, the post wil automatically move to “Code violations”") }}.</p>
+                <p><span> {{__("Step 5")}}:</span>  {{__(" After agree with Code Artile, the post will automatically move to “Code violations”") }}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-31.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__(" Agree with VIVID’s status but not Code Article")}}.</strong></p>
+                <p class="strong"><span></span> <strong> {{__(" Agree with VIVID’s status but not Code Article")}}.</strong></p>
                 <img src="{{ asset('assets/image/usermanual/img-32.png') }}" loading="lazy">
-                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “tick” button if you agree with the system's Violation status")}}.</p>
+                <p><span> {{__("Step 1")}}:</span>  {{__(" Click the green “✓” button if you agree with the system's Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-29.png') }}" loading="lazy">
                 <p><span></span>  {{__(" After clicking, the system will display a message to confirm the status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-21.png') }}" loading="lazy">
-                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}:</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-22.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically change to Violation status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-33.png') }}" loading="lazy" class="inherit_img">
@@ -213,13 +213,13 @@
                 <img src="{{ asset('assets/image/usermanual/img-35.png') }}" loading="lazy">
                 <p><span> {{__("Step 6")}}:</span>  {{__(" Click on “Save change” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-36.png') }}" loading="lazy">
-                <p><span> {{__("Step 7")}}:</span>  {{__(" After choosing Code Artile, the post wil automatically move to “Code violations”")}}.</p>
+                <p><span> {{__("Step 7")}}:</span>  {{__(" After choosing Code Artile, the post will automatically move to “Code violations”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-37.png') }}" loading="lazy">
-                <p><span></span> <strong> {{__(" Disagree with VIVID’s status")}}.</strong></p>
+                <p class="strong"><span></span> <strong> {{__(" Disagree with VIVID’s status")}}.</strong></p>
                 <img src="{{ asset('assets/image/usermanual/img-38.png') }}" loading="lazy">
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Click the red “X” button if you disagree with “Violation” status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-20.png') }}" loading="lazy" class="inherit_img">
-                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on “Confirm” button")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-39.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically move to the Unable to detect. (Just for Operator but not other account)")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-40.png') }}" loading="lazy">
@@ -231,25 +231,25 @@
             <p><span> {{__("Step 1")}}:</span>  {{__(" Select “Violation reviewed” on the menu bar and click “ Code Violations” or “Unable to detect”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-41.png') }}" loading="lazy" >
             <p><span> {{__("Step 2")}}:</span> {{__(" Click the button in the “Switch status” column")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-42.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-42.png') }}" loading="lazy" >
             <p><span> {{__("Step 3")}}: </span> {{__(" Return to the “Auto-Detect Violations” page to check the this post for violations from the beginning")}}.</p>
             <span class="border_grays"></span>
         </div>
         <a data-id="#sl5"><button class="accordion"> {{__("Instructions to change the “Status progress”")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl5">
             <p><span> {{__("Step 1")}}:</span>  {{__(" Select “Violation reviewed” on the menu bar and click “ Code Violations”")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-43.png') }}" loading="lazy" style="width:100%">
-            <p><span> {{__("Step 2")}}:</span>  {{__(" Change the “Status Progress” according to action including")}}:</p>
+            <img src="{{ asset('assets/image/usermanual/img-43.png') }}" loading="lazy" >
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Change the “Status Progress” according to action including")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-44.png') }}" loading="lazy">
             <ul>
                 <li>
-                    <span> {{__('Not started')}} :</span>  {{__(" This posts has not been checked and processed yet.")}}.
+                    <span> {{__('Not started')}} :</span>  {{__(" This posts has not been checked and processed yet")}}.
                 </li>
                 <li>
                     <span> {{__('Processing')}} :</span>  {{__(" This posts is being processed and waiting for the official document to be posted")}}.
                 </li>
                 <li>
-                    <span> {{__('Completed')}} :</span>  {{__("The posts has been handled successfully and the handling text is published (This status can only be selected when at least 1 handling text has been posted for the article)")}}.
+                    <span> {{__('Completed')}} :</span>  {{__("This posts has been handled successfully and the handling text is published (This status can only be selected when at least 1 handling text has been posted for the article)")}}.
                 </li>
             </ul>
             <span class="border_grays"></span>
@@ -262,20 +262,20 @@
         </a>
         <div class="panel" id="sl6">
             <p><span> {{__("Step 1")}}:</span>  {{__(" Go to “Violation reviewed ” and select “ Code Violations” on the menu bar")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-41.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-41.png') }}" loading="lazy" >
             <p><span> {{__("Step 2")}}:</span>  {{__(" At “Legal documents”, click on the button with the folder image as below")}}.</p>
             <ul>
                 <li> {{__("If the button color is gray, no text has been uploaded recently")}}.</li>
                 <li> {{__("If the button color is blue, there is at least one recently uploaded text")}}.</li>
             </ul>
-            <img src="{{ asset('assets/image/usermanual/img-45.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-45.png') }}" loading="lazy" >
             <p><span> {{__("Step 3")}}: </span>  {{__(" Add more Documents by clicking the “Upload” icon and selecting the document you want to upload")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-46.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-46.png') }}" loading="lazy" >
             <p><span></span>  {{__(" After the upload is successful, a message will appear at the bottom of the screen on the right")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-47.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-47.png') }}" loading="lazy" >
             <p><span></span>  {{__(" Admin can check the document again by clicking on the document")}}.</p>
             <p><span> {{__("Step 4")}}: </span>  {{__(" When the admin completes the document upload process, the folder button will turn blue and update the latest document upload date")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-48.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-48.png') }}" loading="lazy" >
             <span class="border_grays"></span>
         </div>
         <a data-id="#sl7">
@@ -321,7 +321,7 @@
             </div>
             <span class="border_grays"></span>
         </div>
-        <a data-id="#sl8"><button class="accordion"> {{__("Instructions for searching posts by keyword or checking date")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl8"><button class="accordion"> {{__("Instructions for searching posts by keyword or review date")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl8">
             <a data-id="#cl7">
                 <button class="child-accordion"> {{__("Search posts by keywords") }}
@@ -331,12 +331,12 @@
             <div class="add" id="cl7">
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Enter search information for example “Nestle”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-58.png') }}" loading="lazy">
-                <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related posts with the keyword Nestle or of the Nestle Fanpage, Instaram, Website will be displayed below")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related posts with the keyword Nestle or the Nestle Fanpage, Instaram, Website will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-59.png') }}" loading="lazy">
             </div>
             <span class="border_grays"></span>
             <a data-id="#cl8">
-                <button class="child-accordion"> {{__("Search posts by checking date")}}
+                <button class="child-accordion"> {{__("Search posts by review date")}}
                 <img src="{{ asset('assets/image/plus.svg') }}" alt="">
                 </button>
             </a>
@@ -345,32 +345,32 @@
                 <img src="{{ asset('assets/image/usermanual/img-60.png') }}" loading="lazy">
                 <p><span> {{__("Step 2")}}:</span>  {{__(" Select the appropriate range of time")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-61.png') }}" loading="lazy" class="inherit_img">
-                <p><span></span> {{__("After selecting all post with selected checking date will be displayed below")}}.</p>
+                <p><span></span> {{__("After selecting all post with selected review date will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-63.png') }}" loading="lazy">
                 <span class="border_grays"></span>
             </div>
         </div>
         <a data-id="#sl9"><button class="accordion"> {{__("Instructions for arraging posts with sort functions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl9">
-            <p><span></span>  {{__(" Admin can sort posts from A-Z and vice versa")}}:</p>
+            <p><span></span>  {{__(" User can sort posts from A-Z and vice versa")}}.</p>
             <ul>
-                <li> {{__("Date (published date, checking date, penalty issues, crawl date): In order of newest or oldest date order")}}.</li>
+                <li> {{__("Date (published date, review date, penalty issues, crawl date): In order of newest or oldest date order")}}.</li>
                 <li> {{__("Status (violation or Unable to detect): In alphabetical order")}}. </li>
                 <li> {{__("Brand Name: In alphabetical order")}}.</li>
                 <li> {{__("Country Name: In alphabetical order")}}.</li>
                 <li> {{__("Company Name: In alphabetical order")}}.</li>
             </ul>
-            <p><span></span>  {{__(" Admins can sort by clicking on the 2 arrow icon next to the column you want to arrange (the illustrate image below)")}}</p>
-            <img src="{{ asset('assets/image/usermanual/img-64.png') }}" loading="lazy" style="width:100%">
+            <p><span></span>  {{__(" User can sort by clicking on the 2 arrow icon next to the column you want to arrange (the illustrate image below)")}}</p>
+            <img src="{{ asset('assets/image/usermanual/img-64.png') }}" loading="lazy" >
             <span class="border_grays"></span>
         </div>
         <a data-id="#sl10"><button class="accordion"> {{__("Data export instructions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl10">
             <p><span> {{__("Step 1")}}:</span>  {{__(" Go to the page to export data (Auto-detect violations, Code Violations, Unable to detect, Submit violations)")}}.</p>
             <p><span> {{__("Note")}}:</span>  {{__(" Only applied when login successfully")}}.</p>
-            <p><span> {{__("Step 2")}}:</span>  {{__(" Select the filter you want:")}}</p>
+            <p><span> {{__("Step 2")}}:</span>  {{__(" Select the filter you want")}}.</p>
             <ul>
-                <img src="{{ asset('assets/image/usermanual/img-67.png') }}" loading="lazy" style="width:100%">
+                <img src="{{ asset('assets/image/usermanual/img-67.png') }}" loading="lazy" >
                 <li> {{__("Select the time")}}.</li>
                 <img src="{{ asset('assets/image/usermanual/img-65.png') }}" loading="lazy">
                 <li> {{__("Select Brand/ Company (optional)")}}. </li>
@@ -381,14 +381,14 @@
                 <img src="{{ asset('assets/image/usermanual/img-69.png') }}" loading="lazy">
             </ul>
             <p><span> {{__("Step 3")}}:</span>  {{__(" Click the “Apply” button and wait for the system to process the data")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-70.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-70.png') }}" loading="lazy" >
             <p><span> {{__("Step 4")}}:</span>  {{__(" Click the “Export excel” button and wait for the system to download the excel list to your computer")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-71.png') }}" loading="lazy">
             <p><span> {{ __("Note") }}:</span>  {{__(" If you do not choose any special arrangement such as keyword content,
              time, brand/ company, country, and violation type,  the system will download the correct number of posts
-              displayed directly on the Vivid page ")}}: </p>
+              displayed directly on the Vivid page ")}}. </p>
             <p><span></span>  {{__(" The downloaded Excel will have the following format")}}: </p>
-            <img src="{{ asset('assets/image/usermanual/img-72.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-72.png') }}" loading="lazy" >
             <span class="border_grays"></span>
         </div>
         <a data-id="#sl11"><button class="accordion"> {{__("Instructions for adding a new administrator")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
@@ -399,14 +399,15 @@
             <p><span> {{__("Step 1")}}:</span>  {{__(" Click on the “Admins management” page on the menu bar")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-73.png') }}" loading="lazy" style="max-width:100%">
             <p><span> {{__("Step 2")}}:</span>  {{__(" Click the “Add admin” button")}}.</p>
-            <img src="{{ asset('assets/image/usermanual/img-74.png') }}" loading="lazy" style="width:100%">
+            <img src="{{ asset('assets/image/usermanual/img-74.png') }}" loading="lazy" >
             <p><span> {{__("Step 3")}}:</span> {{ __(" Fill in the required fields including")}}:</p>
             <ul>
                 <li> {{__("Full name")}}</li>
                 <li> {{__("Email address")}}</li>
                 <li> {{__("Phone number")}}</li>
-                <li> {{__("Pasword")}}</li>
-                <li> {{__("Authority on the website (Admin, Supervisor, Operator)")}}?></li>
+                <li> {{__("Confirm password")}}</li>
+                <li> {{__("Password")}}</li>
+                <li> {{ __("Authority on the website (Admin, Supervisor, Operator)") }}</li>
             </ul>
             <img src="{{ asset('assets/image/usermanual/img-75.png') }}" loading="lazy">
             <p><span> {{__("Step 4")}}:</span>  {{__(" Click on the “Save change” button")}}.</p>

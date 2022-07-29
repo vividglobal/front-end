@@ -16,6 +16,13 @@ $(document).ready(function() {
                 return false;
             }
 
+            let fileName = $('input[name="image"]')[0].files[0].name;
+            let regexFile = /\.(jpe?g|png)$/i.test(fileName)
+            if(!regexFile){
+                show_error('Please upload file is image');
+                return false;
+            }
+
             if($('input[name="image"]')[0].files.length > 0) {
                 formData.append('image', $('input[name="image"]')[0].files[0]);
             }
@@ -65,11 +72,7 @@ $(document).ready(function() {
             error: (err) => {
                 isLoading = false;
                 hide_overlay();
-                if(err.responseJSON.errors.image){
-                    show_error("Please upload file is image");
-                }else{
-                    show_error(err.responseJSON.message);
-                }
+                show_error(err.responseJSON.message);
                 setTimeout(() => {
                     window.location.href = window.location.href
                 }, 3000);
