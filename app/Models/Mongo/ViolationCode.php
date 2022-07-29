@@ -38,19 +38,19 @@ class ViolationCode extends Model
 
         $violationPageMatchConditions = [
             [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ],
-            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+            [ '$in'=> [ '$$code_id', '$articleCodeArr' ] ],
         ];
 
         $autoPageMatchConditions = [
             [ '$eq'=> [ '$status',  Article::STATUS_PENDING ] ],
             [ '$eq'=> [ '$detection_type',  Article::DETECTION_TYPE_BOT ] ],
-            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+            [ '$in'=> [ '$$code_id', '$articleCodeArr' ] ],
         ];
 
         $manualPageMatchConditions = [
             [ '$eq'=> [ '$status',  Article::STATUS_PENDING ] ],
             [ '$eq'=> [ '$detection_type',  Article::DETECTION_TYPE_MANUAL ] ],
-            [ '$eq'=> [ '$articleCodeArr.id',  '$$code_id' ] ],
+            [ '$in'=> [ '$$code_id', '$articleCodeArr' ] ],
         ];
 
         if(isset($params['start_date']) && isset($params['end_date'])) {
@@ -74,11 +74,14 @@ class ViolationCode extends Model
                 'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
                     [
-                        '$addFields' => ['articleCodeArr' => '$operator_review.violation_code' ]
+                        '$addFields' => [
+                            'articleCodeArr' => '$operator_review.violation_code.id',
+                            'code_id_arr' => ['$$code_id']
+                        ]
                     ],
-                    [
-                        '$unwind' => '$articleCodeArr'
-                    ],
+                    // [
+                    //     '$unwind' => '$articleCodeArr'
+                    // ],
                     [ '$match'=>
                         [
                             '$expr' => [
@@ -86,7 +89,7 @@ class ViolationCode extends Model
                             ]
                         ]
                     ],
-                    ['$project' => ['_id' => 1]]
+                    ['$project' => ['_id' => 1, 'code_id_arr' => 1]]
                 ]
             ]
         ];
@@ -98,11 +101,14 @@ class ViolationCode extends Model
                 'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
                     [
-                        '$addFields' => ['articleCodeArr' => '$operator_review.violation_code' ]
+                        '$addFields' => [
+                            'articleCodeArr' => '$detection_result.violation_code.id',
+                            'code_id_arr' => ['$$code_id']
+                        ]
                     ],
-                    [
-                        '$unwind' => '$articleCodeArr'
-                    ],
+                    // [
+                    //     '$unwind' => '$articleCodeArr'
+                    // ],
                     [ '$match'=>
                         [
                             '$expr' => [
@@ -110,7 +116,7 @@ class ViolationCode extends Model
                             ]
                         ]
                     ],
-                    ['$project' => ['_id' => 1]]
+                    ['$project' => ['_id' => 1, 'code_id_arr' => 1]]
                 ]
             ]
         ];
@@ -122,11 +128,14 @@ class ViolationCode extends Model
                 'let' => [ 'code_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
                     [
-                        '$addFields' => ['articleCodeArr' => '$operator_review.violation_code' ]
+                        '$addFields' => [
+                            'articleCodeArr' => '$detection_result.violation_code.id',
+                            'code_id_arr' => ['$$code_id']
+                        ]
                     ],
-                    [
-                        '$unwind' => '$articleCodeArr'
-                    ],
+                    // [
+                    //     '$unwind' => '$articleCodeArr'
+                    // ],
                     [ '$match'=>
                         [
                             '$expr' => [
@@ -134,7 +143,7 @@ class ViolationCode extends Model
                             ]
                         ]
                     ],
-                    ['$project' => ['_id' => 1]]
+                    ['$project' => ['_id' => 1, 'code_id_arr' => 1]]
                 ]
             ]
         ];
@@ -163,7 +172,13 @@ class ViolationCode extends Model
         ];
         $aggregateQuery[] = [
             '$addFields' => [
-                'total_article' => ['$sum' => [['$size' => '$violation_articles_by_code'], ['$size' => '$auto_articles_by_code'], ['$size' => '$manual_articles_by_code']]],
+                'total_article' => [
+                    '$sum' => [
+                        ['$size' => '$violation_articles_by_code'],
+                        ['$size' => '$auto_articles_by_code'],
+                        ['$size' => '$manual_articles_by_code']
+                    ]
+                ],
                 'violation_type' => [ '$first' => '$violation_types']
             ]
         ];
@@ -178,7 +193,8 @@ class ViolationCode extends Model
                 'name' => 1,
                 'total_article' => 1,
                 'type_name' => '$violation_type.name',
-                'type_color' => '$violation_type.color'
+                'type_color' => '$violation_type.color',
+                'manual_articles_by_code' => 1
             ]
         ];
 
@@ -190,7 +206,7 @@ class ViolationCode extends Model
         }
 
         $aggregateQuery[] = [
-            '$sort' => [ $this->sortField => $this->sortValue ]
+            '$sort' => [ $this->sortField => $this->sortValue, '_id' => -1 ]
         ];
 
         if($shouldPaginate) {

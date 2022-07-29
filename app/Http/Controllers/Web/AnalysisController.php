@@ -47,8 +47,8 @@ class AnalysisController extends Controller
       // ============================================ //
      // ================== CHART =================== //
     // =========================================== //
-    public function violationBasedCountries() {
-        $countryData = $this->analyticService->violationBasedCountries();
+    public function violationBasedCountries(Request $request) {
+        $countryData = $this->analyticService->violationBasedCountries($request->all());
         return view('charts/violation_based_country', compact('countryData'));
     }
 }

@@ -17,7 +17,20 @@ class Country extends Model
         'list_url'
     ];
 
-    public function violationByCountries() {
+    public function violationByCountries($params = []) {
+        $matchConditions = [
+            [ '$eq'=> [ '$country.id',  '$$country_id' ] ],
+            [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ]
+        ];
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date'].' 00:00:00');
+            $endDate = strtotime($params['end_date'].' 23:59:59');
+
+            $matchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
+            $matchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
+        }
+
         $aggregateQuery = [
             [
                 '$lookup' => [
@@ -27,13 +40,7 @@ class Country extends Model
                     'pipeline' => [
                         [ '$match'=>
                             [
-                                '$expr'=>
-                                [ '$and' => 
-                                    [
-                                        [ '$eq'=> [ '$country.id',  '$$country_id' ] ],
-                                        [ '$eq'=> [ '$status',  Article::STATUS_VIOLATION ] ]
-                                    ]
-                                ]
+                                '$expr'=> [ '$and' => $matchConditions ]
                             ]
                         ],
                         ['$project' => ['_id' => 1]]

@@ -38,7 +38,7 @@
         <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
     </div>
     <div class="frame-wrapper">
-        <iframe src="/analysis/violation-by-country"  frameborder="0" scrolling="no" ></iframe>
+        <iframe id="world-map" src="/analysis/violation-by-country" frameborder="0" scrolling="no" ></iframe>
     </div>
 </div>
 
