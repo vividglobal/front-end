@@ -116,7 +116,7 @@ $(document).ready(function(){
                     $('#table-add').prepend(fileHtmlItems);
             }else if(CURRENT_ROLE === OPERATOR_ROLE) {
                 hide_overlay();
-                window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
+                window.location.replace(document.referrer);
             }
         }else {
             show_error('Evaluation failed!');
@@ -156,7 +156,7 @@ $(document).ready(function(){
                 hide_overlay();
                 show_success(response.message);
                 setTimeout(() => {
-                    window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
+                    window.location.replace(document.referrer);
                 }, 3000);
             }
         }else {
@@ -211,7 +211,7 @@ $(document).ready(function(){
             $('#table-add').prepend(fileHtmlItems);
         }if(CURRENT_ROLE === OPERATOR_ROLE) {
             hide_overlay();
-            window.location.replace(window.location.pathname.replace(articleId + "/details", "auto-detection"));
+            window.location.replace(document.referrer);
         }
         $('#table-code-buton-all').remove()
     }

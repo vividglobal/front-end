@@ -38,6 +38,7 @@ $(document).ready(function() {
 
         isLoading = true;
         show_overlay();
+        scrollScreen.disable()
 
         formData.append('request_type', label_type);
         formData.append('capcha_token', captchaToken);

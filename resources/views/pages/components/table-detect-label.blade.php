@@ -480,16 +480,13 @@
     </div>
 </div>
 
-
 <div class="container-table container-table-mobile" id="div-moblie">
     <ul class="container-row-mobile">
         @foreach ($articles as $key => $article)
         <li class="lish-body">
             <a href="/articles/{{$article->_id}}/details" style="text-decoration: none;">
                 <div class="lish-child">
-
                     <div class="media-img">
-
                         @if($article->image)
                         <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
                         @else

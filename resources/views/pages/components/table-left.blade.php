@@ -99,7 +99,13 @@
         <div class="head-modal">
             <h1></h1>
         </div>
-        <p class="title-modal"></p>
+        <div style="
+            overflow-wrap: break-word;
+            max-height: 30%;
+            overflow-y: auto;
+            ">
+                <p class="title-modal"></p>
+        </div>
     </div>
 </div>
 
