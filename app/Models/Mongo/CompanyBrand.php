@@ -47,71 +47,93 @@ class CompanyBrand extends Model
 
         $matchConditions = [];
 
-        if(isset($params['start_date']) && isset($params['end_date'])) {
-            $startDate = strtotime($params['start_date'].' 00:00:00');
-            $endDate = strtotime($params['end_date'].' 23:59:59');
-            $matchConditions[] = [ '$gte' => [ '$operator_review.review_date',  $startDate ] ];
-            $matchConditions[] = [ '$lte' => [ '$operator_review.review_date',  $endDate ] ];
-        }
-
         $matchConditions[] = [ '$or' => [
             [ '$eq'=> [ '$brand.id',  '$$company_brand_id' ] ],
             [ '$eq'=> [ '$company.id',  '$$company_brand_id' ] ],
         ]];
 
+         // Only get article from auto and submit violation page where status = PENDING
+        $matchConditions[] = [ '$eq'=> [ '$status' ,  Article::STATUS_PENDING ] ];
+
+        $matchAutoPageCondtions = $matchManualPageConditions = $matchConditions;
+
+        $matchAutoPageCondtions[] = [ '$eq' => [ '$detection_type',  Article::DETECTION_TYPE_BOT ] ];
+        $matchManualPageConditions[] = [ '$eq' => [ '$detection_type',  Article::DETECTION_TYPE_MANUAL ] ];
+
+        if(isset($params['start_date']) && isset($params['end_date'])) {
+            $startDate = strtotime($params['start_date'].' 00:00:00');
+            $endDate = strtotime($params['end_date'].' 23:59:59');
+
+            $matchAutoPageCondtions[] = [ '$gte' => [ '$published_date',  $startDate ] ];
+            $matchAutoPageCondtions[] = [ '$lte' => [ '$published_date',  $endDate ] ];
+
+            $matchManualPageConditions[] = [ '$gte' => [ '$detection_result.crawl_date',  $startDate ] ];
+            $matchManualPageConditions[] = [ '$lte' => [ '$detection_result.crawl_date',  $endDate ] ];
+        }
+
+
         $aggregateQuery[] = [
             '$lookup' => [
-                'as' => 'articles_by_brand',
+                'as' => 'auto_articles_by_brand',
                 'from' => 'articles',
                 'let' => [ 'company_brand_id'=> ['$toString'=> '$_id'] ],
                 'pipeline' => [
                     [ '$match'=>
                         [
                             '$expr'=>
-                            [ '$and'=> $matchConditions ]
+                            [ '$and'=> $matchAutoPageCondtions ]
                         ]
                     ],
-                    ['$project' => ['_id' => 1]]
-                ]
-            ]
-        ];
-
-        // Lookup : total violation articles
-        $violationArticleMatch = $matchConditions;
-        $violationArticleMatch[] = [ '$gt'=> [ ['$size' => '$detection_result.violation_code'],  0 ] ];
-
-        if(isset($params['country_id'])) {
-            $violationArticleMatch[] = [ '$eq'=> [ '$country.id', $params['country_id'] ] ];
-        }
-        
-        $violationArticlePipeLine = [
-            [ '$match'=>
-                [
-                    '$expr'=> [ '$and'=> $violationArticleMatch ]
-                ]
-            ]
-        ];
-
-        if(isset($params['violation_type_id'])) {
-            $violationArticlePipeLine[] = [
-                '$match' =>
-                [
-                    'operator_review.violation_types' => [
-                        '$elemMatch' => [
-                            'id' => $params['violation_type_id']
+                    [
+                        '$addFields' => [
+                            'status' => [
+                                '$cond' => [
+                                    'if' =>  [ '$gt' => [ ['$size' => '$detection_result.violation_code' ], 0 ] ],
+                                    'then' => Article::STATUS_VIOLATION,
+                                    'else' => Article::STATUS_NONE_VIOLATION
+                                ],
+                            ]
                         ]
-                    ]
+                    ],
+                    ['$project' => [
+                        '_id' => 1,
+                        'status' => 1
+                    ]]
                 ]
-            ];
-        }
+            ]
+        ];
+
         $aggregateQuery[] = [
             '$lookup' => [
-                'as' => 'violation_articles_by_brand',
+                'as' => 'manual_articles_by_brand',
                 'from' => 'articles',
                 'let' => [ 'company_brand_id'=> ['$toString'=> '$_id'] ],
-                'pipeline' => $violationArticlePipeLine
+                'pipeline' => [
+                    [ '$match'=>
+                        [
+                            '$expr'=>
+                            [ '$and'=> $matchManualPageConditions ]
+                        ]
+                    ],
+                    [
+                        '$addFields' => [
+                            'status' => [
+                                '$cond' => [
+                                    'if' =>  [ '$gt' => [ ['$size' => '$detection_result.violation_code' ], 0 ] ],
+                                    'then' => Article::STATUS_VIOLATION,
+                                    'else' => Article::STATUS_NONE_VIOLATION
+                                ],
+                            ]
+                        ]
+                    ],
+                    ['$project' => [
+                        '_id' => 1,
+                        'status' => 1
+                    ]]
+                ]
             ]
         ];
+
         // dd($aggregateQuery);
         return $aggregateQuery;
     }
@@ -135,8 +157,36 @@ class CompanyBrand extends Model
 
         $aggregateQuery[] = [
             '$addFields' => [
-                'total_article' => ['$size' => '$articles_by_brand'],
-                'total_violation_article' => ['$size' => '$violation_articles_by_brand'],
+                'total_article' => ['$sum' => [['$size' => '$auto_articles_by_brand'], ['$size' => '$manual_articles_by_brand']] ],
+                'violation_from_auto' => [
+                    '$size' => [
+                        '$filter' => [
+                            'input' => '$auto_articles_by_brand',
+                            'as'    => 'auto_articles',
+                            'cond'  => [
+                                '$eq' => ['$$auto_articles.status', Article::STATUS_VIOLATION]
+                            ]
+                        ]
+                    ]
+                ],
+                'violation_from_manual' => [
+                    '$size' => [
+                        '$filter' => [
+                            'input' => '$manual_articles_by_brand',
+                            'as'    => 'manual_articles',
+                            'cond'  => [
+                                '$eq' => ['$$manual_articles.status', Article::STATUS_VIOLATION]
+                            ]
+                        ]
+                    ]
+                ],
+                
+            ]
+        ];
+
+        $aggregateQuery[] = [
+            '$addFields' => [
+                'total_violation_article' => ['$sum' => ['$violation_from_manual', '$violation_from_auto']]
             ]
         ];
 
@@ -145,11 +195,20 @@ class CompanyBrand extends Model
                 '_id' => 1,
                 'name' => 1,
                 'queryId' => 1,
+                'auto_articles_by_brand' => 1,
+                'manual_articles_by_brand' => 1,
                 'total_article' => 1,
+                'violation_from_auto' => 1,
+                'violation_from_manual' => 1,
                 'total_violation_article' => 1,
                 'percent_violation_per_article' => [
                     '$cond' => [
-                        'if' =>  [ '$gt' => [ '$total_violation_article', 0 ] ],
+                        'if' =>  [
+                            '$and' => [
+                                [ '$gt' => [ '$total_violation_article', 0 ] ],
+                                [ '$gt' => [ '$total_article', 0 ] ]
+                            ]
+                        ],
                         'then' => [
                             '$round' => [
                                 ['$multiply' => [ ['$divide' => [ '$total_violation_article', '$total_article' ] ] , 100 ]],
@@ -158,7 +217,8 @@ class CompanyBrand extends Model
                         ],
                         'else' => [ '$toInt' => "0" ]
                     ],
-                ]
+                ],
+                
             ]
         ];
 
