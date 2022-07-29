@@ -13,6 +13,8 @@ $("document").ready(function(){
         $(".text_re-password").text("")
         $(".text_auth").text("")
         $(".text-dangers").text("")
+        $(`input[name="role"]`).removeAttr('checked')
+        $(`input[name="role"]`).closest("label").find(".checkmark").removeClass('check_role');
         overlay.hide()
 
     }
@@ -20,7 +22,10 @@ $("document").ready(function(){
 
     $(`input[name="role"]`).on("change",function(){
         $(`input[name="role"]`).removeAttr('checked')
+        $(this).closest("label").find(".checkmark").removeClass('check_role');
         $(this).attr('checked', true);
+        $(this).addClass('check_role');
+        $(this).closest(".authorization").find(".checkmark").addClass('check_role');
         checkedAuth = $(this).attr("value")
     })
 

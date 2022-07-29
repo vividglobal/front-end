@@ -56,7 +56,7 @@
   }
 
   .title-modal p{
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
@@ -68,7 +68,7 @@
   }
 
   .content-modal p{
-    font-family: "avenir";
+    font-family: var(--avenir);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -82,7 +82,6 @@
   }
 
   .modal--input p {
-    font-family: 'Brandon Grotesque';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -109,7 +108,7 @@
   }
 
   .btn__change--password{
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -129,7 +128,7 @@
   .btn-modal button{
     margin-top: 13px;
     padding: 12px 0;
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
@@ -172,7 +171,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-family: "avenir";
+    font-family: var(--avenir);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -223,7 +222,7 @@
     display: block;
   }
 
-  .container__checkbox .checkmark:after {
+  .container__checkbox .check_role:after {
     left: 4px;
     top: 4px;
     width: 15px;
@@ -236,7 +235,6 @@
   .text-dangers{
     color: var(--danger) !important;
     padding-top: 10px !important;
-    font-family: 'Avenir Next' !important;
     font-size: 12px !important;
     line-height: 12px !important;
     display: block;

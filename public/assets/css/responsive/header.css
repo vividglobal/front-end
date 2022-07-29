@@ -8,9 +8,6 @@
         font-size: 17px;
     }
 
-    .nav--btn__after--login > div{
-        font-size: 18px;
-    }
     .padding_has_login{
         padding: 20px 60px;
     }
@@ -89,7 +86,6 @@
     }
 
     .btn_nameUser p{
-        font-family: 'Avenir Next';
         font-style: normal;
         line-height: 170%;
         color: var(--white);
@@ -149,7 +145,6 @@
     }
 
     .name_user > p{
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 400;
         font-size: 13px;
@@ -163,7 +158,7 @@
 
     .list--title p{
         margin: 0;
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 25px ;
@@ -243,7 +238,7 @@
       .nav--btn__after--login a {
         text-decoration: none;
         transition: 0.3s;
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;
@@ -340,7 +335,7 @@
       }
 
       #edit__profile p {
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;
@@ -356,7 +351,7 @@
 
       .dropdown-login p a{
         color: #FFFFFF;
-        font-family: 'Brandon Grotesque';
+        font-family: var(--bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;

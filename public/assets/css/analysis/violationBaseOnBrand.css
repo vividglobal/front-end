@@ -124,7 +124,7 @@
 }
 
 .title__country--violation{
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     font-style: normal;
     font-weight: 600;
     font-size: 20px;

@@ -28,7 +28,7 @@
         <div>
             <p class="title-violation">{{ __('Total Entries') }}</p>
             <p class="number-violation">{{ $generalData['total'] }}</p>
-            <p class="total-violation">{{ __(100) }}%</p>
+            <p class="total-violation">{{ $generalData['total'] > 0 ? 100 : 0 }}%</p>
         </div>
     </div>
 

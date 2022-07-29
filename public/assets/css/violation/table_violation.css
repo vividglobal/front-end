@@ -31,16 +31,16 @@
 }
 
 .style-title{
-  font-family: "Avenir";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 136.5%;
-  align-items: center;
-  color:  var(--primary);
-  border: 1px solid  var(--gray-EE);
-  padding: 10px 20px;
-  background:  var(--gray-F4);
+    font-family: var(--avenir);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 136.5%;
+    align-items: center;
+    color:  var(--primary);
+    border: 1px solid  var(--gray-EE);
+    padding: 10px 20px;
+    background:  var(--gray-F4);
 }
 .scroll{
   width: 120%;
@@ -430,7 +430,7 @@
   font-size: 25px;
   line-height: 136.5%;
   color: var(--primary);
-  font-family: 'Brandon Grotesque';
+  font-family: var(--bradon);
   color: #082136;
 }
 .head-confirm p{
@@ -465,10 +465,10 @@
   font-size: 18px !important;
   line-height: 136.5%;
   color: #6F6F6F;
-  font-family: "Avenir roman Font" !important;
+  font-family: var(--avenir_roman) !important;
 }
 .btn-yes{
-  font-family: "Avenir roman Font";
+  font-family: var(--avenir_roman);
   font-style: normal;
   font-weight: 600;
   font-size: 18px;

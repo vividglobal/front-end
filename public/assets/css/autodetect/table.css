@@ -36,7 +36,7 @@
     /* cursor: pointer; */
 }
 .style-title{
-    font-family: 'Avenir';
+    font-family: var(--avenir);
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -234,7 +234,7 @@
     font-size: 25px;
     line-height: 136.5%;
     color: var(--primary);
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     color: #082136;
   }
 
@@ -362,18 +362,14 @@
 
   .headers p{
     color:  var(--primary);
-    font-family: 'Avenir Next';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 136.5%;
-  /* identical to box height, or 22px */
-  text-align: center;
-
-  display: flex;
-  align-items: center;
-
-  color: #0C3C60;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 136.5%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: #0C3C60;
   }
   .heading,.heading-three{
     color:  var(--primary);
@@ -500,7 +496,6 @@
 }
 .entry-title-threee p{
   line-height:22px;
-  font-family: 'Avenir Next';
   font-weight: 500;
 }
 .scroll-table{
@@ -530,7 +525,7 @@
 }
 
 .btn-confirm-style{
-  font-family: "Avenir roman Font";
+  font-family: var(--avenir_roman);
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -543,7 +538,7 @@
     text-align: center;
     font-size: 40px;
     padding: 50px;
-    font-family: 'Brandon Grotesque';
+    font-family: var(--bradon);
     color: var(--gray-C7);
 }
 .bot-violation-code{
@@ -640,16 +635,15 @@ input[type=checkbox] {
   overflow: auto;
 }
 .list-option{
-  font-family: 'Avenir';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 23px;
-  color: #000000;
+    font-family: var(--avenir);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 23px;
+    color: #000000;
 }
 .no-file-upload{
     font-size: 23px !important;
-    font-family: 'Avenir Next';
     font-weight: 500 !important;
     font-size: 16px;
     line-height: 22px;
@@ -764,7 +758,7 @@ input[type=checkbox] {
 .select__one--status p {
     width: 100%;
     text-align: left;
-    font-family: "Avenir";
+    font-family: var(--avenir);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

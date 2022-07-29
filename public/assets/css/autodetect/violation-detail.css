@@ -107,7 +107,7 @@
     margin-right: 0px !important;
 }
 .modal-tile-uploadfile{
-    font-family: 'Brandon Grotesque' !important;
+    font-family: var(--bradon) !important;
     font-style: normal !important;
     font-weight: 420 !important;
     font-size: 20px !important;
@@ -120,11 +120,10 @@
 .button-upload-style{
     width: 45% !important;
     margin-bottom: 10px !important;
-    font-family: 'Avenir Next'!important;
-font-style: normal;
-font-weight: 600;
-font-size: 18px I !important;
-line-height: 136.5%;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px I !important;
+    line-height: 136.5%;
 }
 .modal-body-file{
     max-height: 500px;

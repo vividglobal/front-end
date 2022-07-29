@@ -34,7 +34,7 @@
 
         <div class="list--select__right">
             @if(in_array('showing', $list_filter)|| $show_all_filter)
-                <p>{{ __('Showing') }}</p>
+                <p class="title_showing">{{ __('Showing') }}</p>
                 <div class="list--showing">
                     <select ></select>
                 </div>

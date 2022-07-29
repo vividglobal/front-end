@@ -92,7 +92,6 @@
         border-radius: 5px;
         text-align: center;
         width: 95px !important;
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 600;
         font-size: 13px;
@@ -156,7 +155,6 @@
     }
 
     .delete__profile_modal{
-        font-family: 'Avenir Next';
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
