@@ -59,9 +59,11 @@
                     </div>
                 </li>
             </ul>
-            <p class="detail-content">
-                {{$article -> caption}}
-            </p>
+            <div style="overflow-wrap: break-word;">
+                <p class="detail-content">
+                    {{$article -> caption}}
+                </p>
+            </div>
             @if(isRole(ROLE_OPERATOR))
             <h3 class="title-style title-style-checking">Violation checking</h3>
             @endif

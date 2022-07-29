@@ -66,9 +66,11 @@
                     </div>
                 </li>
             </ul>
-            <p class="detail-content">
-                {{$article -> caption}}
-            </p>
+            <div style="overflow-wrap: break-word;">
+                <p class="detail-content">
+                    {{$article -> caption}}
+                </p>
+            </div>
             <h3 class="title-style title-style-checking">Violation checking</h3>
 
             {{-- ======================================== --}}

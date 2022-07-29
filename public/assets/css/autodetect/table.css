@@ -194,10 +194,10 @@
     margin: 0;
     padding: 20px;
     border: 1px solid #888;
-    width: 50%;
+    /* width: 50%; */
     position: absolute;
-    max-width: 874px;
-    width: 100%;
+    max-width: 60%;
+    /* width: 100%; */
     max-height: 475px;
     top: 50%;
   }
@@ -224,8 +224,8 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
     color: var(--black);
   }
   .head-modal h1{
@@ -260,7 +260,8 @@
     }
 
   .modal-img{
-    width: 50%;
+    max-width: 81%;
+    max-height: 65vh;
     margin-bottom: 20px;
   }
 

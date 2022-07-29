@@ -130,9 +130,9 @@
         font-weight: 400;
         font-size: 16px;
         line-height: 170%;
-        display: flex;
+        /* display: flex;
         align-items: center;
-        text-align: justify;
+        text-align: justify; */
         color: #6F6F6F;
     }
     .table-code{
