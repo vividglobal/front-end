@@ -17,7 +17,7 @@ class Admin extends Model
     const ROLE_SUPERVISOR = 'SUPERVISOR';
     const ROLE_OPERATOR = 'OPERATOR';
 
-    const DEFAULT_LIMIT = 10;
+    const DEFAULT_LIMIT = 25;
 
     protected $fillable = [
         'full_name',
