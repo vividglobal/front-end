@@ -157,7 +157,7 @@
                 <img src="{{ asset('assets/image/usermanual/img-17.png') }}" loading="lazy">
                 <p><span> {{__("Step 2")}}:</span>  {{__(" Click on the “Confirm” button")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-18.png') }}" loading="lazy">
-                <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically move to the Unable to detect. (Just for Operator but not other account)")}}.</p>
+                <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically move to the Unable to detect (Just for Operator but not other account)")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
                 <p class="strong"><span></span> <strong> {{__("Disagree with VIVID’s status")}}.</strong></p>
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Click the red “X” button if you disagree with “Unable to detect” status")}}.</p>
