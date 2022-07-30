@@ -249,7 +249,7 @@
                     <span> {{__('Processing')}} :</span>  {{__(" This posts is being processed and waiting for the official document to be posted")}}.
                 </li>
                 <li>
-                    <span> {{__('Completed')}} :</span>  {{__("This posts has been handled successfully and the handling text is published (This status can only be selected when at least 1 handling text has been posted for the article)")}}.
+                    <span> {{__('Completed')}} :</span>  {{__("The posts has been handled successfully and the handling text is published (This status can only be selected when at least 1 handling text has been posted for the article)")}}.
                 </li>
             </ul>
             <span class="border_grays"></span>
@@ -273,8 +273,8 @@
             <img src="{{ asset('assets/image/usermanual/img-46.png') }}" loading="lazy" >
             <p><span></span>  {{__(" After the upload is successful, a message will appear at the bottom of the screen on the right")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-47.png') }}" loading="lazy" >
-            <p><span></span>  {{__(" Admin can check the document again by clicking on the document")}}.</p>
-            <p><span> {{__("Step 4")}}: </span>  {{__(" When the admin completes the document upload process, the folder button will turn blue and update the latest document upload date")}}.</p>
+            <p><span></span>  {{__(" User can check the document again by clicking on the document")}}.</p>
+            <p><span> {{__("Step 4")}}: </span>  {{__(" When the user completes the document upload process, the folder button will turn blue and update the latest document upload date")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-48.png') }}" loading="lazy" >
             <span class="border_grays"></span>
         </div>
@@ -331,7 +331,7 @@
             <div class="add" id="cl7">
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Enter search information for example “Nestle”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-58.png') }}" loading="lazy">
-                <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related posts with the keyword Nestle or the Nestle Fanpage, Instaram, Website will be displayed below")}}.</p>
+                <p><span> {{__("Step 2")}}:</span>  {{__(" Press the Enter button and related posts with the keyword Nestle or of the Nestle Fanpage, Instaram, Website will be displayed below")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-59.png') }}" loading="lazy">
             </div>
             <span class="border_grays"></span>
@@ -400,13 +400,13 @@
             <img src="{{ asset('assets/image/usermanual/img-73.png') }}" loading="lazy" style="max-width:100%">
             <p><span> {{__("Step 2")}}:</span>  {{__(" Click the “Add admin” button")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-74.png') }}" loading="lazy" >
-            <p><span> {{__("Step 3")}}:</span> {{ __(" Fill in the required fields including")}}:</p>
+            <p><span> {{__("Step 3")}}:</span> {{ __(" Fill in the required fields including")}}.</p>
             <ul>
                 <li> {{__("Full name")}}</li>
                 <li> {{__("Email address")}}</li>
                 <li> {{__("Phone number")}}</li>
-                <li> {{__("Confirm password")}}</li>
                 <li> {{__("Password")}}</li>
+                <li> {{__("Confirm password")}}</li>
                 <li> {{ __("Authority on the website (Admin, Supervisor, Operator)") }}</li>
             </ul>
             <img src="{{ asset('assets/image/usermanual/img-75.png') }}" loading="lazy">
