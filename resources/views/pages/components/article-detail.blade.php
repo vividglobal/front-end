@@ -24,8 +24,9 @@
                     <a class="prev mobleprevnext" onclick="plusSlides(-1)">❮</a>
                     <a class="next mobleprevnext" onclick="plusSlides(1)">❯</a>
                 @endif
+                @else
+                <img  src={{ __($article->image ?? '' ) }} style="max-width: 100%;margin-bottom: 15px;">
                 @endif
-           
             @else
             <img  style="width:100%;margin-bottom: 15px;"  src="{{ asset('assets/image/no-image.jpeg') }}" >
             @endif
