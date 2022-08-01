@@ -105,7 +105,8 @@
                     <input type="text" placeholder="Search for Brand" class="search--brand input-style-focus">
                 </div>
                 <div class="contain--selection">
-                        <label class="container_checkbox select__one" ><p  data-id=0 >None</p>
+                        <label class="container_checkbox select__one checkBox_none">
+                            <p  data-id=0 >None</p>
                             <input type="checkbox"  name="radio" class="input_checkbox">
                             <span class="checkmark_checkbox"></span>
                         </label>
@@ -135,7 +136,8 @@
                     <input type="text" placeholder="Search for country" class="search--country input-style-focus" >
                 </div>
                 <div class="contain--selection contain_country">
-                        <label class="container_checkbox select__one--country option_general" ><p  data-id=0 >None</p>
+                        <label class="container_checkbox select__one--country option_general checkBox_none" >
+                            <p  data-id=0 >None</p>
                             <input type="checkbox"  name="radio" class="input_checkbox">
                             <span class="checkmark_checkbox"></span>
                         </label>

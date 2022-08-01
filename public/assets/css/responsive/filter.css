@@ -16,6 +16,10 @@
         padding : 5px 0;
     }
 
+    .checkBox_none{
+        display : flex !important;
+    }
+
     .list--search--select{
         margin: 0 16px;
         z-index: 99;
