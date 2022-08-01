@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="index_violation-nonViolation rows" id="general">
+<div class="index_violation-nonViolation rows {{!@Auth::user()  ? "height_other" : "" }}" id="general">
 </div>
 <div class="Base_violation--brand table_brand table_countries">
     <div >

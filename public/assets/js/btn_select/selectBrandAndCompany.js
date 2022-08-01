@@ -30,6 +30,7 @@ $("document").ready(function(){
     btnBrand.click(function(e){
         if(e.target !== $(".search--brand")[0]){
             selectBrand.slideToggle(300,'linear');
+            $(".no_search_result").hide()
         }
     })
 
@@ -38,6 +39,7 @@ $("document").ready(function(){
         if(width > 1113){
             if (!btnBrand.is(e.target) && btnBrand.has(e.target).length === 0) {
                 selectBrand.hide()
+                $(".no_search_result").hide()
             }
         }
             $(".select__one").css("display", "flex")

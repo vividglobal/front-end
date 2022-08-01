@@ -53,7 +53,7 @@
             <img src="{{asset('assets/image/home/A&T.svg')}}" alt="">
         </div>
         <div class="background__image col-6">
-            <img src="{{asset('assets/image/home/hekate.svg')}}" alt="">
+            <img src="{{asset('assets/image/home/hekate.png')}}" alt="">
         </div>
 </div>
 <div class="background__vituar-6">

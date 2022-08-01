@@ -1,15 +1,31 @@
 .index_violation-nonViolation{
-    height: 390px;
+    height: 360px;
     border: 1px solid var(--gray-C7);
     margin: 16px 199px;
     display: flex;
-    padding: 30px 60px;
+    padding: 40px 60px;
 }
 
-.index__violation:first-child{
-    display: flex;
-    justify-content: center;
+.height_before{
+    height: 30px !important;
     text-align: center;
+}
+
+.height_before p{
+    line-height: 30px;
+}
+
+.height_after p{
+    line-height: 10px !important;
+}
+
+.height_after{
+    height: 0px !important;
+    text-align: center;
+}
+
+.general_analysis{
+    width: 100vw;
 }
 
 .title-violation{
@@ -70,14 +86,12 @@
     right: 25px
 }
 
+.unable_detect .number-violation{
+    color: #5DA364;
+}
 
 .unable_detect .percent-violation{
     background-color: var(--percent_success);
-}
-
-.unable_detect .percent-violation,
-.unable_detect .number-violation{
-    color: var(--success);
 }
 
 .violations_analysis .number-violation{
@@ -112,7 +126,7 @@
 .title_table_analysis p{
     font-family: var(--bradon);
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 20px;
     line-height: 136.5%;
     color: #072136;
@@ -133,7 +147,11 @@
 
 .index__violation{
     padding: 0 8px;
-    height: 110px;
+    height: 85px;
+}
+
+.height_other{
+    height: 210px;
 }
 
 .violations_analysis div{

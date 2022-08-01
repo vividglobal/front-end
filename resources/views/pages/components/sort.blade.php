@@ -87,6 +87,11 @@
                     <input type="checkbox" name="radio" class="input_checkbox">
                     <span class="checkmark_checkbox"></span>
                 </label>
+                <label class="container_checkbox" > <p data-sort-field="percent_violation_per_article"
+                    data-table="vio-based-brand" data-name="Percentage">Percentage</p>
+                    <input type="checkbox" name="radio" class="input_checkbox">
+                    <span class="checkmark_checkbox"></span>
+                </label>
             </div>
             <div class="sort_based_on_code">
                 <label class="container_checkbox" > <p data-sort-field="None"

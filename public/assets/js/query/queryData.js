@@ -231,6 +231,7 @@ $("document").ready(function () {
             $("select__one--showing").find("input").prop('checked',false)
             $(".select__one--showing").find("span").removeClass("activeRadio")
             $(".checkbox_mobi").find("> p").text("")
+            $(".no_search_result").hide()
         if(parambrands !== null){
             let name = $(".brand_pc");
             let nameMb = $(".brand_mobi");
@@ -255,6 +256,7 @@ $("document").ready(function () {
     })
     // APPLY BTN FILTER
     $(".btn__apply").on("click", function () {
+        $(".no_search_result").hide()
         let width  = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
         if(width > 1113){
             replaceURL(paramSortBy, paramSortValue);

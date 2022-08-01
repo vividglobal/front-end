@@ -26,10 +26,10 @@
             <li  class="base_code_item">
                 {{ ($key + 1) + (($codeData->currentpage() - 1) * $codeData->perpage()) }}
             </li>
-            <li  class="base_code_item type_pc">{{ $code->type_name }}</li>
-             <li  class="base_code_item">{{ $code->name }}</li>
+            <li  class="base_code_item type_pc" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
+            <li  class="base_code_item">{{ $code->name }}</li>
             <li  class="base_code_item type_mobi" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
-            <li  class="base_code_item">{{ $code->total_article }}</li>
+            <li  class="base_code_item total_code">{{ $code->total_article }}</li>
     </ul>
     @endforeach
 </div>

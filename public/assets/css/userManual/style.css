@@ -38,13 +38,13 @@ video[poster] {
   .accordion {
     background: var(--white);
     cursor: pointer;
-    padding: 18px 29px;
+    padding: 10px 15px;
     width: 70vw;
     font-family: var(--avenir);
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
-    line-height: 27px;
+    line-height: 16px;
     color: var(--primary);
     border: 0;
     outline: none;
@@ -53,8 +53,12 @@ video[poster] {
     margin-bottom: 15px;
     width: 100%;
     display: flex;
-    justify-content:space-between;
-    align-items:center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title_usermanual{
+      margin: 0 170px;
   }
 
   .panel {

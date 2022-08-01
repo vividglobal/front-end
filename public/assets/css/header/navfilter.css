@@ -45,6 +45,18 @@
       padding-right: 10px !important;
   }
 
+  .no_search_result{
+    display: none ;
+    padding: 20px 0;
+  }
+  .no_search_result p {
+    text-align: center !important;
+    color: var(--gray-6F) !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
   .closeFilter{
     display: flex !important;
     align-items: center;

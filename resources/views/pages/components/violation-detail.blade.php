@@ -117,7 +117,10 @@
                     @else
                         <p data-id="not_started" >{{ __("Not started") }}</p>
                     @endif
-                    <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
+
+                    @if(isRole(ROLE_OPERATOR))
+                        <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
+                    @endif
                     <div class="select--status select--status-moblie violation_pc" id="toggle">
                         <div class="select__one--status list-option"  id="not_started">
                             <p data-id="not_started" >{{ __("Not started") }}</p>
@@ -189,7 +192,7 @@
     @else
     <div class="head-confirm-btn button-upload-file button-upload-cancel">
         <button class="confirm-btn btn-cancel close btn-cancel-moblie button-cancel-style" style="margin-bottom: 10px;">Cancel</button>
-    </div>    
+    </div>
     @endif
 </div>
 

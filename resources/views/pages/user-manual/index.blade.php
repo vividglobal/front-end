@@ -2,7 +2,7 @@
 @section('content')
 <link rel="stylesheet" href="../assets/css/userManual/style.css">
 <link rel="stylesheet" href="../assets/css/responsive/user-manual.css">
-    <div class="list--search--select" >
+    <div class="list--search--select title_usermanual" >
         <div class="list--title">
             <p>{{ __('Guide video') }}</p>
         </div>
@@ -15,7 +15,7 @@
         </video>
     </div>
 </div>
-<div class="list--search--select" >
+<div class="list--search--select title_usermanual" >
     <div class="list--title title_instruction">
         <p>{{ __('Instruction list') }}</p>
     </div>

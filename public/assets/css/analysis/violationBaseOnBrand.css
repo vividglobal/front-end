@@ -19,6 +19,10 @@
     display: flex;
 }
 
+.Base_violation--brand .list--select--option{
+    align-items: flex-end ;
+}
+
 .Base_violation--brand .table_analysis {
     border-collapse: collapse;
     width: 100%;
@@ -106,7 +110,7 @@
     justify-content:space-between !important;
 }
 
-.base_code_item{
+.base_code_item:first-child{
     width: 8.5% ;
 }
 
@@ -116,17 +120,27 @@
 }
 
 .base_code_item:nth-child(3){
-    width: 19.2% ;
+    /* width: 19.2% ; */
+    width: 27.2% ;
+
 }
 
-.base_code_item:nth-child(4){
-    width: 20.8% ;
+.base_code_item{
+    /* width: 20.8% ; */
+    width: 12.8% ;
+
+}
+
+.total_code{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title__country--violation{
     font-family: var(--bradon);
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 20px;
     line-height: 136.5%;
     color: #072136;
@@ -136,5 +150,5 @@
 .Base_violation--brand .list--select--option .list--select__right p{
     font-size: 20px;
     margin-right: 5px;
-    font-weight: 600;
+    font-weight: 500;
 }

@@ -375,6 +375,9 @@
   color:var(--black);
 }
 
+.entry a:hover{
+    text-decoration: underline !important;
+}
 
 @media (max-width: 767px) {
   .track {
@@ -620,6 +623,9 @@
 
 .none_list-status{
     border: 1px solid var(--gray-C7) !important;
+    display: block !important;
+    text-align: center;
+    padding-right: 8px  !important;
 }
 
 .none_list-status > p{

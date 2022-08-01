@@ -185,10 +185,13 @@
 }
 
 .name_trace--violation:after{
-    content: url(../../image/Under-than.svg);
+    background-image: url(../../image/Under-than.svg);
+    background-size: 10px 10px;
+    display: inline-block;
     width: 10px;
     height: 10px;
-    margin-bottom: 15px;
+    background-repeat: no-repeat;
+    content:"";
 }
 
 .name_login{
@@ -221,11 +224,17 @@
 }
 
 .after-login:after{
-    content: url(../../image/Under-than.svg);
-    width: 100%;
-    text-align: right;
+    background-image: url(../../image/Under-than.svg);
+    width: 10px;
+    height: 10px;
     cursor: pointer;
     margin-right: 10px;
+    text-align: right;
+    cursor: pointer;
+    background-size: 10px 10px;
+    content:"";
+    background-repeat: no-repeat;
+    content:"";
 }
 
 

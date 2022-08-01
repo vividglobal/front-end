@@ -5,13 +5,25 @@
 }
 .sort_up {
     background-image: url('./../../image/Archive/up_enable.svg');
+    background-size: 13px 13px;
+    width: 10px;
+    height: 15px;
 }
 .sort_down {
     background-image: url('./../../image/Archive/down_enable.svg');
+    background-size: 13px 13px;
+    width: 10px;
+    height: 15px;
 }
 .sort_up.disabled {
     background-image: url('./../../image/Archive/up_disable.svg');
+    background-size: 13px 13px;
+    width: 10px;
+    height: 15px;
 }
 .sort_down.disabled {
     background-image: url('./../../image/Archive/down_disable.svg');
+    background-size: 13px 13px;
+    width: 10px;
+    height: 15px;
 }

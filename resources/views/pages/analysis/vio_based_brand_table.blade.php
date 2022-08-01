@@ -36,7 +36,23 @@
                     data-sort-field="total_violation_article" data-sort-value="{{ DESC }}"></span>
             </div>
         </li>
-        <li>{{ __('Percentage') }}</li>
+        <li>
+            <div class="th-title-rights ">
+                <p>{{ __('Percentage') }}</p>
+                <span
+                @class([
+                    'ico-sort theard-table sort_up',
+                    'disabled' => checkSort(request()->all(), 'percent_violation_per_article', ASC)
+                ])
+                data-sort-field="percent_violation_per_article" data-sort-value="{{ ASC }}"></span>
+                <span
+                @class([
+                    'ico-sort theard-table sort_down',
+                    'disabled' => checkSort(request()->all(), 'percent_violation_per_article', DESC)
+                ])
+                data-sort-field="percent_violation_per_article" data-sort-value="{{ DESC }}"></span>
+            </div>
+        </li>
     </ul>
     @foreach($brandData as $key => $brand)
         <ul class="table_analysis_body">

@@ -33,14 +33,13 @@ class Admin extends Model
 
     public function getList($params) {
         $perpage = $params['perpage'] ?? self::DEFAULT_LIMIT;
-
+        $newQuery = $this->newQuery();
         if(isset($params['keyword'])) {
             $keyword = $params['keyword'];
-            $admins = self::where("full_name","LIKE", "%{$keyword}%")->orwhere("email","LIKE", "%{$keyword}%")
-            ->orwhere("phone_number","LIKE", "%{$keyword}%")->orwhere("role","LIKE", "%{$keyword}%")->paginate($perpage);
-        }else{
-            $admins = self::paginate($perpage);
+            $newQuery->orderBy('created_at', 'DESC')->where("full_name","LIKE", "%{$keyword}%")->orwhere("email","LIKE", "%{$keyword}%")
+                        ->orwhere("phone_number","LIKE", "%{$keyword}%")->orwhere("role","LIKE", "%{$keyword}%");
         }
+        $admins = $newQuery->orderBy('created_at', 'DESC')->paginate($perpage);
 
         return $admins;
     }
