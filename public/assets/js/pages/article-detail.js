@@ -129,6 +129,22 @@ $(document).ready(function(){
         openselectcode.show();
         $('body').css("overflow-y","hidden");
         articleId = $(this).attr('data-id');
+        let array = []
+        let list = $('.style__code--mobile[data-id='+ articleId +'] div')
+        let list2 = $('.modal-content-mobile-code .row')[0].children
+
+        for(let i=0;i<list.length;i++){
+            array.push(list[i].id)
+        }
+
+        for(let i=0;i<list2.length;i++){
+            if(array.includes(list2[i].id)){
+                list2[i].querySelector('input').checked = true
+            }
+        }
+    
+
+
     })
 
     $('.btn-select-code').click(async function() {

@@ -77,11 +77,18 @@
                     </a>
                 @endisset
                 </td>
-                <td class="contenttb btn-caption"><a>{{ __($article->caption ?? '' ) }}</a></td>
+                <td class="contenttb btn-caption"><a class="updata-form">{{ __($article->caption ?? '' ) }}</a></td>
                 <td>
                     <div class="wr-img">
+                    <img class="links-img" attr-img="
+                        @if(isset($article->gallery))
+                            @foreach ($article->gallery as $detectionCode)
+                        {{$detectionCode}};
+                            @endforeach
+                        @endif;
+                        ">
                         @if($article->image)
-                        <img class="td-img clickimg lazy" data-original={{ __($article->image ?? '' ) }}>
+                        <img class="td-img clickimg lazy" data-id={{$article->id}} data-original={{ __($article->image ?? '' ) }}>
                         @else
                         <img class="td-img no-img" src="{{ asset('assets/image/no-image.jpeg') }}" >
                         @endif
@@ -104,7 +111,7 @@
             max-height: 30%;
             overflow-y: auto;
             ">
-                <p class="title-modal"></p>
+                <p class="title-modal updata-form"></p>
         </div>
     </div>
 </div>
@@ -117,8 +124,11 @@
         <div class="head-modal">
             <h1></h1>
         </div>
-        <div>
-            <img class="modal-img">
+        <div class="img-sline">
+            <img class="modal-img img-disabled">
         </div>
     </div>
 </div>
+<script src="{{ asset('assets/js/pages/slineimg.js') }}"></script>
+
+
