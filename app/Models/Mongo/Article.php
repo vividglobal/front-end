@@ -58,6 +58,7 @@ class Article extends Model
         'brand',
         'caption',
         'image',
+        'gallery',
         'published_date',
         'link',
         'detection_result',

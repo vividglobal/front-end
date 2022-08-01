@@ -5,7 +5,6 @@ use App\Models\Mongo\Article;
 use App\Models\Mongo\CompanyBrand;
 use App\Models\Mongo\Country;
 use App\Models\Mongo\ViolationCode;
-use App\Models\Mongo\ViolationType;
 
 class ArticleService
 {
@@ -202,6 +201,7 @@ class ArticleService
 
         $image              = (isset($detectData['imgs']) && count($detectData['imgs']) > 0)
                                 ? $detectData['imgs'][0] : '';
+        $gallery            = isset($detectData['imgs']) ? $detectData['imgs'] : [];
         $caption            = isset($detectData['text']) ? $detectData['text'] : '';
         $violationCodeNames =  (isset($detectData['violations']) && count($detectData['violations']) > 0)
                                 ? $detectData['violations'] : [];
@@ -215,6 +215,7 @@ class ArticleService
             'brand'            => $brandData,
             'caption'          => $caption,
             'image'            => $image,
+            'gallery'          => $gallery,
             'link'             => $link,
             'published_date'   => $publishedDate,
             'status'           => Article::STATUS_PENDING,
