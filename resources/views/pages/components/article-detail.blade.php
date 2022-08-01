@@ -10,7 +10,22 @@
                 <h1 class="lish-title-style">{{ __($article->brand['name'] ?? '' )}}</h1>
             </div>
             @if($article->image)
-            <img src={{ __($article->image ?? '' ) }} alt="" style="width:100%;margin-bottom: 15px;">
+                @if(isset($article->gallery))
+                <div class="slideshow-container">
+                    @foreach ($article->gallery as $detectionCode)
+                    <div class="mySlides fadeimg">
+                        <div style="display: flex;justify-content: center;">
+                        <img  src={{($detectionCode)}} style="max-width: 88%;margin-bottom: 15px;max-height: 350px;">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @if(count($article->gallery) > 1)
+                    <a class="prev mobleprevnext" onclick="plusSlides(-1)">❮</a>
+                    <a class="next mobleprevnext" onclick="plusSlides(1)">❯</a>
+                @endif
+                @endif
+           
             @else
             <img  style="width:100%;margin-bottom: 15px;"  src="{{ asset('assets/image/no-image.jpeg') }}" >
             @endif
@@ -100,11 +115,11 @@
                 @if(($article->detection_result['violation_code']))
                     <div class="table-code-aticle">
                         <img class="img-icon-detail" src="{{ asset('assets/image/code.png') }}" alt="">
-                        <div>
+                        <div class="style__code--mobile" data-id="{{ $article->_id }}">
                             <h4 class="p-style">Code article</h4>
                             @if(isset($article->detection_result['violation_code']))
                             @foreach ($article->detection_result['violation_code'] as $detectionCode)
-                                <div>
+                                <div id={{ $detectionCode['id'] }}>
                                     <h4 class="h4-title" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                                         {{$detectionCode['name'] ?? ''}}
                                     </h4>
@@ -427,7 +442,7 @@
                 </div>
                 <div class="row row-style">
                     @foreach($violationCode as $key => $code)
-                    <div class="col-md-1 check__box">
+                    <div class="col-md-1 check__box" id={{ $code->id }}>
                         <div class="checkbox-code">
                             <label class="check_box_code">
                                 <input class="input-style" id="id-function-code" type="checkbox" name="violation_code[]"  value={{ $code->id }}>
@@ -440,7 +455,6 @@
                 </div>
             </div>  
 
-            
             <div class="btn-confirm btn-confirm-mobile">
                 <button class="confirm-btn btn-cancel close button-upload-style button-cancel-style">Cancel</button>
                 <button class="confirm-btn btn-select-code btn-confirm-style button-upload-style" id="">{{ __('Apply') }}</button>
@@ -466,4 +480,5 @@
     <link href="{{ asset('assets/css/autodetect/article-detail-desktop.css') }}" rel="stylesheet">
 @endpush
 <script src="{{ asset('assets/js/pages/article-detail.js')}}"></script>
+<script src="{{ asset('assets/js/pages/slineimg.js') }}"></script>
 @endsection

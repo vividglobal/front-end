@@ -14,9 +14,34 @@ $(document).ready(function () {
 
     clickimg.click(function () {
         let imgSrc = $(this).attr('src')
+        let  idImg = $(this).attr('data-id');
         let brandName = $(this).parents('tr').find('.brand-name').text();
         imageModal.find('.head-modal h1').text(brandName)
         imageModal.find('img').attr('src', imgSrc)
+        let list = $('.tr-boder[data-id='+ idImg +'] .links-img').attr('attr-img');
+        let linkImg = ""
+        let btnpenext = ""
+        let lengthlish = 0
+        for(let i = 0; i < list.split(';').length; i++){
+
+            if(list.split(';')[i].trim() !== ""){
+                lengthlish += 1
+                linkImg += `
+                <div class="mySlides fadeimg" style="display: none;">
+                    <img class="modal-img" src=${list.split(';')[i].trim()}>
+                </div>
+                `
+            }
+        }
+        $('.img-sline').append(linkImg)
+
+        btnpenext = `
+            <a class="prev closeprevnext" onclick="plusSlides(-1)">❮</a>
+            <a class="next closeprevnext" onclick="plusSlides(1)">❯</a>
+        `
+        if(lengthlish > 1){
+            $('.modal-content-img').append(btnpenext)
+        }
         imageModal.show();
         $(".mdl-js").css("overflow-y","hidden");
 
@@ -26,7 +51,7 @@ $(document).ready(function () {
         let caption = $(this).find('a').text();
         let brandName = $(this).parents('tr').find('.brand-name').text();
         if(brandName){
-            captionModal.find('.head-modal h1').text(brandName)
+            captionModal.find('.head-modal h1').text("Caption")
         }else{
             captionModal.find('.head-modal h1').text("Caption")
         }
@@ -35,12 +60,15 @@ $(document).ready(function () {
         $(".mdl-js").css("overflow-y","hidden");
     });
     span.click(function () {
+        $('.img-disabled').show()
         captionModal.hide();
         imageModal.hide();
         uploadModal.hide();
         btnuploadfile.hide();
         $('.div-item').remove();
         $('.no-file-remove').remove();
+        $('.mySlides').remove();
+        $('.closeprevnext').remove();
         $(".mdl-js").css("overflow-y","scroll");
 
     });
