@@ -1,6 +1,7 @@
-<div class="title_table_analysis index__violation l-12 m-12 c-12">
+<div class="title_table_analysis index__violation l-12 m-12 c-12 {{!@Auth::user()  ? "height_before" : "height_after" }}">
     <p>Violation status</p>
 </div>
+<div class="rows general_analysis">
     @auth
     <div class="index__violation l-6 m-12 c-12 unable_detect">
         <div >
@@ -31,5 +32,5 @@
             <p class="total-violation">{{ $generalData['total'] > 0 ? 100 : 0 }}%</p>
         </div>
     </div>
-
+</div>
 

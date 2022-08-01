@@ -10,5 +10,8 @@ $("document").ready(function(){
 
         $("#btn_explore").click(function(){
             $("html, body").animate({ scrollTop: document.body.scrollHeight }, "slow");
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $(".background__vituar-2").offset().top
+            });
         })
 })

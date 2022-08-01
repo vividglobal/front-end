@@ -129,11 +129,15 @@
     }
 
     .name_trace--violation:after {
-        content: url(../../image/Under-than-white.svg);
+        background-image: url(../../image/Under-than-white.svg);
         width: 10px;
         margin-left: 5px;
-        margin-bottom: 15px;
         margin-right: 27px;
+        height: 10px;
+        cursor: pointer;
+        background-size: 10px 10px;
+        content:"";
+        background-repeat: no-repeat;
     }
 
     .name_login{
@@ -421,7 +425,7 @@
     }
 
     .btn_nameUser .name_trace--violation{
-        right: 10px;
+        right: 15px;
     }
 }
 
@@ -433,10 +437,10 @@
     .name_trace--violation:after {
         margin-right: 10px;
     }
-
     .btn_nameUser .name_trace--violation{
-        right: 10px;
+        right: 15px;
     }
+
 }
 
 @media (max-width: 425px) {

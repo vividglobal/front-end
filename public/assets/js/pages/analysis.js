@@ -174,7 +174,7 @@ $(document).ready(function(){
         let sortField = $(".sort_mobi").find("> p:visible").attr("data-by");
         let sortValue = $(".sort_mobi").find("> p:visible").attr("data-value");
         let getTable = $(".sort_mobi").find("> p:visible").attr("data-table");
-
+        $(".no_search_result").hide()
         if(getTable !== undefined){
             sortForAnalysis(sortField,sortValue,getTable,"mobi")
         }
@@ -323,6 +323,7 @@ $(document).ready(function(){
 
     $(".close__filter").click(function() {
         resetFiter()
+        $(".no_search_result").hide()
     })
 
     $(".list--company--brand").find("> p").text("Brand/Company")

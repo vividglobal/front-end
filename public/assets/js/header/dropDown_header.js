@@ -68,7 +68,8 @@ $(".closeFilter ").click(function(){
     })
 
     $(".overlay_nav").click(function(){
-            closeNav()
+        closeNav()
+        $(".no_search_result").hide()
     })
 
     // $(".nav-link").click(function(){

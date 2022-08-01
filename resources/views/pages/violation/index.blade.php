@@ -172,7 +172,7 @@
                                     <a class="onclick-link-check">
                                         <img class="td-link a-link" src="{{ asset('assets/image/link.png') }}" alt="">
                                     </a>
-                                @endif 
+                                @endif
                                 </div>
                             </div>
                             @if(@Auth::user())
@@ -231,7 +231,9 @@
                                         @else
                                             <p data-id="not_started" >{{ __("Not started") }}</p>
                                         @endif
+                                        @if(isRole(ROLE_OPERATOR))
                                         <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
+                                        @endif
                                         <div class="select--status violation_pc" id="toggle">
                                             <div class="select__one--status list-option"  id="not_started">
                                                 <p data-id="not_started" >{{ __("Not started") }}</p>

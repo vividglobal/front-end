@@ -86,7 +86,9 @@
 
 
 .background__vituar-2{
-    margin: 70px auto;
+    margin: 50px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .background__vituar-2 > .background__image {

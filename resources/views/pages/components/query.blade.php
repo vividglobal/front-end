@@ -115,6 +115,7 @@
                             <span class="checkmark_checkbox"></span>
                         </label>
                     @endforeach
+                    @include('noSearchResult.search_filter')
                 </div>
             </div>
         </div>
@@ -145,6 +146,7 @@
                             <span class="checkmark_checkbox"></span>
                         </label>
                     @endforeach
+                    @include('noSearchResult.search_filter')
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@ $(document).ready(function(){
     $(".checkbox_title").click(function(){
         $(".checkbox_title").not(this).closest(".checkbox_mobi").find("#toggle").hide()
         $(this).closest(".checkbox_mobi").find("#toggle").slideToggle(300,'linear')
+        $(".no_search_result").hide()
     })
 
     $(".select__one").change(function(){

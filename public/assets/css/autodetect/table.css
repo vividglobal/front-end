@@ -456,6 +456,9 @@
     align-items: center;
     flex-direction: column;
   }
+  .entry-title-tyle a:hover{
+    text-decoration: underline !important;
+}
   .modal-content-img{
     overflow-y: none !important;
     top: 49%;

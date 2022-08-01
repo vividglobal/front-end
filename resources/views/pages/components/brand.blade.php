@@ -18,6 +18,7 @@
                     <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                 </div>
             @endforeach
+            @include('noSearchResult.search_filter')
         </div>
     </div>
 </div>

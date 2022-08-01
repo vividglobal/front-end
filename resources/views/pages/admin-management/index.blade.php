@@ -9,7 +9,7 @@
 @include("modal/createAccount")
 <div class="list--search--select" >
     <div class="list--title">
-        <p>{{ __('Admin Management') }}</p>
+        <p>{{ __('Admin management') }}</p>
         <span class="create__profile btn_create_user_mobi" style="cursor:pointer" ></span>
     </div>
     <!-- list Btn  -->

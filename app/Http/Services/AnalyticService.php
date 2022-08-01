@@ -120,18 +120,18 @@ class AnalyticService {
 
         // Sheet General data
         $titles = [
-            'Unable to detect',
             'Violation',
+            'Unable to detect',
             'Violations detected/submitted',
-            'Total articles',
-            'Percentile of Violation',
-            'Percentile of Unable to detect',
-            'Percentile of violations detected/submitted'
+            'Total entries',
+            'Percentage of Violation',
+            'Percentage of Unable to detect',
+            'Percentage of violations detected/submitted'
         ];
         $exportData = [
             [
-                $generalData['non_violation'],
                 $generalData['violation'],
+                $generalData['non_violation'],
                 $generalData['total'] - ($generalData['violation'] + $generalData['non_violation']),
                 $generalData['total'],
                 $generalData['percentile_violation'].'%',
@@ -142,7 +142,7 @@ class AnalyticService {
         $sheets[] = ['row_titles' => $titles, 'name' => 'General', 'data' => $exportData ];
 
         // Sheet Violation based on brands
-        $titles = ['#', 'Brand/ Company', 'Articles', 'Violations', 'Percentage'];
+        $titles = ['No', 'Brand/ Company', 'Articles', 'Violations', 'Percentage'];
         $exportData = [];
         foreach ($brandData as $key => $brand) {
             $exportData[] = [
@@ -156,7 +156,7 @@ class AnalyticService {
         $sheets[] = ['row_titles' => $titles, 'name' => 'violation_based_brands', 'data' => $exportData ];
 
         // Sheet Violation based on code
-        $titles = ['#', 'Code Article', 'Violation Types', 'Articles'];
+        $titles = ['No', 'Code Article', 'Violation Types', 'Articles'];
         $exportData = [];
         foreach ($codeData as $key => $code) {
             $exportData[] = [

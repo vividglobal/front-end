@@ -31,6 +31,7 @@ $("document").ready(function(){
     btnCountry.click(function(e){
         if(e.target !== $(this).find(".search--country")[0]){
             selectCountry.slideToggle(300,'linear');
+            $(".no_search_result").hide()
         }
     })
 
@@ -40,6 +41,7 @@ $("document").ready(function(){
         if(width >1113){
             if (!btnCountry.is(e.target) && btnCountry.has(e.target).length === 0 ) {
                 selectCountry.hide()
+                $(".no_search_result").hide()
             }
         }
 

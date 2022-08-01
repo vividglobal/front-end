@@ -11,7 +11,7 @@ class ArticleExportService {
 
     public function exportPendingArticles($fileName, $articles) {
         $titles = [
-            '#','Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date', 'Link',
+            'No','Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Crawl Date', 'Link',
             'VIVID - Status', 'VIVID - Code Article', 'VIVID - Violation Type',
         ];
         $isSupervisor = UserRoleService::isSupervisor();
@@ -80,7 +80,7 @@ class ArticleExportService {
 
     public function exportViolationArticles($fileName, $articles) {
         $titles = [
-            '#', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date',
+            'No', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date',
             'Penalty issued','Link', 'Legal documents', 'Code Article', 'Violation Type', 'Status Progress'
         ];
         $exportData = [];
@@ -125,7 +125,7 @@ class ArticleExportService {
 
     public function exportNoneViolationArticles($fileName, $articles) {
         $titles = [
-            '#', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date', 'Link'
+            'No', 'Country', 'Company', 'Brand', 'Caption', 'Image', 'Published Date', 'Checking Date', 'Link'
         ];
         $exportData = [];
         foreach ($articles as $key => $article) {
