@@ -49,6 +49,20 @@ $(document).ready(function(){
         articleId = currentRow.attr('data-id');
         agreeStatus = $(this).attr('attr-status');
         botStatus = currentRow.find('.bot-status').attr('data-status');
+
+        let array = []
+        let list = $('.scroll-table[data-id='+ articleId +'] .style__code--article')[0].children
+        let list2 = $('.chosee-code-style .row')[0].children
+        for(let i=0;i<list.length;i++){
+            array.push(list[i].id)
+        }
+        for(let i=0;i<list2.length;i++){
+            if(array.includes(list2[i].id)){
+                list2[i].querySelector('input').checked = true
+            }
+        }
+        
+
         let reviewStatus;
         if(CURRENT_ROLE === SUPERVISOR_ROLE) {
             reviewStatus = currentRow.find('.supervisor-violation-action .status-title').attr('data-status')

@@ -213,7 +213,7 @@
                                 <div class="entry  entry-title-tyle bot-violation-code entry-one-item" style="justify-content:@if(count($article->operator_violation_types) <= 5) center !important @endif">
                                     @foreach ($article->operator_violation_types as $detectiontype)
                                         <a href="javascript:void(0)" id={{ $detectiontype->_id }}
-                                        style="color:{{$detectiontype->color ?? ''}};text-decoration:none">
+                                        style="color:{{$detectiontype->color ?? ''}};text-decoration:none;line-height: 20px">
                                             {{$detectiontype->name ?? ''}}
                                         </a>
                                     @endforeach

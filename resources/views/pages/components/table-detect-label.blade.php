@@ -170,7 +170,7 @@
                                     <div class="style__code--article" style="display:block;justify-content:@if(count($article->detection_result['violation_code']) < 7) center @endif">
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
-                                            <div>
+                                            <div id={{ $detectionCode['id'] }} value={{ $detectionCode['id'] }}>
                                                 <a href="javascript:void(0)" id={{ $detectionCode['id'] }}>
                                                     {{$detectionCode['name'] ?? ''}}
                                                 </a>
@@ -181,7 +181,7 @@
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" style="justify-content:@if(count($article->detection_result['violation_types']) > 5) flex-start @endif">
                                         @foreach ($article->bot_violation_types as $detectionType)
                                             <a href="javascript:void(0)" id={{ $detectionType->_id }}
-                                            style="color:{{$detectionType->color ?? ''}};text-decoration:none">
+                                            style="color:{{$detectionType->color ?? ''}};text-decoration:none;line-height: 20px">
                                                 {{$detectionType->name ?? ''}}
                                             </a>
                                         @endforeach
@@ -463,7 +463,7 @@
             </div>
             <div class="row" style="overflow-y: auto">
                 @foreach($violationCode as $key => $code)
-                <div class="col-md-4 check__box">
+                <div class="col-md-4 check__box" id={{ $code->id }}>
                     <div class="checkbox-code">
                         <label class="check_box_code">
                             <input type="checkbox" name="violation_code[]" value={{ $code->id }}>
