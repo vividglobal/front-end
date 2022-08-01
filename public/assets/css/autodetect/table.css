@@ -115,6 +115,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     cursor: pointer;
+    font-family: Poppins;
 }
 .tbdata tr td.contenttb a:hover{
   text-decoration-line: underline;

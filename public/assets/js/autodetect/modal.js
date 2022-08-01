@@ -25,7 +25,11 @@ $(document).ready(function () {
     btn.click(function () {
         let caption = $(this).find('a').text();
         let brandName = $(this).parents('tr').find('.brand-name').text();
-        captionModal.find('.head-modal h1').text(brandName)
+        if(brandName){
+            captionModal.find('.head-modal h1').text(brandName)
+        }else{
+            captionModal.find('.head-modal h1').text("Caption")
+        }
         captionModal.find('.title-modal').text(caption)
         captionModal.show();
         $(".mdl-js").css("overflow-y","hidden");

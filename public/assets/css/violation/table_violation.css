@@ -84,6 +84,7 @@
   -webkit-line-clamp: 6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  font-family: Poppins;
 }
 .wr-img{
   width: 100%;
@@ -558,8 +559,8 @@
   flex-direction: column;
 }
 .div-file img{
-  width: 34px;
-  height: 34px;
+  width: 23.38px;
+  height: 23.38px;
 }
 .div-delete{
   width: 10%;
