@@ -39,11 +39,11 @@
         </ul>
         @foreach ($admins as $key => $admin)
         <ul class="tbody_admin">
-            <li scope="row">{{ ($key + 1) + (($admins->currentpage() - 1) * $admins->perpage()) }}</li>
-            <li>{{ $admin->full_name }}</li>
-            <li>{{ $admin->email }}</li>
-            <li>{{ $admin->phone_number }}</li>
-            <li class="style_{{ $admin->role }} styleauthor">{{ $admin->role }}</li>
+            <li class="updata-form" scope="row">{{ ($key + 1) + (($admins->currentpage() - 1) * $admins->perpage()) }}</li>
+            <li class="updata-form">{{ $admin->full_name }}</li>
+            <li class="updata-form">{{ $admin->email }}</li>
+            <li class="updata-form">{{ $admin->phone_number }}</li>
+            <li class="style_{{ $admin->role }} styleauthor updata-form">{{ $admin->role }}</li>
             <div class= "img_admin">
                 <li class="edit__profile">
                     <span class="btn_edit"></span>

@@ -58,21 +58,21 @@
                 <td>{{ ($key + 1) + (($articles->currentpage() - 1) * $articles->perpage()) }}</td>
                 <td>
                 @isset($article->country['name'])
-                    <a  href={{ getUrlName( "country" , $article->country['id']) }}>
+                    <a href={{ getUrlName( "country" , $article->country['id']) }} class="updata-form">
                     {{ __($article->country['name'] ?? '' )}}
                     </a>
                 @endisset
                 </td>
                 <td>
                 @isset($article->company['name'])
-                    <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }}>
+                    <a  href={{ __(getUrlName("company_brand_id",$article->company['id'])) }} class="updata-form">
                         {{ __($article->company['name'] ?? '' )}}
                     </a>
                 @endisset
                 </td>
                 <td>
                 @isset($article->brand['name'])
-                    <a class="brand-name"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
+                    <a class="brand-name updata-form"  href={{ getUrlName( "company_brand_id" , $article->brand['id']) }}>
                         {{ __($article->brand['name'] ?? '' )}}
                     </a>
                 @endisset

@@ -108,11 +108,11 @@
                 data-idEL="{{ $article->_id }}" id="status_1" data-role="{{@Auth::user()->role}}">
                     @if(isset($article->progress_status) && $article->progress_status != "")
                         @if($article->progress_status == "NOT_STARTED" || $article->progress_status == "PENDING")
-                            <p data-id="not_started" >{{ __("Not started") }}</p>
+                            <p class="updata-form" data-id="not_started" >{{ __("Not started") }}</p>
                         @elseif($article->progress_status == "PROCESSING" )
-                            <p data-id="Processing" >{{ __("Processing") }}</p>
+                            <p class="updata-form" data-id="Processing" >{{ __("Processing") }}</p>
                         @elseif($article->progress_status == "COMPLETED")
-                            <p data-id="Completed" >{{ __(' Completed ') }}</p>
+                            <p class="updata-form" data-id="Completed" >{{ __(' Completed ') }}</p>
                         @endif
                     @else
                         <p data-id="not_started" >{{ __("Not started") }}</p>
@@ -123,15 +123,15 @@
                     @endif
                     <div class="select--status select--status-moblie violation_pc" id="toggle">
                         <div class="select__one--status list-option"  id="not_started">
-                            <p data-id="not_started" >{{ __("Not started") }}</p>
+                            <p class="updata-form" data-id="not_started" >{{ __("Not started") }}</p>
                             <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                         </div>
                         <div class="select__one--status list-option"  id="Processing">
-                            <p data-id="Processing" >{{ __("Processing") }}</p>
+                            <p class="updata-form" data-id="Processing" >{{ __("Processing") }}</p>
                             <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                         </div>
                         <div class="select__one--status list-option completed"  id="Completed">
-                            <p data-id="Completed" >{{ __(' Completed ') }}</p>
+                            <p class="updata-form" data-id="Completed" >{{ __(' Completed ') }}</p>
                             <img src="{{asset('assets/image/tickV.svg')}}" alt="">
                         </div>
                     </div>

@@ -124,13 +124,13 @@
                             <div class="track">
                                 <div class="entry">
                                     @isset($article->published_date)
-                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->published_date)}}</h3>
                                     @endisset
                                 </div>
                             </div>
                             <div class="track">
                                 <div class="entry">
-                                    <h3>{{date("m-d-Y",$article->crawl_date)}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->crawl_date)}}</h3>
                                 </div>
                             </div>
                             <div class="track track-link">
@@ -171,7 +171,7 @@
                                         @if(isset($article->detection_result['violation_code']))
                                         @foreach ($article->detection_result['violation_code'] as $detectionCode)
                                             <div id={{ $detectionCode['id'] }} value={{ $detectionCode['id'] }}>
-                                                <a href="javascript:void(0)" id={{ $detectionCode['id'] }}>
+                                                <a class="updata-form" href="javascript:void(0)" id={{ $detectionCode['id'] }}>
                                                     {{$detectionCode['name'] ?? ''}}
                                                 </a>
                                             </div>
@@ -180,7 +180,7 @@
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle bot-violation-code style_violation_type" style="justify-content:@if(count($article->detection_result['violation_types']) > 5) flex-start @endif">
                                         @foreach ($article->bot_violation_types as $detectionType)
-                                            <a href="javascript:void(0)" id={{ $detectionType->_id }}
+                                            <a class="updata-form" href="javascript:void(0)" id={{ $detectionType->_id }}
                                             style="color:{{$detectionType->color ?? ''}};text-decoration:none;line-height: 20px">
                                                 {{$detectionType->name ?? ''}}
                                             </a>
@@ -244,7 +244,7 @@
                                                 @else
                                                     @foreach ($article->supervisor_review['violation_code'] as $detectionCode)
                                                         <div>
-                                                            <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                            <a class="updata-form" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                                                                 {{$detectionCode['name'] ?? ''}}
                                                             </a>
                                                         </div>
@@ -256,7 +256,7 @@
                                     <div class="entry-title-threee entry-title-tyle supervisor-violation-type style_violation_type" style="justify-content:@if(count($article->supervisor_review['violation_types']) >= 5) flex-start @endif">
                                         @foreach ($article->supervisor_violation_types as $supervisorType)
                                         <div>
-                                            <a class="detectiontype" href="{{ getUrlName( "violation_type_id" , $supervisorType->_id ) }}" id={{ $supervisorType->_id }} style="color:{{ $supervisorType->color ?? ''}}">{{ $supervisorType->name ?? '' }}</a>
+                                            <a class="detectiontype updata-form" href="{{ getUrlName( "violation_type_id" , $supervisorType->_id ) }}" id={{ $supervisorType->_id }} style="color:{{ $supervisorType->color ?? ''}}">{{ $supervisorType->name ?? '' }}</a>
                                         </div>
                                         @endforeach
                                     </div>
@@ -325,7 +325,7 @@
                                                 @else
                                                     @foreach ($article->operator_review['violation_code'] as $detectionCode)
                                                         <div>
-                                                            <a href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                                            <a class="updata-form" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                                                                 {{$detectionCode['name'] ?? ''}}
                                                             </a>
                                                         </div>
@@ -336,7 +336,7 @@
                                     </div>
                                     <div class="entry-title-threee entry-title-tyle operator-violation-type style_violation_type">
                                         @foreach ($article->operator_violation_types as $operatorType)
-                                            <p style="color:{{ $operatorType->color ?? ''}}">{{ $operatorType->name ?? '' }}</p>
+                                            <p class="updata-form" style="color:{{ $operatorType->color ?? ''}}">{{ $operatorType->name ?? '' }}</p>
                                         @endforeach
                                     </div>
                                 </div>
@@ -490,7 +490,7 @@
                 <div class="lish-child">
                     <div class="media-img">
                         @if($article->image)
-                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                        <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;max-height:100px" alt="">
                         @else
                         <img  src="{{ asset('assets/image/no-image.jpeg') }}" class="mr-3" style="width:100px">
                         @endif

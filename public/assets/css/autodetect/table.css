@@ -36,7 +36,7 @@
     /* cursor: pointer; */
 }
 .style-title{
-    font-family: var(--avenir);
+    font-family: system-ui !important;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -372,6 +372,7 @@
     display: flex;
     align-items: center;
     color: #0C3C60;
+    font-family: system-ui !important;
   }
   .heading,.heading-three{
     color:  var(--primary);
@@ -806,12 +807,16 @@ input[type=checkbox] {
   font-size: 15px !important;
 }
 .mobleprevnext{
-  top: 23% !important;
+  top: 165px !important;
 }
 
 
 
-
+@media only screen and (min-width: 1113px) {
+  .mobleprevnext {
+    top: 255px !important;
+}
+}
 
 @media only screen and (min-width: 740px) and (max-width: 1113px) {
     #div-pc{

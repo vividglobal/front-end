@@ -1,6 +1,6 @@
 <div class="table_analysis table_brand">
     <ul class="table_analysis_header header_brand">
-        <li>{{ __('No') }}</li>
+        <li >{{ __('No') }}</li>
         <li>{{ __('Brand/Company') }}</li>
         <li>
             <div class="th-title-rights ">
@@ -56,14 +56,14 @@
     </ul>
     @foreach($brandData as $key => $brand)
         <ul class="table_analysis_body">
-            <li class="item_base_on_brand">
+            <li class="item_base_on_brand updata-form">
                 {{ ($key + 1) + (($brandData->currentpage() - 1) * $brandData->perpage()) }}
             </li>
-            <li class="item_base_on_brand">{{ $brand->name }}</li>
+            <li class="item_base_on_brand updata-form">{{ $brand->name }}</li>
             <div class="res_item_brand">
-                <li class="item_base_on_brand">{{ $brand->total_article }}</li>
-                <li class="item_base_on_brand">{{ $brand->total_violation_article }}</li>
-                <li class="item_base_on_brand">{{ $brand->percent_violation_per_article }}%</li>
+                <li class="item_base_on_brand updata-form">{{ $brand->total_article }}</li>
+                <li class="item_base_on_brand updata-form">{{ $brand->total_violation_article }}</li>
+                <li class="item_base_on_brand updata-form">{{ $brand->percent_violation_per_article }}%</li>
             </div>
         </ul>
         @endforeach

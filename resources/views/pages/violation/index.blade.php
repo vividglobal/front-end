@@ -17,7 +17,7 @@
                     <div class="lish-child">
                         <div class="media-img">
                             @if($article->image)
-                            <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                            <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;max-height:100px" alt="">
                             @else
                             <img  src="{{ asset('assets/image/no-image.jpeg') }}" class="mr-3" style="width:100px">
                             @endif
@@ -144,14 +144,14 @@
                             <div class="track">
                                 <div class="entry">
                                     @isset($article->published_date)
-                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->published_date)}}</h3>
                                     @endisset
                                 </div>
                             </div>
                             <div class="track track-violiton">
                                 <div class="entry">
                                     @if(isset($article->operator_review['review_date']))
-                                    <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
                                     @endif
                                 </div>
                             </div>
@@ -159,9 +159,9 @@
                             <div class="track ">
                                 <div class="entry date-penalty">
                                     @if($article->has_document)
-                                    <h3  id={{$article->_id}}>{{date("m-d-Y",$article->penalty_issued/1000)}}</h3>
+                                    <h3 class="updata-form"  id={{$article->_id}}>{{date("m-d-Y",$article->penalty_issued/1000)}}</h3>
                                     @else
-                                    <h3 id={{$article->_id}}></h3>
+                                    <h3 class="updata-form" id={{$article->_id}}></h3>
                                     @endif
                                 </div>
                             </div>
@@ -199,7 +199,7 @@
                                         @foreach ($article->operator_review['violation_code'] as $detectioncode)
                                             <div>
                                                 @isset($article->brand['name'])
-                                                    <a href="javascript:void(0)" id={{ $detectioncode['id'] }}>
+                                                    <a class="updata-form" href="javascript:void(0)" id={{ $detectioncode['id'] }}>
                                                         {{$detectioncode['name'] ?? ''}}
                                                     </a>
                                                 @endisset

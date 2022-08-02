@@ -34,7 +34,7 @@
         {{-- USE NAME country_label if target get id country--}}
         <div class="list--country ctr_suspected select_country_manual country_pc country_label" id="btn-language">
             <img src="{{asset('assets/image/Country.svg')}}" alt="">
-            <p>{{ __('Country') }}</p>
+            <p class="updata-form">{{ __('Country') }}</p>
             <img src="{{asset('assets/image/Under-than.svg')}}" alt="">
             <div class="select--country slc_suspected" id="language">
                 <div class="search--input--country search_suspected" id="div-search">

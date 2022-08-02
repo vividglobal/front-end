@@ -64,13 +64,13 @@
                         <div class="track track-non">
                                 <div class="entry">
                                     @isset($article->published_date)
-                                    <h3>{{date("m-d-Y",$article->published_date)}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->published_date)}}</h3>
                                     @endisset
                                 </div>
                             </div>
                             <div class="track track-non">
                                 <div class="entry">
-                                    <h3>{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
+                                    <h3 class="updata-form">{{date("m-d-Y",$article->operator_review['review_date'] )}}</h3>
                                 </div>
                             </div>
                             <div class="track track-non">
@@ -122,7 +122,7 @@
                     <div class="lish-child">
                         <div class="media-img">
                             @if($article->image)
-                            <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;height:100px" alt="">
+                            <img src={{ __($article->image ?? '' ) }} class="mr-3" style="width:100px;max-height:100px" alt="">
                             @else
                             <img  src="{{ asset('assets/image/no-image.jpeg') }}" class="mr-3" style="width:100px">
                             @endif
