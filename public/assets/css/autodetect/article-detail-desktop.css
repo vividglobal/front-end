@@ -24,6 +24,8 @@
     }
     .media-img{
         width: 120px;
+        display: flex;
+        align-items: center;
     }
     .media-body-top{
         width: 100%;

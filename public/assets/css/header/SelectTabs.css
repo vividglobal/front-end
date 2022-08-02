@@ -55,6 +55,7 @@
     -webkit-box-orient: vertical;
     box-sizing: border-box;
     text-align: center;
+    font-family: system-ui;
 }
 
 #daterange input,
@@ -66,6 +67,11 @@
 
 .form--daterange{
     cursor: pointer;
+    font-family: system-ui !important;
+}
+.input-style-focus{
+    font-family: system-ui !important;
+
 }
 
 .btn__change--password,
@@ -85,6 +91,7 @@
 .list--showing{
     padding: 13px;
     border: 1px solid var(--gray-C7);
+    font-family: system-ui !important;
 }
 
 .list--showing select,
