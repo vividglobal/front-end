@@ -10,8 +10,24 @@
                 <img class="history-back" src="{{ asset('assets/image/back.png') }}" alt="">
                 <h1 class="lish-title-style">{{ __($article->brand['name'] ?? '' )}}</h1>
             </div>
-            @if($article->image)
-            <img src={{ __($article->image ?? '' ) }} alt="" style="width:100%;margin-bottom: 15px;">
+        @if($article->image)
+                @if(isset($article->gallery))
+                <div class="slideshow-container">
+                    @foreach ($article->gallery as $detectionCode)
+                    <div class="mySlides fadeimg">
+                        <div style="display: flex;justify-content: center;">
+                        <img  src={{($detectionCode)}} style="max-width: 88%;margin-bottom: 15px;max-height: 350px;">
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+                @if(count($article->gallery) > 1)
+                    <a class="prev mobleprevnext" onclick="plusSlides(-1)">❮</a>
+                    <a class="next mobleprevnext" onclick="plusSlides(1)">❯</a>
+                @endif
+                @else
+                <img  src={{ __($article->image ?? '' ) }} style="max-width: 100%;margin-bottom: 15px;">
+                @endif
             @else
             <img  style="width:100%;margin-bottom: 15px;"  src="{{ asset('assets/image/no-image.jpeg') }}" >
             @endif
@@ -205,4 +221,5 @@
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script> -->
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
 <script src="{{ asset('assets/js/pages/violation-detail.js')}}"></script>
+<script src="{{ asset('assets/js/pages/slineimg.js') }}"></script>
 @endsection
