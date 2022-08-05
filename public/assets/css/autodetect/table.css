@@ -847,7 +847,7 @@ input[type=checkbox] {
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prevslide, .nextslide {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -862,12 +862,12 @@ input[type=checkbox] {
   user-select: none;
   text-decoration: none;
 }
-.prev{
+.prevslide{
   left: 0px;
 }
 
 /* Position the "next button" to the right */
-.next {
+.nextslide {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
