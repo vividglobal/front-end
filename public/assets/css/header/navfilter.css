@@ -60,7 +60,7 @@
   .closeFilter{
     display: flex !important;
     align-items: center;
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 25px !important;

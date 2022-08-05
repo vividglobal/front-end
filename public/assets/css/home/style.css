@@ -34,7 +34,7 @@
     width: 100%;
 }
 .content__vituar p:first-child{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -79,7 +79,7 @@
 }
 
 .background__content p:first-child{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 50px;
@@ -151,7 +151,7 @@
 }
 
 .background__vituar-6 p {
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 50px;

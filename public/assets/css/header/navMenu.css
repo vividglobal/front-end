@@ -25,7 +25,7 @@
 
 .nav--btn__after--login > div,
 .nav-link{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 17px;
@@ -65,7 +65,7 @@ nav-menu > ul li{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     flex-direction: column;
     font-style: normal;
     font-weight: 420;
@@ -152,13 +152,13 @@ li:nth-child(3) img{
     background-color: var(--primary);
     text-decoration: none;
     width: 115px;
-    font-family: var( --avenir_roman);
+    font-family: var( --font-avenir_roman);
 
 }
 
 .btn--export--excel p {
     color: var(--white);
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;

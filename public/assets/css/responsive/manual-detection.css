@@ -2,7 +2,7 @@
 @media(max-width: 1113px){
     .checkbox__suspected:first-child:after {
         content: "Text/image";
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 16px;
@@ -27,7 +27,7 @@
 
     .checkbox__suspected:nth-child(2):after {
         content: "URL";
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 16px;
@@ -107,7 +107,7 @@
     }
 
     .title__result p{
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;

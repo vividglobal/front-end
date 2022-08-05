@@ -40,7 +40,7 @@ video[poster] {
     cursor: pointer;
     padding: 10px 15px;
     width: 70vw;
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -74,7 +74,7 @@ video[poster] {
     background:  var(--white);
     padding: 9px 0;
     width: 100%;
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -133,7 +133,7 @@ video[poster] {
     font-weight: 600;
   }
   .panel span {
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 600;
   }

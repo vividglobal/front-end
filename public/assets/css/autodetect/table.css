@@ -235,7 +235,7 @@
     font-size: 25px;
     line-height: 136.5%;
     color: var(--primary);
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     color: #082136;
   }
 
@@ -531,7 +531,7 @@
 }
 
 .btn-confirm-style{
-  font-family: var(--avenir_roman);
+  font-family: var(--font-avenir_roman);
   font-style: normal;
   font-weight: 550;
   font-size: 18px;
@@ -544,7 +544,7 @@
     text-align: center;
     font-size: 40px;
     padding: 50px;
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     color: var(--gray-C7);
 }
 .bot-violation-code{
@@ -641,7 +641,7 @@ input[type=checkbox] {
   overflow: auto;
 }
 .list-option{
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
@@ -764,7 +764,7 @@ input[type=checkbox] {
 .select__one--status p {
     width: 100%;
     text-align: left;
-    font-family: var(--system-ui);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

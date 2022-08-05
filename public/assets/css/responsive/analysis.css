@@ -73,7 +73,7 @@
     }
 
     .title_table_analysis p{
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 500;
         font-size: 20px;
@@ -169,7 +169,7 @@
     }
 
     .Base_violation--brand .list--select--option .list--select__right p {
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 500;
         font-size: 20px;

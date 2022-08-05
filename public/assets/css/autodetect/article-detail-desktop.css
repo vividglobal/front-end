@@ -43,7 +43,7 @@
         color: #0C3C60;
     }
     .title-style-checking{
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 20px;
@@ -79,7 +79,7 @@
         margin-right: 15px;
     }
     .lish-title-style{
-        font-family: var(--bradon);
+        font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 420;
         font-size: 25px;
