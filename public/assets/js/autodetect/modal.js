@@ -36,8 +36,8 @@ $(document).ready(function () {
         $('.img-sline').append(linkImg)
 
         btnpenext = `
-            <a class="prev closeprevnext" onclick="plusSlides(-1)">❮</a>
-            <a class="next closeprevnext" onclick="plusSlides(1)">❯</a>
+            <a class="prevslide closeprevnext" onclick="plusSlides(-1)">❮</a>
+            <a class="nextslide closeprevnext" onclick="plusSlides(1)">❯</a>
         `
         if(lengthlish > 1){
             $('.modal-content-img').append(btnpenext)
