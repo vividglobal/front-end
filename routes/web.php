@@ -87,6 +87,7 @@ Route::middleware(['auth'])->group(function () {
             });
             Route::prefix('countries')->group(function () {
                 Route::get('/', 'countries');
+                Route::get('/dummy', 'dummyCountries');
                 Route::post('/', 'createCountries');
                 Route::put('/{id}', 'updateCountries');
                 Route::delete('/{id}', 'deleteCountries');

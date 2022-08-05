@@ -151,6 +151,20 @@ class DummyController extends Controller
         return view('dummy/country', compact('countries'));
     }
 
+    public function dummyCountries() {
+        $countries =  json_decode(file_get_contents(public_path('countries.json')));
+        foreach($countries as $country) {
+            $exists = Country::where('name', $country->name)->exists();
+            if(!$exists) {
+                Country::create([
+                    'name' => $country->name,
+                    'list_url' => []
+                ]);
+            }
+        }
+        echo 'Done';
+    }
+
     public function createCountries(Request $request)
     {
         $input = $request->all();
