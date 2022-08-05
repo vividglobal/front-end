@@ -641,7 +641,7 @@ input[type=checkbox] {
   overflow: auto;
 }
 .list-option{
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
     font-weight: 400;
     font-size: 17px;
@@ -764,7 +764,7 @@ input[type=checkbox] {
 .select__one--status p {
     width: 100%;
     text-align: left;
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

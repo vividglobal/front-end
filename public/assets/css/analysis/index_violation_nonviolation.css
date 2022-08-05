@@ -136,7 +136,7 @@
 #apply_date{
     background-color: var(--primary);
     color: var(--white);
-    font-family: var(--avenir);
+    font-family: var(--avenir_roman);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;

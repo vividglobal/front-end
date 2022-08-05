@@ -31,7 +31,7 @@
 }
 
 .style-title{
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
     font-weight: 600;
     font-size: 16px;

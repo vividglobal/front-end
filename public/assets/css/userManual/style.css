@@ -40,9 +40,9 @@ video[poster] {
     cursor: pointer;
     padding: 10px 15px;
     width: 70vw;
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
-    font-weight: 800;
+    font-weight: 500;
     font-size: 20px;
     line-height: 16px;
     color: var(--primary);
@@ -74,9 +74,9 @@ video[poster] {
     background:  var(--white);
     padding: 9px 0;
     width: 100%;
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
-    font-weight: 800;
+    font-weight: 500;
     font-size: 20px;
     line-height: 27px;
     text-decoration-line: underline;
@@ -133,7 +133,7 @@ video[poster] {
     font-weight: 600;
   }
   .panel span {
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
     font-weight: 600;
   }

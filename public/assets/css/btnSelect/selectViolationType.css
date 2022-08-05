@@ -48,7 +48,7 @@
 .btn__apply{
     background-color: var(--primary);
     color: var(--white);
-    font-family: var(--avenir);
+    font-family: var(--avenir_roman);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;
@@ -66,12 +66,13 @@
     justify-content: center;
     align-items: center;
     margin-left: 10px;
+    font-family: var(--system-ui);
 }
 
 .create__profile:after{
     content: "Add admin";
     color: var(--white);
-    font-family: var(--avenir);
+    font-family: var(--system-ui);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;
@@ -84,7 +85,7 @@
 
 .btn_excel{
     color: var(--white);
-    font-family: var(--avenir) !important;
+    font-family: var(--avenir_roman) !important;
     font-style: normal !important;
     font-weight: 450 !important;
     font-size: 14px !important;
