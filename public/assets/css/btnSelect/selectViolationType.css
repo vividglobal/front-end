@@ -72,7 +72,7 @@
 .create__profile:after{
     content: "Add admin";
     color: var(--white);
-    font-family: var(--font-system-ui);
+    font-family: var(--font-avenir_roman);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;

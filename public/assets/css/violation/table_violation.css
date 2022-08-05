@@ -534,7 +534,7 @@
 }
 
 .drop_nav_violation a{
-    font-family: 'Avenir';
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

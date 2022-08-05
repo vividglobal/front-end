@@ -51,13 +51,15 @@
 .content__vituar button{
     padding:12px 57px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 550;
     font-size: 18px;
     line-height: 136.5%;
     color: var(--white);
     background: #0C3C60;
     border: none;
     margin-top: 19px;
+    font-family: var(--font-avenir_roman);
+
 }
 
 .background__content{
