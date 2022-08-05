@@ -21,8 +21,8 @@
                     @endforeach
                 </div>
                 @if(count($article->gallery) > 1)
-                    <a class="prev mobleprevnext" onclick="plusSlides(-1)">❮</a>
-                    <a class="next mobleprevnext" onclick="plusSlides(1)">❯</a>
+                    <a class="prevslide mobleprevnext" onclick="plusSlides(-1)">❮</a>
+                    <a class="nextslide mobleprevnext" onclick="plusSlides(1)">❯</a>
                 @endif
                 @else
                 <img  src={{ __($article->image ?? '' ) }} style="max-width: 100%;margin-bottom: 15px;">
