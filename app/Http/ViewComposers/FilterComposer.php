@@ -20,10 +20,10 @@ class FilterComposer
     */
     public function __construct()
     {
-        $this->brands = CompanyBrand::all();
-        $this->countries = Country::all();
-        $this->violationCode = ViolationCode::all();
-        $this->violationTypes = ViolationType::all();
+        $this->brands = CompanyBrand::orderBy('name', ASC)->get();
+        $this->countries = Country::orderBy('name', ASC)->get();
+        $this->violationCode = ViolationCode::orderBy('name', ASC)->get();
+        $this->violationTypes = ViolationType::orderBy('name', ASC)->get();
     }
 
     /**
