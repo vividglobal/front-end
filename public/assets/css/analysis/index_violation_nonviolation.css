@@ -124,7 +124,7 @@
 }
 
 .title_table_analysis p{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -136,7 +136,7 @@
 #apply_date{
     background-color: var(--primary);
     color: var(--white);
-    font-family: var(--avenir);
+    font-family: var(--font-avenir_roman);
     font-style: normal;
     font-weight: 450;
     font-size: 14px;

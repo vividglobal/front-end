@@ -138,7 +138,7 @@
 }
 
 .title__country--violation{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 500;
     font-size: 20px;

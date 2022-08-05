@@ -56,7 +56,7 @@
   }
 
   .title-modal p{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
@@ -68,7 +68,7 @@
   }
 
   .content-modal p{
-    font-family: var(--avenir);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -108,7 +108,7 @@
   }
 
   .btn__change--password{
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -128,7 +128,7 @@
   .btn-modal button{
     margin-top: 13px;
     padding: 12px 0;
-    font-family: var(--bradon);
+    font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 600;
     font-size: 18px;

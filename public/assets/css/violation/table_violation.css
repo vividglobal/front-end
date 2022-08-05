@@ -31,7 +31,7 @@
 }
 
 .style-title{
-    font-family: var(--avenir);
+    font-family: var(--font-system-ui);
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
@@ -434,7 +434,7 @@
   font-size: 25px;
   line-height: 136.5%;
   color: var(--primary);
-  font-family: var(--bradon);
+  font-family: var(--font-bradon);
   color: #082136;
 }
 .head-confirm p{
@@ -469,10 +469,10 @@
   font-size: 18px !important;
   line-height: 136.5%;
   color: #6F6F6F;
-  font-family: var(--avenir_roman) !important;
+  font-family: var(--font-avenir_roman) !important;
 }
 .btn-yes{
-  font-family: var(--avenir_roman);
+  font-family: var(--font-avenir_roman);
   font-style: normal;
   font-weight: 550;
   font-size: 18px;
