@@ -211,7 +211,7 @@
 }
 .head-modal h1{
   font-style: normal;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 20px;
   line-height: 136.5%;
   color: #082136;
@@ -430,7 +430,7 @@
 }
 .head-confirm h1{
   font-style: normal;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 25px;
   line-height: 136.5%;
   color: var(--primary);
@@ -438,7 +438,7 @@
   color: #082136;
 }
 .head-confirm p{
-  font-weight: 600;
+  font-weight: 550;
   margin-top: 12px;
   font-size: 17px;
 }
@@ -465,7 +465,7 @@
 
 .btn-cancel{
   font-style: normal;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 18px !important;
   line-height: 136.5%;
   color: #6F6F6F;
@@ -474,7 +474,7 @@
 .btn-yes{
   font-family: var(--avenir_roman);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 18px;
   line-height: 136.5%;
   color: var(--white);
