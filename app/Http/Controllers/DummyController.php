@@ -169,9 +169,6 @@ class DummyController extends Controller
     {
         $input = $request->all();
         $requestUrl = explode(',', $input['list_url']);
-        if(count($requestUrl) === 0) {
-            return redirect('/dummy/countries')->with('error', 'Please enter list url');
-        }
         $listUrl = [];
         foreach ($requestUrl as $key => $url) {
             $url = preg_replace('/\s+/', '', $url);
@@ -179,9 +176,6 @@ class DummyController extends Controller
             if (filter_var($url, FILTER_VALIDATE_URL)) {
                 $listUrl[] = $url;
             }
-        }
-        if(count($listUrl) === 0) {
-            return redirect('/dummy/countries')->with('error', 'Please enter list url');
         }
         $input['list_url'] = $listUrl;
         Country::create($input);
@@ -195,9 +189,6 @@ class DummyController extends Controller
         if($data) {
             $requestUrl = explode(',', $input['list_url']);
             
-            if(count($requestUrl) === 0) {
-                return redirect('/dummy/countries')->with('error', 'Please enter list url');
-            }
             $listUrl = [];
             foreach ($requestUrl as $key => $url) {
                 $url = preg_replace('/\s+/', '', $url);
@@ -205,9 +196,6 @@ class DummyController extends Controller
                 if (filter_var($url, FILTER_VALIDATE_URL)) {
                     $listUrl[] = $url;
                 }
-            }
-            if(count($listUrl) === 0) {
-                return redirect('/dummy/countries')->with('error', 'Please enter list url');
             }
             $input['list_url'] = $listUrl;
             $data->update($input);
