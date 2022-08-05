@@ -231,7 +231,7 @@
   }
   .head-modal h1{
     font-style: normal;
-    font-weight: 600;
+    font-weight: 550;
     font-size: 25px;
     line-height: 136.5%;
     color: var(--primary);
@@ -533,7 +533,7 @@
 .btn-confirm-style{
   font-family: var(--avenir_roman);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 18px;
   line-height: 136.5%;
   color: var(--white);
@@ -781,7 +781,7 @@ input[type=checkbox] {
 .title-modal-style{
   text-align: center;
   display: block;
-  font-weight: 600;
+  font-weight: 550;
   margin-bottom: 12px;
   font-size: 17px;
 }
