@@ -11,15 +11,17 @@ $(document).ready(function() {
         let country = $('.select_country_manual > p').attr('data-id') || $(".country_mobile").find("> p:visible").attr('data-id') || '';
 
         if(label_type == LABEL_TYPE_IMAGE) {
-            if($('input[name="image"]')[0].files.length === 0 && text === '') {
-                show_error('Please upload an image');
+            let file = $('input[name="image"]')[0].files[0]
+            let fileName = file ? file.name : "";
+            let regexFile = /\.(jpe?g|png)$/i.test(fileName)
+
+            if(!regexFile && file){
+                show_error('Please upload file is image');
                 return false;
             }
 
-            let fileName = $('input[name="image"]')[0].files[0].name;
-            let regexFile = /\.(jpe?g|png)$/i.test(fileName)
-            if(!regexFile){
-                show_error('Please upload file is image');
+            if(!file && text == "") {
+                show_error('Please Enter your text or upload an image');
                 return false;
             }
 
