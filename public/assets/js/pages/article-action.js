@@ -34,7 +34,7 @@ $(document).ready(function(){
             confirmModalVio.show()
         }
     })
-
+    
     function setDefaulSearchModal(){
         $(".search").val("")
         $(".check__box").css("display", "block")
@@ -192,7 +192,7 @@ $(document).ready(function(){
         }
         let typeString = '';
         for (let i = 0; i < data.violation_types.length; i++) {
-            typeString += `<p style=color:${data.violation_types[i].color}>${data.violation_types[i].name}</p>`
+            typeString += `<p class="detectiontype updata-form" style=color:${data.violation_types[i].color}>${data.violation_types[i].name}</p>`
         }
 
         if(CURRENT_ROLE === SUPERVISOR_ROLE) {
