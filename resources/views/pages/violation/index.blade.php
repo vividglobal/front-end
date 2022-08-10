@@ -340,7 +340,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p style="text-align: center;">Are you sure moving this post to auto-detect violations list?</p>
+                <p style="text-align: center;">Switch status successfully</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>
