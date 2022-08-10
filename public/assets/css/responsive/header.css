@@ -76,10 +76,20 @@
         padding-top: 70px;
     }
 
+    .name_trace--violation:hover{
+        color: var(--primary);
+    }
+
     .edit_profile_mb{
         display: none;
         position: absolute;
         top: 70px;
+    }
+
+    .activeName .name_trace--violation,
+    .activeName a,
+    .name_trace--violation:hover{
+        color: var(--white);
     }
 
     .open_Nav{
@@ -109,6 +119,10 @@
         width: 90%;
     }
 
+    .btn__header li:hover .nav--btnBorder__bottom{
+        border-bottom: none;
+    }
+
     .btn_nameUser .name_trace--violation{
         position: absolute;
         right: -6px;
@@ -123,6 +137,10 @@
         background-color: transparent !important;
     }
 
+    .after-login:after{
+        width: 0px;
+    }
+
     .active_header_login{
         display: block;
     }
@@ -135,7 +153,7 @@
     }
 
     .name_trace--violation:after {
-        background-image: url(../../image/Under-than-white.svg);
+        background-image: url(../../image/Under-than-white.svg) !important;
         width: 10px;
         margin-left: 5px;
         margin-right: 27px;
@@ -144,6 +162,14 @@
         background-size: 10px 10px;
         content:"";
         background-repeat: no-repeat;
+    }
+
+    .activeName .name_trace--violation:after {
+        background-image: url(../../image/Under-than-white.svg) !important;
+    }
+
+    .name_trace--violation:hover:after{
+        background-image: url(../../image/Under-than-white.svg);
     }
 
     .name_login{
@@ -175,7 +201,7 @@
         line-height: 36px;
         display: flex;
         align-items: center;
-        color: #0C3C60;
+        color: var(--pink_new);
     }
 
     .nav-link{
@@ -219,7 +245,7 @@
         top: 0;
         left: -100%;
         background-color: rgb(0,0,0);
-        background-color: #0C3C60;
+        background-color: var(--primary);
         overflow-x: hidden;
         transition: 0.5s;
         position: fixed;
@@ -384,7 +410,11 @@
     }
 
       .nav__btn--login > a {
-        color: #fff;
+        color: var(--white);
+    }
+
+    .nav__btn--login{
+        border: none;
     }
 
     .dropdown-login p:hover {

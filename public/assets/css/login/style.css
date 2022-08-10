@@ -74,7 +74,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 18px;
-    color: var(--primary);
+    color: var(--pink_new);
     text-decoration: none;
 }
 
@@ -87,7 +87,7 @@
     font-size: 18px;
     line-height: 136.5%;
     color: var(--white);
-    background-color: var(--primary);
+    background-color: var(--pink_new);
     margin-top:10px;
     font-family: var(--font-avenir_roman);
 }

@@ -65,7 +65,7 @@
     font-weight: 420;
     font-size: 25px !important;
     line-height: 36px;
-    color: #0C3C60 !important;
+    color: var(--pink_new) !important;
   }
 
   .filter_list-mobi{
@@ -266,7 +266,7 @@
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pink_new);
   }
 
   .container_checkbox .input_checkbox:checked ~ .checkmark_checkbox {
@@ -289,7 +289,7 @@
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: var(--primary);
+    background: var(--pink_new);
   }
 
 .remove_daterange{

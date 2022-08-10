@@ -201,13 +201,27 @@
     content:"";
 }
 
+.activeName .name_trace--violation:after{
+    background-image: url(../../image/Under-than-pink.svg) !important;
+}
+
+.activeName .name_trace--violation,
+.activeName a,
+.name_trace--violation:hover{
+    color: var(--pink_new);
+}
+
+.name_trace--violation:hover:after{
+    background-image: url(../../image/Under-than-pink.svg);
+}
+
 .name_login{
     font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 19px;
     line-height: 29px;
-    color: var(--primary);
+    color: var(--pink_new);
     width: 70%;
     white-space: nowrap;
     overflow: hidden;
@@ -231,7 +245,7 @@
 }
 
 .after-login:after{
-    background-image: url(../../image/Under-than.svg);
+    background-image: url(../../image/Under-than-pink.svg);
     width: 10px;
     height: 10px;
     cursor: pointer;
@@ -260,7 +274,7 @@
     font-weight: 450;
     font-size: 20px;
     line-height: 29px;
-    color: #0C3C60;
+    color: var(--primary);
 }
 
 .checkBox_none{

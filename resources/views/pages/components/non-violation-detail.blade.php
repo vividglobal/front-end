@@ -39,7 +39,7 @@
                     @endif
                     <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
                 <div class="media-link" id="copy-link"  link-copy={{$article -> link ?? '' }}>
-                    <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
+                    <img src="{{ asset('assets/image/link_dark_gray.svg') }}" alt="">
                     <p>Copy URL</p>
                 </div>
             </div>

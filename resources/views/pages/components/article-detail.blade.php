@@ -46,7 +46,7 @@
                         data-status="{{$botStatus}}"
                     >{{getStatusText($botStatus)}}</p>
                 <div class="media-link" id="copy-link"  link-copy={{$article -> link ?? '' }}>
-                    <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
+                    <img src="{{ asset('assets/image/link_dark_gray.svg') }}" alt="">
                     <p>Copy URL</p>
                 </div>
             </div>

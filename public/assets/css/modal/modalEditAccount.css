@@ -116,7 +116,7 @@
     display: flex;
     align-items: center;
     text-decoration-line: underline;
-    color: var(--primary);
+    color: var(--pink_new);
     margin-top: 10px;
   }
   .btn-modal{
@@ -142,7 +142,7 @@
 
   .btn-modal button:last-child{
     color: var(--white);
-    background-color: var(--primary);
+    background-color: var(--pink_new);
   }
 
   .list--suspected__text--img > div:first-child{
@@ -201,7 +201,7 @@
     width: 25px;
     border-radius: 50%;
     background-color: var(--white);
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pink_new);
   }
 
   .container__checkbox:hover input ~ .checkmark {
@@ -229,7 +229,7 @@
     height: 15px;
     border: solid var(--primary-color);
     border-radius: 50%;
-    background: var(--primary);
+    background: var(--pink_new);
   }
 
   .text-dangers{

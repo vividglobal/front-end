@@ -49,7 +49,7 @@
         width: 15px !important;;
         height: 15px !important;;
         border-radius: 50%;
-        background: var(--primary);
+        background: var(--pink_new);
         border: none !important;
     }
 
@@ -74,7 +74,7 @@
         font-weight: 420;
         font-size: 25px;
         line-height: 36px;
-        color: #0C3C60;
+        color: var(--primary);
     }
 
     .close_modal_mobi{
@@ -93,7 +93,7 @@
         font-weight: 420;
         font-size: 25px;
         line-height: 36px;
-        color: var(--primary);
+        color: var(--pink_new);
         padding-left: 10px;
     }
 
@@ -104,7 +104,7 @@
         font-weight: 420;
         font-size: 25px;
         line-height: 36px;
-        color: var(--primary);
+        color: var(--pink_new);
         margin-left: 10px;
       }
 
@@ -115,7 +115,7 @@
         font-weight: 420;
         font-size: 25px;
         line-height: 36px;
-        color: var(--primary);
+        color: var(--pink_new);
         margin-left: 10px;
       }
 

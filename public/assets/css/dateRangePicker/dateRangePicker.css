@@ -410,13 +410,16 @@
     }
   }
 
-  .daterangepicker td.in-range{
+.daterangepicker td.in-range{
     background-color: #F8F7FA !important;
+    color: var(--pink_new) !important;
 }
 
 .daterangepicker td.active, .daterangepicker td.active:hover {
-    background-color: #0C3C60 !important;
+    background-color: var(--pink_new) !important;
+    color: var(--white) !important;
 }
+
 
 @media(max-width:500px){
     .daterangepicker.show-calendar .drp-buttons {

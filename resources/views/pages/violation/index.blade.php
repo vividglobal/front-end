@@ -304,7 +304,7 @@
                                 <div class="suspected__file__area">
                                     <div class='file-input input-style'>
                                         <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
-                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/input-file.png')}}"  alt=""></span>
+                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/group_upfile.svg')}}"  alt=""></span>
                                     </div>
                                 </div>
                             </div>

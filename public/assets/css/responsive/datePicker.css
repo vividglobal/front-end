@@ -81,13 +81,14 @@
         color: var(--gray-6F);
         border: 1px solid #C7C7C7;
         background-color: var(--white);
+        border-radius: inherit;
         padding: 12px 0;
         height: 50px;
     }
 
     .daterangepicker .drp-buttons .applyBtn{
         color: var(--white);
-        background-color: var(--primary);
+        background-color: var(--pink_new);
     }
 
     .daterangepicker .drp-buttons .btn:nth-child(2) {
