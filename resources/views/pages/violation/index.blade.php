@@ -258,7 +258,7 @@
                             @if(isRole(ROLE_OPERATOR))
                             <div class="track track-switch">
                                 <div class="entry">
-                                    <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} >
+                                    <img  class="td-link btn-switch" src="{{asset('assets/image/switch.png')}}" alt="#" data-id={{$article->_id }} data-type={{$article->detection_type}}>
                                 </div>
                             </div>
                             @endif
@@ -338,9 +338,9 @@
 
     <div class="modal-confirm-title">
         <div class="modal-confirm-content">
-            <div class="head-confirm">
+            <div class="head-confirm" id="content_status_progress">
                 <h1>Confirmation</h1>
-                <p style="text-align: center;">Switch status successfully</p>
+                <p style="text-align: center;"></p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>

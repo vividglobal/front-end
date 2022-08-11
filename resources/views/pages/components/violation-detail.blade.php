@@ -157,7 +157,7 @@
             @if(isRole(ROLE_OPERATOR))
             <div class="list-child-top">
                 <h3 class="title-style status-leal">Switch status</h3>
-                <img  class="td-link btn-switch-mobile" src="{{asset('assets/image/switch-mobile.png')}}" alt="#" data-id={{$article->_id }} >
+                <img  class="td-link btn-switch-mobile" src="{{asset('assets/image/switch-mobile.png')}}" alt="#" data-id={{$article->_id }}  data-type={{$article->detection_type}} >
             </div>
             @endif
             <div class="list-child-top">
@@ -170,9 +170,9 @@
 
 <div class="modal-confirm-title modal-confirm-title-mobile">
     <div class="modal-confirm-content modal-confirm-content-mobile">
-        <div class="head-confirm">
+        <div class="head-confirm" id="content_status_progress">
             <h1>Confirmation</h1>
-            <p class="title-modal-style" style="text-align: center;">Switch status successfully</p>
+            <p class="title-modal-style" style="text-align: center;"></p>
         </div>
         <div class="head-confirm-btn">
             <button class="confirm-btn btn-cancel close button-cancel-style">Cancel</button>

@@ -8,7 +8,7 @@ let articleId;
 let csrf = $('meta[name="csrf-token"]').attr('content')
 let url
 let id
-
+let checkdataType = ""
 ClickButonLink()
 
 $(".history-back").click(function(){
@@ -17,6 +17,13 @@ $(".history-back").click(function(){
 
 btnSwitch.click(function () {
     $(".mdl-js").css("overflow-y","hidden");
+    let dataType = $(this).attr('data-type')
+    checkdataType = dataType
+    if(dataType === "MANUAL"){
+        $("#content_status_progress p").text("Are you sure to move this post back to submit violations?")
+    }else{
+        $("#content_status_progress p").text("Are you sure to move this post back to auto-detect violations?")
+    }
     id = $(this).attr("data-id")
     // url = ""+id+"/action-reset";
     $('#confirm-mobile').attr('data-id',id)
@@ -48,7 +55,14 @@ $("#confirm-mobile").click(function(){
         // removeCurrentRow()
         hide_overlay()
         if(msg){
-            show_success("This post has been moved to auto - detect violation list");
+            if(msg){
+                if(checkdataType  === "MANUAL"){
+                    show_success("This post has been successfully moved to submit violation");
+                    
+                }else{
+                    show_success("This post has been successfully moved to auto-detect violation");
+                }
+            }
             $('#toaster').addClass('toaster-style-mobile')
             BackUrl("/non-violation", "unable-to-detect")
         }

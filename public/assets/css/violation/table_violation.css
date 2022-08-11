@@ -214,7 +214,7 @@
   font-weight: 550;
   font-size: 20px;
   line-height: 136.5%;
-  color: #082136;
+  color: var(--black);
 }
 .select--country {
   z-index: 1000 !important;
@@ -435,7 +435,7 @@
   line-height: 136.5%;
   color: var(--primary);
   font-family: var(--font-bradon);
-  color: #082136;
+  color: var(--black);
 }
 .head-confirm p{
   font-weight: 550;

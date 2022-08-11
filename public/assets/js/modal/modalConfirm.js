@@ -7,14 +7,24 @@ let url
 let id
 
 ClickButonLink()
+
+let checkdataType = ""
 btnSwitch.click(function () {
-    $(".mdl-js").css("overflow-y","hidden");
+    let dataType = $(this).attr('data-type')
+    checkdataType = dataType
+    if(dataType === "MANUAL"){
+        $("#content_status_progress p").text("Are you sure to move this post back to submit violations?")
+    }else{
+        $("#content_status_progress p").text("Are you sure to move this post back to auto-detect violations?")
+    }
+    scrollScreen.disable()
     id = $(this).attr("data-id")
     url = ""+id+"/action-reset";
     modalconfim.show();
     currentRow = $(this).parents('.scroll-table');
     articleId = currentRow.attr('data-id');
 });
+
 $("#confirm-yes").click(function(){
     let childrenlength = $('#children-length >tr').length -1
     show_overlay()
@@ -29,7 +39,12 @@ $("#confirm-yes").click(function(){
         removeCurrentRow()
         hide_overlay()
         if(msg){
-            show_success("This post has been moved to auto - detect violation list");
+            if(checkdataType  === "MANUAL"){
+                show_success("This post has been successfully moved to submit violation");
+                
+            }else{
+                show_success("This post has been successfully moved to auto-detect violation");
+            }
         }
     })
     .fail(function(){
@@ -44,7 +59,8 @@ $("#confirm-yes").click(function(){
     if(childrenlength === 15 || childrenlength === 0){
         location.reload(true);
     }
-    $(".mdl-js").css("overflow-y","scroll");
+    // $(".mdl-js").css("overflow-y","scroll");
+    scrollScreen.enable()
 });
 function removeCurrentRow() {
     $(`tr[data-id="${articleId}"]`).fadeOut('slow');
@@ -55,7 +71,8 @@ function removeCurrentRow() {
 
 span.click(function () {
     modalconfim.hide();
-    $(".mdl-js").css("overflow-y","scroll");
+    // $(".mdl-js").css("overflow-y","scroll");
+    scrollScreen.enable()
 });
 
 $(window).on('click', function (e) {
