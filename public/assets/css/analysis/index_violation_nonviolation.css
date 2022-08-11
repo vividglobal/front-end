@@ -134,7 +134,7 @@
 }
 
 #apply_date{
-    background-color: var(--primary);
+    background-color: var(--pink_new);
     color: var(--white);
     font-family: var(--font-avenir_roman);
     font-style: normal;

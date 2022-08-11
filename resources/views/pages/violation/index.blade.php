@@ -304,7 +304,7 @@
                                 <div class="suspected__file__area">
                                     <div class='file-input input-style'>
                                         <input type='file' id="upload" accept="application/pdf" multiple @change="trySubmitFile">
-                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/input-file.png')}}"  alt=""></span>
+                                        <span class='button'><img class="img-upfile" type="file" src="{{asset('assets/image/group_upfile.svg')}}"  alt=""></span>
                                     </div>
                                 </div>
                             </div>
@@ -340,7 +340,7 @@
         <div class="modal-confirm-content">
             <div class="head-confirm">
                 <h1>Confirmation</h1>
-                <p style="text-align: center;">Are you sure moving this post to auto-detect violations list?</p>
+                <p style="text-align: center;">Switch status successfully</p>
             </div>
             <div class="head-confirm-btn">
                 <button class="confirm-btn btn-cancel close">Cancel</button>

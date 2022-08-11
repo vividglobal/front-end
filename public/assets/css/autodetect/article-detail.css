@@ -41,14 +41,14 @@
     line-height: 270%;
     display: flex;
     align-items: center;
-    color: #0C3C60;
+    color: var(--primary);
 }
 .title-style-checking{
     font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 420;
     font-size: 20px;
-    color: #0C3C60;
+    color: var(--primary);
 }
 .p-style{
     font-style: normal;
@@ -84,7 +84,7 @@ flex-direction: column;
     font-style: normal;
     font-weight: 420;
     font-size: 25px;
-    color: #0C3C60;
+    color: var(--pink_new);
 }
 
 .media-link{
@@ -97,7 +97,7 @@ flex-direction: column;
     font-weight: 500;
     font-size: 16px;
     text-decoration-line: underline;
-    color: #0C3C60;
+    color: var(--gray-6F);
     margin-left: 15px;
 }
 .detail-info{
@@ -223,7 +223,7 @@ color: #000000;
 }
 .btn-violation{
     width: 95%;
-    background: #0C3C60;
+    background: var(--pink_new);
     margin: 10px;
     font-style: normal;
     font-weight: 600;

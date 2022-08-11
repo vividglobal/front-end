@@ -60,7 +60,7 @@
     width: 50%;
     height: 49px;
     color: var(--white);
-    background: var(--primary);
+    background: var(--pink_new);
     max-width: none;
     max-height: none;
 }
@@ -112,7 +112,7 @@
     font-weight: 420 !important;
     font-size: 20px !important;
     line-height: 29px !important;
-    color: #0C3C60;
+    color: var(--primary);
 }
 .items_file-style{
     margin-bottom: 10px;

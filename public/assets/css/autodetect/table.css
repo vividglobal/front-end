@@ -371,7 +371,7 @@
     text-align: center;
     display: flex;
     align-items: center;
-    color: #0C3C60;
+    color: var(--primary);
     font-family: system-ui !important;
   }
   .heading,.heading-three{
@@ -537,7 +537,7 @@
   font-size: 18px;
   line-height: 136.5%;
   color: var(--white);
-  background: var(--primary);
+  background: var(--pink_new);
 }
 
 .search__result__table p{

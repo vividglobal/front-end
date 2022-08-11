@@ -22,17 +22,17 @@
                             </div>
                         </li>
                         @endauth
-                        <li class="nav--btn__after--login nav_home" >
+                        <li class="nav--btn__after--login nav_home {{(request () -> is ('/')) ? 'activeName': ''}}" >
                             <a class="nav-link" href="/">{{ __('Home') }}</a>
                             <div class="nav--btnBorder__bottom {{(request () -> is ('/')) ? 'activeHeader': ''}}">
                             </div>
                         </li>
-                        <li class="nav--btn__after--login">
+                        <li class="nav--btn__after--login {{(request () -> is ('articles/auto-detection')) ? 'activeName': ''}}">
                             <a class="nav-link" href="/articles/auto-detection">{{ __('Auto-detect violations') }}</a>
                             <div class="nav--btnBorder__bottom {{(request () -> is ('articles/auto-detection')) ? 'activeHeader': ''}}">
                             </div>
                         </li>
-                        <li class="nav--btn__after--login violation_review">
+                        <li class="nav--btn__after--login violation_review {{(request () -> is ('articles/code-violation')) || request () -> is ("articles/unable-to-detect") ? 'activeName': ''}}">
                             <div class="name_trace--violation">
                                 {{ __('Violation reviewed') }}
                             </div>
@@ -65,14 +65,14 @@
                                 </li>
                             </ul>
                         </li>
-                        <li  class="nav--btn__after--login">
+                        <li  class="nav--btn__after--login  {{(request () -> is ('articles/submit-violation')) ? 'activeName': ''}}">
                             <a class="nav-link" href="/articles/submit-violation">{{ __('Submit violations') }}</a>
                             <div class="nav--btnBorder__bottom
                             {{(request () -> is ('articles/submit-violation')) ? 'activeHeader': ''}}"
                             >
                             </div>
                         </li>
-                        <li  class="nav--btn__after--login">
+                        <li  class="nav--btn__after--login {{(request ()-> is ('analysis')) ? 'activeName': ''}}">
                             <a class="nav-link" href="/analysis">{{ __('Analysis') }}</a>
                             <div class="nav--btnBorder__bottom
                             {{(request ()-> is ('analysis')) ? 'activeHeader': ''}}"
@@ -80,7 +80,7 @@
                             </div>
                         </li>
                         @is_admin
-                            <li class="nav--btn__after--login">
+                            <li class="nav--btn__after--login {{(request ()-> is ('admins')) ? 'activeName': ''}}" ">
                                 <a class="nav-link" href="/admins">{{ __('Admin Management') }}</a>
                                 <div class="nav--btnBorder__bottom
                                 {{(request ()-> is ('admins')) ? 'activeHeader': ''}}"
@@ -89,7 +89,7 @@
                             </li>
                         @endis_admin
                         @auth
-                            <li class="nav--btn__after--login">
+                            <li class="nav--btn__after--login  {{(request ()-> is ('user-manual')) ? 'activeName': ''}}">
                                 <a class="nav-link" href="/user-manual">{{ __('User manual') }}</a>
                                 <div class="nav--btnBorder__bottom
                                 {{(request ()-> is ('user-manual')) ? 'activeHeader': ''}}"

@@ -13,6 +13,7 @@ $(document).ready(function () {
     let elementExists = document.querySelector(".modal-title");
 
     clickimg.click(function () {
+        scrollScreen.disable()
         let imgSrc = $(this).attr('src')
         let  idImg = $(this).attr('data-id');
         let brandName = $(this).parents('tr').find('.brand-name').text();
@@ -23,7 +24,6 @@ $(document).ready(function () {
         let btnpenext = ""
         let lengthlish = 0
         for(let i = 0; i < list.split(';').length; i++){
-
             if(list.split(';')[i].trim() !== ""){
                 lengthlish += 1
                 linkImg += `
@@ -43,11 +43,12 @@ $(document).ready(function () {
             $('.modal-content-img').append(btnpenext)
         }
         imageModal.show();
-        $(".mdl-js").css("overflow-y","hidden");
+        // $(".mdl-js").css("overflow-y","hidden");
 
     });
 
     btn.click(function () {
+        scrollScreen.disable()
         let caption = $(this).find('a').text();
         let brandName = $(this).parents('tr').find('.brand-name').text();
         if(brandName){
@@ -57,7 +58,7 @@ $(document).ready(function () {
         }
         captionModal.find('.title-modal').text(caption)
         captionModal.show();
-        $(".mdl-js").css("overflow-y","hidden");
+        // $(".mdl-js").css("overflow-y","hidden");
     });
     span.click(function () {
         $('.img-disabled').show()
@@ -69,16 +70,19 @@ $(document).ready(function () {
         $('.no-file-remove').remove();
         $('.mySlides').remove();
         $('.closeprevnext').remove();
-        $(".mdl-js").css("overflow-y","scroll");
-
+        // $(".mdl-js").css("overflow-y","scroll");
+        scrollScreen.enable()
     });
+
+
     $(window).on('click', function (e) {
         if ($(e.target).is('.modal-upload-file')) {
             uploadModal.hide();
             btnuploadfile.hide();
             $('.div-item').remove();
             $('.no-file-remove').remove();
-            $(".mdl-js").css("overflow-y","scroll");
+            // $(".mdl-js").css("overflow-y","scroll");
+            scrollScreen.enable()
         }
     });
 
@@ -87,7 +91,8 @@ $(document).ready(function () {
         $(this).addClass("check")
         let user = $(this).attr("data-user")
         uploadModal.show();
-        $(".mdl-js").css("overflow-y","hidden");
+        // $(".mdl-js").css("overflow-y","hidden");
+        scrollScreen.disable()
         show_overlay()
         rowId = $(this).attr("data-id")
         checklogin = $('.check-login').attr('t-login');

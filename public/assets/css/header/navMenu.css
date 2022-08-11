@@ -39,7 +39,7 @@
 
 .nav-link:focus,
 .nav-link:hover{
-    color: var(--primary) !important;
+    color: var(--pink_new) !important;
 }
 
 .after-login{
@@ -107,7 +107,7 @@ nav-menu > ul li{
 }
 
 .btn__header li:hover .nav--btnBorder__bottom{
-    border-bottom: 1px solid var(--primary);
+    border-bottom: 1px solid var(--pink_new);
     transition: 0.3s linear;
 }
 
@@ -129,13 +129,13 @@ li:nth-child(3) img{
     top: 10px;
     width: 140px;
     height: 50px;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--pink_new);
 }
 
 
 .nav__btn--login > a {
     padding: 10px 0;
-    color: var(--primary);
+    color: var(--pink_new);
     max-width: 179px;
     width: 100%;
     margin: 0px;
@@ -149,7 +149,7 @@ li:nth-child(3) img{
 .btn--export--excel{
     margin-left: 5px;
     padding: 12px 10px;
-    background-color: var(--primary);
+    background-color: var(--pink_new);
     text-decoration: none;
     width: 115px;
     font-family: var( --font-avenir_roman);
@@ -191,7 +191,7 @@ li:nth-child(3) img{
 }
 
 .activeHeader{
-    border-bottom: 1px solid #0C3C60;
+    border-bottom: 1px solid var(--pink_new);
 }
 
 .activeBackground{

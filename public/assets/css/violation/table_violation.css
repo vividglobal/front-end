@@ -478,7 +478,7 @@
   font-size: 18px;
   line-height: 136.5%;
   color: var(--white);
-  background: var(--primary);
+  background: var(--pink_new);
 }
 .modal-confirm-title{
     display: none;

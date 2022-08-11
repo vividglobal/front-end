@@ -35,7 +35,7 @@ $("document").ready(function(){
     $(".suspected__text__area").on('input',function(e){
         let value = $(this).find("textarea").val().trim()
         if(value !== ""){
-            $("#submit_form").css("background","var(--primary)")
+            $("#submit_form").css("background","var(--pink_new)")
         }else{
             $("#submit_form").css("background","var(--gray-C7)")
         }
@@ -49,7 +49,7 @@ $("document").ready(function(){
             var value = fileInput.value.replace(/^.*[\\\/]/, '')
             el.className += ' -chosen'
             $(".suspected__file__area").find(".file-input_detect").find(".label").text(value)
-            $("#submit_form").css("background","var(--primary)")
+            $("#submit_form").css("background","var(--pink_new)")
         }
     }
 

@@ -46,7 +46,7 @@
 }
 
 .btn__apply{
-    background-color: var(--primary);
+    background-color: var(--pink_new);
     color: var(--white);
     font-family: var(--font-avenir_roman);
     font-style: normal;
@@ -60,7 +60,7 @@
 .create__profile{
     margin-left: 5px;
     padding: 12px 13px;
-    background-color: var(--primary);
+    background-color: var(--pink_new);
     width: 153px;
     display: flex;
     justify-content: center;

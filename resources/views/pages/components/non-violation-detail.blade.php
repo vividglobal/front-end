@@ -39,7 +39,7 @@
                     @endif
                     <p class="status-title unviolation-color" data-status="NON_VIOLATION">Unable to detect</p>
                 <div class="media-link" id="copy-link"  link-copy={{$article -> link ?? '' }}>
-                    <img src="{{ asset('assets/image/ico_link_enable.svg') }}" alt="">
+                    <img src="{{ asset('assets/image/link_dark_gray.svg') }}" alt="">
                     <p>Copy URL</p>
                 </div>
             </div>
@@ -101,7 +101,7 @@
     <div class="modal-confirm-content modal-confirm-content-mobile">
         <div class="head-confirm">
             <h1>Confirmation</h1>
-            <p style="text-align: center;" class="title-modal-style">Are you sure to move this post back to auto-dectect violation?</p>
+            <p style="text-align: center;" class="title-modal-style">Switch status successfully</p>
         </div>
         <div class="head-confirm-btn">
             <button class="confirm-btn btn-cancel close button-cancel-style">Cancel</button>
