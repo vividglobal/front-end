@@ -189,7 +189,7 @@ $(document).ready(function(){
             for (let i = 0; i < data.violation_code.length; i++) {
                 codelish += `
                     <div>
-                        <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                        <h4 class="p-style h4-title" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                             ${data.violation_code[i].name}
                         </h4>
                     </div>
@@ -295,10 +295,10 @@ $(document).ready(function(){
                 fileHtmlItems = `
                     <div class="table-code-buton" id="table-code-buton-supervisor">
                         <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
-                            <h2>Agree code article</h2>
+                            <h2 class="agree_status">Agree code article</h2>
                         </div>
                         <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
-                            <h2>Reselect code article</h2>
+                            <h2 class="disagree_status">Reselect code article</h2>
                         </div>
                     </div>
                 `
@@ -314,7 +314,7 @@ $(document).ready(function(){
             fileHtmlItems = `
                 <div class="table-code-buton" id="table-code-buton-supervisor">
                     <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
-                        <h2>Select code article</h2>
+                        <h2 class="agree_status">Select code article</h2>
                     </div>
                 </div>`;
             }
@@ -332,10 +332,10 @@ $(document).ready(function(){
                 fileHtmlItems = `
                     <div class="table-code-buton" id="table-code-buton-operator">
                         <div data-id="${articleId}" attr-status="AGREE" class="check-true check-violation-code  btn-violation">
-                            <h2>Agree code article</h2>
+                            <h2 class="agree_status">Agree code article</h2>
                         </div>
                         <div data-id="${articleId}" attr-status="DISAGREE" class="check-false add-violation-code btn-non-violation">
-                            <h2>Reselect code article</h2>
+                            <h2 class="disagree_status">Reselect code article</h2>
                         </div>
                     </div>
                 `
@@ -351,7 +351,7 @@ $(document).ready(function(){
             fileHtmlItems = `
                 <div class="table-code-buton" id="table-code-buton-supervisor">
                     <div data-id="${articleId}" attr-status="${AGREE}" class="check-true add-violation-code btn-violation btn-violation-code">
-                        <h2>Select code article</h2>
+                        <h2 class="agree_status">Select code article</h2>
                     </div>
                 </div>`;
             }

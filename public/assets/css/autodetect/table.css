@@ -809,6 +809,10 @@ input[type=checkbox] {
 .mobleprevnext{
   top: 165px !important;
 }
+.updata-form-analysis{
+  font-family: system-ui !important;
+  font-size: 15px !important;
+}
 
 
 
@@ -925,4 +929,10 @@ input[type=checkbox] {
 }
 .agree_status{
   color: white;
+}
+.disagree_status{
+  color:#6F6F6F;
+}
+.active-color{
+  color:white !important;
 }

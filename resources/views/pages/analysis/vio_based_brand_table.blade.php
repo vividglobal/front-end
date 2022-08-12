@@ -56,14 +56,14 @@
     </ul>
     @foreach($brandData as $key => $brand)
         <ul class="table_analysis_body">
-            <li class="item_base_on_brand updata-form">
+            <li class="item_base_on_brand updata-form-analysis">
                 {{ ($key + 1) + (($brandData->currentpage() - 1) * $brandData->perpage()) }}
             </li>
-            <li class="item_base_on_brand updata-form">{{ $brand->name }}</li>
+            <li class="item_base_on_brand updata-form-analysis">{{ $brand->name }}</li>
             <div class="res_item_brand">
-                <li class="item_base_on_brand updata-form">{{ $brand->total_article }}</li>
-                <li class="item_base_on_brand updata-form">{{ $brand->total_violation_article }}</li>
-                <li class="item_base_on_brand updata-form">{{ $brand->percent_violation_per_article }}%</li>
+                <li class="item_base_on_brand updata-form-analysis">{{ $brand->total_article }}</li>
+                <li class="item_base_on_brand updata-form-analysis">{{ $brand->total_violation_article }}</li>
+                <li class="item_base_on_brand updata-form-analysis">{{ $brand->percent_violation_per_article }}%</li>
             </div>
         </ul>
         @endforeach
