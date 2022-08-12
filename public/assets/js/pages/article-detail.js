@@ -189,7 +189,7 @@ $(document).ready(function(){
             for (let i = 0; i < data.violation_code.length; i++) {
                 codelish += `
                     <div>
-                        <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                        <h4 class="p-style h4-title" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                             ${data.violation_code[i].name}
                         </h4>
                     </div>

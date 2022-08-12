@@ -184,7 +184,7 @@
                                     <h4 class="p-style">Code article</h4>
                                     @foreach ($article->supervisor_review['violation_code'] as $detectionCode)
                                         <div>
-                                            <h4 class="p-style" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
+                                            <h4 class="p-style h4-title" href="{{ getUrlName( "violation_code_id" , $detectionCode['id'] ) }}" id={{ $detectionCode['id'] }}>
                                                 {{$detectionCode['name'] ?? ''}}
                                             </h4>
                                         </div>

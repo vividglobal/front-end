@@ -202,7 +202,7 @@
         <!-- <input type='file' class="confirm-btn btn-yes" id="confirm-mobile" accept="application/pdf" multiple @change="trySubmitFile"></input> -->
         <div class='file-input input-style file-input-mobile button-upload-style'>
             <input type='file' id="upload" accept="application/pdf" @change="trySubmitFile" multiple>
-            <span class='button' >Upload file</span>
+            <span class='button agree_status' >Upload file</span>
         </div>
     </div>
     @else

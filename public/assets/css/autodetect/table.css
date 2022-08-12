@@ -933,3 +933,6 @@ input[type=checkbox] {
 .disagree_status{
   color:#6F6F6F;
 }
+.active-color{
+  color:white !important;
+}
