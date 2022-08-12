@@ -22,7 +22,7 @@
     font-weight: 600;
     font-size: 35px;
     line-height: 136.5%;
-    color: #082136;
+    color: var(--black);
     margin-bottom: 21px;
 }
 
@@ -76,6 +76,9 @@
     line-height: 18px;
     color: var(--pink_new);
     text-decoration: none;
+}
+.btn_forgot--pasword:hover{
+    color: var(--primary) !important;
 }
 
 .btn_submit{

@@ -2,6 +2,13 @@
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
+@media (min-width: 1113px) and (max-width: 1440px) {
+    .frame-wrapper iframe{
+        width: 105%;
+        left: -36px;
+    }
+    
+}
 @media (max-width: 739px) {
     .frame-wrapper iframe{
         top: -10px;

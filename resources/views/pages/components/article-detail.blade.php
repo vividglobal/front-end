@@ -290,10 +290,10 @@
                 <div class="table-code-buton" id="table-code-buton-supervisor">
                     @if(isPendingStatus($article->supervisor_review['status']))
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-                            <h2>Agree with VIVID’s status</h2>
+                            <h2 class="agree_status">Agree with VIVID’s status</h2>
                         </div>
                         <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
-                            <h2>Disagree with VIVID’s status</h2>
+                            <h2 class="disagree_status">Disagree with VIVID’s status</h2>
                         </div>
                     @elseif(isViolationStatus($article->supervisor_review['status']) && !($article->supervisor_review['violation_code'])
                     && ($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')
@@ -316,10 +316,10 @@
                 <div class="table-code-buton" id="table-code-buton-supervisor">
                     @if(isPendingStatus($article->operator_review['status']))
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-status btn-violation">
-                            <h2>Agree with VIVID’s status</h2>
+                            <h2 class="agree_status">Agree with VIVID’s status</h2>
                         </div>
                         <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false check-status btn-non-violation">
-                            <h2>Disagree with VIVID’s status</h2>
+                            <h2 class="disagree_status">Disagree with VIVID’s status</h2>
                         </div>
                     @elseif(isViolationStatus($article->operator_review['status']) && !($article->operator_review['violation_code'])
                     && ($article->operator_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')

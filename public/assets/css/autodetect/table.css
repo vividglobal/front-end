@@ -236,7 +236,7 @@
     line-height: 136.5%;
     color: var(--primary);
     font-family: var(--font-bradon);
-    color: #082136;
+    color: var(--black);
   }
 
   .search_code_article{
@@ -922,4 +922,7 @@ input[type=checkbox] {
 @keyframes fadeimg {
   from {opacity: .4} 
   to {opacity: 1}
+}
+.agree_status{
+  color: white;
 }
