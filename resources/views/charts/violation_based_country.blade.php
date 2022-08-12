@@ -15,7 +15,8 @@
 
     const data = [{
         type: 'choropleth',
-        locationmode: 'country names',
+        locationmode
+        : 'country names',
         locations: unpack(countryData, 'country'),
         z: unpack(countryData, 'total_articles'),
         text: unpack(countryData, 'country'),
@@ -45,13 +46,12 @@
                 type: 'natural earth'
             },
             showland : true,
-            landcolor : '#e5ecf6',
+            landcolor : '#f5b5d9',
 
         },
         // dragmode: true,
-        height: 600,
+        height: 1000,
     };
-
 
     const config = {
         showLink: false,
