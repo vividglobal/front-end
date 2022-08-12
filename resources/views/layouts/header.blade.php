@@ -33,7 +33,7 @@
                             </div>
                         </li>
                         <li class="nav--btn__after--login violation_review {{(request () -> is ('articles/code-violation')) || request () -> is ("articles/unable-to-detect") ? 'activeName': ''}}">
-                            <div class="name_trace--violation">
+                            <div class="name_trace--violation dropdown_header">
                                 {{ __('Violation reviewed') }}
                             </div>
                             <div class="nav--btnBorder__bottom
