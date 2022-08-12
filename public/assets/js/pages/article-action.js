@@ -185,7 +185,7 @@ $(document).ready(function(){
         for (let i = 0; i < data.violation_code.length; i++) {
             codeString +=
                         `<div>
-                            <a>
+                            <a class="updata-form">
                                 ${data.violation_code[i].name}
                             </a>
                         </div>`

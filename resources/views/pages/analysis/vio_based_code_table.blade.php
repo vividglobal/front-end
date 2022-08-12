@@ -23,13 +23,13 @@
     </ul>
     @foreach($codeData as $key => $code)
     <ul class="table_analysis_body">
-            <li  class="base_code_item updata-form">
+            <li  class="base_code_item updata-form-analysis">
                 {{ ($key + 1) + (($codeData->currentpage() - 1) * $codeData->perpage()) }}
             </li>
-            <li  class="base_code_item type_pc updata-form" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
-            <li  class="base_code_item updata-form">{{ $code->name }}</li>
-            <li  class="base_code_item type_mobi updata-form" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
-            <li  class="base_code_item total_code updata-form">{{ $code->total_article }}</li>
+            <li  class="base_code_item type_pc updata-form-analysis" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
+            <li  class="base_code_item updata-form-analysis">{{ $code->name }}</li>
+            <li  class="base_code_item type_mobi updata-form-analysis" style="color:{{ $code->type_color }}">{{ $code->type_name }}</li>
+            <li  class="base_code_item total_code updata-form-analysis">{{ $code->total_article }}</li>
     </ul>
     @endforeach
 </div>

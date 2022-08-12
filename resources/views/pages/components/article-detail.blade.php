@@ -298,15 +298,15 @@
                     @elseif(isViolationStatus($article->supervisor_review['status']) && !($article->supervisor_review['violation_code'])
                     && ($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true add-violation-code btn-violation btn-violation-code">
-                            <h2>Select code article</h2> 
+                            <h2 class="agree_status">Select code article</h2> 
                         </div>
                     @elseif(($article->supervisor_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='VIOLATION' 
                     && !$article->supervisor_review['violation_code'])
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-violation-code btn-violation">
-                            <h2>Agree code article</h2>
+                            <h2 class="agree_status">Agree code article</h2c>
                         </div>
                         <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false add-violation-code  btn-non-violation">
-                            <h2>Reselect code article</h2>
+                            <h2 class="disagree_status">Reselect code article</h2>
                         </div>
                     @endif
                 </div>
@@ -324,15 +324,15 @@
                     @elseif(isViolationStatus($article->operator_review['status']) && !($article->operator_review['violation_code'])
                     && ($article->operator_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='NON_VIOLATION')
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true add-violation-code btn-violation btn-violation-code">
-                            <h2>Select code article</h2> 
+                            <h2 class="agree_status">Select code article</h2> 
                         </div>
                     @elseif(($article->operator_review['status'])==='VIOLATION' && ($article->detection_result['status'])==='VIOLATION' 
                     && !$article->operator_review['violation_code'])
                         <div data-id="{{ $article->_id }}" attr-status="AGREE" class="check-true check-violation-code btn-violation">
-                            <h2>Agree code article</h2>
+                            <h2 class="agree_status">Agree code article</h2>
                         </div>
                         <div data-id="{{ $article->_id }}" attr-status="DISAGREE" class="check-false add-violation-code  btn-non-violation">
-                            <h2>Reselect code article</h2>
+                            <h2 class="disagree_status">Reselect code article</h2>
                         </div>
                     @endif
                 </div>
