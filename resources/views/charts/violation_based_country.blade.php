@@ -51,6 +51,13 @@
         },
         // dragmode: true,
         height: 1000,
+        margin: {
+            l: 10,
+            r: 10,
+            b: 170,
+            t: 0,
+            pad: 2
+        }
     };
 
     const config = {
