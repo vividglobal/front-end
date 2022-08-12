@@ -145,6 +145,7 @@
     line-height: 136.5%;
     color: var(--primary);
     text-align: center;
+    padding: 20px 0 10px 0;
 }
 
 .Base_violation--brand .list--select--option .list--select__right p{

@@ -1,7 +1,7 @@
 $("document").ready(function(){
     $(document).mouseup(function(e){
        //dropdown trace violation
-       var btn = $(".name_trace--violation")
+       var btn = $(".dropdown_header")
 
        if (!btn.is(e.target) && btn.has(e.target).length === 0) {
                $(".nav--dropdown").hide()

@@ -1,100 +1,116 @@
- .modebar {
+.modebar {
     left: 50% !important;
     transform: translateX(-50%) !important;
 }
-@media (min-width: 1113px) and (max-width: 1440px) {
-    .frame-wrapper iframe{
-        width: 105%;
-        left: -36px;
-    }
-    
+
+.frame-wrapper{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
 }
-@media (max-width: 739px) {
-    .frame-wrapper iframe{
-        top: -10px;
-    }
-    .table_countries{
-        height: 515px;
+
+.frame-wrapper iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.table_map{
+    margin: 16px 199px;
+    height: 1060px;
+    border: 1px solid var(--gray-C7);
+    padding: 10px;
+}
+
+.block_map{
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1355px) {
+    .table_map {
+        margin: 16px 150px;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 1255px) {
+    .table_map {
+        margin: 16px 100px;
+    }
+}
+
+@media (max-width: 1113px) {
+    .table_map {
+        margin: 16px 16px;
+    }
+}
+
+@media (max-width: 739px) {
     .frame-wrapper iframe{
-        left: -40px;
-        width: 110%;
+        position: absolute;
+        top: 0;
+        left: -35px;
+        bottom: 0;
+        right: 0;
+        width: 107%;
+        height: 90%;
+    }
+    .table_map{
+        height: 800px;
     }
 }
 
 @media (max-width: 600px) {
     .frame-wrapper iframe{
-        left: -65px;
-        width: 115%;
-    }
-}
-
-@media (max-width: 550px) {
-    .frame-wrapper iframe{
+        top: -260px;
         left: -60px;
-        width: 115%;
+        width: 120%;
+        height: 140%;
+    }
+    .table_map{
+        height: 500px;
     }
 }
 
 @media (max-width: 500px) {
     .frame-wrapper iframe{
-        left: -75px;
-        width: 135%;
-        top: -135px;
+        left: -70px;
+        width: 130%;
     }
 }
 
 @media (max-width: 450px) {
     .frame-wrapper iframe{
-        left: -76px;
-        width: 142%;
-    }
-    .table_countries{
-        height: 465px;
+        width: 135%;
     }
 }
 
 @media (max-width: 400px) {
     .frame-wrapper iframe{
-        left: -85px;
-        width: 150%;
+        width: 140%;
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 350px) {
     .frame-wrapper iframe{
-        left: -77px;
-        top: -150px;
+        left: -75px;
+        width: 150%;
     }
 }
 
 @media (max-width: 350px) {
     .frame-wrapper iframe{
         left: -78px;
-        width: 155%;
     }
 }
 
-@media (max-width: 335px) {
+@media (max-width: 325px) {
     .frame-wrapper iframe{
-        left: -84px;
-        width: 161%;
-    }
-}
-
-@media (max-width: 300px) {
-    .frame-wrapper iframe{
-        left: -82px;
-        width: 170%;
-    }
-}
-
-@media (max-width: 320px) {
-    .frame-wrapper iframe{
-        left: -81px;
-        width: 165%;
+        width: 158%;
     }
 }

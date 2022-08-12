@@ -33,12 +33,14 @@
 </div>
 <div class="index_violation-nonViolation rows {{!@Auth::user()  ? "height_other" : "" }}" id="general">
 </div>
-<div class="Base_violation--brand table_brand table_countries">
-    <div >
-        <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
-    </div>
-    <div class="frame-wrapper">
-        <iframe id="world-map" src="/analysis/violation-by-country" frameborder="0" scrolling="no" ></iframe>
+<div class="table_map table_brand ">
+    <div class="block_map">
+        <div >
+            <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
+        </div>
+        <div class="frame-wrapper">
+            <iframe id="world-map" src="/analysis/violation-by-country" frameborder="0" scrolling="no" ></iframe>
+        </div>
     </div>
 </div>
 
