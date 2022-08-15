@@ -186,8 +186,8 @@
   }
 
   .checkbox__suspected:first-child:after {
-      content: "Enter the suspected text/Drop image";
-    }
+    content: "Enter the suspected text/Drop image";
+}
 
   .checkbox__suspected:nth-child(2):after {
     content: "Enter the suspected URL";
