@@ -135,6 +135,10 @@
         width: 100%;
     }
 
+    .list--suspected__text--img div label{
+        color: var(--gray-6F);
+    }
+
     .suspected__file__area  .file-input_detect{
         border: 1px solid var(--gray-C7);
     }
