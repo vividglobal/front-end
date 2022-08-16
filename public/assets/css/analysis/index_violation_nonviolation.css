@@ -30,7 +30,7 @@
 .title-violation{
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 170%;
     color: var(--black);
     white-space: nowrap;
@@ -38,6 +38,7 @@
     text-overflow: ellipsis;
     text-align: left;
     text-align: center;
+    margin-top: 10px;
 }
 
 .title_table_analysis{
