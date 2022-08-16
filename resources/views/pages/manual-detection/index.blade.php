@@ -11,10 +11,12 @@
                 <input type="radio" name="label_type" value="{{ LABEL_TYPE_IMAGE }}" id="image">
                 <span class="checkmark checkmark_label"></span>
             </label>
+            @auth
             <label class="container__checkbox checkbox__suspected col l-7 m-6 c-6">
                 <input type="radio" name="label_type" value="{{ LABEL_TYPE_URL }}" id="text">
                 <span class="checkmark checkmark_label"></span>
             </label>
+            @endauth
         </div>
         <!-- choose file -->
         <div class="rows">
