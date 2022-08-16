@@ -1,5 +1,4 @@
 .index_violation-nonViolation{
-    height: 360px;
     border: 1px solid var(--gray-C7);
     margin: 16px 199px;
     display: flex;
@@ -7,7 +6,7 @@
 }
 
 .height_before{
-    height: 30px !important;
+    height: 50px !important;
     text-align: center;
 }
 
@@ -31,19 +30,19 @@
 .title-violation{
     font-style: normal;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 170%;
-    color: #6F6F6F;
+    color: var(--black);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
-    width: 80%;
-    padding-right: 10px;
+    text-align: center;
 }
 
 .title_table_analysis{
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .review_violation .number-violation{
@@ -143,43 +142,6 @@
     line-height: 22px;
     width: 120px;
     border: none;
-}
-
-.index__violation{
-    padding: 0 8px;
-    height: 85px;
-}
-
-.height_other{
-    height: 210px;
-}
-
-.violations_analysis div{
-    background-color: var(--pink);
-    border-radius: 5px;
-    padding: 15px 25px;
-    position: relative;
-}
-
-.review_violation div{
-    background-color:#DDEAF3;
-    border-radius: 5px;
-    padding: 15px 25px;
-    position: relative;
-}
-
-.total_entries div {
-    background-color: var(--gray-F4);
-    border-radius: 5px;
-    padding: 15px 25px;
-    position: relative;
-}
-
-.unable_detect div{
-    background-color: #E2F2E3;
-    border-radius: 5px;
-    padding: 15px 25px;
-    position: relative;
 }
 
 .table_countries{

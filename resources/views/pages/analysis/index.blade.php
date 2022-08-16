@@ -31,7 +31,7 @@
         </div>
     </div>
 </div>
-<div class="index_violation-nonViolation rows {{!@Auth::user()  ? "height_other" : "" }}" id="general">
+<div class="index_violation-nonViolation rows " id="general">
 </div>
 <div class="table_map table_brand ">
     <div class="block_map">
@@ -73,6 +73,5 @@
     let csrf = "{{ csrf_token() }}";
 </script>
 <script src="{{ asset('assets/js/pages/analysis.js') }}"></script>
-<script src="{{ asset('assets/js/plugins/plotly/plotly-2.12.1.min.js') }}"></script>
-
+<script src="{{ asset('assets/js/pages/radial-progress-bar.js') }}"></script>
 @endsection

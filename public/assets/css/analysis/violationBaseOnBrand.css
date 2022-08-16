@@ -4,6 +4,10 @@
     padding: 26px 64px;
 }
 
+.index__violation{
+    text-align: center;
+}
+
 .title__base--violation{
     font-style: normal;
     font-weight: 600;
@@ -153,3 +157,45 @@
     margin-right: 5px;
     font-weight: 500;
 }
+
+
+/* ------------------------  */
+.circulars.counter {
+    display: inline-flex;
+    cursor:pointer;
+    width:200px;
+    height:200px;
+    max-width:100%;
+    position:relative;
+    justify-content:center;
+    align-items:center;
+    font-size: calc(1em + 1vmin);
+    transition: height .2s ease-in-out;
+    border-radius:50%;
+  }
+  .circulars .percentage {
+    position:absolute;
+    text-align:center;
+    top:45%;
+    left:50%;
+    vertical-align:middle;
+    transform:translate(-50%,-50%);
+    font-size: 40px;
+    color: var(--pink_new);
+  }
+  .circulars .amount{
+    position:absolute;
+    margin-top: 70px;
+    font-size: 18px;
+    color: var(--gray-6F);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%;
+  }
+
+  .circulars canvas {
+    position:absolute;
+    top:0;
+    left:0;
+  }
