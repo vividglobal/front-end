@@ -82,87 +82,6 @@
         text-align: center;
     }
 
-    .index__violation:first-child{
-        padding: 0 26px;
-    }
-
-    .index__violation {
-        display: block;
-        text-align: left;
-        padding: 0 16px;
-        margin-bottom: 25px;
-    }
-
-    .index__violation:nth-child(2) div{
-        margin: 0px 10px 20px 10px;
-        position: relative;
-        border-radius: 5px;
-    }
-
-    .index__violation:nth-child(3) div{
-        margin: 0px 10px 20px 10px;
-        position: relative;
-        border-radius: 5px;
-    }
-
-    .index__violation:nth-child(4) div{
-        margin: 0px 10px 20px 10px;
-        position: relative;
-        border-radius: 5px;
-    }
-
-    .index__violation:nth-child(5) div{
-        margin: 0px 10px 20px 10px;
-        position: relative;
-        border-radius: 5px;
-    }
-
-    .title-violation{
-        font-style: normal;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 170%;
-        color: #6F6F6F;
-        width: 80%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-right: 30px;
-    }
-
-    .number-violation{
-        font-style: normal;
-        font-weight: 600;
-        font-size: 31px;
-        line-height: 42px;
-        padding-top: 5px;
-    }
-
-    .percent-violation{
-        position: absolute;
-        top: 0px;
-        right: 0;
-        margin: 15px 20px;
-        background: transparent !important;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 136.5%;
-        color: var(--gray-6F) !important;
-    }
-
-    .total-violation{
-        position: absolute;
-        top: 0px;
-        right: 0;
-        margin: 15px 20px;
-        background: transparent !important;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 136.5%;
-        color: var(--gray-6F) !important;
-    }
     /* TABLE BASE ON BRAND */
     .Base_violation--brand .list--select--option .list--select__right{
         width: 100%;
@@ -347,6 +266,12 @@
     .slc_analysis .list--select__left #daterange{
         width: 100% !important;
     }
+    .circulars .amount{
+        max-width: 60%;
+    }
+    .index__violation{
+        margin-bottom: 20px !important;
+    }
 }
 
 @media (max-width: 500px){
@@ -357,5 +282,38 @@
     #apply_date{
         display: none;
     }
+
+    .circulars .percentage{
+        font-size: 35px;
+    }
+
+    .circulars .amount{
+        font-size: 16px;
+        margin-top: 55px;
+        max-width: 50%;
+    }
 }
 
+@media (max-width: 425px){
+
+    .circulars .percentage{
+        font-size: 30px;
+    }
+
+    .circulars .amount{
+        font-size: 14px;
+        margin-top: 45px;
+    }
+}
+
+@media (max-width: 350px){
+
+    .circulars .percentage{
+        font-size: 20px;
+    }
+    .circulars .amount{
+        font-size: 12px;
+        margin-top: 35px;
+        max-width: 40%;
+    }
+}
