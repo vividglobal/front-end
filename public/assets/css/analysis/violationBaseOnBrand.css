@@ -163,8 +163,8 @@
 .circulars.counter {
     display: inline-flex;
     cursor:pointer;
-    width:200px;
-    height:200px;
+    width:160px;
+    height:160px;
     max-width:100%;
     position:relative;
     justify-content:center;
@@ -176,7 +176,7 @@
   .circulars .percentage {
     position:absolute;
     text-align:center;
-    top:45%;
+    top:40%;
     left:50%;
     vertical-align:middle;
     transform:translate(-50%,-50%);
@@ -185,13 +185,14 @@
   }
   .circulars .amount{
     position:absolute;
-    margin-top: 70px;
+    margin-top: 50px;
     font-size: 18px;
     color: var(--gray-6F);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 90%;
+    padding: 0 15px;
   }
 
   .circulars canvas {
