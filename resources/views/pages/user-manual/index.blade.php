@@ -30,7 +30,7 @@
             </a>
             <div class="add" id="cl1">
                 <p><span>{{ __('Step 1 ') }}:</span>  {{__(" Click on the “Submit violations” page in the menu bar")}}.</p>
-                <img src="{{ asset('assets/image/usermanual/img-1.png') }}" loading="lazy">
+                <img src="{{ asset('assets/image/usermanual/img-home1.png') }}" loading="lazy">
                 <p><span> {{__("Step 2 ")}}:</span>  {{__(" Choose option “ Enter the suspected text/Drop image ”")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-2.png') }}" loading="lazy">
                 <p><span> {{__("Step 3")}}: </span>  {{__(" Enter the suspected text or upload photo from your computer")}}.</p>
@@ -79,7 +79,11 @@
             <div class="add" id="cl3">
                 <p><span></span> {{ __("Any link with the same domain name in the website") }}
                 <a href="https://drive.google.com/file/d/187v4IYal9WiQPI1GmmHGFWZ2yDD8jw1B/view">  {{__("this list")}} </a>,  {{__("examples")}}:</p>
-                <p><span></span><a href="https://www.clubillume.com.sg/">https://www.clubillume.com.sg/</a>  {{__("and")}} <a href="https://www.clubillume.com.sg/illuma-stage-3 "> https://www.clubillume.com.sg/illuma-stage-3 </a>.</p>
+                <p><span></span>
+                    <a href="https://www.clubillume.com.sg/" class="link_user_manual">https://www.clubillume.com.sg/</a>
+                    {{__("and")}}
+                    <a href="https://www.clubillume.com.sg/illuma-stage-3 " class="link_user_manual"> https://www.clubillume.com.sg/illuma-stage-3 </a>
+                    .</p>
             </div>
             <span class="border_grays"></span>
             <a data-id="#cl4">
@@ -160,6 +164,7 @@
                 <p><span> {{__("Step 3")}}:</span>  {{__(" The post will automatically move to the Unable to detect (Just for Operator but not other account)")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-19.png') }}" loading="lazy">
                 <p class="strong"><span></span> <strong> {{__("Disagree with VIVID’s status")}}.</strong></p>
+                <img src="{{ asset('assets/image/usermanual/img-n1.png') }}" loading="lazy" class="inherit_img">
                 <p><span> {{__("Step 1")}}:</span>  {{__(" Click the red “X” button if you disagree with “Unable to detect” status")}}.</p>
                 <img src="{{ asset('assets/image/usermanual/img-20.png') }}" loading="lazy" class="inherit_img">
                 <p><span></span>  {{__(" After clicking, the system will display a message to confirm the status.")}}.</p>

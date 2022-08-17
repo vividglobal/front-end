@@ -186,3 +186,7 @@ video[poster] {
   .container__usermanual{
       margin-bottom: 130px;
   }
+
+  .link_user_manual{
+      color: hsl(206,100%,40%);
+  }
