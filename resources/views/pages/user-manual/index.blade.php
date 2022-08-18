@@ -10,7 +10,7 @@
 </div>
 <div class="container__usermanual" >
     <div class="wrapper">
-        <video height="100%" width="100%" poster="{{ asset('assets/image/usermanual/img-landing-banner.png') }}" muted controls>
+        <video height="100%" width="100%" muted controls>
             <source  src="{{ asset('assets/image/usermanual/AT.mp4') }}" type="video/mp4"  media="all and (max-width: 444px)">
         </video>
     </div>
@@ -244,6 +244,7 @@
         <div class="panel" id="sl5">
             <p><span> {{__("Step 1")}}:</span>  {{__(" Select “Violation reviewed” on the menu bar and click “ Code Violations”")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-43.png') }}" loading="lazy" >
+            <img src="{{ asset('assets/image/usermanual/img-n2.png') }}" loading="lazy">
             <p><span> {{__("Step 2")}}:</span>  {{__(" Change the “Status Progress” according to action including")}}.</p>
             <img src="{{ asset('assets/image/usermanual/img-44.png') }}" loading="lazy">
             <ul>
