@@ -22,9 +22,9 @@
 </div>
 <div class="container__usermanual" >
     <div class="wrap-accordion">
-        <a data-id="#sl1" ><button class="accordion"> {{ __('Intrustions on how to check for violations') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl1" ><button class="accordion"> {{ __('Instrustions on how to check for violations') }} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl1">
-            <a data-id="#cl1"><button class="child-accordion"><?= __("Intrustions on how to check for violations with Image or Text") ?>
+            <a data-id="#cl1"><button class="child-accordion"><?= __("Instrustions on how to check for violations with Image or Text") ?>
             <img src="{{ asset('assets/image/plus.svg') }}" alt="">
             </button>
             </a>
@@ -356,7 +356,7 @@
                 <span class="border_grays"></span>
             </div>
         </div>
-        <a data-id="#sl9"><button class="accordion"> {{__("Instructions for arraging posts with sort functions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
+        <a data-id="#sl9"><button class="accordion"> {{__("Instructions for arranging posts with sort functions")}} <img src="{{ asset('assets/image/plus.svg') }}" alt=""></button></a>
         <div class="panel" id="sl9">
             <p><span></span>  {{__(" User can sort posts from A-Z and vice versa")}}.</p>
             <ul>

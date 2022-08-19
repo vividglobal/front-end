@@ -797,6 +797,7 @@ input[type=checkbox] {
 }
 .detectiontype:hover{
   text-decoration: underline;
+  cursor: pointer;
 }
 .img-style-focus{
   width: 22px;
@@ -924,7 +925,7 @@ input[type=checkbox] {
 }
 
 @keyframes fadeimg {
-  from {opacity: .4} 
+  from {opacity: .4}
   to {opacity: 1}
 }
 .agree_status{

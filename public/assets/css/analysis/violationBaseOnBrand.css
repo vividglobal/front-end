@@ -184,8 +184,7 @@
     color: var(--pink_new);
   }
   .circulars .amount{
-    position:absolute;
-    margin-top: 50px;
+    margin-top: 40px;
     font-size: 18px;
     color: var(--gray-6F);
     white-space: nowrap;
