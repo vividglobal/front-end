@@ -87,10 +87,10 @@
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    line-height: 136.5%;
-    color: var(--black);;
-    text-align:left;
-    padding-left: 20px;
+    line-height: 17px;
+    color: var(--black);
+    text-align: left;
+    margin: 10px 0;
 }
 
 .Base_violation--brand .list--select--option .list--select__right{

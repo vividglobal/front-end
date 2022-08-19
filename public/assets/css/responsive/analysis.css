@@ -33,6 +33,9 @@
     .Base_violation--brand .table_analysis .table_analysis_body li{
         font-weight: 600;
     }
+    .Base_violation--brand .table_analysis .table_analysis_body .name_brand{
+        width: 100% !important;
+    }
 
     .list_slc_analysis .btn__apply,
     .list_slc_analysis #daterange{
@@ -121,7 +124,6 @@
         font-style: normal;
         font-weight: 500;
         font-size: 16px;
-        line-height: 170%;
         color: var(--black);
     }
 
@@ -192,7 +194,7 @@
         font-weight: 500;
         font-size: 13px !important;
         line-height: 170%;
-        padding-top: 10px !important;
+        padding-top: 0px !important;
     }
 
     .base_code_item:nth-child(5):before{
@@ -203,12 +205,6 @@
 
     #vio-based-code .table_analysis .table_analysis_body li:nth-child(3){
         width: 60% !important;
-        text-decoration: none;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
     }
 
     .table_analysis_body .base_code_item:nth-child(2){

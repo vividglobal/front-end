@@ -19,7 +19,7 @@
 }
 
 .height_after{
-    height: 0px !important;
+    height: 40px !important;
     text-align: center;
 }
 
@@ -33,10 +33,10 @@
     font-size: 15px;
     line-height: 170%;
     color: var(--black);
-    white-space: nowrap;
+    /* white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: left;
+    text-overflow: ellipsis; */
+    word-wrap: break-word;
     text-align: center;
     margin-top: 10px;
 }
