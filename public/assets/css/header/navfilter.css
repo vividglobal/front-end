@@ -161,6 +161,12 @@
 
     .checkbox_mobi .select--company-or-brand .contain--selection p{
         color: #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        cursor: pointer;
     }
 
     .checkbox_mobi .select--company-or-brand .contain--selection{
@@ -197,6 +203,12 @@
 
     .checkbox_mobi .select--country .contain--selection p{
         color: #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        cursor: pointer;
     }
 
     .checkbox_mobi .select--country .contain--selection{
