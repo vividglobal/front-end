@@ -20,7 +20,7 @@ $(".history-back").click(function(){
     history.back(1);
 })
 btnSwitch.click(function () {
-    $(".mdl-js").css("overflow-y","hidden");
+    scrollScreen.disable();
     let dataType = $(this).attr('data-type')
     checkdataType = dataType
     if(dataType === "MANUAL"){
@@ -71,7 +71,7 @@ $("#confirm-mobile").click(function(){
     {
         this.checked = false;
     });
-    $(".mdl-js").css("overflow-y","scroll");
+    scrollScreen.enable();
 });
 
 $('#copy-link').click(function(){
@@ -111,7 +111,7 @@ uploadfile.click(function(e) {
     $(this).addClass("check")
     let user = $(this).attr("data-user")
     uploadModal.show();
-    $(".mdl-js").css("overflow-y","hidden");
+    scrollScreen.disable();
     show_overlay()
     rowId = $(this).attr("data-id")
     checklogin = $('.check-login').attr('t-login');
@@ -301,14 +301,14 @@ span.click(function () {
     $('.no-file-upload').remove()
     uploadModal.hide();
     modalconfim.hide()
-    $(".mdl-js").css("overflow-y","scroll");
+    scrollScreen.enable();
 });
 
 $(window).on('click', function (e) {
     if ($(e.target).is('.modal-confirm-title')) {
         $('.div-item').remove();
         uploadModal.hide();
-        $(".mdl-js").css("overflow-y","scroll");
+        scrollScreen.enable();
     }
 });
 
