@@ -190,7 +190,7 @@ class ArticleService
                 ];
             }
         }else if(isset($detectData['url_page'])) {
-            $country = Country::whereIn('list_url', [$detectData['url_page']])->first();
+            $country = Country::where('list_url', 'like', '%' . $detectData['url_page'] . '%')->first();
             if($country) {
                 $countryData = [
                     'id'   => $country->_id,

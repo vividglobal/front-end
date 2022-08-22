@@ -39,9 +39,10 @@ class ManualLabelRequest extends FormRequest
                 $rules['caption'] = 'nullable';
             }
             if(request()->has('caption')) {
-                $rules['image'] = 'nullable|mimes:jpg,jpeg,png';
+                $rules['image'] = 'nullable';
                 $rules['caption'] = 'required|string|max:10000';
             }
+            var_dump($rules);
         }else if($request_type === LABEL_TYPE_URL) {
             $rules['url'] = 'required|url';
         }
