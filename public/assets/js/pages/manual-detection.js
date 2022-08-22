@@ -77,7 +77,6 @@ $(document).ready(function() {
                 }else{
                     replace = geturl
                 }
-                
                 setTimeout(() => {
                     window.location.href = replace
                 }, 3000);

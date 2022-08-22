@@ -45,6 +45,18 @@ $("#confirm-yes").click(function(){
             }else{
                 show_success("This post has been successfully moved to auto-detect violation");
             }
+
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const page = parseInt(urlParams.get("page"));
+            let geturl = window.location.href
+            if(childrenlength === 0 && page > 1){
+                    let replace = geturl.replace(`&page=${page}`,`&page=${page - 1}`)
+                    window.location.replace(replace)
+            }
+            if(childrenlength === 0 && !page || page == 1){
+                window.location.href = geturl
+            }
         }
     })
     .fail(function(){
@@ -58,19 +70,6 @@ $("#confirm-yes").click(function(){
     });
     if(childrenlength === 15){
         location.reload(true);
-    }
-
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const page = parseInt(urlParams.get("page"));
-    let geturl = window.location.href
-    if(childrenlength === 0 && page > 1){
-            let replace = geturl.replace(`&page=${page}`,`&page=${page - 1}`)
-            window.location.href = replace
-    }
-
-    if(childrenlength === 0 && !page || page == 1){
-        window.location.href = geturl
     }
     scrollScreen.enable()
 });
