@@ -74,6 +74,10 @@
         padding-top: 20px;
     }
 
+    .file-input_detect > .button > img{
+        width: 30px;
+    }
+
     .file-input_detect > .label{
         padding-bottom: 20px;
         text-align: center;

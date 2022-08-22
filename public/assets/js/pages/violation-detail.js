@@ -53,7 +53,7 @@ $("#confirm-mobile").click(function(){
             if(msg){
                 if(checkdataType  === "MANUAL"){
                     show_success("This post has been successfully moved to submit violation");
-                    
+
                 }else{
                     show_success("This post has been successfully moved to auto-detect violation");
                 }
@@ -136,7 +136,7 @@ function renderFileItem(rowId,user) {
                                 <div class= ${!checklogin ? "hide-div" : "div-delete"}>
                                     <span id-delete=${response.data[i].id} class="delete-file">&times;</span>
                                 </div>
-                        </div> 
+                        </div>
                         `
                         $('#add-file').prepend(fileHtmlItems);
                     }
@@ -214,7 +214,7 @@ $(document).on('change', '.file-input', async function(){
                             <div class= ${!checklogin ? "hide-div" : "div-delete"}>
                                 <span id-delete=${response.data._id} class="delete-file">&times;</span>
                             </div>
-                        </div> 
+                        </div>
                     `
                     $('#add-file').prepend(fileHtmlItems);
                     hide_overlay();
@@ -246,7 +246,7 @@ btnViolation.filter(function(){
     });
 
     let getData_id = $(this).find("> p").attr("data-id");
-    $(this).find(".select--status").find(`> #${getData_id}`).addClass("background-gray ")
+    $(this).find(".select--status").find(`> #${getData_id}`).addClass("active_status ")
     $(this).find(".select--status").find(`> #${getData_id}`).find("img").show()
 })
 
@@ -266,9 +266,9 @@ selectOneViolation.on("click", function(){
     let idrow = $(`#${targetEL}`).attr("data-idEL");
     $(`#${targetEL}`).find("> p").html(value)
     $(`#${targetEL}`).find("> p").attr("data-id",id)
-    $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("background-gray")
+    $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("active_status")
     $(`#${targetEL}`).find(".select--status").find(".select__one--status").find("img").hide()
-    $(this).addClass("background-gray")
+    $(this).addClass("active_status")
     $(this).find("img").show()
     show_overlay()
     const url = `switch-progress-status`;
@@ -351,7 +351,7 @@ function DeleteFile(rowIdelemnet,parentItem,filesNumber){
                 }
                 // PROGRESS STATUS IS COMPLETE => NOT_STARTED
                 if(getTextStatus.text().trim() == "Completed"){
-                    progressStatus.find(".select__one--status:nth-child(1)").addClass("background-gray")
+                    progressStatus.find(".select__one--status:nth-child(1)").addClass("active_status")
                     progressStatus.find(".select__one--status:nth-child(1)").find("img").show()
                     getTextStatus.text("Not started").attr("data-id","not_started")
                 }
@@ -366,6 +366,6 @@ function DeleteFile(rowIdelemnet,parentItem,filesNumber){
 
 $(window).on('click', function (e) {
     if(($(e.target).is('.list--status-mobile')) ==false ) {
-        $('.select--status').hide() 
+        $('.select--status').hide()
     }
 })
