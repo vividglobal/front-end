@@ -67,8 +67,19 @@ $(document).ready(function() {
                 isLoading = false;
                 hide_overlay();
                 show_success(response.message);
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const page = parseInt(urlParams.get("page"));
+                let geturl = window.location.href
+                let replace;
+                if(page){
+                    replace = geturl.replace(`&page=${page}`,`&page=1`)
+                }else{
+                    replace = geturl
+                }
+                
                 setTimeout(() => {
-                    window.location.href = window.location.href
+                    window.location.href = replace
                 }, 3000);
             },
             error: (err) => {
