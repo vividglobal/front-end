@@ -266,6 +266,9 @@
   order: 2;
   flex-grow: 0;
 }
+.pagination .disabled span{
+    color: var(--gray-6F);
+}
 /* .pagination li span{
 
 } */

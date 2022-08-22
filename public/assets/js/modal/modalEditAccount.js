@@ -358,7 +358,7 @@ $("document").ready(function(){
                     const page = parseInt(urlParams.get("page"));
                     if(page > 1){
                         let url = window.location.href
-                        let replace = url.replace(`page=${page}`,`page=${page - 1}`)
+                        let replace = url.replace(`&page=${page}`,`&page=${page - 1}`)
                         setTimeout(() => {
                             window.location.href = replace
                         },1000)

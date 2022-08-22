@@ -59,14 +59,14 @@
             <li class="item_base_on_brand updata-form-analysis">
                 {{ ($key + 1) + (($brandData->currentpage() - 1) * $brandData->perpage()) }}
             </li>
-            <li class="item_base_on_brand updata-form-analysis">{{ $brand->name }}</li>
+            <li class="name_brand item_base_on_brand updata-form-analysis">{{ $brand->name }}</li>
             <div class="res_item_brand">
                 <li class="item_base_on_brand updata-form-analysis">{{ $brand->total_article }}</li>
                 <li class="item_base_on_brand updata-form-analysis">{{ $brand->total_violation_article }}</li>
                 <li class="item_base_on_brand updata-form-analysis">{{ $brand->percent_violation_per_article }}%</li>
             </div>
         </ul>
-        @endforeach
+    @endforeach
 </div>
 <div class="row-pagination">
     {{ $brandData->links('layouts.my-paginate') }}

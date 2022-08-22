@@ -66,3 +66,7 @@
 .background-gray{
     background-color: var(--gray-F4);
 }
+
+.active_status{
+    background-color: var(--gray-F4);
+}

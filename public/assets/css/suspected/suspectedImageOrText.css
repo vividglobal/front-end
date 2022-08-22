@@ -169,6 +169,9 @@ textarea {
   #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi .contain_country .option_general p{
     padding-left: 10px;
     color: var(--black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   #modal-country-label_mobi .full_modal .container_modal_edit .country_mobi{

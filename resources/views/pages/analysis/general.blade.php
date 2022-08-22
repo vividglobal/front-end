@@ -26,7 +26,7 @@
             data-cp-color="#E82A86"
             data-cp-amount="{{ __($generalData['total'] - $generalData['violation'] - $generalData['non_violation'] ) }}">
         </div>
-        <p class="title-violation">{{ __('Violations detected/submitted') }}</p>
+        <p class="title-violation">{{ __('Violations detected/ submitted') }}</p>
     </div>
     <div class="index__violation {{@Auth::user() ? "l-3 m-3 c-6" : "l-4 m-4 c-4" }} total_entries no-margin">
         <div class="counter circulars"
