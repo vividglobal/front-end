@@ -16,7 +16,7 @@ $(".history-back").click(function(){
 })
 
 btnSwitch.click(function () {
-    $(".mdl-js").css("overflow-y","hidden");
+    scrollScreen.disable();
     let dataType = $(this).attr('data-type')
     checkdataType = dataType
     if(dataType === "MANUAL"){
@@ -37,7 +37,7 @@ btnSwitch.click(function () {
 span.click(function () {
     $('.div-item').remove();
     modalconfim.hide();
-    $(".mdl-js").css("overflow-y","scroll");
+    scrollScreen.enable();
 });
 
 
@@ -76,7 +76,7 @@ $("#confirm-mobile").click(function(){
     {
         this.checked = false;
     });
-    $(".mdl-js").css("overflow-y","scroll");
+   scrollScreen.enable();
 });
 
 $('#copy-link').click(function(){

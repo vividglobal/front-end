@@ -18,9 +18,8 @@ $(document).ready(function(){
         confirmModalVio.hide();
         confirmArticleAsViolationModal.hide()
         openselectcode.hide();
-        // $(".mdl-js").css("overflow-y","scroll");
-        $('body').css("overflow-y","scroll");
-
+        scrollScreen.enable();
+        
     });
     $(".history-back").click(function(){
         history.back(1);
@@ -60,7 +59,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.check-status', function() {
         show_overlay()
-        // document.documentElement.style.overflow = 'hidden';
+        scrollScreen.disable();
         currentRow = $(this).parents('.container-row-mobile');
         document.body.scroll = "no";
         articleId = $(this).attr('data-id');
@@ -87,6 +86,7 @@ $(document).ready(function(){
         await updateStatusViolationColumnAndEnableReviewViolationCodeButton(disabledDisagreeBtn)
         confirmArticleAsViolationModal.hide();
         hide_overlay()
+        scrollScreen.enable();
     })
 
     $('.btn-confirm-violation').click(async function() {
@@ -179,7 +179,7 @@ $(document).ready(function(){
             show_error('Evaluation failed!');
             hide_overlay();
         }
-        $(".mdl-js").css("overflow-y","scroll");
+        scrollScreen.enable();
 
     })
 

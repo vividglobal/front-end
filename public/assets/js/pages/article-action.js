@@ -10,10 +10,7 @@ $(document).ready(function(){
     let actionStep;
     let isLoading = false;
     let botStatus;
-    // let perfEntries = performance.getEntriesByType("navigation");
-    // if (perfEntries[0].type === "back_forward") {
-    //     location.reload(true);
-    // }
+
     ClickButonLink()
     $(document).on('click', '.check-status', function() {
         scrollScreen.disable()
