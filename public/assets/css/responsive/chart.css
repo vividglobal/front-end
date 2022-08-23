@@ -1,6 +1,6 @@
 .modebar {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    /* left: 50% !important;
+    transform: translateX(-50%) !important; */
 }
 
 .frame-wrapper{
@@ -23,13 +23,16 @@
 .table_map{
     margin: 16px 199px;
     height: 1000px;
-    border: 1px solid var(--gray-C7);
     padding: 10px;
 }
 
 .block_map{
     width: 100%;
     height: 100%;
+}
+
+.border_table{
+    border: 1px solid var(--gray-C7);
 }
 
 @media (max-width: 1355px) {
@@ -53,24 +56,71 @@
 
 @media (max-width: 739px) {
     .table_map{
-        height: 800px;
+        height: 600px;
+        position: relative;
+    }
+    .js-plotly-plot .plotly .modebar {
+        top: 100px !important;
+    }
+    .plot-container {
+        position: relative !important;
+        top: -100px !important;
+    }
+    .border_bottom{
+        border-bottom: 1px solid var(--gray-C7);
+        width: 100%;
+        position: relative;
+        left: 0;
+        top: 8px;
+    }
+    .title_table_analysis p,
+    .title__country--violation{
+        font-size: 30px;
     }
 }
 
-@media (max-width: 600px) {
-    .frame-wrapper iframe{
-        top: -260px;
-        left: 0px;
-        width: 100%;
-        height: 140%;
-    }
-    .table_map{
-        height: 500px;
+@media (max-width: 702px) {
+    .border_bottom{
+        top: 7px;
     }
 }
 
 @media (max-width: 500px) {
     .table_map{
         height: 450px;
+        position: relative;
+    }
+    .js-plotly-plot .plotly .modebar {
+        top: 160px !important;
+    }
+    .plot-container {
+        position: relative !important;
+        top: -160px !important;
+    }
+    .border_bottom{
+        top: -8px;
+
+    }
+}
+
+@media (max-width: 471px) {
+    .border_bottom{
+        top: -7px;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .js-plotly-plot .plotly .modebar {
+        top: 190px !important;
+    }
+    .plot-container {
+        position: relative !important;
+        top: -190px !important;
+    }
+}
+@media (max-width: 385px) {
+    .border_bottom {
+        top: -48px;
     }
 }

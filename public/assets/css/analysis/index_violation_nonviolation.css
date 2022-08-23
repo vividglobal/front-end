@@ -1,12 +1,11 @@
 .index_violation-nonViolation{
-    border: 1px solid var(--gray-C7);
     margin: 16px 199px;
     display: flex;
     padding: 40px 60px;
 }
 
 .height_before{
-    height: 50px !important;
+    height: 70px !important;
     text-align: center;
 }
 
@@ -19,7 +18,7 @@
 }
 
 .height_after{
-    height: 40px !important;
+    height: 70px !important;
     text-align: center;
 }
 
@@ -32,7 +31,7 @@
     font-weight: 600;
     font-size: 15px;
     line-height: 170%;
-    color: var(--black);
+    color: var(--color-06);
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; */
@@ -127,9 +126,9 @@
     font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 36px;
     line-height: 136.5%;
-    color: var(--black);
+    color: var(--color-06);
 
 }
 

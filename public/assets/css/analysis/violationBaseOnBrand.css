@@ -146,9 +146,9 @@
     font-family: var(--font-bradon);
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 36px;
     line-height: 136.5%;
-    color: var(--primary);
+    color: var(--color-06);
     text-align: center;
     padding: 10px 0 10px 0;
 }

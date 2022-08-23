@@ -55,6 +55,8 @@
 
     .Base_violation--brand{
         padding: 20px;
+        z-index: 2;
+        position: relative;
     }
 
     .Base_violation--brand .list--select__right{
@@ -76,8 +78,6 @@
         font-family: var(--font-bradon);
         font-style: normal;
         font-weight: 500;
-        font-size: 20px;
-        color: var(--primary);
         padding: 0 20px;
         text-align: center;
     }
@@ -245,7 +245,6 @@
     .table_brand .list--select--option .list--select__left{
         width: inherit ;
     }
-    .title_table_analysis p,
     .title__country--violation{
         color: var(--primary);
     }
