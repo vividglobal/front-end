@@ -74,19 +74,14 @@
     .border_bottom{
         border-bottom: 1px solid var(--gray-C7);
         width: 100%;
-        position: relative;
+        position: absolute;
+        z-index: 1000;
         left: 0;
-        top: 8px;
+        bottom: -1px;
     }
     .title_table_analysis p,
     .title__country--violation{
         font-size: 30px;
-    }
-}
-
-@media (max-width: 702px) {
-    .border_bottom{
-        top: 7px;
     }
 }
 
@@ -102,16 +97,6 @@
         position: relative !important;
         top: -160px !important;
     }
-    .border_bottom{
-        top: -8px;
-
-    }
-}
-
-@media (max-width: 471px) {
-    .border_bottom{
-        top: -7px;
-    }
 }
 
 @media (max-width: 425px) {
@@ -124,8 +109,4 @@
         top: -190px !important;
     }
 }
-@media (max-width: 385px) {
-    .border_bottom {
-        top: -48px;
-    }
-}
+
