@@ -21,7 +21,7 @@
 }
 
 .table_map{
-    height: 1000px;
+    height: 800px;
 }
 
 .style_map{
@@ -39,9 +39,6 @@
 }
 
 @media (max-width: 1355px) {
-    .table_map {
-        height: 850px;
-    }
     .style_map{
         margin: 16px 150px;
     }
@@ -61,7 +58,7 @@
 
 @media (max-width: 739px) {
     .table_map{
-        height: 600px;
+        height: 500px;
         position: relative;
     }
     .js-plotly-plot .plotly .modebar {
@@ -87,7 +84,7 @@
 
 @media (max-width: 500px) {
     .table_map{
-        height: 450px;
+        height: 375px;
         position: relative;
     }
     .js-plotly-plot .plotly .modebar {
