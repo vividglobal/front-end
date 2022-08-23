@@ -36,7 +36,7 @@
 <div class="table_map table_brand border_table style_map table_map_violation">
     <div class="block_map">
         <div >
-            <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
+            <p class="title__country--violation">{{ __('Violation map') }}</p>
         </div>
         <div class="frame-wrapper">
             <iframe id="world-map" src="/analysis/violation-by-country" frameborder="0" scrolling="no" ></iframe>
