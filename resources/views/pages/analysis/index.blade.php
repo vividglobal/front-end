@@ -31,9 +31,9 @@
         </div>
     </div>
 </div>
-<div class="index_violation-nonViolation rows border_table" id="general">
+<div class="index_violation-nonViolation rows border_table style_status" id="general">
 </div>
-<div class="table_map table_brand border_table">
+<div class="table_map table_brand border_table style_map">
     <div class="block_map">
         <div >
             <p class="title__country--violation">{{ __('Violation based on countries') }}</p>

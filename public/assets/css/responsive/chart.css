@@ -21,8 +21,11 @@
 }
 
 .table_map{
-    margin: 16px 199px;
     height: 1000px;
+}
+
+.style_map{
+    margin: 16px 199px;
     padding: 10px;
 }
 
@@ -37,19 +40,21 @@
 
 @media (max-width: 1355px) {
     .table_map {
-        margin: 16px 150px;
         height: 850px;
+    }
+    .style_map{
+        margin: 16px 150px;
     }
 }
 
 @media (max-width: 1255px) {
-    .table_map {
+    .style_map{
         margin: 16px 100px;
     }
 }
 
 @media (max-width: 1113px) {
-    .table_map {
+    .style_map {
         margin: 16px 16px;
     }
 }

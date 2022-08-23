@@ -1,6 +1,9 @@
 .index_violation-nonViolation{
-    margin: 16px 199px;
     display: flex;
+}
+
+.style_status{
+    margin: 16px 199px;
     padding: 40px 60px;
 }
 

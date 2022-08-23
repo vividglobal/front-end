@@ -1,21 +1,27 @@
 @media (max-width: 1355px) {
     .Base_violation--brand,
-    .index_violation-nonViolation,
     .title_analysis .list--select--option,
     .title_analysis .list--title {
+        margin: 15px 150px;
+    }
+
+    .style_status{
         margin: 15px 150px;
     }
 }
 
 @media (max-width: 1255px) {
     .Base_violation--brand,
-    .index_violation-nonViolation,
     .title_analysis .list--select--option,
     .title_analysis .list--title {
         margin: 15px 100px;
     }
     .Base_violation--brand{
         padding: 26px 40px;
+    }
+
+    .style_status{
+        margin: 15px 100px;
     }
 }
 
@@ -47,8 +53,12 @@
     }
 
 
-    .Base_violation--brand,
-    .index_violation-nonViolation{
+    .Base_violation--brand{
+        margin: 15px;
+        padding : 20px 5px;
+    }
+
+    .style_status{
         margin: 15px;
         padding : 20px 5px;
     }
