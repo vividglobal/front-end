@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="index_violation-nonViolation rows " id="general"></div>
+<div class="index_violation-nonViolation rows no-margin" id="general"></div>
 <div class="table_map table_brand ">
     <div class="block_map">
         <div >
