@@ -84,7 +84,9 @@
     .title__country--violation{
         font-size: 30px;
     }
-
+    .padding_title {
+        padding: 70px 0 10px 0;
+    }
 }
 
 @media (max-width: 600px) {
@@ -106,3 +108,9 @@
     }
 }
 
+
+@media (max-width: 425px) {
+    .table_map {
+        height: 500px;
+    }
+}
