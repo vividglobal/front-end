@@ -62,7 +62,7 @@
 
 @media (max-width: 739px) {
     .table_map{
-        height: 500px;
+        height: 600px;
         position: relative;
     }
     .js-plotly-plot .plotly .modebar {
@@ -87,28 +87,22 @@
 
 }
 
-@media (max-width: 500px) {
-    .table_map{
-        height: 375px;
-        position: relative;
+@media (max-width: 600px) {
+    .table_map_violation{
+        height: 500px;
     }
+}
+
+@media (max-width: 500px) {
     .js-plotly-plot .plotly .modebar {
         top: 160px !important;
     }
     .plot-container {
         position: relative !important;
-        top: -160px !important;
+        top: -130px !important;
     }
-}
-
-@media (max-width: 425px) {
-
-    .js-plotly-plot .plotly .modebar {
-        top: 190px !important;
-    }
-    .plot-container {
-        position: relative !important;
-        top: -190px !important;
+    .table_map_violation{
+        height: 400px;
     }
 }
 
