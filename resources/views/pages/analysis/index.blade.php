@@ -31,9 +31,9 @@
         </div>
     </div>
 </div>
-<div class="index_violation-nonViolation rows " id="general">
+<div class="index_violation-nonViolation rows border_table style_status" id="general">
 </div>
-<div class="table_map table_brand ">
+<div class="table_map table_brand border_table style_map">
     <div class="block_map">
         <div >
             <p class="title__country--violation">{{ __('Violation based on countries') }}</p>
@@ -41,6 +41,7 @@
         <div class="frame-wrapper">
             <iframe id="world-map" src="/analysis/violation-by-country" frameborder="0" scrolling="no" ></iframe>
         </div>
+        <div class="border_bottom"></div>
     </div>
 </div>
 

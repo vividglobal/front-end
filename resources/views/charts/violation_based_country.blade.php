@@ -1,5 +1,6 @@
 <head>
 	<script src="{{ asset('assets/js/plugins/plotly/plotly-2.12.1.min.js') }}"></script>
+    <link href="{{ asset('assets/css/responsive/chart.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -50,12 +51,12 @@
 
         },
         // dragmode: true,
-        height: 1000,
+        height: 800,
         margin: {
             l: 10,
             r: 10,
             b: 210,
-            t: 20,
+            t: 40,
             pad: 2
         }
     };
