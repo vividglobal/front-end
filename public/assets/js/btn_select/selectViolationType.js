@@ -14,7 +14,7 @@ $("document").ready(function(){
     selectOneViolation.on("click", function(){
         var value = $(this).find("p").html()
         var id = $(this).find("p").attr("data-id");
-        if(value.indexOf("-") === -1){
+        if(value.indexOf("Select violation type") === -1){
             btnViolation.find("> p").html(value)
         }else{
             btnViolation.find("> p").html("Violation type")

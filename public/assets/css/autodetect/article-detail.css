@@ -429,6 +429,7 @@ width: 80%;
 width: 75%;
 }
 .pagination li {
-    padding: 1px 10px !important;
+    padding: 1px 7px !important;
+    height: 30px;
 }
 }

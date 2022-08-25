@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
+    <title>VIVID Global</title>
     <meta name="Description" content="@yield('description')">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/png" href="{{ asset('assets/image/favicon.png') }}">
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 

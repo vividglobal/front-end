@@ -94,3 +94,12 @@ a.check-true, a.check-false ,a.check-true-disabled,a.check-false-disabled {
     display: flex !important;
     justify-content: flex-start;
 }
+
+@media (max-width: 365px){
+    .status-title{
+        font-size: 12px;
+    }
+    .p-style {
+        font-size: 10px;
+    }
+}

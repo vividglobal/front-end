@@ -16,7 +16,7 @@ $("document").ready(function(){
     selectOneCountry.on("click", function(){
         var value = $(this).find("p").html()
         var id = $(this).find("p").attr("data-id");
-        if(value.indexOf("-") === -1){
+        if(value.indexOf("Select country") === -1){
             btnCountry.find("> p").html(value)
         }else{
             btnCountry.find("> p").html("Country")

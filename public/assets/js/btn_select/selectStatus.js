@@ -6,7 +6,7 @@ $("document").ready(function(){
     let targetEL ;
     btnViolation.filter(function(){
         let getData_id = $(this).find("> p").attr("data-id");
-        $(this).find(".select--status").find(`> #${getData_id}`).addClass("background-gray")
+        $(this).find(".select--status").find(`> #${getData_id}`).addClass("active_status")
         $(this).find(".select--status").find(`> #${getData_id}`).find("img").show()
     })
 
@@ -16,9 +16,9 @@ $("document").ready(function(){
             let idrow = $(`#${targetEL}`).attr("data-idEL");
             $(`#${targetEL}`).find("> p").html(value)
             $(`#${targetEL}`).find("> p").attr("data-id",id)
-            $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("background-gray")
+            $(`#${targetEL}`).find(".select--status").find(".select__one--status").removeClass("active_status")
             $(`#${targetEL}`).find(".select--status").find(".select__one--status").find("img").hide()
-            $(this).addClass("background-gray")
+            $(this).addClass("active_status")
             $(this).find("img").show()
             show_overlay()
             const url = `${idrow}/switch-progress-status`;

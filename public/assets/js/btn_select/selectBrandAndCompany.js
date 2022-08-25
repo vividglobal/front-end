@@ -15,7 +15,7 @@ $("document").ready(function(){
     selectOneBrand.on("click", function(){
         var value = $(this).find("p").html()
         var id = $(this).find("p").attr("data-id");
-        if(value.indexOf("-") === -1){
+        if(value.indexOf("Select brand") === -1){
             btnBrand.find("> p").html(value)
         }else{
             btnBrand.find("> p").html("Brand/Company")

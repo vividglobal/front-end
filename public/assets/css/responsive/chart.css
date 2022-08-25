@@ -1,6 +1,6 @@
 .modebar {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
+    /* left: 50% !important;
+    transform: translateX(-50%) !important; */
 }
 
 .frame-wrapper{
@@ -21,9 +21,11 @@
 }
 
 .table_map{
+    height: 800px;
+}
+
+.style_map{
     margin: 16px 199px;
-    height: 1000px;
-    border: 1px solid var(--gray-C7);
     padding: 10px;
 }
 
@@ -32,45 +34,83 @@
     height: 100%;
 }
 
+.padding_title{
+    padding: 90px 0 10px 0;
+}
+
+.border_table{
+    border: 1px solid var(--gray-C7);
+}
+
 @media (max-width: 1355px) {
-    .table_map {
+    .style_map{
         margin: 16px 150px;
-        height: 850px;
     }
 }
 
 @media (max-width: 1255px) {
-    .table_map {
+    .style_map{
         margin: 16px 100px;
     }
 }
 
 @media (max-width: 1113px) {
-    .table_map {
+    .style_map {
         margin: 16px 16px;
     }
 }
 
 @media (max-width: 739px) {
     .table_map{
-        height: 800px;
+        height: 600px;
+        position: relative;
+    }
+    .js-plotly-plot .plotly .modebar {
+        top: 100px !important;
+    }
+    .plot-container {
+        position: relative !important;
+        top: -100px !important;
+    }
+    .border_bottom{
+        border-bottom: 1px solid var(--gray-C7);
+        width: 100%;
+        position: absolute;
+        z-index: 1000;
+        left: 0;
+        bottom: -1px;
+    }
+    .title_table_analysis p,
+    .title__country--violation{
+        font-size: 30px;
+    }
+    .padding_title {
+        padding: 70px 0 10px 0;
     }
 }
 
 @media (max-width: 600px) {
-    .frame-wrapper iframe{
-        top: -260px;
-        left: 0px;
-        width: 100%;
-        height: 140%;
-    }
-    .table_map{
+    .table_map_violation{
         height: 500px;
     }
 }
 
 @media (max-width: 500px) {
-    .table_map{
-        height: 450px;
+    .js-plotly-plot .plotly .modebar {
+        top: 160px !important;
+    }
+    .plot-container {
+        position: relative !important;
+        top: -130px !important;
+    }
+    .table_map_violation{
+        height: 400px;
+    }
+}
+
+
+@media (max-width: 425px) {
+    .table_map {
+        height: 500px;
     }
 }

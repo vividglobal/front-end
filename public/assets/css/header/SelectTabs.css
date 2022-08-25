@@ -28,6 +28,10 @@
     width: 10px;
 }
 
+#daterange img{
+    margin: -2px 7px;
+}
+
 .list--country p,
 .list--violation--type p,
 .list--company--brand p,
@@ -58,7 +62,12 @@
     font-family: system-ui;
 }
 
-#daterange input,
+#daterange input{
+    border: none;
+    margin: 10px 0px 10px 0px;
+    width: 100%;
+}
+
 .list--search input{
     border: none;
     margin: 10px 5px 10px 0px;
