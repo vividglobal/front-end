@@ -49,7 +49,7 @@ class ArticleExportService {
                 $violationStatus =  getStatusText($article->supervisor_review['status']) ;
                 $violationCodeNames = '';
                 $violationTypeNames = '';
-                if($violationStatus === Article::STATUS_VIOLATION) {
+                if($article->supervisor_review['status'] === Article::STATUS_VIOLATION) {
                     $violationCodeNames = convertArrayToString($article->supervisor_review['violation_code'], 'name');
                     $violationTypeNames = convertArrayToString($article->supervisor_review['violation_types'], 'name');
                 }
@@ -61,7 +61,7 @@ class ArticleExportService {
                 $violationStatus = getStatusText($article->operator_review['status']);
                 $violationCodeNames = '';
                 $violationTypeNames = '';
-                if($violationStatus === Article::STATUS_VIOLATION) {
+                if($article->operator_review['status'] === Article::STATUS_VIOLATION) {
                     $violationCodeNames = convertArrayToString($article->operator_review['violation_code'], 'name');
                     $violationTypeNames = convertArrayToString($article->operator_review['violation_types'], 'name');
                 }
