@@ -182,14 +182,20 @@ $(document).ready(function(){
         for (let i = 0; i < data.violation_code.length; i++) {
             codeString +=
                         `<div>
-                            <a class="updata-form">
+                            <a class="updata-form" href=/articles/submit-violation?violation_code_id=${data.violation_code[i].id}>
                                 ${data.violation_code[i].name}
                             </a>
                         </div>`
         }
         let typeString = '';
         for (let i = 0; i < data.violation_types.length; i++) {
-            typeString += `<p class="detectiontype updata-form" style=color:${data.violation_types[i].color}>${data.violation_types[i].name}</p>`
+            typeString += `<a class="detectiontype updata-form" 
+                            style=color:${data.violation_types[i].color} 
+                            href=/articles/submit-violation?violation_type_id=${data.violation_types[i].id} 
+                            id=${data.violation_types[i].id}
+                            >
+                            ${data.violation_types[i].name}
+                        </a>`
         }
 
         if(CURRENT_ROLE === SUPERVISOR_ROLE) {
