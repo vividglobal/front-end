@@ -264,31 +264,77 @@ class Article extends Model
 
         // Filter by violation type
         if(isset($params['violation_type_id'])) {
-            $aggregateQuery[] = [
-                '$match' =>
-                [
-                    $violationReviewField.'.violation_types' => [
+            $orConditions[]= [
+                $violationReviewField.'.violation_types' => [
+                    '$elemMatch' => [
+                        'id' => $params['violation_type_id']
+                    ]
+                ]
+            ];
+            if($isSupervisor || $isOperator) {
+                $orConditions[] = [
+                    'supervisor_review.violation_types' => [
                         '$elemMatch' => [
                             'id' => $params['violation_type_id']
                         ]
                     ]
+                ];
+            }
+            if( $isOperator) {
+                $orConditions[] = [
+                    'operator_review.violation_types' => [
+                        '$elemMatch' => [
+                            'id' => $params['violation_type_id']
+                        ]
+                    ]
+                ];
+            }
+
+            $aggregateQuery[] = [
+                '$match' =>
+                [
+                    '$or'=> $orConditions
                 ]
             ];
         }
 
          // Filter by violation code
-        if(isset($params['violation_code_id'])) {
-            $aggregateQuery[] = [
-                '$match' =>
-                [
-                    $violationReviewField.'.violation_code' => [
+         if(isset($params['violation_code_id'])) {
+            $orConditions[]= [
+                $violationReviewField.'.violation_code' => [
+                    '$elemMatch' => [
+                        'id' => $params['violation_code_id']
+                    ]
+                ]
+            ];
+            if($isSupervisor || $isOperator) {
+                $orConditions[] = [
+                    'supervisor_review.violation_code' => [
                         '$elemMatch' => [
                             'id' => $params['violation_code_id']
                         ]
                     ]
-                ]
+                ];
+            }
+            if( $isOperator) {
+                $orConditions[] = [
+                    'operator_review.violation_code' => [
+                        '$elemMatch' => [
+                            'id' => $params['violation_code_id']
+                        ]
+                    ]
+                ];
+            }
+
+            $aggregateQuery[] = [
+                '$match' =>
+                [
+                    '$or'=> $orConditions
+                ],
             ];
+
         }
+        
 
         // Search
         if(isset($params['keyword'])) {
