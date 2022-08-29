@@ -6,7 +6,7 @@
         <div class="col-right col-right-form ">
             <table class="wrap">
                 <div class="headers">
-                    <div class="scroller syncscroll" name="myElements">
+                    <div class="scroller syncscroll scroll_same_time" name="myElements">
                         <div class="track">
                             <div class=" heading th-title-right sort_public_date">
                                 <p>{{ __('Published date') }}</p>
@@ -118,9 +118,9 @@
                         @endif
                     </div>
                 </div>
-                <div class="tracks syncscroll container-scroll" name="myElements">
+                <div class="tracks syncscroll container-scroll scroll_same_time" name="myElements">
                     @foreach ($articles as $key => $article)
-                        <div data-id="{{ $article->_id }}" class="scroll-table" >
+                        <div data-id="{{ $article->_id }}" class="scroll-table " >
                             <div class="track">
                                 <div class="entry">
                                     @isset($article->published_date)

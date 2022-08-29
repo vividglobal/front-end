@@ -58,7 +58,7 @@
         <div class="col-right col-right-form ">
             <table class="wrap">
                 <div class="headers">
-                    <div class="scroller syncscroll" name="myElements">
+                    <div class="scroller syncscroll scroll_same_time" name="myElements">
                         <div class="track">
                             <div class=" heading th-title-right sort_public_date">
                                 <p>{{ __('Published date') }}</p>
@@ -138,7 +138,7 @@
                         @endauth
                     </div>
                 </div>
-                <div class="tracks syncscroll container-scroll" name="myElements">
+                <div class="tracks syncscroll container-scroll scroll_same_time" name="myElements">
                     @foreach ($articles as $key => $article)
                         <div data-id="{{ $article->_id }}" class="scroll-table" id="{{ $article->_id }}">
                             <div class="track">
@@ -352,7 +352,6 @@
 
 <script src="{{ asset('assets/js/autodetect/scroll.js') }}"></script>
 <script src="{{ asset('assets/js/autodetect/modal.js') }}"></script>
-<script src="{{ asset('assets/js/autodetect/syncscroll.js') }}"></script>
 <script src="{{ asset('assets/js/btn_select/selectStatus.js') }}"></script>
 <script src="{{ asset('assets/js/modal/modalConfirm.js') }}"></script>
 <script src="{{ asset('assets/js/query/queryData.js') }}"></script>
