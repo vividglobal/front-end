@@ -191,8 +191,8 @@ class ArticleService
                 ];
             }
         }else if(isset($detectData['url_page'])) {
-            $pageUrl = rtrim($detectData['url_page'], '/');
-            $country = Country::where('list_url', 'LIKE', '%' .$pageUrl . '%')->first();
+            $pageUrl = parse_url($detectData['url_page']);
+            $country = Country::where('list_url', 'LIKE', '%' .$pageUrl['host'] . '%')->first();
             if($country) {
                 $countryData = [
                     'id'   => $country->_id,
