@@ -5,6 +5,7 @@ use App\Models\Mongo\Article;
 use App\Models\Mongo\CompanyBrand;
 use App\Models\Mongo\Country;
 use App\Models\Mongo\ViolationCode;
+use MongoDB\BSON\Regex;
 
 class ArticleService
 {
@@ -190,7 +191,8 @@ class ArticleService
                 ];
             }
         }else if(isset($detectData['url_page'])) {
-            $country = Country::where('list_url', 'like', '%' . $detectData['url_page'] . '%')->first();
+            $pageUrl = rtrim($detectData['url_page'], '/');
+            $country = Country::where('list_url', 'LIKE', '%' .$pageUrl . '%')->first();
             if($country) {
                 $countryData = [
                     'id'   => $country->_id,

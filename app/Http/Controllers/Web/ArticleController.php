@@ -295,6 +295,7 @@ class ArticleController extends Controller
 
     public function detectArticleManually(ManualLabelRequest $request) {
         $validated = $request->validated();
+        $uploadFile = $request->file('image');
 
         $capchaService = new CapchaService;
         $isVerified = $capchaService->verify($validated['capcha_token']);

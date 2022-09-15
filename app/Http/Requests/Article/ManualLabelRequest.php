@@ -31,11 +31,11 @@ class ManualLabelRequest extends FormRequest
         $request_type = request()->get('request_type');
         if($request_type === LABEL_TYPE_IMAGE) {
             if(!request()->hasFile('image') && request()->get('caption') === null) {
-                $rules['image'] = 'required|mimes:jpg,jpeg,png';
+                $rules['image'] = 'required|mimes:jpg,jpeg,png,webp';
                 $rules['caption'] = 'string|max:10000';
             }
             if(request()->hasFile('image')) {
-                $rules['image'] = 'required|mimes:jpg,jpeg,png';
+                $rules['image'] = 'required|mimes:jpg,jpeg,png,webp';
                 $rules['caption'] = 'nullable';
             }
             if(request()->has('caption')) {
