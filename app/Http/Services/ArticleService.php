@@ -195,7 +195,7 @@ class ArticleService
             $pageUrl = $detectData['url_page'];
             $parsedUrl = parse_url($pageUrl);
             $host = $parsedUrl['host'];
-            $keySearch = in_array($host, self::DOMAIN_FANPAGES) ? $host : $pageUrl;
+            $keySearch = in_array($host, self::DOMAIN_FANPAGES) ? $pageUrl : $host;
             $country = Country::where('list_url', 'LIKE', '%' . $keySearch . '%')->first();
             if($country) {
                 $countryData = [
