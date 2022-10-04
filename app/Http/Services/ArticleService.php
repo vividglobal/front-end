@@ -10,6 +10,7 @@ use MongoDB\BSON\Regex;
 class ArticleService
 {
     const MAX_GENERATED_ARTICLES = 500;
+    const DOMAIN_FANPAGES = ['www.instagram.com', 'www.facebook.com'];
 
     public function createDummy(
         $generatedArticle = self::MAX_GENERATED_ARTICLES,
@@ -191,8 +192,11 @@ class ArticleService
                 ];
             }
         }else if(isset($detectData['url_page'])) {
-            $pageUrl = parse_url($detectData['url_page']);
-            $country = Country::where('list_url', 'LIKE', '%' .$pageUrl['host'] . '%')->first();
+            $pageUrl = $detectData['url_page'];
+            $parsedUrl = parse_url($pageUrl);
+            $host = $parsedUrl['host'];
+            $keySearch = in_array($host, self::DOMAIN_FANPAGES) ? $host : $pageUrl;
+            $country = Country::where('list_url', 'LIKE', '%' . $keySearch . '%')->first();
             if($country) {
                 $countryData = [
                     'id'   => $country->_id,
