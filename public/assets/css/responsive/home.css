@@ -1,6 +1,6 @@
 @media (min-width: 740px) and (max-width: 1113px){
     .vituar_validation{
-        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
+        background: url(../../image/home/img-mobile-2.png) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
@@ -28,7 +28,7 @@
     }
 
     .vituar_validation{
-        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
+        background: url(../../image/home/img-mobile-2.png) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
@@ -113,13 +113,15 @@
 }
 
 @media (max-width: 425px) {
-
+    .catch-logo{
+        width: 250px;
+    }
     .open__nav--menu{
         width: 100% !important;
     }
 
     .vituar_validation{
-        background: url(../../image/home/bg-vituar-mb.jpg) no-repeat center center !important;
+        background: url(../../image/home/img-mobile-2.png) no-repeat center center !important;
         -webkit-background-size: cover !important;
         background-size: cover !important;
     }
