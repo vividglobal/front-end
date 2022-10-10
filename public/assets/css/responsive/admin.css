@@ -55,7 +55,7 @@
     .create__profile:after {
         content: url(../../image/add_user.svg);
         position: absolute;
-        top: 0;
+        top: 80;
         right: 0;
         margin: 17px 16px 0 0 ;
         /* z-index: 102 !important; */
