@@ -5,6 +5,7 @@
 <link href="{{ asset('assets/css/home/style.css') }}" rel="stylesheet">
 
 <div class="vituar_validation ">
+
     <div class="content__vituar">
         <p>{{ __('Virtual Violations Detectors') }}</p>
         <p class="updata-form">

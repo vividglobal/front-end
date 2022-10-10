@@ -6,14 +6,15 @@
 
 
     <div class="logo
-    {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
+    {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login active_logo_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
     {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
     ">
-        <img src="{{ asset('assets/image/pink-logo.svg') }}" alt="">
+        <img class="catch-logo" src="{{ asset('assets/image/pink-catch-logo.svg') }}" alt="">
     </div>
 
+
 <div class="nav_container nav_position_login
- {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
+ {{(request ()-> is ('login')) || strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 ? 'active_header_login top-icon-menu': ''}} {{Auth::user()!== null ? "padding_has_login"  : "padding_no_login"}}
  {{(!request () -> is ('login')) && !strpos($_SERVER['REQUEST_URI'],"password/reset") == 1 && !request () -> is ('/') ? 'active_bg_header' : ''}}
   ">
     <div id="myNav" class="overlay_header">

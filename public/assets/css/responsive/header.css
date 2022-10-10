@@ -144,11 +144,17 @@
     .active_header_login{
         display: block;
     }
+    .active_logo_login{
+        display: none;
+    }
+    .top-icon-menu{
+        top:5px !important;
+    }
 
     .nav_container {
         z-index: 101 !important;
         position: absolute;
-        top: 5px;
+        top: 90px;
         width: max-content;
     }
 
