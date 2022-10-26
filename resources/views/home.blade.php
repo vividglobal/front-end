@@ -17,43 +17,31 @@
 </div>
 <div class="background__vituar-2 rows " >
         <div class="background__content col l-6 m-6 c-12">
-            <p>{{ __('BACKGROUND AND NEEDS') }}</p>
+            <p>{{ __('VIVID ON THE CODE') }}</p>
             <p class="updata-form">
-                {{ __('Digital marketing accounts for 70% total spending for marketing;
-                32% mothers report seeing breast-milk substitutes marketing on social media,
-                which is prohibited according to Advertisement Law 2012 and Decree 100/2014/ND-CP.') }}
+                {{ __('Inappropriate marketing of breastmilk substitutes, bottles and teats, and foods for infants and young
+                children undermines breastfeeding and infant young child nutrition, and violates the International Code
+                of Marketing of Breast- milk Substitutes (the Code).
+               ') }}
+            </p>
+            <p class="updata-form">
+                {{ __('
+                The marketing is especially rampant on digital platforms, and VIVID is an effective virtual
+                assistant to help detect Code violation.') }}
             </p>
         </div>
         <div class="background__image col l-6 m-6 c-12">
             <img src="{{asset('assets/image/home/img-2.svg')}}" alt="">
         </div>
 </div>
-<div class=" background__vituar-3 ">
-        <div class="rows">
-            <div class="background__image col l-6 m-6 c-12" >
-                <img src="{{asset('assets/image/home/img-3.jpg')}}" alt="" style="width:100%">
-            </div>
-            <div class="background__content col l-6 m-6 c-12">
-                <p>{{ __('PURPOSE') }}</p>
-                <p class="updata-form">
-                    {{ __('VIVID aims to become an effective virtual assistant for inspectors at the Ministry of Health and the Ministry of Information and
-                        Communications, in order to support the implementation of Decree 70/2021/ND-CP and e-government roadmap.') }}
-                </p>
-            </div>
+<div class="background__vituar-5 rows ">
+        <div class="background__image">
+            <img src="{{asset('assets/image/logo_fhi.svg')}}" alt="">
         </div>
-</div>
-<div class="background__vituar-4">
-            <p class="updata-form">
-                 {{ __('Realizing the situation with a high frequency of errors,
-                 the Ministry of Health, the Ministry of Information and
-                 Communications with the support of the Alive & Thrive have built this automatic detection solution.') }}
-            </p>
-</div>
-<div class="background__vituar-5 rows">
-        <div class="background__image col-6">
-            <img src="{{asset('assets/image/home/A&T.svg')}}" alt="">
+        <div class="background__image">
+            <img src="{{asset('assets/image/logo_innovation.svg')}}" alt="">
         </div>
-        <div class="background__image col-6">
+        <div class="background__image">
             <img src="{{asset('assets/image/home/hekate.png')}}" alt="">
         </div>
 </div>
@@ -70,13 +58,13 @@
     <div class="background__image col l-4 m-4 c-12 no-margin">
         <div>
             <img src="{{asset('assets/image/home/edit.svg')}}" alt="">
-            <p class="updata-form">{{ __('Labelling Code violations upon requests') }}</p>
+            <p class="updata-form">{{ __('Identifies violations upon submission') }}</p>
         </div>
     </div>
     <div class="background__image col l-4 m-4 c-12 no-margin">
         <div>
             <img src="{{asset('assets/image/home/auction.svg')}}" alt="">
-            <p class="updata-form">{{ __('Tracing violations from detection to penalty') }}</p>
+            <p class="updata-form">{{ __('Provides data and evidence form research and policy advocacy') }}</p>
         </div>
     </div>
 </div>
