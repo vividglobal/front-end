@@ -74,7 +74,17 @@
     }
 
     .background__vituar-5 > .background__image{
-        padding: 55px 0 !important;
+        padding: 35px 0 !important;
+        width: 100% !important;
+        margin: 10px 0 !important;
+    }
+
+    .background__vituar-5 > .background__image img{
+        width:  50% !important;
+    }
+
+    .background__vituar-5 > .background__image:first-child img{
+        width:  25% !important;
     }
 
     .background__vituar-7{
@@ -202,7 +212,17 @@
     }
 
     .background__vituar-5 > .background__image{
-        padding: 15px 0 !important;
+        padding: 35px 0 !important;
+        width: 100% !important;
+        margin: 5px 0 !important;
+    }
+
+    .background__vituar-5 > .background__image img{
+        width:  50% !important;
+    }
+
+    .background__vituar-5 > .background__image:first-child img{
+        width:  25% !important;
     }
 
     .background__vituar-6 p {
