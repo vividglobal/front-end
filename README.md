@@ -1,4 +1,4 @@
-# AT Detector Platform
+# Detector Platform
 
 ## Requirements
 
